@@ -1,0 +1,357 @@
+{
+  "specVersion": "1.0.0",
+  "generatedAt": "2026-08-25T01:58:39.178Z",
+  "requestId": "req_1787623119146",
+  "industryPack": "life-journal",
+  "identity": {
+    "company": "智行科技",
+    "companyPinyin": "zhixing",
+    "appName": "智行日记",
+    "appPinyin": "zhixing-riji",
+    "bundleId": "com.zhixing.zhixingriji",
+    "version": "1.0.0"
+  },
+  "positioning": {
+    "tagline": "面向旅行爱好者的智慧旅行记录与回顾工具，地图轨迹可视化、智慧续写与时光回顾，让每一次出发成为可回看的记忆资产",
+    "coreUsers": [
+      {
+        "role": "都市青年",
+        "ageRange": "20-45",
+        "scenario": "日常碎片时间",
+        "need": "记录生活、整理回忆、年度回顾"
+      }
+    ],
+    "painPoints": [
+      "生活瞬间分散难整理",
+      "照片与文字缺乏叙事",
+      "缺乏温暖的回顾仪式感"
+    ],
+    "differentiation": "面向旅行爱好者的智慧旅行记录与回顾工具，地图轨迹可视化、智慧续写与时光回顾，让每一次出发成为可回看的记忆资产"
+  },
+  "modules": {
+    "pages": [
+      {
+        "id": "home",
+        "title": "首页",
+        "route": "pages/HomePage",
+        "features": [
+          "今日记录",
+          "最近动态",
+          "精选回忆"
+        ],
+        "tab": true
+      },
+      {
+        "id": "journal",
+        "title": "记录",
+        "route": "pages/JournalPage",
+        "features": [
+          "创建日记",
+          "标签",
+          "图片"
+        ],
+        "tab": true
+      },
+      {
+        "id": "album",
+        "title": "相册",
+        "route": "pages/AlbumPage",
+        "features": [
+          "创建相册",
+          "图片展示"
+        ],
+        "tab": true
+      },
+      {
+        "id": "review",
+        "title": "回顾",
+        "route": "pages/ReviewPage",
+        "features": [
+          "年度统计",
+          "搜索",
+          "标签分类"
+        ],
+        "tab": true
+      },
+      {
+        "id": "mine",
+        "title": "我的",
+        "route": "pages/MinePage",
+        "features": [
+          "用户信息",
+          "我的记录",
+          "设置"
+        ],
+        "tab": true
+      },
+      {
+        "id": "organize",
+        "title": "智慧整理",
+        "route": "pages/OrganizePage",
+        "features": [
+          "日期整理",
+          "标签分类",
+          "搜索"
+        ],
+        "tab": false
+      },
+      {
+        "id": "favorites",
+        "title": "美好收藏",
+        "route": "pages/FavoritesPage",
+        "features": [
+          "收藏文字",
+          "收藏图片"
+        ],
+        "tab": false
+      }
+    ],
+    "coreFlows": [
+      {
+        "name": "生活记录闭环",
+        "steps": [
+          "写今日札记",
+          "添加标签图片",
+          "智慧整理检索",
+          "年度回顾"
+        ]
+      }
+    ]
+  },
+  "entities": [
+    {
+      "name": "DiaryEntry",
+      "table": "diaries",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "body",
+          "type": "string"
+        },
+        {
+          "name": "tags",
+          "type": "array"
+        }
+      ]
+    },
+    {
+      "name": "Album",
+      "table": "albums",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "description",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "Favorite",
+      "table": "favorites",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "kind",
+          "type": "string"
+        },
+        {
+          "name": "content",
+          "type": "string"
+        }
+      ]
+    }
+  ],
+  "apis": [
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/life-journal/featured",
+      "summary": "精选回忆",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/life-journal/diaries",
+      "summary": "日记列表",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/biz/life-journal/diaries",
+      "summary": "创建日记",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/life-journal/albums",
+      "summary": "相册",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/biz/life-journal/albums",
+      "summary": "创建相册",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/life-journal/favorites",
+      "summary": "收藏",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/life-journal/annual-stats",
+      "summary": "年度回顾",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/messages",
+      "summary": "消息",
+      "auth": true,
+      "module": "messages"
+    }
+  ],
+  "ai": {
+    "capabilities": [],
+    "quickCommands": [],
+    "systemPrompt": "你是「智行科技」旗下应用「智行日记」的智慧旅行助手。产品定位：地图轨迹可视化、智慧续写与时光回顾。主职责：帮助用户整理旅行日记、理解足迹地图与年度回顾；智慧续写为规则模板辅助，不提供生成式大模型对话。",
+    "mode": "none",
+    "llmEnabled": false
+  },
+  "permissions": [
+    {
+      "name": "ohos.permission.INTERNET",
+      "reason": "同步日记、相册与收藏数据",
+      "when": "inuse",
+      "scene": "记录与云端同步"
+    }
+  ],
+  "harmonyos": {
+    "features": []
+  },
+  "store": {
+    "category": "生活",
+    "legalOperator": "魏文波",
+    "oneLiner": "智行日记 — 面向旅行爱好者的智慧旅行记录与回顾工具，地图轨迹可视化、智慧续写与",
+    "fullDescription": "智行日记是一款面向旅行爱好者的智慧旅行记录与回顾工具。支持文字+图片+位置多维日记、旅行地图足迹、智慧续写辅助、那年今日与年度回顾，完全免费。",
+    "keywords": [
+      "旅行",
+      "日记",
+      "地图",
+      "足迹",
+      "回忆",
+      "鸿蒙"
+    ],
+    "privacySummary": {
+      "collect": [
+        "账号信息",
+        "日记内容",
+        "相册与收藏"
+      ],
+      "purpose": "提供生活记录与云端同步",
+      "thirdParties": []
+    },
+    "demoAccount": {
+      "username": "auditor@zhixing.local",
+      "passwordNote": "仅写入 store/demo-account.md"
+    },
+    "screenshotPlan": [
+      {
+        "page": "home",
+        "caption": "今日记录与精选回忆"
+      },
+      {
+        "page": "journal",
+        "caption": "写日记与标签"
+      },
+      {
+        "page": "review",
+        "caption": "年度回顾统计"
+      }
+    ],
+    "incentiveHooks": [
+      "FormExtensionAbility",
+      "元服务快捷入口"
+    ]
+  },
+  "access": {
+    "mode": "open_optional",
+    "features": {
+      "register": true,
+      "guestBrowse": true,
+      "guestWrite": false
+    },
+    "gateActions": [
+      "create_diary",
+      "create_album",
+      "add_favorite",
+      "sync_records"
+    ],
+    "onPrivacyRefuse": "browse_basic",
+    "loginProviders": [
+      "password"
+    ]
+  },
+  "brand": {
+    "primary": "#F5A623",
+    "primaryDeep": "#2C3E6B",
+    "deep": "#2C3E6B",
+    "accent": "#6B9F7A",
+    "tone": "soft-editorial",
+    "stylePack": "soft-editorial",
+    "workbenchId": "map-timeline",
+    "layoutVariant": "B",
+    "productVisualType": "content-commerce",
+    "visualDirection": {
+      "archetype": "warm-travel-narrative",
+      "density": "airy",
+      "material": "warm-paper-card",
+      "imagery": "travel-editorial",
+      "accent": "sunrise-orange",
+      "primaryJob": "3 秒内记录此刻旅途",
+      "notes": "暖阳橙#F5A623+深海蓝#2C3E6B；首页|地图|时光|我的"
+    },
+    "visualAssets": [
+      { "id": "hero_home", "file": "hero_travel_home.png", "usage": "首页 Hero" },
+      { "id": "hero_lake", "file": "hero_mountain_lake.png", "usage": "精选案例封面" },
+      { "id": "hero_sunset", "file": "hero_coastal_sunset.png", "usage": "Banner/案例" },
+      { "id": "hero_city", "file": "hero_ancient_city.png", "usage": "案例封面" },
+      { "id": "hero_forest", "file": "hero_forest_path.png", "usage": "案例封面" },
+      { "id": "hero_snow", "file": "hero_snow_mountain.png", "usage": "案例封面" },
+      { "id": "map_bg", "file": "map_journey_bg.png", "usage": "地图页氛围" }
+    ],
+    "logo": {
+      "brandAnchor": "行",
+      "glyphStrategy": "compass-journal",
+      "customLock": false
+    }
+  }
+}

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 512">
+  <rect width="512" height="512" fill="#1A2A6C"/>
+  <path d="M134 195 L256 159 L256 353 L134 389 Z" fill="#F7F4EE"/>
+  <path d="M256 159 L378 195 L378 389 L256 353 Z" fill="#E8E4DC"/>
+  <path d="M256 159 L256 353" stroke="#1A2A6C" stroke-width="10" fill="none"/>
+  <circle cx="371" cy="146" r="21" fill="#F5A623"/>
+  <text x="560" y="300" font-family="Noto Sans SC, Source Han Sans, sans-serif" font-size="140" font-weight="600" fill="#1A2A6C" letter-spacing="18">��J</text>
+</svg>

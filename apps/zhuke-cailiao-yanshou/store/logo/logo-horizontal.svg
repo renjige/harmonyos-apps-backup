@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 400" role="img" aria-label="Q�P��6">
+  <rect width="1600" height="400" fill="#1A1F26"/>
+  <svg x="40" y="40" width="320" height="320" viewBox="0 0 1024 1024">
+    <rect x="168" y="168" width="688" height="688" rx="96" fill="none" stroke="#FFFFFF" stroke-width="36"/>
+    <path d="M300 320H700" fill="none" stroke="#FFFFFF" stroke-width="56" stroke-linecap="round"/>
+    <path d="M700 320L340 704" fill="none" stroke="#FFFFFF" stroke-width="56" stroke-linecap="round"/>
+    <path d="M340 704H560" fill="none" stroke="#FFFFFF" stroke-width="56" stroke-linecap="round"/>
+    <path d="M520 560L620 700L820 420" fill="none" stroke="#7A9E80" stroke-width="52" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+  <text x="420" y="250" fill="#FFFFFF" font-size="96" font-family="HarmonyOS Sans, Noto Sans SC, sans-serif" font-weight="600">Q�P��6</text>
+</svg>

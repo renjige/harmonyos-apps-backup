@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 360">
+  <rect width="360" height="360" rx="0" fill="#2D3E50"/>
+  <g transform="translate(-80,-80) scale(0.5)">
+    <path d="M512 300 L248 380 L248 720 L512 640 Z" fill="#F7F5F0"/>
+    <path d="M512 300 L776 380 L776 720 L512 640 Z" fill="#E8D5B7"/>
+    <path d="M512 300 L512 640" stroke="#2D3E50" stroke-width="18" fill="none"/>
+    <path d="M620 268 L668 252 L700 430 L652 446 Z" fill="#C9A96E"/>
+  </g>
+  <text x="400" y="220" font-family="HarmonyOS Sans, Source Han Sans SC, sans-serif" font-size="96" font-weight="600" fill="#2D3E50">z�</text>
+</svg>

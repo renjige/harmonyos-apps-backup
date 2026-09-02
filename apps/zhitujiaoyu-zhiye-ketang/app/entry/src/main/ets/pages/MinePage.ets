@@ -1,0 +1,352 @@
+import { Theme } from '../components/design-system/Theme'
+import { AppHeader } from '../components/design-system/AppHeader'
+import { AppButton } from '../components/design-system/AppButton'
+import { AppIcon } from '../components/design-system/AppIcon'
+import { AppStatCard } from '../components/design-system/AppStatCard'
+import { AchievementGrid } from '../components/career/AchievementGrid'
+import { AuthService } from '../services/AuthService'
+import { PrivacyService } from '../services/PrivacyService'
+import { FavoriteService } from '../services/FavoriteService'
+import { LearnProgressService } from '../services/LearnProgressService'
+import { StudyStatsService } from '../services/StudyStatsService'
+import { CareerBizService } from '../services/CareerBizService'
+import { BadgeItem } from '../models/CareerModels'
+import { LegalDocKind, LegalDocOverlay } from '../components/legal/LegalDocOverlay'
+
+@Component
+export struct MinePage {
+  @StorageLink('themeEpoch') themeEpoch: number = 0
+  @Prop appName: string = '职业课堂'
+  @StorageLink('accessToken') accessToken: string = ''
+  @StorageLink('currentUsername') currentUsername: string = ''
+  @State showSettings: boolean = false
+  @State legalKind: LegalDocKind = 'privacy'
+  @State showLegal: boolean = false
+  @State toastText: string = ''
+  @State confirmDelete: boolean = false
+  @State badges: BadgeItem[] = []
+  @State enrollCount: number = 0
+  @StorageLink('favoriteTick') favoriteTick: number = 0
+  @StorageLink('progressTick') @Watch('onStatsTick') progressTick: number = 0
+  onOpenLogin: () => void = () => {}
+  onLogout: () => void = () => {}
+  onRequireAuth: () => void = () => {}
+
+  aboutToAppear(): void {
+    void this.refreshStats()
+  }
+
+  onStatsTick(): void {
+    void this.refreshStats()
+  }
+
+  private async refreshStats(): Promise<void> {
+    let count = 0
+    if (this.isLoggedIn()) {
+      const courseEnrolls = await CareerBizService.loadEnrollments(this.currentUsername)
+      const actEnrolls = await CareerBizService.loadActivityEnrollments(this.currentUsername)
+      count = courseEnrolls.length + actEnrolls.length
+    }
+    this.enrollCount = count
+    this.badges = StudyStatsService.listBadges(
+      LearnProgressService.startedCount(),
+      LearnProgressService.completedCount(),
+      this.enrollCount
+    )
+  }
+
+  private isLoggedIn(): boolean {
+    return this.accessToken.length > 0
+  }
+
+  private showToast(message: string): void {
+    this.toastText = message
+    setTimeout(() => {
+      this.toastText = ''
+    }, 2800)
+  }
+
+  private async handleRevokePrivacy(): Promise<void> {
+    await PrivacyService.revoke()
+    if (this.isLoggedIn()) {
+      await AuthService.logout()
+      this.onLogout()
+    }
+    this.showSettings = false
+    this.showToast('已撤回隐私同意，再次登录须重新勾选协议')
+  }
+
+  private handleClearCache(): void {
+    AppStorage.setOrCreate('localCacheEpoch', Date.now())
+    this.showToast('已清除本地缓存')
+  }
+
+  private async handleDeleteAccount(): Promise<void> {
+    if (!this.confirmDelete) {
+      this.confirmDelete = true
+      this.showToast('再点一次确认注销账号')
+      return
+    }
+    const ok = await PrivacyService.deleteAccount()
+    if (ok) {
+      await AuthService.logout()
+      this.showSettings = false
+      this.onLogout()
+      this.showToast('账号已注销')
+      return
+    }
+    this.showToast('注销失败，请稍后重试')
+  }
+
+  build() {
+    Stack() {
+      Column() {
+        if (this.showSettings) {
+          this.SettingsPanel()
+        } else {
+          AppHeader({ title: '我的', subtitle: this.appName })
+          Scroll() {
+            Column({ space: Theme.space.s4 }) {
+              Column({ space: 8 }) {
+                Text(this.isLoggedIn() ? this.currentUsername : '游客')
+                  .fontSize(Theme.type.title3)
+                  .fontWeight(FontWeight.Bold)
+                  .fontColor(Theme.colors().textPrimary)
+                  .width('100%')
+                Text(this.isLoggedIn()
+                  ? '账号已登录 · 报名与收藏将同步'
+                  : '游客可浏览课程；报名与收藏需登录')
+                  .fontSize(Theme.type.footnote)
+                  .fontColor(Theme.colors().textSecondary)
+                  .width('100%')
+              }
+              .width('100%')
+              .padding(Theme.space.s5)
+              .alignItems(HorizontalAlign.Start)
+              .backgroundColor(this.themeEpoch >= 0 ? Theme.colors().surfaceCard : Theme.colors().surfaceCard)
+              .borderRadius(Theme.radius.xl)
+              .border({ width: 1, color: Theme.colors().strokeHairline })
+
+              Row({ space: Theme.space.s3 }) {
+                AppStatCard({
+                  label: '学习中',
+                  value: `${LearnProgressService.startedCount()}`,
+                  trend: '本地进度',
+                  positive: true
+                }).layoutWeight(1)
+                AppStatCard({
+                  label: '已结业',
+                  value: `${LearnProgressService.completedCount()}`,
+                  trend: '100% 课程',
+                  positive: true
+                }).layoutWeight(1)
+              }
+              .width('100%')
+
+              Row({ space: Theme.space.s3 }) {
+                AppStatCard({
+                  label: '收藏',
+                  value: `${FavoriteService.count()}`,
+                  trend: '课程',
+                  positive: true
+                }).layoutWeight(1)
+                AppStatCard({
+                  label: '累计学习',
+                  value: `${StudyStatsService.getTotalMinutes()}分`,
+                  trend: '本周打卡',
+                  positive: true
+                }).layoutWeight(1)
+              }
+              .width('100%')
+
+              AchievementGrid({ badges: this.badges })
+
+              Row({ space: Theme.space.s3 }) {
+                Column({ space: 2 }) {
+                  Text('学习记录')
+                    .fontSize(Theme.type.subhead)
+                    .fontWeight(FontWeight.Medium)
+                    .fontColor(Theme.colors().textPrimary)
+                  Text('进度 · 我的报名')
+                    .fontSize(Theme.type.caption)
+                    .fontColor(Theme.colors().textSecondary)
+                }
+                .layoutWeight(1)
+                .alignItems(HorizontalAlign.Start)
+                AppIcon({ name: 'chevron', iconSize: Theme.icon.sm })
+              }
+              .width('100%')
+              .padding(Theme.space.s4)
+              .backgroundColor(this.themeEpoch >= 0 ? Theme.colors().surfaceCard : Theme.colors().surfaceCard)
+              .borderRadius(Theme.radius.xl)
+              .border({ width: 1, color: Theme.colors().strokeHairline })
+              .onClick(() => {
+                AppStorage.setOrCreate('mainTab', 1)
+              })
+
+              Row({ space: Theme.space.s3 }) {
+                Column({ space: 2 }) {
+                  Text('设置与隐私')
+                    .fontSize(Theme.type.subhead)
+                    .fontWeight(FontWeight.Medium)
+                    .fontColor(Theme.colors().textPrimary)
+                  Text('协议 · 撤回同意 · 注销')
+                    .fontSize(Theme.type.caption)
+                    .fontColor(Theme.colors().textSecondary)
+                }
+                .layoutWeight(1)
+                .alignItems(HorizontalAlign.Start)
+                AppIcon({ name: 'chevron', iconSize: Theme.icon.sm })
+              }
+              .width('100%')
+              .padding(Theme.space.s4)
+              .backgroundColor(this.themeEpoch >= 0 ? Theme.colors().surfaceCard : Theme.colors().surfaceCard)
+              .borderRadius(Theme.radius.xl)
+              .border({ width: 1, color: Theme.colors().strokeHairline })
+              .onClick(() => {
+                this.confirmDelete = false
+                this.showSettings = true
+              })
+
+              Column({ space: Theme.space.s3 }) {
+                if (this.isLoggedIn()) {
+                  AppButton({
+                    label: '退出登录',
+                    variant: 'secondary',
+                    onTap: (): void => {
+                      void AuthService.logout()
+                      this.onLogout()
+                    }
+                  })
+                } else {
+                  AppButton({
+                    label: '登录 / 注册',
+                    onTap: (): void => { this.onOpenLogin() }
+                  })
+                }
+              }
+              .width('100%')
+            }
+            .padding({
+              left: Theme.space.pageX,
+              right: Theme.space.pageX,
+              bottom: Theme.space.s10
+            })
+            .width('100%')
+          }
+          .layoutWeight(1)
+          .scrollBar(BarState.Off)
+          .edgeEffect(EdgeEffect.Spring)
+        }
+      }
+      .width('100%')
+      .height('100%')
+      .backgroundColor(this.themeEpoch >= 0 ? Theme.colors().surfacePage : Theme.colors().surfacePage)
+
+      if (this.toastText.length > 0) {
+        Column() {
+          Text(this.toastText)
+            .fontSize(Theme.type.footnote)
+            .fontColor(Theme.colors().brandOnPrimary)
+            .padding({ left: 16, right: 16, top: 10, bottom: 10 })
+            .backgroundColor(Theme.colors().brandPrimary)
+            .borderRadius(Theme.radius.pill)
+            .maxLines(3)
+            .textAlign(TextAlign.Center)
+        }
+        .width('100%')
+        .padding({ top: Theme.space.s6, left: Theme.space.pageX, right: Theme.space.pageX })
+        .alignItems(HorizontalAlign.Center)
+        .zIndex(20)
+      }
+
+      if (this.showLegal) {
+        LegalDocOverlay({
+          kind: this.legalKind,
+          onClose: () => { this.showLegal = false }
+        })
+          .width('100%')
+          .height('100%')
+      }
+    }
+    .width('100%')
+    .height('100%')
+  }
+
+  @Builder
+  SettingsPanel() {
+    Column({ space: Theme.space.s4 }) {
+      Row({ space: Theme.space.s2 }) {
+        Column() {
+          AppIcon({ name: 'chevron', iconSize: Theme.icon.md })
+        }
+        .width(44)
+        .height(44)
+        .justifyContent(FlexAlign.Center)
+        .rotate({ angle: 180 })
+        .onClick(() => { this.showSettings = false })
+        Text('设置与隐私')
+          .fontSize(Theme.type.title3)
+          .fontWeight(FontWeight.Medium)
+          .fontColor(Theme.colors().textPrimary)
+      }
+      .width('100%')
+      .padding({ left: Theme.space.pageX - 8, right: Theme.space.pageX })
+
+      Scroll() {
+        Column({ space: Theme.space.s3 }) {
+          AppButton({
+            label: '查看《用户协议》',
+            variant: 'secondary',
+            onTap: (): void => {
+              this.legalKind = 'agreement'
+              this.showLegal = true
+            }
+          })
+          AppButton({
+            label: '查看《隐私政策》',
+            variant: 'secondary',
+            onTap: (): void => {
+              this.legalKind = 'privacy'
+              this.showLegal = true
+            }
+          })
+          Text('个人信息收集清单 · 第三方共享清单见 store/ 上架资料')
+            .fontSize(Theme.type.footnote)
+            .fontColor(Theme.colors().textSecondary)
+            .width('100%')
+          AppButton({
+            label: '清除缓存',
+            variant: 'secondary',
+            onTap: (): void => { this.handleClearCache() }
+          })
+          AppButton({
+            label: this.confirmDelete ? '再点一次确认注销' : '注销账号',
+            variant: 'danger',
+            onTap: (): void => { void this.handleDeleteAccount() }
+          })
+          Row() {
+            AppButton({
+              label: '撤回隐私同意',
+              variant: 'secondary',
+              onTap: (): void => { void this.handleRevokePrivacy() }
+            })
+          }
+          .width('100%')
+          .onClick((): void => { void this.handleRevokePrivacy() })
+        }
+        .padding({
+          left: Theme.space.pageX,
+          right: Theme.space.pageX,
+          bottom: Theme.space.s10
+        })
+        .width('100%')
+      }
+      .layoutWeight(1)
+      .scrollBar(BarState.Off)
+      .edgeEffect(EdgeEffect.Spring)
+    }
+    .width('100%')
+    .height('100%')
+  }
+}

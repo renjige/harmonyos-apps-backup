@@ -1,0 +1,8 @@
+{
+  "string": [
+    { "name": "module_desc", "value": "溪漫观 — 智慧生活记录与状态洞察" },
+    { "name": "EntryAbility_desc", "value": "每日漫观笔记、状态图谱与智慧洞察" },
+    { "name": "EntryAbility_label", "value": "溪漫观" },
+    { "name": "reminder_reason", "value": "用于每日漫观记录提醒" }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "string": [
+    { "name": "module_desc", "value": "筑科装修助手主模块" },
+    { "name": "EntryAbility_desc", "value": "装修过程记录入口" },
+    { "name": "EntryAbility_label", "value": "筑科装修助手" },
+    { "name": "internet_reason", "value": "用于登录同步及获取装修阶段说明、智能清单与验收模板" }
+  ]
+}

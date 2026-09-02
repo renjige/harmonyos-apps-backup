@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" fill="none">
+  <rect width="1024" height="1024" fill="#1A2A3A"/>
+  <!-- 书页负形 -->
+  <path d="M220 260 H804 V764 H220 Z" fill="#F7F5F0" opacity="0.08"/>
+  <path d="M512 260 V764" stroke="#C9A96E" stroke-width="6" opacity="0.35"/>
+  <!-- 「语」简化字形：言 + 吾 -->
+  <rect x="340" y="300" width="344" height="56" rx="8" fill="#C9A96E"/>
+  <rect x="380" y="380" width="48" height="220" rx="6" fill="#F7F5F0"/>
+  <rect x="460" y="380" width="48" height="220" rx="6" fill="#F7F5F0"/>
+  <rect x="540" y="380" width="48" height="220" rx="6" fill="#F7F5F0"/>
+  <rect x="620" y="380" width="48" height="220" rx="6" fill="#F7F5F0"/>
+  <rect x="420" y="460" width="184" height="40" rx="6" fill="#C9A96E" opacity="0.85"/>
+  <rect x="420" y="540" width="184" height="40" rx="6" fill="#C9A96E" opacity="0.65"/>
+  <!-- 引号点缀 -->
+  <path d="M280 640 Q260 600 300 580 Q340 560 360 600 Q340 640 280 640Z" fill="#C9A96E" opacity="0.5"/>
+  <path d="M664 640 Q644 600 684 580 Q724 560 744 600 Q724 640 664 640Z" fill="#C9A96E" opacity="0.5"/>
+</svg>

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" fill="none">
+  <rect width="1024" height="1024" fill="#1A2A6C"/>
+  <!-- open book -->
+  <path fill="#FFFFFF" d="M180 280c0-32 26-58 58-58h264c24 0 46 12 58 32 12-20 34-32 58-32h264c32 0 58 26 58 58v468c0 32-26 58-58 58H620c-24 0-46-12-58-32-12 20-34 32-58 32H238c-32 0-58-26-58-58V280z"/>
+  <path fill="#E8ECF4" d="M512 252c20-18 46-32 76-32h264c32 0 58 26 58 58v468c0 32-26 58-58 58H588c-32 0-58-18-76-46V252z"/>
+  <rect x="498" y="240" width="28" height="556" rx="10" fill="#1A2A6C"/>
+  <!-- page lines left -->
+  <rect x="236" y="380" width="210" height="16" rx="8" fill="#1A2A6C" opacity="0.12"/>
+  <rect x="236" y="430" width="180" height="16" rx="8" fill="#1A2A6C" opacity="0.10"/>
+  <!-- career stairs / arrow -->
+  <path fill="#F39C12" d="M512 220 L620 328 L572 328 L572 548 L452 548 L452 328 L404 328 Z"/>
+  <rect x="472" y="368" width="80" height="16" rx="8" fill="#FFFFFF" opacity="0.85"/>
+  <rect x="472" y="428" width="80" height="16" rx="8" fill="#FFFFFF" opacity="0.70"/>
+  <rect x="472" y="488" width="80" height="16" rx="8" fill="#FFFFFF" opacity="0.55"/>
+</svg>

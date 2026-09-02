@@ -1,0 +1,8 @@
+{
+  "string": [
+    { "name": "module_desc", "value": "筑科质量巡查主模块" },
+    { "name": "EntryAbility_desc", "value": "质量巡查与问题闭环入口" },
+    { "name": "EntryAbility_label", "value": "筑科质量巡查" },
+    { "name": "internet_reason", "value": "用于登录后同步巡查与质量问题记录" }
+  ]
+}

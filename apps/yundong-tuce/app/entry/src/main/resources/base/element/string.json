@@ -1,0 +1,8 @@
+{
+  "string": [
+    { "name": "module_desc", "value": "运动图册：动作图鉴、训练计划与个人运动档案" },
+    { "name": "EntryAbility_desc", "value": "收藏动作、编排方案、记录训练" },
+    { "name": "EntryAbility_label", "value": "运动图册" },
+    { "name": "internet_reason", "value": "用于账号登录、注册与注销，训练数据默认保存在本机" }
+  ]
+}

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 360" width="1280" height="360">
+  <rect width="360" height="360" fill="#1A1D1F"/>
+  <g transform="scale(0.3515625)">
+    <path fill="#2D5A27" d="M128 720 L320 400 L448 560 L576 360 L768 520 L896 720 Z"/>
+    <path fill="#1A1D1F" d="M448 720 L512 600 L576 720 Z"/>
+    <path fill="#F5F0E8" d="M512 240 L592 420 L512 480 L432 420 Z"/>
+    <path fill="#C49A6C" d="M512 268 L568 408 L512 448 L456 408 Z"/>
+    <circle cx="512" cy="436" r="32" fill="#F5F0E8"/>
+    <circle cx="512" cy="436" r="14" fill="#2D5A27"/>
+  </g>
+  <text x="400" y="210" fill="#1A1D1F" font-family="HarmonyOS Sans, Source Han Sans, sans-serif" font-size="92" font-weight="600">�6�"�</text>
+</svg>

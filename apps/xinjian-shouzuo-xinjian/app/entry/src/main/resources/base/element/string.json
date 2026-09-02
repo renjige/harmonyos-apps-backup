@@ -1,0 +1,8 @@
+{
+  "string": [
+    { "name": "module_desc", "value": "手作心笺主模块" },
+    { "name": "EntryAbility_desc", "value": "手作记录与生活美学工具" },
+    { "name": "EntryAbility_label", "value": "手作心笺" },
+    { "name": "internet_reason", "value": "用于同步手作作品、灵感与创作数据" }
+  ]
+}

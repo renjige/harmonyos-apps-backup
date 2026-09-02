@@ -1,0 +1,441 @@
+{
+  "specVersion": "1.0.0",
+  "generatedAt": "2026-08-21T08:12:20.088Z",
+  "requestId": "req_1787299940048",
+  "industryPack": "site-hazard",
+  "identity": {
+    "company": "筑科建筑工程有限公司",
+    "companyPinyin": "zhuke",
+    "appName": "筑科隐患排查",
+    "appPinyin": "yinhuanpaicha",
+    "bundleId": "com.zhuke.yinhuanpaicha",
+    "version": "1.0.0"
+  },
+  "positioning": {
+    "tagline": "面向施工现场人员的轻量隐患记录、整改跟踪与安全检查工具",
+    "coreUsers": [
+      {
+        "role": "现场安全员 / 施工员",
+        "ageRange": "22-45",
+        "scenario": "巡场发现临边、用电、消防等问题后几十秒完成登记",
+        "need": "快速记录隐患并跟踪整改复查"
+      },
+      {
+        "role": "整改责任人",
+        "ageRange": "25-50",
+        "scenario": "按期限提交整改说明，等待复查",
+        "need": "看清待办项与截止时间"
+      }
+    ],
+    "painPoints": [
+      "纸质台账难以及时闭环",
+      "隐患发现后缺少整改与复查跟踪",
+      "复杂企业后台不适合现场随手记录"
+    ],
+    "differentiation": "面向施工现场人员的轻量隐患记录、整改跟踪与安全检查工具"
+  },
+  "modules": {
+    "pages": [
+      {
+        "id": "home",
+        "title": "首页",
+        "route": "pages/HomePage",
+        "features": [
+          "今日概览",
+          "风险分布",
+          "新增隐患",
+          "最近记录"
+        ],
+        "tab": true
+      },
+      {
+        "id": "hazards",
+        "title": "隐患",
+        "route": "pages/HazardListPage",
+        "features": [
+          "搜索筛选",
+          "卡片列表",
+          "详情",
+          "整改",
+          "复查"
+        ],
+        "tab": true
+      },
+      {
+        "id": "inspect",
+        "title": "检查",
+        "route": "pages/InspectPage",
+        "features": [
+          "检查清单",
+          "异常转隐患",
+          "现场自检问卷"
+        ],
+        "tab": true
+      },
+      {
+        "id": "mine",
+        "title": "我的",
+        "route": "pages/MinePage",
+        "features": [
+          "使用说明",
+          "数据管理",
+          "设置与隐私"
+        ],
+        "tab": true
+      }
+    ],
+    "coreFlows": [
+      {
+        "name": "记录隐患",
+        "steps": [
+          "首页点新增隐患",
+          "填写核心信息",
+          "保存进入详情"
+        ]
+      },
+      {
+        "name": "整改复查闭环",
+        "steps": [
+          "打开隐患详情",
+          "提交整改",
+          "复查通过",
+          "显示已闭环"
+        ]
+      },
+      {
+        "name": "安全检查",
+        "steps": [
+          "开始检查",
+          "勾选异常项",
+          "提交并生成隐患"
+        ]
+      }
+    ]
+  },
+  "entities": [
+    {
+      "name": "SiteProject",
+      "table": "site-hazard-projects",
+      "fields": [
+        "id",
+        "title",
+        "location",
+        "summary",
+        "coverKey"
+      ]
+    },
+    {
+      "name": "HazardCategory",
+      "table": "site-hazard-categories",
+      "fields": [
+        "id",
+        "title",
+        "summary",
+        "body",
+        "coverKey"
+      ]
+    },
+    {
+      "name": "ChecklistItem",
+      "table": "site-hazard-checklist",
+      "fields": [
+        "id",
+        "title",
+        "groupName",
+        "summary",
+        "body"
+      ]
+    },
+    {
+      "name": "HazardRecord",
+      "table": "site-hazard-hazards",
+      "fields": [
+        "id",
+        "title",
+        "location",
+        "category",
+        "riskLevel",
+        "status",
+        "description",
+        "suggestion",
+        "ownerName",
+        "dueAt",
+        "userId"
+      ]
+    },
+    {
+      "name": "InspectionRecord",
+      "table": "site-hazard-inspections",
+      "fields": [
+        "id",
+        "title",
+        "inspectedAt",
+        "abnormalCount",
+        "itemsJson",
+        "userId"
+      ]
+    },
+    {
+      "name": "RectificationRecord",
+      "table": "site-hazard-rectifications",
+      "fields": [
+        "id",
+        "hazardId",
+        "title",
+        "body",
+        "operatorName",
+        "result",
+        "userId"
+      ]
+    }
+  ],
+  "apis": [
+    {
+      "method": "POST",
+      "path": "/api/v1/auth/login",
+      "summary": "登录",
+      "auth": false,
+      "module": "auth"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/auth/register",
+      "summary": "注册",
+      "auth": false,
+      "module": "auth"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/site-hazard/projects",
+      "summary": "在建项目",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/site-hazard/categories",
+      "summary": "隐患类别",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/site-hazard/checklist",
+      "summary": "检查清单",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/site-hazard/hazards",
+      "summary": "隐患列表",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/site-hazard/hazards/:id",
+      "summary": "隐患详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/biz/site-hazard/hazards",
+      "summary": "新增隐患",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "PUT",
+      "path": "/api/v1/biz/site-hazard/hazards/:id",
+      "summary": "更新隐患",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/biz/site-hazard/hazards/:id/rectify",
+      "summary": "提交整改",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/biz/site-hazard/hazards/:id/review",
+      "summary": "复查",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/site-hazard/inspections",
+      "summary": "检查记录",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/biz/site-hazard/inspections",
+      "summary": "提交检查",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/messages",
+      "summary": "系统消息",
+      "auth": false,
+      "module": "messages"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/privacy/account",
+      "summary": "注销账号",
+      "auth": true,
+      "module": "privacy"
+    }
+  ],
+  "permissions": [
+    {
+      "name": "ohos.permission.INTERNET",
+      "reason": "用于同步隐患记录、检查清单与整改状态",
+      "when": "inuse",
+      "scene": "保存隐患或拉取检查清单时"
+    }
+  ],
+  "harmonyos": {
+    "features": [
+      {
+        "type": "formCard",
+        "scene": "今日待整改数量桌面卡片"
+      }
+    ]
+  },
+  "store": {
+    "category": "商务",
+    "oneLiner": "筑科隐患排查 — 面向施工现场人员的轻量隐患记录、整改跟踪与安全检查工具",
+    "fullDescription": "筑科隐患排查由筑科建筑工程有限公司出品，面向施工现场安全员与施工人员，提供隐患快速记录、整改跟踪、复查闭环与简单安全检查清单。打开即可看见今日待整改数量，几十秒完成一次隐患登记。不提供支付、会员、广告、社交聊天或生成式对话。游客可在本机记录；登录后可按账号同步。",
+    "keywords": [
+      "隐患排查",
+      "施工安全",
+      "整改闭环",
+      "安全检查",
+      "鸿蒙"
+    ],
+    "privacySummary": {
+      "collect": [
+        "注册账号、姓名和联系电话",
+        "用户主动填写的隐患与检查记录",
+        "可选的现场图片",
+        "登录会话状态"
+      ],
+      "purpose": "提供账号登录、隐患整改闭环与检查记录同步",
+      "thirdParties": []
+    },
+    "demoAccount": {
+      "username": "auditor@zhuke.local",
+      "passwordNote": "仅写入 store/demo-account.md，禁止打进客户端"
+    },
+    "screenshotPlan": [
+      {
+        "page": "home",
+        "caption": "今日安全概览与新增隐患"
+      },
+      {
+        "page": "create",
+        "caption": "卡片式新增隐患表单"
+      },
+      {
+        "page": "detail",
+        "caption": "隐患详情与状态时间线"
+      },
+      {
+        "page": "inspect",
+        "caption": "简单安全检查清单"
+      },
+      {
+        "page": "closed",
+        "caption": "复查通过已闭环"
+      }
+    ],
+    "incentiveHooks": [
+      "原生鸿蒙现场记录",
+      "隐患整改复查闭环"
+    ],
+    "legalOperator": "魏文波"
+  },
+  "access": {
+    "mode": "open_optional",
+    "features": {
+      "register": true,
+      "guestBrowse": true,
+      "guestWrite": true
+    },
+    "gateActions": [
+      "sync_records"
+    ],
+    "onPrivacyRefuse": "browse_basic",
+    "loginProviders": [
+      "password"
+    ]
+  },
+  "admin": {
+    "featureModules": [
+      "overview",
+      "appUsers",
+      "shProjects",
+      "shCategories",
+      "shChecklist",
+      "shHazards",
+      "shInspections",
+      "shRectifications",
+      "messages",
+      "kpis",
+      "ai"
+    ]
+  },
+  "ai": {
+    "capabilities": [],
+    "quickCommands": [],
+    "systemPrompt": "你是「筑科建筑工程有限公司」旗下应用「筑科隐患排查」的现场安全助手。产品定位：面向施工现场人员的轻量隐患记录、整改跟踪与安全检查工具。主职责：按隐患名称建议类别与风险等级、整理整改建议、提示复查要点。禁止扮演支付、社交、新闻或医疗工具。不提供生成式对话作为 C 端功能。"
+  },
+  "brand": {
+    "primary": "#16324F",
+    "accent": "#F28C28",
+    "background": "#F5F7FA",
+    "text": "#17212B",
+    "primaryDeep": "#0F2236",
+    "tone": "industrial",
+    "stylePack": "premium-business",
+    "workbenchId": "incident-queue",
+    "layoutVariant": "B",
+    "visualDirection": "深海军蓝与工程橙、大数字待办、工地现场摄影、隐患队列工作台，专业安全工具而非企业展示或监控大屏",
+    "productVisualType": "industrial-field",
+    "visualAssets": [],
+    "visualAssets": [
+      { "id": "hero_site", "file": "hero_site.png", "usage": "首页现场 Hero" },
+      { "id": "banner_edge", "file": "banner_edge.png", "usage": "临边防护封面" },
+      { "id": "cover_electric", "file": "cover_electric.png", "usage": "用电安全封面" },
+      { "id": "cover_fire", "file": "cover_fire.png", "usage": "消防安全封面" },
+      { "id": "cover_height", "file": "cover_height.png", "usage": "高处作业封面" },
+      { "id": "cover_civil", "file": "cover_civil.png", "usage": "文明施工封面" },
+      { "id": "empty_site", "file": "empty_site.png", "usage": "空状态现场氛围" }
+    ],
+    "logo": {
+      "concept": "楼体层板与确认勾融合，锚点「筑」",
+      "style": "flat-premium",
+      "generator": "custom",
+      "glyphStrategy": "semantic-fusion",
+      "brandAnchor": "筑",
+      "customLock": true,
+      "renderScript": "store/logo/render_logo.mjs",
+      "foregroundFile": "store/logo/foreground.png",
+      "backgroundFile": "store/logo/background.png",
+      "previewFile": "store/logo/preview-1024.png",
+      "agcFile": "store/logo/agc-216.png",
+      "symbolFile": "store/logo/symbol.svg",
+      "horizontalFile": "store/logo/logo-horizontal.svg"
+    }
+  }
+}

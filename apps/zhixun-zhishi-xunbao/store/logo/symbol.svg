@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" fill="none">
+  <rect width="1024" height="1024" fill="#2D1B69"/>
+  <!-- Open atlas: two folded map pages -->
+  <path d="M196 300 L496 248 L496 776 L196 724 Z" fill="#F4EFE4"/>
+  <path d="M528 248 L828 300 L828 724 L528 776 Z" fill="#E8DFC8"/>
+  <!-- Fold crease -->
+  <path d="M512 236 L512 788" stroke="#2D1B69" stroke-width="18" stroke-linecap="square"/>
+  <!-- Compass needle (gold) -->
+  <path d="M512 318 L548 512 L512 706 L476 512 Z" fill="#FDCB6E"/>
+  <circle cx="512" cy="512" r="28" fill="#2D1B69"/>
+  <circle cx="512" cy="512" r="14" fill="#FDCB6E"/>
+</svg>

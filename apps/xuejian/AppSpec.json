@@ -1,0 +1,403 @@
+{
+  "specVersion": "1.0.0",
+  "generatedAt": "2026-08-26T05:56:45.640Z",
+  "requestId": "req_1787723805600",
+  "industryPack": "study-sight",
+  "identity": {
+    "company": "学见",
+    "companyPinyin": "xuejian",
+    "appName": "学见",
+    "appPinyin": "learning",
+    "bundleId": "com.xuejian.learning",
+    "version": "1.0.5"
+  },
+  "positioning": {
+    "tagline": "智慧学习助手，让每一次学习都被看见。",
+    "coreUsers": [
+      {
+        "role": "自主学习者",
+        "ageRange": "16-40",
+        "scenario": "想建立专注习惯，记下要点并看见自己的学习轨迹",
+        "need": "倒计时专注、笔记与知识卡片、热力图与周月报"
+      }
+    ],
+    "painPoints": [
+      "学了却看不见积累",
+      "计时与笔记分散在多个工具里",
+      "不知道自己在哪个时段更投入"
+    ],
+    "differentiation": "智慧学习助手，让每一次学习都被看见。"
+  },
+  "modules": {
+    "pages": [
+      {
+        "id": "home",
+        "title": "首页",
+        "route": "pages/HomePage",
+        "features": [
+          "今日进度环",
+          "连续天数",
+          "快捷专注",
+          "学习热力图",
+          "智慧推荐"
+        ],
+        "tab": true
+      },
+      {
+        "id": "study",
+        "title": "学习",
+        "route": "pages/StudyPage",
+        "features": [
+          "专注计时",
+          "学习笔记",
+          "知识卡片",
+          "随机复习"
+        ],
+        "tab": true
+      },
+      {
+        "id": "insight",
+        "title": "洞察",
+        "route": "pages/InsightPage",
+        "features": [
+          "周报月报",
+          "趋势图",
+          "智慧分析",
+          "成长轨迹"
+        ],
+        "tab": true
+      },
+      {
+        "id": "mine",
+        "title": "我的",
+        "route": "pages/MinePage",
+        "features": [
+          "学习目标",
+          "提醒说明",
+          "设置与隐私"
+        ],
+        "tab": true
+      }
+    ],
+    "coreFlows": [
+      {
+        "name": "专注计时",
+        "steps": [
+          "选择时长",
+          "开始倒计时",
+          "暂停或继续",
+          "结束写入时长",
+          "热力图刷新"
+        ]
+      },
+      {
+        "name": "笔记与卡片",
+        "steps": [
+          "创建笔记或卡片",
+          "进入详情",
+          "编辑或标记掌握",
+          "随机复习"
+        ]
+      },
+      {
+        "name": "学习洞察",
+        "steps": [
+          "查看周报或月报",
+          "阅读智慧分析",
+          "沿时间线回看"
+        ]
+      }
+    ]
+  },
+  "entities": [
+    {
+      "name": "StudySession",
+      "table": "sessions",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "minutes",
+          "type": "number",
+          "required": true
+        },
+        {
+          "name": "plannedMinutes",
+          "type": "number"
+        },
+        {
+          "name": "completed",
+          "type": "boolean"
+        },
+        {
+          "name": "startedAt",
+          "type": "number"
+        }
+      ]
+    },
+    {
+      "name": "Note",
+      "table": "notes",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "body",
+          "type": "string"
+        },
+        {
+          "name": "tags",
+          "type": "string"
+        },
+        {
+          "name": "coverKey",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "KnowledgeCard",
+      "table": "cards",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "body",
+          "type": "string"
+        },
+        {
+          "name": "category",
+          "type": "string"
+        },
+        {
+          "name": "mastery",
+          "type": "string"
+        },
+        {
+          "name": "coverKey",
+          "type": "string"
+        }
+      ]
+    }
+  ],
+  "apis": [
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/study-sight/methods",
+      "summary": "专注方法",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/study-sight/methods/:id",
+      "summary": "方法详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/study-sight/categories",
+      "summary": "知识分类",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/study-sight/categories/:id",
+      "summary": "分类详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/study-sight/tips",
+      "summary": "学习锦囊",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/study-sight/tips/:id",
+      "summary": "锦囊详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/study-sight/covers",
+      "summary": "封面",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/messages",
+      "summary": "消息",
+      "auth": false,
+      "module": "messages"
+    }
+  ],
+  "ai": {
+    "capabilities": [],
+    "quickCommands": [],
+    "systemPrompt": "你是「学见」旗下应用「学见」的学习轨迹助手。产品定位：智慧学习助手，让每一次学习都被看见。主职责：解释专注计时、笔记与知识卡片如何形成热力图与周月报；用规则给出作息建议。禁止出现「AI」字样，禁止编造分数承诺。C 端默认不提供自由对话。",
+    "mode": "none",
+    "llmEnabled": false
+  },
+  "permissions": [
+    {
+      "name": "ohos.permission.INTERNET",
+      "reason": "拉取专注方法、学习锦囊与可选账号同步",
+      "when": "inuse",
+      "scene": "打开应用浏览栏目或登录时"
+    }
+  ],
+  "harmonyos": {
+    "features": []
+  },
+  "store": {
+    "category": "教育",
+    "legalOperator": "魏文波",
+    "oneLiner": "学见 — 智慧学习助手，让每一次学习都被看见。",
+    "fullDescription": "学见是一款完全免费的学习记录工具。用专注倒计时看见今日投入，用笔记与知识卡片整理要点，用热力图和周月报看见成长。智慧分析根据你的学习时段给出作息建议，不提供生成式对话、支付与课程商城。",
+    "keywords": [
+      "学习",
+      "专注",
+      "笔记",
+      "知识卡片",
+      "热力图",
+      "鸿蒙"
+    ],
+    "privacySummary": {
+      "collect": [
+        "可选账号信息",
+        "本机专注时长",
+        "笔记与知识卡片",
+        "学习目标分钟数"
+      ],
+      "purpose": "提供专注计时、笔记、知识卡片、学习报告与账号服务",
+      "thirdParties": []
+    },
+    "demoAccount": {
+      "username": "auditor@xuejian.local",
+      "passwordNote": "仅写入 store/demo-account.md"
+    },
+    "screenshotPlan": [
+      {
+        "page": "home",
+        "caption": "今日进度与热力图"
+      },
+      {
+        "page": "focus",
+        "caption": "专注倒计时"
+      },
+      {
+        "page": "study",
+        "caption": "笔记与知识卡片"
+      },
+      {
+        "page": "insight",
+        "caption": "周报与智慧分析"
+      },
+      {
+        "page": "mine",
+        "caption": "我的与设置"
+      }
+    ],
+    "incentiveHooks": [
+      "FormExtensionAbility",
+      "元服务快捷入口"
+    ]
+  },
+  "access": {
+    "mode": "open_optional",
+    "features": {
+      "register": true,
+      "guestBrowse": true,
+      "guestWrite": true
+    },
+    "gateActions": [
+      "sync_account"
+    ],
+    "onPrivacyRefuse": "browse_basic",
+    "loginProviders": [
+      "password"
+    ]
+  },
+  "admin": {
+    "featureModules": [
+      "overview",
+      "appUsers",
+      "xjMethods",
+      "xjCategories",
+      "xjTips",
+      "xjCovers",
+      "messages",
+      "kpis",
+      "ai"
+    ]
+  },
+  "brand": {
+    "primary": "#1A2A4A",
+    "primaryDeep": "#121C32",
+    "deep": "#1A2A4A",
+    "accent": "#F5A623",
+    "tone": "soft-editorial",
+    "stylePack": "soft-editorial",
+    "workbenchId": "catalog-tool",
+    "layoutVariant": "B",
+    "productVisualType": "content-commerce",
+    "visualDirection": {
+      "archetype": "warm-study-sight",
+      "density": "airy",
+      "material": "warm-paper",
+      "imagery": "desk-open-book-morning-light",
+      "accent": "navy-gold",
+      "primaryJob": "3 秒内看到今日已学时长并开始专注",
+      "notes": "深空蓝#1A2A4A+暖阳金#F5A623；进度环工作台；禁止 AI 字样、禁止三 KPI 宫格、禁止路径课表"
+    },
+    "logo": {
+      "brandAnchor": "学",
+      "glyphStrategy": "semantic-fusion",
+      "customLock": true,
+      "generator": "custom",
+      "renderScript": "store/logo/render_logo.mjs",
+      "concept": "翻开的书 + 一束光点，深底白标暖金光",
+      "foregroundFile": "store/logo/foreground.png",
+      "backgroundFile": "store/logo/background.png",
+      "previewFile": "store/logo/preview-1024.png",
+      "agcFile": "store/logo/agc-216.png",
+      "symbolFile": "store/logo/symbol.svg"
+    },
+    "visualAssets": [
+      { "id": "hero_desk", "file": "hero_desk.png", "usage": "home-hero" },
+      { "id": "banner_focus", "file": "banner_focus.png", "usage": "focus-banner" },
+      { "id": "banner_insight", "file": "banner_insight.png", "usage": "insight-banner" },
+      { "id": "cover_math", "file": "cover_math.png", "usage": "category-cover" },
+      { "id": "cover_english", "file": "cover_english.png", "usage": "category-cover" },
+      { "id": "cover_code", "file": "cover_code.png", "usage": "category-cover" },
+      { "id": "cover_career", "file": "cover_career.png", "usage": "category-cover" },
+      { "id": "texture_paper", "file": "texture_paper.png", "usage": "ambient" }
+    ]
+  }
+}

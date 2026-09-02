@@ -1,0 +1,200 @@
+{
+  "specVersion": "1.0.0",
+  "generatedAt": "2026-08-26T02:50:00.000Z",
+  "requestId": "req_1787712464255",
+  "industryPack": "micro-insight",
+  "identity": {
+    "company": "魏文波",
+    "companyPinyin": "wenbo",
+    "appName": "知微集",
+    "appPinyin": "zhiweiji",
+    "bundleId": "com.wenbo.zhiweiji",
+    "version": "1.0.2"
+  },
+  "positioning": {
+    "tagline": "把微知识收进来，分类整理、每日一知、建成个人知识库",
+    "coreUsers": [
+      {
+        "role": "追求效率的都市记录者",
+        "ageRange": "20-45",
+        "scenario": "通勤、会议间隙、睡前整理碎片",
+        "need": "把小发现、小技巧与阅读感悟收成可分类、可复习的个人知识库"
+      }
+    ],
+    "painPoints": [
+      "备忘录只有列表，看不到当天重点",
+      "碎片分散在工作/生活/学习里难以归类",
+      "想回顾一周却只能翻聊天记录"
+    ],
+    "differentiation": "微知识记录（文字+配图）+ 六大知识分类 + 学习标签 + 收藏夹 + 每日一知打卡 + 个人知识库专题；周度六分类分布可下钻。无支付、无生成式对话。"
+  },
+  "modules": {
+    "pages": [
+      {
+        "id": "capture",
+        "title": "知识",
+        "route": "pages/HomePage",
+        "features": ["微知识记录", "六大分类", "学习标签", "每日一知", "知识库专题", "收藏夹", "关键词搜索"],
+        "tab": true
+      },
+      {
+        "id": "insight",
+        "title": "洞察",
+        "route": "pages/InsightPage",
+        "features": ["每日智慧摘要", "周度洞察", "手动刷新", "历史摘要"],
+        "tab": true
+      },
+      {
+        "id": "market",
+        "title": "集市",
+        "route": "pages/MarketPage",
+        "features": ["每日金句", "收藏", "系统分享"],
+        "tab": true
+      },
+      {
+        "id": "mine",
+        "title": "我的",
+        "route": "pages/MinePage",
+        "features": ["收录统计", "深色模式", "导出", "设置与隐私"],
+        "tab": true
+      }
+    ],
+    "coreFlows": [
+      {
+        "name": "智慧收录闭环",
+        "steps": ["写下或口述", "选分类与优先级", "保存本机", "列表可见", "详情编辑或删除"]
+      },
+      {
+        "name": "智能洞察闭环",
+        "steps": ["读取当日收录", "关键词提取与归纳", "展示摘要", "手动刷新", "查看周度报告"]
+      },
+      {
+        "name": "灵感集市闭环",
+        "steps": ["浏览今日金句", "打开详情", "收藏或取消", "分享到系统面板"]
+      }
+    ]
+  },
+  "entities": [
+    {
+      "name": "CaptureItem",
+      "table": "zhiwei_captures",
+      "fields": [
+        { "name": "id", "type": "uuid", "required": true },
+        { "name": "title", "type": "string" },
+        { "name": "body", "type": "string" },
+        { "name": "category", "type": "string" },
+        { "name": "priority", "type": "string" },
+        { "name": "createdAt", "type": "number" }
+      ]
+    },
+    {
+      "name": "InsightDigest",
+      "table": "zhiwei_digests",
+      "fields": [
+        { "name": "id", "type": "uuid", "required": true },
+        { "name": "period", "type": "string" },
+        { "name": "dateKey", "type": "string" },
+        { "name": "summary", "type": "string" }
+      ]
+    },
+    {
+      "name": "QuoteCard",
+      "table": "zhiwei_quotes",
+      "fields": [
+        { "name": "id", "type": "uuid", "required": true },
+        { "name": "text", "type": "string" },
+        { "name": "author", "type": "string" }
+      ]
+    }
+  ],
+  "apis": [],
+  "ai": {
+    "capabilities": [],
+    "quickCommands": [],
+    "systemPrompt": "你是「魏文波」旗下应用「知微集」的内容助手。产品定位：智慧汇聚，洞察细微。主职责：帮助用户收录信息碎片、按工作/生活/学习/灵感分类，并用关键词提取生成每日摘要与周度洞察。禁止自称人工智能，禁止生成式长文。C 端不提供自由对话。",
+    "mode": "none",
+    "llmEnabled": false
+  },
+  "permissions": [
+    "ohos.permission.INTERNET"
+  ],
+  "harmonyos": {
+    "features": []
+  },
+  "store": {
+    "category": "效率",
+    "legalOperator": "魏文波",
+    "oneLiner": "知微集 — 个人微知识收集与学习管理",
+    "fullDescription": "知微集帮你把生活中的小发现、小技巧、阅读感悟与工作经验收成微知识。支持文字与配图、六大分类（生活百科、科普知识、历史文化、学习成长、兴趣探索、工作技巧）、学习标签、收藏夹与个人知识库专题。每日一知提供一条实用知识并支持阅读打卡。洞察页根据本机笔记生成摘要与周度分类分布（近七日没有新笔记时展示累计分布，避免空白零值）。灵感集市金句可收藏并收进知识库。核心功能无需登录，数据默认保存在本机。无支付、无会员、无生成式对话。",
+    "keywords": ["微知识", "知识库", "笔记", "学习打卡", "洞察", "鸿蒙"],
+    "privacySummary": {
+      "collect": ["微知识标题与正文（仅本机）", "分类、学习标签与配图（仅本机）", "知识库专题与收藏（仅本机）", "每日一知阅读记录（仅本机）", "可选登录账号"],
+      "purpose": "在本机收集与整理个人微知识、建立学习习惯；登录仅用于账号身份",
+      "thirdParties": []
+    },
+    "demoAccount": {
+      "username": "auditor@zhiweiji.local",
+      "passwordNote": "审核可直接体验本机收录；如需登录见 store/demo-account.md"
+    },
+    "screenshotPlan": [
+      { "page": "home", "caption": "智慧收录工作台" },
+      { "page": "compose", "caption": "记一条微知识" },
+      { "page": "insight", "caption": "今日智慧摘要" },
+      { "page": "market", "caption": "灵感集市金句" },
+      { "page": "mine", "caption": "统计与设置" }
+    ],
+    "incentiveHooks": []
+  },
+  "access": {
+    "mode": "open_optional",
+    "features": {
+      "register": true,
+      "guestBrowse": true,
+      "guestWrite": true
+    },
+    "gateActions": ["sync_account"],
+    "onPrivacyRefuse": "browse_basic",
+    "loginProviders": ["password"]
+  },
+  "admin": {
+    "featureModules": ["overview", "appUsers", "messages", "kpis"]
+  },
+  "brand": {
+    "primary": "#007AFF",
+    "primaryDeep": "#1A1A2E",
+    "deep": "#1A1A2E",
+    "accent": "#58A6FF",
+    "tone": "premium-business",
+    "stylePack": "harmonyos-official",
+    "workbenchId": "catalog-tool",
+    "layoutVariant": "E",
+    "productVisualType": "content-commerce",
+    "visualDirection": {
+      "archetype": "ink-eye-insight",
+      "density": "airy",
+      "material": "soft-paper-ink",
+      "imagery": "desk-notebook-paper-editorial",
+      "accent": "huawei-blue",
+      "primaryJob": "3 秒看见快速收录入口，10 秒写下一条碎片",
+      "notes": "雪域灰页底 + 墨蓝深底 Logo + 华为蓝 CTA；禁止暖杏窗隅、莓粉心形、紫 AI 发光"
+    },
+    "logo": {
+      "brandAnchor": "微",
+      "glyphStrategy": "semantic-fusion",
+      "customLock": true,
+      "generator": "agent-svg",
+      "renderScript": "store/logo/render_logo.ps1",
+      "concept": "双弧知微之眼 + 交汇微点 + 汇聚细环，白标落在墨蓝深底"
+    },
+    "visualAssets": [
+      { "id": "hero_desk", "file": "hero_desk.png", "usage": "首页书桌纸本 Hero" },
+      { "id": "banner_insight", "file": "banner_insight.png", "usage": "洞察页氛围 Banner" },
+      { "id": "banner_quotes", "file": "banner_quotes.png", "usage": "集市金句纸本 Banner" },
+      { "id": "cover_work", "file": "cover_work.png", "usage": "工作分类封面" },
+      { "id": "cover_life", "file": "cover_life.png", "usage": "生活分类封面" },
+      { "id": "cover_study", "file": "cover_study.png", "usage": "学习分类封面" },
+      { "id": "cover_spark", "file": "cover_spark.png", "usage": "灵感分类与金句封面" },
+      { "id": "empty_ink", "file": "empty_ink.png", "usage": "空态与我的页氛围" }
+    ]
+  }
+}

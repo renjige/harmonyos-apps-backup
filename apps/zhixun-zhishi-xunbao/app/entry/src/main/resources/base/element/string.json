@@ -1,0 +1,8 @@
+{
+  "string": [
+    { "name": "module_desc", "value": "知识寻宝主模块" },
+    { "name": "EntryAbility_desc", "value": "知识寻宝入口" },
+    { "name": "EntryAbility_label", "value": "知识寻宝" },
+    { "name": "internet_reason", "value": "用于拉取知识地图与题库，以及您选择登录时连接账号服务" }
+  ]
+}

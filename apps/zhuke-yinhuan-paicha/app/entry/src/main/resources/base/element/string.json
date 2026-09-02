@@ -1,0 +1,8 @@
+{
+  "string": [
+    { "name": "module_desc", "value": "筑科隐患排查主模块" },
+    { "name": "EntryAbility_desc", "value": "施工现场隐患记录与整改闭环入口" },
+    { "name": "EntryAbility_label", "value": "筑科隐患排查" },
+    { "name": "internet_reason", "value": "用于登录注册、同步隐患与检查记录、接收机构通知" }
+  ]
+}

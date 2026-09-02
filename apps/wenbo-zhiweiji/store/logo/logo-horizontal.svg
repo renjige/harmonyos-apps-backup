@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 360" width="1280" height="360">
+  <rect width="1280" height="360" fill="#F5F7FA"/>
+  <svg x="48" y="36" width="288" height="288" viewBox="0 0 1024 1024">
+    <rect width="1024" height="1024" fill="#1A1A2E"/>
+    <circle cx="512" cy="512" r="292" fill="none" stroke="#F5F7FA" stroke-width="22"/>
+    <path d="M268 512 C268 512 360 338 512 338 C664 338 756 512 756 512" fill="none" stroke="#F5F7FA" stroke-width="28" stroke-linecap="round"/>
+    <path d="M268 512 C268 512 360 686 512 686 C664 686 756 512 756 512" fill="none" stroke="#F5F7FA" stroke-width="28" stroke-linecap="round"/>
+    <circle cx="512" cy="512" r="42" fill="#F5F7FA"/>
+  </svg>
+  <text x="380" y="160" font-size="56" font-family="Microsoft YaHei, sans-serif" font-weight="700" fill="#1A1A2E">��</text>
+  <text x="380" y="220" font-size="22" font-family="sans-serif" fill="#4A4A6A">ZhiWeiJi</text>
+</svg>

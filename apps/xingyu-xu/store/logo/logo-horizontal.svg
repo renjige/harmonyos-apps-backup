@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 400" width="1600" height="400">
+  <rect width="1600" height="400" fill="#12182B"/>
+  <g transform="translate(80,40) scale(0.32)">
+    <path d="M210 814 C210 520 504 226 798 226" fill="none" stroke="#F6F3EC" stroke-width="28" stroke-linecap="round"/>
+    <path d="M210 814 C 420 814, 640 640, 798 226" fill="none" stroke="#C4A574" stroke-width="10" stroke-linecap="round"/>
+    <circle cx="798" cy="226" r="36" fill="#C4A574"/>
+    <circle cx="210" cy="814" r="14" fill="#F6F3EC"/>
+  </g>
+  <text x="460" y="245" fill="#F6F3EC" font-size="120" font-family="HarmonyOS Sans, Source Han Sans SC, sans-serif" font-weight="600">…Ù</text>
+</svg>

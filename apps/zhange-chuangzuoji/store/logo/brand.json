@@ -1,0 +1,12 @@
+{
+  "appName": "展格创作集",
+  "company": "墨展工作室",
+  "brandAnchor": "展",
+  "primary": "#2C3E6B",
+  "deep": "#1A2332",
+  "accent": "#C9A84C",
+  "contrastStrategy": "深底 #1A2332 + 暖金/白标",
+  "glyphStrategy": "semantic-fusion",
+  "customLock": true,
+  "generator": "render_logo.mjs"
+}

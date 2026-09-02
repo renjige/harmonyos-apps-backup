@@ -1,0 +1,9 @@
+{
+  "string": [
+    { "name": "module_desc", "value": "知行页学习工具主模块" },
+    { "name": "EntryAbility_desc", "value": "知行页入口" },
+    { "name": "EntryAbility_label", "value": "知行页" },
+    { "name": "internet_reason", "value": "用于可选的账号登录与注册" },
+    { "name": "reminder_reason", "value": "在你开启学习计划提醒后，于设定时间发送本机通知" }
+  ]
+}

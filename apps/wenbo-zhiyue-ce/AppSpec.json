@@ -1,0 +1,379 @@
+{
+  "specVersion": "1.0.0",
+  "generatedAt": "2026-08-26T03:56:54.482Z",
+  "requestId": "req_1787716614447",
+  "industryPack": "wisdom-folio",
+  "identity": {
+    "company": "魏文波",
+    "companyPinyin": "wenbo",
+    "appName": "智阅册",
+    "appPinyin": "zhiyuece",
+    "bundleId": "com.wenbo.zhiyuece",
+    "version": "1.0.0"
+  },
+  "positioning": {
+    "tagline": "帮助知识工作者完成阅读、摘录、整理与回顾的完整知识管理闭环",
+    "coreUsers": [
+      {
+        "role": "学生与职场知识工作者",
+        "ageRange": "16-45",
+        "scenario": "阅读电子文档时摘录要点并收入主题知识册",
+        "need": "文稿进度不丢、摘录可归类、每日能回顾"
+      }
+    ],
+    "painPoints": [
+      "文档散落在文件管理器，阅读进度无法接续",
+      "摘录写在备忘录里对不上原文文稿",
+      "读过即忘，缺少按知识册整理与每日回顾"
+    ],
+    "differentiation": "帮助知识工作者完成阅读、摘录、整理与回顾的完整知识管理闭环"
+  },
+  "modules": {
+    "pages": [
+      {
+        "id": "read",
+        "title": "阅读",
+        "route": "pages/HomePage",
+        "features": [
+          "导入文稿",
+          "粘贴正文",
+          "继续阅读",
+          "每日智慧卡片",
+          "进度列表"
+        ],
+        "tab": true
+      },
+      {
+        "id": "excerpt",
+        "title": "摘录",
+        "route": "pages/ExcerptListPage",
+        "features": [
+          "摘录列表",
+          "搜索筛选",
+          "手动写摘录",
+          "随机回顾"
+        ],
+        "tab": true
+      },
+      {
+        "id": "folio",
+        "title": "知识册",
+        "route": "pages/FolioListPage",
+        "features": [
+          "主题知识册",
+          "搜索",
+          "册内摘录"
+        ],
+        "tab": true
+      },
+      {
+        "id": "mine",
+        "title": "我的",
+        "route": "pages/MinePage",
+        "features": [
+          "阅读看板",
+          "节律自检",
+          "设置与隐私"
+        ],
+        "tab": true
+      }
+    ],
+    "coreFlows": [
+      {
+        "name": "阅读摘录整理回顾闭环",
+        "steps": [
+          "导入或粘贴文稿",
+          "沉浸阅读并保存进度",
+          "摘录原文与感想",
+          "收入知识册",
+          "每日卡片与随机回顾"
+        ]
+      }
+    ]
+  },
+  "entities": [
+    {
+      "name": "ReadingDoc",
+      "table": "reading_docs",
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "format",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "body",
+          "type": "string"
+        },
+        {
+          "name": "progress",
+          "type": "number"
+        },
+        {
+          "name": "lastReadAt",
+          "type": "number"
+        },
+        {
+          "name": "folioId",
+          "type": "string"
+        },
+        {
+          "name": "wordCount",
+          "type": "number"
+        },
+        {
+          "name": "readMinutes",
+          "type": "number"
+        },
+        {
+          "name": "createdAt",
+          "type": "number"
+        }
+      ]
+    },
+    {
+      "name": "Excerpt",
+      "table": "excerpts",
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "docId",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "folioId",
+          "type": "string"
+        },
+        {
+          "name": "text",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "reflection",
+          "type": "string"
+        },
+        {
+          "name": "tags",
+          "type": "array"
+        },
+        {
+          "name": "isFavorite",
+          "type": "boolean"
+        },
+        {
+          "name": "createdAt",
+          "type": "number"
+        }
+      ]
+    },
+    {
+      "name": "KnowledgeFolio",
+      "table": "knowledge_folios",
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "summary",
+          "type": "string"
+        },
+        {
+          "name": "coverKey",
+          "type": "string"
+        },
+        {
+          "name": "createdAt",
+          "type": "number"
+        }
+      ]
+    }
+  ],
+  "apis": [
+    {
+      "method": "POST",
+      "path": "/api/v1/auth/login",
+      "summary": "登录",
+      "auth": false,
+      "module": "auth"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/auth/register",
+      "summary": "注册",
+      "auth": false,
+      "module": "auth"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/messages",
+      "summary": "机构消息",
+      "auth": false,
+      "module": "messages"
+    }
+  ],
+  "admin": {
+    "featureModules": [
+      "overview",
+      "appUsers",
+      "messages",
+      "kpis",
+      "ai"
+    ]
+  },
+  "ai": {
+    "capabilities": [],
+    "quickCommands": [
+      "建议这条摘录收入哪个知识册",
+      "说明归类理由",
+      "给出今日回顾口吻"
+    ],
+    "systemPrompt": "你是「魏文波」旗下应用「智阅册」的阅读整理助手。产品定位：帮助知识工作者完成阅读、摘录、整理与回顾。主职责：根据摘录建议知识册主题与标签，协助规划回顾节奏。禁止学历教育承诺、心理咨询、金融决策与生成式闲聊。C 端不提供自由对话。",
+    "mode": "none",
+    "llmEnabled": false
+  },
+  "permissions": [
+    {
+      "name": "ohos.permission.INTERNET",
+      "reason": "登录注册与可选账号同步",
+      "when": "inuse",
+      "scene": "登录或注册时"
+    }
+  ],
+  "harmonyos": {
+    "features": []
+  },
+  "store": {
+    "category": "效率",
+    "legalOperator": "魏文波",
+    "oneLiner": "智阅册 — 帮助知识工作者完成阅读、摘录、整理与回顾的完整知识管理闭环",
+    "fullDescription": "智阅册是智慧阅读与笔记管理工具。导入 TXT、Markdown、PDF 或粘贴正文，在沉浸阅读中保存进度；长按选中或手动写入摘录，自动归到对应文稿，再按主题收入知识册。每日智慧卡片与随机回顾帮助复习沉淀，阅读看板统计时长与摘录量。数据默认保存在本机。无广告、无内购、无社交评论。",
+    "keywords": [
+      "阅读",
+      "摘录",
+      "知识册",
+      "笔记",
+      "鸿蒙"
+    ],
+    "privacySummary": {
+      "collect": [
+        "可选账号信息",
+        "本机文稿正文与进度",
+        "本机摘录与知识册",
+        "深色模式等偏好"
+      ],
+      "purpose": "提供本机阅读、摘录、知识册整理与回顾；登录仅用于账号身份",
+      "thirdParties": []
+    },
+    "demoAccount": {
+      "username": "auditor@wenbo.local",
+      "passwordNote": "仅写入 store/demo-account.md"
+    },
+    "screenshotPlan": [
+      {
+        "page": "read",
+        "caption": "阅读首页与继续阅读"
+      },
+      {
+        "page": "reader",
+        "caption": "沉浸阅读与进度"
+      },
+      {
+        "page": "excerpt",
+        "caption": "摘录列表与筛选"
+      },
+      {
+        "page": "folio",
+        "caption": "知识册卡片"
+      },
+      {
+        "page": "mine",
+        "caption": "阅读看板与设置"
+      }
+    ],
+    "incentiveHooks": [
+      "FormExtensionAbility",
+      "元服务快捷入口"
+    ]
+  },
+  "access": {
+    "mode": "open_optional",
+    "features": {
+      "register": true,
+      "guestBrowse": true,
+      "guestWrite": true
+    },
+    "gateActions": [
+      "sync_account"
+    ],
+    "onPrivacyRefuse": "browse_basic",
+    "loginProviders": [
+      "password"
+    ]
+  },
+  "brand": {
+    "primary": "#2D3E50",
+    "primaryDeep": "#1B2838",
+    "deep": "#1B2838",
+    "accent": "#C9A96E",
+    "tone": "soft-editorial",
+    "stylePack": "soft-editorial",
+    "workbenchId": "catalog-tool",
+    "layoutVariant": "A",
+    "productVisualType": "content-commerce",
+    "visualDirection": {
+      "archetype": "desk-paper-editorial",
+      "density": "airy",
+      "material": "paper-cream",
+      "imagery": "open-book-desk-lamp",
+      "accent": "champagne-on-ink-navy",
+      "primaryJob": "3 秒内打开正在读的文稿或导入新文稿",
+      "notes": "深海蓝#2D3E50+暖杏#E8D5B7+香槟金#C9A96E+米白#F7F5F0；四 Tab 阅读/摘录/知识册/我的；禁止纸书摘三 Tab 与荐书书架"
+    },
+    "logo": {
+      "brandAnchor": "智",
+      "glyphStrategy": "semantic-fusion",
+      "customLock": true,
+      "generator": "agent-svg",
+      "renderScript": "store/logo/render_logo.mjs",
+      "concept": "打开的书本 + 书签构成抽象册字",
+      "style": "flat-premium",
+      "foregroundFile": "store/logo/foreground.png",
+      "backgroundFile": "store/logo/background.png",
+      "previewFile": "store/logo/preview-1024.png",
+      "agcFile": "store/logo/agc-216.png"
+    },
+    "visualAssets": [
+      { "id": "hero_desk", "file": "hero_desk.png", "usage": "阅读首页书桌 Hero" },
+      { "id": "banner_progress", "file": "banner_progress.png", "usage": "摘录页进度氛围" },
+      { "id": "banner_review", "file": "banner_review.png", "usage": "今日智慧卡片 Banner" },
+      { "id": "cover_folio_work", "file": "cover_folio_work.png", "usage": "职场知识册封面" },
+      { "id": "cover_folio_study", "file": "cover_folio_study.png", "usage": "学习知识册封面" },
+      { "id": "cover_folio_life", "file": "cover_folio_life.png", "usage": "生活知识册封面" },
+      { "id": "empty_shelf", "file": "empty_shelf.png", "usage": "空态书架" },
+      { "id": "paper_texture", "file": "paper_texture.png", "usage": "纸张材质" }
+    ]
+  }
+}

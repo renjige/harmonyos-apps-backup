@@ -1,0 +1,308 @@
+{
+  "specVersion": "1.0.0",
+  "generatedAt": "2026-08-26T05:54:49.929Z",
+  "requestId": "req_1787723689889",
+  "industryPack": "know-act",
+  "identity": {
+    "company": "魏文波",
+    "companyPinyin": "zixing",
+    "appName": "知行页",
+    "appPinyin": "knowledge",
+    "bundleId": "com.zixing.knowledge",
+    "version": "1.0.0"
+  },
+  "positioning": {
+    "tagline": "把知识沉淀为卡片与图谱，再转化为计划、习惯与行动日志的知行合一学习工具",
+    "coreUsers": [
+      {
+        "role": "学生、职场人士与终身学习者",
+        "ageRange": "16-45",
+        "scenario": "碎片阅读后需要落成知识卡片，并安排可执行的学习行动",
+        "need": "知库可检索、行录可打卡、智慧提醒不打断"
+      }
+    ],
+    "painPoints": [
+      "笔记堆着从不复习，更谈不上行动",
+      "计划 App 与笔记 App 割裂",
+      "缺少知识关联与成果可见性"
+    ],
+    "differentiation": "把知识沉淀为卡片与图谱，再转化为计划、习惯与行动日志的知行合一学习工具"
+  },
+  "modules": {
+    "pages": [
+      {
+        "id": "home",
+        "title": "知库",
+        "route": "pages/HomePage",
+        "features": [
+          "智慧笔记",
+          "知识卡片",
+          "阅读摘要",
+          "知识图谱"
+        ],
+        "tab": true
+      },
+      {
+        "id": "action",
+        "title": "行录",
+        "route": "pages/ActionPage",
+        "features": [
+          "学习计划",
+          "习惯打卡",
+          "行动日志",
+          "成果看板"
+        ],
+        "tab": true
+      },
+      {
+        "id": "wisdom",
+        "title": "智慧",
+        "route": "pages/WisdomPage",
+        "features": [
+          "智慧检索",
+          "智能提醒",
+          "学习统计",
+          "推荐阅读",
+          "学情自检"
+        ],
+        "tab": true
+      },
+      {
+        "id": "mine",
+        "title": "我的",
+        "route": "pages/MinePage",
+        "features": [
+          "个人资料",
+          "学习数据",
+          "主题与导出",
+          "设置与隐私"
+        ],
+        "tab": true
+      }
+    ],
+    "coreFlows": [
+      {
+        "name": "知行转化闭环",
+        "steps": [
+          "新建知识卡片",
+          "打标签",
+          "图谱可见关联",
+          "转为学习计划或习惯",
+          "打卡写日志",
+          "成果看板刷新"
+        ]
+      }
+    ]
+  },
+  "entities": [
+    {
+      "name": "KnowledgeCard",
+      "table": "knowledge_cards",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "summary",
+          "type": "string"
+        },
+        {
+          "name": "body",
+          "type": "string"
+        },
+        {
+          "name": "tags",
+          "type": "array"
+        },
+        {
+          "name": "coverKey",
+          "type": "string"
+        },
+        {
+          "name": "createTime",
+          "type": "number"
+        }
+      ]
+    }
+  ],
+  "apis": [
+    {
+      "method": "POST",
+      "path": "/api/v1/auth/login",
+      "summary": "登录",
+      "auth": false,
+      "module": "auth"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/auth/register",
+      "summary": "注册",
+      "auth": false,
+      "module": "auth"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/messages",
+      "summary": "机构消息",
+      "auth": false,
+      "module": "messages"
+    }
+  ],
+  "admin": {
+    "featureModules": [
+      "overview",
+      "appUsers",
+      "messages",
+      "kpis",
+      "ai"
+    ]
+  },
+  "ai": {
+    "capabilities": [],
+    "quickCommands": [
+      "根据我的标签给出本周行动清单",
+      "把这条知识卡片拆成三步计划",
+      "用规则帮我挑一份推荐阅读方向"
+    ],
+    "systemPrompt": "你是「魏文波」旗下应用「知行页」的学习闭环助手。产品定位：把知识获取转化为可执行行动。主职责：根据用户已有标签与计划给出结构化学习建议。禁止编造法规与学历承诺。C 端不提供自由对话。",
+    "mode": "none",
+    "llmEnabled": false
+  },
+  "permissions": [
+    {
+      "name": "ohos.permission.INTERNET",
+      "reason": "可选登录注册与账号同步",
+      "when": "inuse",
+      "scene": "登录或注册时"
+    },
+    {
+      "name": "ohos.permission.PUBLISH_AGENT_REMINDER",
+      "reason": "在你开启学习计划提醒后，于设定时间发送本机通知",
+      "when": "inuse",
+      "scene": "开启智能提醒时"
+    }
+  ],
+  "harmonyos": {
+    "features": []
+  },
+  "store": {
+    "category": "教育",
+    "legalOperator": "魏文波",
+    "oneLiner": "知行页 — 把知识沉淀为卡片与图谱，再转化为计划、习惯与行动日志的知行合一学习工",
+    "fullDescription": "知行页帮助学习者把阅读与思考沉淀为知识卡片与图谱，再转化为学习计划、习惯打卡与行动日志。提供智慧检索、本机提醒、学习统计与基于标签的推荐阅读。数据默认保存在本机，支持导出。无广告、无内购，不含生成式对话。",
+    "keywords": [
+      "知识卡片",
+      "学习计划",
+      "习惯打卡",
+      "阅读摘要",
+      "知识图谱",
+      "鸿蒙"
+    ],
+    "privacySummary": {
+      "collect": [
+        "可选账号信息",
+        "本机笔记/卡片/计划/日志",
+        "提醒与主题偏好"
+      ],
+      "purpose": "提供本机知识管理、行动追踪、提醒与导出",
+      "thirdParties": []
+    },
+    "demoAccount": {
+      "username": "auditor@zixing.local",
+      "passwordNote": "仅写入 store/demo-account.md"
+    },
+    "screenshotPlan": [
+      {
+        "page": "home",
+        "caption": "知库知识卡片双列流"
+      },
+      {
+        "page": "detail",
+        "caption": "知识卡片详情与编辑"
+      },
+      {
+        "page": "action",
+        "caption": "行录进度与习惯打卡"
+      },
+      {
+        "page": "wisdom",
+        "caption": "智慧检索与学习统计"
+      },
+      {
+        "page": "mine",
+        "caption": "学习数据与设置"
+      }
+    ],
+    "incentiveHooks": [
+      "FormExtensionAbility",
+      "元服务快捷入口"
+    ]
+  },
+  "access": {
+    "mode": "open_optional",
+    "features": {
+      "register": true,
+      "guestBrowse": true,
+      "guestWrite": true
+    },
+    "gateActions": [
+      "sync_account"
+    ],
+    "onPrivacyRefuse": "browse_basic",
+    "loginProviders": [
+      "password"
+    ]
+  },
+  "brand": {
+    "primary": "#2D3B66",
+    "primaryDeep": "#1A2A6C",
+    "deep": "#1A2A6C",
+    "accent": "#C9A84C",
+    "tone": "soft-editorial",
+    "stylePack": "soft-editorial",
+    "workbenchId": "catalog-tool",
+    "layoutVariant": "A",
+    "productVisualType": "content-commerce",
+    "visualDirection": {
+      "archetype": "editorial-study-desk",
+      "density": "airy",
+      "material": "paper-and-gold",
+      "imagery": "open-book-desk-tea",
+      "accent": "warm-gold-on-navy",
+      "primaryJob": "3 秒内看到知识卡片并新建一张",
+      "notes": "深蓝#2D3B66+暖金#C9A84C；四 Tab 知库/行录/智慧/我的；禁止生成式对话字样"
+    },
+    "logo": {
+      "brandAnchor": "知",
+      "glyphStrategy": "semantic-fusion",
+      "customLock": true,
+      "generator": "agent-svg",
+      "renderScript": "store/logo/render_logo.mjs",
+      "concept": "翻开书页与向上路径融合",
+      "foregroundFile": "store/logo/foreground.png",
+      "backgroundFile": "store/logo/background.png",
+      "previewFile": "store/logo/preview-1024.png",
+      "agcFile": "store/logo/agc-216.png",
+      "symbolFile": "store/logo/symbol.svg"
+    },
+    "visualAssets": [
+      { "id": "hero_bg", "file": "hero_bg.png", "usage": "home-hero" },
+      { "id": "banner_know", "file": "banner_know.png", "usage": "know-banner" },
+      { "id": "banner_act", "file": "banner_act.png", "usage": "act-banner" },
+      { "id": "cover_note", "file": "cover_note.png", "usage": "note-cover" },
+      { "id": "cover_card", "file": "cover_card.png", "usage": "card-cover" },
+      { "id": "cover_read", "file": "cover_read.png", "usage": "digest-cover" },
+      { "id": "cover_plan", "file": "cover_plan.png", "usage": "plan-cover" },
+      { "id": "cover_habit", "file": "cover_habit.png", "usage": "habit-cover" },
+      { "id": "cover_log", "file": "cover_log.png", "usage": "log-cover" },
+      { "id": "cover_graph", "file": "cover_graph.png", "usage": "graph-cover" }
+    ]
+  }
+}

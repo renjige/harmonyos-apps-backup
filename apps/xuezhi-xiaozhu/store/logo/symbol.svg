@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" role="img" aria-label="f�Q">
+  <!-- Square master: no rounded mask in asset -->
+  <rect width="1024" height="1024" fill="#12203A"/>
+  <!-- Open book -->
+  <path fill="#F7F4EE" d="M196 470 L512 392 L512 820 L228 868 C204 874 196 854 196 832 Z"/>
+  <path fill="#F7F4EE" d="M828 470 L512 392 L512 820 L796 868 C820 874 828 854 828 832 Z"/>
+  <rect x="500" y="400" width="24" height="420" fill="#12203A"/>
+  <!-- Cottage gable sitting on the book -->
+  <path fill="#F7F4EE" d="M320 392 L512 188 L704 392 Z"/>
+  <rect x="400" y="392" width="224" height="56" fill="#F7F4EE"/>
+  <!-- Gold window  single accent -->
+  <rect x="476" y="268" width="72" height="72" fill="#D4A53A"/>
+</svg>

@@ -1,0 +1,538 @@
+{
+  "specVersion": "1.0.0",
+  "generatedAt": "2026-08-26T04:00:00.000Z",
+  "requestId": "req_1787716694011",
+  "industryPack": "delight-atelier",
+  "identity": {
+    "company": "魏文波",
+    "companyPinyin": "wenbo",
+    "appName": "悦知坊",
+    "appPinyin": "yuezhifang",
+    "bundleId": "com.wenbo.yuezhifang",
+    "version": "1.1.0"
+  },
+  "positioning": {
+    "tagline": "悦读片刻，智识日常，用知识卡片与工坊收藏把碎片时间变成愉悦求知",
+    "coreUsers": [
+      {
+        "role": "都市知识工作者",
+        "ageRange": "25-40",
+        "scenario": "通勤与碎片时间阅读知识卡片",
+        "need": "高质量、低负担的短篇知识与可回看的收藏"
+      },
+      {
+        "role": "爱分享的读者",
+        "ageRange": "25-40",
+        "scenario": "把有用的知识卡收入书坊并打标签",
+        "need": "私人收藏与自定义标签，而不是公开社区"
+      }
+    ],
+    "painPoints": [
+      "碎片信息流质量低、读完即忘",
+      "收藏散落在多处，缺少自定义标签",
+      "想把碎片知识按工坊收进自己的书坊"
+    ],
+    "differentiation": "五工坊分类官方知识卡 + 每日精选 + 书坊自定义标签，区别只读冷知识流与本机摘录工具，且不含用户社区"
+  },
+  "modules": {
+    "pages": [
+      {
+        "id": "discover",
+        "title": "发现",
+        "route": "pages/HomePage",
+        "features": [
+          "Editorial Hero",
+          "工坊台课业",
+          "五分类筛选",
+          "每日精选",
+          "知识卡片流"
+        ],
+        "tab": true
+      },
+      {
+        "id": "daily",
+        "title": "每日工坊",
+        "route": "pages/DailyPage",
+        "features": [
+          "官方每日精选",
+          "今日功课",
+          "专注计时",
+          "往期列表",
+          "收入书坊"
+        ],
+        "tab": true
+      },
+      {
+        "id": "studio",
+        "title": "我的书坊",
+        "route": "pages/StudioPage",
+        "features": [
+          "课业回看",
+          "收藏列表",
+          "自定义标签筛选",
+          "学习进度"
+        ],
+        "tab": true
+      },
+      {
+        "id": "mine",
+        "title": "我的",
+        "route": "pages/MinePage",
+        "features": [
+          "资料",
+          "统计",
+          "设置与隐私"
+        ],
+        "tab": true
+      }
+    ],
+    "coreFlows": [
+      {
+        "name": "发现阅读收藏",
+        "steps": [
+          "打开发现",
+          "点进知识卡详情",
+          "登录后收入书坊",
+          "按标签回看"
+        ]
+      },
+      {
+        "name": "每日精选阅读",
+        "steps": [
+          "打开每日工坊",
+          "阅读官方精选",
+          "做今日功课",
+          "登录后收入书坊"
+        ]
+      },
+      {
+        "name": "专题路线阅读",
+        "steps": [
+          "发现页打开专题路线",
+          "按序读完三篇知识卡",
+          "做对应工坊练习并保存"
+        ]
+      },
+      {
+        "name": "工坊课业",
+        "steps": [
+          "发现页打开工坊台",
+          "选择三问或余味等练习",
+          "填写并保存",
+          "在我的课业回看编辑或删除"
+        ]
+      }
+    ]
+  },
+  "entities": [
+    {
+      "name": "YzCard",
+      "table": "yz_cards",
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "summary",
+          "type": "string"
+        },
+        {
+          "name": "body",
+          "type": "string"
+        },
+        {
+          "name": "category",
+          "type": "string"
+        },
+        {
+          "name": "coverMedia",
+          "type": "string"
+        },
+        {
+          "name": "likes",
+          "type": "number"
+        },
+        {
+          "name": "favorites",
+          "type": "number"
+        }
+      ]
+    },
+    {
+      "name": "YzPost",
+      "table": "yz_posts",
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "userId",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "body",
+          "type": "string"
+        },
+        {
+          "name": "category",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "YzFavorite",
+      "table": "yz_favorites",
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "userId",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "contentId",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "tags",
+          "type": "string"
+        }
+      ]
+    }
+  ],
+  "apis": [
+    {
+      "method": "POST",
+      "path": "/api/v1/auth/login",
+      "summary": "登录",
+      "auth": false,
+      "module": "auth"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/auth/register",
+      "summary": "注册",
+      "auth": false,
+      "module": "auth"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/delight-atelier/cards",
+      "summary": "知识卡片",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/delight-atelier/cards/:id",
+      "summary": "卡片详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/delight-atelier/daily",
+      "summary": "每日精选",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/delight-atelier/posts",
+      "summary": "灵感广场",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/biz/delight-atelier/posts",
+      "summary": "发布灵感",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/biz/delight-atelier/favorites",
+      "summary": "收藏",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/biz/delight-atelier/likes",
+      "summary": "点赞",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/biz/delight-atelier/comments",
+      "summary": "评论",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/delight-atelier/hot",
+      "summary": "热门榜",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/messages",
+      "summary": "机构消息",
+      "auth": false,
+      "module": "messages"
+    }
+  ],
+  "admin": {
+    "featureModules": [
+      "overview",
+      "appUsers",
+      "yzCards",
+      "yzDaily",
+      "yzPosts",
+      "yzFavorites",
+      "yzComments",
+      "messages",
+      "kpis"
+    ]
+  },
+  "ai": {
+    "capabilities": [],
+    "quickCommands": [
+      "今天适合读哪一类知识卡？",
+      "把这篇浓缩成三句话",
+      "帮我选一个工坊分类"
+    ],
+    "systemPrompt": "你是「魏文波」旗下应用「悦知坊」的阅读助手。产品定位：悦读片刻，智识日常。主职责：按商业/人文/科技/生活/艺术五类整理知识卡片摘要，推荐可收藏篇目。禁止自称大模型。C 端不提供自由对话。",
+    "mode": "none",
+    "llmEnabled": false
+  },
+  "permissions": [
+    {
+      "name": "ohos.permission.INTERNET",
+      "reason": "登录注册与拉取知识栏目、同步个人书坊",
+      "when": "inuse",
+      "scene": "浏览栏目或登录时"
+    }
+  ],
+  "harmonyos": {
+    "features": []
+  },
+  "store": {
+    "category": "实用工具",
+    "legalOperator": "魏文波",
+    "oneLiner": "悦知坊 — 悦读片刻，智识日常",
+    "fullDescription": "悦知坊是面向都市知识爱好者的个人阅读工具。发现页按商业、人文、科技、生活、艺术五工坊浏览官方知识卡片与每日精选；我的书坊用自定义标签整理收藏。全程免费，无内购。不提供生成式对话，不提供用户发帖或公开社区。游客可浏览，收藏需注册登录。",
+    "keywords": [
+      "知识卡片",
+      "读书笔记",
+      "个人收藏",
+      "每日精选",
+      "鸿蒙"
+    ],
+    "privacySummary": {
+        "collect": [
+          "可选账号信息",
+          "个人书坊收藏与标签",
+          "深色模式等偏好"
+        ],
+        "purpose": "提供官方知识浏览与个人书坊收藏；不向大模型传输对话；不提供社区互动",
+      "thirdParties": []
+    },
+    "demoAccount": {
+      "username": "auditor@wenbo.local",
+      "passwordNote": "仅写入 store/demo-account.md"
+    },
+    "screenshotPlan": [
+      {
+        "page": "discover",
+        "caption": "发现页 Hero 与五工坊卡片流"
+      },
+      {
+        "page": "detail",
+        "caption": "知识卡详情与收入书坊"
+      },
+      {
+        "page": "daily",
+        "caption": "每日工坊官方精选"
+      },
+      {
+        "page": "studio",
+        "caption": "我的书坊标签筛选"
+      },
+      {
+        "page": "mine",
+        "caption": "个人中心与设置"
+      }
+    ],
+    "incentiveHooks": [
+      "FormExtensionAbility",
+      "元服务快捷入口"
+    ]
+  },
+  "access": {
+    "mode": "open_optional",
+    "features": {
+      "register": true,
+      "guestBrowse": true,
+      "guestWrite": false
+    },
+    "gateActions": [
+      "favorite"
+    ],
+    "onPrivacyRefuse": "browse_basic",
+    "loginProviders": [
+      "password"
+    ]
+  },
+  "brand": {
+    "primary": "#1A2A6C",
+    "primaryDeep": "#121C4A",
+    "deep": "#121C4A",
+    "accent": "#F5A623",
+    "tone": "soft-editorial",
+    "stylePack": "soft-editorial",
+    "workbenchId": "catalog-tool",
+    "layoutVariant": "B",
+    "productVisualType": "content-commerce",
+    "visualDirection": {
+      "archetype": "editorial-atelier",
+      "density": "airy",
+      "material": "paper-linen",
+      "imagery": "open-book-warm-workshop-light",
+      "accent": "amber-on-navy",
+      "primaryJob": "3 秒内打开一张知识卡并决定是否收入书坊",
+      "notes": "深蓝#1A2A6C+暖橙#F5A623；四 Tab 发现/每日工坊/我的书坊/我的；禁止识趣阁四分类与每日一趣骨架；禁止用户社区"
+    },
+    "logo": {
+      "brandAnchor": "悦",
+      "glyphStrategy": "semantic-fusion",
+      "customLock": true,
+      "generator": "agent-svg",
+      "renderScript": "store/logo/render_logo.mjs",
+      "concept": "微开书卷折面 + 暖橙光点",
+      "style": "flat-premium",
+      "foregroundFile": "store/logo/foreground.png",
+      "backgroundFile": "store/logo/background.png",
+      "previewFile": "store/logo/preview-1024.png",
+      "agcFile": "store/logo/agc-216.png",
+      "symbolFile": "store/logo/symbol.svg",
+      "horizontalFile": "store/logo/logo-horizontal.svg"
+    },
+    "visualAssets": [
+      {
+        "id": "hero_atelier",
+        "file": "hero_atelier.png",
+        "usage": "发现 Hero"
+      },
+      {
+        "id": "banner_daily",
+        "file": "banner_daily.png",
+        "usage": "每日精选条带"
+      },
+      {
+        "id": "banner_plaza",
+        "file": "banner_plaza.png",
+        "usage": "每日工坊氛围"
+      },
+      {
+        "id": "cover_biz_01",
+        "file": "cover_biz_01.png",
+        "usage": "商业封面1"
+      },
+      {
+        "id": "cover_biz_02",
+        "file": "cover_biz_02.png",
+        "usage": "商业封面2"
+      },
+      {
+        "id": "cover_hum_01",
+        "file": "cover_hum_01.png",
+        "usage": "人文封面1"
+      },
+      {
+        "id": "cover_hum_02",
+        "file": "cover_hum_02.png",
+        "usage": "人文封面2"
+      },
+      {
+        "id": "cover_tech_01",
+        "file": "cover_tech_01.png",
+        "usage": "科技封面1"
+      },
+      {
+        "id": "cover_tech_02",
+        "file": "cover_tech_02.png",
+        "usage": "科技封面2"
+      },
+      {
+        "id": "cover_life_01",
+        "file": "cover_life_01.png",
+        "usage": "生活封面1"
+      },
+      {
+        "id": "cover_life_02",
+        "file": "cover_life_02.png",
+        "usage": "生活封面2"
+      },
+      {
+        "id": "cover_art_01",
+        "file": "cover_art_01.png",
+        "usage": "艺术封面1"
+      },
+      {
+        "id": "cover_art_02",
+        "file": "cover_art_02.png",
+        "usage": "艺术封面2"
+      },
+      {
+        "id": "cover_daily_01",
+        "file": "cover_daily_01.png",
+        "usage": "每日精选1"
+      },
+      {
+        "id": "cover_daily_02",
+        "file": "cover_daily_02.png",
+        "usage": "每日精选2"
+      },
+      {
+        "id": "cover_daily_03",
+        "file": "cover_daily_03.png",
+        "usage": "每日精选3"
+      },
+      {
+        "id": "cover_daily_04",
+        "file": "cover_daily_04.png",
+        "usage": "每日精选4"
+      },
+      {
+        "id": "cover_plaza_01",
+        "file": "cover_plaza_01.png",
+        "usage": "灵感默认封面"
+      }
+    ]
+  }
+}

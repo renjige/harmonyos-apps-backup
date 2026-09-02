@@ -1,0 +1,279 @@
+{
+  "specVersion": "1.0.0",
+  "generatedAt": "2026-09-01T07:43:33.899Z",
+  "requestId": "req_1788248613862",
+  "industryPack": "treasure-archive",
+  "identity": {
+    "company": "珍藏空间",
+    "companyPinyin": "zhencang",
+    "appName": "珍藏空间",
+    "appPinyin": "kongjian",
+    "bundleId": "com.zhencang.kongjian",
+    "version": "1.0.0"
+  },
+  "positioning": {
+    "tagline": "为每一件值得留下的物品建立专属珍藏档案",
+    "coreUsers": [
+      {
+        "role": "有个人珍藏爱好的人",
+        "ageRange": "20-55",
+        "scenario": "整理卡牌、徽章、纪念品、家传旧物",
+        "need": "建立完整档案而非简单拍照备注"
+      }
+    ],
+    "painPoints": [
+      "相册只能存图，无法记录来源与保管信息",
+      "记事本缺乏分类与统计",
+      "收藏散落各处难以回顾"
+    ],
+    "differentiation": "为每一件值得留下的物品建立专属珍藏档案"
+  },
+  "modules": {
+    "pages": [
+      {
+        "id": "collection",
+        "title": "藏品",
+        "route": "pages/CollectionPage",
+        "features": [
+          "分类筛选",
+          "藏品列表",
+          "添加"
+        ],
+        "tab": true
+      },
+      {
+        "id": "explore",
+        "title": "探索",
+        "route": "pages/ExplorePage",
+        "features": [
+          "按年",
+          "按类",
+          "按标签主题"
+        ],
+        "tab": true
+      },
+      {
+        "id": "stats",
+        "title": "统计",
+        "route": "pages/StatsPage",
+        "features": [
+          "总量",
+          "完整度",
+          "图表"
+        ],
+        "tab": true
+      },
+      {
+        "id": "mine",
+        "title": "我的",
+        "route": "pages/MinePage",
+        "features": [
+          "分类",
+          "标签",
+          "导出",
+          "回收站",
+          "设置"
+        ],
+        "tab": true
+      }
+    ],
+    "coreFlows": [
+      {
+        "name": "珍藏档案闭环",
+        "steps": [
+          "添加藏品",
+          "完善档案",
+          "轨迹维护",
+          "珍藏册",
+          "统计回顾",
+          "导出"
+        ]
+      }
+    ]
+  },
+  "entities": [
+    {
+      "name": "TreasureItem",
+      "table": "treasure_items",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "name": "categoryId",
+          "type": "string"
+        },
+        {
+          "name": "acquiredAt",
+          "type": "string"
+        },
+        {
+          "name": "source",
+          "type": "string"
+        },
+        {
+          "name": "story",
+          "type": "string"
+        },
+        {
+          "name": "storageLocation",
+          "type": "string"
+        },
+        {
+          "name": "storageStatus",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "TreasureAlbum",
+      "table": "treasure_albums",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "name": "intro",
+          "type": "string"
+        },
+        {
+          "name": "itemIds",
+          "type": "array"
+        }
+      ]
+    }
+  ],
+  "apis": [],
+  "ai": {
+    "capabilities": [],
+    "quickCommands": [],
+    "systemPrompt": "你是「珍藏空间」的内容助手。产品定位：个人珍藏档案管理。主职责：帮助用户整理藏品档案与分类。禁止自称人工智能。C 端不提供生成式对话。",
+    "mode": "none",
+    "llmEnabled": false
+  },
+  "permissions": [],
+  "harmonyos": {
+    "features": []
+  },
+  "store": {
+    "category": "生活",
+    "legalOperator": "魏文波",
+    "oneLiner": "珍藏空间 — 为每一件值得留下的物品建立专属珍藏档案",
+    "fullDescription": "珍藏空间是一款面向个人珍藏整理的数字档案工具。你可以为珍藏物品建立专属档案，记录图片、分类、来源、时间、珍藏故事、保存位置和物品状态，并通过珍藏轨迹持续记录每一件物品的变化。支持创建珍藏册，将具有共同记忆的藏品整理成独立主题；同时提供分类统计、档案完整度和珍藏整理等功能。",
+    "keywords": [
+      "珍藏",
+      "收藏",
+      "档案",
+      "纪念品",
+      "卡牌",
+      "手办",
+      "鸿蒙"
+    ],
+    "privacySummary": {
+      "collect": [
+        "藏品档案（仅本机）",
+        "可选昵称（仅本机）"
+      ],
+      "purpose": "在本机保存与管理个人珍藏档案",
+      "thirdParties": []
+    },
+    "demoAccount": {
+      "username": "auditor@zhencang.local",
+      "passwordNote": "第一版无登录；审核请直接体验本机珍藏档案"
+    },
+    "screenshotPlan": [
+      {
+        "page": "collection",
+        "caption": "藏品首页与分类"
+      },
+      {
+        "page": "detail",
+        "caption": "藏品档案详情与轨迹"
+      },
+      {
+        "page": "explore",
+        "caption": "珍藏探索空间"
+      },
+      {
+        "page": "stats",
+        "caption": "珍藏统计"
+      },
+      {
+        "page": "album",
+        "caption": "珍藏册"
+      }
+    ],
+    "incentiveHooks": []
+  },
+  "access": {
+    "mode": "open_optional",
+    "features": {
+      "register": false,
+      "guestBrowse": true,
+      "guestWrite": true
+    },
+    "gateActions": [],
+    "onPrivacyRefuse": "browse_basic",
+    "loginProviders": []
+  },
+  "admin": {
+    "featureModules": [
+      "overview",
+      "appUsers",
+      "messages",
+      "kpis"
+    ]
+  },
+  "brand": {
+    "primary": "#B99A61",
+    "primaryDeep": "#171717",
+    "deep": "#171717",
+    "accent": "#C8A96B",
+    "tone": "soft-editorial",
+    "stylePack": "soft-editorial",
+    "workbenchId": "catalog-tool",
+    "layoutVariant": "B",
+    "productVisualType": "ops-tool",
+    "visualDirection": {
+      "archetype": "archive-vault",
+      "density": "airy",
+      "material": "warm-ivory-paper",
+      "imagery": "collection-museum",
+      "accent": "champagne-gold",
+      "primaryJob": "3 秒看见珍藏总量，10 秒添加第一件档案",
+      "notes": "曜石黑+香槟金+暖白；数字收藏馆气质"
+    },
+    "logo": {
+      "brandAnchor": "珍",
+      "glyphStrategy": "semantic-fusion",
+      "customLock": true,
+      "generator": "agent-svg",
+      "symbolFile": "store/logo/symbol.svg",
+      "previewFile": "store/logo/preview-1024.png"
+    },
+    "visualAssets": [
+      {
+        "id": "hero",
+        "file": "hero_archive.png",
+        "usage": "首页氛围"
+      },
+      {
+        "id": "empty",
+        "file": "empty_vault.png",
+        "usage": "空态收藏盒"
+      }
+    ]
+  }
+}

@@ -1,0 +1,264 @@
+{
+  "specVersion": "1.0.0",
+  "generatedAt": "2026-08-27T06:07:52.219Z",
+  "requestId": "req_1787810872182",
+  "industryPack": "morning-habit",
+  "identity": {
+    "company": "魏文波",
+    "companyPinyin": "wenbo",
+    "appName": "跃动新章",
+    "appPinyin": "yuedong-xinzhang",
+    "bundleId": "com.wenbo.yuedongxinzhang",
+    "version": "1.0.0"
+  },
+  "positioning": {
+    "tagline": "把一段时间过成可收官的人生篇章，计划-执行-写作复盘",
+    "coreUsers": [
+      {
+        "role": "都市白领",
+        "ageRange": "22-40",
+        "scenario": "工作日清晨",
+        "need": "自律早起、可视化成长"
+      }
+    ],
+    "painPoints": [
+      "难以坚持早起",
+      "缺乏正向反馈",
+      "习惯数据分散"
+    ],
+    "differentiation": "智慧日程与目标管理，计划-执行-复盘闭环，本机存储"
+  },
+  "modules": {
+    "pages": [
+      {
+        "id": "home",
+        "title": "首页",
+        "route": "pages/HomePage",
+        "features": [
+          "早安问候",
+          "今日早起时间",
+          "连续打卡",
+          "成长趋势"
+        ],
+        "tab": true
+      },
+      {
+        "id": "checkin",
+        "title": "打卡",
+        "route": "pages/CheckInPage",
+        "features": [
+          "一键打卡",
+          "日出动效"
+        ],
+        "tab": true
+      },
+      {
+        "id": "habits",
+        "title": "习惯",
+        "route": "pages/HabitsPage",
+        "features": [
+          "习惯目标"
+        ],
+        "tab": true
+      },
+      {
+        "id": "growth",
+        "title": "成长",
+        "route": "pages/GrowthPage",
+        "features": [
+          "数据洞察",
+          "成就中心"
+        ],
+        "tab": true
+      },
+      {
+        "id": "mine",
+        "title": "我的",
+        "route": "pages/MinePage",
+        "features": [
+          "打卡记录",
+          "设置隐私"
+        ],
+        "tab": true
+      },
+      {
+        "id": "messages",
+        "title": "消息",
+        "route": "pages/MessagesPage",
+        "features": [
+          "智慧提醒"
+        ],
+        "tab": false
+      }
+    ],
+    "coreFlows": [
+      {
+        "name": "每日打卡闭环",
+        "steps": [
+          "查看目标",
+          "完成打卡",
+          "获得成长反馈"
+        ]
+      }
+    ]
+  },
+  "entities": [
+    {
+      "name": "HabitGoal",
+      "table": "habit_goals",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "targetTime",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "CheckIn",
+      "table": "check_ins",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "wakeTime",
+          "type": "string"
+        },
+        {
+          "name": "checkInDate",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "Achievement",
+      "table": "achievements",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "thresholdDays",
+          "type": "number"
+        }
+      ]
+    }
+  ],
+  "apis": [],
+  "ai": {
+    "capabilities": [],
+    "quickCommands": [],
+    "systemPrompt": "你是「晨启生活科技有限公司」旗下应用「早起打卡」的生活方式助手。产品定位：帮助用户建立早起习惯、记录成长轨迹。主职责：解读打卡数据、推荐习惯目标与成长洞察；不做医疗诊断。",
+    "mode": "none",
+    "llmEnabled": false
+  },
+  "permissions": [],
+  "harmonyos": {
+    "features": []
+  },
+  "store": {
+    "category": "生活",
+    "oneLiner": "跃动新章 — 把一段时间过成可收官的人生篇章",
+    "fullDescription": "为接下来 7/14/30 天开启一篇人生篇章，把每日行动记入工作/学习/生活时间账，到期必须写下章末复盘才能收官。含目标里程碑、小时轴与跃动指数。本机存储，无内购无广告。",
+    "keywords": [
+      "早起",
+      "打卡",
+      "习惯",
+      "自律",
+      "鸿蒙"
+    ],
+    "privacySummary": {
+      "collect": [
+        "账号信息",
+        "打卡记录"
+      ],
+      "purpose": "提供打卡与成长统计",
+      "thirdParties": []
+    },
+    "demoAccount": {
+      "username": "auditor@wenbo.local",
+      "passwordNote": "仅写入 store/demo-account.md"
+    },
+    "screenshotPlan": [
+      {
+        "page": "home",
+        "caption": "早安与大数字早起时间"
+      },
+      {
+        "page": "checkin",
+        "caption": "一键打卡"
+      },
+      {
+        "page": "growth",
+        "caption": "成长趋势与成就"
+      }
+    ],
+    "incentiveHooks": [],
+    "legalOperator": "魏文波"
+  },
+  "access": {
+    "mode": "open_optional",
+    "features": {
+      "register": false,
+      "guestBrowse": true,
+      "guestWrite": true
+    },
+    "gateActions": [],
+    "onPrivacyRefuse": "browse_basic",
+    "loginProviders": [
+      "password"
+    ]
+  },
+  "brand": {
+    "primary": "#007DFF",
+    "primaryDeep": "#0A1628",
+    "deep": "#0A1628",
+    "accent": "#6366F1",
+    "tone": "premium-lifestyle",
+    "stylePack": "premium-business",
+    "workbenchId": "timeline-board",
+    "layoutVariant": "B",
+    "productVisualType": "ops-tool",
+    "visualDirection": {
+      "archetype": "premium-lifestyle",
+      "density": "airy",
+      "material": "soft-elevation",
+      "imagery": "dawn-sunrise",
+      "accent": "dawn-orange",
+      "primaryJob": "开启人生篇章、记录每日行动、章末复盘收官",
+      "notes": "大数字 Hero + 连续天数 + 趋势；禁止宫格模板"
+    },
+    "logo": {
+      "brandAnchor": "跃",
+      "glyphStrategy": "semantic-fusion",
+      "customLock": true,
+      "generator": "agent-svg"
+    },
+    "visualAssets": [
+      { "id": "hero_ambient", "file": "hero_ambient.png", "usage": "首页 Hero 背景" },
+      { "id": "empty_guide", "file": "empty_guide.png", "usage": "空态引导背景" },
+      { "id": "banner_chapter_hub", "file": "banner_chapter_hub.png", "usage": "篇章中心 Banner" },
+      { "id": "banner_growth", "file": "banner_growth.png", "usage": "成长中心 Banner" },
+      { "id": "empty_favorites", "file": "empty_favorites.png", "usage": "收藏夹空态" },
+      { "id": "empty_timeline", "file": "empty_timeline.png", "usage": "时间轴空态" }
+    ]
+  }
+}

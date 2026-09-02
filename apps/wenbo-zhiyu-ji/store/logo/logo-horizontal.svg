@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 360" role="img" aria-label="���">
+  <rect width="1280" height="360" fill="#F7F5F0"/>
+  <svg x="40" y="36" width="288" height="288" viewBox="0 0 1024 1024">
+    <rect width="1024" height="1024" fill="#1A2A3A"/>
+    <path d="M220 260 H804 V764 H220 Z" fill="#F7F5F0" opacity="0.08"/>
+    <path d="M512 260 V764" stroke="#C9A96E" stroke-width="6" opacity="0.35"/>
+    <rect x="340" y="300" width="344" height="56" rx="8" fill="#C9A96E"/>
+    <rect x="380" y="380" width="48" height="220" rx="6" fill="#F7F5F0"/>
+    <rect x="460" y="380" width="48" height="220" rx="6" fill="#F7F5F0"/>
+    <rect x="540" y="380" width="48" height="220" rx="6" fill="#F7F5F0"/>
+    <rect x="620" y="380" width="48" height="220" rx="6" fill="#F7F5F0"/>
+    <rect x="420" y="460" width="184" height="40" rx="6" fill="#C9A96E" opacity="0.85"/>
+    <rect x="420" y="540" width="184" height="40" rx="6" fill="#C9A96E" opacity="0.65"/>
+    <path d="M280 640 Q260 600 300 580 Q340 560 360 600 Q340 640 280 640Z" fill="#C9A96E" opacity="0.5"/>
+    <path d="M664 640 Q644 600 684 580 Q724 560 744 600 Q724 640 664 640Z" fill="#C9A96E" opacity="0.5"/>
+  </svg>
+  <text x="360" y="200" font-family="sans-serif" font-size="72" font-weight="600" fill="#1A2A3A">���</text>
+  <text x="360" y="260" font-family="sans-serif" font-size="32" fill="#5C6B7A">��zg � 6��</text>
+</svg>

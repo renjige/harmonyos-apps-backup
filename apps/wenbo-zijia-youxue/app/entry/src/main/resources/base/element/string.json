@@ -1,0 +1,8 @@
+{
+  "string": [
+    { "name": "module_desc", "value": "自驾游学主模块" },
+    { "name": "EntryAbility_desc", "value": "亲子自驾研学课堂入口" },
+    { "name": "EntryAbility_label", "value": "自驾游学" },
+    { "name": "internet_reason", "value": "用于拉取研学路线、景点百科并同步行程与手账" }
+  ]
+}

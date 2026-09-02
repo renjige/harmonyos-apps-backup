@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 512" fill="none">
+  <rect width="1600" height="512" fill="#1A1A2E"/>
+  <g transform="translate(64 64) scale(0.375)">
+    <path d="M220 720 Q360 520 520 580 T800 300" stroke="#FF6B35" stroke-width="56" stroke-linecap="round" fill="none"/>
+    <rect x="620" y="260" width="200" height="164" rx="20" stroke="#FFFFFF" stroke-width="18" fill="none"/>
+    <path d="M660 392 L696 336 L752 408 L696 444 Z" fill="#FF6B35"/>
+    <circle cx="740" cy="316" r="24" fill="#007AFF"/>
+  </g>
+  <text x="480" y="300" fill="#FFFFFF" font-family="HarmonyOS Sans, OPPOSans, MiSans, sans-serif" font-size="120" font-weight="600">Ш��</text>
+</svg>

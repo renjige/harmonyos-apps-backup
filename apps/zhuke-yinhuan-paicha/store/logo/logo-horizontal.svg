@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 360" role="img" aria-label="Qѐ���">
+  <rect width="360" height="360" rx="78" fill="#16324F"/>
+  <g transform="scale(0.3515625)">
+    <rect x="268" y="248" width="488" height="92" rx="20" fill="#F4F7FA"/>
+    <rect x="268" y="372" width="488" height="92" rx="20" fill="#F4F7FA"/>
+    <rect x="268" y="496" width="488" height="92" rx="20" fill="#F4F7FA"/>
+    <rect x="300" y="608" width="88" height="168" rx="18" fill="#F4F7FA"/>
+    <rect x="636" y="608" width="88" height="168" rx="18" fill="#F4F7FA"/>
+    <path d="M430 700 L520 800 L760 500" fill="none" stroke="#F28C28" stroke-width="92" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <text x="400" y="220" fill="#16324F" font-family="Source Han Sans SC, Noto Sans SC, Microsoft YaHei, sans-serif" font-size="92" font-weight="700">Qѐ���</text>
+</svg>

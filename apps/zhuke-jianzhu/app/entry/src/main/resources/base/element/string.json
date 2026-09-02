@@ -1,0 +1,8 @@
+{
+  "string": [
+    { "name": "module_desc", "value": "筑科建筑主模块" },
+    { "name": "EntryAbility_desc", "value": "建筑工程企业展示入口" },
+    { "name": "EntryAbility_label", "value": "筑科建筑" },
+    { "name": "internet_reason", "value": "用于加载企业展示内容与提交在线留言" }
+  ]
+}

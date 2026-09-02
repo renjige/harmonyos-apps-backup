@@ -1,0 +1,339 @@
+{
+  "specVersion": "1.0.0",
+  "generatedAt": "2026-09-02T01:15:05.802Z",
+  "requestId": "req_1788311705768",
+  "industryPack": "star-nook",
+  "identity": {
+    "company": "星隅叙",
+    "companyPinyin": "xingyu",
+    "appName": "星隅叙",
+    "appPinyin": "xu",
+    "bundleId": "com.xingyu.xu",
+    "version": "1.0.0"
+  },
+  "positioning": {
+    "tagline": "在生活的角落收藏星光时刻——记录生活片段、整理兴趣主题、沉淀灵感并回望成长轨迹的数字生活档案空间",
+    "coreUsers": [
+      {
+        "role": "想长期沉淀生活与兴趣的人",
+        "ageRange": "20-45",
+        "scenario": "读完一本书、旅途归来、突然有一个想法",
+        "need": "把片段收进主题，而不是堆成日记"
+      }
+    ],
+    "painPoints": [
+      "日记只有日期没有主题",
+      "灵感散落找不到",
+      "看不到自己的成长轨迹"
+    ],
+    "differentiation": "在生活的角落收藏星光时刻——记录生活片段、整理兴趣主题、沉淀灵感并回望成长轨迹的数字生活档案空间"
+  },
+  "modules": {
+    "pages": [
+      {
+        "id": "home",
+        "title": "星隅",
+        "route": "pages/HomePage",
+        "features": [
+          "今日提问",
+          "档案数字",
+          "快捷入口",
+          "最近片段",
+          "今日回望",
+          "连续天数"
+        ],
+        "tab": true
+      },
+      {
+        "id": "narrative",
+        "title": "叙事",
+        "route": "pages/NarrativePage",
+        "features": [
+          "档案卡片",
+          "状态筛选",
+          "搜索",
+          "模板新建"
+        ],
+        "tab": true
+      },
+      {
+        "id": "theme",
+        "title": "主题",
+        "route": "pages/ThemeSpacePage",
+        "features": [
+          "主题星域",
+          "创建主题",
+          "内容管理"
+        ],
+        "tab": true
+      },
+      {
+        "id": "review",
+        "title": "回望",
+        "route": "pages/ReviewPage",
+        "features": [
+          "时间星轨",
+          "年度星册",
+          "数据中心",
+          "智慧回望"
+        ],
+        "tab": true
+      },
+      {
+        "id": "mine",
+        "title": "我的",
+        "route": "pages/MinePage",
+        "features": [
+          "成就墙",
+          "标签",
+          "收藏库",
+          "设置与隐私"
+        ],
+        "tab": true
+      }
+    ],
+    "coreFlows": [
+      {
+        "name": "档案沉淀闭环",
+        "steps": [
+          "新建叙事",
+          "归入主题",
+          "收藏星光",
+          "时间星轨",
+          "智慧回望",
+          "年册成就"
+        ]
+      }
+    ]
+  },
+  "entities": [
+    {
+      "name": "Narrative",
+      "table": "narratives",
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "dateKey",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "templateKey",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "status",
+          "type": "string"
+        },
+        {
+          "name": "tags",
+          "type": "array"
+        },
+        {
+          "name": "themeIds",
+          "type": "array"
+        },
+        {
+          "name": "fieldA",
+          "type": "string"
+        },
+        {
+          "name": "fieldB",
+          "type": "string"
+        },
+        {
+          "name": "fieldC",
+          "type": "string"
+        },
+        {
+          "name": "isFavorite",
+          "type": "boolean"
+        }
+      ]
+    },
+    {
+      "name": "Spark",
+      "table": "sparks",
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "kind",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "body",
+          "type": "string"
+        },
+        {
+          "name": "source",
+          "type": "string"
+        },
+        {
+          "name": "plan",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "ThemeSpace",
+      "table": "themes",
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "coverKey",
+          "type": "string"
+        }
+      ]
+    }
+  ],
+  "apis": [],
+  "admin": {
+    "featureModules": []
+  },
+  "ai": {
+    "capabilities": [],
+    "quickCommands": [],
+    "systemPrompt": "你是「星隅叙」旗下应用「星隅叙」的档案助手。产品定位：个人生活档案空间。主职责：帮助用户理解叙事、主题、收藏与回望。禁止生成式对话，禁止扮演其他 App。",
+    "mode": "none",
+    "llmEnabled": false
+  },
+  "permissions": [],
+  "harmonyos": {
+    "features": []
+  },
+  "store": {
+    "category": "生活",
+    "legalOperator": "魏文波",
+    "oneLiner": "星隅叙 — 在生活的角落收藏星光时刻——记录生活片段、整理兴趣主题、沉淀灵感并回",
+    "fullDescription": "星隅叙是个人数字生活档案空间。用叙事记录生活片段，用灵感星库收藏想法与计划，用主题空间整理阅读、旅行、成长与兴趣，再通过时间星轨、智慧回望、年度星册与成就墙看见长期成长。全部数据保存在本机，不申请相机、定位、麦克风等系统权限，无广告、无内购。",
+    "keywords": [
+      "生活档案",
+      "灵感收藏",
+      "主题空间",
+      "时间回顾",
+      "成长轨迹",
+      "鸿蒙"
+    ],
+    "privacySummary": {
+      "collect": [
+        "本机账号（可选）",
+        "叙事与灵感正文（本机）",
+        "主题与标签（本机）",
+        "收藏与成就进度（本机）"
+      ],
+      "purpose": "提供本机生活档案、主题整理、收藏与回顾",
+      "thirdParties": []
+    },
+    "demoAccount": {
+      "username": "auditor@xingyu.local",
+      "passwordNote": "可游客使用；演示账号仅审核备用，客户端不展示"
+    },
+    "screenshotPlan": [
+      {
+        "page": "home",
+        "caption": "星隅空间"
+      },
+      {
+        "page": "narrative",
+        "caption": "叙事档案卡"
+      },
+      {
+        "page": "theme",
+        "caption": "主题星域"
+      },
+      {
+        "page": "review",
+        "caption": "时间星轨"
+      },
+      {
+        "page": "mine",
+        "caption": "成就与设置"
+      }
+    ],
+    "incentiveHooks": []
+  },
+  "access": {
+    "mode": "open_optional",
+    "features": {
+      "register": true,
+      "guestBrowse": true,
+      "guestWrite": true
+    },
+    "gateActions": [],
+    "onPrivacyRefuse": "browse_basic",
+    "loginProviders": []
+  },
+  "brand": {
+    "primary": "#12182B",
+    "primaryDeep": "#0B1020",
+    "deep": "#0B1020",
+    "accent": "#C4A574",
+    "tone": "custom",
+    "stylePack": "custom",
+    "workbenchId": "catalog-tool",
+    "layoutVariant": "B",
+    "productVisualType": "content-commerce",
+    "visualDirection": {
+      "archetype": "star-nook-archive",
+      "density": "airy",
+      "material": "night-paper",
+      "imagery": "window-desk-ambient",
+      "accent": "soft-gold-on-navy",
+      "primaryJob": "3 秒内留下一条叙事或把灵感收进主题",
+      "notes": "深夜蓝#12182B+雾紫#7A7194+月白#F6F3EC+柔金#C4A574；五 Tab；禁止日记换皮"
+    },
+    "logo": {
+      "brandAnchor": "隅",
+      "glyphStrategy": "semantic-fusion",
+      "customLock": true,
+      "generator": "custom",
+      "renderScript": "store/logo/render_logo.py",
+      "concept": "半圆角落 + 极简星点 + 一条轨迹",
+      "foregroundFile": "store/logo/foreground.png",
+      "backgroundFile": "store/logo/background.png",
+      "previewFile": "store/logo/preview-1024.png",
+      "agcFile": "store/logo/agc-216.png",
+      "symbolFile": "store/logo/symbol.svg",
+      "horizontalFile": "store/logo/logo-horizontal.svg"
+    },
+    "visualAssets": [
+      { "id": "hero", "file": "hero_bg.png", "usage": "首页星隅空间 Hero" },
+      { "id": "banner_reading", "file": "banner_01.png", "usage": "阅读角 Banner" },
+      { "id": "banner_travel", "file": "banner_02.png", "usage": "旅行回望 Banner" },
+      { "id": "cover_reading", "file": "cover_reading.png", "usage": "阅读主题封面" },
+      { "id": "cover_travel", "file": "cover_travel.png", "usage": "旅行主题封面" },
+      { "id": "cover_growth", "file": "cover_growth.png", "usage": "成长主题封面" },
+      { "id": "cover_hobby", "file": "cover_hobby.png", "usage": "兴趣主题封面" },
+      { "id": "cover_life", "file": "cover_life.png", "usage": "生活主题封面" }
+    ]
+  }
+}

@@ -1,0 +1,156 @@
+{
+  "specVersion": "1.0.0",
+  "generatedAt": "2026-08-25T10:00:00.000Z",
+  "industryPack": "local-wellness",
+  "identity": {
+    "company": "溪漫生活",
+    "companyPinyin": "ximan",
+    "appName": "溪漫观",
+    "appPinyin": "guan",
+    "bundleId": "xmg.lwl.huawei",
+    "version": "1.0.0"
+  },
+  "positioning": {
+    "tagline": "让每一天的碎片生活，被智慧地看见",
+    "coreUsers": [
+      {
+        "role": "都市白领",
+        "ageRange": "25-45",
+        "scenario": "晚间放空、周末复盘",
+        "need": "轻量记录情绪与状态，看见自己的节奏"
+      }
+    ],
+    "painPoints": [
+      "日记太重写不下去",
+      "情绪起伏却看不见规律",
+      "碎片生活没有被好好观察"
+    ],
+    "differentiation": "每日三条 50 字漫观笔记 + 情绪图谱 + 本机智慧洞察报告，纯本地无账号"
+  },
+  "modules": {
+    "pages": [
+      {
+        "id": "daily",
+        "title": "漫观",
+        "route": "pages/DailyPage",
+        "features": ["情绪标签", "50字笔记", "每日上限3条", "今日列表", "近7日时间线", "详情编辑删除"],
+        "tab": true
+      },
+      {
+        "id": "chart",
+        "title": "图谱",
+        "route": "pages/ChartPage",
+        "features": ["周月切换", "情绪分布", "趋势下钻当日笔记", "关键词云"],
+        "tab": true
+      },
+      {
+        "id": "insight",
+        "title": "洞察",
+        "route": "pages/InsightPage",
+        "features": ["情绪主旋律", "精力高峰", "关键词", "智慧寄语", "分享复制"],
+        "tab": true
+      },
+      {
+        "id": "settings",
+        "title": "我的",
+        "route": "pages/SettingsPage",
+        "features": ["昵称", "每日提醒", "主题持久化", "JSON导出", "清除笔记", "协议", "撤回隐私"],
+        "tab": true
+      }
+    ],
+    "coreFlows": [
+      {
+        "name": "漫观闭环",
+        "steps": ["选情绪", "写笔记", "记录成功", "时间线可见", "详情可编辑删除", "图谱与洞察同步"]
+      }
+    ]
+  },
+  "entities": [
+    {
+      "name": "ObservationNote",
+      "table": "local_notes",
+      "fields": [
+        { "name": "id", "type": "string", "required": true },
+        { "name": "text", "type": "string", "required": true },
+        { "name": "emotionKey", "type": "string", "required": true },
+        { "name": "dateKey", "type": "string", "required": true }
+      ]
+    }
+  ],
+  "apis": [],
+  "ai": {
+    "capabilities": [],
+    "quickCommands": [],
+    "systemPrompt": "你是「溪漫生活」旗下应用「溪漫观」的内容助手。产品定位：智慧生活记录与状态洞察。主职责：帮助用户理解漫观笔记、情绪图谱与本机规则报告。禁止自称人工智能。C 端不提供生成式对话。",
+    "mode": "none",
+    "llmEnabled": false
+  },
+  "permissions": [
+    {
+      "name": "ohos.permission.PUBLISH_AGENT_REMINDER",
+      "reason": "用于每日漫观记录提醒",
+      "when": "inuse",
+      "scene": "用户开启每日提醒后调度"
+    }
+  ],
+  "harmonyos": { "features": [] },
+  "store": {
+    "category": "生活",
+    "legalOperator": "魏文波",
+    "oneLiner": "智慧记录每日状态，看见情绪与精力的变化规律",
+    "fullDescription": "溪漫观帮助你在快节奏生活中慢下来观察自己：每日三条漫观笔记（文字 + 情绪标签），状态图谱呈现情绪分布与趋势，智慧洞察生成本周/本月状态报告。数据默认保存在本机，无需注册，免费使用。",
+    "keywords": ["漫观", "日记", "情绪", "状态", "洞察", "生活记录", "鸿蒙"],
+    "privacySummary": {
+      "collect": ["昵称（本机）", "漫观笔记与情绪（本机）", "提醒时间（本机）"],
+      "purpose": "提供本地记录、图谱与洞察",
+      "thirdParties": []
+    },
+    "screenshotPlan": [
+      { "page": "daily", "caption": "每日漫观记录卡片与时间线" },
+      { "page": "chart", "caption": "情绪分布与趋势图谱" },
+      { "page": "insight", "caption": "智慧洞察报告卡片" },
+      { "page": "settings", "caption": "个人设置与提醒" }
+    ],
+    "incentiveHooks": []
+  },
+  "access": {
+    "mode": "open_optional",
+    "features": { "register": false, "guestBrowse": true, "guestWrite": true },
+    "gateActions": [],
+    "onPrivacyRefuse": "exit",
+    "loginProviders": []
+  },
+  "brand": {
+    "primary": "#5B8C8C",
+    "primaryDeep": "#3D5F5F",
+    "deep": "#3D5F5F",
+    "accent": "#D4A574",
+    "tone": "soft-editorial",
+    "stylePack": "soft-editorial",
+    "workbenchId": "timeline-board",
+    "layoutVariant": "B",
+    "productVisualType": "ops-tool",
+    "visualDirection": {
+      "archetype": "calm-stream",
+      "density": "airy",
+      "material": "warm-paper",
+      "imagery": "misty-stream",
+      "accent": "warm-gold",
+      "primaryJob": "3 秒内写下一条漫观笔记",
+      "notes": "溪水绿+暖阳金+米白；禁止工厂六件套"
+    },
+    "logo": {
+      "brandAnchor": "溪",
+      "glyphStrategy": "semantic-fusion",
+      "customLock": true,
+      "generator": "agent-svg",
+      "renderScript": "store/logo/render_logo.mjs",
+      "symbolFile": "store/logo/symbol.svg",
+      "previewFile": "store/logo/preview-1024.png"
+    },
+    "visualAssets": [
+      { "id": "hero", "file": "hero_ambient.png", "usage": "漫观页 Hero" },
+      { "id": "empty", "file": "empty_calm.png", "usage": "时间线空态" }
+    ]
+  }
+}

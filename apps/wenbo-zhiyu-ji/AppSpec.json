@@ -1,0 +1,428 @@
+{
+  "specVersion": "1.0.0",
+  "generatedAt": "2026-08-24T03:07:17.119Z",
+  "requestId": "req_1787540837063",
+  "industryPack": "wisdom-hall",
+  "identity": {
+    "company": "魏文波",
+    "companyPinyin": "wenbo",
+    "appName": "知语集",
+    "appPinyin": "zhiyu-ji",
+    "bundleId": "com.wenbo.zhiyuji",
+    "version": "1.0.0"
+  },
+  "positioning": {
+    "tagline": "轻量级智慧语录应用，每日精选金句浏览收藏分享，留白中的知性阅读体验",
+    "coreUsers": [
+      {
+        "role": "热爱阅读与金句的用户",
+        "ageRange": "18-55",
+        "scenario": "通勤或睡前想读一句经典、收藏灵感",
+        "need": "轻量语录浏览、分类检索与收藏分享，而非复杂笔记或社交"
+      }
+    ],
+    "painPoints": [
+      "经典读过却难留下",
+      "语录散落各处无法回看",
+      "缺少有温度的每日金句提醒"
+    ],
+    "differentiation": "轻量级智慧语录应用，每日精选金句浏览收藏分享，留白中的知性阅读体验"
+  },
+  "modules": {
+    "pages": [
+      {
+        "id": "home",
+        "title": "首页",
+        "route": "pages/HomePage",
+        "features": [
+          "每日智慧",
+          "分类导航",
+          "按作者",
+          "搜索",
+          "收藏分享",
+          "今日已阅"
+        ],
+        "tab": true
+      },
+      {
+        "id": "library",
+        "title": "语录库",
+        "route": "pages/LibraryPage",
+        "features": [
+          "六大分类",
+          "作者筛选",
+          "搜索",
+          "分页浏览",
+          "下拉刷新"
+        ],
+        "tab": true
+      },
+      {
+        "id": "mine",
+        "title": "我的",
+        "route": "pages/MinePage",
+        "features": [
+          "收藏管理",
+          "深色模式",
+          "设置与隐私",
+          "登录注册"
+        ],
+        "tab": true
+      }
+    ],
+    "coreFlows": [
+      {
+        "name": "每日金句",
+        "steps": [
+          "打开首页",
+          "读每日智慧",
+          "进入详情",
+          "收藏或分享"
+        ]
+      },
+      {
+        "name": "语录检索",
+        "steps": [
+          "进入语录库",
+          "按分类或作者筛选",
+          "搜索关键词",
+          "收藏心仪金句"
+        ]
+      }
+    ]
+  },
+  "entities": [
+    {
+      "name": "Quote",
+      "table": "quotes",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "authorName",
+          "type": "string"
+        },
+        {
+          "name": "summary",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "Read",
+      "table": "reads",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "body",
+          "type": "string"
+        },
+        {
+          "name": "readMinutes",
+          "type": "number"
+        }
+      ]
+    },
+    {
+      "name": "Thought",
+      "table": "thoughts",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "body",
+          "type": "string"
+        },
+        {
+          "name": "tags",
+          "type": "string"
+        },
+        {
+          "name": "userId",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "Featured",
+      "table": "featured",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "authorName",
+          "type": "string"
+        },
+        {
+          "name": "likeCount",
+          "type": "number"
+        }
+      ]
+    }
+  ],
+  "apis": [
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/wisdom-hall/quotes",
+      "summary": "每日慧语",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/wisdom-hall/reads",
+      "summary": "荐读文章",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/wisdom-hall/reads/:id",
+      "summary": "荐读详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/wisdom-hall/topics",
+      "summary": "今日议题",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/wisdom-hall/featured",
+      "summary": "思友圈精选",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/wisdom-hall/featured/:id",
+      "summary": "精选详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/biz/wisdom-hall/featured/:id/like",
+      "summary": "点赞精选",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/wisdom-hall/tags",
+      "summary": "思录标签",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/wisdom-hall/friends",
+      "summary": "推荐思友",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/wisdom-hall/thoughts",
+      "summary": "用户思录",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/biz/wisdom-hall/thoughts",
+      "summary": "写思录",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/wisdom-hall/favorites",
+      "summary": "收藏",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/biz/wisdom-hall/favorites",
+      "summary": "添加收藏",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/wisdom-hall/history",
+      "summary": "浏览历史",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/biz/wisdom-hall/history",
+      "summary": "记录浏览",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/messages",
+      "summary": "消息",
+      "auth": false,
+      "module": "messages"
+    }
+  ],
+  "ai": {
+    "capabilities": [],
+    "quickCommands": [],
+    "systemPrompt": "你是「魏文波」旗下应用「知语集」的内容整理助手。产品定位：轻量级智慧语录，每日金句浏览收藏。禁止自由对话与生成式文本输出。",
+    "mode": "none",
+    "llmEnabled": false
+  },
+  "permissions": [
+    {
+      "name": "ohos.permission.INTERNET",
+      "reason": "拉取慧语、荐读、议题与思友圈精选，可选同步思录",
+      "when": "inuse",
+      "scene": "打开应用或登录同步时"
+    }
+  ],
+  "harmonyos": {
+    "features": []
+  },
+  "store": {
+    "category": "生活",
+    "legalOperator": "魏文波",
+    "oneLiner": "知语集 — 轻量级智慧语录应用，每日精选金句浏览收藏分享，留白中的知性阅读体验",
+    "fullDescription": "知语集是一款轻量级智慧语录 App。每日一句精选金句，六大分类浏览，按作者筛选，收藏与分享你的灵感时刻。不提供社交、支付、会员与生成式对话。",
+    "keywords": [
+      "语录",
+      "金句",
+      "收藏",
+      "阅读",
+      "智慧",
+      "鸿蒙"
+    ],
+    "privacySummary": {
+      "collect": [
+        "可选账号信息",
+        "本机收藏列表",
+        "今日已阅标记",
+        "深色模式偏好"
+      ],
+      "purpose": "提供语录浏览、搜索、收藏与分享",
+      "thirdParties": []
+    },
+    "demoAccount": {
+      "username": "auditor@wenbo.local",
+      "passwordNote": "仅写入 store/demo-account.md"
+    },
+    "screenshotPlan": [
+      {
+        "page": "home",
+        "caption": "每日智慧"
+      },
+      {
+        "page": "library",
+        "caption": "语录库"
+      },
+      {
+        "page": "detail",
+        "caption": "语录详情"
+      },
+      {
+        "page": "author",
+        "caption": "按作者"
+      },
+      {
+        "page": "mine",
+        "caption": "我的"
+      }
+    ],
+    "incentiveHooks": [
+      "FormExtensionAbility",
+      "元服务快捷入口"
+    ]
+  },
+  "access": {
+    "mode": "open_optional",
+    "features": {
+      "register": true,
+      "guestBrowse": true,
+      "guestWrite": true
+    },
+    "gateActions": [
+      "favorite",
+      "share"
+    ],
+    "onPrivacyRefuse": "browse_basic",
+    "loginProviders": [
+      "password"
+    ]
+  },
+  "brand": {
+    "primary": "#1A2A3A",
+    "primaryDeep": "#121820",
+    "deep": "#121820",
+    "accent": "#C9A96E",
+    "secondary": "#8B7355",
+    "surface": "#F7F5F0",
+    "tone": "soft-editorial",
+    "stylePack": "soft-editorial",
+    "workbenchId": "wisdom-daily",
+    "layoutVariant": "A",
+    "productVisualType": "content-commerce",
+    "visualDirection": {
+      "archetype": "oriental-wisdom",
+      "density": "airy",
+      "material": "warm-paper-ink",
+      "imagery": "ink-wash-scroll-tea-light",
+      "accent": "ink-gold-jade",
+      "primaryJob": "3 秒内读到今天的一句金句",
+      "notes": "墨蓝 #1A2A3A + 暖金 #C9A96E + 米白 #F7F5F0；水墨摄影 Hero；3 Tab 轻量结构"
+    },
+    "logo": {
+      "brandAnchor": "语",
+      "glyphStrategy": "semantic-fusion",
+      "customLock": true,
+      "generator": "render_logo.mjs",
+      "renderScript": "store/logo/render_logo.mjs",
+      "concept": "书页「语」字负形 + 引号点缀 + 墨蓝暖金"
+    }
+  }
+}

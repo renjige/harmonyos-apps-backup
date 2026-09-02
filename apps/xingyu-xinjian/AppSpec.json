@@ -1,0 +1,341 @@
+{
+  "specVersion": "1.0.0",
+  "generatedAt": "2026-08-20T08:15:23.057Z",
+  "requestId": "req_1787213723019",
+  "industryPack": "star-letter",
+  "identity": {
+    "company": "星语生活",
+    "companyPinyin": "xingyu",
+    "appName": "星语心笺",
+    "appPinyin": "xinjian",
+    "bundleId": "com.xingyu.xinjian",
+    "version": "1.0.0"
+  },
+  "positioning": {
+    "tagline": "把今天的心情写进星光里，用安静的星空手账记录心情、轻量日记与星座生活灵感",
+    "coreUsers": [
+      {
+        "role": "需要一片安静角落的都市年轻人",
+        "ageRange": "18-40",
+        "scenario": "睡前、通勤后、想把心情轻轻放下的时刻",
+        "need": "不热闹、不算命，只想留下一句今天的话"
+      }
+    ],
+    "painPoints": [
+      "日记 App 太重，社交与相册把心情挤没了",
+      "星座 App 充满运势恐吓与广告",
+      "想记录情绪，却找不到克制、高级的手账"
+    ],
+    "differentiation": "把今天的心情写进星光里，用安静的星空手账记录心情、轻量日记与星座生活灵感"
+  },
+  "modules": {
+    "pages": [
+      {
+        "id": "home",
+        "title": "心笺",
+        "route": "pages/HomePage",
+        "features": [
+          "今日心情",
+          "今日星语",
+          "写下心笺"
+        ],
+        "tab": true
+      },
+      {
+        "id": "star",
+        "title": "星语",
+        "route": "pages/StarPage",
+        "features": [
+          "十二星座",
+          "生活灵感"
+        ],
+        "tab": true
+      },
+      {
+        "id": "time",
+        "title": "时光",
+        "route": "pages/TimePage",
+        "features": [
+          "月历",
+          "心情轨迹",
+          "最近心笺"
+        ],
+        "tab": true
+      },
+      {
+        "id": "mine",
+        "title": "我的",
+        "route": "pages/MinePage",
+        "features": [
+          "星座",
+          "收藏",
+          "设置"
+        ],
+        "tab": true
+      }
+    ],
+    "coreFlows": [
+      {
+        "name": "每日心笺闭环",
+        "steps": [
+          "选择今日心情",
+          "阅读今日星语",
+          "写下心笺",
+          "在时光中回看"
+        ]
+      }
+    ]
+  },
+  "entities": [
+    {
+      "name": "Letter",
+      "table": "sl_letters",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "body",
+          "type": "string"
+        },
+        {
+          "name": "mood",
+          "type": "string"
+        },
+        {
+          "name": "letterDate",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "Zodiac",
+      "table": "sl_zodiacs",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "theme",
+          "type": "string"
+        },
+        {
+          "name": "keywords",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "DailyQuote",
+      "table": "sl_daily_quotes",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "body",
+          "type": "string"
+        }
+      ]
+    }
+  ],
+  "apis": [
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/star-letter/daily",
+      "summary": "今日星语",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/star-letter/quotes",
+      "summary": "星语列表",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/star-letter/quotes/:id",
+      "summary": "星语详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/star-letter/zodiacs",
+      "summary": "十二星座",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/star-letter/zodiacs/:id",
+      "summary": "星座详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/star-letter/letters",
+      "summary": "我的心笺",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/biz/star-letter/letters",
+      "summary": "写下心笺",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/star-letter/kpis",
+      "summary": "KPI",
+      "auth": false,
+      "module": "biz"
+    }
+  ],
+  "ai": {
+    "capabilities": [],
+    "quickCommands": [],
+    "systemPrompt": "你是「星语生活」旗下应用「星语心笺」的内容助手。产品定位：把今天的心情写进星光里。主职责：用克制的生活灵感帮助用户写下心笺。禁止算命、运势、财富与感情预测。禁止自称人工智能。C 端不提供生成式对话。",
+    "mode": "none",
+    "llmEnabled": false
+  },
+  "permissions": [
+    {
+      "name": "ohos.permission.INTERNET",
+      "reason": "拉取今日星语与星座生活灵感",
+      "when": "inuse",
+      "scene": "打开首页与星语页"
+    }
+  ],
+  "harmonyos": {
+    "features": []
+  },
+  "store": {
+    "category": "生活",
+    "legalOperator": "魏文波",
+    "oneLiner": "星语心笺 — 把今天的心情写进星光里，用安静的星空手账记录心情、轻量日记与星座生",
+    "fullDescription": "星语心笺是一款星空主题的心情记录与轻量日记应用。你可以记下今天的心情，写下短笺，并阅读十二星座的生活灵感。没有支付、没有会员、没有社交广场。星座内容是生活方式提示，不是命运预测。",
+    "keywords": [
+      "心情",
+      "日记",
+      "手账",
+      "星座",
+      "星空",
+      "生活",
+      "记录",
+      "鸿蒙"
+    ],
+    "privacySummary": {
+      "collect": [
+        "可选账号信息",
+        "心笺标题与正文",
+        "心情与星座偏好（可仅保存在本机）"
+      ],
+      "purpose": "提供心情记录、心笺保存与星座生活灵感阅读",
+      "thirdParties": []
+    },
+    "demoAccount": {
+      "username": "auditor@xingyu.local",
+      "passwordNote": "仅写入 store/demo-account.md"
+    },
+    "screenshotPlan": [
+      {
+        "page": "home",
+        "caption": "今日心情与心笺"
+      },
+      {
+        "page": "star",
+        "caption": "十二星座生活灵感"
+      },
+      {
+        "page": "time",
+        "caption": "月历与心情轨迹"
+      },
+      {
+        "page": "letter",
+        "caption": "写下心笺"
+      },
+      {
+        "page": "mine",
+        "caption": "我的与设置"
+      }
+    ],
+    "incentiveHooks": []
+  },
+  "access": {
+    "mode": "open_optional",
+    "features": {
+      "register": true,
+      "guestBrowse": true,
+      "guestWrite": false
+    },
+    "gateActions": [
+      "sync_letters"
+    ],
+    "onPrivacyRefuse": "browse_basic",
+    "loginProviders": [
+      "password"
+    ]
+  },
+  "admin": {
+    "featureModules": [
+      "overview",
+      "appUsers",
+      "slDailyQuotes",
+      "slZodiacs",
+      "slLetters",
+      "messages",
+      "kpis"
+    ]
+  },
+  "brand": {
+    "primary": "#11182F",
+    "primaryDeep": "#11182F",
+    "deep": "#11182F",
+    "accent": "#DCC58C",
+    "tone": "soft-editorial",
+    "stylePack": "soft-editorial",
+    "workbenchId": "timeline-board",
+    "layoutVariant": "A",
+    "productVisualType": "content-commerce",
+    "visualDirection": {
+      "archetype": "moonlight-letter-journal",
+      "density": "airy",
+      "material": "paper-and-night-glass",
+      "imagery": "moonlight-paper-window",
+      "accent": "moon-gold",
+      "primaryJob": "3 秒内看见日期、心情并写下心笺",
+      "notes": "浅纸底+深夜蓝+月光金；紫仅点缀；大圆角手账卡片"
+    },
+    "logo": {
+      "brandAnchor": "笺",
+      "glyphStrategy": "semantic-fusion",
+      "customLock": false,
+      "generator": "agent-svg",
+      "concept": "深夜蓝紫底 + 星轨 + 心笺负形 + 一颗星光"
+    }
+  }
+}

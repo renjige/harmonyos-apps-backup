@@ -1,0 +1,262 @@
+{
+  "specVersion": "1.0.0",
+  "generatedAt": "2026-08-22T06:40:00.000Z",
+  "requestId": "req_1787380498093",
+  "industryPack": "study-roadtrip",
+  "identity": {
+    "company": "魏文波",
+    "companyPinyin": "wenbo",
+    "appName": "自驾游学",
+    "appPinyin": "zijia-youxue",
+    "bundleId": "com.wenbo.zijiayouxue",
+    "version": "1.0.0"
+  },
+  "positioning": {
+    "tagline": "面向亲子家庭，把自驾沿途的自然与人文变成可学可记的研学课堂",
+    "coreUsers": [
+      {
+        "role": "亲子家长",
+        "ageRange": "25-45",
+        "scenario": "周末或假期自驾，带着 3–15 岁孩子边走边学",
+        "need": "选一条适龄研学路线，看懂景点，记下旅途收获"
+      }
+    ],
+    "painPoints": [
+      "攻略只有景点清单，孩子听不懂",
+      "行程散落在备忘录，学与玩挤在一起",
+      "旅途照片很多，却没有成长足迹"
+    ],
+    "differentiation": "路线目录 + 分龄百科 + 趣味问答 + 家庭行程，不是旅行手账也不是普通备忘"
+  },
+  "modules": {
+    "pages": [
+      {
+        "id": "home",
+        "title": "发现",
+        "route": "pages/HomePage",
+        "features": ["品牌 Hero", "主题筛选", "智慧路线卡片", "搜索"],
+        "tab": true
+      },
+      {
+        "id": "plan",
+        "title": "规划",
+        "route": "pages/PlanPage",
+        "features": ["日期", "时间轴行程", "气候备忘", "预览"],
+        "tab": true
+      },
+      {
+        "id": "journal",
+        "title": "记录",
+        "route": "pages/JournalPage",
+        "features": ["手账", "成长足迹", "打卡"],
+        "tab": true
+      },
+      {
+        "id": "mine",
+        "title": "我的",
+        "route": "pages/MinePage",
+        "features": ["收藏", "设置与隐私", "研学匹配"],
+        "tab": true
+      }
+    ],
+    "coreFlows": [
+      {
+        "name": "选路线学景点",
+        "steps": ["打开发现", "按主题筛选", "进入路线详情", "打开途经景点百科", "完成趣味问答"]
+      },
+      {
+        "name": "规划并记录",
+        "steps": ["登录", "开始规划", "添加每日清单", "写手账或打卡", "成长足迹可见"]
+      }
+    ]
+  },
+  "entities": [
+    {
+      "name": "StudyRoute",
+      "table": "study-routes",
+      "fields": [
+        { "name": "id", "type": "string", "required": true },
+        { "name": "title", "type": "string", "required": true },
+        { "name": "theme", "type": "string" },
+        { "name": "days", "type": "number" },
+        { "name": "mileage", "type": "string" },
+        { "name": "ageRange", "type": "string" },
+        { "name": "coverKey", "type": "string" },
+        { "name": "body", "type": "string" },
+        { "name": "stopsJson", "type": "string" }
+      ]
+    },
+    {
+      "name": "StudySpot",
+      "table": "study-spots",
+      "fields": [
+        { "name": "id", "type": "string", "required": true },
+        { "name": "title", "type": "string", "required": true },
+        { "name": "body", "type": "string" },
+        { "name": "knowledgeAge3", "type": "string" },
+        { "name": "knowledgeAge7", "type": "string" },
+        { "name": "knowledgeAge13", "type": "string" },
+        { "name": "coverKey", "type": "string" }
+      ]
+    },
+    {
+      "name": "StudyQuiz",
+      "table": "study-quizzes",
+      "fields": [
+        { "name": "id", "type": "string", "required": true },
+        { "name": "spotId", "type": "string" },
+        { "name": "questionsJson", "type": "string" }
+      ]
+    },
+    {
+      "name": "StudyItinerary",
+      "table": "study-itineraries",
+      "fields": [
+        { "name": "id", "type": "string", "required": true },
+        { "name": "title", "type": "string", "required": true },
+        { "name": "userId", "type": "string" },
+        { "name": "startAt", "type": "string" },
+        { "name": "itemsJson", "type": "string" }
+      ]
+    },
+    {
+      "name": "StudyJournal",
+      "table": "study-journals",
+      "fields": [
+        { "name": "id", "type": "string", "required": true },
+        { "name": "title", "type": "string", "required": true },
+        { "name": "body", "type": "string" },
+        { "name": "userId", "type": "string" },
+        { "name": "placeLabel", "type": "string" }
+      ]
+    }
+  ],
+  "apis": [
+    { "method": "GET", "path": "/api/v1/biz/study-roadtrip/routes", "summary": "研学路线", "auth": false, "module": "biz" },
+    { "method": "GET", "path": "/api/v1/biz/study-roadtrip/routes/:id", "summary": "路线详情", "auth": false, "module": "biz" },
+    { "method": "GET", "path": "/api/v1/biz/study-roadtrip/spots", "summary": "景点百科", "auth": false, "module": "biz" },
+    { "method": "GET", "path": "/api/v1/biz/study-roadtrip/spots/:id", "summary": "景点详情", "auth": false, "module": "biz" },
+    { "method": "GET", "path": "/api/v1/biz/study-roadtrip/quizzes", "summary": "趣味问答", "auth": false, "module": "biz" },
+    { "method": "GET", "path": "/api/v1/biz/study-roadtrip/weather", "summary": "气候备忘", "auth": false, "module": "biz" },
+    { "method": "GET", "path": "/api/v1/biz/study-roadtrip/kpis", "summary": "KPI", "auth": false, "module": "biz" },
+    { "method": "GET", "path": "/api/v1/messages", "summary": "机构通知", "auth": false, "module": "messages" },
+    { "method": "POST", "path": "/api/v1/biz/study-roadtrip/itineraries", "summary": "新建行程", "auth": true, "module": "biz" },
+    { "method": "GET", "path": "/api/v1/biz/study-roadtrip/itineraries", "summary": "我的行程", "auth": true, "module": "biz" },
+    { "method": "POST", "path": "/api/v1/biz/study-roadtrip/journals", "summary": "写手账", "auth": true, "module": "biz" },
+    { "method": "GET", "path": "/api/v1/biz/study-roadtrip/journals", "summary": "我的手账", "auth": true, "module": "biz" },
+    { "method": "POST", "path": "/api/v1/biz/study-roadtrip/checkins", "summary": "景点打卡", "auth": true, "module": "biz" },
+    { "method": "POST", "path": "/api/v1/biz/study-roadtrip/favorites", "summary": "收藏", "auth": true, "module": "biz" },
+    { "method": "POST", "path": "/api/v1/auth/login", "summary": "登录", "auth": false, "module": "auth" },
+    { "method": "POST", "path": "/api/v1/auth/register", "summary": "注册", "auth": false, "module": "auth" }
+  ],
+  "ai": {
+    "capabilities": [],
+    "quickCommands": [],
+    "systemPrompt": "你是「魏文波」旗下应用「自驾游学」的研学行程助手。产品定位：面向亲子家庭，把自驾沿途的自然与人文变成可学可记的课堂。主职责：按孩子年龄、出行天数与主题匹配研学路线与景点百科。禁止订票导航与生成式闲聊。C 端不提供自由对话。",
+    "mode": "none",
+    "llmEnabled": false
+  },
+  "permissions": [
+    {
+      "name": "ohos.permission.INTERNET",
+      "reason": "用于拉取研学路线、景点百科与同步行程手账",
+      "when": "inuse",
+      "scene": "打开发现页或刷新栏目时"
+    }
+  ],
+  "harmonyos": { "features": [] },
+  "store": {
+    "category": "教育",
+    "legalOperator": "魏文波",
+    "oneLiner": "自驾游学 — 面向亲子家庭，把自驾沿途变成可学可记的研学课堂",
+    "fullDescription": "自驾游学是一款面向亲子家庭的自驾游智慧学习助手。按孩子年龄与研学主题推荐路线，把沿途景点写成三分龄知识卡片，并配趣味问答。家长可规划每日行程、查看季节气候备忘、写下研学手账与打卡。不提供支付、订票、导航与生成式对话。游客可浏览路线与百科，登录后才能收藏、规划和记录。",
+    "keywords": ["亲子", "自驾", "研学", "百科", "行程", "鸿蒙"],
+    "privacySummary": {
+      "collect": ["可选账号信息", "行程与手账内容", "收藏与打卡"],
+      "purpose": "提供研学路线浏览、行程规划与手账同步",
+      "thirdParties": []
+    },
+    "demoAccount": {
+      "username": "auditor@wenbo.local",
+      "passwordNote": "仅写入 store/demo-account.md"
+    },
+    "screenshotPlan": [
+      { "page": "home", "caption": "车轮课堂 Hero 与智慧路线" },
+      { "page": "route", "caption": "路线详情与途经点" },
+      { "page": "spot", "caption": "分龄知识卡片" },
+      { "page": "plan", "caption": "行程时间轴" },
+      { "page": "mine", "caption": "设置与隐私" }
+    ],
+    "incentiveHooks": ["原生详情闭环", "分龄百科", "本机可规划"]
+  },
+  "access": {
+    "mode": "open_optional",
+    "features": { "register": true, "guestBrowse": true, "guestWrite": false },
+    "gateActions": ["favorite_route", "create_itinerary", "write_journal", "spot_checkin"],
+    "onPrivacyRefuse": "browse_basic",
+    "loginProviders": ["password"]
+  },
+  "admin": {
+    "featureModules": [
+      "overview",
+      "appUsers",
+      "srRoutes",
+      "srSpots",
+      "srQuizzes",
+      "srWeather",
+      "srItineraries",
+      "srJournals",
+      "srCheckins",
+      "srFavorites",
+      "messages",
+      "kpis",
+      "ai"
+    ]
+  },
+  "brand": {
+    "primary": "#2D8F5C",
+    "primaryDeep": "#143D28",
+    "deep": "#143D28",
+    "accent": "#F5A623",
+    "tone": "soft-editorial",
+    "stylePack": "soft-editorial",
+    "workbenchId": "catalog-tool",
+    "layoutVariant": "A",
+    "productVisualType": "content-commerce",
+    "visualDirection": {
+      "archetype": "family-road-classroom",
+      "density": "airy",
+      "material": "forest-paper",
+      "imagery": "road-nature-heritage-not-theme-park",
+      "accent": "forest-green-warm-sun",
+      "primaryJob": "3 秒内看见车轮上的课堂并点进一条研学路线",
+      "notes": "森林绿+暖阳橙；公路与自然人文摄影；禁止夏野漫行山脊太阳、禁止工厂六件套"
+    },
+    "logo": {
+      "concept": "方向盘圆环内嵌翻开书页，点缀暖阳小圆，呼应「自」与车轮上的课堂",
+      "style": "flat-premium",
+      "generator": "render_logo.mjs",
+      "glyphStrategy": "semantic-fusion",
+      "brandAnchor": "自",
+      "customLock": true,
+      "renderScript": "store/logo/render_logo.mjs",
+      "foregroundFile": "store/logo/foreground.png",
+      "backgroundFile": "store/logo/background.png",
+      "previewFile": "store/logo/preview-1024.png",
+      "agcFile": "store/logo/agc-216.png",
+      "symbolFile": "store/logo/symbol.svg",
+      "horizontalFile": "store/logo/logo-horizontal.svg"
+    },
+    "visualAssets": [
+      { "key": "hero_road", "role": "hero", "file": "app/entry/src/main/resources/base/media/hero_road.png" },
+      { "key": "route_moganshan", "role": "cover", "file": "app/entry/src/main/resources/base/media/route_moganshan.png" },
+      { "key": "route_tunxi", "role": "cover", "file": "app/entry/src/main/resources/base/media/route_tunxi.png" },
+      { "key": "route_dishui", "role": "cover", "file": "app/entry/src/main/resources/base/media/route_dishui.png" },
+      { "key": "route_jingdezhen", "role": "cover", "file": "app/entry/src/main/resources/base/media/route_jingdezhen.png" },
+      { "key": "route_qinghaihu", "role": "cover", "file": "app/entry/src/main/resources/base/media/route_qinghaihu.png" },
+      { "key": "route_xian", "role": "cover", "file": "app/entry/src/main/resources/base/media/route_xian.png" },
+      { "key": "route_gulangyu", "role": "cover", "file": "app/entry/src/main/resources/base/media/route_gulangyu.png" },
+      { "key": "route_changbai", "role": "cover", "file": "app/entry/src/main/resources/base/media/route_changbai.png" }
+    ]
+  }
+}

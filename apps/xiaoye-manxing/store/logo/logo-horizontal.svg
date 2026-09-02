@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 160" role="img" aria-label="�+L">
+  <rect x="8" y="16" width="128" height="128" rx="28" fill="#24352B"/>
+  <circle cx="94" cy="54" r="12" fill="#E07A3D"/>
+  <path d="M24 120 L52 78 L70 96 L88 68 L120 120 Z" fill="#F6F1E8"/>
+  <path d="M36 126 C50 120 58 130 70 124 C82 118 92 128 108 122" fill="none" stroke="#A8B5A0" stroke-width="5" stroke-linecap="round"/>
+  <text x="160" y="78" font-family="PingFang SC, Noto Sans SC, sans-serif" font-size="42" font-weight="600" fill="#24352B">�+L</text>
+  <text x="160" y="114" font-family="PingFang SC, Noto Sans SC, sans-serif" font-size="18" fill="#6B736E">
+�vL�U�</text>
+</svg>

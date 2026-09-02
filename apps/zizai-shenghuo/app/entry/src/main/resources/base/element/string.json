@@ -1,0 +1,7 @@
+{
+  "string": [
+    { "name": "module_desc", "value": "自在生活 — 智慧生活助理" },
+    { "name": "EntryAbility_desc", "value": "每日生活智慧、情绪记录与习惯节奏" },
+    { "name": "EntryAbility_label", "value": "自在生活" }
+  ]
+}

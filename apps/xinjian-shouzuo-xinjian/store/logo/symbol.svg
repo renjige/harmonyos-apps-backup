@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="K\�:">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FAF7F2"/>
+      <stop offset="100%" stop-color="#F3EBE3"/>
+    </linearGradient>
+    <linearGradient id="heart" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#D4A5A5"/>
+      <stop offset="100%" stop-color="#B88989"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="112" fill="url(#bg)"/>
+  <path d="M96 148h320c8.8 0 16 7.2 16 16v248c0 8.8-7.2 16-16 16H96c-8.8 0-16-7.2-16-16V164c0-8.8 7.2-16 16-16z" fill="#FFFFFF" stroke="#E8DDD4" stroke-width="6"/>
+  <path d="M96 164l160 108 160-108" fill="none" stroke="#D4A5A5" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M256 292c-18-24-56-26-72 2-14 24 8 52 36 68 18 10 36 10 36 10s18 0 36-10c28-16 50-44 36-68-16-28-54-26-72-2z" fill="url(#heart)"/>
+  <path d="M148 228h72M148 268h112M148 308h88" stroke="#CFC4BA" stroke-width="6" stroke-linecap="round" opacity="0.9"/>
+  <circle cx="372" cy="148" r="34" fill="#8BA888" opacity="0.22"/>
+  <path d="M356 148c8-10 22-10 30 0 8 10 0 24-15 34-15-10-23-24-15-34z" fill="#8BA888"/>
+</svg>

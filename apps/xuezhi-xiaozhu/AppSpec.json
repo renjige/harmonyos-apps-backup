@@ -1,0 +1,503 @@
+{
+  "specVersion": "1.0.0",
+  "generatedAt": "2026-08-25T09:07:32.556Z",
+  "requestId": "req_1787648852518",
+  "industryPack": "study-cottage",
+  "identity": {
+    "company": "学知小筑",
+    "companyPinyin": "xuezhi",
+    "appName": "学知小筑",
+    "appPinyin": "xiaozhu",
+    "bundleId": "com.xuezhi.xiaozhu",
+    "version": "1.0.0"
+  },
+  "positioning": {
+    "tagline": "选一个领域，按路径把知识一点点筑进日常。",
+    "coreUsers": [
+      {
+        "role": "学生与职场新人",
+        "ageRange": "16-35",
+        "scenario": "想系统学一点编程、外语或职场表达，但讨厌零散资讯流",
+        "need": "有顺序的学习路径、可收藏的知识卡片、看得见的进度"
+      },
+      {
+        "role": "终身学习者",
+        "ageRange": "25-50",
+        "scenario": "碎片时间想学通识与思维方法",
+        "need": "每日智慧、深度卡片、轻量问答参考"
+      }
+    ],
+    "painPoints": [
+      "学习内容散乱，没有下一步该学什么",
+      "收藏很多却看不到自己走了多远",
+      "遇到疑问只能搜到碎片信息"
+    ],
+    "differentiation": "选一个领域，按路径把知识一点点筑进日常。"
+  },
+  "modules": {
+    "pages": [
+      {
+        "id": "home",
+        "title": "首页",
+        "route": "pages/HomePage",
+        "features": [
+          "当前路径",
+          "今日卡片",
+          "今日智慧",
+          "学习匹配"
+        ],
+        "tab": true
+      },
+      {
+        "id": "library",
+        "title": "知识库",
+        "route": "pages/LibraryPage",
+        "features": [
+          "搜索",
+          "领域筛选",
+          "知识卡片",
+          "收藏"
+        ],
+        "tab": true
+      },
+      {
+        "id": "progress",
+        "title": "进度",
+        "route": "pages/ProgressPage",
+        "features": [
+          "环形进度",
+          "学习时长",
+          "成就徽章"
+        ],
+        "tab": true
+      },
+      {
+        "id": "mine",
+        "title": "我的",
+        "route": "pages/MinePage",
+        "features": [
+          "偏好",
+          "消息",
+          "设置与隐私"
+        ],
+        "tab": true
+      }
+    ],
+    "coreFlows": [
+      {
+        "name": "路径学习",
+        "steps": [
+          "选择领域",
+          "进入路径",
+          "阅读课时",
+          "标记完成",
+          "进度刷新"
+        ]
+      },
+      {
+        "name": "卡片收藏",
+        "steps": [
+          "浏览卡片",
+          "进入详情",
+          "收藏",
+          "知识库回顾"
+        ]
+      },
+      {
+        "name": "智慧问答",
+        "steps": [
+          "输入疑问",
+          "词条匹配",
+          "仅供参考解答",
+          "关联路径"
+        ]
+      }
+    ]
+  },
+  "entities": [
+    {
+      "name": "Path",
+      "table": "paths",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "domain",
+          "type": "string"
+        },
+        {
+          "name": "days",
+          "type": "number"
+        },
+        {
+          "name": "coverKey",
+          "type": "string"
+        },
+        {
+          "name": "description",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "Lesson",
+      "table": "lessons",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "pathId",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "body",
+          "type": "string"
+        },
+        {
+          "name": "minutes",
+          "type": "number"
+        },
+        {
+          "name": "sortOrder",
+          "type": "number"
+        }
+      ]
+    },
+    {
+      "name": "Card",
+      "table": "cards",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "summary",
+          "type": "string"
+        },
+        {
+          "name": "body",
+          "type": "string"
+        },
+        {
+          "name": "coverKey",
+          "type": "string"
+        },
+        {
+          "name": "category",
+          "type": "string"
+        }
+      ]
+    }
+  ],
+  "apis": [
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/study-cottage/domains",
+      "summary": "学习领域",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/study-cottage/paths",
+      "summary": "学习路径",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/study-cottage/paths/:id",
+      "summary": "路径详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/study-cottage/lessons",
+      "summary": "课时列表",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/study-cottage/lessons/:id",
+      "summary": "课时详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/study-cottage/cards",
+      "summary": "知识卡片",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/study-cottage/cards/:id",
+      "summary": "卡片详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/study-cottage/daily",
+      "summary": "今日智慧",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/study-cottage/qa",
+      "summary": "问答词条",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/study-cottage/badges",
+      "summary": "徽章目录",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/study-cottage/progress",
+      "summary": "我的进度",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/biz/study-cottage/progress",
+      "summary": "标记课时完成",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/study-cottage/favorites",
+      "summary": "我的收藏",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/biz/study-cottage/favorites",
+      "summary": "收藏卡片",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/messages",
+      "summary": "消息",
+      "auth": false,
+      "module": "messages"
+    }
+  ],
+  "ai": {
+    "capabilities": [],
+    "quickCommands": [],
+    "systemPrompt": "你是「学知小筑」旗下应用「学知小筑」的学习陪伴助手。产品定位：选一个领域，按路径把知识一点点筑进日常。主职责：解释路径推进、课时完成、卡片收藏与进度徽章。不提供生成式对话，不承诺考试提分或学历。",
+    "mode": "none",
+    "llmEnabled": false
+  },
+  "permissions": [
+    {
+      "name": "ohos.permission.INTERNET",
+      "reason": "拉取学习路径、知识卡片与进度同步",
+      "when": "inuse",
+      "scene": "打开应用浏览栏目或登录同步进度时"
+    }
+  ],
+  "harmonyos": {
+    "features": []
+  },
+  "store": {
+    "category": "教育",
+    "legalOperator": "魏文波",
+    "oneLiner": "学知小筑 — 选一个领域，按路径把知识一点点筑进日常。",
+    "fullDescription": "学知小筑是一款完全免费的学习工具。选择编程、外语、职场或通识领域后，按有序路径推进课时；每日更新知识卡片与今日智慧；可视化学习进度与成就徽章。智慧问答仅提供词条匹配参考，须自行核实。不含支付、广告与生成式对话。",
+    "keywords": [
+      "学习",
+      "路径",
+      "知识卡片",
+      "进度",
+      "教育",
+      "鸿蒙"
+    ],
+    "privacySummary": {
+      "collect": [
+        "可选账号信息",
+        "学习偏好",
+        "课时完成记录",
+        "收藏",
+        "学习时长"
+      ],
+      "purpose": "提供学习路径、知识卡片、进度统计与账号同步",
+      "thirdParties": []
+    },
+    "demoAccount": {
+      "username": "auditor@xuezhi.local",
+      "passwordNote": "仅写入 store/demo-account.md"
+    },
+    "screenshotPlan": [
+      {
+        "page": "home",
+        "caption": "学习广场与当前路径"
+      },
+      {
+        "page": "library",
+        "caption": "知识库卡片"
+      },
+      {
+        "page": "path",
+        "caption": "路径详情与课时"
+      },
+      {
+        "page": "progress",
+        "caption": "进度与徽章"
+      },
+      {
+        "page": "qa",
+        "caption": "智慧问答仅供参考"
+      }
+    ],
+    "incentiveHooks": [
+      "FormExtensionAbility",
+      "元服务快捷入口"
+    ]
+  },
+  "access": {
+    "mode": "open_optional",
+    "features": {
+      "register": true,
+      "guestBrowse": true,
+      "guestWrite": false
+    },
+    "gateActions": [
+      "favorite_card",
+      "complete_lesson",
+      "log_study_minutes",
+      "sync_progress"
+    ],
+    "onPrivacyRefuse": "browse_basic",
+    "loginProviders": [
+      "password"
+    ]
+  },
+  "admin": {
+    "featureModules": [
+      "overview",
+      "appUsers",
+      "xzDomains",
+      "xzPaths",
+      "xzLessons",
+      "xzCards",
+      "xzDaily",
+      "xzQa",
+      "xzBadges",
+      "messages",
+      "kpis",
+      "ai"
+    ]
+  },
+  "brand": {
+    "primary": "#2B5FD7",
+    "primaryDeep": "#1E46B3",
+    "deep": "#12203A",
+    "accent": "#D4A53A",
+    "tone": "soft-editorial",
+    "stylePack": "soft-editorial",
+    "workbenchId": "catalog-tool",
+    "layoutVariant": "A",
+    "productVisualType": "content-commerce",
+    "visualDirection": {
+      "archetype": "warm-study-cottage",
+      "density": "airy",
+      "material": "warm-paper",
+      "imagery": "window-desk-open-notebook",
+      "accent": "wisdom-blue-gold",
+      "primaryJob": "3 秒内看到当前学习路径并继续今日课时",
+      "notes": "智慧蓝#2B5FD7+暖金#D4A53A；禁止 AI 字样、禁止三 KPI 宫格、禁止闯关罗盘"
+    },
+    "logo": {
+      "brandAnchor": "学",
+      "glyphStrategy": "semantic-fusion",
+      "customLock": true,
+      "generator": "custom",
+      "renderScript": "store/logo/render_logo.mjs",
+      "concept": "翻开书页 + 小屋屋顶，深底白标暖金窗格",
+      "foregroundFile": "store/logo/foreground.png",
+      "backgroundFile": "store/logo/background.png",
+      "previewFile": "store/logo/preview-1024.png",
+      "agcFile": "store/logo/agc-216.png",
+      "symbolFile": "store/logo/symbol.svg"
+    },
+    "visualAssets": [
+      { "id": "hero_plaza", "file": "hero_plaza.png", "usage": "home-hero" },
+      { "id": "banner_path", "file": "banner_path.png", "usage": "path-banner" },
+      { "id": "banner_daily", "file": "banner_daily.png", "usage": "daily-banner" },
+      { "id": "cover_code", "file": "cover_code.png", "usage": "domain-cover" },
+      { "id": "cover_lang", "file": "cover_lang.png", "usage": "domain-cover" },
+      { "id": "cover_career", "file": "cover_career.png", "usage": "domain-cover" },
+      { "id": "cover_literacy", "file": "cover_literacy.png", "usage": "domain-cover" },
+      { "id": "cover_thinking", "file": "cover_thinking.png", "usage": "domain-cover" },
+      { "id": "path_frontend", "file": "path_frontend.png", "usage": "path-cover" },
+      { "id": "path_english", "file": "path_english.png", "usage": "path-cover" },
+      { "id": "path_career", "file": "path_career.png", "usage": "path-cover" },
+      { "id": "path_literacy", "file": "path_literacy.png", "usage": "path-cover" },
+      { "id": "path_thinking", "file": "path_thinking.png", "usage": "path-cover" },
+      { "id": "card_variable", "file": "card_variable.png", "usage": "card-cover" },
+      { "id": "card_selector", "file": "card_selector.png", "usage": "card-cover" },
+      { "id": "card_chunk", "file": "card_chunk.png", "usage": "card-cover" },
+      { "id": "card_conclusion", "file": "card_conclusion.png", "usage": "card-cover" },
+      { "id": "card_percent", "file": "card_percent.png", "usage": "card-cover" },
+      { "id": "card_counter", "file": "card_counter.png", "usage": "card-cover" },
+      { "id": "card_button", "file": "card_button.png", "usage": "card-cover" },
+      { "id": "card_pathmind", "file": "card_pathmind.png", "usage": "card-cover" },
+      { "id": "daily_one_change", "file": "daily_one_change.png", "usage": "daily-cover" },
+      { "id": "daily_focus", "file": "daily_focus.png", "usage": "daily-cover" },
+      { "id": "daily_chunk", "file": "daily_chunk.png", "usage": "daily-cover" },
+      { "id": "daily_number", "file": "daily_number.png", "usage": "daily-cover" },
+      { "id": "daily_ask", "file": "daily_ask.png", "usage": "daily-cover" },
+      { "id": "lesson_html", "file": "lesson_html.png", "usage": "lesson-cover" },
+      { "id": "lesson_lang", "file": "lesson_lang.png", "usage": "lesson-cover" },
+      { "id": "lesson_career", "file": "lesson_career.png", "usage": "lesson-cover" },
+      { "id": "lesson_literacy", "file": "lesson_literacy.png", "usage": "lesson-cover" },
+      { "id": "lesson_thinking", "file": "lesson_thinking.png", "usage": "lesson-cover" },
+      { "id": "qa_ambient", "file": "qa_ambient.png", "usage": "qa-hero" },
+      { "id": "badge_brick", "file": "badge_brick.png", "usage": "badge" },
+      { "id": "badge_week", "file": "badge_week.png", "usage": "badge" },
+      { "id": "badge_path", "file": "badge_path.png", "usage": "badge" },
+      { "id": "badge_collect", "file": "badge_collect.png", "usage": "badge" },
+      { "id": "badge_ask", "file": "badge_ask.png", "usage": "badge" },
+      { "id": "badge_domain", "file": "badge_domain.png", "usage": "badge" }
+    ]
+  }
+}

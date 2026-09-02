@@ -1,0 +1,8 @@
+{
+  "string": [
+    { "name": "module_desc", "value": "筑科材料验收主模块" },
+    { "name": "EntryAbility_desc", "value": "材料进场验收记录入口" },
+    { "name": "EntryAbility_label", "value": "筑科材料验收" },
+    { "name": "internet_reason", "value": "用于可选账号登录与同步验收记录" }
+  ]
+}

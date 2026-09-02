@@ -1,0 +1,7 @@
+{
+  "string": [
+    { "name": "module_desc", "value": "珍藏空间 — 个人珍藏档案管理" },
+    { "name": "EntryAbility_desc", "value": "珍藏空间应用入口" },
+    { "name": "EntryAbility_label", "value": "珍藏空间" }
+  ]
+}

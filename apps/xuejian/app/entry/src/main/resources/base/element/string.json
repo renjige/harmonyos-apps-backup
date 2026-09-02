@@ -1,0 +1,8 @@
+{
+  "string": [
+    { "name": "module_desc", "value": "学见主模块" },
+    { "name": "EntryAbility_desc", "value": "智慧学习助手入口" },
+    { "name": "EntryAbility_label", "value": "学见" },
+    { "name": "internet_reason", "value": "用于拉取专注方法、学习锦囊与可选账号服务" }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "string": [
+    { "name": "module_desc", "value": "小岛慢记主模块" },
+    { "name": "EntryAbility_desc", "value": "个人生活档案入口" },
+    { "name": "EntryAbility_label", "value": "小岛慢记" },
+    { "name": "app_name", "value": "小岛慢记" }
+  ]
+}

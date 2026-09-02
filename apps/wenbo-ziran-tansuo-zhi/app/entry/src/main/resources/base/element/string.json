@@ -1,0 +1,8 @@
+{
+  "string": [
+    { "name": "module_desc", "value": "自然探索志 — 发现自然、记录足迹、浏览百科" },
+    { "name": "EntryAbility_desc", "value": "自然与户外探索内容平台" },
+    { "name": "EntryAbility_label", "value": "自然探索志" },
+    { "name": "internet_reason", "value": "用于拉取探索点、自然百科与账号收藏同步" }
+  ]
+}

@@ -1,0 +1,406 @@
+{
+  "specVersion": "1.0.0",
+  "generatedAt": "2026-08-19T03:27:00.359Z",
+  "requestId": "req_1787110020322",
+  "industryPack": "handcraft-journal",
+  "identity": {
+    "company": "心笺生活美学",
+    "companyPinyin": "xinjian",
+    "appName": "手作心笺",
+    "appPinyin": "shouzuo-xinjian",
+    "bundleId": "com.xinjian.shouzuoxinjian",
+    "version": "1.1.0"
+  },
+  "positioning": {
+    "tagline": "手作记录与生活美学工具，温暖记录每一次创作灵感",
+    "coreUsers": [
+      {
+        "role": "手作爱好者",
+        "ageRange": "22-40",
+        "scenario": "居家创作、周末手作、灵感记录",
+        "need": "记录作品、浏览教程、整理灵感"
+      },
+      {
+        "role": "生活美学追求者",
+        "scenario": "通勤浏览、睡前阅读",
+        "need": "发现优质手作内容、收藏参考"
+      }
+    ],
+    "painPoints": [
+      "创作过程难系统记录",
+      "灵感碎片分散难整理",
+      "缺少系统化的创作课堂与材料管理"
+    ],
+    "differentiation": "手作记录与生活美学工具，创作课堂+材料管家+灵感笔记"
+  },
+  "modules": {
+    "pages": [
+      {
+        "id": "home",
+        "title": "首页",
+        "route": "pages/Home",
+        "features": [
+          "推荐作品",
+          "手作分类",
+          "热门内容",
+          "消息入口"
+        ],
+        "tab": true
+      },
+      {
+        "id": "create",
+        "title": "创作",
+        "route": "pages/CreatePage",
+        "features": [
+          "创建作品",
+          "材料步骤",
+          "创作心得",
+          "智慧整理"
+        ],
+        "tab": true
+      },
+      {
+        "id": "inspiration",
+        "title": "灵感",
+        "route": "pages/InspirationPage",
+        "features": [
+          "灵感记录",
+          "标签",
+          "分类管理"
+        ],
+        "tab": true
+      },
+      {
+        "id": "workshop",
+        "title": "工坊",
+        "route": "pages/WorkshopPage",
+        "features": [
+          "制作计时",
+          "尺寸换算",
+          "材料成本"
+        ],
+        "tab": true
+      },
+      {
+        "id": "guides",
+        "title": "创作课堂",
+        "route": "pages/HomePage",
+        "features": [
+          "教程浏览",
+          "步骤跟做"
+        ],
+        "tab": false
+      },
+      {
+        "id": "mine",
+        "title": "我的",
+        "route": "pages/Mine",
+        "features": [
+          "我的作品",
+          "收藏",
+          "成就等级",
+          "设置与隐私"
+        ],
+        "tab": true
+      },
+      {
+        "id": "messages",
+        "title": "消息",
+        "route": "pages/Messages",
+        "features": [
+          "创作提醒",
+          "教程更新"
+        ],
+        "tab": false
+      }
+    ],
+    "coreFlows": [
+      {
+        "name": "创作闭环",
+        "steps": [
+          "新建作品",
+          "填写材料步骤心得",
+          "发布",
+          "个人收藏清单"
+        ]
+      },
+      {
+        "name": "教程闭环",
+        "steps": [
+          "浏览创作课堂",
+          "查看步骤",
+          "跳转创作页实践"
+        ]
+      },
+      {
+        "name": "灵感闭环",
+        "steps": [
+          "记录灵感",
+          "添加标签",
+          "分类检索"
+        ]
+      }
+    ]
+  },
+  "entities": [
+    {
+      "name": "HandcraftWork",
+      "table": "handcraft_works",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true,
+          "unique": true
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "category",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "coverKey",
+          "type": "string"
+        },
+        {
+          "name": "materials",
+          "type": "string"
+        },
+        {
+          "name": "steps",
+          "type": "string"
+        },
+        {
+          "name": "notes",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "HandcraftInspiration",
+      "table": "handcraft_inspirations",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true,
+          "unique": true
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "content",
+          "type": "string"
+        },
+        {
+          "name": "tags",
+          "type": "string"
+        }
+      ]
+    }
+  ],
+  "apis": [
+    {
+      "method": "POST",
+      "path": "/api/v1/auth/login",
+      "summary": "登录",
+      "auth": false,
+      "module": "auth"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/auth/register",
+      "summary": "注册",
+      "auth": false,
+      "module": "auth"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/handcraft/works",
+      "summary": "手作作品",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/handcraft/categories",
+      "summary": "手作分类",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/biz/handcraft/works",
+      "summary": "创建作品",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/handcraft/inspirations",
+      "summary": "灵感笔记",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/biz/handcraft/inspirations",
+      "summary": "创建灵感",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/biz/handcraft/works/:id/favorite",
+      "summary": "收藏",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/messages",
+      "summary": "消息",
+      "auth": true,
+      "module": "messages"
+    }
+  ],
+  "ai": {
+    "capabilities": [],
+    "quickCommands": [],
+    "systemPrompt": "你是「心笺生活美学」旗下应用「手作心笺」的生活美学助手。产品定位：手作记录与生活美学工具。主职责：帮助用户整理创作记录、灵感笔记与材料清单；不推荐未实现的功能。禁止 AI 对话与生成式内容。",
+    "mode": "none",
+    "llmEnabled": false
+  },
+  "permissions": [
+    {
+      "name": "ohos.permission.INTERNET",
+      "reason": "用于同步手作作品、灵感与创作数据",
+      "when": "inuse",
+      "scene": "浏览内容与提交创作记录"
+    }
+  ],
+  "harmonyos": {
+    "features": [
+      {
+        "type": "formCard",
+        "scene": "今日灵感与创作提醒卡片"
+      }
+    ]
+  },
+  "store": {
+    "category": "生活",
+    "legalOperator": "承德锐泓科技信息有限公司",
+    "oneLiner": "手作心笺 — 手作记录与生活美学工具，温暖记录每一次创作灵感",
+    "fullDescription": "手作心笺由心笺生活美学出品，面向热爱手作与生活美学的用户，提供个人创作记录、灵感笔记、创作课堂、材料管家、制作计时与成本换算。\n\n【课堂示例】\n纸艺、编织、陶艺、刺绣等机构教程示例，点击查看材料与步骤。\n\n【创作课堂】\n六类手作入门教程，跟做步骤清晰，可一键跳转创作页实践，并可在工坊启动制作计时。\n\n【创作中心】\n记录作品名称、材料、制作步骤与创作心得，支持材料管家与搜索；作品仅本人可见，不公开给其他用户。\n\n【灵感笔记】\n记录仅自己可见的灵感碎片。\n\n【工坊工具】\n制作计时、尺寸换算、跟做步骤清单、材料成本记账，数据保存在本机。\n\n【我的】\n管理我的作品与收藏清单，查看创作日历、导出创作摘要与成就等级。\n\n游客可浏览官方课堂内容；创作与收藏需登录。无支付、无会员、无虚拟商品。不提供社区、论坛或用户间公开评论。",
+    "keywords": [
+      "手作",
+      "生活美学",
+      "创作",
+      "灵感",
+      "教程",
+      "鸿蒙",
+      "记录"
+    ],
+    "privacySummary": {
+      "collect": [
+        "账号信息",
+        "作品与灵感内容",
+        "个人收藏清单"
+      ],
+      "purpose": "提供手作记录、灵感管理与创作工具服务",
+      "thirdParties": []
+    },
+    "demoAccount": {
+      "username": "auditor@xinjian.local",
+      "passwordNote": "仅写入 store/demo-account.md，禁止打进客户端"
+    },
+    "screenshotPlan": [
+      {
+        "page": "home",
+        "caption": "创作课堂与推荐"
+      },
+      {
+        "page": "create",
+        "caption": "创作与材料管家"
+      },
+      {
+        "page": "inspiration",
+        "caption": "灵感笔记"
+      },
+      {
+        "page": "workshop",
+        "caption": "制作计时与成本换算"
+      },
+      {
+        "page": "mine",
+        "caption": "创作日历与我的"
+      }
+    ],
+    "incentiveHooks": [
+      "服务卡片今日灵感",
+      "创作记录",
+      "创作课堂"
+    ]
+  },
+  "access": {
+    "mode": "open_optional",
+    "features": {
+      "register": true,
+      "guestBrowse": true,
+      "guestWrite": false
+    },
+    "gateActions": [
+      "create_work",
+      "create_inspiration",
+      "favorite",
+      "sync"
+    ],
+    "onPrivacyRefuse": "browse_basic",
+    "loginProviders": [
+      "password"
+    ]
+  },
+  "brand": {
+    "primary": "#D4A5A5",
+    "primaryDeep": "#B88989",
+    "deep": "#3D3A36",
+    "accent": "#8BA888",
+    "tone": "warm-editorial",
+    "stylePack": "soft-editorial",
+    "workbenchId": "creator-journal",
+    "layoutVariant": "B",
+    "visualDirection": {
+      "archetype": "handcraft-editorial",
+      "density": "airy",
+      "material": "paper-texture",
+      "imagery": "handcraft-natural",
+      "accent": "morandi-pink",
+      "primaryJob": "浏览推荐作品并记录一次创作",
+      "notes": "奶油白底 + 莫兰迪粉 + 自然绿；大圆角卡片；禁止 AI 与交易元素"
+    },
+    "productVisualType": "lifestyle-tool",
+    "logo": {
+      "concept": "信封 + 心形封缄，奶油白莫兰迪粉手作心笺品牌标",
+      "style": "flat-premium",
+      "generator": "agent-render",
+      "glyphStrategy": "semantic-fusion",
+      "brandAnchor": "笺",
+      "customLock": true,
+      "renderScript": "store/logo/render_logo.py",
+      "foregroundFile": "store/logo/foreground.png",
+      "backgroundFile": "store/logo/background.png",
+      "previewFile": "store/logo/preview-1024.png",
+      "agcFile": "store/logo/agc-216.png",
+      "symbolFile": "store/logo/symbol.svg",
+      "horizontalFile": "store/logo/logo-horizontal.svg"
+    }
+  }
+}

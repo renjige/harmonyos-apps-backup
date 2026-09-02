@@ -1,0 +1,551 @@
+{
+  "specVersion": "1.0.0",
+  "generatedAt": "2026-08-21T08:13:26.850Z",
+  "requestId": "req_1787300006816",
+  "industryPack": "reno-assist",
+  "identity": {
+    "company": "筑科",
+    "companyPinyin": "zhuke",
+    "appName": "筑科装修助手",
+    "appPinyin": "zhuangxiu-zhushou",
+    "bundleId": "com.zhuke.zhuangxiuzhushou",
+    "version": "1.0.1"
+  },
+  "positioning": {
+    "tagline": "装修有章法，施工更安心：记录项目、阶段、事项、材料、现场、费用与时间线",
+    "coreUsers": [
+      {
+        "role": "家庭装修业主",
+        "ageRange": "28-45",
+        "scenario": "新房或旧房装修过程中记录进度与材料",
+        "need": "打开就知道做到哪一步、今天要确认什么"
+      },
+      {
+        "role": "轻量施工记录者",
+        "ageRange": "25-50",
+        "scenario": "现场拍照记录问题与进场材料",
+        "need": "快速记一笔，事后能翻到"
+      }
+    ],
+    "painPoints": [
+      "装修事项太多容易忘记",
+      "材料规格容易记错",
+      "现场问题没有统一记录",
+      "完成后资料零散不易回顾"
+    ],
+    "differentiation": "装修有章法，施工更安心，记录项目、阶段、事项、材料、现场与验收"
+  },
+  "modules": {
+    "pages": [
+      {
+        "id": "home",
+        "title": "首页",
+        "route": "pages/HomePage",
+        "features": [
+          "当前项目驾驶舱",
+          "今日事项",
+          "六阶段进度",
+          "材料提醒",
+          "现场记录",
+          "四快捷"
+        ],
+        "tab": true
+      },
+      {
+        "id": "projects",
+        "title": "项目",
+        "route": "pages/ProjectsPage",
+        "features": [
+          "多项目",
+          "创建项目",
+          "阶段详情"
+        ],
+        "tab": true
+      },
+      {
+        "id": "lists",
+        "title": "清单",
+        "route": "pages/ChecklistPage",
+        "features": [
+          "事项三态",
+          "材料",
+          "现场记录",
+          "验收",
+          "智能清单",
+          "计算工具"
+        ],
+        "tab": true
+      },
+      {
+        "id": "mine",
+        "title": "我的",
+        "route": "pages/MinePage",
+        "features": [
+          "我的项目",
+          "提醒设置",
+          "数据管理",
+          "设置与隐私"
+        ],
+        "tab": true
+      }
+    ],
+    "coreFlows": [
+      {
+        "name": "记录装修过程",
+        "steps": [
+          "打开首页",
+          "查看当前进度",
+          "添加事项或现场记录",
+          "勾选完成",
+          "进度更新"
+        ]
+      },
+      {
+        "name": "材料确认",
+        "steps": [
+          "记材料",
+          "填写规格数量房间",
+          "更新待确认/已进场"
+        ]
+      },
+      {
+        "name": "轻量验收",
+        "steps": [
+          "打开验收清单",
+          "逐项通过/待处理/不适用",
+          "查看完成率"
+        ]
+      }
+    ]
+  },
+  "entities": [
+    {
+      "name": "RenoProject",
+      "table": "reno-assist-projects",
+      "fields": [
+        "id",
+        "title",
+        "houseType",
+        "startDate",
+        "stage",
+        "progress",
+        "remark",
+        "userId"
+      ]
+    },
+    {
+      "name": "RenoTask",
+      "table": "reno-assist-tasks",
+      "fields": [
+        "id",
+        "title",
+        "stage",
+        "status",
+        "remindAt",
+        "remark",
+        "projectId",
+        "userId"
+      ]
+    },
+    {
+      "name": "RenoMaterial",
+      "table": "reno-assist-materials",
+      "fields": [
+        "id",
+        "title",
+        "brand",
+        "spec",
+        "qty",
+        "room",
+        "status",
+        "projectId"
+      ]
+    },
+    {
+      "name": "RenoRecord",
+      "table": "reno-assist-records",
+      "fields": [
+        "id",
+        "title",
+        "body",
+        "kind",
+        "date",
+        "stage",
+        "photoUri",
+        "projectId"
+      ]
+    },
+    {
+      "name": "RenoStage",
+      "table": "reno-assist-stages",
+      "fields": [
+        "id",
+        "title",
+        "summary",
+        "body",
+        "coverKey"
+      ]
+    },
+    {
+      "name": "RenoSuggestion",
+      "table": "reno-assist-suggestions",
+      "fields": [
+        "id",
+        "title",
+        "summary",
+        "body",
+        "category",
+        "coverKey"
+      ]
+    },
+    {
+      "name": "RenoAcceptItem",
+      "table": "reno-assist-accept-items",
+      "fields": [
+        "id",
+        "title",
+        "summary",
+        "body",
+        "category",
+        "coverKey"
+      ]
+    },
+    {
+      "name": "RenoGuide",
+      "table": "reno-assist-guides",
+      "fields": [
+        "id",
+        "title",
+        "summary",
+        "body",
+        "coverKey"
+      ]
+    }
+  ],
+  "apis": [
+    {
+      "method": "POST",
+      "path": "/api/v1/auth/login",
+      "summary": "登录",
+      "auth": false,
+      "module": "auth"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/auth/register",
+      "summary": "注册",
+      "auth": false,
+      "module": "auth"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/reno-assist/stages",
+      "summary": "装修阶段",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/reno-assist/stages/:id",
+      "summary": "阶段详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/reno-assist/suggestions",
+      "summary": "智能清单模板",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/reno-assist/suggestions/:id",
+      "summary": "清单模板详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/reno-assist/accept-items",
+      "summary": "验收模板",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/reno-assist/accept-items/:id",
+      "summary": "验收模板详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/reno-assist/guides",
+      "summary": "计算说明",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/reno-assist/guides/:id",
+      "summary": "计算说明详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/reno-assist/projects",
+      "summary": "装修项目",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/biz/reno-assist/projects",
+      "summary": "创建项目",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/reno-assist/tasks",
+      "summary": "事项",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/biz/reno-assist/tasks",
+      "summary": "创建事项",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/reno-assist/materials",
+      "summary": "材料",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/biz/reno-assist/materials",
+      "summary": "创建材料",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/reno-assist/records",
+      "summary": "现场记录",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/biz/reno-assist/records",
+      "summary": "创建记录",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/reno-assist/inspections",
+      "summary": "验收结果",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/biz/reno-assist/inspections",
+      "summary": "更新验收",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/messages",
+      "summary": "装修提醒",
+      "auth": false,
+      "module": "messages"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/privacy/account",
+      "summary": "注销账号",
+      "auth": true,
+      "module": "privacy"
+    }
+  ],
+  "permissions": [
+    {
+      "name": "ohos.permission.INTERNET",
+      "reason": "用于在用户登录后同步主动创建的装修项目与记录",
+      "when": "inuse",
+      "scene": "登录后同步装修记录"
+    },
+    {
+      "name": "ohos.permission.CAMERA",
+      "reason": "用于您主动拍摄装修现场照片并保存到记录中",
+      "when": "inuse",
+      "scene": "新增现场记录时拍摄"
+    }
+  ],
+  "harmonyos": {
+    "features": [
+      {
+        "type": "systemNotification",
+        "scene": "用户主动设置的事项提醒"
+      }
+    ]
+  },
+  "store": {
+    "category": "实用工具",
+    "oneLiner": "筑科装修助手 — 装修有章法，施工更安心，记录项目、阶段、事项、材料、现场与验收",
+    "fullDescription": "筑科装修助手是一款面向普通家庭装修用户的轻量过程记录工具。支持记录装修项目、六阶段进度、待办事项、材料规格、现场记录与轻量验收清单，并提供面积、瓷砖、涂料等估算小工具和按阶段整理的智能装修清单。游客可在本机使用；登录后可同步个人数据。本应用不提供支付、会员、商城、广告、聊天或生成式对话，验收结果仅供个人记录参考，不构成专业鉴定。",
+    "keywords": [
+      "装修记录",
+      "装修进度",
+      "材料清单",
+      "验收清单",
+      "装修助手"
+    ],
+    "privacySummary": {
+      "collect": [
+        "注册账号、姓名和联系电话",
+        "用户主动创建的装修项目、事项、材料与现场记录",
+        "用户主动添加的现场照片",
+        "登录会话状态"
+      ],
+      "purpose": "提供账号登录、跨设备同步和个人装修过程记录",
+      "thirdParties": []
+    },
+    "demoAccount": {
+      "username": "auditor@zhuke.local",
+      "passwordNote": "仅写入 store/demo-account.md，禁止打进客户端"
+    },
+    "screenshotPlan": [
+      {
+        "page": "home",
+        "caption": "当前装修进度，一眼就清楚"
+      },
+      {
+        "page": "projects",
+        "caption": "多个装修项目分开记录"
+      },
+      {
+        "page": "tasks",
+        "caption": "事项、材料与现场记录"
+      },
+      {
+        "page": "inspect",
+        "caption": "轻量验收清单"
+      },
+      {
+        "page": "calc",
+        "caption": "面积与用量估算"
+      }
+    ],
+    "incentiveHooks": [
+      "用户主动设置的事项提醒"
+    ],
+    "legalOperator": "魏文波"
+  },
+  "access": {
+    "mode": "open_optional",
+    "features": {
+      "register": true,
+      "guestBrowse": true,
+      "guestWrite": true
+    },
+    "gateActions": [
+      "sync_records"
+    ],
+    "onPrivacyRefuse": "browse_basic",
+    "loginProviders": [
+      "password"
+    ]
+  },
+  "admin": {
+    "featureModules": [
+      "overview",
+      "appUsers",
+      "raStages",
+      "raSuggestions",
+      "raAcceptItems",
+      "raGuides",
+      "raProjects",
+      "raTasks",
+      "raMaterials",
+      "raRecords",
+      "raInspections",
+      "messages",
+      "kpis"
+    ]
+  },
+  "ai": {
+    "capabilities": [],
+    "quickCommands": [],
+    "systemPrompt": "你是「筑科」旗下应用「筑科装修助手」的装修记录助手。产品定位：装修有章法，施工更安心。主职责：按当前装修阶段整理建议事项、提醒材料确认、协助填写现场记录与轻量验收清单。禁止扮演商城、鉴定机构、支付或聊天工具。不提供生成式对话作为 C 端功能。"
+  },
+  "brand": {
+    "primary": "#1D4ED8",
+    "accent": "#10B981",
+    "background": "#F6F7F9",
+    "text": "#111827",
+    "primaryDeep": "#1E3A8A",
+    "tone": "engineering-calm",
+    "stylePack": "premium-business",
+    "workbenchId": "timeline-board",
+    "layoutVariant": "B",
+    "visualDirection": "深蓝主色与高级灰背景、大留白卡片、室内施工摄影、大数字进度，专业装修记录工具而非装修公司官网",
+    "productVisualType": "industrial-field",
+    "visualAssets": [
+      { "key": "home_hero", "file": "app/entry/src/main/resources/base/media/home_hero.png" },
+      { "key": "stage_demo", "file": "app/entry/src/main/resources/base/media/stage_demo.png" },
+      { "key": "stage_hydro", "file": "app/entry/src/main/resources/base/media/stage_hydro.png" },
+      { "key": "stage_wood", "file": "app/entry/src/main/resources/base/media/stage_wood.png" },
+      { "key": "stage_paint", "file": "app/entry/src/main/resources/base/media/stage_paint.png" },
+      { "key": "stage_install", "file": "app/entry/src/main/resources/base/media/stage_install.png" },
+      { "key": "stage_accept", "file": "app/entry/src/main/resources/base/media/stage_accept.png" },
+      { "key": "sug_demolish", "file": "app/entry/src/main/resources/base/media/sug_demolish.jpg" },
+      { "key": "sug_masonry", "file": "app/entry/src/main/resources/base/media/sug_masonry.jpg" },
+      { "key": "sug_hydro_layout", "file": "app/entry/src/main/resources/base/media/sug_hydro_layout.jpg" },
+      { "key": "sug_outlet", "file": "app/entry/src/main/resources/base/media/sug_outlet.jpg" },
+      { "key": "sug_pressure", "file": "app/entry/src/main/resources/base/media/sug_pressure.jpg" },
+      { "key": "sug_circuit", "file": "app/entry/src/main/resources/base/media/sug_circuit.jpg" },
+      { "key": "sug_weak", "file": "app/entry/src/main/resources/base/media/sug_weak.jpg" },
+      { "key": "sug_waterproof", "file": "app/entry/src/main/resources/base/media/sug_waterproof.jpg" },
+      { "key": "sug_tile", "file": "app/entry/src/main/resources/base/media/sug_tile.jpg" },
+      { "key": "sug_drain", "file": "app/entry/src/main/resources/base/media/sug_drain.jpg" },
+      { "key": "sug_ceiling", "file": "app/entry/src/main/resources/base/media/sug_ceiling.jpg" },
+      { "key": "sug_putty", "file": "app/entry/src/main/resources/base/media/sug_putty.jpg" },
+      { "key": "sug_primer", "file": "app/entry/src/main/resources/base/media/sug_primer.jpg" },
+      { "key": "sug_paint", "file": "app/entry/src/main/resources/base/media/sug_paint.jpg" },
+      { "key": "sug_wall_look", "file": "app/entry/src/main/resources/base/media/sug_wall_look.jpg" },
+      { "key": "sug_sanitary", "file": "app/entry/src/main/resources/base/media/sug_sanitary.jpg" },
+      { "key": "sug_switch", "file": "app/entry/src/main/resources/base/media/sug_switch.jpg" },
+      { "key": "sug_cabinet", "file": "app/entry/src/main/resources/base/media/sug_cabinet.jpg" },
+      { "key": "sug_accept_hydro", "file": "app/entry/src/main/resources/base/media/sug_accept_hydro.jpg" },
+      { "key": "sug_accept_water", "file": "app/entry/src/main/resources/base/media/sug_accept_water.jpg" },
+      { "key": "sug_accept_wood", "file": "app/entry/src/main/resources/base/media/sug_accept_wood.jpg" },
+      { "key": "sug_accept_paint", "file": "app/entry/src/main/resources/base/media/sug_accept_paint.jpg" }
+    ],
+    "logo": {
+      "concept": "几何屋顶结构 + 小型绿色完成勾，深蓝底白标",
+      "style": "flat-premium",
+      "generator": "custom",
+      "glyphStrategy": "semantic-fusion",
+      "brandAnchor": "筑",
+      "customLock": true,
+      "renderScript": "store/logo/render_logo.mjs",
+      "foregroundFile": "store/logo/foreground.png",
+      "backgroundFile": "store/logo/background.png",
+      "previewFile": "store/logo/preview-1024.png",
+      "agcFile": "store/logo/agc-216.png",
+      "symbolFile": "store/logo/symbol.svg",
+      "horizontalFile": "store/logo/logo-horizontal.svg"
+    }
+  }
+}

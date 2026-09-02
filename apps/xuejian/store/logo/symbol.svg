@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" role="img" aria-label="f�">
+  <rect width="1024" height="1024" fill="#1A2A4A"/>
+  <!-- Open book -->
+  <path fill="#F7F4EE" d="M188 500 L512 412 L512 848 L220 892 C196 898 188 878 188 856 Z"/>
+  <path fill="#F7F4EE" d="M836 500 L512 412 L512 848 L804 892 C828 898 836 878 836 856 Z"/>
+  <rect x="500" y="420" width="24" height="428" fill="#1A2A4A"/>
+  <!-- Light above the book  � -->
+  <circle cx="512" cy="268" r="56" fill="#F5A623"/>
+</svg>

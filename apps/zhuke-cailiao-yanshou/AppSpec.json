@@ -1,0 +1,387 @@
+{
+  "specVersion": "1.0.0",
+  "generatedAt": "2026-08-21T08:13:23.817Z",
+  "requestId": "req_1787300003777",
+  "industryPack": "material-acceptance",
+  "identity": {
+    "company": "筑科建筑工程有限公司",
+    "companyPinyin": "zhuke",
+    "appName": "筑科材料验收",
+    "appPinyin": "cailiao-yanshou",
+    "bundleId": "com.zhuke.cailiaoyanshou",
+    "version": "1.0.0"
+  },
+  "positioning": {
+    "tagline": "面向施工与监理现场的轻量材料进场验收工具，到场即可登记、检查、拍照并留下可追溯记录",
+    "coreUsers": [
+      {
+        "role": "工程施工人员",
+        "ageRange": "22-50",
+        "scenario": "材料到场后在手机上快速登记并拍照留痕",
+        "need": "一分钟内完成验收记录"
+      },
+      {
+        "role": "工程监理",
+        "ageRange": "28-55",
+        "scenario": "核验外观包装数量资料并标记异常",
+        "need": "清晰的检查项与可追溯照片"
+      },
+      {
+        "role": "项目负责人",
+        "ageRange": "30-55",
+        "scenario": "查询历史验收与异常材料",
+        "need": "按状态筛选与轻量统计"
+      }
+    ],
+    "painPoints": [
+      "进场材料靠纸质单据或聊天记录，事后难追溯",
+      "验收检查项不统一，异常材料无法快速筛出",
+      "现场拍照与记录分离，证据链不完整"
+    ],
+    "differentiation": "面向施工与监理现场的轻量材料进场验收工具，到场即可登记、检查、拍照并留下可追溯记录"
+  },
+  "modules": {
+    "pages": [
+      {
+        "id": "home",
+        "title": "首页",
+        "route": "pages/HomePage",
+        "features": [
+          "今日验收",
+          "开始材料验收",
+          "今日概况",
+          "最近验收"
+        ],
+        "tab": true
+      },
+      {
+        "id": "inspect",
+        "title": "验收",
+        "route": "pages/InspectListPage",
+        "features": [
+          "筛选",
+          "搜索",
+          "新建验收"
+        ],
+        "tab": true
+      },
+      {
+        "id": "records",
+        "title": "记录",
+        "route": "pages/RecordsPage",
+        "features": [
+          "搜索",
+          "状态筛选",
+          "本月统计",
+          "详情"
+        ],
+        "tab": true
+      },
+      {
+        "id": "mine",
+        "title": "我的",
+        "route": "pages/MinePage",
+        "features": [
+          "数据管理",
+          "数据统计",
+          "设置",
+          "隐私协议",
+          "关于"
+        ],
+        "tab": true
+      }
+    ],
+    "coreFlows": [
+      {
+        "name": "新建验收",
+        "steps": [
+          "开始材料验收",
+          "填写材料信息",
+          "验收检查",
+          "选择结论",
+          "添加照片",
+          "保存",
+          "查看详情"
+        ]
+      },
+      {
+        "name": "查询记录",
+        "steps": [
+          "打开记录",
+          "搜索或筛选",
+          "进入详情",
+          "编辑或删除"
+        ]
+      },
+      {
+        "name": "异常跟踪",
+        "steps": [
+          "筛选异常或不通过",
+          "打开详情",
+          "补充备注",
+          "更新结论"
+        ]
+      }
+    ]
+  },
+  "entities": [
+    {
+      "name": "MaterialCategory",
+      "table": "material-acceptance-categories",
+      "fields": [
+        "id",
+        "title",
+        "coverKey",
+        "sortOrder",
+        "status"
+      ]
+    },
+    {
+      "name": "InspectRecord",
+      "table": "material-acceptance-records",
+      "fields": [
+        "id",
+        "materialName",
+        "category",
+        "spec",
+        "quantity",
+        "unit",
+        "supplier",
+        "arrivalDate",
+        "result",
+        "remark",
+        "photosJson",
+        "userId"
+      ]
+    }
+  ],
+  "apis": [
+    {
+      "method": "POST",
+      "path": "/api/v1/auth/login",
+      "summary": "登录",
+      "auth": false,
+      "module": "auth"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/auth/register",
+      "summary": "注册",
+      "auth": false,
+      "module": "auth"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/material-acceptance/categories",
+      "summary": "材料类别",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/material-acceptance/categories/:id",
+      "summary": "类别详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/material-acceptance/records",
+      "summary": "验收记录",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/material-acceptance/records/:id",
+      "summary": "记录详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/biz/material-acceptance/records",
+      "summary": "保存验收",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "PUT",
+      "path": "/api/v1/biz/material-acceptance/records/:id",
+      "summary": "更新验收",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/biz/material-acceptance/records/:id",
+      "summary": "删除验收",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/material-acceptance/kpis",
+      "summary": "统计",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/messages",
+      "summary": "消息",
+      "auth": false,
+      "module": "messages"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/privacy/account",
+      "summary": "注销账号",
+      "auth": true,
+      "module": "privacy"
+    }
+  ],
+  "permissions": [
+    {
+      "name": "ohos.permission.INTERNET",
+      "reason": "用于可选账号登录与同步验收记录",
+      "when": "inuse",
+      "scene": "用户登录或同步时访问平台接口"
+    }
+  ],
+  "harmonyos": {
+    "features": [
+      {
+        "type": "photoPicker",
+        "scene": "用户主动添加现场照片时调用系统相册选择器"
+      }
+    ]
+  },
+  "store": {
+    "category": "商务",
+    "oneLiner": "面向施工与监理现场的轻量材料进场验收工具，到场即可登记、检查、拍照并留下可追溯记录",
+    "fullDescription": "筑科材料验收是面向建筑工程、装修施工、工程监理与项目管理人员的轻量材料进场验收工具。用户可在材料到场后填写名称、类别、规格、数量、供应商与进场日期，完成外观、包装、数量、资料四项检查，选择通过、待处理或不通过，并添加最多六张现场照片后保存。记录支持搜索、状态筛选、详情查看、编辑与删除。核心功能在本机完成，无需登录；登录后可同步个人记录。本应用不提供支付、商城、会员，也不替代法定质量检测。",
+    "keywords": [
+      "材料验收",
+      "进场验收",
+      "工程记录",
+      "施工监理",
+      "现场拍照"
+    ],
+    "privacySummary": {
+      "collect": [
+        "注册时的账号、姓名和电话（可选）",
+        "用户主动填写的验收记录与备注",
+        "用户主动选择的现场照片（仅保存在本机，登录后可同步记录字段）",
+        "登录会话状态"
+      ],
+      "purpose": "提供材料验收记录的本机保存、查询与可选云端同步",
+      "thirdParties": []
+    },
+    "demoAccount": {
+      "username": "auditor@zhuke.local",
+      "passwordNote": "仅写入 store/demo-account.md，禁止打进客户端"
+    },
+    "screenshotPlan": [
+      {
+        "page": "home",
+        "caption": "今日验收与开始材料验收"
+      },
+      {
+        "page": "editor",
+        "caption": "新建验收表单与检查项"
+      },
+      {
+        "page": "detail",
+        "caption": "验收详情与现场照片"
+      },
+      {
+        "page": "records",
+        "caption": "记录搜索与状态筛选"
+      },
+      {
+        "page": "mine",
+        "caption": "数据统计与设置隐私"
+      }
+    ],
+    "incentiveHooks": [
+      "本机优先可离线记录",
+      "系统相册选择器按需取图",
+      "完整验收闭环"
+    ],
+    "legalOperator": "魏文波"
+  },
+  "access": {
+    "mode": "open_optional",
+    "features": {
+      "register": true,
+      "guestBrowse": true,
+      "guestWrite": true
+    },
+    "gateActions": [
+      "sync_records"
+    ],
+    "onPrivacyRefuse": "browse_basic",
+    "loginProviders": [
+      "password"
+    ]
+  },
+  "admin": {
+    "featureModules": [
+      "overview",
+      "appUsers",
+      "maCategories",
+      "maRecords",
+      "messages",
+      "kpis"
+    ]
+  },
+  "ai": {
+    "capabilities": [],
+    "quickCommands": [],
+    "systemPrompt": "你是「筑科建筑工程有限公司」旗下应用「筑科材料验收」的记录整理助手。产品定位：轻量材料进场验收与现场留痕。主职责：帮助核对材料字段完整性、检查项是否齐备、验收结论是否明确。禁止扮演采购、财务、ERP 或出具法定检测报告。不提供生成式对话作为 C 端功能。"
+  },
+  "brand": {
+    "primary": "#1E5A8A",
+    "primaryDeep": "#1A1F26",
+    "tone": "industrial-premium",
+    "stylePack": "premium-business",
+    "workbenchId": "fulfillment-hero",
+    "layoutVariant": "B",
+    "visualDirection": "浅灰白底、石墨正文、建筑蓝主 CTA、现场材料摄影、低饱和状态色、无 AI 视觉",
+    "productVisualType": "industrial-field",
+    "visualAssets": [
+      { "key": "hero_site", "file": "app/entry/src/main/resources/base/media/hero_site.png", "role": "homeHero" },
+      { "key": "cat_cement", "file": "app/entry/src/main/resources/base/media/cat_cement.png", "role": "categoryCover" },
+      { "key": "cat_steel", "file": "app/entry/src/main/resources/base/media/cat_steel.png", "role": "categoryCover" },
+      { "key": "cat_wood", "file": "app/entry/src/main/resources/base/media/cat_wood.png", "role": "categoryCover" },
+      { "key": "cat_board", "file": "app/entry/src/main/resources/base/media/cat_board.png", "role": "categoryCover" },
+      { "key": "cat_tile", "file": "app/entry/src/main/resources/base/media/cat_tile.png", "role": "categoryCover" },
+      { "key": "cat_stone", "file": "app/entry/src/main/resources/base/media/cat_stone.png", "role": "categoryCover" },
+      { "key": "cat_pipe", "file": "app/entry/src/main/resources/base/media/cat_pipe.png", "role": "categoryCover" },
+      { "key": "cat_cable", "file": "app/entry/src/main/resources/base/media/cat_cable.png", "role": "categoryCover" },
+      { "key": "cat_waterproof", "file": "app/entry/src/main/resources/base/media/cat_waterproof.png", "role": "categoryCover" },
+      { "key": "cat_paint", "file": "app/entry/src/main/resources/base/media/cat_paint.png", "role": "categoryCover" },
+      { "key": "cat_window", "file": "app/entry/src/main/resources/base/media/cat_window.png", "role": "categoryCover" },
+      { "key": "cat_hardware", "file": "app/entry/src/main/resources/base/media/cat_hardware.png", "role": "categoryCover" },
+      { "key": "cat_other", "file": "app/entry/src/main/resources/base/media/cat_other.png", "role": "categoryCover" },
+      { "key": "banner_inspect", "file": "app/entry/src/main/resources/base/media/banner_inspect.png", "role": "inspectBanner" },
+      { "key": "empty_inspect", "file": "app/entry/src/main/resources/base/media/empty_inspect.png", "role": "emptyState" }
+    ],
+    "logo": {
+      "concept": "ZK 几何字母与验收勾融合，表达建筑材料确认",
+      "style": "flat-premium",
+      "generator": "agent-svg",
+      "glyphStrategy": "lettermark",
+      "brandAnchor": "筑",
+      "customLock": true,
+      "renderScript": "store/logo/render_logo.mjs",
+      "foregroundFile": "store/logo/foreground.png",
+      "backgroundFile": "store/logo/background.png",
+      "previewFile": "store/logo/preview-1024.png",
+      "agcFile": "store/logo/agc-216.png",
+      "symbolFile": "store/logo/symbol.svg",
+      "horizontalFile": "store/logo/logo-horizontal.svg"
+    }
+  }
+}

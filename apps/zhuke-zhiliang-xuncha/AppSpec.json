@@ -1,0 +1,378 @@
+{
+  "specVersion": "1.0.0",
+  "generatedAt": "2026-08-21T08:11:40.039Z",
+  "requestId": "req_1787299900006",
+  "industryPack": "site-quality",
+  "identity": {
+    "company": "筑科建筑工程有限公司",
+    "companyPinyin": "zhuke",
+    "appName": "筑科质量巡查",
+    "appPinyin": "zhiliangxuncha",
+    "bundleId": "com.zhuke.zhiliangxuncha",
+    "version": "1.0.0"
+  },
+  "positioning": {
+    "tagline": "让每一次巡查，都有迹可循",
+    "coreUsers": [
+      {
+        "role": "施工现场质量员",
+        "ageRange": "25-45",
+        "scenario": "现场质量巡查与问题记录",
+        "need": "快速记录检查项与质量问题，跟进整改"
+      },
+      {
+        "role": "监理 / 项目管理人员",
+        "ageRange": "30-50",
+        "scenario": "查看项目质量概况与闭环进度",
+        "need": "看清待整改、整改中与已闭环"
+      }
+    ],
+    "painPoints": [
+      "纸质巡查难追溯",
+      "问题整改过程不清晰",
+      "质量闭环缺少现场工具"
+    ],
+    "differentiation": "面向建筑工程、施工现场、监理和项目管理人员的轻量化质量巡查与问题闭环工具"
+  },
+  "modules": {
+    "pages": [
+      {
+        "id": "home",
+        "title": "首页",
+        "route": "pages/HomePage",
+        "features": [
+          "今日统计",
+          "开始巡查",
+          "最近项目"
+        ],
+        "tab": true
+      },
+      {
+        "id": "inspect",
+        "title": "巡查",
+        "route": "pages/InspectionListPage",
+        "features": [
+          "巡查列表",
+          "开始巡查",
+          "检查项"
+        ],
+        "tab": true
+      },
+      {
+        "id": "issues",
+        "title": "问题",
+        "route": "pages/IssueListPage",
+        "features": [
+          "问题列表",
+          "筛选",
+          "整改"
+        ],
+        "tab": true
+      },
+      {
+        "id": "mine",
+        "title": "我的",
+        "route": "pages/MinePage",
+        "features": [
+          "资料",
+          "统计",
+          "设置与隐私"
+        ],
+        "tab": true
+      }
+    ],
+    "coreFlows": [
+      {
+        "name": "质量巡查闭环",
+        "steps": [
+          "开始巡查",
+          "勾选检查项",
+          "发现问题",
+          "提交整改",
+          "闭环"
+        ]
+      }
+    ]
+  },
+  "entities": [
+    {
+      "name": "Project",
+      "table": "site-quality-projects",
+      "fields": [
+        "id",
+        "title",
+        "location",
+        "summary",
+        "coverKey",
+        "status"
+      ]
+    },
+    {
+      "name": "Inspection",
+      "table": "site-quality-inspections",
+      "fields": [
+        "id",
+        "projectId",
+        "area",
+        "inspectType",
+        "inspectDate",
+        "status",
+        "itemsJson",
+        "userId"
+      ]
+    },
+    {
+      "name": "Issue",
+      "table": "site-quality-issues",
+      "fields": [
+        "id",
+        "title",
+        "projectId",
+        "location",
+        "category",
+        "severity",
+        "status",
+        "userId"
+      ]
+    },
+    {
+      "name": "Rectification",
+      "table": "site-quality-rectifications",
+      "fields": [
+        "id",
+        "issueId",
+        "note",
+        "status",
+        "userId"
+      ]
+    }
+  ],
+  "apis": [
+    {
+      "method": "POST",
+      "path": "/api/v1/auth/login",
+      "summary": "登录",
+      "auth": false,
+      "module": "auth"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/auth/register",
+      "summary": "注册",
+      "auth": false,
+      "module": "auth"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/site-quality/projects",
+      "summary": "项目目录",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/site-quality/projects/:id",
+      "summary": "项目详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/site-quality/checklist",
+      "summary": "检查项模板",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/site-quality/inspections",
+      "summary": "巡查记录",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/biz/site-quality/inspections",
+      "summary": "创建巡查",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "PUT",
+      "path": "/api/v1/biz/site-quality/inspections/:id",
+      "summary": "更新巡查",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/site-quality/issues",
+      "summary": "质量问题",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/biz/site-quality/issues",
+      "summary": "新增问题",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "PUT",
+      "path": "/api/v1/biz/site-quality/issues/:id",
+      "summary": "更新问题",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/biz/site-quality/issues/:id/rectify",
+      "summary": "提交整改",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/messages",
+      "summary": "通知",
+      "auth": false,
+      "module": "messages"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/privacy/account",
+      "summary": "注销账号",
+      "auth": true,
+      "module": "privacy"
+    }
+  ],
+  "permissions": [
+    {
+      "name": "ohos.permission.INTERNET",
+      "reason": "用于登录后同步巡查与质量问题记录",
+      "when": "inuse",
+      "scene": "登录、保存巡查、提交整改时"
+    }
+  ],
+  "harmonyos": {
+    "features": [
+      {
+        "type": "systemNotification",
+        "scene": "质量整改进度提醒（用户可在设置中关闭）"
+      }
+    ]
+  },
+  "store": {
+    "category": "商务",
+    "oneLiner": "筑科质量巡查 — 让每一次巡查，都有迹可循",
+    "fullDescription": "筑科质量巡查面向建筑工程、施工现场、监理和项目管理人员，提供轻量化质量巡查、问题记录、现场图片与整改跟进。核心闭环为巡查、发现问题、整改跟进、复查与闭环。不做复杂工程项目管理，也不含支付、会员、广告、社区或聊天。游客可在本机使用；登录后可同步个人记录。",
+    "keywords": [
+      "质量巡查",
+      "工程巡查",
+      "质量问题",
+      "整改闭环",
+      "施工现场"
+    ],
+    "privacySummary": {
+      "collect": [
+        "注册账号、姓名和联系电话",
+        "用户主动创建的巡查与质量问题",
+        "用户选择的现场图片",
+        "登录会话状态"
+      ],
+      "purpose": "提供账号登录、巡查记录、问题整改与可选同步",
+      "thirdParties": []
+    },
+    "demoAccount": {
+      "username": "auditor@zhuke.local",
+      "passwordNote": "仅写入 store/demo-account.md，禁止打进客户端"
+    },
+    "screenshotPlan": [
+      {
+        "page": "home",
+        "caption": "今日巡查统计与开始巡查"
+      },
+      {
+        "page": "inspect",
+        "caption": "巡查记录与检查项"
+      },
+      {
+        "page": "issue",
+        "caption": "质量问题卡片与整改状态"
+      },
+      {
+        "page": "rectify",
+        "caption": "提交整改结果"
+      },
+      {
+        "page": "mine",
+        "caption": "我的统计与设置"
+      }
+    ],
+    "incentiveHooks": [],
+    "legalOperator": "魏文波"
+  },
+  "access": {
+    "mode": "open_optional",
+    "features": {
+      "register": true,
+      "guestBrowse": true,
+      "guestWrite": true
+    },
+    "gateActions": [
+      "sync_records"
+    ],
+    "onPrivacyRefuse": "browse_basic",
+    "loginProviders": [
+      "password"
+    ]
+  },
+  "admin": {
+    "featureModules": [
+      "overview",
+      "appUsers",
+      "sqProjects",
+      "sqChecklist",
+      "sqInspections",
+      "sqIssues",
+      "sqRectifications",
+      "messages",
+      "kpis"
+    ]
+  },
+  "ai": {
+    "capabilities": [],
+    "quickCommands": [],
+    "systemPrompt": "你是「筑科建筑工程有限公司」旗下应用「筑科质量巡查」的质量记录助手。产品定位：面向建筑工程、施工现场、监理和项目管理人员的轻量化质量巡查与问题闭环工具。主职责：按检查项整理问题类别与严重程度、归纳整改说明结构。禁止扮演支付、社交、新闻或医疗工具。不提供生成式对话作为 C 端功能。"
+  },
+  "brand": {
+    "primary": "#2563EB",
+    "accent": "#16A34A",
+    "background": "#F7F8FA",
+    "text": "#111827",
+    "primaryDeep": "#0F172A",
+    "tone": "premium",
+    "stylePack": "premium-business",
+    "workbenchId": "incident-queue",
+    "layoutVariant": "B",
+    "visualDirection": "主色蓝与深灰、大留白卡片、建筑结构摄影、大数字今日统计，高端企业效率工具而非传统工程 ERP",
+    "productVisualType": "industrial-field",
+    "visualAssets": [],
+    "logo": {
+      "concept": "几何 Z 建筑结构 + 质量检查对勾",
+      "style": "flat-premium",
+      "generator": "agent-svg",
+      "glyphStrategy": "semantic-fusion",
+      "brandAnchor": "Z",
+      "customLock": true,
+      "renderScript": "store/logo/render_logo.mjs",
+      "foregroundFile": "store/logo/foreground.png",
+      "backgroundFile": "store/logo/background.png",
+      "previewFile": "store/logo/preview-1024.png",
+      "agcFile": "store/logo/agc-216.png",
+      "symbolFile": "store/logo/symbol.svg",
+      "horizontalFile": "store/logo/logo-horizontal.svg"
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "string": [
+    { "name": "module_desc", "value": "知微集主模块" },
+    { "name": "EntryAbility_desc", "value": "个人微知识收集与学习管理" },
+    { "name": "EntryAbility_label", "value": "知微集" },
+    { "name": "internet_reason", "value": "仅用于可选的账号登录、注册与注销" }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "app": {
+    "signingConfigs": [
+      {
+        "name": "default",
+        "type": "HarmonyOS",
+        "material": {
+          "certpath": "/Users/jiangxinglong/Documents/华为证书文件/huawei.cer",
+          "keyAlias": "huawei",
+          "keyPassword": "00000018C5ECBFF421C4406934C170C2EEC55EBA5500C841657D2068B3A1199833860967B097E37D",
+          "profile": "/Users/jiangxinglong/Downloads/flef.numtwin.huaweiRelease.p7b",
+          "signAlg": "SHA256withECDSA",
+          "storeFile": "/Users/jiangxinglong/Documents/华为证书文件/huawei.p12",
+          "storePassword": "000000180039F1DFEAF6843F1179E8D335D1C1DF7DF64EEFEE4DBDE5E3B075B0A3198C2454EE29DB"
+        }
+      }
+    ],
+    "products": [
+      {
+        "name": "default",
+        "signingConfig": "default",
+        "compatibleSdkVersion": "5.0.0(12)",
+        "runtimeOS": "HarmonyOS",
+        "targetSdkVersion": "5.0.0(12)"
+      }
+    ],
+    "buildModeSet": [
+      {
+        "name": "debug"
+      },
+      {
+        "name": "release"
+      }
+    ]
+  },
+  "modules": [
+    {
+      "name": "entry",
+      "srcPath": "./entry",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    }
+  ]
+}

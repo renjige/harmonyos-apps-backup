@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" fill="none">
+  <!-- ��� � brand mark � � + �� -->
+  <rect width="1024" height="1024" fill="#1A1A2E"/>
+  <!-- �
+��U�*�z -->
+  <circle cx="512" cy="268" r="30" fill="#F5F0E8"/>
+  <rect x="300" y="328" width="424" height="52" rx="10" fill="#F5F0E8"/>
+  <path d="M368 420 L296 748" stroke="#F5F0E8" stroke-width="56" stroke-linecap="round"/>
+  <path d="M656 420 L728 748" stroke="#F5F0E8" stroke-width="56" stroke-linecap="round"/>
+  <rect x="392" y="468" width="240" height="38" rx="8" fill="#F5F0E8" opacity="0.92"/>
+  <!-- 1U � ���} -->
+  <path d="M168 792 C360 640 520 700 680 620 C780 560 848 588 872 520"
+        stroke="#C41A1A" stroke-width="28" stroke-linecap="round" fill="none"/>
+</svg>

@@ -1,0 +1,519 @@
+{
+  "specVersion": "1.0.0",
+  "generatedAt": "2026-08-24T06:25:33.794Z",
+  "requestId": "req_1787552733763",
+  "industryPack": "wrong-notebook",
+  "identity": {
+    "company": "知错智慧",
+    "companyPinyin": "zhicuo-zhihui",
+    "appName": "知错·错题智慧训练",
+    "appPinyin": "cuoti-xunlian",
+    "bundleId": "com.zhicuozhihui.cuotixunlian",
+    "version": "1.0.0"
+  },
+  "positioning": {
+    "tagline": "面向K12学生的智慧错题管理与针对性训练工具，支持拍照录入、分类整理、随机专项训练与学情追踪",
+    "coreUsers": [
+      {
+        "role": "中小学生",
+        "ageRange": "10-18",
+        "scenario": "作业或考试后把错过的题记进错题本",
+        "need": "录入快、能按学科和错因找到题、知道先复习什么"
+      },
+      {
+        "role": "家长",
+        "ageRange": "30-50",
+        "scenario": "陪孩子复盘本周错题",
+        "need": "进度一眼看懂，无广告无付费"
+      }
+    ],
+    "painPoints": [
+      "纸质错题本难检索、难统计",
+      "只知道错过、不知道高频知识点",
+      "复习没有顺序，下次还在同一处摔倒"
+    ],
+    "differentiation": "面向K12学生的智慧错题管理与针对性训练工具，支持拍照录入、分类整理、随机专项训练与学情追踪"
+  },
+  "modules": {
+    "pages": [
+      {
+        "id": "home",
+        "title": "错题",
+        "route": "pages/HomePage",
+        "features": [
+          "拍照录入",
+          "手动录入",
+          "最近错题",
+          "学科导学"
+        ],
+        "tab": true
+      },
+      {
+        "id": "analyze",
+        "title": "分析",
+        "route": "pages/DashboardPage",
+        "features": [
+          "学科分布",
+          "薄弱知识点",
+          "学习建议",
+          "进步轨迹"
+        ],
+        "tab": true
+      },
+      {
+        "id": "diagnose",
+        "title": "诊断",
+        "route": "pages/AIAssistantPage",
+        "features": [
+          "学情问卷",
+          "复习计划模板"
+        ],
+        "tab": true
+      },
+      {
+        "id": "mine",
+        "title": "我的",
+        "route": "pages/MinePage",
+        "features": [
+          "掌握概览",
+          "导出错题本",
+          "消息",
+          "设置与隐私"
+        ],
+        "tab": true
+      }
+    ],
+    "coreFlows": [
+      {
+        "name": "录入错题",
+        "steps": [
+          "打开首页",
+          "拍照或手录",
+          "填写答案与标签",
+          "保存",
+          "进入详情"
+        ]
+      },
+      {
+        "name": "智慧分析",
+        "steps": [
+          "打开分析",
+          "看学科分布",
+          "看薄弱知识点",
+          "阅读学习建议"
+        ]
+      },
+      {
+        "name": "学情诊断",
+        "steps": [
+          "打开诊断",
+          "完成问卷",
+          "查看复习计划",
+          "回到错题本复习"
+        ]
+      }
+    ]
+  },
+  "entities": [
+    {
+      "name": "SubjectGuide",
+      "table": "subjects",
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "summary",
+          "type": "string"
+        },
+        {
+          "name": "body",
+          "type": "string"
+        },
+        {
+          "name": "coverKey",
+          "type": "string"
+        },
+        {
+          "name": "subjectCode",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "CauseMethod",
+      "table": "methods",
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "summary",
+          "type": "string"
+        },
+        {
+          "name": "body",
+          "type": "string"
+        },
+        {
+          "name": "coverKey",
+          "type": "string"
+        },
+        {
+          "name": "causeCode",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "ReviewTip",
+      "table": "tips",
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "body",
+          "type": "string"
+        },
+        {
+          "name": "coverKey",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "StudyArticle",
+      "table": "articles",
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "summary",
+          "type": "string"
+        },
+        {
+          "name": "body",
+          "type": "string"
+        },
+        {
+          "name": "coverKey",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "WrongEntry",
+      "table": "entries",
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "userId",
+          "type": "string"
+        },
+        {
+          "name": "stem",
+          "type": "string"
+        },
+        {
+          "name": "correctAnswer",
+          "type": "string"
+        },
+        {
+          "name": "wrongAnswer",
+          "type": "string"
+        },
+        {
+          "name": "subjectCode",
+          "type": "string"
+        },
+        {
+          "name": "knowledgeTag",
+          "type": "string"
+        },
+        {
+          "name": "causeCode",
+          "type": "string"
+        },
+        {
+          "name": "status",
+          "type": "string"
+        }
+      ]
+    }
+  ],
+  "apis": [
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/wrong-notebook/subjects",
+      "summary": "学科导学",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/wrong-notebook/subjects/:id",
+      "summary": "学科导学详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/wrong-notebook/methods",
+      "summary": "纠错方法",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/wrong-notebook/methods/:id",
+      "summary": "纠错方法详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/wrong-notebook/tips",
+      "summary": "复习建议",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/wrong-notebook/tips/:id",
+      "summary": "复习建议详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/wrong-notebook/articles",
+      "summary": "学习方法",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/wrong-notebook/articles/:id",
+      "summary": "学习方法详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/wrong-notebook/entries",
+      "summary": "我的错题",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/wrong-notebook/entries/:id",
+      "summary": "错题详情",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/biz/wrong-notebook/entries",
+      "summary": "保存错题",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "PUT",
+      "path": "/api/v1/biz/wrong-notebook/entries/:id",
+      "summary": "更新错题",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/biz/wrong-notebook/entries/:id",
+      "summary": "删除错题",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/wrong-notebook/kpis",
+      "summary": "机构指标",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/messages",
+      "summary": "系统消息",
+      "auth": false,
+      "module": "messages"
+    }
+  ],
+  "ai": {
+    "capabilities": [],
+    "quickCommands": [],
+    "systemPrompt": "你是「魏文波」旗下应用「文波错题析」的学习助手。产品定位：帮助学生整理错题、看清薄弱知识点。主职责：说明如何录入错题、按学科与错因归档、阅读规则驱动的复习建议。不提供生成式对话，不承诺提高考试成绩，不扮演其他 App。",
+    "mode": "none",
+    "llmEnabled": false
+  },
+  "permissions": [
+    {
+      "name": "ohos.permission.INTERNET",
+      "reason": "用于登录账号、拉取学科导学与保存您的错题记录",
+      "when": "inuse",
+      "scene": "登录与同步错题"
+    },
+    {
+      "name": "ohos.permission.CAMERA",
+      "reason": "仅在您点击「拍照录入」时拍摄错题照片",
+      "when": "inuse",
+      "scene": "拍照录入错题"
+    }
+  ],
+  "harmonyos": {
+    "features": []
+  },
+  "store": {
+    "category": "教育",
+    "legalOperator": "魏文波",
+    "oneLiner": "知错·错题智慧训练 — 面向K12学生的智慧错题管理与针对性训练工具，支持拍照录",
+    "fullDescription": "文波错题析是一款面向中小学生与家长的错题整理工具。支持拍照或手动录入错题，按学科、知识点和错因归档，并基于错题数据给出薄弱知识点统计与复习建议。提供学情诊断问卷与模板复习计划。无广告、无支付、无社区。不承诺提高考试成绩。",
+    "keywords": [
+      "错题本",
+      "错题整理",
+      "薄弱知识点",
+      "复习建议",
+      "K12",
+      "鸿蒙"
+    ],
+    "privacySummary": {
+      "collect": [
+        "可选账号信息",
+        "错题题干与答案",
+        "学科与知识点标签",
+        "可选错题照片"
+      ],
+      "purpose": "提供错题归档、智慧分析与复习建议",
+      "thirdParties": []
+    },
+    "demoAccount": {
+      "username": "auditor@zhicuo-zhihui.local",
+      "passwordNote": "仅写入 store/demo-account.md"
+    },
+    "screenshotPlan": [
+      {
+        "page": "home",
+        "caption": "拍照录入与最近错题"
+      },
+      {
+        "page": "capture",
+        "caption": "手动录入表单"
+      },
+      {
+        "page": "detail",
+        "caption": "错题详情与掌握标记"
+      },
+      {
+        "page": "analyze",
+        "caption": "学科分布与学习建议"
+      },
+      {
+        "page": "diagnose",
+        "caption": "学情诊断报告"
+      }
+    ],
+    "incentiveHooks": [
+      "FormExtensionAbility"
+    ]
+  },
+  "access": {
+    "mode": "open_optional",
+    "features": {
+      "register": true,
+      "guestBrowse": true,
+      "guestWrite": false
+    },
+    "gateActions": [
+      "create",
+      "submit",
+      "sync",
+      "export",
+      "diagnose"
+    ],
+    "onPrivacyRefuse": "browse_basic",
+    "loginProviders": [
+      "password"
+    ]
+  },
+  "admin": {
+    "featureModules": [
+      "overview",
+      "appUsers",
+      "wqSubjects",
+      "wqMethods",
+      "wqTips",
+      "wqArticles",
+      "wqEntries",
+      "messages",
+      "kpis",
+      "ai"
+    ]
+  },
+  "brand": {
+    "primary": "#1A6DF5",
+    "primaryDeep": "#0B3FA8",
+    "deep": "#0B1F4A",
+    "accent": "#FF6B35",
+    "tone": "harmonyos-official",
+    "stylePack": "harmonyos-official",
+    "workbenchId": "catalog-tool",
+    "layoutVariant": "E",
+    "productVisualType": "content-commerce",
+    "visualDirection": {
+      "archetype": "study-desk-editorial",
+      "density": "airy",
+      "material": "paper-lamp-notebook",
+      "imagery": "desk-redpen-notebook",
+      "accent": "wisdom-blue-vital-orange",
+      "primaryJob": "3 秒内开始录入一道错题",
+      "notes": "专业学习工具；禁止卡通闯关与电商 Banner"
+    },
+    "logo": {
+      "brandAnchor": "析",
+      "glyphStrategy": "semantic-fusion",
+      "customLock": false,
+      "generator": "premium_logo.py",
+      "concept": "笔记本折角与对勾缺口融合，表达看清并订正",
+      "style": "flat-premium"
+    }
+  }
+}

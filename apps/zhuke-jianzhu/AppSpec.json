@@ -1,0 +1,218 @@
+{
+  "specVersion": "1.0.0",
+  "generatedAt": "2026-07-25T05:20:00.000Z",
+  "requestId": "req_1784948791921",
+  "industryPack": "enterprise",
+  "identity": {
+    "company": "筑科建筑工程有限公司",
+    "companyPinyin": "zhuke",
+    "appName": "筑科建筑",
+    "appPinyin": "jianzhu",
+    "bundleId": "com.zhuke.jianzhu",
+    "version": "1.0.0"
+  },
+  "positioning": {
+    "tagline": "建筑工程企业展示平台：企业宣传、工程案例、业务介绍、资质荣誉、新闻资讯、人才招聘与联系我们",
+    "coreUsers": [
+      {
+        "role": "业主/合作方",
+        "ageRange": "30-55",
+        "scenario": "了解企业实力与工程案例",
+        "need": "快速浏览资质、案例与联系方式"
+      },
+      {
+        "role": "求职者",
+        "scenario": "查看招聘岗位与要求",
+        "need": "岗位详情与投递联系方式"
+      },
+      {
+        "role": "行业关注者",
+        "scenario": "阅读企业新闻与行业资讯",
+        "need": "分类资讯与收藏浏览"
+      }
+    ],
+    "painPoints": [
+      "企业信息分散在官网与宣传册",
+      "工程案例难以移动端随时查阅",
+      "招聘与留言渠道不统一"
+    ],
+    "differentiation": "原生鸿蒙建筑工程企业展示平台：案例分类浏览 + 资质荣誉 + 招聘留言，非交易、非 AI、非社区"
+  },
+  "modules": {
+    "pages": [
+      {
+        "id": "home",
+        "title": "首页",
+        "route": "pages/HomePage",
+        "features": ["Banner轮播", "企业简介", "主营业务", "精品工程", "最新资讯", "联系我们"],
+        "tab": true
+      },
+      {
+        "id": "projects",
+        "title": "工程案例",
+        "route": "pages/ProjectsPage",
+        "features": ["房建工程", "市政工程", "装饰装修", "园林工程", "项目详情"],
+        "tab": true
+      },
+      {
+        "id": "business",
+        "title": "业务范围",
+        "route": "pages/BusinessPage",
+        "features": ["建筑工程", "市政工程", "装饰装修", "工程咨询", "工程管理"],
+        "tab": true
+      },
+      {
+        "id": "news",
+        "title": "新闻资讯",
+        "route": "pages/NewsPage",
+        "features": ["企业新闻", "行业资讯", "项目动态", "通知公告"],
+        "tab": true
+      },
+      {
+        "id": "mine",
+        "title": "我的",
+        "route": "pages/MinePage",
+        "features": ["登录", "我的收藏", "浏览记录", "消息通知", "意见反馈", "关于我们"],
+        "tab": true
+      }
+    ],
+    "coreFlows": [
+      {
+        "name": "浏览工程案例",
+        "steps": ["打开案例Tab", "选择分类", "查看项目详情", "收藏项目"]
+      },
+      {
+        "name": "在线留言",
+        "steps": ["进入联系我们", "填写留言表单", "提交留言"]
+      }
+    ]
+  },
+  "entities": [
+    {
+      "name": "ShowcaseProject",
+      "table": "showcase_projects",
+      "fields": [
+        { "name": "id", "type": "uuid", "required": true, "unique": true },
+        { "name": "title", "type": "string", "required": true },
+        { "name": "category", "type": "enum", "enumValues": ["building", "municipal", "decoration", "landscape"] },
+        { "name": "coverKey", "type": "string" },
+        { "name": "location", "type": "string" },
+        { "name": "completedAt", "type": "string" },
+        { "name": "featured", "type": "boolean" }
+      ]
+    },
+    {
+      "name": "CmsNews",
+      "table": "cms_news",
+      "fields": [
+        { "name": "id", "type": "uuid", "required": true, "unique": true },
+        { "name": "title", "type": "string", "required": true },
+        { "name": "category", "type": "enum", "enumValues": ["company", "industry", "project", "notice"] },
+        { "name": "coverKey", "type": "string" },
+        { "name": "publishedAt", "type": "string" }
+      ]
+    },
+    {
+      "name": "GuestMessage",
+      "table": "guest_messages",
+      "fields": [
+        { "name": "id", "type": "uuid", "required": true, "unique": true },
+        { "name": "name", "type": "string", "required": true },
+        { "name": "phone", "type": "string", "required": true },
+        { "name": "content", "type": "string", "required": true },
+        { "name": "status", "type": "enum", "enumValues": ["pending", "handled"] }
+      ]
+    }
+  ],
+  "apis": [
+    { "method": "POST", "path": "/api/v1/auth/login", "summary": "登录", "auth": false, "module": "auth" },
+    { "method": "POST", "path": "/api/v1/auth/register", "summary": "注册", "auth": false, "module": "auth" },
+    { "method": "GET", "path": "/api/v1/content/banners", "summary": "Banner列表", "auth": false, "module": "content" },
+    { "method": "GET", "path": "/api/v1/content/projects", "summary": "工程案例列表", "auth": false, "module": "content" },
+    { "method": "GET", "path": "/api/v1/content/news", "summary": "资讯列表", "auth": false, "module": "content" },
+    { "method": "GET", "path": "/api/v1/content/jobs", "summary": "招聘岗位", "auth": false, "module": "content" },
+    { "method": "POST", "path": "/api/v1/content/messages", "summary": "在线留言", "auth": false, "module": "content" },
+    { "method": "GET", "path": "/api/v1/admin/banners", "summary": "Banner管理", "auth": true, "module": "admin" },
+    { "method": "GET", "path": "/api/v1/admin/projects", "summary": "案例管理", "auth": true, "module": "admin" },
+    { "method": "GET", "path": "/api/v1/admin/news", "summary": "新闻管理", "auth": true, "module": "admin" },
+    { "method": "GET", "path": "/api/v1/admin/messages", "summary": "留言管理", "auth": true, "module": "admin" },
+    { "method": "GET", "path": "/api/v1/dashboard/stats", "summary": "数据统计", "auth": true, "module": "dashboard" }
+  ],
+  "ai": {
+    "capabilities": [],
+    "quickCommands": [],
+    "systemPrompt": ""
+  },
+  "permissions": [],
+  "harmonyos": {
+    "features": [
+      { "type": "huaweiAccount", "scene": "可选一键登录" }
+    ]
+  },
+  "store": {
+    "category": "商务",
+    "oneLiner": "筑科建筑 — 建筑工程企业展示平台",
+    "fullDescription": "筑科建筑由筑科建筑工程有限公司出品，面向业主、合作方与求职者，提供企业宣传、工程案例、业务范围、资质荣誉、新闻资讯、人才招聘与联系我们等一站式展示服务。支持按房建、市政、装饰、园林分类浏览精品工程，查看项目详情并收藏；提供在线留言与地图导航入口，便于商务洽谈。本应用仅提供企业展示与宣传，不含在线支付、购物车、AI功能及用户社区，符合华为应用市场审核规范。应用基于 HarmonyOS NEXT 原生开发，界面采用现代商务蓝白风格，遵循最小权限与隐私合规设计。",
+    "keywords": ["建筑工程", "工程案例", "企业展示", "资质荣誉", "人才招聘", "鸿蒙"],
+    "privacySummary": {
+      "collect": ["账号信息（可选登录）", "收藏与浏览记录", "留言联系方式"],
+      "purpose": "提供收藏同步、留言反馈与企业展示服务",
+      "thirdParties": []
+    },
+    "demoAccount": {
+      "username": "auditor@zhuke.local",
+      "passwordNote": "仅写入 store/demo-account.md，禁止打进客户端"
+    },
+    "screenshotPlan": [
+      { "page": "home", "caption": "首页 Banner 与精品工程" },
+      { "page": "projects", "caption": "工程案例分类浏览" },
+      { "page": "business", "caption": "五大业务范围" },
+      { "page": "news", "caption": "新闻资讯分类" },
+      { "page": "mine", "caption": "我的与隐私合规" }
+    ],
+    "incentiveHooks": ["华为账号登录", "原生鸿蒙流畅体验", "工程案例影像展示"]
+  },
+  "access": {
+    "mode": "open_optional",
+    "features": {
+      "register": true,
+      "guestBrowse": true,
+      "guestWrite": false
+    },
+    "gateActions": ["favorite", "message"],
+    "onPrivacyRefuse": "browse_basic",
+    "loginProviders": ["password"]
+  },
+  "brand": {
+    "primary": "#0B6BCB",
+    "primaryDeep": "#0A2540",
+    "accent": "#0369A1",
+    "tone": "industrial",
+    "stylePack": "premium-business",
+    "workbenchId": "enterprise-showcase",
+    "layoutVariant": "B",
+    "visualDirection": "construction-showcase",
+    "productVisualType": "industrial-field",
+    "visualAssets": [
+      { "id": "hero_bg", "file": "hero_bg.png", "usage": "首页 Hero 氛围" },
+      { "id": "banner_landmark", "file": "banner_landmark.png", "usage": "Banner 城市地标" },
+      { "id": "banner_municipal", "file": "banner_municipal.png", "usage": "Banner 市政工程" },
+      { "id": "banner_green", "file": "banner_green.png", "usage": "Banner 绿色建造" },
+      { "id": "project_building", "file": "project_building.png", "usage": "房建工程封面 p1/p2" },
+      { "id": "project_municipal", "file": "project_municipal.png", "usage": "市政工程封面 p3/p4" },
+      { "id": "project_decoration", "file": "project_decoration.png", "usage": "装饰装修封面 p5/p6" },
+      { "id": "project_landscape", "file": "project_landscape.png", "usage": "园林工程封面 p7/p8" },
+      { "id": "news_company", "file": "news_company.png", "usage": "企业新闻封面" },
+      { "id": "news_industry", "file": "news_industry.png", "usage": "行业资讯封面" },
+      { "id": "news_project", "file": "news_project.png", "usage": "项目动态封面" },
+      { "id": "news_notice", "file": "news_notice.png", "usage": "通知公告封面" },
+      { "id": "cert_qualification", "file": "cert_qualification.png", "usage": "资质证书展示" },
+      { "id": "honor_trophy", "file": "honor_trophy.png", "usage": "荣誉奖杯展示" },
+      { "id": "contact_office", "file": "contact_office.png", "usage": "联系页/地图导航" }
+    ],
+    "logo": {
+      "concept": "store/logo/concept.md",
+      "file": "app_icon.png"
+    }
+  }
+}

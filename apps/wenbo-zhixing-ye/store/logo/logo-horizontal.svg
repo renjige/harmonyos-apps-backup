@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 480">
+  <rect width="1600" height="480" fill="#1A2A6C"/>
+  <g transform="translate(72,28) scale(0.42)">
+    <path d="M268 348 L492 292 L492 732 L248 688 Z" fill="#F4EBD0"/>
+    <path d="M532 292 L756 348 L776 688 L532 732 Z" fill="#E8D9B0"/>
+    <rect x="492" y="276" width="40" height="468" rx="8" fill="#C9A84C"/>
+    <path d="M512 640 L620 470 L742 318" fill="none" stroke="#C9A84C" stroke-width="36" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M686 268 L742 318 L692 374" fill="none" stroke="#C9A84C" stroke-width="36" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <text x="560" y="292" font-family="HarmonyOS Sans, Source Han Sans, Noto Sans SC, sans-serif" font-size="148" font-weight="600" fill="#F4EBD0">�Lu</text>
+</svg>

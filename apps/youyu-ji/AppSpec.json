@@ -1,0 +1,265 @@
+{
+  "specVersion": "1.0.0",
+  "generatedAt": "2026-08-26T01:22:28.078Z",
+  "requestId": "req_1787707348041",
+  "industryPack": "quiet-corner",
+  "identity": {
+    "company": "悠隅生活",
+    "companyPinyin": "youyu",
+    "appName": "悠隅纪",
+    "appPinyin": "ji",
+    "bundleId": "com.youyu.ji",
+    "version": "1.0.0"
+  },
+  "positioning": {
+    "tagline": "静谧一隅，温柔记录生活美好瞬间的私密智慧空间",
+    "coreUsers": [
+      {
+        "role": "追求生活品质的年轻记录者",
+        "ageRange": "18-35",
+        "scenario": "窗边、通勤后、睡前想轻轻留下一刻",
+        "need": "无压力写下心情与碎片，日后能被时光胶囊温柔遇见"
+      }
+    ],
+    "painPoints": [
+      "日记 App 太重，社交和相册把记录挤没了",
+      "系统备忘录没有心情与回顾仪式",
+      "想分类却不想被复杂功能打扰"
+    ],
+    "differentiation": "暖杏窗隅美学 + 五心情时间线 + 时光胶囊随机回顾 + 本机保存；无支付无生成式对话"
+  },
+  "modules": {
+    "pages": [
+      {
+        "id": "home",
+        "title": "一隅",
+        "route": "pages/HomePage",
+        "features": [
+          "时间线",
+          "日期分组",
+          "悬浮新建"
+        ],
+        "tab": true
+      },
+      {
+        "id": "capsule",
+        "title": "胶囊",
+        "route": "pages/CapsulePage",
+        "features": [
+          "随机抽取",
+          "再抽一次"
+        ],
+        "tab": true
+      },
+      {
+        "id": "stats",
+        "title": "纪事",
+        "route": "pages/StatsPage",
+        "features": [
+          "总数",
+          "连续天数",
+          "本月",
+          "标签计数"
+        ],
+        "tab": true
+      },
+      {
+        "id": "mine",
+        "title": "我的",
+        "route": "pages/MinePage",
+        "features": [
+          "深色模式",
+          "提醒",
+          "导出",
+          "设置与隐私"
+        ],
+        "tab": true
+      }
+    ],
+    "coreFlows": [
+      {
+        "name": "一隅记录闭环",
+        "steps": [
+          "选心情",
+          "写正文",
+          "选标签",
+          "可选配图",
+          "保存本机",
+          "时间线与胶囊可见"
+        ]
+      }
+    ]
+  },
+  "entities": [
+    {
+      "name": "CornerEntry",
+      "table": "youyu_entries",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "body",
+          "type": "string"
+        },
+        {
+          "name": "mood",
+          "type": "string"
+        },
+        {
+          "name": "tagIds",
+          "type": "string"
+        },
+        {
+          "name": "photoPath",
+          "type": "string"
+        },
+        {
+          "name": "entryDate",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "CornerTag",
+      "table": "youyu_tags",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "name",
+          "type": "string"
+        }
+      ]
+    }
+  ],
+  "apis": [],
+  "ai": {
+    "capabilities": [],
+    "quickCommands": [],
+    "systemPrompt": "你是「悠隅生活」旗下应用「悠隅纪」的内容助手。产品定位：静谧一隅，温柔记录生活美好瞬间。主职责：帮助用户用克制的语言写下当天的一隅记录，鼓励心情标记与标签分类。禁止自称人工智能，禁止心理诊断。C 端不提供生成式对话。",
+    "mode": "none",
+    "llmEnabled": false
+  },
+  "permissions": [
+    "ohos.permission.INTERNET",
+    "ohos.permission.PUBLISH_AGENT_REMINDER"
+  ],
+  "harmonyos": {
+    "features": []
+  },
+  "store": {
+    "category": "生活",
+    "legalOperator": "魏文波",
+    "oneLiner": "悠隅纪 — 静谧一隅，温柔记录生活美好瞬间的私密智慧空间",
+    "fullDescription": "悠隅纪是一款轻量生活记录应用。按时间写下心情、标签与文字，用时光胶囊随机遇见过去的自己。没有支付、没有会员、没有社交。记录默认保存在本机，断网也可完整使用。",
+    "keywords": [
+      "生活记录",
+      "心情",
+      "时光胶囊",
+      "手账",
+      "日记",
+      "鸿蒙"
+    ],
+    "privacySummary": {
+      "collect": [
+        "记录正文与心情标签（仅本机）",
+        "可选配图（仅本机）",
+        "可选登录账号"
+      ],
+      "purpose": "在本机保存与回顾个人生活记录；登录仅用于账号身份",
+      "thirdParties": []
+    },
+    "demoAccount": {
+      "username": "auditor@youyu.local",
+      "passwordNote": "审核可直接体验本机记录；如需登录见 store/demo-account.md"
+    },
+    "screenshotPlan": [
+      {
+        "page": "home",
+        "caption": "一隅时间线"
+      },
+      {
+        "page": "compose",
+        "caption": "写下此刻"
+      },
+      {
+        "page": "capsule",
+        "caption": "时光胶囊"
+      },
+      {
+        "page": "stats",
+        "caption": "纪事看板"
+      },
+      {
+        "page": "mine",
+        "caption": "设置与提醒"
+      }
+    ],
+    "incentiveHooks": []
+  },
+  "access": {
+    "mode": "open_optional",
+    "features": {
+      "register": true,
+      "guestBrowse": true,
+          "guestWrite": true
+    },
+    "gateActions": [
+      "sync_account"
+    ],
+    "onPrivacyRefuse": "browse_basic",
+    "loginProviders": [
+      "password"
+    ]
+  },
+  "admin": {
+    "featureModules": [
+      "overview",
+      "appUsers",
+      "messages",
+      "kpis"
+    ]
+  },
+  "brand": {
+    "primary": "#D4A574",
+    "primaryDeep": "#3D2B1F",
+    "deep": "#3D2B1F",
+    "accent": "#E8D4B8",
+    "tone": "soft-editorial",
+    "stylePack": "soft-editorial",
+    "workbenchId": "timeline-board",
+    "layoutVariant": "B",
+    "productVisualType": "content-commerce",
+    "visualDirection": {
+      "archetype": "warm-apricot-window-corner",
+      "density": "airy",
+      "material": "cream-paper",
+      "imagery": "window-light-tea-journal",
+      "accent": "warm-apricot",
+      "primaryJob": "3 秒看见时间线，10 秒写下此刻",
+      "notes": "暖杏+米白+胡桃深褐；窗框一隅；禁止莓粉心形与雾紫纸笺"
+    },
+    "logo": {
+      "brandAnchor": "隅",
+      "glyphStrategy": "semantic-fusion",
+      "customLock": true,
+      "generator": "agent-svg",
+      "renderScript": "store/logo/render_logo.ps1",
+      "concept": "圆角方窗 + 一隅光线切角，暖杏窗棂落在胡桃深底"
+    },
+    "visualAssets": [
+      { "id": "hero_window", "file": "hero_window.png", "usage": "首页窗边光 Hero" },
+      { "id": "banner_tea", "file": "banner_tea.png", "usage": "首页茶席 Editorial Banner" },
+      { "id": "banner_paper", "file": "banner_paper.png", "usage": "时光胶囊页纸本氛围" },
+      { "id": "cover_plant", "file": "cover_plant.png", "usage": "详情默认封面 · 绿植一隅" },
+      { "id": "cover_lamp", "file": "cover_lamp.png", "usage": "纪事页灯影封面 / 胶囊背景" },
+      { "id": "empty_corner", "file": "empty_corner.png", "usage": "空态与我的页氛围" }
+    ]
+  }
+}

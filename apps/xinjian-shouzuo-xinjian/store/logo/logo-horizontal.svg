@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 160" role="img" aria-label="K\�:">
+  <rect width="640" height="160" rx="24" fill="#FAF7F2"/>
+  <g transform="translate(24,24) scale(0.22)">
+    <rect width="512" height="512" rx="112" fill="#FAF7F2" stroke="#E8DDD4" stroke-width="4"/>
+    <path d="M96 148h320c8.8 0 16 7.2 16 16v248c0 8.8-7.2 16-16 16H96c-8.8 0-16-7.2-16-16V164c0-8.8 7.2-16 16-16z" fill="#FFFFFF" stroke="#E8DDD4" stroke-width="6"/>
+    <path d="M96 164l160 108 160-108" fill="none" stroke="#D4A5A5" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M256 292c-18-24-56-26-72 2-14 24 8 52 36 68 18 10 36 10 36 10s18 0 36-10c28-16 50-44 36-68-16-28-54-26-72-2z" fill="#D4A5A5"/>
+    <path d="M356 148c8-10 22-10 30 0 8 10 0 24-15 34-15-10-23-24-15-34z" fill="#8BA888"/>
+  </g>
+  <text x="140" y="98" font-family="HarmonyOS Sans, MiSans, sans-serif" font-size="52" font-weight="600" fill="#3D3A36">K\�:</text>
+  <text x="142" y="128" font-family="HarmonyOS Sans, MiSans, sans-serif" font-size="20" fill="#8BA888">K\�U � ;�f</text>
+</svg>

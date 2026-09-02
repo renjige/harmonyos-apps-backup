@@ -1,0 +1,353 @@
+{
+  "specVersion": "1.0.0",
+  "generatedAt": "2026-09-02T02:26:21.311Z",
+  "requestId": "req_1788315981266",
+  "industryPack": "light-archive",
+  "identity": {
+    "company": "小岛生活",
+    "companyPinyin": "xiaodao",
+    "appName": "小岛慢记",
+    "appPinyin": "manji",
+    "bundleId": "com.xiaodao.manji",
+    "version": "1.0.0"
+  },
+  "positioning": {
+    "tagline": "个人生活档案与美好瞬间收藏空间，在忙碌世界里为自己保留一座慢生活数字小岛",
+    "coreUsers": [
+      {
+        "role": "想长期留下生活片段的都市用户",
+        "ageRange": "20-45",
+        "scenario": "散步归来、读完一页、忽然想到一句值得留下的话",
+        "need": "不是记日记，而是把片段整理进主题与时间档案"
+      }
+    ],
+    "painPoints": [
+      "普通日记只有按天堆文字，难以整理和回望",
+      "灵感、瞬间、札记散落在备忘录里找不到",
+      "缺少主题沉淀与年度档案视角"
+    ],
+    "differentiation": "个人生活档案与美好瞬间收藏空间，在忙碌世界里为自己保留一座慢生活数字小岛"
+  },
+  "modules": {
+    "pages": [
+      {
+        "id": "home",
+        "title": "小岛",
+        "route": "pages/HomePage",
+        "features": [
+          "今日小岛",
+          "档案数字",
+          "快捷记录",
+          "最近片段",
+          "时光回望"
+        ],
+        "tab": true
+      },
+      {
+        "id": "journal",
+        "title": "慢记",
+        "route": "pages/JournalPage",
+        "features": [
+          "状态筛选",
+          "分类",
+          "搜索",
+          "模板创建",
+          "详情编辑"
+        ],
+        "tab": true
+      },
+      {
+        "id": "themes",
+        "title": "主题",
+        "route": "pages/ThemeSpacePage",
+        "features": [
+          "主题岛",
+          "关联内容",
+          "数量与更新"
+        ],
+        "tab": true
+      },
+      {
+        "id": "lookback",
+        "title": "回望",
+        "route": "pages/LookbackPage",
+        "features": [
+          "时间长廊",
+          "智慧回望",
+          "年度档案",
+          "生活统计"
+        ],
+        "tab": true
+      },
+      {
+        "id": "mine",
+        "title": "我的",
+        "route": "pages/MinePage",
+        "features": [
+          "成就墙",
+          "标签分类",
+          "设置与隐私"
+        ],
+        "tab": true
+      }
+    ],
+    "coreFlows": [
+      {
+        "name": "慢记档案闭环",
+        "steps": [
+          "记录慢记或瞬间收藏",
+          "整理状态",
+          "归入主题岛",
+          "时间长廊回望",
+          "年度档案沉淀"
+        ]
+      }
+    ]
+  },
+  "entities": [
+    {
+      "name": "XdEntry",
+      "table": "entries",
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "dateKey",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "categoryKey",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "tagIds",
+          "type": "array"
+        },
+        {
+          "name": "status",
+          "type": "string"
+        },
+        {
+          "name": "templateKey",
+          "type": "string"
+        },
+        {
+          "name": "fieldA",
+          "type": "string"
+        },
+        {
+          "name": "fieldB",
+          "type": "string"
+        },
+        {
+          "name": "fieldC",
+          "type": "string"
+        },
+        {
+          "name": "body",
+          "type": "string"
+        },
+        {
+          "name": "createdAt",
+          "type": "number"
+        },
+        {
+          "name": "updatedAt",
+          "type": "number"
+        }
+      ]
+    },
+    {
+      "name": "XdClip",
+      "table": "clips",
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "text",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "clipKind",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "dateKey",
+          "type": "string"
+        },
+        {
+          "name": "treasured",
+          "type": "boolean"
+        },
+        {
+          "name": "createdAt",
+          "type": "number"
+        }
+      ]
+    },
+    {
+      "name": "XdTheme",
+      "table": "themes",
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "summary",
+          "type": "string"
+        },
+        {
+          "name": "coverKey",
+          "type": "string"
+        },
+        {
+          "name": "createdAt",
+          "type": "number"
+        },
+        {
+          "name": "updatedAt",
+          "type": "number"
+        }
+      ]
+    }
+  ],
+  "apis": [],
+  "admin": {
+    "featureModules": []
+  },
+  "ai": {
+    "capabilities": [],
+    "quickCommands": [],
+    "systemPrompt": "你是「小岛生活」旗下应用「小岛慢记」的档案整理助手。产品定位：个人生活档案与美好瞬间收藏空间。主职责：帮助理解慢记、瞬间收藏、主题岛与时间回望。禁止生成式对话。",
+    "mode": "none",
+    "llmEnabled": false
+  },
+  "permissions": [],
+  "harmonyos": {
+    "features": []
+  },
+  "store": {
+    "category": "生活",
+    "legalOperator": "魏文波",
+    "oneLiner": "小岛慢记 — 个人生活档案与美好瞬间收藏空间，在忙碌世界里为自己保留一座慢生活数",
+    "fullDescription": "小岛慢记帮助你记录生活片段、收藏瞬间、用主题岛整理个人档案，并在时间长廊与年度档案中回望成长。数据保存在本机，无需注册，不申请相机、定位等敏感权限，无广告、无内购。",
+    "keywords": [
+      "生活档案",
+      "瞬间收藏",
+      "主题岛",
+      "时间回顾",
+      "慢记",
+      "鸿蒙"
+    ],
+    "privacySummary": {
+      "collect": [
+        "昵称（本机）",
+        "慢记与瞬间收藏正文（本机）",
+        "主题岛、分类与标签（本机）",
+        "心情与心愿（本机）",
+        "主题外观偏好（本机）"
+      ],
+      "purpose": "提供本地生活档案整理、主题岛收藏、时间回望与统计",
+      "thirdParties": []
+    },
+    "demoAccount": {
+      "username": "auditor@xiaodao.local",
+      "passwordNote": "本地工具无需登录，仅审核占位"
+    },
+    "screenshotPlan": [
+      {
+        "page": "home",
+        "caption": "小岛空间与今日提问"
+      },
+      {
+        "page": "journal",
+        "caption": "慢记档案与状态整理"
+      },
+      {
+        "page": "themes",
+        "caption": "主题岛收藏册"
+      },
+      {
+        "page": "lookback",
+        "caption": "时间长廊与年度档案"
+      },
+      {
+        "page": "mine",
+        "caption": "成就墙与设置"
+      }
+    ],
+    "incentiveHooks": []
+  },
+  "access": {
+    "mode": "open_optional",
+    "features": {
+      "register": true,
+      "guestBrowse": true,
+      "guestWrite": false
+    },
+    "gateActions": [],
+    "onPrivacyRefuse": "browse_basic",
+    "loginProviders": []
+  },
+  "brand": {
+    "primary": "#6B8FA3",
+    "primaryDeep": "#3D5566",
+    "deep": "#3D5566",
+    "accent": "#E8A86B",
+    "tone": "soft-editorial",
+    "stylePack": "soft-editorial",
+    "workbenchId": "timeline-board",
+    "layoutVariant": "B",
+    "productVisualType": "content-commerce",
+    "visualDirection": {
+      "archetype": "slow-island",
+      "density": "airy",
+      "material": "warm-paper",
+      "imagery": "island-mist-shore",
+      "accent": "warm-sand-on-sea-mist",
+      "primaryJob": "3 秒内留下一条生活片段并看见档案数字变化",
+      "notes": "雾蓝#6B8FA3+暖沙#E8A86B+米白#F7F4EF；五 Tab 慢生活小岛气质"
+    },
+    "logo": {
+      "brandAnchor": "岛",
+      "glyphStrategy": "semantic-fusion",
+      "customLock": true,
+      "generator": "agent-svg",
+      "renderScript": "store/logo/render_logo.mjs",
+      "symbolFile": "store/logo/symbol.svg",
+      "previewFile": "store/logo/preview-1024.png",
+      "concept": "离岸小岛 + 微光 + 水波线"
+    },
+    "visualAssets": [
+      { "id": "hero", "file": "hero_island_mist.png", "usage": "首页小岛空间 Hero" },
+      { "id": "banner_entry", "file": "banner_slow_evening.png", "usage": "慢记详情 Banner" },
+      { "id": "banner_clip", "file": "banner_moment_glow.png", "usage": "瞬间收藏 Banner" },
+      { "id": "hero_corridor", "file": "hero_corridor_sea.png", "usage": "回望长廊" },
+      { "id": "cover_travel", "file": "cover_theme_travel.png", "usage": "旅行岛封面" },
+      { "id": "cover_read", "file": "cover_theme_read.png", "usage": "阅读岛封面" },
+      { "id": "empty", "file": "empty_shore.png", "usage": "空态" }
+    ]
+  }
+}

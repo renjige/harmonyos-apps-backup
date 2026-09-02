@@ -1,0 +1,8 @@
+{
+  "string": [
+    { "name": "module_desc", "value": "学知小筑主模块" },
+    { "name": "EntryAbility_desc", "value": "学知小筑学习路径入口" },
+    { "name": "EntryAbility_label", "value": "学知小筑" },
+    { "name": "internet_reason", "value": "用于连接学习路径、知识卡片、进度同步与账号服务" }
+  ]
+}

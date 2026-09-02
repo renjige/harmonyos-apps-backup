@@ -1,0 +1,651 @@
+{
+  "specVersion": "1.0.0",
+  "generatedAt": "2026-08-24T01:39:01.383Z",
+  "requestId": "req_1787535541258",
+  "industryPack": "art-education",
+  "identity": {
+    "company": "职途教育科技有限公司",
+    "companyPinyin": "zhitujiaoyu",
+    "appName": "职业课堂",
+    "appPinyin": "zhiye-ketang",
+    "bundleId": "com.zhitujiaoyu.zhiyeketang",
+    "version": "1.0.0"
+  },
+  "positioning": {
+    "tagline": "面向职场人士的职业能力提升平台，提供免费职业课程与智慧学习工具",
+    "coreUsers": [
+      {
+        "role": "少儿家长",
+        "ageRange": "28-45",
+        "scenario": "选课、活动报名、家庭练习",
+        "need": "了解课程师资、报名试听、获取家庭美育建议"
+      },
+      {
+        "role": "艺术兴趣学员",
+        "scenario": "古筝/书法/国画入门与进阶",
+        "need": "系统课程、活动参与、学习资讯"
+      }
+    ],
+    "painPoints": [
+      "艺术培训机构信息分散，难以对比课程与师资",
+      "家庭练习缺乏轻量指导，容易三天打鱼",
+      "活动与文创周边信息难以及时获取"
+    ],
+    "differentiation": "面向职场人士的职业能力提升平台，提供免费职业课程与智慧学习工具"
+  },
+  "modules": {
+    "pages": [
+      {
+        "id": "home",
+        "title": "首页",
+        "route": "pages/Home",
+        "features": [
+          "品牌区",
+          "KPI 数据",
+          "推荐课程",
+          "师资亮点",
+          "活动预告",
+          "AI 入口"
+        ],
+        "tab": true
+      },
+      {
+        "id": "courses",
+        "title": "课程",
+        "route": "pages/CoreBiz",
+        "features": [
+          "古筝",
+          "书画",
+          "美育通识",
+          "课程详情",
+          "报名登记"
+        ],
+        "tab": true
+      },
+      {
+        "id": "ai",
+        "title": "AI助手",
+        "route": "pages/AIAssistant",
+        "features": [
+          "学琴问卷",
+          "选课建议",
+          "家庭练习计划模板"
+        ],
+        "tab": true
+      },
+      {
+        "id": "activities",
+        "title": "活动",
+        "route": "pages/Dashboard",
+        "features": [
+          "雅集",
+          "体验课",
+          "沙龙",
+          "活动详情"
+        ],
+        "tab": true
+      },
+      {
+        "id": "mine",
+        "title": "我的",
+        "route": "pages/Mine",
+        "features": [
+          "我的报名",
+          "收藏",
+          "消息",
+          "设置与隐私",
+          "注销"
+        ],
+        "tab": true
+      },
+      {
+        "id": "shop",
+        "title": "文创商城",
+        "route": "pages/ShopPage",
+        "features": [
+          "教材",
+          "文具",
+          "配件",
+          "文化周边"
+        ],
+        "tab": false
+      },
+      {
+        "id": "messages",
+        "title": "消息",
+        "route": "pages/Messages",
+        "features": [
+          "报名提醒",
+          "活动通知",
+          "系统消息"
+        ],
+        "tab": false
+      }
+    ],
+    "coreFlows": [
+      {
+        "name": "课程报名闭环",
+        "steps": [
+          "浏览课程",
+          "查看师资",
+          "提交报名",
+          "工作人员联系确认"
+        ]
+      },
+      {
+        "name": "家庭成长闭环",
+        "steps": [
+          "选择适龄段",
+          "阅读建议",
+          "制定轻量练习计划",
+          "个人回顾"
+        ]
+      },
+      {
+        "name": "活动参与闭环",
+        "steps": [
+          "浏览活动",
+          "查看详情",
+          "线下参与或咨询",
+          "消息提醒"
+        ]
+      }
+    ]
+  },
+  "entities": [
+    {
+      "name": "ArtCourse",
+      "table": "art_education_courses",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true,
+          "unique": true
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "category",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "level",
+          "type": "string"
+        },
+        {
+          "name": "teacherId",
+          "type": "uuid",
+          "ref": "ArtTeacher"
+        },
+        {
+          "name": "duration",
+          "type": "string"
+        },
+        {
+          "name": "summary",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "ArtTeacher",
+      "table": "art_education_teachers",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true,
+          "unique": true
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "specialty",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "years",
+          "type": "number"
+        },
+        {
+          "name": "bio",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "ArtActivity",
+      "table": "art_education_activities",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true,
+          "unique": true
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "type",
+          "type": "string"
+        },
+        {
+          "name": "startAt",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "venue",
+          "type": "string"
+        },
+        {
+          "name": "capacity",
+          "type": "number"
+        },
+        {
+          "name": "status",
+          "type": "enum",
+          "enumValues": [
+            "open",
+            "closed"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ArtArticle",
+      "table": "art_education_articles",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true,
+          "unique": true
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "category",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "summary",
+          "type": "string"
+        },
+        {
+          "name": "readMinutes",
+          "type": "number"
+        },
+        {
+          "name": "body",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "ArtProduct",
+      "table": "art_education_products",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true,
+          "unique": true
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "category",
+          "type": "string"
+        },
+        {
+          "name": "price",
+          "type": "number"
+        },
+        {
+          "name": "summary",
+          "type": "string"
+        },
+        {
+          "name": "status",
+          "type": "enum",
+          "enumValues": [
+            "on_sale",
+            "off_sale"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "FamilyGrowth",
+      "table": "art_education_family_growth",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true,
+          "unique": true
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "ageRange",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "category",
+          "type": "string"
+        },
+        {
+          "name": "tips",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "CourseEnrollment",
+      "table": "art_education_enrollments",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true,
+          "unique": true
+        },
+        {
+          "name": "courseId",
+          "type": "uuid",
+          "ref": "ArtCourse"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "phone",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "childName",
+          "type": "string"
+        },
+        {
+          "name": "childAge",
+          "type": "number"
+        },
+        {
+          "name": "status",
+          "type": "enum",
+          "enumValues": [
+            "pending",
+            "contacted",
+            "cancelled"
+          ]
+        }
+      ]
+    }
+  ],
+  "apis": [
+    {
+      "method": "POST",
+      "path": "/api/v1/auth/login",
+      "summary": "登录",
+      "auth": false,
+      "module": "auth"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/auth/register",
+      "summary": "注册",
+      "auth": false,
+      "module": "auth"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/art-education/courses",
+      "summary": "课程列表",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/art-education/courses/:id",
+      "summary": "课程详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/art-education/teachers",
+      "summary": "师资列表",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/art-education/activities",
+      "summary": "活动列表",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/art-education/articles",
+      "summary": "美育资讯",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/art-education/products",
+      "summary": "文创商品",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/art-education/family-growth",
+      "summary": "家庭成长",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/biz/art-education/enrollments",
+      "summary": "课程报名",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/art-education/enrollments",
+      "summary": "我的报名",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/art-education/kpis",
+      "summary": "首页指标",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/messages",
+      "summary": "消息",
+      "auth": true,
+      "module": "messages"
+    }
+  ],
+  "ai": {
+    "capabilities": [
+      {
+        "id": "diagnose",
+        "scene": "学琴/选课倾向问卷",
+        "closedLoop": true
+      },
+      {
+        "id": "analyze",
+        "scene": "推荐课程与家庭练习建议",
+        "closedLoop": true
+      }
+    ],
+    "quickCommands": [
+      "帮我匹配适合孩子的古筝课程",
+      "6 岁孩子每周练多久合适？",
+      "推荐家庭美育小练习"
+    ],
+    "systemPrompt": "你是「内蒙古筝昕雅缘教育咨询有限公司」旗下应用「筝昕雅缘」的美育学习助手。产品定位：古筝、书画与家庭美育学习服务。主职责：根据孩子年龄与兴趣推荐课程类型；解答学琴入门、家庭练习安排等常见问题；介绍机构活动与师资方向。输出结构化、温和、适合手机阅读；不做考级承诺、不编造师资资质；不确定时建议预约试听或联系机构顾问。禁止越权扮演其他 App；禁止输出与本产品无关的通用闲聊模板。",
+    "mode": "diagnose_template",
+    "llmEnabled": false
+  },
+  "permissions": [
+    {
+      "name": "ohos.permission.INTERNET",
+      "reason": "用于同步课程、活动、资讯与报名信息",
+      "when": "inuse",
+      "scene": "浏览内容与提交课程报名"
+    }
+  ],
+  "harmonyos": {
+    "features": [
+      {
+        "type": "formCard",
+        "scene": "课程推荐与活动提醒卡片"
+      }
+    ]
+  },
+  "store": {
+    "category": "教育",
+    "oneLiner": "职业课堂 — 面向职场人士的职业能力提升平台，提供免费职业课程与智慧学习工具",
+    "fullDescription": "筝昕雅缘由内蒙古筝昕雅缘教育咨询有限公司出品，面向关注少儿艺术启蒙与家庭美育的学员与家长，提供古筝、书画课程浏览、师资介绍、线下活动信息、美育资讯、家庭成长建议、文创商品展示与课程报名登记。\n\n【精品课程】\n涵盖古筝启蒙与进阶、软笔/硬笔书法、国画花鸟与美育通识，班级信息由后台统一管理，App 实时同步。\n\n【师资团队】\n展示主教老师专长与简介，帮助家长理性了解教学方向。\n\n【线下活动】\n筝韵雅集、体验课与名曲赏析沙龙等活动预告，不涉及在线支付。\n\n【家庭成长】\n按适龄段提供轻量练习与陪伴建议，仅供家庭参考。\n\n【AI 助手】\n提供学琴倾向问卷与模板化选课/练习建议（方案 B，不调用自由对话大模型）。\n\n应用基于 HarmonyOS NEXT 原生开发，游客可浏览大部分内容；报名与收藏需登录。设置内提供隐私政策、用户协议与账号注销。",
+    "keywords": [
+      "古筝",
+      "书画",
+      "美育",
+      "少儿",
+      "艺术",
+      "呼和浩特",
+      "鸿蒙",
+      "教育"
+    ],
+    "privacySummary": {
+      "collect": [
+        "账号信息",
+        "课程报名信息",
+        "孩子姓名与年龄（选填）"
+      ],
+      "purpose": "提供课程浏览、报名登记与消息通知服务",
+      "thirdParties": []
+    },
+    "demoAccount": {
+      "username": "auditor@zhitujiaoyu.local",
+      "passwordNote": "仅写入 store/demo-account.md，禁止打进客户端"
+    },
+    "screenshotPlan": [
+      {
+        "page": "home",
+        "caption": "首页课程与活动推荐"
+      },
+      {
+        "page": "courses",
+        "caption": "古筝书画课程列表"
+      },
+      {
+        "page": "ai",
+        "caption": "学琴问卷与选课建议"
+      },
+      {
+        "page": "activities",
+        "caption": "线下雅集与体验课"
+      },
+      {
+        "page": "mine",
+        "caption": "我的报名与设置"
+      }
+    ],
+    "incentiveHooks": [
+      "服务卡片课程提醒",
+      "活动通知",
+      "家庭练习计划"
+    ],
+    "legalOperator": "魏文波"
+  },
+  "access": {
+    "mode": "open_optional",
+    "features": {
+      "register": true,
+      "guestBrowse": true,
+      "guestWrite": false
+    },
+    "gateActions": [
+      "favorite",
+      "submit_enrollment",
+      "sync"
+    ],
+    "onPrivacyRefuse": "browse_basic",
+    "loginProviders": [
+      "password"
+    ]
+  },
+  "brand": {
+    "primary": "#5C4A3D",
+    "primaryDeep": "#3D2E24",
+    "deep": "#1A1614",
+    "accent": "#B8860B",
+    "tone": "editorial",
+    "stylePack": "soft-editorial",
+    "workbenchId": "ops-cockpit",
+    "layoutVariant": "A",
+    "visualDirection": {
+      "archetype": "art-education-editorial",
+      "density": "balanced",
+      "material": "paper-warm",
+      "imagery": "guzheng-calligraphy-culture",
+      "accent": "gold-brown",
+      "primaryJob": "浏览课程并完成试听报名",
+      "notes": "Editorial Hero + 课程卡片 + 师资展示；禁止工厂六件套"
+    },
+    "productVisualType": "content-commerce",
+    "logo": {
+      "concept": "Brand geometric mark",
+      "style": "flat-premium",
+      "generator": "premium_logo.py",
+      "glyphStrategy": "bootstrap",
+      "brandAnchor": "职",
+      "customLock": false,
+      "foregroundFile": "store/logo/foreground.png",
+      "backgroundFile": "store/logo/background.png",
+      "previewFile": "store/logo/preview-1024.png",
+      "agcFile": "store/logo/agc-216.png",
+      "symbolFile": "store/logo/symbol.svg",
+      "horizontalFile": "store/logo/logo-horizontal.svg"
+    }
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "app": {
+    "signingConfigs": [
+      {
+        "name": "default",
+        "type": "HarmonyOS",
+        "material": {
+          "storeFile": "F:/download/huawei.p12",
+          "storePassword": "00000018FB9EFD40877E0F8CD27D746711919C2749D84F4AC0E67A854686A0B4090CBA84FDCD3B8D",
+          "keyAlias": "huawei",
+          "keyPassword": "00000018DE3B94AFB0BAA2585DFBC692A77D900847EB149CE51EC353B97F49181F314860BA2F1E19",
+          "signAlg": "SHA256withECDSA",
+          "profile": "F:/download/zkclys.zk.huaweiRelease (2).p7b",
+          "certpath": "F:/download/huawei (3).cer"
+        }
+      }
+    ],
+    "products": [
+      {
+        "name": "default",
+        "signingConfig": "default",
+        "compatibleSdkVersion": "5.0.0(12)",
+        "runtimeOS": "HarmonyOS",
+        "targetSdkVersion": "5.0.0(12)"
+      }
+    ],
+    "buildModeSet": [
+      {
+        "name": "debug"
+      },
+      {
+        "name": "release"
+      }
+    ]
+  },
+  "modules": [
+    {
+      "name": "entry",
+      "srcPath": "./entry",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    }
+  ]
+}

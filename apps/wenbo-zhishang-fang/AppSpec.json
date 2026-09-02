@@ -1,0 +1,287 @@
+{
+  "specVersion": "1.0.0",
+  "generatedAt": "2026-08-26T02:45:23.147Z",
+  "requestId": "req_1787712323109",
+  "industryPack": "paper-excerpt",
+  "identity": {
+    "company": "魏文波",
+    "companyPinyin": "wenbo",
+    "appName": "纸上方",
+    "appPinyin": "zhishangfang",
+    "bundleId": "com.wenbo.zhishangfang",
+    "version": "1.0.2"
+  },
+  "positioning": {
+    "tagline": "智能书摘，让每本读过的书都留下智慧精华，从纸质书高效提取、整理与回顾",
+    "coreUsers": [
+      {
+        "role": "爱读书的知识工作者与学生",
+        "ageRange": "16-45",
+        "scenario": "读纸质书时摘录金句并写下感悟",
+        "need": "把书页精华数字化、按书检索、收藏后每日回顾"
+      }
+    ],
+    "painPoints": [
+      "纸质书精华散落在书签和手机备忘录里",
+      "读过即忘，缺少按书籍与标签回看的入口",
+      "通用记事本没有页码、封面与今日回顾"
+    ],
+    "differentiation": "智能书摘，让每本读过的书都留下智慧精华，从纸质书高效提取、整理与回顾"
+  },
+  "modules": {
+    "pages": [
+      {
+        "id": "studio",
+        "title": "书房",
+        "route": "pages/HomePage",
+        "features": [
+          "书摘列表",
+          "按书名搜索",
+          "左滑收藏删除",
+          "空态引导"
+        ],
+        "tab": true
+      },
+      {
+        "id": "capture",
+        "title": "添加",
+        "route": "pages/CapturePage",
+        "features": [
+          "书名摘录表单",
+          "智慧分类",
+          "可选封面",
+          "提交进书房"
+        ],
+        "tab": true
+      },
+      {
+        "id": "review",
+        "title": "智慧回顾",
+        "route": "pages/ReviewPage",
+        "features": [
+          "今日智慧",
+          "我的收藏",
+          "智慧标签云",
+          "统计"
+        ],
+        "tab": true
+      }
+    ],
+    "coreFlows": [
+      {
+        "name": "书摘沉淀闭环",
+        "steps": [
+          "添加书名与摘录",
+          "智慧分类确认",
+          "写入书房",
+          "详情编辑收藏删除",
+          "今日智慧与标签云回顾"
+        ]
+      }
+    ]
+  },
+  "entities": [
+    {
+      "name": "BookNote",
+      "table": "book_notes",
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "bookName",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "pageNumber",
+          "type": "number"
+        },
+        {
+          "name": "excerpt",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "reflection",
+          "type": "string"
+        },
+        {
+          "name": "coverImage",
+          "type": "string"
+        },
+        {
+          "name": "tags",
+          "type": "array"
+        },
+        {
+          "name": "isFavorite",
+          "type": "boolean"
+        },
+        {
+          "name": "createdAt",
+          "type": "number"
+        }
+      ]
+    }
+  ],
+  "apis": [
+    {
+      "method": "POST",
+      "path": "/api/v1/auth/login",
+      "summary": "登录",
+      "auth": false,
+      "module": "auth"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/auth/register",
+      "summary": "注册",
+      "auth": false,
+      "module": "auth"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/messages",
+      "summary": "机构消息",
+      "auth": false,
+      "module": "messages"
+    }
+  ],
+  "admin": {
+    "featureModules": [
+      "overview",
+      "appUsers",
+      "messages",
+      "kpis",
+      "ai"
+    ]
+  },
+  "ai": {
+    "capabilities": [],
+    "quickCommands": [
+      "建议这条书摘的分类",
+      "说明归类理由",
+      "今日回顾口吻"
+    ],
+    "systemPrompt": "你是「魏文波」旗下应用「纸上方」的书摘整理助手。产品定位：智能书摘，让每本读过的书都留下智慧。主职责：根据书名与摘录建议文学/哲学/商业/科技等分类，不编造用户未摘录的原文。禁止学历教育承诺、心理咨询、金融决策与生成式闲聊。C 端不提供自由对话。",
+    "mode": "none",
+    "llmEnabled": false
+  },
+  "permissions": [
+    {
+      "name": "ohos.permission.INTERNET",
+      "reason": "登录注册与可选账号同步",
+      "when": "inuse",
+      "scene": "登录或注册时"
+    }
+  ],
+  "harmonyos": {
+    "features": []
+  },
+  "store": {
+    "category": "效率",
+    "legalOperator": "魏文波",
+    "oneLiner": "纸上方 — 智能书摘，让每本读过的书都留下智慧精华，从纸质书高效提取、整理与回顾",
+    "fullDescription": "纸上方是智能书摘与知识管理工具。把纸质书中的金句与感悟做成书摘卡片，按书名检索，用智慧分类打上文学、哲学、商业、科技等标签，并在智慧回顾里每天重读一条收藏。数据默认保存在本机，支持导出 CSV。无广告、无内购。",
+    "keywords": [
+      "书摘",
+      "读书笔记",
+      "知识管理",
+      "摘录",
+      "鸿蒙"
+    ],
+    "privacySummary": {
+      "collect": [
+        "可选账号信息",
+        "本机书摘正文与标签",
+        "可选书籍封面图（系统相册选择器）",
+        "深色模式等偏好"
+      ],
+      "purpose": "提供本机书摘、智慧分类、回顾与导出",
+      "thirdParties": []
+    },
+    "demoAccount": {
+      "username": "auditor@wenbo.local",
+      "passwordNote": "仅写入 store/demo-account.md"
+    },
+    "screenshotPlan": [
+      {
+        "page": "studio",
+        "caption": "书房书摘列表与搜索"
+      },
+      {
+        "page": "capture",
+        "caption": "添加书摘与智慧分类"
+      },
+      {
+        "page": "review",
+        "caption": "今日智慧与标签云"
+      },
+      {
+        "page": "detail",
+        "caption": "书摘详情与收藏"
+      },
+      {
+        "page": "settings",
+        "caption": "深色模式与导出"
+      }
+    ],
+    "incentiveHooks": [
+      "FormExtensionAbility",
+      "元服务快捷入口"
+    ]
+  },
+  "access": {
+    "mode": "open_optional",
+    "features": {
+      "register": true,
+      "guestBrowse": true,
+      "guestWrite": true
+    },
+    "gateActions": [
+      "sync_account",
+      "pick_cover"
+    ],
+    "onPrivacyRefuse": "browse_basic",
+    "loginProviders": [
+      "password"
+    ]
+  },
+  "brand": {
+    "primary": "#2C3E6B",
+    "primaryDeep": "#1A2744",
+    "deep": "#1A2744",
+    "accent": "#D4A84B",
+    "tone": "soft-editorial",
+    "stylePack": "soft-editorial",
+    "workbenchId": "catalog-tool",
+    "layoutVariant": "A",
+    "productVisualType": "ops-tool",
+    "visualDirection": {
+      "archetype": "paper-ink-editorial",
+      "density": "airy",
+      "material": "paper-cream",
+      "imagery": "open-hardcover-reading-lamp",
+      "accent": "gold-on-ink-navy",
+      "primaryJob": "3 秒内添加一条带书名的纸书摘录",
+      "notes": "墨蓝#2C3E6B+米白#F5F0E8+金#D4A84B；三 Tab 书房/添加/智慧回顾；禁止书架五 Tab 与通用记忆本"
+    },
+    "logo": {
+      "brandAnchor": "纸",
+      "glyphStrategy": "semantic-fusion",
+      "customLock": true,
+      "generator": "agent-svg",
+      "renderScript": "store/logo/render_logo.mjs",
+      "concept": "30° 上扬纸页 + 智慧金点"
+    },
+    "visualAssets": [
+      { "id": "hero_library", "file": "hero_library.png", "usage": "书房 Hero" },
+      { "id": "banner_today", "file": "banner_today.png", "usage": "今日智慧 Banner" },
+      { "id": "empty_desk", "file": "empty_desk.png", "usage": "空态书桌" },
+      { "id": "paper_texture", "file": "paper_texture.png", "usage": "纸张材质氛围" }
+    ]
+  }
+}

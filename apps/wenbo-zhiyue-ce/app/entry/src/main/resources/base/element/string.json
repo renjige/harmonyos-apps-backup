@@ -1,0 +1,8 @@
+{
+  "string": [
+    { "name": "module_desc", "value": "智阅册主模块" },
+    { "name": "EntryAbility_desc", "value": "智阅册入口" },
+    { "name": "EntryAbility_label", "value": "智阅册" },
+    { "name": "internet_reason", "value": "用于登录注册与拉取机构消息" }
+  ]
+}

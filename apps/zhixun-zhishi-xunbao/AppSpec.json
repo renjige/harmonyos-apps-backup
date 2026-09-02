@@ -1,0 +1,461 @@
+{
+  "specVersion": "1.0.0",
+  "generatedAt": "2026-08-26T01:25:04.942Z",
+  "requestId": "req_1787707504870",
+  "industryPack": "knowledge-quest",
+  "identity": {
+    "company": "知寻探索",
+    "companyPinyin": "zhixun",
+    "appName": "知识寻宝",
+    "appPinyin": "zhishi-xunbao",
+    "bundleId": "com.zhixun.zhishixunbao",
+    "version": "1.0.0"
+  },
+  "positioning": {
+    "tagline": "以主题知识地图闯关解锁宝藏，在趣味探索中积累智慧值，覆盖历史、科学、文化、自然与生活智慧",
+    "coreUsers": [
+      {
+        "role": "知识爱好者",
+        "ageRange": "16-45",
+        "scenario": "通勤或睡前完成一张知识地图",
+        "need": "有主题、有解析、有收藏感，而不是百科罗列"
+      },
+      {
+        "role": "终身学习者",
+        "ageRange": "25-50",
+        "scenario": "想用闯关代替枯燥刷题",
+        "need": "进度可见、签到有奖励、成就可回顾"
+      }
+    ],
+    "painPoints": [
+      "百科类应用只有信息罗列没有闯关闭环",
+      "学习工具广告多或强推支付",
+      "碎片时间缺少有主题的知识探索"
+    ],
+    "differentiation": "以主题知识地图闯关解锁宝藏，在趣味探索中积累智慧值，覆盖历史、科学、文化、自然与生活智慧"
+  },
+  "modules": {
+    "pages": [
+      {
+        "id": "home",
+        "title": "发现",
+        "route": "pages/HomePage",
+        "features": [
+          "智慧值",
+          "每日签到",
+          "Banner",
+          "今日推荐",
+          "热门寻宝"
+        ],
+        "tab": true
+      },
+      {
+        "id": "maps",
+        "title": "知识地图",
+        "route": "pages/MapsPage",
+        "features": [
+          "主题分类",
+          "地图列表",
+          "难度星级"
+        ],
+        "tab": true
+      },
+      {
+        "id": "quest",
+        "title": "寻宝",
+        "route": "pages/QuestPage",
+        "features": [
+          "当前地图",
+          "开始寻宝",
+          "闯关进度"
+        ],
+        "tab": true
+      },
+      {
+        "id": "vault",
+        "title": "我的宝藏",
+        "route": "pages/VaultPage",
+        "features": [
+          "统计看板",
+          "宝藏网格",
+          "成就徽章"
+        ],
+        "tab": true
+      },
+      {
+        "id": "mine",
+        "title": "我的",
+        "route": "pages/MinePage",
+        "features": [
+          "用户信息",
+          "学习记录",
+          "设置与隐私"
+        ],
+        "tab": true
+      }
+    ],
+    "coreFlows": [
+      {
+        "name": "地图寻宝",
+        "steps": [
+          "发现或地图列表",
+          "打开地图详情",
+          "开始寻宝",
+          "答题确认",
+          "查看解析",
+          "通关解锁宝藏"
+        ]
+      },
+      {
+        "name": "每日签到",
+        "steps": [
+          "打开发现",
+          "领取今日智慧",
+          "连续天数更新"
+        ]
+      },
+      {
+        "name": "宝藏成就",
+        "steps": [
+          "通关地图",
+          "点亮宝藏",
+          "达成徽章",
+          "我的宝藏回顾"
+        ]
+      }
+    ]
+  },
+  "entities": [
+    {
+      "name": "KnowledgeMap",
+      "table": "kq_maps",
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "category",
+          "type": "string"
+        },
+        {
+          "name": "coverMedia",
+          "type": "string"
+        },
+        {
+          "name": "difficulty",
+          "type": "number"
+        },
+        {
+          "name": "totalQuestions",
+          "type": "number"
+        }
+      ]
+    },
+    {
+      "name": "QuestQuestion",
+      "table": "kq_questions",
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "mapId",
+          "type": "string"
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "answerIndex",
+          "type": "number"
+        },
+        {
+          "name": "explanation",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "TreasureDef",
+      "table": "kq_treasures",
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "mapId",
+          "type": "string"
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "coverMedia",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "BadgeDef",
+      "table": "kq_badges",
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "summary",
+          "type": "string"
+        }
+      ]
+    }
+  ],
+  "apis": [
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/knowledge-quest/maps",
+      "summary": "知识地图列表",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/knowledge-quest/maps/:id",
+      "summary": "知识地图详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/knowledge-quest/questions",
+      "summary": "闯关题目",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/knowledge-quest/questions/:id",
+      "summary": "题目详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/knowledge-quest/treasures",
+      "summary": "宝藏定义",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/knowledge-quest/treasures/:id",
+      "summary": "宝藏详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/knowledge-quest/badges",
+      "summary": "成就徽章",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/knowledge-quest/badges/:id",
+      "summary": "徽章详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/knowledge-quest/kpis",
+      "summary": "机构指标",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/messages",
+      "summary": "系统消息",
+      "auth": false,
+      "module": "messages"
+    }
+  ],
+  "ai": {
+    "capabilities": [],
+    "quickCommands": [],
+    "systemPrompt": "你是「知寻探索」旗下应用「知识寻宝」的内容助手。产品定位：以主题知识地图闯关解锁宝藏，积累智慧值。主职责：说明地图主题、闯关规则、签到与宝藏解锁。不提供生成式对话，不承诺提高考试成绩。",
+    "mode": "none",
+    "llmEnabled": false
+  },
+  "permissions": [
+    {
+      "name": "ohos.permission.INTERNET",
+      "reason": "拉取知识地图与题库；您选择登录时连接账号服务",
+      "when": "inuse",
+      "scene": "浏览地图与可选登录"
+    }
+  ],
+  "harmonyos": {
+    "features": []
+  },
+  "store": {
+    "category": "教育",
+    "legalOperator": "魏文波",
+    "oneLiner": "知识寻宝 — 以主题知识地图闯关解锁宝藏，在趣味探索中积累智慧值，覆盖历史、科学",
+    "fullDescription": "知识寻宝是一款将知识学习与探索发现结合的智慧型应用。用户浏览主题知识地图、完成闯关答题、解锁知识宝藏并积累智慧值。支持每日签到、成就徽章与学习记录。题目来自平台题库，闯关进度默认保存在本机。无广告、无支付、无商城。不提供生成式对话，也不承诺提高考试成绩。",
+    "keywords": [
+      "知识",
+      "寻宝",
+      "闯关",
+      "地图",
+      "智慧",
+      "鸿蒙"
+    ],
+    "privacySummary": {
+      "collect": [
+        "可选账号信息",
+        "本机闯关进度",
+        "本机签到与宝藏"
+      ],
+      "purpose": "提供知识地图浏览、闯关解析、签到与本地成长记录",
+      "thirdParties": []
+    },
+    "demoAccount": {
+      "username": "auditor@zhixun.local",
+      "passwordNote": "仅写入 store/demo-account.md"
+    },
+    "screenshotPlan": [
+      {
+        "page": "home",
+        "caption": "发现页签到与今日推荐"
+      },
+      {
+        "page": "maps",
+        "caption": "知识地图分类与封面"
+      },
+      {
+        "page": "detail",
+        "caption": "地图详情与开始寻宝"
+      },
+      {
+        "page": "quiz",
+        "caption": "闯关题目与解析"
+      },
+      {
+        "page": "vault",
+        "caption": "我的宝藏与成就"
+      }
+    ],
+    "incentiveHooks": [
+      "FormExtensionAbility"
+    ]
+  },
+  "access": {
+    "mode": "open_optional",
+    "features": {
+      "register": true,
+      "guestBrowse": true,
+      "guestWrite": true
+    },
+    "gateActions": [
+      "sync_progress"
+    ],
+    "onPrivacyRefuse": "browse_basic",
+    "loginProviders": [
+      "password"
+    ]
+  },
+  "admin": {
+    "featureModules": [
+      "overview",
+      "appUsers",
+      "kqMaps",
+      "kqQuestions",
+      "kqTreasures",
+      "kqBadges",
+      "messages",
+      "kpis"
+    ]
+  },
+  "brand": {
+    "primary": "#6C5CE7",
+    "primaryDeep": "#2D1B69",
+    "deep": "#1E1E2E",
+    "accent": "#FDCB6E",
+    "tone": "soft-editorial",
+    "stylePack": "soft-editorial",
+    "workbenchId": "catalog-tool",
+    "layoutVariant": "A",
+    "productVisualType": "content-commerce",
+    "visualDirection": {
+      "archetype": "editorial-treasure-map",
+      "density": "airy",
+      "material": "paper-map-gold-foil",
+      "imagery": "open-atlas-compass-library",
+      "accent": "violet-gold-emerald",
+      "primaryJob": "3 秒内看到今日推荐并开始寻宝",
+      "notes": "禁止色块冒充封面；禁止与知识探宝卡片日历同构"
+    },
+    "logo": {
+      "brandAnchor": "寻",
+      "glyphStrategy": "semantic-fusion",
+      "customLock": true,
+      "generator": "agent-svg",
+      "concept": "展开藏宝图双页与金色罗盘针",
+      "foregroundFile": "store/logo/foreground.png",
+      "backgroundFile": "store/logo/background.png",
+      "previewFile": "store/logo/preview-1024.png",
+      "symbolFile": "store/logo/symbol.svg"
+    },
+    "visualAssets": [
+      { "id": "hero_discover", "file": "hero_discover.png", "usage": "hero" },
+      { "id": "banner_01", "file": "banner_01.png", "usage": "banner" },
+      { "id": "banner_02", "file": "banner_02.png", "usage": "banner" },
+      { "id": "map_silk", "file": "map_silk.png", "usage": "map-cover" },
+      { "id": "map_palace", "file": "map_palace.png", "usage": "map-cover" },
+      { "id": "map_dunhuang", "file": "map_dunhuang.png", "usage": "map-cover" },
+      { "id": "map_zhenghe", "file": "map_zhenghe.png", "usage": "map-cover" },
+      { "id": "map_solar", "file": "map_solar.png", "usage": "map-cover" },
+      { "id": "map_elements", "file": "map_elements.png", "usage": "map-cover" },
+      { "id": "map_body", "file": "map_body.png", "usage": "map-cover" },
+      { "id": "map_relativity", "file": "map_relativity.png", "usage": "map-cover" },
+      { "id": "map_ink", "file": "map_ink.png", "usage": "map-cover" },
+      { "id": "map_opera", "file": "map_opera.png", "usage": "map-cover" },
+      { "id": "map_tang", "file": "map_tang.png", "usage": "map-cover" },
+      { "id": "map_museum", "file": "map_museum.png", "usage": "map-cover" },
+      { "id": "map_tibet", "file": "map_tibet.png", "usage": "map-cover" },
+      { "id": "map_ocean", "file": "map_ocean.png", "usage": "map-cover" },
+      { "id": "map_aurora", "file": "map_aurora.png", "usage": "map-cover" },
+      { "id": "map_rainforest", "file": "map_rainforest.png", "usage": "map-cover" },
+      { "id": "map_solarterm", "file": "map_solarterm.png", "usage": "map-cover" },
+      { "id": "map_foodsafe", "file": "map_foodsafe.png", "usage": "map-cover" },
+      { "id": "map_firstaid", "file": "map_firstaid.png", "usage": "map-cover" },
+      { "id": "map_time", "file": "map_time.png", "usage": "map-cover" },
+      { "id": "badge_first", "file": "badge_first.png", "usage": "badge" },
+      { "id": "badge_checkin", "file": "badge_checkin.png", "usage": "badge" },
+      { "id": "badge_maps", "file": "badge_maps.png", "usage": "badge" },
+      { "id": "badge_world", "file": "badge_world.png", "usage": "badge" },
+      { "id": "badge_master", "file": "badge_master.png", "usage": "badge" },
+      { "id": "badge_perfect", "file": "badge_perfect.png", "usage": "badge" }
+    ]
+  }
+}
