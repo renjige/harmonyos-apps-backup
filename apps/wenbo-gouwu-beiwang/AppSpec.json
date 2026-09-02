@@ -1,0 +1,412 @@
+{
+  "specVersion": "1.0.0",
+  "generatedAt": "2026-08-20T02:21:01.096Z",
+  "requestId": "req_1787192461063",
+  "industryPack": "shopping-memo",
+  "identity": {
+    "company": "魏文波",
+    "companyPinyin": "wenbo",
+    "appName": "购物备忘",
+    "appPinyin": "gouwu-beiwang",
+    "bundleId": "gwbw.wxy.huawei",
+    "version": "1.3.0"
+  },
+  "positioning": {
+    "tagline": "个人与家庭采购工作台：情景动线、出门核对、采购计划、花费复盘与成长体系",
+    "coreUsers": [
+      {
+        "role": "家庭采购者",
+        "ageRange": "22-45",
+        "scenario": "下班前记下牛奶面包，到店逐项勾选",
+        "need": "三秒记下物品，分类清楚，减少遗漏"
+      },
+      {
+        "role": "独自生活的年轻人",
+        "ageRange": "18-35",
+        "scenario": "周末采购与旅行前准备用品",
+        "need": "模板复用 + 温和提醒，而不是商城下单"
+      }
+    ],
+    "painPoints": [
+      "想买的东西记在聊天记录里容易漏",
+      "到店后想不起来还缺哪几样",
+      "提醒过于吵闹或完全没有"
+    ],
+    "differentiation": "区别于普通清单 App：情景动线清单、出门全屏核对、补货周期、采购计划/主题、分类洞察、家庭分工、打卡成就与月度报告"
+  },
+  "modules": {
+    "pages": [
+      {
+        "id": "home",
+        "title": "首页",
+        "route": "pages/HomePage",
+        "features": [
+          "今日购物清单",
+          "完成进度",
+          "添加物品",
+          "最近清单"
+        ],
+        "tab": true
+      },
+      {
+        "id": "lists",
+        "title": "清单",
+        "route": "pages/ListsPage",
+        "features": [
+          "全部",
+          "进行中",
+          "已完成",
+          "新建清单",
+          "模板"
+        ],
+        "tab": true
+      },
+      {
+        "id": "memos",
+        "title": "备忘",
+        "route": "pages/MemosPage",
+        "features": [
+          "创建备忘",
+          "重要标记",
+          "提醒时间"
+        ],
+        "tab": true
+      },
+      {
+        "id": "mine",
+        "title": "我的",
+        "route": "pages/MinePage",
+        "features": [
+          "我的清单",
+          "我的模板",
+          "智慧提醒",
+          "通知设置",
+          "外观设置",
+          "设置与隐私"
+        ],
+        "tab": true
+      }
+    ],
+    "coreFlows": [
+      {
+        "name": "记录购物",
+        "steps": [
+          "打开首页",
+          "添加物品",
+          "智慧整理建议分类",
+          "勾选完成"
+        ]
+      },
+      {
+        "name": "复用模板",
+        "steps": [
+          "打开模板",
+          "一键创建清单",
+          "按需增删物品",
+          "出门勾选"
+        ]
+      },
+      {
+        "name": "备忘提醒",
+        "steps": [
+          "写下备忘",
+          "设置智慧提醒",
+          "到期查看",
+          "完成清单"
+        ]
+      }
+    ]
+  },
+  "entities": [
+    {
+      "name": "ShoppingList",
+      "table": "shopping-memo-lists",
+      "fields": [
+        "id",
+        "title",
+        "status",
+        "dueDate",
+        "coverKey",
+        "userId"
+      ]
+    },
+    {
+      "name": "ShoppingItem",
+      "table": "shopping-memo-items",
+      "fields": [
+        "id",
+        "listId",
+        "title",
+        "category",
+        "qty",
+        "remark",
+        "completed",
+        "userId"
+      ]
+    },
+    {
+      "name": "ShoppingMemo",
+      "table": "shopping-memo-memos",
+      "fields": [
+        "id",
+        "title",
+        "body",
+        "important",
+        "remindAt",
+        "userId"
+      ]
+    },
+    {
+      "name": "ShoppingReminder",
+      "table": "shopping-memo-reminders",
+      "fields": [
+        "id",
+        "listId",
+        "title",
+        "remindAt",
+        "status",
+        "userId"
+      ]
+    },
+    {
+      "name": "ShoppingTemplate",
+      "table": "shopping-memo-templates",
+      "fields": [
+        "id",
+        "title",
+        "summary",
+        "body",
+        "coverKey",
+        "itemsJson"
+      ]
+    }
+  ],
+  "apis": [
+    {
+      "method": "POST",
+      "path": "/api/v1/auth/login",
+      "summary": "登录",
+      "auth": false,
+      "module": "auth"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/auth/register",
+      "summary": "注册",
+      "auth": false,
+      "module": "auth"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/shopping-memo/templates",
+      "summary": "清单模板",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/shopping-memo/categories",
+      "summary": "分类预设",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/shopping-memo/lists",
+      "summary": "我的清单",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/biz/shopping-memo/lists",
+      "summary": "创建清单",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/shopping-memo/items",
+      "summary": "清单物品",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/biz/shopping-memo/items",
+      "summary": "添加物品",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/shopping-memo/memos",
+      "summary": "备忘",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/shopping-memo/reminders",
+      "summary": "智慧提醒",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/privacy/account",
+      "summary": "注销账号",
+      "auth": true,
+      "module": "privacy"
+    }
+  ],
+  "permissions": [
+    {
+      "name": "ohos.permission.INTERNET",
+      "reason": "用于同步用户主动创建的购物清单、备忘和提醒",
+      "when": "inuse",
+      "scene": "登录后同步购物备忘数据"
+    },
+    {
+      "name": "ohos.permission.PUBLISH_AGENT_REMINDER",
+      "reason": "用于在您设置的时间发送购物清单提醒通知",
+      "when": "inuse",
+      "scene": "智慧提醒到点通知"
+    }
+  ],
+  "harmonyos": {
+    "features": [
+      {
+        "type": "systemNotification",
+        "scene": "用户设置的购物清单提醒"
+      },
+      {
+        "type": "formCard",
+        "scene": "今日购物清单完成进度桌面卡片"
+      }
+    ]
+  },
+  "store": {
+    "category": "实用工具",
+    "oneLiner": "购物备忘 — 个人与家庭采购工作台：情景动线、计划复盘、出门核对与成长体系",
+    "fullDescription": "购物备忘是面向个人与家庭的采购管理工具。您可以按日常采购、生鲜食品、家庭用品、旅行用品、儿童用品分类创建多份清单；记录商品名称、数量、备注、预估与实付价格及必买等标签；使用常购物品库与超市、菜市场、家庭补货、搬家、出行、周末、节日、开学等模板快速建单；查看历史清单并一键再买一次；收藏常用方案；统计花费与常购分类；设置一次或每周采购提醒。备忘页可补充说明。桌面卡片展示今日进度。本应用不是购物商城，不提供商品浏览、下单与支付。游客可在本机完成采购管理；登录后可同步个人数据。",
+    "keywords": [
+      "购物清单",
+      "采购管理",
+      "常购物品",
+      "采购模板",
+      "花费统计",
+      "购物历史",
+      "采购提醒",
+      "备忘"
+    ],
+    "privacySummary": {
+      "collect": [
+        "注册账号、姓名和联系电话",
+        "用户主动创建的购物清单、物品、价格、标签、常购库、备忘与提醒",
+        "登录会话状态"
+      ],
+      "purpose": "提供账号登录、跨设备同步和个人购物清单管理",
+      "thirdParties": []
+    },
+    "demoAccount": {
+      "username": "auditor@wenbo.local",
+      "passwordNote": "仅写入 store/demo-account.md，禁止打进客户端"
+    },
+    "screenshotPlan": [
+      {
+        "page": "home",
+        "caption": "今日购物清单与完成进度"
+      },
+      {
+        "page": "list-detail",
+        "caption": "分类勾选物品"
+      },
+      {
+        "page": "add-item",
+        "caption": "快速添加与建议分类"
+      },
+      {
+        "page": "memos",
+        "caption": "购物备忘与重要标记"
+      },
+      {
+        "page": "mine",
+        "caption": "模板、提醒与隐私入口"
+      }
+    ],
+    "incentiveHooks": [
+      "桌面卡片展示今日进度",
+      "系统通知提醒",
+      "本机优先、登录同步"
+    ],
+    "legalOperator": "魏文波"
+  },
+  "access": {
+    "mode": "open_optional",
+    "features": {
+      "register": true,
+      "guestBrowse": true,
+      "guestWrite": true
+    },
+    "gateActions": [
+      "sync_records"
+    ],
+    "onPrivacyRefuse": "browse_basic",
+    "loginProviders": [
+      "password"
+    ]
+  },
+  "admin": {
+    "featureModules": [
+      "overview",
+      "appUsers",
+      "smTemplates",
+      "smCategories",
+      "smLists",
+      "smItems",
+      "smMemos",
+      "smReminders",
+      "messages",
+      "kpis"
+    ]
+  },
+  "ai": {
+    "capabilities": [],
+    "quickCommands": [],
+    "systemPrompt": "你是「魏文波」旗下应用「购物备忘」的清单整理助手。产品定位：轻量购物清单与备忘工具。主职责：按物品名称建议分类、整理采购清单、生成克制的提醒文案。禁止扮演购物商城或引导支付下单。不提供生成式对话作为 C 端功能。"
+  },
+  "brand": {
+    "primary": "#1677FF",
+    "primaryDeep": "#082A5A",
+    "tone": "premium-minimal",
+    "stylePack": "harmonyos-official",
+    "workbenchId": "catalog-tool",
+    "layoutVariant": "A",
+    "visualDirection": "清爽厨房静物与购物袋摄影、大留白、#1677FF 克制强调、无促销红",
+    "productVisualType": "ops-tool",
+    "visualAssets": [
+      { "key": "home_hero", "file": "app/entry/src/main/resources/base/media/home_hero.png", "role": "homeHero" },
+      { "key": "tpl_family", "file": "app/entry/src/main/resources/base/media/tpl_family.png", "role": "templateCover" },
+      { "key": "tpl_daily", "file": "app/entry/src/main/resources/base/media/tpl_daily.png", "role": "templateCover" },
+      { "key": "tpl_travel", "file": "app/entry/src/main/resources/base/media/tpl_travel.png", "role": "templateCover" },
+      { "key": "tpl_breakfast", "file": "app/entry/src/main/resources/base/media/tpl_breakfast.png", "role": "templateCover" },
+      { "key": "memo_hero", "file": "app/entry/src/main/resources/base/media/memo_hero.png", "role": "memoHero" }
+    ],
+    "logo": {
+      "concept": "购物袋轮廓与勾选融合，表达记下并完成",
+      "style": "flat-premium",
+      "generator": "agent-svg",
+      "glyphStrategy": "semantic-fusion",
+      "brandAnchor": "购",
+      "customLock": true,
+      "renderScript": "store/logo/render_logo.py",
+      "foregroundFile": "store/logo/foreground.png",
+      "backgroundFile": "store/logo/background.png",
+      "previewFile": "store/logo/preview-1024.png",
+      "agcFile": "store/logo/agc-216.png",
+      "symbolFile": "store/logo/symbol.svg",
+      "horizontalFile": "store/logo/logo-horizontal.svg"
+    }
+  }
+}

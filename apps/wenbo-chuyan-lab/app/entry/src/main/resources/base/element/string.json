@@ -1,0 +1,8 @@
+{
+  "string": [
+    { "name": "module_desc", "value": "井良智企管家主模块" },
+    { "name": "EntryAbility_desc", "value": "企业数字化管理入口" },
+    { "name": "EntryAbility_label", "value": "厨验Lab" },
+    { "name": "internet_reason", "value": "用于连接菜谱与食材同步服务" }
+  ]
+}

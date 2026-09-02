@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 240" role="img" aria-label="��1">
+  <rect width="900" height="240" rx="48" fill="#F5F0E8"/>
+  <g transform="translate(48 34) scale(.34)">
+    <circle cx="256" cy="256" r="320" stroke="#E8833A" stroke-width="28" opacity="0.35" fill="none"/>
+    <g stroke="#E8833A" stroke-width="16" stroke-linecap="round">
+      <line x1="256" y1="64" x2="256" y2="120"/>
+      <line x1="256" y1="392" x2="256" y2="448"/>
+      <line x1="64" y1="256" x2="120" y2="256"/>
+      <line x1="392" y1="256" x2="448" y2="256"/>
+    </g>
+    <path d="M256 104 C164 164 124 264 144 364 C174 284 214 224 256 184 C298 224 338 284 368 364 C388 264 348 164 256 104Z" fill="#3A7D44"/>
+    <ellipse cx="256" cy="304" rx="48" ry="72" fill="#E8833A"/>
+  </g>
+  <text x="250" y="126" fill="#2C2420" font-size="56" font-family="HarmonyOS Sans SC, PingFang SC, sans-serif" font-weight="700">��1</text>
+  <text x="252" y="166" fill="#5C5048" font-size="24" font-family="HarmonyOS Sans SC, PingFang SC, sans-serif">z��Aۂ � zg�{</text>
+</svg>

@@ -1,0 +1,425 @@
+{
+  "specVersion": "1.0.0",
+  "generatedAt": "2026-08-22T03:18:22.757Z",
+  "requestId": "req_1787368702721",
+  "industryPack": "cool-escape",
+  "identity": {
+    "company": "魏文波",
+    "companyPinyin": "wenbo",
+    "appName": "避暑游记",
+    "appPinyin": "bishu-youji",
+    "bundleId": "com.wenbo.bishuyouji",
+    "version": "1.0.0"
+  },
+  "positioning": {
+    "tagline": "按气温与地貌推荐避暑目的地，并把旅途写成可回看的游记",
+    "coreUsers": [
+      {
+        "role": "城市居民",
+        "ageRange": "18-45",
+        "scenario": "盛夏想离开热岛、规划一次清凉出行",
+        "need": "先看哪里真正凉快，再记下自己去过的地方"
+      }
+    ],
+    "painPoints": [
+      "旅游平台太重，看不出哪里夏天真正凉快",
+      "攻略只讲景点，不讲气温区间与海拔",
+      "照片散落相册，没有按目的地归档的游记"
+    ],
+    "differentiation": "按气温与地貌推荐避暑目的地，并把旅途写成可回看的游记"
+  },
+  "modules": {
+    "pages": [
+      {
+        "id": "home",
+        "title": "首页",
+        "route": "pages/HomePage",
+        "features": [
+          "搜索",
+          "今日推荐",
+          "分类",
+          "目的地网格"
+        ],
+        "tab": true
+      },
+      {
+        "id": "inspire",
+        "title": "灵感",
+        "route": "pages/InspirePage",
+        "features": [
+          "攻略",
+          "精选",
+          "收藏"
+        ],
+        "tab": true
+      },
+      {
+        "id": "journal",
+        "title": "游记",
+        "route": "pages/JournalListPage",
+        "features": [
+          "时间线",
+          "新建",
+          "删除"
+        ],
+        "tab": true
+      },
+      {
+        "id": "mine",
+        "title": "我的",
+        "route": "pages/MinePage",
+        "features": [
+          "收藏",
+          "设置",
+          "协议"
+        ],
+        "tab": true
+      }
+    ],
+    "coreFlows": [
+      {
+        "name": "避暑闭环",
+        "steps": [
+          "看见今日推荐",
+          "打开目的地详情",
+          "收藏或写下游记"
+        ]
+      }
+    ]
+  },
+  "entities": [
+    {
+      "name": "EscapeDestination",
+      "table": "ce_destinations",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "tempRange",
+          "type": "string"
+        },
+        {
+          "name": "altitude",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "EscapeGuide",
+      "table": "ce_guides",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "kind",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "EscapeJournal",
+      "table": "ce_journals",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "userId",
+          "type": "string"
+        },
+        {
+          "name": "title",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "EscapeFavorite",
+      "table": "ce_favorites",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "userId",
+          "type": "string"
+        }
+      ]
+    }
+  ],
+  "apis": [
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/cool-escape/destinations",
+      "summary": "避暑目的地列表",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/cool-escape/destinations/:id",
+      "summary": "目的地详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/cool-escape/guides",
+      "summary": "攻略与精选",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/cool-escape/guides/:id",
+      "summary": "文章详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/cool-escape/journals",
+      "summary": "我的游记",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/biz/cool-escape/journals",
+      "summary": "新建游记",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/biz/cool-escape/journals/:id",
+      "summary": "删除游记",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/cool-escape/favorites",
+      "summary": "我的收藏",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/biz/cool-escape/favorites",
+      "summary": "添加收藏",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/biz/cool-escape/favorites/:id",
+      "summary": "取消收藏",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/cool-escape/kpis",
+      "summary": "KPI",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/messages",
+      "summary": "消息",
+      "auth": false,
+      "module": "messages"
+    }
+  ],
+  "ai": {
+    "capabilities": [],
+    "quickCommands": [],
+    "systemPrompt": "你是「魏文波」旗下应用「避暑游记」的助手。产品定位：按气温与地貌推荐避暑目的地，并把旅途写成可回看的游记。主职责：帮助用户按山水/海滨/高原/森林筛选目的地，阅读气温、海拔、交通与美食说明，记录本人游记。不编造票价与实时气温；不确定时建议以当地气象与交通公告为准。禁止扮演旅游电商、支付或生成式对话产品。",
+    "mode": "none",
+    "llmEnabled": false
+  },
+  "permissions": [
+    {
+      "name": "ohos.permission.INTERNET",
+      "reason": "拉取避暑目的地、攻略与同步本人游记",
+      "when": "inuse",
+      "scene": "浏览目的地与保存游记"
+    }
+  ],
+  "harmonyos": {
+    "features": []
+  },
+  "store": {
+    "category": "旅行",
+    "legalOperator": "魏文波",
+    "oneLiner": "避暑游记 — 按气温与地貌推荐避暑目的地，并把旅途写成可回看的游记",
+    "fullDescription": "避暑游记是一款夏日避暑旅行灵感与记录工具。按山水、海滨、高原、森林分类浏览避暑目的地，查看气温区间、海拔、交通建议与当地美食，收藏感兴趣的地方，登录后写下自己的游记。不含支付、不含生成式对话。",
+    "keywords": [
+      "避暑",
+      "游记",
+      "目的地",
+      "夏天",
+      "旅行记录",
+      "鸿蒙"
+    ],
+    "privacySummary": {
+      "collect": [
+        "可选账号信息",
+        "用户主动填写的游记与收藏"
+      ],
+      "purpose": "提供目的地浏览与本人游记同步",
+      "thirdParties": []
+    },
+    "demoAccount": {
+      "username": "auditor@wenbo.local",
+      "passwordNote": "仅写入 store/demo-account.md"
+    },
+    "screenshotPlan": [
+      {
+        "page": "home",
+        "caption": "今日推荐避暑地"
+      },
+      {
+        "page": "detail",
+        "caption": "目的地气温与美食"
+      },
+      {
+        "page": "inspire",
+        "caption": "避暑攻略"
+      },
+      {
+        "page": "journal",
+        "caption": "我的游记时间线"
+      },
+      {
+        "page": "mine",
+        "caption": "收藏与设置"
+      }
+    ],
+    "incentiveHooks": [
+      "FormExtensionAbility"
+    ]
+  },
+  "access": {
+    "mode": "open_optional",
+    "features": {
+      "register": true,
+      "guestBrowse": true,
+      "guestWrite": false
+    },
+    "gateActions": [
+      "create_journal",
+      "add_favorite",
+      "sync_records"
+    ],
+    "onPrivacyRefuse": "browse_basic",
+    "loginProviders": [
+      "password"
+    ]
+  },
+  "admin": {
+    "featureModules": [
+      "overview",
+      "appUsers",
+      "ceDestinations",
+      "ceGuides",
+      "ceJournals",
+      "ceFavorites",
+      "messages",
+      "kpis",
+      "ai"
+    ]
+  },
+  "brand": {
+    "primary": "#4A90D9",
+    "primaryDeep": "#1B4F72",
+    "deep": "#1B4F72",
+    "accent": "#2E8B57",
+    "tone": "glass-saas",
+    "stylePack": "glass-saas",
+    "workbenchId": "catalog-tool",
+    "layoutVariant": "C",
+    "productVisualType": "content-commerce",
+    "visualDirection": {
+      "archetype": "cool-glass-travel",
+      "density": "airy",
+      "material": "frosted-glass",
+      "imagery": "mountain-sea-plateau-forest",
+      "accent": "sea-green",
+      "primaryJob": "3 秒内看见今日推荐避暑地并打开详情",
+      "notes": "清凉蓝#4A90D9 + 海洋绿#2E8B57 + 暖阳橙仅作点缀；毛玻璃卡片；大圆角 20-28"
+    },
+    "logo": {
+      "brandAnchor": "避",
+      "glyphStrategy": "semantic-fusion",
+      "customLock": true,
+      "generator": "custom",
+      "renderScript": "store/logo/render_logo.mjs",
+      "concept": "云荫山峰：深海蓝底与近白山形云朵",
+      "style": "flat-premium",
+      "foregroundFile": "store/logo/foreground.png",
+      "backgroundFile": "store/logo/background.png",
+      "previewFile": "store/logo/preview-1024.png",
+      "agcFile": "store/logo/agc-216.png",
+      "symbolFile": "store/logo/symbol.svg",
+      "horizontalFile": "store/logo/logo-horizontal.svg"
+    }
+  },
+  "visualAssets": {
+    "hero": "hero_cool",
+    "covers": [
+      "dest_lushan",
+      "dest_mogan",
+      "dest_jigong",
+      "dest_tianmu",
+      "dest_wuyi",
+      "dest_laoshan",
+      "dest_dalian",
+      "dest_weihai",
+      "dest_beidaihe",
+      "dest_dongji",
+      "dest_lijiang",
+      "dest_shangri",
+      "dest_xining",
+      "dest_guiyang",
+      "dest_bashang",
+      "dest_shennong",
+      "dest_changbai",
+      "dest_aershan",
+      "dest_saihanba",
+      "dest_wuling",
+      "guide_temp",
+      "guide_coast",
+      "guide_plateau",
+      "guide_forest",
+      "guide_weekend",
+      "guide_family",
+      "feat_lushan",
+      "feat_mogan",
+      "feat_dalian",
+      "feat_xining",
+      "feat_shennong",
+      "feat_wuling"
+    ]
+  }
+}

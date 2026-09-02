@@ -1,0 +1,438 @@
+{
+  "specVersion": "1.0.0",
+  "generatedAt": "2026-08-19T04:13:00.775Z",
+  "requestId": "req_1787112780747",
+  "industryPack": "inspiration-handbook",
+  "coreFlows": [
+    {
+      "name": "创意灵感闭环",
+      "steps": [
+        "今日提示预填记录",
+        "保存并钉到画板",
+        "详情收藏/取消即时刷新",
+        "本周复盘按记录生成周报"
+      ]
+    },
+    {
+      "name": "收藏可逆闭环",
+      "steps": [
+        "精选/灵感详情收藏",
+        "空间收藏内容立即出现",
+        "取消收藏立即从条带消失"
+      ]
+    }
+  ],
+  "identity": {
+    "company": "魏文波",
+    "companyPinyin": "wenbo",
+    "appName": "转化工作台",
+    "appPinyin": "linggan-beiwang",
+    "bundleId": "com.wenbo.lingganbeiwang",
+    "version": "1.0.0"
+  },
+  "positioning": {
+    "tagline": "创意转化工作台：捕捉后钉板对照，再拆成计划与专题回顾",
+    "coreUsers": [
+      {
+        "role": "设计师与创意从业者",
+        "ageRange": "20-45",
+        "scenario": "碎片灵感与项目推进",
+        "need": "捕捉灵感、整理画板、跟踪创意计划"
+      }
+    ],
+    "painPoints": [
+      "灵感分散难归档",
+      "视觉参考缺乏统一画板",
+      "创意项目进度不可视"
+    ],
+    "differentiation": "创意转化工作台：捕捉→钉板对照→计划转化步骤→专题收纳→日周月回顾；非空白备忘录"
+  },
+  "modules": {
+    "pages": [
+      {
+        "id": "home",
+        "title": "灵感",
+        "route": "pages/HomePage",
+        "features": [
+          "最新灵感",
+          "推荐内容",
+          "灵感卡片"
+        ],
+        "tab": true
+      },
+      {
+        "id": "journal",
+        "title": "记录",
+        "route": "pages/JournalPage",
+        "features": [
+          "创建灵感",
+          "标签",
+          "图片"
+        ],
+        "tab": true
+      },
+      {
+        "id": "board",
+        "title": "画板",
+        "route": "pages/BoardPage",
+        "features": [
+          "创建画板",
+          "图片卡片",
+          "文字卡片"
+        ],
+        "tab": true
+      },
+      {
+        "id": "plan",
+        "title": "计划",
+        "route": "pages/PlanPage",
+        "features": [
+          "创意计划",
+          "目标",
+          "进度"
+        ],
+        "tab": true
+      },
+      {
+        "id": "mine",
+        "title": "我的",
+        "route": "pages/MinePage",
+        "features": [
+          "用户信息",
+          "我的灵感",
+          "设置"
+        ],
+        "tab": true
+      },
+      {
+        "id": "organize",
+        "title": "智慧整理",
+        "route": "pages/OrganizePage",
+        "features": [
+          "标签分类",
+          "搜索",
+          "统计"
+        ],
+        "tab": false
+      },
+      {
+        "id": "favorites",
+        "title": "灵感收藏",
+        "route": "pages/FavoritesPage",
+        "features": [
+          "收藏文字",
+          "收藏图片"
+        ],
+        "tab": false
+      }
+    ],
+    "coreFlows": [
+      {
+        "name": "创意灵感闭环",
+        "steps": [
+          "今日提示预填记录",
+          "保存并钉到画板",
+          "详情收藏/取消即时刷新",
+          "本周复盘按记录生成周报"
+        ]
+      },
+      {
+        "name": "收藏可逆闭环",
+        "steps": [
+          "精选/灵感详情收藏",
+          "空间收藏内容立即出现",
+          "取消收藏立即从条带消失"
+        ]
+      }
+    ]
+  },
+  "entities": [
+    {
+      "name": "InspirationEntry",
+      "table": "inspirations",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "body",
+          "type": "string"
+        },
+        {
+          "name": "tags",
+          "type": "array"
+        }
+      ]
+    },
+    {
+      "name": "MoodBoard",
+      "table": "moodBoards",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "cardsJson",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "CreativePlan",
+      "table": "creativePlans",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "goal",
+          "type": "string"
+        },
+        {
+          "name": "progress",
+          "type": "number"
+        }
+      ]
+    },
+    {
+      "name": "Favorite",
+      "table": "favorites",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "kind",
+          "type": "string"
+        },
+        {
+          "name": "content",
+          "type": "string"
+        }
+      ]
+    }
+  ],
+  "apis": [
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/inspiration-handbook/featured",
+      "summary": "推荐灵感",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/inspiration-handbook/inspirations",
+      "summary": "灵感列表",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/biz/inspiration-handbook/inspirations",
+      "summary": "创建灵感",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/inspiration-handbook/mood-boards",
+      "summary": "创意画板",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/biz/inspiration-handbook/mood-boards",
+      "summary": "创建画板",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/inspiration-handbook/creative-plans",
+      "summary": "创意计划",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/biz/inspiration-handbook/creative-plans",
+      "summary": "创建计划",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/v1/biz/inspiration-handbook/creative-plans/:id",
+      "summary": "更新计划进度",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/inspiration-handbook/favorites",
+      "summary": "收藏",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/inspiration-handbook/stats",
+      "summary": "灵感统计",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/messages",
+      "summary": "消息",
+      "auth": true,
+      "module": "messages"
+    }
+  ],
+  "ai": {
+    "capabilities": [],
+    "quickCommands": [],
+    "systemPrompt": "你是「魏文波」旗下应用「灵感备忘」的创意整理助手。产品定位：快速记录灵感、整理创意想法、管理个人素材。主职责：帮助用户理解标签分类、画板整理与灵感检索；不提供生成式对话。",
+    "mode": "none",
+    "llmEnabled": false
+  },
+  "permissions": [
+    {
+      "name": "ohos.permission.INTERNET",
+      "reason": "同步灵感、画板与计划数据",
+      "when": "inuse",
+      "scene": "记录与云端同步"
+    }
+  ],
+  "harmonyos": {
+    "features": []
+  },
+  "store": {
+    "category": "生活",
+    "legalOperator": "魏文波",
+    "oneLiner": "转化工作台 — 捕捉后钉板对照，再拆成计划与专题回顾",
+    "fullDescription": "转化工作台是创意转化专用 App，与灵感手册不同。支持灵感转化台、快记模板、钉板对照、对照三问写备忘、计划转化步骤、灵感专题、成就墙、成长统计与日周月回顾。",
+    "keywords": [
+      "灵感",
+      "备忘",
+      "画板",
+      "创意",
+      "便签",
+      "鸿蒙"
+    ],
+    "privacySummary": {
+      "collect": [
+        "账号信息",
+        "灵感内容",
+        "画板与计划"
+      ],
+      "purpose": "提供灵感记录与云端同步",
+      "thirdParties": []
+    },
+    "demoAccount": {
+      "username": "auditor@wenbo.local",
+      "passwordNote": "仅写入 store/demo-account.md"
+    },
+    "screenshotPlan": [
+      {
+        "page": "home",
+        "caption": "推荐灵感与最新动态"
+      },
+      {
+        "page": "journal",
+        "caption": "写灵感与标签"
+      },
+      {
+        "page": "plan",
+        "caption": "创意计划进度"
+      }
+    ],
+    "incentiveHooks": [
+      "FormExtensionAbility",
+      "元服务快捷入口"
+    ]
+  },
+  "access": {
+    "mode": "open_optional",
+    "features": {
+      "register": true,
+      "guestBrowse": true,
+      "guestWrite": false
+    },
+    "gateActions": [
+      "create_inspiration",
+      "create_board",
+      "create_plan",
+      "add_favorite",
+      "sync_records"
+    ],
+    "onPrivacyRefuse": "browse_basic",
+    "loginProviders": [
+      "password"
+    ]
+  },
+  "brand": {
+    "primary": "#7C3AED",
+    "primaryDeep": "#334155",
+    "deep": "#334155",
+    "accent": "#FBBF24",
+    "tone": "premium-business",
+    "stylePack": "premium-business",
+    "workbenchId": "memo-workspace",
+    "layoutVariant": "B",
+    "productVisualType": "inspiration-memo",
+    "visualDirection": {
+      "archetype": "creative-workbench",
+      "density": "airy",
+      "material": "fog-card",
+      "imagery": "design-creative",
+      "accent": "purple-yellow",
+      "primaryJob": "3 秒内记录一条灵感",
+      "notes": "雾白+创意紫+活力黄+深灰蓝；快捷入口与便签卡片"
+    },
+    "logo": {
+      "brandAnchor": "灵",
+      "glyphStrategy": "semantic-fusion",
+      "customLock": true,
+      "generator": "render_logo.mjs",
+      "renderScript": "store/logo/render_logo.mjs",
+      "concept": "深紫底雾白折角备忘笺 + 四芒灵感光点（负空间），品牌锚点「灵」",
+      "style": "flat-premium",
+      "foregroundFile": "store/logo/foreground.png",
+      "backgroundFile": "store/logo/background.png",
+      "previewFile": "store/logo/preview-1024.png",
+      "agcFile": "store/logo/agc-216.png",
+      "symbolFile": "store/logo/symbol.svg",
+      "horizontalFile": "store/logo/logo-horizontal.svg"
+    },
+    "visualAssets": [
+      { "id": "hero_latest", "file": "hero_latest_inspiration.png", "usage": "空间 Hero" },
+      { "id": "hero_type", "file": "hero_typography.png", "usage": "空间材质条" },
+      { "id": "hero_mood", "file": "hero_mood_brand.png", "usage": "空间材质条" },
+      { "id": "hero_pack", "file": "hero_color_packaging.png", "usage": "精选封面" },
+      { "id": "board_default", "file": "board_default.png", "usage": "画板默认封面" }
+    ]
+  }
+}

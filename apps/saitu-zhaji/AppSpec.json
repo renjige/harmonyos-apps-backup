@@ -1,0 +1,107 @@
+{
+  "specVersion": "1.0.0",
+  "generatedAt": "2026-08-27T09:25:00.000Z",
+  "industryPack": "growth-handbook",
+  "identity": {
+    "company": "赛途记",
+    "companyPinyin": "saitu",
+    "appName": "赛途札记",
+    "appPinyin": "zhaji",
+    "bundleId": "com.saitu.zhaji",
+    "version": "1.0.0"
+  },
+  "positioning": {
+    "tagline": "智慧记录旅途中的竞赛与成长，帮助用户看见自己的进步",
+    "coreUsers": [
+      {
+        "role": "自我提升者",
+        "ageRange": "18-45",
+        "scenario": "竞赛备赛、项目推进、旅途复盘",
+        "need": "系统记录进展并看见成长轨迹"
+      }
+    ],
+    "painPoints": [
+      "成长过程缺乏系统记录",
+      "目标进度分散难追踪",
+      "进步成果难以可视化回顾"
+    ],
+    "differentiation": "旅途+赛途节点达成闭环+可保存成长小结，区别于系统备忘录"
+  },
+  "modules": {
+    "pages": [
+      { "id": "records", "title": "记录", "route": "pages/RecordsPage", "tab": true },
+      { "id": "board", "title": "看板", "route": "pages/BoardPage", "tab": true },
+      { "id": "insight", "title": "洞察", "route": "pages/InsightPage", "tab": true },
+      { "id": "settings", "title": "我的", "route": "pages/SettingsPage", "tab": true }
+    ],
+    "coreFlows": [
+      {
+        "name": "赛途成长闭环",
+        "steps": ["写札记", "挂旅途", "添加赛途节点", "标记达成", "看板进度更新", "保存成长小结"]
+      }
+    ]
+  },
+  "entities": [
+    { "name": "SaituRecord", "table": "local_records" },
+    { "name": "Journey", "table": "local_journeys" },
+    { "name": "JourneyMilestone", "table": "local_milestones" },
+    { "name": "SavedInsight", "table": "local_insights" }
+  ],
+  "apis": [],
+  "ai": {
+    "capabilities": [],
+    "mode": "none",
+    "llmEnabled": false,
+    "systemPrompt": "赛途札记不提供 C 端生成式对话；洞察为本机统计。"
+  },
+  "permissions": [],
+  "store": {
+    "category": "实用工具",
+    "legalOperator": "承德品冠体育发展有限公司",
+    "oneLiner": "个人赛事档案 + 旅途节点，本机生成可保存的成长小结",
+    "fullDescription": "赛途札记不是备忘录，也不是赛事资讯站。你可自建赛事记录、比赛笔记、复盘、观赛计划和纪念册；日常札记归入旅途并用赛途节点推进。智慧洞察用本机统计生成周报/月报。无广告、无内购、无外链聚合，不申请定位或网络权限，数据只存本机。",
+    "keywords": ["赛途", "札记", "成长", "旅途", "记录", "洞察", "鸿蒙"],
+    "privacySummary": {
+      "collect": ["昵称", "札记与标签", "图片路径（用户主动添加）"],
+      "purpose": "本地记录、看板与洞察",
+      "thirdParties": []
+    },
+    "screenshotPlan": [
+      { "page": "records", "caption": "记录列表与 Hero" },
+      { "page": "board", "caption": "轨迹看板统计" },
+      { "page": "insight", "caption": "智慧洞察词云" },
+      { "page": "detail", "caption": "札记详情与操作" }
+    ]
+  },
+  "access": {
+    "mode": "open_optional",
+    "features": { "register": false, "guestBrowse": true, "guestWrite": true },
+    "gateActions": [],
+    "onPrivacyRefuse": "exit",
+    "loginProviders": []
+  },
+  "brand": {
+    "primary": "#007AFF",
+    "primaryDeep": "#1C1C1E",
+    "deep": "#1C1C1E",
+    "accent": "#5AC8FA",
+    "tone": "premium-business",
+    "stylePack": "premium-business",
+    "workbenchId": "timeline-board",
+    "layoutVariant": "B",
+    "productVisualType": "ops-tool",
+    "logo": {
+      "brandAnchor": "赛",
+      "glyphStrategy": "abstract",
+      "customLock": true,
+      "generator": "agent-svg",
+      "renderScript": "store/logo/render_logo.mjs",
+      "symbolFile": "store/logo/symbol.svg",
+      "previewFile": "store/logo/preview-1024.png"
+    },
+    "visualAssets": [
+      { "id": "hero", "file": "hero_ambient.png", "usage": "记录页 Hero" },
+      { "id": "empty", "file": "empty_trail.png", "usage": "空态引导" }
+    ]
+  }
+}

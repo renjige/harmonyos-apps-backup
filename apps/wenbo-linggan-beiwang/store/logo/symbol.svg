@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" role="img" aria-label="灵">
+  <title>灵</title>
+  <rect id="glyph-bg" width="1024" height="1024" fill="#2B1748"/>
+  <path id="glyph" fill="#F5F6FA" d="M300 236h340l148 148v396c0 44-36 80-80 80H344c-44 0-80-36-80-80V316c0-44 36-80 80-80z"/>
+  <path id="fold" fill="#2B1748" d="M640 236l148 148H692c-29 0-52-23-52-52V236z"/>
+  <path id="spark" fill="#2B1748" d="M512 456l36 88 88 36-88 36-36 88-36-88-88-36 88-36z"/>
+</svg>

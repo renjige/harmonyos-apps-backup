@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" fill="none">
+  <!-- transparent background  for AGC foreground layer -->
+  <path fill="#FFFFFF" d="M196 268c0-28 22-50 50-50h246c22 0 42 10 54 28 12-18 32-28 54-28h246c28 0 50 22 50 50v508c0 28-22 50-50 50H600c-22 0-42-10-54-28-12 18-32 28-54 28H246c-28 0-50-22-50-50V268z"/>
+  <path fill="#DCFCE7" d="M512 246c18-16 42-28 70-28h246c28 0 50 22 50 50v508c0 28-22 50-50 50H582c-28 0-50-16-70-42V246z"/>
+  <rect x="500" y="236" width="24" height="562" rx="8" fill="#FFFFFF"/>
+  <rect x="248" y="360" width="196" height="18" rx="9" fill="#FFFFFF" opacity="0.35"/>
+  <rect x="248" y="420" width="168" height="18" rx="9" fill="#FFFFFF" opacity="0.28"/>
+  <rect x="248" y="480" width="184" height="18" rx="9" fill="#FFFFFF" opacity="0.22"/>
+  <rect x="592" y="360" width="196" height="18" rx="9" fill="#FFFFFF" opacity="0.35"/>
+  <rect x="592" y="420" width="168" height="18" rx="9" fill="#FFFFFF" opacity="0.28"/>
+  <path fill="#22C55E" d="M512 210c-10 62-48 108-96 128 32-16 58-42 72-72-36 12-68 36-88 70 48-52 72-86 112-126z"/>
+  <path fill="#86EFAC" d="M512 210c10 58 44 102 88 124-28-14-52-40-66-70 32 10 62 34 82 68-44-50-68-84-104-122z"/>
+  <rect x="500" y="196" width="24" height="86" rx="12" fill="#166534"/>
+</svg>

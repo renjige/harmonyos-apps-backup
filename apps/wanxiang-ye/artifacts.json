@@ -1,0 +1,36 @@
+{
+  "requestId": "",
+  "slug": "wanxiang-ye",
+  "artifacts": [
+    {
+      "pipeline": "P1",
+      "path": "docs/product",
+      "status": "failed"
+    },
+    {
+      "pipeline": "P4",
+      "path": "db",
+      "status": "failed"
+    },
+    {
+      "pipeline": "P5",
+      "path": "ai",
+      "status": "failed"
+    },
+    {
+      "pipeline": "P3",
+      "path": "server",
+      "status": "failed"
+    },
+    {
+      "pipeline": "P2",
+      "path": "app",
+      "status": "failed"
+    },
+    {
+      "pipeline": "P6",
+      "path": "store",
+      "status": "failed"
+    }
+  ]
+}

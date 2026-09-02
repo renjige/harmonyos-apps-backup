@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 360" width="1280" height="360">
+  <rect width="1280" height="360" fill="#F6F1E8"/>
+  <rect x="72" y="48" width="196" height="264" rx="28" fill="#FFFCF7" stroke="#5E3F4F" stroke-width="10"/>
+  <path d="M268 48 L268 118 L198 48 Z" fill="#5E3F4F"/>
+  <path d="M268 48 L210 48 L210 106 Z" fill="#C4A574"/>
+  <path d="M108 140 H220" stroke="#5E3F4F" stroke-width="8" stroke-linecap="round" opacity="0.2"/>
+  <path d="M108 178 H198" stroke="#5E3F4F" stroke-width="8" stroke-linecap="round" opacity="0.14"/>
+  <path d="M310 118 L320 144 L348 148 L326 166 L332 194 L310 180 L288 194 L294 166 L272 148 L300 144 Z" fill="#C4A574"/>
+  <text x="400" y="210" font-family="Georgia, 'Songti SC', serif" font-size="96" fill="#5E3F4F">K&�</text>
+</svg>

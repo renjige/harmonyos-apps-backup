@@ -1,0 +1,307 @@
+{
+  "specVersion": "1.0.0",
+  "generatedAt": "2026-08-25T06:11:41.182Z",
+  "requestId": "req_1787638301138",
+  "industryPack": "life-journal",
+  "identity": {
+    "company": "生活剧本",
+    "companyPinyin": "shenghuo",
+    "appName": "生活剧本",
+    "appPinyin": "shenghuo-juben",
+    "bundleId": "com.shenghuo.shenghuojuben",
+    "version": "1.0.0"
+  },
+  "positioning": {
+    "tagline": "以剧本形式记录和回顾日常生活的轻量级生活记录应用，每个人都是自己生活的主角",
+    "coreUsers": [
+      {
+        "role": "都市青年",
+        "ageRange": "20-45",
+        "scenario": "日常碎片时间",
+        "need": "记录生活、整理回忆、年度回顾"
+      }
+    ],
+    "painPoints": [
+      "生活瞬间分散难整理",
+      "照片与文字缺乏叙事",
+      "缺乏温暖的回顾仪式感"
+    ],
+    "differentiation": "以剧本形式记录和回顾日常生活的轻量级生活记录应用，每个人都是自己生活的主角"
+  },
+  "modules": {
+    "pages": [
+      {
+        "id": "home",
+        "title": "我的剧本",
+        "route": "pages/ScriptListPage",
+        "features": [
+          "剧本卡片",
+          "心情筛选",
+          "搜索",
+          "创建编辑删除"
+        ],
+        "tab": true
+      },
+      {
+        "id": "album",
+        "title": "时光相册",
+        "route": "pages/CalendarPage",
+        "features": [
+          "月历",
+          "同日多剧本",
+          "详情"
+        ],
+        "tab": true
+      },
+      {
+        "id": "mine",
+        "title": "我的",
+        "route": "pages/MinePage",
+        "features": [
+          "头像昵称",
+          "本地导出",
+          "隐私与深色模式"
+        ],
+        "tab": true
+      }
+    ],
+    "coreFlows": [
+      {
+        "name": "生活剧本闭环",
+        "steps": [
+          "创建剧本",
+          "智慧开场白与配图",
+          "详情编辑删除",
+          "日历回顾与本地导出"
+        ]
+      }
+    ]
+  },
+  "entities": [
+    {
+      "name": "DiaryEntry",
+      "table": "diaries",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "body",
+          "type": "string"
+        },
+        {
+          "name": "tags",
+          "type": "array"
+        }
+      ]
+    },
+    {
+      "name": "Album",
+      "table": "albums",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "description",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "Favorite",
+      "table": "favorites",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "kind",
+          "type": "string"
+        },
+        {
+          "name": "content",
+          "type": "string"
+        }
+      ]
+    }
+  ],
+  "apis": [
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/life-journal/featured",
+      "summary": "精选回忆",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/life-journal/diaries",
+      "summary": "日记列表",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/biz/life-journal/diaries",
+      "summary": "创建日记",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/life-journal/albums",
+      "summary": "相册",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/biz/life-journal/albums",
+      "summary": "创建相册",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/life-journal/favorites",
+      "summary": "收藏",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/life-journal/annual-stats",
+      "summary": "年度回顾",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/messages",
+      "summary": "消息",
+      "auth": true,
+      "module": "messages"
+    }
+  ],
+  "ai": {
+    "capabilities": [],
+    "quickCommands": [],
+    "systemPrompt": "你是「生活札记」的生活方式整理助手。产品定位：记录生活、收藏美好瞬间。主职责：帮助用户理解日记整理与年度回顾；不提供生成式 AI 对话。",
+    "mode": "none",
+    "llmEnabled": false
+  },
+  "permissions": [
+    {
+      "name": "ohos.permission.INTERNET",
+      "reason": "同步日记、相册与收藏数据",
+      "when": "inuse",
+      "scene": "记录与云端同步"
+    }
+  ],
+  "harmonyos": {
+    "features": []
+  },
+  "store": {
+    "category": "生活",
+    "legalOperator": "魏文波",
+    "oneLiner": "生活剧本 — 以剧本形式记录和回顾日常生活的轻量级生活记录应用，每个人都是自己生",
+    "fullDescription": "生活札记是一款记录生活、收藏美好瞬间的智慧生活应用。支持写日记、创建相册、美好收藏与年度回顾，日系手账美学，温暖治愈。",
+    "keywords": [
+      "日记",
+      "手账",
+      "生活记录",
+      "相册",
+      "回忆",
+      "鸿蒙"
+    ],
+    "privacySummary": {
+      "collect": [
+        "账号信息",
+        "日记内容",
+        "相册与收藏"
+      ],
+      "purpose": "提供生活记录与云端同步",
+      "thirdParties": []
+    },
+    "demoAccount": {
+      "username": "auditor@shenghuo.local",
+      "passwordNote": "仅写入 store/demo-account.md"
+    },
+    "screenshotPlan": [
+      {
+        "page": "home",
+        "caption": "今日记录与精选回忆"
+      },
+      {
+        "page": "journal",
+        "caption": "写日记与标签"
+      },
+      {
+        "page": "review",
+        "caption": "年度回顾统计"
+      }
+    ],
+    "incentiveHooks": [
+      "FormExtensionAbility",
+      "元服务快捷入口"
+    ]
+  },
+  "access": {
+    "mode": "open_optional",
+    "features": {
+      "register": true,
+      "guestBrowse": true,
+      "guestWrite": false
+    },
+    "gateActions": [
+      "create_diary",
+      "create_album",
+      "add_favorite",
+      "sync_records"
+    ],
+    "onPrivacyRefuse": "browse_basic",
+    "loginProviders": [
+      "password"
+    ]
+  },
+  "brand": {
+    "primary": "#E8A87C",
+    "primaryDeep": "#5C6B73",
+    "deep": "#5C6B73",
+    "accent": "#8FA8B8",
+    "tone": "soft-editorial",
+    "stylePack": "soft-editorial",
+    "workbenchId": "timeline-board",
+    "layoutVariant": "A",
+    "productVisualType": "lifestyle-journal",
+    "visualDirection": {
+      "archetype": "japanese-life-aesthetic",
+      "density": "airy",
+      "material": "cream-card",
+      "imagery": "warm-daily-life",
+      "accent": "morandi-orange",
+      "primaryJob": "3 秒内写今日札记",
+      "notes": "奶油白+莫兰迪橙+雾霾蓝+自然绿；大圆角手账卡片"
+    },
+    "logo": {
+      "brandAnchor": "札",
+      "glyphStrategy": "notebook-sun-time",
+      "customLock": false
+    }
+  }
+}

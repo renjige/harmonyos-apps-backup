@@ -1,0 +1,456 @@
+{
+  "specVersion": "1.0.0",
+  "generatedAt": "2026-08-20T07:36:30.071Z",
+  "requestId": "req_1787211390032",
+  "industryPack": "shopping-memo",
+  "identity": {
+    "company": "魏文波",
+    "companyPinyin": "wenbo",
+    "appName": "厨房妙想",
+    "appPinyin": "chufang-miaoxiang",
+    "bundleId": "com.wenbo.chufangmiaoxiang",
+    "version": "1.0.0"
+  },
+  "positioning": {
+    "tagline": "发现简单好吃的厨房灵感，让每天做饭变得更轻松",
+    "coreUsers": [
+      {
+        "role": "年轻家庭与独居做饭人群",
+        "ageRange": "20-45",
+        "scenario": "下班回家前或打开冰箱后，快速决定今天做什么",
+        "need": "用现有食材找到简单好吃的做法，并能收藏与准备清单"
+      }
+    ],
+    "painPoints": [
+      "每天不知道吃什么，复杂菜谱让人没有动力开始",
+      "家里有零散食材，却很难快速搭配成一道菜",
+      "喜欢的做法和今日所需食材分散，临做饭时容易遗漏"
+    ],
+    "differentiation": "发现简单好吃的厨房灵感，让每天做饭变得更轻松"
+  },
+  "modules": {
+    "pages": [
+      {
+        "id": "home",
+        "title": "首页",
+        "route": "pages/HomePage",
+        "features": [
+          "今日推荐",
+          "厨房灵感",
+          "食材妙想",
+          "推荐菜谱"
+        ],
+        "tab": true
+      },
+      {
+        "id": "inspiration",
+        "title": "灵感",
+        "route": "pages/IngredientIdeaPage",
+        "features": [
+          "食材选择",
+          "开始妙想",
+          "智慧推荐"
+        ],
+        "tab": true
+      },
+      {
+        "id": "favorites",
+        "title": "收藏",
+        "route": "pages/FavoritesPage",
+        "features": [
+          "分类筛选",
+          "取消收藏",
+          "空状态"
+        ],
+        "tab": true
+      },
+      {
+        "id": "kitchen-list",
+        "title": "清单",
+        "route": "pages/KitchenListPage",
+        "features": [
+          "添加食材",
+          "勾选完成",
+          "清理已完成"
+        ],
+        "tab": true
+      },
+      {
+        "id": "mine",
+        "title": "我的",
+        "route": "pages/MinePage",
+        "features": [
+          "我的厨房",
+          "浏览记录",
+          "使用偏好",
+          "隐私政策",
+          "用户协议",
+          "关于"
+        ],
+        "tab": true
+      },
+      {
+        "id": "search",
+        "title": "搜索",
+        "route": "pages/SearchPage",
+        "features": [
+          "菜名搜索",
+          "食材搜索",
+          "分类搜索"
+        ],
+        "tab": false
+      },
+      {
+        "id": "category",
+        "title": "分类",
+        "route": "pages/CategoryPage",
+        "features": [
+          "分类列表",
+          "菜谱卡片"
+        ],
+        "tab": false
+      },
+      {
+        "id": "detail",
+        "title": "菜谱详情",
+        "route": "pages/RecipeDetailPage",
+        "features": [
+          "大图详情",
+          "食材步骤",
+          "收藏完成",
+          "加入厨房清单"
+        ],
+        "tab": false
+      },
+      {
+        "id": "idea-result",
+        "title": "妙想结果",
+        "route": "pages/IdeaResultPage",
+        "features": [
+          "推荐理由",
+          "匹配食材",
+          "进入菜谱"
+        ],
+        "tab": false
+      }
+    ],
+    "coreFlows": [
+      {
+        "name": "菜谱灵感闭环",
+        "steps": [
+          "打开首页",
+          "查看今日推荐",
+          "进入菜谱详情",
+          "收藏或标记完成"
+        ]
+      },
+      {
+        "name": "食材妙想闭环",
+        "steps": [
+          "选择已有食材",
+          "开始妙想",
+          "查看推荐理由",
+          "进入菜谱详情"
+        ]
+      },
+      {
+        "name": "厨房清单闭环",
+        "steps": [
+          "从菜谱加入食材",
+          "手动补充食材",
+          "逐项勾选完成",
+          "清理已完成"
+        ]
+      }
+    ]
+  },
+  "entities": [
+    {
+      "name": "ShoppingList",
+      "table": "shopping-memo-lists",
+      "fields": [
+        "id",
+        "title",
+        "status",
+        "dueDate",
+        "coverKey",
+        "userId"
+      ]
+    },
+    {
+      "name": "ShoppingItem",
+      "table": "shopping-memo-items",
+      "fields": [
+        "id",
+        "listId",
+        "title",
+        "category",
+        "qty",
+        "remark",
+        "completed",
+        "userId"
+      ]
+    },
+    {
+      "name": "ShoppingMemo",
+      "table": "shopping-memo-memos",
+      "fields": [
+        "id",
+        "title",
+        "body",
+        "important",
+        "remindAt",
+        "userId"
+      ]
+    },
+    {
+      "name": "ShoppingReminder",
+      "table": "shopping-memo-reminders",
+      "fields": [
+        "id",
+        "listId",
+        "title",
+        "remindAt",
+        "status",
+        "userId"
+      ]
+    },
+    {
+      "name": "ShoppingTemplate",
+      "table": "shopping-memo-templates",
+      "fields": [
+        "id",
+        "title",
+        "summary",
+        "body",
+        "coverKey",
+        "itemsJson"
+      ]
+    }
+  ],
+  "apis": [
+    {
+      "method": "POST",
+      "path": "/api/v1/auth/login",
+      "summary": "登录",
+      "auth": false,
+      "module": "auth"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/auth/register",
+      "summary": "注册",
+      "auth": false,
+      "module": "auth"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/shopping-memo/templates",
+      "summary": "清单模板",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/shopping-memo/categories",
+      "summary": "分类预设",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/shopping-memo/lists",
+      "summary": "我的清单",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/biz/shopping-memo/lists",
+      "summary": "创建清单",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/shopping-memo/items",
+      "summary": "清单物品",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/biz/shopping-memo/items",
+      "summary": "添加物品",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/shopping-memo/memos",
+      "summary": "备忘",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/shopping-memo/reminders",
+      "summary": "智慧提醒",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/privacy/account",
+      "summary": "注销账号",
+      "auth": true,
+      "module": "privacy"
+    }
+  ],
+  "permissions": [],
+  "harmonyos": {
+    "features": []
+  },
+  "store": {
+    "category": "生活",
+    "oneLiner": "厨房妙想 — 发现简单好吃的厨房灵感，让每天做饭变得更轻松",
+    "fullDescription": "厨房妙想是一款轻量级厨房生活灵感 App，围绕菜谱灵感、食材搭配、收藏和厨房清单，帮助用户快速回答“今天吃什么”。用户无需登录即可浏览精选菜谱、搜索菜名或食材、选择家中已有食材获得智慧推荐，并把喜欢的菜谱收藏起来。菜谱详情提供食材与步骤，厨房清单支持手动添加、从菜谱一键加入、勾选完成和清理已完成。应用不做商城、社区、支付或会员，核心体验本地优先，减少不必要权限，适合日常做饭前快速使用，轻松可靠好用。",
+    "keywords": [
+      "菜谱",
+      "厨房灵感",
+      "食材搭配",
+      "厨房清单",
+      "家常菜"
+    ],
+    "privacySummary": {
+      "collect": [
+        "用户主动收藏的菜谱、完成记录、浏览记录和厨房清单",
+        "用户在登录或注册时主动填写的账号、姓名和联系电话",
+        "本地偏好与登录会话状态"
+      ],
+      "purpose": "提供菜谱收藏、完成记录、厨房清单、可选账号登录与基础偏好保存",
+      "thirdParties": []
+    },
+    "demoAccount": {
+      "username": "auditor@wenbo.local",
+      "passwordNote": "仅写入 store/demo-account.md，禁止打进客户端"
+    },
+    "screenshotPlan": [
+      {
+        "page": "home",
+        "caption": "今日推荐与厨房灵感"
+      },
+      {
+        "page": "recipe-detail",
+        "caption": "菜谱详情、食材与步骤"
+      },
+      {
+        "page": "ingredient-inspiration",
+        "caption": "食材妙想与智慧推荐"
+      },
+      {
+        "page": "favorites",
+        "caption": "收藏菜谱分类查看"
+      },
+      {
+        "page": "mine",
+        "caption": "我的厨房与设置隐私入口"
+      }
+    ],
+    "incentiveHooks": [
+      "首页展示每日精选",
+      "食材选择后智慧推荐菜谱",
+      "本地优先、无需登录即可使用核心功能"
+    ],
+    "legalOperator": "魏文波"
+  },
+  "access": {
+    "mode": "open_optional",
+    "features": {
+      "register": true,
+      "guestBrowse": true,
+      "guestWrite": false
+    },
+    "gateActions": [
+      "sync_records"
+    ],
+    "onPrivacyRefuse": "browse_basic",
+    "loginProviders": [
+      "password"
+    ]
+  },
+  "admin": {
+    "featureModules": [
+      "overview",
+      "appUsers",
+      "smTemplates",
+      "smCategories",
+      "smLists",
+      "smItems",
+      "smMemos",
+      "smReminders",
+      "messages",
+      "kpis"
+    ]
+  },
+  "ai": null,
+  "brand": {
+    "primary": "#123F32",
+    "primaryDeep": "#0B2F25",
+    "tone": "soft-editorial",
+    "stylePack": "soft-editorial",
+    "workbenchId": "catalog-tool",
+    "layoutVariant": "A",
+    "visualDirection": "暖白厨房生活方式摄影、大留白、墨绿主色、松石绿点缀、低饱和金棕强调；食物图片为视觉重点",
+    "productVisualType": "food-lifestyle",
+    "visualAssets": [
+      { "key": "tomato_egg_noodles", "file": "app/entry/src/main/resources/base/media/recipe_tomato_egg_noodles.png", "role": "recipeCover" },
+      { "key": "garlic_chicken_wings", "file": "app/entry/src/main/resources/base/media/recipe_garlic_chicken_wings.png", "role": "recipeCover" },
+      { "key": "shrimp_egg_custard", "file": "app/entry/src/main/resources/base/media/recipe_shrimp_egg_custard.png", "role": "recipeCover" },
+      { "key": "mushroom_tofu_soup", "file": "app/entry/src/main/resources/base/media/recipe_mushroom_tofu_soup.png", "role": "recipeCover" },
+      { "key": "light_chicken_salad", "file": "app/entry/src/main/resources/base/media/recipe_light_chicken_salad.png", "role": "recipeCover" },
+      { "key": "scallion_oil_noodles", "file": "app/entry/src/main/resources/base/media/recipe_scallion_oil_noodles.png", "role": "recipeCover" },
+      { "key": "egg_fried_rice", "file": "app/entry/src/main/resources/base/media/recipe_egg_fried_rice.png", "role": "recipeCover" },
+      { "key": "tomato_beef_soup", "file": "app/entry/src/main/resources/base/media/recipe_tomato_beef_soup.png", "role": "recipeCover" },
+      { "key": "pan_fried_potato", "file": "app/entry/src/main/resources/base/media/recipe_pan_fried_potato.png", "role": "recipeCover" },
+      { "key": "beef_mushroom_rice", "file": "app/entry/src/main/resources/base/media/recipe_beef_mushroom_rice.png", "role": "recipeCover" },
+      { "key": "tofu_tomato_stew", "file": "app/entry/src/main/resources/base/media/recipe_tofu_tomato_stew.png", "role": "recipeCover" },
+      { "key": "shrimp_noodle_soup", "file": "app/entry/src/main/resources/base/media/recipe_shrimp_noodle_soup.png", "role": "recipeCover" },
+      { "key": "tomato_egg_soup", "file": "app/entry/src/main/resources/base/media/recipe_tomato_egg_soup.png", "role": "recipeCover" },
+      { "key": "mushroom_chicken_breast", "file": "app/entry/src/main/resources/base/media/recipe_mushroom_chicken_breast.png", "role": "recipeCover" },
+      { "key": "beef_potato_stew", "file": "app/entry/src/main/resources/base/media/recipe_beef_potato_stew.png", "role": "recipeCover" },
+      { "key": "egg_pancake", "file": "app/entry/src/main/resources/base/media/recipe_egg_pancake.png", "role": "recipeCover" },
+      { "key": "tofu_mushroom_rice", "file": "app/entry/src/main/resources/base/media/recipe_tofu_mushroom_rice.png", "role": "recipeCover" },
+      { "key": "cold_tofu", "file": "app/entry/src/main/resources/base/media/recipe_cold_tofu.png", "role": "recipeCover" },
+      { "key": "tomato_potato_rice", "file": "app/entry/src/main/resources/base/media/recipe_tomato_potato_rice.png", "role": "recipeCover" },
+      { "key": "shrimp_green_stir", "file": "app/entry/src/main/resources/base/media/recipe_shrimp_green_stir.png", "role": "recipeCover" },
+      { "key": "beef_noodles", "file": "app/entry/src/main/resources/base/media/recipe_beef_noodles.png", "role": "recipeCover" },
+      { "key": "potato_egg_skillet", "file": "app/entry/src/main/resources/base/media/recipe_potato_egg_skillet.png", "role": "recipeCover" },
+      { "key": "mushroom_egg_toast", "file": "app/entry/src/main/resources/base/media/recipe_mushroom_egg_toast.png", "role": "recipeCover" },
+      { "key": "green_tofu_bowl", "file": "app/entry/src/main/resources/base/media/recipe_green_tofu_bowl.png", "role": "recipeCover" },
+      { "key": "tomato_shrimp_pasta", "file": "app/entry/src/main/resources/base/media/recipe_tomato_shrimp_pasta.png", "role": "recipeCover" },
+      { "key": "scallion_chicken_bowl", "file": "app/entry/src/main/resources/base/media/recipe_scallion_chicken_bowl.png", "role": "recipeCover" },
+      { "key": "egg_drop_noodle", "file": "app/entry/src/main/resources/base/media/recipe_egg_drop_noodle.png", "role": "recipeCover" },
+      { "key": "beef_tofu_pot", "file": "app/entry/src/main/resources/base/media/recipe_beef_tofu_pot.png", "role": "recipeCover" },
+      { "key": "tomato_green_salad", "file": "app/entry/src/main/resources/base/media/recipe_tomato_green_salad.png", "role": "recipeCover" },
+      { "key": "mushroom_potato_soup", "file": "app/entry/src/main/resources/base/media/recipe_mushroom_potato_soup.png", "role": "recipeCover" },
+      { "key": "shrimp_potato_cake", "file": "app/entry/src/main/resources/base/media/recipe_shrimp_potato_cake.png", "role": "recipeCover" },
+      { "key": "tomato_mushroom_omelet", "file": "app/entry/src/main/resources/base/media/recipe_tomato_mushroom_omelet.png", "role": "recipeCover" }
+    ],
+    "logo": {
+      "concept": "厨勺与灵感星芒融合，表达打开厨房就有新想法",
+      "style": "flat-premium",
+      "generator": "agent-node-render",
+      "glyphStrategy": "semantic-fusion",
+      "brandAnchor": "厨",
+      "customLock": true,
+      "renderScript": "store/logo/render_logo.mjs",
+      "foregroundFile": "store/logo/foreground.png",
+      "backgroundFile": "store/logo/background.png",
+      "previewFile": "store/logo/preview-1024.png",
+      "agcFile": "store/logo/agc-216.png",
+      "symbolFile": "store/logo/symbol.svg",
+      "horizontalFile": "store/logo/logo-horizontal.svg"
+    }
+  }
+}

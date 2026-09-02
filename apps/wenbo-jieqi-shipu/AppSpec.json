@@ -1,0 +1,373 @@
+{
+  "specVersion": "1.0.0",
+  "generatedAt": "2026-08-25T03:01:48.034Z",
+  "requestId": "req_1787626908000",
+  "industryPack": "solar-recipes",
+  "identity": {
+    "company": "魏文波",
+    "companyPinyin": "wenbo",
+    "appName": "节气食谱",
+    "appPinyin": "jieqi-shipu",
+    "bundleId": "com.wenbo.jieqishipu",
+    "version": "1.0.0"
+  },
+  "positioning": {
+    "tagline": "顺应二十四节气，智慧规划您的每日食养",
+    "coreUsers": [
+      {
+        "role": "关注健康饮食、热爱传统文化的用户",
+        "ageRange": "18-50",
+        "scenario": "日常做饭前想知今天该吃什么应季菜",
+        "need": "按节气看推荐食谱、收藏、了解食养文化"
+      }
+    ],
+    "painPoints": [
+      "不知道当下该吃什么应季食材",
+      "菜谱 App 缺少节气文化关联",
+      "收藏与浏览记录分散"
+    ],
+    "differentiation": "顺应二十四节气，智慧规划您的每日食养"
+  },
+  "modules": {
+    "pages": [
+      {
+        "id": "home",
+        "title": "首页",
+        "route": "pages/HomePage",
+        "features": [
+          "当前节气",
+          "今日推荐",
+          "食养贴士"
+        ],
+        "tab": true
+      },
+      {
+        "id": "library",
+        "title": "食谱",
+        "route": "pages/LibraryPage",
+        "features": [
+          "搜索",
+          "筛选",
+          "双列卡片"
+        ],
+        "tab": true
+      },
+      {
+        "id": "calendar",
+        "title": "节气日历",
+        "route": "pages/CalendarPage",
+        "features": [
+          "24节气",
+          "节气详情"
+        ],
+        "tab": true
+      },
+      {
+        "id": "mine",
+        "title": "我的",
+        "route": "pages/MinePage",
+        "features": [
+          "收藏",
+          "历史",
+          "偏好",
+          "设置"
+        ],
+        "tab": true
+      }
+    ],
+    "coreFlows": [
+      {
+        "name": "今日食养闭环",
+        "steps": [
+          "看当前节气",
+          "浏览推荐",
+          "打开详情",
+          "收藏"
+        ]
+      },
+      {
+        "name": "食谱库闭环",
+        "steps": [
+          "按节气筛选",
+          "搜索",
+          "详情",
+          "收藏"
+        ]
+      }
+    ]
+  },
+  "entities": [
+    {
+      "name": "SolarTerm",
+      "table": "sol_terms",
+      "fields": [
+        "id",
+        "title",
+        "dateRange",
+        "poem",
+        "coverKey"
+      ]
+    },
+    {
+      "name": "Recipe",
+      "table": "sol_recipes",
+      "fields": [
+        "id",
+        "title",
+        "solarTerm",
+        "ingredients",
+        "coverKey"
+      ]
+    },
+    {
+      "name": "Tip",
+      "table": "sol_tips",
+      "fields": [
+        "id",
+        "title",
+        "solarTermId",
+        "body"
+      ]
+    },
+    {
+      "name": "Favorite",
+      "table": "sol_favorites",
+      "fields": [
+        "id",
+        "userId",
+        "targetId"
+      ]
+    }
+  ],
+  "apis": [
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/solar-recipes/terms",
+      "summary": "节气列表",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/solar-recipes/terms/:id",
+      "summary": "节气详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/solar-recipes/recipes",
+      "summary": "食谱列表",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/solar-recipes/recipes/:id",
+      "summary": "食谱详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/solar-recipes/tips",
+      "summary": "贴士列表",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/solar-recipes/favorites",
+      "summary": "我的收藏",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/biz/solar-recipes/favorites",
+      "summary": "收藏",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/biz/solar-recipes/favorites/:id",
+      "summary": "取消收藏",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/solar-recipes/kpis",
+      "summary": "KPI",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/messages",
+      "summary": "消息",
+      "auth": false,
+      "module": "messages"
+    }
+  ],
+  "ai": {
+    "capabilities": [],
+    "quickCommands": [],
+    "systemPrompt": "你是「魏文波」旗下应用「节气食谱」的助手。产品定位：顺应二十四节气，智慧规划每日食养。主职责：按当前节气推荐应季食谱、解读食养贴士、说明食材与步骤。不宣称治疗疾病；不提供生成式对话。",
+    "mode": "none",
+    "llmEnabled": false
+  },
+  "permissions": [
+    {
+      "name": "ohos.permission.INTERNET",
+      "reason": "拉取节气食谱栏目与同步本人收藏",
+      "when": "inuse",
+      "scene": "浏览食谱与保存收藏"
+    }
+  ],
+  "harmonyos": {
+    "features": []
+  },
+  "store": {
+    "category": "生活",
+    "legalOperator": "魏文波",
+    "oneLiner": "节气食谱 — 顺应二十四节气，智慧规划您的每日食养",
+    "fullDescription": "节气食谱是一款围绕中国二十四节气的食养 App。自动识别当前节气，推荐应季食谱与食养贴士；食谱库支持按节气、食材、功效筛选与搜索；节气日历可浏览全年 24 节气文化。游客可浏览；登录后可收藏喜爱食谱。不含支付、不含生成式对话，界面温暖东方美学。",
+    "keywords": [
+      "节气",
+      "食谱",
+      "食养",
+      "二十四节气",
+      "应季",
+      "鸿蒙"
+    ],
+    "privacySummary": {
+      "collect": [
+        "可选账号信息",
+        "用户收藏记录",
+        "本地浏览历史与饮食偏好"
+      ],
+      "purpose": "提供食谱浏览、收藏与偏好设置",
+      "thirdParties": []
+    },
+    "demoAccount": {
+      "username": "auditor@wenbo.local",
+      "passwordNote": "仅写入 store/demo-account.md"
+    },
+    "screenshotPlan": [
+      {
+        "page": "home",
+        "caption": "当前节气与今日推荐"
+      },
+      {
+        "page": "detail",
+        "caption": "食谱详情、食材与步骤"
+      },
+      {
+        "page": "library",
+        "caption": "食谱库双列卡片"
+      },
+      {
+        "page": "calendar",
+        "caption": "二十四节气日历"
+      },
+      {
+        "page": "mine",
+        "caption": "收藏与设置隐私"
+      }
+    ],
+    "incentiveHooks": [
+      "今日食养",
+      "节气日历",
+      "应季收藏"
+    ]
+  },
+  "access": {
+    "mode": "open_optional",
+    "features": {
+      "register": true,
+      "guestBrowse": true,
+      "guestWrite": false
+    },
+    "gateActions": [
+      "add_favorite",
+      "sync_favorites"
+    ],
+    "onPrivacyRefuse": "browse_basic",
+    "loginProviders": [
+      "password"
+    ]
+  },
+  "admin": {
+    "featureModules": [
+      "overview",
+      "appUsers",
+      "solTerms",
+      "solRecipes",
+      "solTips",
+      "solFavorites",
+      "messages",
+      "kpis",
+      "ai"
+    ]
+  },
+  "brand": {
+    "primary": "#E8833A",
+    "primaryDeep": "#2C2420",
+    "deep": "#2C2420",
+    "accent": "#3A7D44",
+    "tone": "warm-editorial",
+    "stylePack": "custom",
+    "workbenchId": "catalog-tool",
+    "layoutVariant": "B",
+    "productVisualType": "content-commerce",
+    "visualDirection": "暖橙#E8833A + 墨绿#3A7D44 + 米白#F5F0E8；东方美学 × 现代简约；节气摄影与菜品大图",
+    "visualAssets": [
+      {
+        "id": "hero",
+        "file": "hero_bg.png",
+        "usage": "HomePage Hero"
+      },
+      {
+        "id": "banner1",
+        "file": "banner_01.png",
+        "usage": "Editorial banner"
+      },
+      {
+        "id": "banner2",
+        "file": "banner_02.png",
+        "usage": "Editorial banner"
+      },
+      {
+        "id": "term_covers",
+        "file": "term_*.png",
+        "usage": "Calendar + TermDetail"
+      },
+      {
+        "id": "recipe_covers",
+        "file": "recipe_*_*.png",
+        "usage": "Library + RecipeDetail"
+      },
+      {
+        "id": "tip_covers",
+        "file": "tip_*.png",
+        "usage": "Home tips + TipDetail"
+      }
+    ],
+    "logo": {
+      "concept": "节气轮环 + 中心叶片谷粒；暖橙#E8833A + 墨绿#3A7D44；米白底高对比",
+      "style": "flat-premium",
+      "generator": "premium_logo.py",
+      "glyphStrategy": "bootstrap",
+      "brandAnchor": "节",
+      "customLock": false,
+      "foregroundFile": "store/logo/foreground.png",
+      "backgroundFile": "store/logo/background.png",
+      "previewFile": "store/logo/preview-1024.png",
+      "agcFile": "store/logo/agc-216.png",
+      "symbolFile": "store/logo/symbol.svg",
+      "horizontalFile": "store/logo/logo-horizontal.svg"
+    }
+  }
+}

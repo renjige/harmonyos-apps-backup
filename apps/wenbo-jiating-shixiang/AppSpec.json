@@ -1,0 +1,401 @@
+{
+  "specVersion": "1.0.0",
+  "generatedAt": "2026-08-21T01:05:47.027Z",
+  "requestId": "req_1787274346987",
+  "industryPack": "family-task",
+  "identity": {
+    "company": "魏文波",
+    "companyPinyin": "wenbo",
+    "appName": "家庭事项",
+    "appPinyin": "jiating-shixiang",
+    "bundleId": "com.wenbo.jiatingshixiang",
+    "version": "1.0.0"
+  },
+  "positioning": {
+    "tagline": "让家庭里的每件小事都有回应，打开就知道今天家里有什么事",
+    "coreUsers": [
+      {
+        "role": "年轻家庭成员",
+        "ageRange": "24-40",
+        "scenario": "家务、采购、周末安排与账单提醒",
+        "need": "三秒看清今日事项，十秒记下新安排"
+      },
+      {
+        "role": "有孩子的家庭",
+        "ageRange": "28-45",
+        "scenario": "接送、亲子活动、物品准备",
+        "need": "按上午下午看见安排，完成可勾选"
+      }
+    ],
+    "painPoints": [
+      "家里的小事容易忘记",
+      "家人之间事项容易遗漏",
+      "周期性家务缺少温和提醒与完成后的回顾"
+    ],
+    "differentiation": "让家庭里的每件小事都有回应，打开就知道今天家里有什么事"
+  },
+  "modules": {
+    "pages": [
+      {
+        "id": "home",
+        "title": "首页",
+        "route": "pages/HomePage",
+        "features": [
+          "问候日期",
+          "今日状态卡",
+          "今日事项分组",
+          "悬浮添加"
+        ],
+        "tab": true
+      },
+      {
+        "id": "tasks",
+        "title": "事项",
+        "route": "pages/TasksPage",
+        "features": [
+          "全部筛选",
+          "创建",
+          "编辑",
+          "完成",
+          "删除",
+          "重复事项"
+        ],
+        "tab": true
+      },
+      {
+        "id": "calendar",
+        "title": "日历",
+        "route": "pages/CalendarPage",
+        "features": [
+          "月历",
+          "点选日期",
+          "当日时间轴"
+        ],
+        "tab": true
+      },
+      {
+        "id": "stats",
+        "title": "统计",
+        "route": "pages/StatsPage",
+        "features": [
+          "本周节奏",
+          "分类比例",
+          "生活回顾"
+        ],
+        "tab": true
+      },
+      {
+        "id": "mine",
+        "title": "我的",
+        "route": "pages/MinePage",
+        "features": [
+          "提醒设置",
+          "显示设置",
+          "数据管理",
+          "设置与隐私"
+        ],
+        "tab": true
+      }
+    ],
+    "coreFlows": [
+      {
+        "name": "记录并完成",
+        "steps": [
+          "打开首页",
+          "添加事项",
+          "选择时间分类提醒",
+          "勾选完成",
+          "数字与进度更新"
+        ]
+      },
+      {
+        "name": "日历查看",
+        "steps": [
+          "打开日历",
+          "点选日期",
+          "查看当日时间轴"
+        ]
+      },
+      {
+        "name": "本周回顾",
+        "steps": [
+          "打开统计",
+          "看见完成率与分类比例",
+          "阅读生活回顾文案"
+        ]
+      }
+    ]
+  },
+  "entities": [
+    {
+      "name": "FamilyTaskItem",
+      "table": "family-task-tasks",
+      "fields": [
+        "id",
+        "title",
+        "category",
+        "date",
+        "time",
+        "completed",
+        "reminder",
+        "repeatType",
+        "userId"
+      ]
+    },
+    {
+      "name": "FamilyCategory",
+      "table": "family-task-categories",
+      "fields": [
+        "id",
+        "title",
+        "summary",
+        "body",
+        "coverKey"
+      ]
+    },
+    {
+      "name": "FamilyRhythm",
+      "table": "family-task-rhythm",
+      "fields": [
+        "id",
+        "title",
+        "summary",
+        "body",
+        "coverKey"
+      ]
+    }
+  ],
+  "apis": [
+    {
+      "method": "POST",
+      "path": "/api/v1/auth/login",
+      "summary": "登录",
+      "auth": false,
+      "module": "auth"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/auth/register",
+      "summary": "注册",
+      "auth": false,
+      "module": "auth"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/family-task/categories",
+      "summary": "事项分类",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/family-task/categories/:id",
+      "summary": "分类详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/family-task/rhythm",
+      "summary": "节奏回顾文案",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/family-task/rhythm/:id",
+      "summary": "回顾文案详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/family-task/tasks",
+      "summary": "家庭事项",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/family-task/tasks/:id",
+      "summary": "事项详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/biz/family-task/tasks",
+      "summary": "创建事项",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "PUT",
+      "path": "/api/v1/biz/family-task/tasks/:id",
+      "summary": "更新事项",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/biz/family-task/tasks/:id",
+      "summary": "删除事项",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/messages",
+      "summary": "家庭通知",
+      "auth": false,
+      "module": "messages"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/privacy/account",
+      "summary": "注销账号",
+      "auth": true,
+      "module": "privacy"
+    }
+  ],
+  "permissions": [
+    {
+      "name": "ohos.permission.INTERNET",
+      "reason": "用于在用户登录后同步主动创建的家庭事项",
+      "when": "inuse",
+      "scene": "登录后同步家庭事项"
+    }
+  ],
+  "harmonyos": {
+    "features": [
+      {
+        "type": "systemNotification",
+        "scene": "用户主动设置的事项提醒"
+      },
+      {
+        "type": "formCard",
+        "scene": "今日家庭事项桌面卡片"
+      }
+    ]
+  },
+  "store": {
+    "category": "实用工具",
+    "oneLiner": "家庭事项 — 让家庭里的每件小事都有回应，打开就知道今天家里有什么事",
+    "fullDescription": "家庭事项是一款面向普通家庭的轻量事务管理工具。打开即可看见今天家里有什么事，支持简单记录、分类、智慧提醒、重复事项、日历查看与本周回顾。不做复杂项目管理，也不是社交或购物工具。游客可在本机使用；登录后可同步个人事项。本应用不提供支付、会员、广告、聊天或生成式对话。",
+    "keywords": [
+      "家庭事项",
+      "家庭待办",
+      "家务提醒",
+      "家庭日历",
+      "生活整理"
+    ],
+    "privacySummary": {
+      "collect": [
+        "注册账号、姓名和联系电话",
+        "用户主动创建的家庭事项",
+        "登录会话状态"
+      ],
+      "purpose": "提供账号登录、跨设备同步和个人家庭事务管理",
+      "thirdParties": []
+    },
+    "demoAccount": {
+      "username": "auditor@wenbo.local",
+      "passwordNote": "仅写入 store/demo-account.md，禁止打进客户端"
+    },
+    "screenshotPlan": [
+      {
+        "page": "home",
+        "caption": "今天有什么事，一眼就知道"
+      },
+      {
+        "page": "add",
+        "caption": "简单记录，不再忘记"
+      },
+      {
+        "page": "calendar",
+        "caption": "家庭安排，清晰有序"
+      },
+      {
+        "page": "stats",
+        "caption": "看见家庭生活的小小进步"
+      },
+      {
+        "page": "done",
+        "caption": "每完成一件，家里就更井井有条"
+      }
+    ],
+    "incentiveHooks": [
+      "桌面卡片展示今日事项",
+      "用户主动设置的系统提醒"
+    ],
+    "legalOperator": "魏文波"
+  },
+  "access": {
+    "mode": "open_optional",
+    "features": {
+      "register": true,
+      "guestBrowse": true,
+      "guestWrite": true
+    },
+    "gateActions": [
+      "sync_records"
+    ],
+    "onPrivacyRefuse": "browse_basic",
+    "loginProviders": [
+      "password"
+    ]
+  },
+  "admin": {
+    "featureModules": [
+      "overview",
+      "appUsers",
+      "ftCategories",
+      "ftRhythm",
+      "ftTasks",
+      "messages",
+      "kpis"
+    ]
+  },
+  "ai": {
+    "capabilities": [],
+    "quickCommands": [],
+    "systemPrompt": "你是「魏文波」旗下应用「家庭事项」的家庭事务整理助手。产品定位：让家庭里的每件小事都有回应，打开就知道今天家里有什么事。主职责：按事项名称建议家务/采购/家庭/孩子/其他分类、整理今日安排、生成克制提醒文案与本周回顾短句。禁止扮演商城、社交、医疗或聊天工具。不提供生成式对话作为 C 端功能。"
+  },
+  "brand": {
+    "primary": "#24443A",
+    "accent": "#C4A574",
+    "background": "#F6F1E8",
+    "text": "#1D2421",
+    "primaryDeep": "#1A322B",
+    "tone": "lifestyle-calm",
+    "stylePack": "soft-editorial",
+    "workbenchId": "timeline-board",
+    "layoutVariant": "B",
+    "visualDirection": "深墨绿与暖米白、大圆角留白、居家静物摄影、大数字今日待办，高端生活方式工具而非企业待办",
+    "productVisualType": "ops-tool",
+    "visualAssets": [
+      { "key": "home_hero", "file": "app/entry/src/main/resources/base/media/home_hero.png", "role": "homeHero" },
+      { "key": "cat_chore", "file": "app/entry/src/main/resources/base/media/cat_chore.png", "role": "categoryCover" },
+      { "key": "cat_shop", "file": "app/entry/src/main/resources/base/media/cat_shop.png", "role": "categoryCover" },
+      { "key": "cat_family", "file": "app/entry/src/main/resources/base/media/cat_family.png", "role": "categoryCover" },
+      { "key": "cat_kids", "file": "app/entry/src/main/resources/base/media/cat_kids.png", "role": "categoryCover" },
+      { "key": "cat_other", "file": "app/entry/src/main/resources/base/media/cat_other.png", "role": "categoryCover" },
+      { "key": "empty_idle", "file": "app/entry/src/main/resources/base/media/empty_idle.png", "role": "emptyState" }
+    ],
+    "logo": {
+      "concept": "极简屋檐折线 + 勾选，家与事情完成",
+      "style": "flat-premium",
+      "generator": "custom",
+      "glyphStrategy": "semantic-fusion",
+      "brandAnchor": "家",
+      "customLock": true,
+      "renderScript": "store/logo/render_logo.mjs",
+      "foregroundFile": "store/logo/foreground.png",
+      "backgroundFile": "store/logo/background.png",
+      "previewFile": "store/logo/preview-1024.png",
+      "agcFile": "store/logo/agc-216.png",
+      "symbolFile": "store/logo/symbol.svg",
+      "horizontalFile": "store/logo/logo-horizontal.svg"
+    }
+  }
+}

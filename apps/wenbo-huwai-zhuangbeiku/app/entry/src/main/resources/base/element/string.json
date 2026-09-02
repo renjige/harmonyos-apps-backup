@@ -1,0 +1,8 @@
+{
+  "string": [
+    { "name": "module_desc", "value": "户外装备库主模块" },
+    { "name": "EntryAbility_desc", "value": "装备账本与山野路线对照入口" },
+    { "name": "EntryAbility_label", "value": "户外装备库" },
+    { "name": "internet_reason", "value": "用于拉取图鉴、路线并同步本人装备" }
+  ]
+}

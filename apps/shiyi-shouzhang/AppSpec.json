@@ -1,0 +1,276 @@
+{
+  "specVersion": "1.0.0",
+  "generatedAt": "2026-08-20T08:23:06.148Z",
+  "requestId": "req_1787214186103",
+  "industryPack": "shiyi-journal",
+  "identity": {
+    "company": "拾意生活",
+    "companyPinyin": "shiyi",
+    "appName": "手账拾意",
+    "appPinyin": "shouzhang",
+    "bundleId": "com.shiyi.shouzhang",
+    "version": "1.0.0"
+  },
+  "positioning": {
+    "tagline": "拾起生活里的小事，记录值得留下的心意。",
+    "coreUsers": [
+      {
+        "role": "想安静记下一天的都市年轻人",
+        "ageRange": "18-40",
+        "scenario": "睡前、通勤后、想把一件小事留下来的片刻",
+        "need": "30 秒写完一篇轻手账，以后还能温柔地翻看"
+      }
+    ],
+    "painPoints": [
+      "日记 App 太重，相册和社交把记录挤没了",
+      "复杂编辑器让人迟迟不想动手",
+      "想要仪式感，却找不到克制、高级的生活手账"
+    ],
+    "differentiation": "雾霭莓紫纸笺美学 + 首页当场可写 + 本机保存；无登录无支付无社交无相册权限"
+  },
+  "modules": {
+    "pages": [
+      {
+        "id": "home",
+        "title": "拾意",
+        "route": "pages/HomePage",
+        "features": [
+          "问候",
+          "今日心情",
+          "快速记录",
+          "今日三问"
+        ],
+        "tab": true
+      },
+      {
+        "id": "journal",
+        "title": "手账",
+        "route": "pages/JournalPage",
+        "features": [
+          "列表",
+          "搜索",
+          "心情与标签"
+        ],
+        "tab": true
+      },
+      {
+        "id": "review",
+        "title": "回顾",
+        "route": "pages/ReviewPage",
+        "features": [
+          "月历",
+          "智慧回顾"
+        ],
+        "tab": true
+      },
+      {
+        "id": "mine",
+        "title": "我的",
+        "route": "pages/MinePage",
+        "features": [
+          "资料",
+          "收藏",
+          "设置与隐私"
+        ],
+        "tab": true
+      }
+    ],
+    "coreFlows": [
+      {
+        "name": "每日拾意闭环",
+        "steps": [
+          "选心情",
+          "写下今天",
+          "保存本机",
+          "在手账与回顾中翻看"
+        ]
+      }
+    ]
+  },
+  "entities": [
+    {
+      "name": "JournalEntry",
+      "table": "shiyi_journals",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "body",
+          "type": "string"
+        },
+        {
+          "name": "mood",
+          "type": "string"
+        },
+        {
+          "name": "oneLiner",
+          "type": "string"
+        },
+        {
+          "name": "keyword",
+          "type": "string"
+        },
+        {
+          "name": "entryDate",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "PickupItem",
+      "table": "shiyi_pickups",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "kind",
+          "type": "string"
+        },
+        {
+          "name": "text",
+          "type": "string"
+        }
+      ]
+    }
+  ],
+  "apis": [],
+  "ai": {
+    "capabilities": [],
+    "quickCommands": [],
+    "systemPrompt": "你是「拾意生活」旗下应用「手账拾意」的内容助手。产品定位：拾起生活里的小事，记录值得留下的心意。主职责：帮助用户用克制的语言写下当天的手账。禁止自称人工智能，禁止心理诊断。C 端不提供生成式对话。",
+    "mode": "none",
+    "llmEnabled": false
+  },
+  "permissions": [],
+  "harmonyos": {
+    "features": []
+  },
+  "store": {
+    "category": "生活",
+    "legalOperator": "魏文波",
+    "oneLiner": "手账拾意 — 拾起生活里的小事，记录值得留下的心意。",
+    "fullDescription": "手账拾意是一款轻量生活记录应用。你可以记下今日心情、写下当天最值得记住的一件事，并把喜欢的句子收进「我的拾意」。没有支付、没有会员、没有社交。第一版把内容保存在本机，不主动上传手账。",
+    "keywords": [
+      "手账",
+      "日记",
+      "心情",
+      "生活记录",
+      "拾意",
+      "鸿蒙"
+    ],
+    "privacySummary": {
+      "collect": [
+        "手账标题与正文（仅本机）",
+        "心情与标签（仅本机）",
+        "可选昵称（仅本机）"
+      ],
+      "purpose": "在本机保存与回顾个人生活记录",
+      "thirdParties": []
+    },
+    "demoAccount": {
+      "username": "auditor@shiyi.local",
+      "passwordNote": "第一版无登录；审核请直接体验本机记录"
+    },
+    "screenshotPlan": [
+      {
+        "page": "home",
+        "caption": "问候、心情与当场记录"
+      },
+      {
+        "page": "compose",
+        "caption": "写下今天"
+      },
+      {
+        "page": "journal",
+        "caption": "我的手账"
+      },
+      {
+        "page": "review",
+        "caption": "月历与智慧回顾"
+      },
+      {
+        "page": "pickup",
+        "caption": "我的拾意画廊"
+      }
+    ],
+    "incentiveHooks": []
+  },
+  "access": {
+    "mode": "open_optional",
+    "features": {
+      "register": false,
+      "guestBrowse": true,
+      "guestWrite": true
+    },
+    "gateActions": [],
+    "onPrivacyRefuse": "browse_basic",
+    "loginProviders": []
+  },
+  "admin": {
+    "featureModules": [
+      "overview",
+      "appUsers",
+      "messages",
+      "kpis"
+    ]
+  },
+  "brand": {
+    "primary": "#5E3F4F",
+    "primaryDeep": "#3F2C36",
+    "deep": "#3F2C36",
+    "accent": "#C4A574",
+    "tone": "soft-editorial",
+    "stylePack": "soft-editorial",
+    "workbenchId": "timeline-board",
+    "layoutVariant": "A",
+    "productVisualType": "content-commerce",
+    "visualDirection": {
+      "archetype": "mist-berry-paper-journal",
+      "density": "airy",
+      "material": "warm-ivory-paper",
+      "imagery": "stationery-window-light",
+      "accent": "champagne-gold",
+      "primaryJob": "3 秒理解这是生活记录，10 秒开始写",
+      "notes": "雾霭莓紫+暖米白+香槟金；大圆角纸笺卡片；禁止高饱和紫"
+    },
+    "logo": {
+      "brandAnchor": "拾",
+      "glyphStrategy": "semantic-fusion",
+      "customLock": true,
+      "generator": "agent-svg",
+      "concept": "星笺拾光：圆角手账纸 + 翻页折角 + 小星 + 柔和弧线",
+      "style": "flat-premium",
+      "foregroundFile": "store/logo/foreground.png",
+      "backgroundFile": "store/logo/background.png",
+      "previewFile": "store/logo/preview-1024.png",
+      "agcFile": "store/logo/agc-216.png",
+      "symbolFile": "store/logo/symbol.svg",
+      "horizontalFile": "store/logo/logo-horizontal.svg",
+      "renderScript": "store/logo/render_logo.py"
+    },
+    "visualAssets": {
+      "hero": "hero_paper.png",
+      "banners": ["banner_review.png"],
+      "covers": [
+        "cover_life.png",
+        "cover_read.png",
+        "cover_travel.png",
+        "cover_work.png",
+        "cover_rain.png",
+        "cover_food.png"
+      ],
+      "empty": "empty_star.png",
+      "texture": "texture_paper.png"
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "string": [
+    { "name": "module_desc", "value": "避暑游记主模块" },
+    { "name": "EntryAbility_desc", "value": "避暑目的地与游记入口" },
+    { "name": "EntryAbility_label", "value": "避暑游记" },
+    { "name": "internet_reason", "value": "用于拉取避暑目的地、攻略，并在登录后同步本人游记与收藏" }
+  ]
+}

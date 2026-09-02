@@ -1,0 +1,8 @@
+{
+  "string": [
+    { "name": "module_desc", "value": "露营课堂主模块" },
+    { "name": "EntryAbility_desc", "value": "智慧露营学习入口：课程、装备、行程与社区" },
+    { "name": "EntryAbility_label", "value": "露营课堂" },
+    { "name": "internet_reason", "value": "用于拉取露营课程攻略并同步本人行程与装备数据" }
+  ]
+}

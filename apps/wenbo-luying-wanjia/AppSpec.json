@@ -1,0 +1,456 @@
+{
+  "specVersion": "1.0.0",
+  "generatedAt": "2026-08-22T02:46:16.226Z",
+  "requestId": "req_1787366776188",
+  "industryPack": "camp-player",
+  "identity": {
+    "company": "魏文波",
+    "companyPinyin": "wenbo",
+    "appName": "露营玩家",
+    "appPinyin": "luying-wanjia",
+    "bundleId": "com.wenbo.luyingwanjia",
+    "version": "1.0.0"
+  },
+  "positioning": {
+    "tagline": "面向露营爱好者的智慧露营助手：规划行程、称重打包、发现营地、写下林下记忆",
+    "coreUsers": [
+      {
+        "role": "周末露营玩家",
+        "ageRange": "22-45",
+        "scenario": "出发前规划与营地现场记录",
+        "need": "按天数季节人数生成装备清单，并找到带水电淋浴的营地"
+      }
+    ],
+    "painPoints": [
+      "装备漏带或超重，到营地才发现缺关键件",
+      "营地设施信息不透明，野营与房车营地混在一起",
+      "照片散落相册，没有按行程整理的露营日记"
+    ],
+    "differentiation": "露营装备工作台：按天数/季节/人数规则匹配打包清单并统计克重，搭配带水电淋浴标签的营地档案，而不是旅行杂志或手记相册"
+  },
+  "modules": {
+    "pages": [
+      {
+        "id": "home",
+        "title": "首页",
+        "route": "pages/HomePage",
+        "features": [
+          "天气预览",
+          "规划行程",
+          "模板",
+          "热门攻略"
+        ],
+        "tab": true
+      },
+      {
+        "id": "gear",
+        "title": "装备",
+        "route": "pages/GearPage",
+        "features": [
+          "分类",
+          "CRUD",
+          "模板",
+          "打包清单",
+          "重量"
+        ],
+        "tab": true
+      },
+      {
+        "id": "discover",
+        "title": "发现",
+        "route": "pages/DiscoverPage",
+        "features": [
+          "搜索",
+          "筛选",
+          "营地详情",
+          "收藏",
+          "笔记"
+        ],
+        "tab": true
+      },
+      {
+        "id": "journal",
+        "title": "记录",
+        "route": "pages/JournalPage",
+        "features": [
+          "统计",
+          "时间线",
+          "新建日记",
+          "相册"
+        ],
+        "tab": true
+      },
+      {
+        "id": "mine",
+        "title": "我的",
+        "route": "pages/MinePage",
+        "features": [
+          "数据",
+          "攻略",
+          "收藏",
+          "设置"
+        ],
+        "tab": true
+      }
+    ],
+    "coreFlows": [
+      {
+        "name": "露营闭环",
+        "steps": [
+          "发现营地",
+          "规划行程",
+          "生成打包清单",
+          "勾选装备",
+          "写下日记"
+        ]
+      }
+    ]
+  },
+  "entities": [
+    {
+      "name": "CampSite",
+      "table": "cp_camps",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "region",
+          "type": "string"
+        },
+        {
+          "name": "campType",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "GearTemplate",
+      "table": "cp_templates",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "CampGuide",
+      "table": "cp_guides",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "WeatherHint",
+      "table": "cp_weather",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "CampTrip",
+      "table": "cp_trips",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "userId",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "CampJournal",
+      "table": "cp_journals",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "userId",
+          "type": "string"
+        }
+      ]
+    }
+  ],
+  "apis": [
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/camp-player/camps",
+      "summary": "营地列表",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/camp-player/camps/:id",
+      "summary": "营地详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/camp-player/templates",
+      "summary": "装备模板",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/camp-player/guides",
+      "summary": "攻略列表",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/camp-player/guides/:id",
+      "summary": "攻略详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/camp-player/weather",
+      "summary": "天气规则预览",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/camp-player/trips",
+      "summary": "我的行程",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/biz/camp-player/trips",
+      "summary": "创建行程",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/camp-player/gear",
+      "summary": "我的装备",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/biz/camp-player/gear",
+      "summary": "新增装备",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/camp-player/packlists",
+      "summary": "打包清单",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/camp-player/journals",
+      "summary": "我的日记",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/biz/camp-player/journals",
+      "summary": "新建日记",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/camp-player/kpis",
+      "summary": "KPI",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/messages",
+      "summary": "消息",
+      "auth": false,
+      "module": "messages"
+    }
+  ],
+  "ai": {
+    "capabilities": [],
+    "quickCommands": [],
+    "systemPrompt": "你是「魏文波」旗下应用「露营玩家」的助手。产品定位：智慧露营行程规划、装备称重打包、露营地发现与露营日记。主职责：按天数/季节/人数给出装备清单规则、解释营地设施、提醒雨具与保暖。不编造门票价格与实时气象数值；不确定时建议查询营地管理方。禁止扮演旅游电商或支付产品。不提供生成式对话作为 C 端功能。",
+    "mode": "none",
+    "llmEnabled": false
+  },
+  "permissions": [
+    {
+      "name": "ohos.permission.INTERNET",
+      "reason": "拉取营地、攻略与同步本人行程装备日记",
+      "when": "inuse",
+      "scene": "浏览营地与云端同步"
+    }
+  ],
+  "harmonyos": {
+    "features": []
+  },
+  "store": {
+    "category": "生活",
+    "legalOperator": "魏文波",
+    "oneLiner": "露营玩家 — 面向露营爱好者的智慧露营助手：规划行程、称重打包、发现营地、写下林",
+    "fullDescription": "露营玩家是面向露营爱好者的智慧露营助手。支持规划行程、按天数季节人数推荐装备清单、管理装备克重、发现带设施说明的露营地、记录露营日记与分享攻略。全部功能免费，不含任何支付。",
+    "keywords": [
+      "露营",
+      "装备清单",
+      "营地",
+      "行程",
+      "日记",
+      "鸿蒙"
+    ],
+    "privacySummary": {
+      "collect": [
+        "可选账号信息",
+        "行程与装备",
+        "日记与收藏"
+      ],
+      "purpose": "提供行程规划、装备同步与营地浏览",
+      "thirdParties": []
+    },
+    "demoAccount": {
+      "username": "auditor@wenbo.local",
+      "passwordNote": "仅写入 store/demo-account.md"
+    },
+    "screenshotPlan": [
+      {
+        "page": "home",
+        "caption": "天气预览与规划行程"
+      },
+      {
+        "page": "gear",
+        "caption": "装备分类与重量"
+      },
+      {
+        "page": "camp",
+        "caption": "营地详情与设施"
+      },
+      {
+        "page": "journal",
+        "caption": "露营日记时间线"
+      },
+      {
+        "page": "pack",
+        "caption": "打包清单勾选"
+      }
+    ],
+    "incentiveHooks": [
+      "FormExtensionAbility"
+    ]
+  },
+  "access": {
+    "mode": "open_optional",
+    "features": {
+      "register": true,
+      "guestBrowse": true,
+      "guestWrite": false
+    },
+    "gateActions": [
+      "create_trip",
+      "manage_gear",
+      "write_journal",
+      "publish_guide",
+      "favorite_camp",
+      "write_note"
+    ],
+    "onPrivacyRefuse": "browse_basic",
+    "loginProviders": [
+      "password"
+    ]
+  },
+  "admin": {
+    "featureModules": [
+      "overview",
+      "appUsers",
+      "cpCamps",
+      "cpTemplates",
+      "cpGuides",
+      "cpWeather",
+      "cpTrips",
+      "cpJournals",
+      "cpPosts",
+      "messages",
+      "kpis",
+      "ai"
+    ]
+  },
+  "brand": {
+    "primary": "#2D5A27",
+    "primaryDeep": "#163318",
+    "deep": "#163318",
+    "accent": "#E8833A",
+    "tone": "outdoor-professional",
+    "stylePack": "premium-business",
+    "workbenchId": "catalog-tool",
+    "layoutVariant": "A",
+    "productVisualType": "content-commerce",
+    "visualDirection": {
+      "archetype": "forest-camp-toolkit",
+      "density": "structured",
+      "material": "linen-card",
+      "imagery": "tent-star-gear-campground",
+      "accent": "campfire-orange",
+      "primaryJob": "3 秒内规划行程并看到目的地天气与装备模板",
+      "notes": "森林深绿+营火橙+亚麻白；工具工作台而非杂志漫步"
+    },
+    "logo": {
+      "brandAnchor": "露",
+      "glyphStrategy": "semantic-fusion",
+      "customLock": true,
+      "generator": "agent-svg",
+      "renderScript": "store/logo/render_logo.mjs",
+      "concept": "帐篷三角与门洞负空间，深绿底亚麻标",
+      "foregroundFile": "store/logo/foreground.png",
+      "backgroundFile": "store/logo/background.png",
+      "previewFile": "store/logo/preview-1024.png",
+      "agcFile": "store/logo/agc-216.png",
+      "symbolFile": "store/logo/symbol.svg",
+      "horizontalFile": "store/logo/logo-horizontal.svg"
+    }
+  }
+}

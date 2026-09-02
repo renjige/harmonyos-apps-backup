@@ -1,0 +1,8 @@
+{
+  "string": [
+    { "name": "module_desc", "value": "灵感笺主模块" },
+    { "name": "EntryAbility_desc", "value": "个人灵感记录入口" },
+    { "name": "EntryAbility_label", "value": "灵感笺" },
+    { "name": "internet_reason", "value": "用于拉取标签预设、灵感卡模板说明、笺上寄语与机构通知" }
+  ]
+}

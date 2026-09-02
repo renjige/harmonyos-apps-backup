@@ -1,0 +1,7 @@
+{
+  "string": [
+    { "name": "module_desc", "value": "时光档案 — 本地个人经历整理" },
+    { "name": "EntryAbility_desc", "value": "时光档案入口" },
+    { "name": "EntryAbility_label", "value": "时光档案" }
+  ]
+}

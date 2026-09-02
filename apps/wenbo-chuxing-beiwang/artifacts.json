@@ -1,0 +1,36 @@
+{
+  "requestId": "",
+  "slug": "wenbo-chuxing-beiwang",
+  "artifacts": [
+    {
+      "pipeline": "P1",
+      "path": "docs/product",
+      "status": "validated"
+    },
+    {
+      "pipeline": "P4",
+      "path": "db",
+      "status": "validated"
+    },
+    {
+      "pipeline": "P5",
+      "path": "ai",
+      "status": "validated"
+    },
+    {
+      "pipeline": "P3",
+      "path": "server",
+      "status": "validated"
+    },
+    {
+      "pipeline": "P2",
+      "path": "app",
+      "status": "validated"
+    },
+    {
+      "pipeline": "P6",
+      "path": "store",
+      "status": "validated"
+    }
+  ]
+}

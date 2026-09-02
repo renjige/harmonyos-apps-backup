@@ -1,0 +1,7 @@
+{
+  "string": [
+    { "name": "module_desc", "value": "见解簿主模块：本机智慧记录、整理与洞察" },
+    { "name": "EntryAbility_desc", "value": "见解簿入口" },
+    { "name": "EntryAbility_label", "value": "见解簿" }
+  ]
+}

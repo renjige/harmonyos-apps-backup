@@ -1,0 +1,19 @@
+{
+  "requestId": "req_1787191619169",
+  "company": "魏文波",
+  "industry": "task-efficiency",
+  "appName": "出行备忘",
+  "positioning": "管理旅行计划、每日安排、出行清单与重要提醒的智慧出行工具",
+  "primaryEntity": "旅行计划",
+  "coreLoop": "创建行程→添加每日安排→准备清单→设置提醒→完成出行",
+  "secondaryLoop": "创建备忘→关联行程→编辑保存→再次查看",
+  "primaryJob": "查看最近行程与准备进度",
+  "kpis": ["近期行程数", "清单完成率", "待处理提醒"],
+  "brandPrimary": "#1677FF",
+  "workbenchId": "timeline-board",
+  "layoutVariant": "A",
+  "visualArchetype": "harmonyos-official",
+  "accessMode": "open_optional",
+  "gateActions": ["create_trip", "edit_trip", "manage_checklist", "create_reminder", "write_note"],
+  "stylePack": "harmonyos-official"
+}

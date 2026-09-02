@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 360" role="img" aria-label="{å">
+  <rect width="360" height="360" rx="78" fill="#122A36"/>
+  <g transform="translate(0,0) scale(0.3515625)">
+    <path fill="#F6F1EA" d="M214 430 L512 360 L512 780 L248 820 C226 824 214 806 214 786 Z"/>
+    <path fill="#F6F1EA" d="M810 430 L512 360 L512 780 L776 820 C798 824 810 806 810 786 Z"/>
+    <path fill="#122A36" d="M512 360 L512 780 L498 776 L498 372 Z"/>
+    <path fill="#F6F1EA" d="M250 392 L512 292 L774 392 L742 412 L512 326 L282 412 Z"/>
+    <circle cx="512" cy="292" r="36" fill="#D4A574"/>
+  </g>
+  <text x="420" y="230" fill="#122A36" font-family="Source Han Sans SC, Noto Sans SC, Microsoft YaHei, sans-serif" font-size="132" font-weight="600">{å</text>
+</svg>

@@ -1,0 +1,359 @@
+{
+  "specVersion": "1.0.0",
+  "generatedAt": "2026-08-26T02:47:34.171Z",
+  "requestId": "req_1787712454138",
+  "industryPack": "thought-box",
+  "identity": {
+    "company": "思维匣",
+    "companyPinyin": "siwei",
+    "appName": "思维匣",
+    "appPinyin": "xia",
+    "bundleId": "com.siwei.xia",
+    "version": "1.0.0"
+  },
+  "positioning": {
+    "tagline": "把碎片想法收进匣子，用标签层级展开成思维导图",
+    "coreUsers": [
+      {
+        "role": "知识工作者、学生与创意从业者",
+        "ageRange": "18-45",
+        "scenario": "走路、会议间隙、睡前冒出一句想法",
+        "need": "3 秒记下，再按标签整理成可拖拽的思维导图"
+      }
+    ],
+    "painPoints": [
+      "备忘录是线性长文，看不到想法之间的层级",
+      "笔记软件太重，打开就要选文件夹",
+      "灵感散落在相册和聊天里，无法一键成图"
+    ],
+    "differentiation": "把碎片想法收进匣子，用标签层级展开成思维导图"
+  },
+  "modules": {
+    "pages": [
+      {
+        "id": "home",
+        "title": "灵感",
+        "route": "pages/HomePage",
+        "features": [
+          "速记框",
+          "智慧语音",
+          "图片附件",
+          "卡片瀑布",
+          "智慧归类"
+        ],
+        "tab": true
+      },
+      {
+        "id": "map",
+        "title": "导图",
+        "route": "pages/MindMapPage",
+        "features": [
+          "一键生成",
+          "拖拽节点",
+          "缩放画布"
+        ],
+        "tab": true
+      },
+      {
+        "id": "tags",
+        "title": "标签",
+        "route": "pages/TagsPage",
+        "features": [
+          "标签云",
+          "筛选列表",
+          "增删改"
+        ],
+        "tab": true
+      },
+      {
+        "id": "mine",
+        "title": "我的",
+        "route": "pages/MinePage",
+        "features": [
+          "统计",
+          "回收站",
+          "导出",
+          "设置隐私"
+        ],
+        "tab": true
+      }
+    ],
+    "coreFlows": [
+      {
+        "name": "匣格整理闭环",
+        "steps": [
+          "速记卡片",
+          "智慧归类打标签",
+          "一键生成导图",
+          "拖拽整理",
+          "导出或回收"
+        ]
+      }
+    ]
+  },
+  "entities": [
+    {
+      "name": "ThoughtCard",
+      "table": "tb_cards",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "body",
+          "type": "string"
+        },
+        {
+          "name": "tagsCsv",
+          "type": "string"
+        },
+        {
+          "name": "imagePath",
+          "type": "string"
+        },
+        {
+          "name": "deletedAt",
+          "type": "number"
+        }
+      ]
+    },
+    {
+      "name": "TagPreset",
+      "table": "tb_tag_presets",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "LexiconEntry",
+      "table": "tb_lexicon",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "tags",
+          "type": "string"
+        }
+      ]
+    }
+  ],
+  "apis": [
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/thought-box/tags",
+      "summary": "标签预设",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/thought-box/tags/:id",
+      "summary": "标签详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/thought-box/lexicon",
+      "summary": "智慧归类词库",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/thought-box/lexicon/:id",
+      "summary": "词库详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/thought-box/guides",
+      "summary": "匣格导读",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/thought-box/guides/:id",
+      "summary": "导读详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/thought-box/kpis",
+      "summary": "KPI",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/messages",
+      "summary": "消息",
+      "auth": false,
+      "module": "messages"
+    }
+  ],
+  "ai": {
+    "capabilities": [],
+    "quickCommands": [],
+    "systemPrompt": "你是「思维匣」旗下应用「思维匣」的整理助手。产品定位：把碎片想法收进匣子，用标签层级展开成思维导图。主职责：帮助理解速记、标签归类、导图层级与本机导出。禁止自称人工智能或大模型。禁止编造用户没写过的卡片。C 端不提供生成式对话。",
+    "mode": "none",
+    "llmEnabled": false
+  },
+  "permissions": [
+    {
+      "name": "ohos.permission.INTERNET",
+      "reason": "拉取标签预设、智慧归类词库与机构通知；可选登录同步账号",
+      "when": "inuse",
+      "scene": "打开首页与登录"
+    },
+    {
+      "name": "ohos.permission.MICROPHONE",
+      "reason": "将语音转为文字写入思维卡片",
+      "when": "inuse",
+      "scene": "点击速记框旁的智慧语音"
+    }
+  ],
+  "harmonyos": {
+    "features": []
+  },
+  "store": {
+    "category": "生活",
+    "legalOperator": "魏文波",
+    "oneLiner": "思维匣 — 把碎片想法收进匣子，用标签层级展开成思维导图",
+    "fullDescription": "思维匣是一款极简灵感收纳与思维整理工具。你可以随时速记想法，用智慧归类打上标签，再一键生成可拖拽的思维导图。没有社交、没有支付、没有会员。卡片正文默认只保存在本机。",
+    "keywords": [
+      "思维",
+      "灵感",
+      "卡片",
+      "导图",
+      "笔记",
+      "整理",
+      "生活",
+      "鸿蒙"
+    ],
+    "privacySummary": {
+      "collect": [
+        "可选账号信息",
+        "卡片正文与标签（默认仅本机）",
+        "用户主动添加的图片附件",
+        "智慧语音转写的文字（仅本机）"
+      ],
+      "purpose": "提供灵感速记、标签整理、思维导图与本机导出",
+      "thirdParties": []
+    },
+    "demoAccount": {
+      "username": "auditor@siwei.local",
+      "passwordNote": "仅写入 store/demo-account.md"
+    },
+    "screenshotPlan": [
+      {
+        "page": "home",
+        "caption": "此刻在想什么？一键收进匣子"
+      },
+      {
+        "page": "map",
+        "caption": "标签即层级，一键展开思维导图"
+      },
+      {
+        "page": "tags",
+        "caption": "标签云与卡片筛选"
+      },
+      {
+        "page": "mine",
+        "caption": "回收站与本机导出"
+      }
+    ],
+    "incentiveHooks": []
+  },
+  "access": {
+    "mode": "open_optional",
+    "features": {
+      "register": true,
+      "guestBrowse": true,
+      "guestWrite": true
+    },
+    "gateActions": [
+      "sync_notes"
+    ],
+    "onPrivacyRefuse": "browse_basic",
+    "loginProviders": [
+      "password"
+    ]
+  },
+  "admin": {
+    "featureModules": [
+      "overview",
+      "appUsers",
+      "tbTagPresets",
+      "tbLexicon",
+      "tbGuides",
+      "tbNotes",
+      "messages",
+      "kpis"
+    ]
+  },
+  "brand": {
+    "primary": "#1A2332",
+    "primaryDeep": "#121820",
+    "deep": "#1A2332",
+    "accent": "#D4A56A",
+    "tone": "soft-editorial",
+    "stylePack": "soft-editorial",
+    "workbenchId": "catalog-tool",
+    "layoutVariant": "E",
+    "productVisualType": "content-commerce",
+    "visualDirection": {
+      "archetype": "minimal-casket-journal",
+      "density": "airy",
+      "material": "linen-paper",
+      "imagery": "open-box-amber-dots",
+      "accent": "amber-gold",
+      "primaryJob": "3 秒内在速记框写下此刻想法",
+      "notes": "深空蓝+雾霾蓝+琥珀金+米白；微启匣 Logo；禁止工厂六件套与 AI 横幅"
+    },
+    "logo": {
+      "brandAnchor": "匣",
+      "glyphStrategy": "semantic-fusion",
+      "customLock": true,
+      "generator": "agent-svg",
+      "renderScript": "store/logo/render_logo.mjs",
+      "concept": "微启方形匣 + 匣缝中有序琥珀光点",
+      "style": "flat-premium",
+      "foregroundFile": "store/logo/foreground.png",
+      "backgroundFile": "store/logo/background.png",
+      "previewFile": "store/logo/preview-1024.png",
+      "agcFile": "store/logo/agc-216.png",
+      "symbolFile": "store/logo/symbol.svg",
+      "horizontalFile": "store/logo/logo-horizontal.svg"
+    },
+    "visualAssets": [
+      { "id": "hero", "file": "hero_open_box.png", "usage": "首页 Hero" },
+      { "id": "banner1", "file": "banner_capture.png", "usage": "速记氛围" },
+      { "id": "banner2", "file": "banner_mindmap.png", "usage": "导图背景" },
+      { "id": "cover_cards", "file": "cover_cards.png", "usage": "详情封面" },
+      { "id": "cover_tags", "file": "cover_tags.png", "usage": "标签封面" },
+      { "id": "empty", "file": "empty_linen.png", "usage": "空态" },
+      { "id": "texture", "file": "texture_paper.png", "usage": "我的页材质" }
+    ]
+  }
+}

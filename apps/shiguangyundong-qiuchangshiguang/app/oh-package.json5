@@ -1,0 +1,8 @@
+{
+  "modelVersion": "5.0.0",
+  "description": "球场拾光：个人球迷记录与场地预约",
+  "dependencies": {},
+  "devDependencies": {
+    "@ohos/hypium": "1.0.19"
+  }
+}

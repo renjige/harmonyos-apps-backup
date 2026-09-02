@@ -1,0 +1,8 @@
+{
+  "string": [
+    { "name": "module_desc", "value": "灵感手册主模块" },
+    { "name": "EntryAbility_desc", "value": "记录、整理和管理个人创意灵感" },
+    { "name": "EntryAbility_label", "value": "灵感手册" },
+    { "name": "internet_reason", "value": "用于连接灵感手册业务服务" }
+  ]
+}

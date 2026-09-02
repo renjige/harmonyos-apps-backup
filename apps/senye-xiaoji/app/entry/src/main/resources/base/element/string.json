@@ -1,0 +1,9 @@
+{
+  "string": [
+    { "name": "module_desc", "value": "森野小记 — 自然生活智慧记录" },
+    { "name": "EntryAbility_desc", "value": "森野小记应用入口" },
+    { "name": "EntryAbility_label", "value": "森野小记" },
+    { "name": "internet_reason", "value": "用于可选的账号登录与注册" },
+    { "name": "location_reason", "value": "用于在您主动开启位置标记时记录当前位置" }
+  ]
+}

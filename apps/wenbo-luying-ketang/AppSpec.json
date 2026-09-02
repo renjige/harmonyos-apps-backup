@@ -1,0 +1,454 @@
+{
+  "specVersion": "1.0.0",
+  "generatedAt": "2026-08-24T07:49:18.872Z",
+  "requestId": "req_1787557758839",
+  "industryPack": "camp-player",
+  "identity": {
+    "company": "魏文波",
+    "companyPinyin": "wenbo",
+    "appName": "露营课堂",
+    "appPinyin": "luying-ketang",
+    "bundleId": "com.wenbo.luyingketang",
+    "version": "1.0.0"
+  },
+  "positioning": {
+    "tagline": "面向户外爱好者的智慧露营学习平台：系统学习露营知识、管理装备清单、规划行程与分享社区笔记",
+    "coreUsers": [
+      {
+        "role": "户外学习爱好者",
+        "ageRange": "22-45",
+        "scenario": "出发前系统学习露营技能并规划行程",
+        "need": "按场景与难度筛选课程、管理装备清单、记录学习进度与社区分享"
+      }
+    ],
+    "painPoints": [
+      "露营知识零散，缺少按场景与难度组织的系统课程",
+      "装备清单靠记忆，容易漏带关键件",
+      "行程与笔记分散，难以形成可复用的露营经验"
+    ],
+    "differentiation": "面向户外爱好者的智慧露营学习平台：系统学习露营知识、管理装备清单、规划行程与分享社区笔记"
+  },
+  "modules": {
+    "pages": [
+      {
+        "id": "home",
+        "title": "首页",
+        "route": "pages/HomePage",
+        "features": [
+          "学习进度",
+          "场景筛选",
+          "今日推荐",
+          "快捷入口"
+        ],
+        "tab": true
+      },
+      {
+        "id": "community",
+        "title": "社区",
+        "route": "pages/CommunityPage",
+        "features": [
+          "笔记列表",
+          "发布",
+          "点赞"
+        ],
+        "tab": true
+      },
+      {
+        "id": "trips",
+        "title": "行程",
+        "route": "pages/TripsPage",
+        "features": [
+          "行程列表",
+          "倒计时",
+          "新建行程"
+        ],
+        "tab": true
+      },
+      {
+        "id": "mine",
+        "title": "我的",
+        "route": "pages/MinePage",
+        "features": [
+          "已学统计",
+          "收藏",
+          "设置与隐私"
+        ],
+        "tab": true
+      },
+      {
+        "id": "gear",
+        "title": "装备",
+        "route": "pages/GearPage",
+        "features": [
+          "分类",
+          "模板",
+          "打包清单"
+        ],
+        "tab": false
+      }
+    ],
+    "coreFlows": [
+      {
+        "name": "学习闭环",
+        "steps": [
+          "浏览推荐课程",
+          "学习并标记已学",
+          "管理装备清单",
+          "规划行程",
+          "社区分享笔记"
+        ]
+      }
+    ]
+  },
+  "entities": [
+    {
+      "name": "CampSite",
+      "table": "cp_camps",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "region",
+          "type": "string"
+        },
+        {
+          "name": "campType",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "GearTemplate",
+      "table": "cp_templates",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "CampGuide",
+      "table": "cp_guides",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "WeatherHint",
+      "table": "cp_weather",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "CampTrip",
+      "table": "cp_trips",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "userId",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "CampJournal",
+      "table": "cp_journals",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "userId",
+          "type": "string"
+        }
+      ]
+    }
+  ],
+  "apis": [
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/camp-player/camps",
+      "summary": "营地列表",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/camp-player/camps/:id",
+      "summary": "营地详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/camp-player/templates",
+      "summary": "装备模板",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/camp-player/guides",
+      "summary": "攻略列表",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/camp-player/guides/:id",
+      "summary": "攻略详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/camp-player/weather",
+      "summary": "天气规则预览",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/camp-player/trips",
+      "summary": "我的行程",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/biz/camp-player/trips",
+      "summary": "创建行程",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/camp-player/gear",
+      "summary": "我的装备",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/biz/camp-player/gear",
+      "summary": "新增装备",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/camp-player/packlists",
+      "summary": "打包清单",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/camp-player/journals",
+      "summary": "我的日记",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/biz/camp-player/journals",
+      "summary": "新建日记",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/camp-player/kpis",
+      "summary": "KPI",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/messages",
+      "summary": "消息",
+      "auth": false,
+      "module": "messages"
+    }
+  ],
+  "ai": {
+    "capabilities": [],
+    "quickCommands": [],
+    "systemPrompt": "你是「魏文波」旗下应用「露营课堂」的助手。产品定位：面向户外爱好者的智慧露营学习平台，系统学习露营知识、管理装备清单、规划行程与社区分享。主职责：按场景与难度推荐课程、解释装备清单规则、协助行程规划与笔记整理。不编造门票价格与实时气象数值；不确定时建议查阅课程正文或联系营地管理方。禁止扮演旅游电商或支付产品。不提供生成式对话作为 C 端功能。",
+    "mode": "none",
+    "llmEnabled": false
+  },
+  "permissions": [
+    {
+      "name": "ohos.permission.INTERNET",
+      "reason": "拉取课程、攻略与同步本人行程装备数据",
+      "when": "inuse",
+      "scene": "浏览课程与云端同步"
+    }
+  ],
+  "harmonyos": {
+    "features": []
+  },
+  "store": {
+    "category": "生活",
+    "legalOperator": "魏文波",
+    "oneLiner": "露营课堂 — 在大自然里，把露营学扎实",
+    "fullDescription": "露营课堂是面向户外爱好者的智慧露营学习平台。提供系统露营课程、装备清单管理、行程规划与社区笔记分享。全部功能免费，不含支付与生成式对话。",
+    "keywords": [
+      "露营",
+      "户外学习",
+      "装备清单",
+      "行程规划",
+      "社区",
+      "鸿蒙"
+    ],
+    "privacySummary": {
+      "collect": [
+        "可选账号信息",
+        "学习进度与行程",
+        "装备与收藏"
+      ],
+      "purpose": "提供课程学习、装备管理与行程规划",
+      "thirdParties": []
+    },
+    "demoAccount": {
+      "username": "auditor@wenbo.local",
+      "passwordNote": "仅写入 store/demo-account.md"
+    },
+    "screenshotPlan": [
+      {
+        "page": "home",
+        "caption": "学习进度与今日推荐"
+      },
+      {
+        "page": "guide",
+        "caption": "课程详情与标记已学"
+      },
+      {
+        "page": "gear",
+        "caption": "装备模板与打包清单"
+      },
+      {
+        "page": "trips",
+        "caption": "行程规划与倒计时"
+      },
+      {
+        "page": "community",
+        "caption": "社区笔记分享"
+      }
+    ],
+    "incentiveHooks": [
+      "FormExtensionAbility"
+    ]
+  },
+  "access": {
+    "mode": "open_optional",
+    "features": {
+      "register": true,
+      "guestBrowse": true,
+      "guestWrite": false
+    },
+    "gateActions": [
+      "create_trip",
+      "manage_gear",
+      "write_journal",
+      "publish_guide",
+      "favorite_camp",
+      "write_note"
+    ],
+    "onPrivacyRefuse": "browse_basic",
+    "loginProviders": [
+      "password"
+    ]
+  },
+  "admin": {
+    "featureModules": [
+      "overview",
+      "appUsers",
+      "cpCamps",
+      "cpTemplates",
+      "cpGuides",
+      "cpWeather",
+      "cpTrips",
+      "cpJournals",
+      "cpPosts",
+      "messages",
+      "kpis",
+      "ai"
+    ]
+  },
+  "brand": {
+    "primary": "#16A34A",
+    "primaryDeep": "#15803D",
+    "deep": "#15803D",
+    "accent": "#FB923C",
+    "tone": "outdoor-education",
+    "stylePack": "premium-business",
+    "workbenchId": "learning-hub",
+    "layoutVariant": "B",
+    "productVisualType": "content-commerce",
+    "visualAssets": [
+      { "id": "hero_camp_night", "file": "hero_camp_night.png", "usage": "首页 Hero" },
+      { "id": "banner_pack", "file": "banner_pack.png", "usage": "装备氛围" },
+      { "id": "guide_tent", "file": "guide_tent.png", "usage": "课程封面" },
+      { "id": "guide_rain", "file": "guide_rain.png", "usage": "课程封面" },
+      { "id": "guide_cook", "file": "guide_cook.png", "usage": "课程封面" },
+      { "id": "guide_stars", "file": "guide_stars.png", "usage": "课程封面" },
+      { "id": "guide_kids", "file": "guide_kids.png", "usage": "课程封面" },
+      { "id": "guide_altitude", "file": "guide_altitude.png", "usage": "课程封面" },
+      { "id": "tpl_newbie", "file": "tpl_newbie.png", "usage": "装备模板" },
+      { "id": "tpl_ultralight", "file": "tpl_ultralight.png", "usage": "装备模板" },
+      { "id": "tpl_family", "file": "tpl_family.png", "usage": "装备模板" }
+    ],
+    "visualDirection": {
+      "archetype": "forest-learning-hub",
+      "density": "structured",
+      "material": "linen-card",
+      "imagery": "tent-book-forest-camp",
+      "accent": "warm-orange",
+      "primaryJob": "3 秒内看到学习进度并进入今日推荐课程",
+      "notes": "森林绿+暖阳橙；教育学习工作台，四 Tab：首页/社区/行程/我的"
+    },
+    "logo": {
+      "brandAnchor": "露",
+      "glyphStrategy": "semantic-fusion",
+      "customLock": false
+    }
+  }
+}

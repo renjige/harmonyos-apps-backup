@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" fill="none">
+  <!-- 24-segment solar wheel ring -->
+  <circle cx="512" cy="512" r="320" stroke="#E8833A" stroke-width="28" opacity="0.35"/>
+  <g stroke="#E8833A" stroke-width="16" stroke-linecap="round">
+    <line x1="512" y1="192" x2="512" y2="248"/>
+    <line x1="512" y1="776" x2="512" y2="832"/>
+    <line x1="192" y1="512" x2="248" y2="512"/>
+    <line x1="776" y1="512" x2="832" y2="512"/>
+    <line x1="285" y1="285" x2="325" y2="325"/>
+    <line x1="699" y1="699" x2="739" y2="739"/>
+    <line x1="739" y1="285" x2="699" y2="325"/>
+    <line x1="325" y1="699" x2="285" y2="739"/>
+  </g>
+  <!-- center leaf + grain -->
+  <path d="M512 360 C420 420 380 520 400 620 C430 540 470 480 512 440 C554 480 594 540 624 620 C644 520 604 420 512 360Z" fill="#3A7D44"/>
+  <ellipse cx="512" cy="560" rx="48" ry="72" fill="#E8833A"/>
+  <path d="M512 500 L512 620 M492 540 L532 540" stroke="#F5F0E8" stroke-width="12" stroke-linecap="round"/>
+</svg>

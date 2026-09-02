@@ -1,0 +1,9 @@
+{
+  "string": [
+    { "name": "module_desc", "value": "常识集主模块" },
+    { "name": "EntryAbility_desc", "value": "每日常识科普阅读入口" },
+    { "name": "EntryAbility_label", "value": "常识集" },
+    { "name": "internet_reason", "value": "用于拉取常识栏目与登录同步" },
+    { "name": "reminder_reason", "value": "用于每日学习提醒，到点通知查看今日常识" }
+  ]
+}

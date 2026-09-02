@@ -1,0 +1,100 @@
+{
+  "specVersion": "1.0.0",
+  "generatedAt": "2026-08-24T01:41:03.711Z",
+  "requestId": "req_1787535663675",
+  "industryPack": "kitchen-lab",
+  "identity": {
+    "company": "魏文波",
+    "companyPinyin": "wenbo",
+    "appName": "厨验Lab",
+    "appPinyin": "chuyan-lab",
+    "bundleId": "com.wenbo.chuyanlab",
+    "version": "1.0.0"
+  },
+  "positioning": {
+    "tagline": "管理家中食材保质期、智慧匹配可做菜谱、记录烹饪实验笔记的智慧厨房助手",
+    "coreUsers": [
+      {
+        "role": "爱下厨的年轻人与家庭主厨",
+        "ageRange": "22-45",
+        "scenario": "打开冰箱后决定做什么、临近过期前清库存",
+        "need": "食材到期提醒、智慧菜谱匹配、采购清单与实验笔记"
+      }
+    ],
+    "painPoints": [
+      "食材过期浪费",
+      "不知道现有食材能做什么菜",
+      "改良配方后难以沉淀记录"
+    ],
+    "differentiation": "实验感厨房助手：保质期看板 + 智慧匹配 + 烹饪实验笔记，暖橙轻奢视觉"
+  },
+  "access": {
+    "mode": "open_optional",
+    "features": {
+      "register": true,
+      "guestBrowse": true,
+      "guestWrite": false
+    },
+    "gateActions": ["sync_pantry", "sync_shopping", "sync_notes", "favorite_recipe"],
+    "onPrivacyRefuse": "browse_basic",
+    "loginProviders": ["password"]
+  },
+  "admin": {
+    "featureModules": [
+      "overview",
+      "appUsers",
+      "klCategories",
+      "klRecipes",
+      "klPantryItems",
+      "klShoppingItems",
+      "klExperimentNotes",
+      "klPersonalRecipes",
+      "messages",
+      "kpis",
+      "ai"
+    ]
+  },
+  "store": {
+    "category": "生活",
+    "oneLiner": "厨验Lab — 食材管家、智慧菜谱、烹饪实验笔记",
+    "fullDescription": "厨验Lab 是一款智慧厨房助手：录入家中食材并关注保质期，系统智慧匹配可做菜谱；菜谱详情提供步骤与采购清单；记录每次烹饪实验心得，沉淀个人菜谱库。支持收藏与清单分享，不含支付功能，界面温暖简洁，适合日常做饭前快速决策。",
+    "keywords": ["厨房", "菜谱", "食材", "采购清单", "烹饪笔记"],
+    "legalOperator": "魏文波",
+    "privacySummary": {
+      "collect": ["注册账号姓名电话", "用户录入食材与采购清单", "实验笔记与收藏"],
+      "purpose": "提供食材管理、菜谱浏览、清单与笔记同步",
+      "thirdParties": []
+    }
+  },
+  "brand": {
+    "primary": "#E8823A",
+    "primaryDeep": "#2D3436",
+    "tone": "warm-minimal",
+    "stylePack": "custom",
+    "workbenchId": "kitchen-dashboard",
+    "layoutVariant": "B",
+    "productVisualType": "food-lifestyle",
+    "visualAssets": [
+      { "key": "hero_kitchen_lab", "file": "app/entry/src/main/resources/base/media/hero_kitchen_lab.png", "role": "heroBanner" },
+      { "key": "recipe_tomato_egg", "file": "app/entry/src/main/resources/base/media/recipe_tomato_egg.png", "role": "recipeCover" },
+      { "key": "recipe_broccoli_garlic", "file": "app/entry/src/main/resources/base/media/recipe_broccoli_garlic.png", "role": "recipeCover" },
+      { "key": "recipe_braised_tofu", "file": "app/entry/src/main/resources/base/media/recipe_braised_tofu.png", "role": "recipeCover" },
+      { "key": "recipe_stir_fry_greens", "file": "app/entry/src/main/resources/base/media/recipe_stir_fry_greens.png", "role": "recipeCover" },
+      { "key": "recipe_mushroom_soup", "file": "app/entry/src/main/resources/base/media/recipe_mushroom_soup.png", "role": "recipeCover" },
+      { "key": "recipe_scallion_noodles", "file": "app/entry/src/main/resources/base/media/recipe_scallion_noodles.png", "role": "recipeCover" },
+      { "key": "recipe_molecular_egg", "file": "app/entry/src/main/resources/base/media/recipe_molecular_egg.png", "role": "recipeCover" },
+      { "key": "recipe_salmon_pan", "file": "app/entry/src/main/resources/base/media/recipe_salmon_pan.png", "role": "recipeCover" },
+      { "key": "recipe_mapo_tofu", "file": "app/entry/src/main/resources/base/media/recipe_mapo_tofu.png", "role": "recipeCover" },
+      { "key": "recipe_lemon_tea", "file": "app/entry/src/main/resources/base/media/recipe_lemon_tea.png", "role": "recipeCover" },
+      { "key": "recipe_beef_potato", "file": "app/entry/src/main/resources/base/media/recipe_beef_potato.png", "role": "recipeCover" },
+      { "key": "recipe_avocado_toast", "file": "app/entry/src/main/resources/base/media/recipe_avocado_toast.png", "role": "recipeCover" }
+    ],
+    "logo": {
+      "concept": "锅具与烧杯负空间融合，暖橙实验厨房",
+      "previewFile": "store/logo/preview-1024.png",
+      "foregroundFile": "store/logo/foreground.png",
+      "backgroundFile": "store/logo/background.png"
+    }
+  },
+  "ai": null
+}

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" fill="none">
+  <!-- uK� Symbol: notebook + star light -->
+  <rect width="1024" height="1024" rx="0" fill="#1B2A41"/>
+  <!-- Notebook body -->
+  <rect x="256" y="192" width="512" height="640" rx="48" fill="#FAF8F4"/>
+  <!-- Binding line -->
+  <line x1="384" y1="240" x2="384" y2="784" stroke="#1B2A41" stroke-width="8" stroke-linecap="round" opacity="0.15"/>
+  <!-- Creative lines on page -->
+  <line x1="432" y1="320" x2="680" y2="320" stroke="#1B2A41" stroke-width="6" stroke-linecap="round" opacity="0.2"/>
+  <line x1="432" y1="400" x2="620" y2="400" stroke="#1B2A41" stroke-width="6" stroke-linecap="round" opacity="0.15"/>
+  <line x1="432" y1="480" x2="660" y2="480" stroke="#1B2A41" stroke-width="6" stroke-linecap="round" opacity="0.12"/>
+  <!-- Star spark -->
+  <path d="M720 240 L732 276 L768 276 L740 298 L752 334 L720 312 L688 334 L700 298 L672 276 L708 276 Z" fill="#F5C842"/>
+  <!-- Light dot -->
+  <circle cx="720" cy="240" r="12" fill="#F5C842" opacity="0.6"/>
+</svg>

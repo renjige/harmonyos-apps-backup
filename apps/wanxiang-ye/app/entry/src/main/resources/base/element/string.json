@@ -1,0 +1,8 @@
+{
+  "string": [
+    { "name": "module_desc", "value": "万象页主模块" },
+    { "name": "EntryAbility_desc", "value": "智慧信息聚合入口" },
+    { "name": "EntryAbility_label", "value": "万象页" },
+    { "name": "internet_reason", "value": "用于按需访问网络资讯数据" }
+  ]
+}

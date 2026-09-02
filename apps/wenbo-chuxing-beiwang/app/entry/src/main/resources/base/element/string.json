@@ -1,0 +1,8 @@
+{
+  "string": [
+    { "name": "module_desc", "value": "出行备忘主模块" },
+    { "name": "EntryAbility_desc", "value": "旅行计划与出行清单管理入口" },
+    { "name": "EntryAbility_label", "value": "出行备忘" },
+    { "name": "internet_reason", "value": "用于同步行程、清单、提醒与备忘数据" }
+  ]
+}

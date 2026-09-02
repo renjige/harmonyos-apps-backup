@@ -1,0 +1,361 @@
+{
+  "specVersion": "1.0.0",
+  "generatedAt": "2026-08-20T09:31:51.036Z",
+  "requestId": "req_1787218310738",
+  "industryPack": "inspiration-slip",
+  "identity": {
+    "company": "魏文波",
+    "companyPinyin": "wenbo",
+    "appName": "灵感笺",
+    "appPinyin": "lingganjian",
+    "bundleId": "com.wenbo.lingganjian",
+    "version": "1.0.0"
+  },
+  "positioning": {
+    "tagline": "记录一闪而过的灵感，也收藏生活里的小心思",
+    "coreUsers": [
+      {
+        "role": "喜欢随手记下想法的都市年轻人与创作者",
+        "ageRange": "18-40",
+        "scenario": "走路、睡前、读完一段文字后，想法刚冒出来的几秒",
+        "need": "快速写下灵感，整理成精致卡片，以后还能再遇见"
+      }
+    ],
+    "painPoints": [
+      "备忘录太工具、太冷，没有手账的收藏感",
+      "灵感散落在备忘录和截图里，很难再看见",
+      "笔记软件太重，打开就要分类文件夹"
+    ],
+    "differentiation": "记录一闪而过的灵感，也收藏生活里的小心思"
+  },
+  "modules": {
+    "pages": [
+      {
+        "id": "home",
+        "title": "首页",
+        "route": "pages/HomePage",
+        "features": [
+          "问候日期",
+          "记录灵感",
+          "今日灵感",
+          "智慧整理"
+        ],
+        "tab": true
+      },
+      {
+        "id": "library",
+        "title": "灵感库",
+        "route": "pages/LibraryPage",
+        "features": [
+          "瀑布卡片",
+          "搜索",
+          "标签筛选"
+        ],
+        "tab": true
+      },
+      {
+        "id": "slip",
+        "title": "灵感签",
+        "route": "pages/SlipPage",
+        "features": [
+          "随机再遇",
+          "收藏回忆"
+        ],
+        "tab": true
+      },
+      {
+        "id": "mine",
+        "title": "我的",
+        "route": "pages/MinePage",
+        "features": [
+          "统计",
+          "标签",
+          "灵感卡",
+          "数据管理",
+          "隐私"
+        ],
+        "tab": true
+      }
+    ],
+    "coreFlows": [
+      {
+        "name": "灵感收藏闭环",
+        "steps": [
+          "记录灵感",
+          "打标签与收藏",
+          "生成灵感卡",
+          "灵感签再遇"
+        ]
+      }
+    ]
+  },
+  "entities": [
+    {
+      "name": "Inspiration",
+      "table": "isp_notes",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "body",
+          "type": "string"
+        },
+        {
+          "name": "mood",
+          "type": "string"
+        },
+        {
+          "name": "tagsCsv",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "TagPreset",
+      "table": "isp_tag_presets",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "CardTemplate",
+      "table": "isp_card_templates",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string"
+        }
+      ]
+    }
+  ],
+  "apis": [
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/inspiration-slip/tags",
+      "summary": "标签预设",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/inspiration-slip/tags/:id",
+      "summary": "标签详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/inspiration-slip/templates",
+      "summary": "灵感卡模板",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/inspiration-slip/templates/:id",
+      "summary": "模板详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/inspiration-slip/quotes",
+      "summary": "笺上寄语",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/inspiration-slip/quotes/:id",
+      "summary": "寄语详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/inspiration-slip/kpis",
+      "summary": "KPI",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/messages",
+      "summary": "消息",
+      "auth": false,
+      "module": "messages"
+    }
+  ],
+  "ai": {
+    "capabilities": [],
+    "quickCommands": [],
+    "systemPrompt": "你是「魏文波」旗下应用「灵感笺」的内容助手。产品定位：记录一闪而过的灵感，也收藏生活里的小心思。主职责：帮助理解灵感记录、标签整理、灵感卡与灵感签回顾。禁止自称人工智能或大模型。禁止编造用户没写过的灵感。C 端不提供生成式对话。",
+    "mode": "none",
+    "llmEnabled": false
+  },
+  "permissions": [
+    {
+      "name": "ohos.permission.INTERNET",
+      "reason": "拉取标签预设、灵感卡模板说明、笺上寄语与机构通知",
+      "when": "inuse",
+      "scene": "打开首页、灵感库与机构通知"
+    }
+  ],
+  "harmonyos": {
+    "features": []
+  },
+  "store": {
+    "category": "生活",
+    "legalOperator": "魏文波",
+    "oneLiner": "灵感笺 — 记录一闪而过的灵感，也收藏生活里的小心思",
+    "fullDescription": "灵感笺是一款轻量个人灵感收藏应用。你可以随手记下想法，整理成精致灵感卡，并在灵感签里再次遇见过去的自己。没有社交、没有支付、没有会员。灵感正文默认保存在本机。",
+    "keywords": [
+      "灵感",
+      "手账",
+      "随笔",
+      "卡片",
+      "记录",
+      "收藏",
+      "生活",
+      "鸿蒙"
+    ],
+    "privacySummary": {
+      "collect": [
+        "可选账号信息",
+        "灵感标题与正文（默认仅本机）",
+        "标签与心情",
+        "用户主动保存的灵感卡图片"
+      ],
+      "purpose": "提供灵感记录、分类整理、灵感卡与回顾",
+      "thirdParties": []
+    },
+    "demoAccount": {
+      "username": "auditor@wenbo.local",
+      "passwordNote": "仅写入 store/demo-account.md"
+    },
+    "screenshotPlan": [
+      {
+        "page": "home",
+        "caption": "打开它，就像打开一本精致的私人灵感手账"
+      },
+      {
+        "page": "write",
+        "caption": "写下此刻的灵感"
+      },
+      {
+        "page": "card",
+        "caption": "让每一段文字拥有自己的视觉"
+      },
+      {
+        "page": "library",
+        "caption": "我的灵感库"
+      },
+      {
+        "page": "slip",
+        "caption": "再次遇见曾经的自己"
+      },
+      {
+        "page": "mine",
+        "caption": "简单、私密、只属于你"
+      }
+    ],
+    "incentiveHooks": []
+  },
+  "access": {
+    "mode": "open_optional",
+    "features": {
+      "register": true,
+      "guestBrowse": true,
+      "guestWrite": true
+    },
+    "gateActions": [
+      "sync_notes"
+    ],
+    "onPrivacyRefuse": "browse_basic",
+    "loginProviders": [
+      "password"
+    ]
+  },
+  "admin": {
+    "featureModules": [
+      "overview",
+      "appUsers",
+      "ispTagPresets",
+      "ispCardTemplates",
+      "ispQuotes",
+      "ispNotes",
+      "messages",
+      "kpis"
+    ]
+  },
+  "brand": {
+    "primary": "#18233A",
+    "primaryDeep": "#10182A",
+    "deep": "#18233A",
+    "accent": "#D9AE62",
+    "tone": "soft-editorial",
+    "stylePack": "soft-editorial",
+    "workbenchId": "fulfillment-hero",
+    "layoutVariant": "A",
+    "productVisualType": "content-commerce",
+    "visualDirection": {
+      "archetype": "oriental-paper-journal",
+      "density": "airy",
+      "material": "rice-paper",
+      "imagery": "ink-and-gold-slip",
+      "accent": "apricot-gold",
+      "primaryJob": "3 秒内看见问候并点下记录灵感",
+      "notes": "墨蓝+暖金+米白；笺纸星芒 Logo；禁止工厂六件套与 AI 横幅"
+    },
+    "visualAssets": {
+      "hero": "hero_paper_window.png",
+      "banners": ["banner_morning_paper.png", "banner_ink_wash.png"],
+      "covers": [
+        "hero_ink_desk.png",
+        "cover_tea_slip.png",
+        "cover_night_lamp.png",
+        "cover_folded_jian.png",
+        "texture_rice.png",
+        "card_plain_paper.png",
+        "card_ink_blue.png",
+        "card_dawn_gold.png",
+        "card_night_navy.png"
+      ]
+    },
+    "logo": {
+      "concept": "圆角笺纸轮廓 + 跃出的四角星芒",
+      "style": "flat-premium",
+      "generator": "premium_logo.py",
+      "glyphStrategy": "bootstrap",
+      "brandAnchor": "笺",
+      "customLock": true,
+      "renderScript": "store/logo/render_logo.mjs",
+      "foregroundFile": "store/logo/foreground.png",
+      "backgroundFile": "store/logo/background.png",
+      "previewFile": "store/logo/preview-1024.png",
+      "agcFile": "store/logo/agc-216.png",
+      "symbolFile": "store/logo/symbol.svg",
+      "horizontalFile": "store/logo/logo-horizontal.svg"
+    }
+  }
+}

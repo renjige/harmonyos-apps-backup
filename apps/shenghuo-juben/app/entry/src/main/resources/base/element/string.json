@@ -1,0 +1,7 @@
+{
+  "string": [
+    { "name": "module_desc", "value": "生活剧本主模块" },
+    { "name": "EntryAbility_desc", "value": "生活剧本 — 以剧本形式记录日常生活" },
+    { "name": "EntryAbility_label", "value": "生活剧本" }
+  ]
+}

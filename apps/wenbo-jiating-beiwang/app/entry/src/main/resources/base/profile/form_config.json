@@ -1,0 +1,22 @@
+{
+  "forms": [
+    {
+      "name": "todayListCard",
+      "displayName": "今日家庭清单",
+      "description": "显示今日家庭清单完成情况",
+      "src": "./ets/widget/pages/TodayListCard.ets",
+      "uiSyntax": "arkts",
+      "window": {
+        "designWidth": 720,
+        "autoDesignWidth": true
+      },
+      "colorMode": "auto",
+      "isDefault": true,
+      "updateEnabled": true,
+      "scheduledUpdateTime": "08:00",
+      "updateDuration": 1,
+      "defaultDimension": "2*2",
+      "supportDimensions": ["2*2", "2*4"]
+    }
+  ]
+}

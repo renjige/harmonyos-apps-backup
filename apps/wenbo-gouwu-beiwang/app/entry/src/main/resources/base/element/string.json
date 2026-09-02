@@ -1,0 +1,9 @@
+{
+  "string": [
+    { "name": "module_desc", "value": "购物备忘主模块" },
+    { "name": "EntryAbility_desc", "value": "购物清单与备忘入口" },
+    { "name": "EntryAbility_label", "value": "购物备忘" },
+    { "name": "internet_reason", "value": "用于在您登录后同步购物清单、备忘和提醒" },
+    { "name": "reminder_reason", "value": "用于在您设置的时间发送购物清单提醒通知" }
+  ]
+}

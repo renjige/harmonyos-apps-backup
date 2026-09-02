@@ -1,0 +1,8 @@
+{
+  "string": [
+    { "name": "module_desc", "value": "思维匣主模块" },
+    { "name": "EntryAbility_desc", "value": "灵感收纳与思维导图入口" },
+    { "name": "EntryAbility_label", "value": "思维匣" },
+    { "name": "internet_reason", "value": "拉取标签预设、智慧归类词库与可选登录" }
+  ]
+}

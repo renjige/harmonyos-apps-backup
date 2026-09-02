@@ -1,0 +1,333 @@
+{
+  "specVersion": "1.0.0",
+  "generatedAt": "2026-08-24T06:26:26.198Z",
+  "requestId": "req_1787552786164",
+  "industryPack": "kids-drawing-studio",
+  "identity": {
+    "company": "魏文波",
+    "companyPinyin": "wenbo",
+    "appName": "儿童绘坊",
+    "appPinyin": "ertong-huifang",
+    "bundleId": "com.wenbo.ertonghuifang",
+    "version": "1.0.0"
+  },
+  "positioning": {
+    "tagline": "孩子的第一间数字画室——3到8岁创意绘画启蒙，自由涂鸦、趣味填色与创意工坊，全部本机保存",
+    "coreUsers": [
+      {
+        "role": "3-8 岁儿童",
+        "ageRange": "3-8",
+        "scenario": "用蜡笔和水彩在手机上自由创作",
+        "need": "大按钮、即时反馈、不会误删作品"
+      },
+      {
+        "role": "家长",
+        "ageRange": "28-40",
+        "scenario": "陪孩子填色或查看画廊",
+        "need": "无广告无付费、作品本地安全、无需注册"
+      }
+    ],
+    "painPoints": [
+      "儿童绘画 App 广告多、功能锁",
+      "填色线稿质量差或太少",
+      "需要注册才能保存作品"
+    ],
+    "differentiation": "孩子的第一间数字画室——3到8岁创意绘画启蒙，自由涂鸦、趣味填色与创意工坊，全部本机保存"
+  },
+  "modules": {
+    "pages": [
+      {
+        "id": "home",
+        "title": "画室",
+        "route": "pages/HomePage",
+        "features": [
+          "欢迎语",
+          "自由涂鸦",
+          "趣味填色",
+          "创意工坊",
+          "画廊入口"
+        ],
+        "tab": true
+      },
+      {
+        "id": "mine",
+        "title": "我的",
+        "route": "pages/MinePage",
+        "features": [
+          "设置与隐私",
+          "清除缓存",
+          "关于"
+        ],
+        "tab": true
+      }
+    ],
+    "coreFlows": [
+      {
+        "name": "自由涂鸦",
+        "steps": [
+          "进入画室",
+          "选自由涂鸦",
+          "选笔刷颜色",
+          "绘制",
+          "保存到画廊"
+        ]
+      },
+      {
+        "name": "趣味填色",
+        "steps": [
+          "选线稿",
+          "进详情",
+          "开始填色",
+          "点区域上色",
+          "保存"
+        ]
+      },
+      {
+        "name": "创意工坊",
+        "steps": [
+          "选玩法",
+          "完成作品",
+          "星星鼓励",
+          "保存"
+        ]
+      },
+      {
+        "name": "画廊",
+        "steps": [
+          "浏览作品",
+          "进详情",
+          "重命名或删除"
+        ]
+      }
+    ]
+  },
+  "entities": [
+    {
+      "name": "LineArt",
+      "table": "lineArts",
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "category",
+          "type": "string"
+        },
+        {
+          "name": "summary",
+          "type": "string"
+        },
+        {
+          "name": "coverKey",
+          "type": "string"
+        },
+        {
+          "name": "description",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "DrawStep",
+      "table": "drawSteps",
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "summary",
+          "type": "string"
+        },
+        {
+          "name": "stepCount",
+          "type": "number"
+        },
+        {
+          "name": "coverKey",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "ColorTip",
+      "table": "colorTips",
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "nameZh",
+          "type": "string"
+        },
+        {
+          "name": "nameEn",
+          "type": "string"
+        },
+        {
+          "name": "hex",
+          "type": "string"
+        }
+      ]
+    }
+  ],
+  "apis": [
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/kids-drawing-studio/line-arts",
+      "summary": "线稿目录",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/kids-drawing-studio/line-arts/:id",
+      "summary": "线稿详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/kids-drawing-studio/draw-steps",
+      "summary": "简笔画步骤",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/kids-drawing-studio/color-tips",
+      "summary": "颜色认知",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/kids-drawing-studio/kpis",
+      "summary": "机构指标",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/messages",
+      "summary": "系统消息",
+      "auth": false,
+      "module": "messages"
+    }
+  ],
+  "ai": {
+    "capabilities": [],
+    "quickCommands": [],
+    "systemPrompt": "你是「魏文波」旗下应用「儿童绘坊」的绘画启蒙说明助手。产品定位：3到8岁儿童创意绘画启蒙。主职责：说明涂鸦工具、填色线稿与创意工坊玩法。不提供生成式 AI、不出现 AI 字样。",
+    "mode": "none",
+    "llmEnabled": false
+  },
+  "permissions": [],
+  "harmonyos": {
+    "features": []
+  },
+  "store": {
+    "category": "教育",
+    "legalOperator": "魏文波",
+    "oneLiner": "儿童绘坊 — 孩子的第一间数字画室——3到8岁创意绘画启蒙，自由涂鸦、趣味填色与",
+    "privacySummary": {
+      "collect": [
+        "作品名称（可选）",
+        "本机画廊元数据",
+        "音效开关偏好"
+      ],
+      "purpose": "保存与管理本机画作、记住界面偏好",
+      "thirdParties": []
+    },
+    "demoAccount": {
+      "username": "auditor@wenbo.local",
+      "passwordNote": "本 App 无需登录；演示信息仅 store/demo-account.md"
+    },
+    "screenshotPlan": [
+      {
+        "page": "home",
+        "caption": "画室三大入口"
+      },
+      {
+        "page": "draw",
+        "caption": "自由涂鸦画布"
+      },
+      {
+        "page": "fill",
+        "caption": "趣味填色"
+      },
+      {
+        "page": "workshop",
+        "caption": "创意工坊"
+      },
+      {
+        "page": "gallery",
+        "caption": "我的画廊"
+      }
+    ],
+    "incentiveHooks": []
+  },
+  "access": {
+    "mode": "open_optional",
+    "features": {
+      "register": true,
+      "guestBrowse": true,
+      "guestWrite": false
+    },
+    "gateActions": [],
+    "onPrivacyRefuse": "browse_basic",
+    "loginProviders": []
+  },
+  "admin": {
+    "featureModules": [
+      "overview",
+      "appUsers",
+      "kdLineArts",
+      "kdDrawSteps",
+      "kdColorTips",
+      "messages",
+      "kpis"
+    ]
+  },
+  "brand": {
+    "primary": "#FF8A65",
+    "primaryDeep": "#E64A19",
+    "deep": "#4A4A4A",
+    "accent": "#4FC3F7",
+    "tone": "soft-editorial",
+    "stylePack": "soft-editorial",
+    "workbenchId": "catalog-tool",
+    "layoutVariant": "A",
+    "productVisualType": "ops-tool",
+    "visualDirection": {
+      "archetype": "kids-drawing-studio",
+      "density": "airy",
+      "material": "paper-crayon-soft-card",
+      "imagery": "crayon-palette-desk",
+      "accent": "orange-sky-mint",
+      "primaryJob": "3 秒内进入自由涂鸦或填色",
+      "notes": "绘本风+新拟态；与少儿画苑归档、趣味算学区分"
+    },
+    "logo": {
+      "brandAnchor": "绘",
+      "glyphStrategy": "semantic-fusion",
+      "customLock": true,
+      "generator": "render_logo.py",
+      "concept": "画笔笔尖弯成微笑弧线，暖橙笔身",
+      "previewFile": "store/logo/preview-1024.png"
+    }
+  }
+}

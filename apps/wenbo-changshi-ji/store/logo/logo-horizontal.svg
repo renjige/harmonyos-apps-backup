@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 420" role="img" aria-label="8��">
+  <rect width="1600" height="420" fill="#0A2540"/>
+  <g transform="translate(80,48) scale(0.32)">
+    <rect x="268" y="430" width="488" height="268" fill="#FFFFFF"/>
+    <rect x="300" y="372" width="424" height="268" fill="#F4F7FB"/>
+    <rect x="332" y="314" width="360" height="268" fill="#FFFFFF"/>
+    <rect x="356" y="348" width="200" height="28" fill="#F5A623"/>
+  </g>
+  <text x="520" y="250" fill="#FFFFFF" font-family="HarmonyOS Sans, Noto Sans SC, sans-serif" font-size="128" font-weight="600" letter-spacing="12">8��</text>
+</svg>

@@ -1,0 +1,8 @@
+{
+  "string": [
+    { "name": "module_desc", "value": "成长手册主模块" },
+    { "name": "EntryAbility_desc", "value": "记录成长、管理目标、回顾时间轴" },
+    { "name": "EntryAbility_label", "value": "成长手册" },
+    { "name": "internet_reason", "value": "用于同步成长记录、目标与平台数据" }
+  ]
+}

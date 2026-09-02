@@ -1,0 +1,8 @@
+{
+  "string": [
+    { "name": "module_desc", "value": "露营玩家主模块" },
+    { "name": "EntryAbility_desc", "value": "智慧露营助手入口：行程、装备、营地与日记" },
+    { "name": "EntryAbility_label", "value": "露营玩家" },
+    { "name": "internet_reason", "value": "用于拉取营地攻略并同步本人行程、装备与日记" }
+  ]
+}

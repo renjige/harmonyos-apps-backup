@@ -1,0 +1,7 @@
+{
+  "string": [
+    { "name": "module_desc", "value": "思维笺 — 个人思维档案与灵感管理" },
+    { "name": "EntryAbility_desc", "value": "记录思考、整理灵感、回顾成长" },
+    { "name": "EntryAbility_label", "value": "思维笺" }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "requestId": "",
+  "slug": "",
+  "artifacts": [
+    { "pipeline": "P1", "path": "docs/product", "status": "pending" },
+    { "pipeline": "P4", "path": "db", "status": "pending" },
+    { "pipeline": "P5", "path": "ai", "status": "pending" },
+    { "pipeline": "P3", "path": "server", "status": "pending" },
+    { "pipeline": "P2", "path": "app", "status": "pending" },
+    { "pipeline": "P6", "path": "store", "status": "pending" }
+  ]
+}

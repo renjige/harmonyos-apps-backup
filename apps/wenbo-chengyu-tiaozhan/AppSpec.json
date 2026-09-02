@@ -1,0 +1,420 @@
+{
+  "specVersion": "1.0.0",
+  "generatedAt": "2026-08-22T01:47:14.796Z",
+  "requestId": "req_1787363234753",
+  "industryPack": "idiom-challenge",
+  "identity": {
+    "company": "魏文波",
+    "companyPinyin": "wenbo",
+    "appName": "成语挑战",
+    "appPinyin": "chengyu-tiaozhan",
+    "bundleId": "com.wenbo.chengyutiaozhan",
+    "version": "1.0.0"
+  },
+  "positioning": {
+    "tagline": "面向汉语爱好者的水墨风成语竞技：每日五题限时连击、百关精研与薄弱主题专项练习",
+    "coreUsers": [
+      {
+        "role": "汉语爱好者",
+        "ageRange": "16-45",
+        "scenario": "通勤或睡前五分钟",
+        "need": "立刻开始今日五题，限时有反馈，不必注册"
+      },
+      {
+        "role": "文化学习者",
+        "ageRange": "20-50",
+        "scenario": "想系统过一遍典故与易混成语",
+        "need": "章节地图清晰，薄弱主题能被推到"
+      }
+    ],
+    "painPoints": [
+      "成语 App 要么小学卡通，要么题库死记硬背",
+      "没有限时与连击，难以形成每日习惯",
+      "易混成语没有专项，用错了也不知道"
+    ],
+    "differentiation": "面向汉语爱好者的水墨风成语竞技：每日五题限时连击、百关精研与薄弱主题专项练习"
+  },
+  "modules": {
+    "pages": [
+      {
+        "id": "home",
+        "title": "今日",
+        "route": "pages/HomePage",
+        "features": [
+          "今日挑战",
+          "成绩卡片",
+          "连续打卡",
+          "章节缎带"
+        ],
+        "tab": true
+      },
+      {
+        "id": "campaign",
+        "title": "闯关",
+        "route": "pages/CampaignPage",
+        "features": [
+          "十章地图",
+          "关卡精研",
+          "金印"
+        ],
+        "tab": true
+      },
+      {
+        "id": "bank",
+        "title": "题库",
+        "route": "pages/BankPage",
+        "features": [
+          "主题分类",
+          "智慧推荐",
+          "薄弱诊断"
+        ],
+        "tab": true
+      },
+      {
+        "id": "achieve",
+        "title": "成就",
+        "route": "pages/AchievePage",
+        "features": [
+          "称号",
+          "徽章墙",
+          "设置与隐私"
+        ],
+        "tab": true
+      }
+    ],
+    "coreFlows": [
+      {
+        "name": "每日挑战",
+        "steps": [
+          "打开今日",
+          "开始今日挑战",
+          "限时作答",
+          "连击计分",
+          "成绩卡"
+        ]
+      },
+      {
+        "name": "百关精研",
+        "steps": [
+          "进入闯关地图",
+          "选择当前关",
+          "五题精研",
+          "正确率达80%",
+          "点亮金印"
+        ]
+      },
+      {
+        "name": "智慧题库",
+        "steps": [
+          "查看薄弱主题",
+          "进入专项",
+          "作答",
+          "更新本机错题统计"
+        ]
+      }
+    ]
+  },
+  "entities": [
+    {
+      "name": "Question",
+      "table": "questions",
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "idiom",
+          "type": "string"
+        },
+        {
+          "name": "question",
+          "type": "string"
+        },
+        {
+          "name": "theme",
+          "type": "string"
+        },
+        {
+          "name": "chapterIndex",
+          "type": "number"
+        },
+        {
+          "name": "coverKey",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "Chapter",
+      "table": "chapters",
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "difficulty",
+          "type": "string"
+        },
+        {
+          "name": "coverKey",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "Theme",
+      "table": "themes",
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "summary",
+          "type": "string"
+        },
+        {
+          "name": "coverKey",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "BadgeDef",
+      "table": "badges",
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "rule",
+          "type": "string"
+        }
+      ]
+    }
+  ],
+  "apis": [
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/idiom-challenge/questions",
+      "summary": "题目列表",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/idiom-challenge/questions/:id",
+      "summary": "题目详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/idiom-challenge/chapters",
+      "summary": "章节列表",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/idiom-challenge/chapters/:id",
+      "summary": "章节详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/idiom-challenge/themes",
+      "summary": "主题列表",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/idiom-challenge/themes/:id",
+      "summary": "主题详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/idiom-challenge/badges",
+      "summary": "徽章定义",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/idiom-challenge/badges/:id",
+      "summary": "徽章详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/idiom-challenge/kpis",
+      "summary": "机构指标",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/messages",
+      "summary": "系统消息",
+      "auth": false,
+      "module": "messages"
+    }
+  ],
+  "ai": {
+    "capabilities": [],
+    "quickCommands": [],
+    "systemPrompt": "你是「魏文波」旗下应用「成语挑战」的内容助手。产品定位：水墨风成语竞技，每日五题限时连击、百关精研与薄弱主题专项。主职责：说明题型、闯关规则与本机进度。不提供生成式对话，不做智力测评，不出现 AI 字样。",
+    "mode": "none",
+    "llmEnabled": false
+  },
+  "permissions": [
+    {
+      "name": "ohos.permission.INTERNET",
+      "reason": "拉取公开成语题库，并在您选择登录时连接账号服务；答题进度默认保存在本机",
+      "when": "inuse",
+      "scene": "浏览题库与可选登录"
+    }
+  ],
+  "harmonyos": {
+    "features": [
+      "FormExtensionAbility"
+    ]
+  },
+  "store": {
+    "category": "教育",
+    "legalOperator": "魏文波",
+    "oneLiner": "成语挑战 — 面向汉语爱好者的水墨风成语竞技：每日五题限时连击、百关精研与薄弱主",
+    "fullDescription": "成语挑战是一款面向汉语爱好者的成语知识竞技应用。支持每日五题限时挑战、十章百关精研、主题专项与本机成就徽章。题目来自平台公开题库，进度默认保存在本机。无广告、无支付、无商城。不进行智力测评，也不承诺提高考试成绩。不提供生成式对话。",
+    "keywords": [
+      "成语",
+      "挑战",
+      "汉字",
+      "典故",
+      "教育",
+      "鸿蒙"
+    ],
+    "privacySummary": {
+      "collect": [
+        "可选账号信息",
+        "本机答题进度",
+        "本机徽章与连击"
+      ],
+      "purpose": "提供成语题库浏览、限时答题、闯关解锁与本地成长记录",
+      "thirdParties": []
+    },
+    "demoAccount": {
+      "username": "auditor@wenbo.local",
+      "passwordNote": "仅写入 store/demo-account.md"
+    },
+    "screenshotPlan": [
+      {
+        "page": "home",
+        "caption": "水墨 Hero 与今日五题挑战卡"
+      },
+      {
+        "page": "quiz",
+        "caption": "限时答题与四选项"
+      },
+      {
+        "page": "score",
+        "caption": "成绩卡片与连击"
+      },
+      {
+        "page": "campaign",
+        "caption": "十章闯关地图与金印"
+      },
+      {
+        "page": "achieve",
+        "caption": "称号与徽章墙"
+      }
+    ],
+    "incentiveHooks": [
+      "FormExtensionAbility"
+    ]
+  },
+  "access": {
+    "mode": "open_optional",
+    "features": {
+      "register": true,
+      "guestBrowse": true,
+      "guestWrite": false
+    },
+    "gateActions": [
+      "sync_progress"
+    ],
+    "onPrivacyRefuse": "browse_basic",
+    "loginProviders": [
+      "password"
+    ]
+  },
+  "admin": {
+    "featureModules": [
+      "overview",
+      "appUsers",
+      "icQuestions",
+      "icChapters",
+      "icThemes",
+      "icBadges",
+      "messages",
+      "kpis"
+    ]
+  },
+  "brand": {
+    "primary": "#C41A1A",
+    "primaryDeep": "#1A1A1A",
+    "deep": "#1C1A18",
+    "accent": "#D4A050",
+    "tone": "ink-modern",
+    "stylePack": "glass-saas",
+    "workbenchId": "fulfillment-hero",
+    "layoutVariant": "B",
+    "productVisualType": "content-commerce",
+    "visualDirection": {
+      "archetype": "ink-modern-glass",
+      "density": "airy",
+      "material": "xuan-paper-liquid-glass",
+      "imagery": "ink-landscape-cinnabar-seal",
+      "accent": "cinnabar-amber",
+      "primaryJob": "3 秒内点击开始今日挑战",
+      "notes": "墨韵现代；禁止亲子卡通、口算键盘、星空蓝换皮"
+    },
+    "logo": {
+      "brandAnchor": "成",
+      "glyphStrategy": "semantic-fusion",
+      "customLock": true,
+      "generator": "render_logo.mjs",
+      "renderScript": "store/logo/render_logo.mjs",
+      "concept": "朱砂方印几何「成」字，墨底，与亲子卡通/口算键盘明显区分",
+      "foregroundFile": "store/logo/foreground.png",
+      "backgroundFile": "store/logo/background.png",
+      "previewFile": "store/logo/preview-1024.png",
+      "agcFile": "store/logo/agc-216.png",
+      "symbolFile": "store/logo/symbol.svg",
+      "horizontalFile": "store/logo/logo-horizontal.svg"
+    }
+  }
+}

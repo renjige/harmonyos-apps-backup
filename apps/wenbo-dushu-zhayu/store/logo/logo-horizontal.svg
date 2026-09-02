@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 360" role="img" aria-label="�f-�">
+  <rect width="360" height="360" fill="#2D5A4A"/>
+  <g transform="translate(0 0) scale(0.3515625)">
+    <path d="M268 372 L508 412 L508 708 L256 660 Z" fill="#F7F3EB"/>
+    <path d="M516 412 L756 372 L768 660 L516 708 Z" fill="#F7F3EB"/>
+    <path d="M500 292 L524 292 L524 468 L512 500 L500 468 Z" fill="#C9A962"/>
+  </g>
+  <text x="420" y="228" font-family="Microsoft YaHei, PingFang SC, Noto Sans SC, sans-serif" font-size="118" font-weight="600" fill="#2D5A4A">�f-�</text>
+</svg>

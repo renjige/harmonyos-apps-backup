@@ -1,0 +1,627 @@
+{
+  "specVersion": "1.0.0",
+  "generatedAt": "2026-08-27T09:21:43.574Z",
+  "requestId": "req_1787822503513",
+  "industryPack": "home-services",
+  "identity": {
+    "company": "拾光运动科技",
+    "companyPinyin": "shiguangyundong",
+    "appName": "球场拾光",
+    "appPinyin": "qiuchangshiguang",
+    "bundleId": "qcsg.pgty.huawei",
+    "version": "1.0.0"
+  },
+  "positioning": {
+    "tagline": "个人球迷记录与赛事记忆，附带合作场馆预约",
+    "coreUsers": [
+      {
+        "role": "球类运动爱好者",
+        "ageRange": "18-45",
+        "scenario": "发现附近场馆、查看可订时段、提交预约",
+        "need": "快速找到可订场地并拿到预约凭证"
+      },
+      {
+        "role": "固定约球小团队",
+        "scenario": "收藏常用场馆、到场打卡、回顾运动时光",
+        "need": "记录运动次数与时长，养成规律约球习惯"
+      }
+    ],
+    "painPoints": [
+      "散落电话约场，不知道附近谁有空场",
+      "时段口头约定易冲突，缺少预约凭证",
+      "打完球没有记录，难以坚持运动习惯"
+    ],
+    "differentiation": "个人球迷记录与赛事记忆管理，附带合作场馆发现与预约；非体育资讯展示"
+  },
+  "modules": {
+    "pages": [
+      {
+        "id": "home",
+        "title": "首页",
+        "route": "pages/HomePage",
+        "features": [
+          "品牌 Hero",
+          "运动分类",
+          "可订场馆",
+          "优惠与案例",
+          "智慧选场入口"
+        ],
+        "tab": true
+      },
+      {
+        "id": "discover",
+        "title": "发现",
+        "route": "pages/DiscoverPage",
+        "features": [
+          "场馆列表",
+          "距离排序",
+          "分类筛选"
+        ],
+        "tab": true
+      },
+      {
+        "id": "timeline",
+        "title": "拾光",
+        "route": "pages/TimelinePage",
+        "features": [
+          "球迷成长统计",
+          "观赛记录与日志",
+          "球队收藏与复盘",
+          "场地预约入口"
+        ],
+        "tab": true
+      },
+      {
+        "id": "mine",
+        "title": "我的",
+        "route": "pages/MinePage",
+        "features": [
+          "我的预约",
+          "收藏场馆",
+          "消息",
+          "设置与隐私",
+          "注销"
+        ],
+        "tab": true
+      },
+      {
+        "id": "diagnose",
+        "title": "智慧选场",
+        "route": "pages/DiagnosePage",
+        "features": [
+          "六题问卷",
+          "规则模板建议"
+        ],
+        "tab": false
+      },
+      {
+        "id": "bookings",
+        "title": "我的预约",
+        "route": "pages/BookingsPage",
+        "features": [
+          "预约凭证",
+          "到场打卡",
+          "取消预约"
+        ],
+        "tab": false
+      },
+      {
+        "id": "favorites",
+        "title": "收藏",
+        "route": "pages/FavoritesPage",
+        "features": [
+          "收藏场馆列表"
+        ],
+        "tab": false
+      },
+      {
+        "id": "messages",
+        "title": "消息",
+        "route": "pages/MessagesPage",
+        "features": [
+          "场馆通知",
+          "预约提醒"
+        ],
+        "tab": false
+      }
+    ],
+    "coreFlows": [
+      {
+        "name": "场地预约闭环",
+        "steps": [
+          "浏览推荐场馆",
+          "查看详情与可订时段",
+          "提交预约申请",
+          "我的预约查看凭证"
+        ]
+      },
+      {
+        "name": "运动时光闭环",
+        "steps": [
+          "预约完成后自动记录",
+          "时光轴回顾每次运动",
+          "年度统计与成就徽章",
+          "上传运动照片"
+        ]
+      }
+    ]
+  },
+  "entities": [
+    {
+      "name": "Venue",
+      "table": "hs_services",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true,
+          "unique": true
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "category",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "priceRange",
+          "type": "string"
+        },
+        {
+          "name": "distanceKm",
+          "type": "number"
+        },
+        {
+          "name": "summary",
+          "type": "string"
+        },
+        {
+          "name": "description",
+          "type": "string"
+        },
+        {
+          "name": "coverMedia",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "Promotion",
+      "table": "hs_promotions",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true,
+          "unique": true
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "discount",
+          "type": "string"
+        },
+        {
+          "name": "summary",
+          "type": "string"
+        },
+        {
+          "name": "endAt",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "SportsCase",
+      "table": "hs_cases",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true,
+          "unique": true
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "summary",
+          "type": "string"
+        },
+        {
+          "name": "description",
+          "type": "string"
+        },
+        {
+          "name": "coverMedia",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "Booking",
+      "table": "hs_bookings",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true,
+          "unique": true
+        },
+        {
+          "name": "serviceId",
+          "type": "uuid",
+          "required": true,
+          "ref": "Venue"
+        },
+        {
+          "name": "username",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "slot",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "contactName",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "phone",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "status",
+          "type": "enum",
+          "enumValues": [
+            "pending",
+            "checked_in",
+            "cancelled"
+          ]
+        }
+      ]
+    }
+  ],
+  "apis": [
+    {
+      "method": "POST",
+      "path": "/api/v1/auth/login",
+      "summary": "登录",
+      "auth": false,
+      "module": "auth"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/auth/register",
+      "summary": "注册",
+      "auth": false,
+      "module": "auth"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/home-services/services",
+      "summary": "场馆列表",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/home-services/services/:id",
+      "summary": "场馆详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/home-services/categories",
+      "summary": "运动分类",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/home-services/promotions",
+      "summary": "优惠活动",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/home-services/promotions/:id",
+      "summary": "优惠详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/home-services/cases",
+      "summary": "案例列表",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/home-services/cases/:id",
+      "summary": "案例详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/home-services/kpis",
+      "summary": "首页指标",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/home-services/bookings",
+      "summary": "我的预约",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/biz/home-services/bookings",
+      "summary": "提交预约",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/v1/biz/home-services/bookings/:id/status",
+      "summary": "打卡或取消预约",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/messages",
+      "summary": "消息",
+      "auth": true,
+      "module": "messages"
+    }
+  ],
+  "ai": {
+    "capabilities": [
+      {
+        "id": "diagnose",
+        "scene": "智慧选场问卷（运动偏好与时段）",
+        "closedLoop": true
+      }
+    ],
+    "quickCommands": [
+      "附近有没有今晚可订的羽毛球馆？",
+      "周末两人打网球怎么选场？",
+      "初学者适合哪种室内场馆？"
+    ],
+    "systemPrompt": "你是「拾光运动科技」旗下应用「球场拾光」的智慧选场助手。产品定位：发现附近可订场地、一键预约并记录运动时光。主职责：按运动类型与时段推荐场馆、解释预约与到场支付规则、引导打卡记入时光轴。不提供生成式自由对话；输出结构化、可执行建议。禁止越权扮演其他 App。",
+    "mode": "diagnose_template",
+    "llmEnabled": false
+  },
+  "permissions": [
+    {
+      "name": "ohos.permission.INTERNET",
+      "reason": "用于同步场馆目录、提交预约与拉取消息通知",
+      "when": "inuse",
+      "scene": "浏览场馆与提交预约"
+    }
+  ],
+  "harmonyos": {
+    "features": [
+      {
+        "type": "formCard",
+        "scene": "附近可订场馆与预约提醒卡片"
+      }
+    ]
+  },
+  "store": {
+    "category": "运动健康",
+    "oneLiner": "场地预约 + 个人球迷记录与赛事记忆",
+    "fullDescription": "球场拾光是个人球迷记录与赛事记忆管理工具，并提供合作场馆发现与预约。不是体育资讯展示：赛程与比分不抓取，观赛内容由用户主动写下。不申请定位、相册、运动健康权限。\n\n【拾光工作台】成长统计（观看比赛、收藏球队、记录次数、连续使用天数）。主能力：观赛记录、球迷日志、球队收藏、复盘笔记、精彩瞬间。工具：比赛清单、球员档案、球场知识、赛事日历、体育收藏册、球迷挑战。每条可创建/详情/编辑/删除，仅保存在本机。\n\n【发现场馆】按运动类型筛选。游客可浏览。发现页距离为场馆参考值。\n\n【场地详情与预约】封面、简介、可订时段。点选后提交预约凭证。不含在线支付。\n\n【到场打卡与取消】我的预约可打卡或二次确认后取消。\n\n【智慧选场】六题问卷生成选场建议（规则模板，不含生成式对话）。\n\n游客可逛场馆并写球迷笔记；预约、打卡需登录。设置内可查看协议、撤回隐私同意与注销账号。",
+    "keywords": [
+      "球迷记录",
+      "场地预约",
+      "羽毛球",
+      "篮球",
+      "网球",
+      "运动记录",
+      "智慧选场",
+      "鸿蒙"
+    ],
+    "privacySummary": {
+      "collect": [
+        "账号信息",
+        "预约联系信息与时段",
+        "收藏的场馆"
+      ],
+      "purpose": "展示场馆、完成预约申请、同步消息；球迷笔记仅本机",
+      "thirdParties": []
+    },
+    "demoAccount": {
+      "username": "auditor@shiguangyundong.local",
+      "passwordNote": "仅写入 store/demo-account.md，禁止打进客户端"
+    },
+    "screenshotPlan": [
+      {
+        "page": "home",
+        "caption": "首页场馆推荐与分类筛选"
+      },
+      {
+        "page": "detail",
+        "caption": "场馆详情与可订时段"
+      },
+      {
+        "page": "booking",
+        "caption": "提交预约凭证（无支付）"
+      },
+      {
+        "page": "timeline",
+        "caption": "拾光工作台：成长统计与观赛入口"
+      },
+      {
+        "page": "mine",
+        "caption": "我的预约、收藏与设置"
+      }
+    ],
+    "incentiveHooks": [
+      "服务卡片预约提醒",
+      "FormExtensionAbility"
+    ],
+    "legalOperator": "魏文波"
+  },
+  "access": {
+    "mode": "open_optional",
+    "features": {
+      "register": true,
+      "guestBrowse": true,
+      "guestWrite": false
+    },
+    "gateActions": [
+      "favorite",
+      "submit_booking",
+      "check_in",
+      "cancel_booking",
+      "sync"
+    ],
+    "onPrivacyRefuse": "browse_basic",
+    "loginProviders": [
+      "password"
+    ]
+  },
+  "brand": {
+    "primary": "#FF6B35",
+    "primaryDeep": "#E85A28",
+    "deep": "#1A2A3A",
+    "accent": "#FFB800",
+    "tone": "business",
+    "stylePack": "premium-business",
+    "workbenchId": "catalog-tool",
+    "layoutVariant": "A",
+    "visualDirection": {
+      "archetype": "sports-venue-booking",
+      "density": "balanced",
+      "material": "court-photography",
+      "imagery": "indoor-outdoor-courts",
+      "accent": "orange-navy",
+      "primaryJob": "发现可订场馆并提交预约凭证",
+      "notes": "Hero + 场馆卡片 + 时段网格；禁止家装换皮"
+    },
+    "productVisualType": "content-commerce",
+    "visualAssets": [
+      {
+        "id": "hero_court",
+        "file": "hero_court.png",
+        "usage": "home-hero"
+      },
+      {
+        "id": "banner_today",
+        "file": "banner_today.png",
+        "usage": "home-banner"
+      },
+      {
+        "id": "banner_hot",
+        "file": "banner_hot.png",
+        "usage": "home-banner"
+      },
+      {
+        "id": "cat_badminton",
+        "file": "cat_badminton.png",
+        "usage": "category-cover"
+      },
+      {
+        "id": "cat_basketball",
+        "file": "cat_basketball.png",
+        "usage": "category-cover"
+      },
+      {
+        "id": "cat_tennis",
+        "file": "cat_tennis.png",
+        "usage": "category-cover"
+      },
+      {
+        "id": "cat_football",
+        "file": "cat_football.png",
+        "usage": "category-cover"
+      },
+      {
+        "id": "cat_tabletennis",
+        "file": "cat_tabletennis.png",
+        "usage": "category-cover"
+      },
+      {
+        "id": "venue_badminton_01",
+        "file": "venue_badminton_01.png",
+        "usage": "venue-cover"
+      },
+      {
+        "id": "venue_badminton_02",
+        "file": "venue_badminton_02.png",
+        "usage": "venue-cover"
+      },
+      {
+        "id": "venue_basketball_01",
+        "file": "venue_basketball_01.png",
+        "usage": "venue-cover"
+      },
+      {
+        "id": "venue_basketball_02",
+        "file": "venue_basketball_02.png",
+        "usage": "venue-cover"
+      },
+      {
+        "id": "venue_tennis_01",
+        "file": "venue_tennis_01.png",
+        "usage": "venue-cover"
+      },
+      {
+        "id": "venue_football_01",
+        "file": "venue_football_01.png",
+        "usage": "venue-cover"
+      },
+      {
+        "id": "venue_tabletennis_01",
+        "file": "venue_tabletennis_01.png",
+        "usage": "venue-cover"
+      },
+      {
+        "id": "venue_mixed_01",
+        "file": "venue_mixed_01.png",
+        "usage": "venue-cover"
+      },
+      {
+        "id": "promo_newuser",
+        "file": "promo_newuser.png",
+        "usage": "promo-cover"
+      },
+      {
+        "id": "promo_weekend",
+        "file": "promo_weekend.png",
+        "usage": "promo-cover"
+      },
+      {
+        "id": "case_weekend",
+        "file": "case_weekend.png",
+        "usage": "case-cover"
+      },
+      {
+        "id": "case_nightball",
+        "file": "case_nightball.png",
+        "usage": "case-cover"
+      }
+    ]
+  }
+}

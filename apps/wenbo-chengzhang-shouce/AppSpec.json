@@ -1,0 +1,423 @@
+{
+  "specVersion": "1.0.0",
+  "generatedAt": "2026-08-19T04:12:32.774Z",
+  "requestId": "req_1787112752744",
+  "industryPack": "growth-handbook",
+  "coreFlows": [
+    {
+      "name": "成长闭环",
+      "steps": ["写成长记录", "设定目标并调整进度", "时间轴回顾", "年度报告"]
+    },
+    {
+      "name": "成长工坊",
+      "steps": ["卡住工坊写入最小步骤", "前后对照卡写入时间轴", "月度主题与规则月报"]
+    },
+    {
+      "name": "习惯与复盘",
+      "steps": ["习惯打卡", "每周复盘", "成长诊断", "跳转执行"]
+    }
+  ],
+  "identity": {
+    "company": "魏文波",
+    "companyPinyin": "wenbo",
+    "appName": "成长手册",
+    "appPinyin": "chengzhang-shouce",
+    "bundleId": "com.wenbo.chengzhangshouce",
+    "version": "1.1.0"
+  },
+  "positioning": {
+    "tagline": "一款记录个人成长过程、管理目标计划、保存成长成果的智慧成长应用，记录成长见证进步",
+    "coreUsers": [
+      {
+        "role": "自我提升者",
+        "ageRange": "18-45",
+        "scenario": "日常碎片时间",
+        "need": "记录成长、追踪目标、回顾进步"
+      }
+    ],
+    "painPoints": [
+      "成长过程缺乏系统记录",
+      "目标计划难以坚持追踪",
+      "进步成果分散难回顾"
+    ],
+    "differentiation": "一款记录个人成长过程、管理目标计划、保存成长成果的智慧成长应用，记录成长见证进步"
+  },
+  "modules": {
+    "pages": [
+      {
+        "id": "home",
+        "title": "成长空间",
+        "route": "pages/HomePage",
+        "features": [
+          "今日记录",
+          "成长数据",
+          "当前目标",
+          "最近成果"
+        ],
+        "tab": true
+      },
+      {
+        "id": "records",
+        "title": "成长记录",
+        "route": "pages/RecordPage",
+        "features": [
+          "创建记录",
+          "标签",
+          "图片"
+        ],
+        "tab": true
+      },
+      {
+        "id": "goals",
+        "title": "成长目标",
+        "route": "pages/GoalPage",
+        "features": [
+          "创建目标",
+          "周期",
+          "进度"
+        ],
+        "tab": true
+      },
+      {
+        "id": "timeline",
+        "title": "时间轴",
+        "route": "pages/TimelinePage",
+        "features": [
+          "历史记录",
+          "成长轨迹"
+        ],
+        "tab": true
+      },
+      {
+        "id": "mine",
+        "title": "我的",
+        "route": "pages/MinePage",
+        "features": [
+          "用户信息",
+          "成长数据",
+          "设置"
+        ],
+        "tab": true
+      },
+      {
+        "id": "organize",
+        "title": "智慧整理",
+        "route": "pages/OrganizePage",
+        "features": [
+          "分类",
+          "标签",
+          "搜索"
+        ],
+        "tab": false
+      },
+      {
+        "id": "achievements",
+        "title": "成就中心",
+        "route": "pages/AchievementsPage",
+        "features": [
+          "徽章",
+          "连续记录"
+        ],
+        "tab": false
+      },
+      {
+        "id": "annual",
+        "title": "年度成长报告",
+        "route": "pages/AnnualReportPage",
+        "features": [
+          "统计",
+          "关键词"
+        ],
+        "tab": false
+      }
+    ],
+    "coreFlows": [
+      {
+        "name": "成长闭环",
+        "steps": [
+          "写成长记录",
+          "设定目标并调整进度",
+          "时间轴回顾",
+          "年度报告"
+        ]
+      },
+      {
+        "name": "习惯与复盘",
+        "steps": [
+          "创建习惯并每日打卡",
+          "每周四问复盘",
+          "成长诊断生成行动建议",
+          "跳转记录或目标执行"
+        ]
+      }
+    ]
+  },
+  "entities": [
+    {
+      "name": "GrowthRecord",
+      "table": "records",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "body",
+          "type": "string"
+        },
+        {
+          "name": "tags",
+          "type": "array"
+        }
+      ]
+    },
+    {
+      "name": "GrowthGoal",
+      "table": "goals",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "goal",
+          "type": "string"
+        },
+        {
+          "name": "progress",
+          "type": "number"
+        }
+      ]
+    },
+    {
+      "name": "Achievement",
+      "table": "achievements",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "iconKey",
+          "type": "string"
+        }
+      ]
+    }
+  ],
+  "apis": [
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/growth-handbook/featured",
+      "summary": "成长案例",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/growth-handbook/records",
+      "summary": "成长记录",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/biz/growth-handbook/records",
+      "summary": "创建记录",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/growth-handbook/goals",
+      "summary": "成长目标",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/biz/growth-handbook/goals",
+      "summary": "创建目标",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/v1/biz/growth-handbook/goals/:id",
+      "summary": "更新进度",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/growth-handbook/achievements",
+      "summary": "成就徽章",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/growth-handbook/milestones",
+      "summary": "最近成果",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/growth-handbook/annual-report",
+      "summary": "年度报告",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/messages",
+      "summary": "消息",
+      "auth": true,
+      "module": "messages"
+    }
+  ],
+  "ai": {
+    "capabilities": [],
+    "quickCommands": [],
+    "systemPrompt": "你是「成长手册」的成长整理助手。产品定位：记录成长、管理目标、见证进步。主职责：帮助理解标签分类与目标进度；不提供生成式 AI 对话。",
+    "mode": "none",
+    "llmEnabled": false
+  },
+  "permissions": [
+    {
+      "name": "ohos.permission.INTERNET",
+      "reason": "同步成长记录与目标数据",
+      "when": "inuse",
+      "scene": "记录与云端同步"
+    }
+  ],
+  "harmonyos": {
+    "features": []
+  },
+  "store": {
+    "category": "生活",
+    "legalOperator": "魏文波",
+    "oneLiner": "成长手册 — 一款记录个人成长过程、管理目标计划、保存成长成果的智慧成长应用，记",
+    "fullDescription": "成长手册是一款记录个人成长、管理目标计划、保存成长成果的智慧成长应用。支持成长记录、目标追踪、时间轴回顾、成就徽章与年度报告，成长绿天空蓝美学，积极简洁。",
+    "keywords": [
+      "成长",
+      "目标",
+      "记录",
+      "时间轴",
+      "徽章",
+      "鸿蒙"
+    ],
+    "privacySummary": {
+      "collect": [
+        "账号信息",
+        "成长记录",
+        "目标与进度"
+      ],
+      "purpose": "提供成长记录与云端同步",
+      "thirdParties": []
+    },
+    "demoAccount": {
+      "username": "auditor@wenbo.local",
+      "passwordNote": "仅写入 store/demo-account.md"
+    },
+    "screenshotPlan": [
+      {
+        "page": "home",
+        "caption": "成长空间与今日记录"
+      },
+      {
+        "page": "records",
+        "caption": "写成长记录与标签"
+      },
+      {
+        "page": "goals",
+        "caption": "目标进度追踪"
+      }
+    ],
+    "incentiveHooks": [
+      "FormExtensionAbility",
+      "元服务快捷入口"
+    ]
+  },
+  "access": {
+    "mode": "open_optional",
+    "features": {
+      "register": true,
+      "guestBrowse": true,
+      "guestWrite": false
+    },
+    "gateActions": [
+      "create_record",
+      "create_goal",
+      "create_habit",
+      "checkin_habit",
+      "create_review",
+      "add_favorite",
+      "sync_records",
+      "unlock_achievement"
+    ],
+    "onPrivacyRefuse": "browse_basic",
+    "loginProviders": [
+      "password"
+    ]
+  },
+  "brand": {
+    "primary": "#22C55E",
+    "primaryDeep": "#0F766E",
+    "deep": "#0F766E",
+    "accent": "#38BDF8",
+    "tone": "premium-business",
+    "stylePack": "premium-business",
+    "workbenchId": "timeline-board",
+    "layoutVariant": "B",
+    "productVisualType": "growth-handbook",
+    "visualAssets": [
+      { "id": "hero_bg", "file": "hero_bg.png", "usage": "home-hero" },
+      { "id": "hero_morning_coffee", "file": "hero_morning_coffee.png", "usage": "home-habit-banner" },
+      { "id": "hero_latest_inspiration", "file": "hero_latest_inspiration.png", "usage": "featured-hero" },
+      { "id": "hero_color_packaging", "file": "hero_color_packaging.png", "usage": "featured-cover" },
+      { "id": "hero_typography", "file": "hero_typography.png", "usage": "featured-cover" },
+      { "id": "hero_mood_brand", "file": "hero_mood_brand.png", "usage": "featured-cover" },
+      { "id": "hero_illustration", "file": "hero_illustration.png", "usage": "featured-cover" },
+      { "id": "hero_spatial", "file": "hero_spatial.png", "usage": "featured-cover" },
+      { "id": "hero_motion_ui", "file": "hero_motion_ui.png", "usage": "featured-cover" },
+      { "id": "hero_kitchen", "file": "hero_kitchen.png", "usage": "review-hero" },
+      { "id": "hero_rain_walk", "file": "hero_rain_walk.png", "usage": "habit-hero" },
+      { "id": "board_summer_refresh", "file": "board_summer_refresh.png", "usage": "timeline-cover" },
+      { "id": "board_editorial", "file": "board_editorial.png", "usage": "timeline-cover" },
+      { "id": "board_product_ui", "file": "board_product_ui.png", "usage": "timeline-cover" },
+      { "id": "board_default", "file": "board_default.png", "usage": "timeline-cover" },
+      { "id": "plan_default", "file": "plan_default.png", "usage": "goal-hero" }
+    ],
+    "visualDirection": {
+      "archetype": "growth-future",
+      "density": "airy",
+      "material": "clean-white-card",
+      "imagery": "growth-nature-light",
+      "accent": "growth-green-sky-blue",
+      "primaryJob": "3 秒内写今日成长记录",
+      "notes": "成长绿+天空蓝+活力橙+纯净白；上升曲线与未来感数字手册"
+    },
+    "logo": {
+      "brandAnchor": "成",
+      "glyphStrategy": "semantic-fusion",
+      "customLock": true,
+      "generator": "agent-svg"
+    }
+  }
+}

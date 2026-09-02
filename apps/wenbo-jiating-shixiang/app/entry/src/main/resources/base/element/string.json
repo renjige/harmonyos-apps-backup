@@ -1,0 +1,8 @@
+{
+  "string": [
+    { "name": "module_desc", "value": "家庭事项主模块" },
+    { "name": "EntryAbility_desc", "value": "家庭事项入口" },
+    { "name": "EntryAbility_label", "value": "家庭事项" },
+    { "name": "internet_reason", "value": "用于在您登录后同步主动创建的家庭事项" }
+  ]
+}

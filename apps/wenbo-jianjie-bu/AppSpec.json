@@ -1,0 +1,167 @@
+{
+  "specVersion": "1.0.0",
+  "generatedAt": "2026-08-26T04:20:00.000Z",
+  "requestId": "req_1787717010271",
+  "industryPack": "insight-book",
+  "identity": {
+    "company": "魏文波",
+    "companyPinyin": "wenbo",
+    "appName": "见解簿",
+    "appPinyin": "jianjiebu",
+    "bundleId": "com.wenbo.jianjiebu",
+    "version": "1.0.1"
+  },
+  "positioning": {
+    "tagline": "智慧记录，沉淀洞见：用时间线写下见解，按标签与笔记本整理，本机生成智慧摘要与关键词云",
+    "coreUsers": [
+      {
+        "role": "知识工作者",
+        "ageRange": "22-45",
+        "scenario": "会议后或阅读后",
+        "need": "把闪念写成可回看的见解"
+      },
+      {
+        "role": "学生与思考爱好者",
+        "ageRange": "16-30",
+        "scenario": "整理课堂或读书笔记",
+        "need": "按笔记本与标签沉淀，而不是散落备忘录"
+      }
+    ],
+    "painPoints": [
+      "备忘录只有流水账，没有洞见结构",
+      "标签、笔记本、时间三种视角切不了",
+      "不想把思考上传云端"
+    ],
+    "differentiation": "见解条目 + 三维度整理 + 本机规则摘要与词云，深靛暖金轻奢，非备忘录换皮"
+  },
+  "modules": {
+    "pages": [
+      {
+        "id": "record",
+        "title": "记录",
+        "route": "pages/RecordPage",
+        "features": ["时间线瀑布流", "搜索", "富文本编辑", "配图", "左滑删除"],
+        "tab": true
+      },
+      {
+        "id": "organize",
+        "title": "整理",
+        "route": "pages/OrganizePage",
+        "features": ["标签云", "笔记本", "月度时间轴"],
+        "tab": true
+      },
+      {
+        "id": "insight",
+        "title": "洞察",
+        "route": "pages/InsightPage",
+        "features": ["智慧摘要", "关键词云", "统计"],
+        "tab": true
+      }
+    ],
+    "coreFlows": [
+      {
+        "name": "见解闭环",
+        "steps": ["新建", "富文本与配图保存", "时间线可见", "详情编辑删除", "整理与洞察同步"]
+      }
+    ]
+  },
+  "entities": [
+    {
+      "name": "InsightEntry",
+      "table": "local_entries",
+      "fields": [
+        { "name": "id", "type": "string", "required": true },
+        { "name": "title", "type": "string", "required": true },
+        { "name": "body", "type": "string", "required": true },
+        { "name": "notebookId", "type": "string", "required": false },
+        { "name": "tags", "type": "string", "required": false }
+      ]
+    }
+  ],
+  "apis": [],
+  "ai": {
+    "llmEnabled": false,
+    "systemPrompt": "你是「魏文波」旗下应用「见解簿」的本机记录助手。产品定位：智慧记录，沉淀洞见。主职责：帮助整理见解条目、笔记本与标签。禁止扮演生成式写作引擎。",
+    "capabilities": [
+      { "id": "digest", "scene": "本机智慧摘要", "closedLoop": true },
+      { "id": "keywords", "scene": "关键词云", "closedLoop": true }
+    ],
+    "quickCommands": ["生成本周要点", "提取高频词", "按笔记本汇总"]
+  },
+  "permissions": [],
+  "harmonyos": {
+    "features": []
+  },
+  "store": {
+    "category": "办公",
+    "oneLiner": "见解簿 — 智慧记录，沉淀洞见",
+    "fullDescription": "见解簿是一款本机智慧记录工具。用时间线写下见解，支持标题层级、加粗斜体、列表与配图；用标签云、笔记本和月度时间轴三种方式整理；在本机生成智慧摘要与关键词云，不上传云端、无广告无支付。适合需要沉淀思考的知识工作者与学生。",
+    "keywords": ["笔记", "见解", "思考", "标签", "鸿蒙"],
+    "privacySummary": {
+      "collect": ["本机见解文本与配图", "可选本机昵称"],
+      "purpose": "在本机展示时间线、整理视图与智慧摘要",
+      "thirdParties": []
+    },
+    "demoAccount": {
+      "username": "auditor@wenbo.local",
+      "passwordNote": "纯本地游客应用，无登录墙；演示账号仅作审核资料备案"
+    },
+    "screenshotPlan": [
+      { "page": "record", "caption": "时间线记录流" },
+      { "page": "editor", "caption": "见解编辑" },
+      { "page": "organize", "caption": "标签与笔记本整理" },
+      { "page": "insight", "caption": "智慧摘要与词云" }
+    ],
+    "incentiveHooks": ["本机洞察", "三维度整理", "游客即用"],
+    "legalOperator": "魏文波"
+  },
+  "access": {
+    "mode": "open_optional",
+    "features": {
+      "register": false,
+      "guestBrowse": true,
+      "guestWrite": true
+    },
+    "gateActions": [],
+    "onPrivacyRefuse": "exit",
+    "loginProviders": []
+  },
+  "admin": {
+    "featureModules": ["overview", "appUsers", "messages", "kpis"]
+  },
+  "brand": {
+    "primary": "#6C5CE7",
+    "primaryDeep": "#3B2D8E",
+    "accent": "#F0C27A",
+    "tone": "editorial-wisdom",
+    "stylePack": "harmonyos-official",
+    "workbenchId": "timeline-board",
+    "layoutVariant": "B",
+    "productVisualType": "ops-tool",
+    "visualDirection": "editorial",
+    "visualAssets": [
+      { "id": "hero_desk", "file": "hero_desk.png", "usage": "记录页 Hero" },
+      { "id": "banner_insight", "file": "banner_insight.png", "usage": "洞察 Banner" },
+      { "id": "banner_organize", "file": "banner_organize.png", "usage": "整理 Banner" },
+      { "id": "empty_ledger", "file": "empty_ledger.png", "usage": "空态" },
+      { "id": "texture_paper", "file": "texture_paper.png", "usage": "纸材质" },
+      { "id": "cover_notebook", "file": "cover_notebook.png", "usage": "详情默认封面" },
+      { "id": "insight_ambient", "file": "insight_ambient.png", "usage": "洞察氛围图" }
+    ],
+    "logo": {
+      "concept": "见：翻开簿页 + 暖金洞察点",
+      "style": "flat-premium",
+      "generator": "render_logo.mjs",
+      "glyphStrategy": "semantic-fusion",
+      "brandAnchor": "见",
+      "customLock": true,
+      "renderScript": "store/logo/render_logo.mjs",
+      "foregroundFile": "store/logo/foreground.png",
+      "backgroundFile": "store/logo/background.png",
+      "previewFile": "store/logo/preview-1024.png",
+      "agcFile": "store/logo/agc-216.png",
+      "symbolFile": "store/logo/symbol.svg",
+      "horizontalFile": "store/logo/logo-horizontal.svg"
+    }
+  }
+}

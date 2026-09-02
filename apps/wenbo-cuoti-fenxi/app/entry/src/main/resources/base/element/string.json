@@ -1,0 +1,9 @@
+{
+  "string": [
+    { "name": "module_desc", "value": "文波错题析主模块" },
+    { "name": "EntryAbility_desc", "value": "错题整理与智慧分析入口" },
+    { "name": "EntryAbility_label", "value": "文波错题析" },
+    { "name": "internet_reason", "value": "用于登录账号、拉取学科导学与保存您的错题记录" },
+    { "name": "camera_reason", "value": "仅在您点击「拍照录入」时拍摄错题照片" }
+  ]
+}

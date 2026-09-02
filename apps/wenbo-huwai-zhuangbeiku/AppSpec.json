@@ -1,0 +1,403 @@
+{
+  "specVersion": "1.0.0",
+  "generatedAt": "2026-08-22T06:32:53.514Z",
+  "requestId": "req_1787380373477",
+  "industryPack": "outdoor-gear",
+  "identity": {
+    "company": "魏文波",
+    "companyPinyin": "wenbo",
+    "appName": "户外装备库",
+    "appPinyin": "huwai-zhuangbeiku",
+    "bundleId": "com.wenbo.huwaizhuangbeiku",
+    "version": "1.0.0"
+  },
+  "positioning": {
+    "tagline": "把装备克重、成色与山野路线对照放进同一个账本，出门前一眼知道缺什么",
+    "coreUsers": [
+      {
+        "role": "徒步与露营爱好者",
+        "ageRange": "22-45",
+        "scenario": "出发前整理行囊与对照路线难度",
+        "need": "知道自己有哪些装备、多重、缺哪一类"
+      }
+    ],
+    "painPoints": [
+      "装备散落各处，总重心里没数",
+      "路线难度与自己的装备对不上",
+      "用过几次的成色没有记录"
+    ],
+    "differentiation": "把装备克重、成色与山野路线对照放进同一个账本，出门前一眼知道缺什么"
+  },
+  "modules": {
+    "pages": [
+      {
+        "id": "home",
+        "title": "装备库",
+        "route": "pages/HomePage",
+        "features": [
+          "克重账本",
+          "分类",
+          "图鉴"
+        ],
+        "tab": true
+      },
+      {
+        "id": "trails",
+        "title": "路线",
+        "route": "pages/TrailPage",
+        "features": [
+          "精选路线",
+          "创建",
+          "收藏"
+        ],
+        "tab": true
+      },
+      {
+        "id": "community",
+        "title": "社区",
+        "route": "pages/CommunityPage",
+        "features": [
+          "手记",
+          "动态"
+        ],
+        "tab": true
+      },
+      {
+        "id": "mine",
+        "title": "我的",
+        "route": "pages/MinePage",
+        "features": [
+          "统计",
+          "设置与隐私"
+        ],
+        "tab": true
+      }
+    ],
+    "coreFlows": [
+      {
+        "name": "出装对照闭环",
+        "steps": [
+          "看克重账本",
+          "浏览图鉴",
+          "打开路线",
+          "就绪度对照",
+          "录入缺件",
+          "可选发布动态"
+        ]
+      }
+    ]
+  },
+  "entities": [
+    {
+      "name": "GearCategory",
+      "table": "og_categories",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "GearCatalog",
+      "table": "og_catalog",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "weightG",
+          "type": "number"
+        }
+      ]
+    },
+    {
+      "name": "TrailRoute",
+      "table": "og_trails",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "distanceKm",
+          "type": "number"
+        }
+      ]
+    },
+    {
+      "name": "FieldNote",
+      "table": "og_notes",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "UserGear",
+      "table": "og_gear",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "userId",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "UserRoute",
+      "table": "og_routes",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "userId",
+          "type": "string"
+        }
+      ]
+    }
+  ],
+  "apis": [
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/outdoor-gear/categories",
+      "summary": "分类",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/outdoor-gear/catalog",
+      "summary": "图鉴",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/outdoor-gear/trails",
+      "summary": "精选路线",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/outdoor-gear/notes",
+      "summary": "山野手记",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/outdoor-gear/gear",
+      "summary": "我的装备",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/biz/outdoor-gear/gear",
+      "summary": "新增装备",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/outdoor-gear/routes",
+      "summary": "我的路线",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/biz/outdoor-gear/routes",
+      "summary": "创建路线",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/messages",
+      "summary": "消息",
+      "auth": false,
+      "module": "messages"
+    }
+  ],
+  "ai": {
+    "capabilities": [],
+    "quickCommands": [],
+    "systemPrompt": "你是「魏文波」旗下应用「户外装备库」的出装助手。产品定位：装备克重账本、路线就绪度对照、山野图鉴。主职责：按出行类型提示类别缺口与克重区间。不编造实时气象与门票。禁止扮演电商或支付。C 端不提供生成式对话。禁止使用「AI」字样。",
+    "mode": "none",
+    "llmEnabled": false
+  },
+  "permissions": [
+    {
+      "name": "ohos.permission.INTERNET",
+      "reason": "拉取图鉴、路线与同步本人装备",
+      "when": "inuse",
+      "scene": "浏览图鉴与云端同步"
+    }
+  ],
+  "harmonyos": {
+    "features": []
+  },
+  "store": {
+    "category": "生活",
+    "legalOperator": "魏文波",
+    "oneLiner": "户外装备库 — 把装备克重、成色与山野路线对照放进同一个账本，出门前一眼知道缺什",
+    "fullDescription": "户外装备库帮助户外爱好者管理装备名称、品牌、克重、购入日期、使用次数与成色，对照精选山野路线查看就绪度，并浏览山野图鉴与官方手记。可发布轻量动态。全部功能免费，不含支付、定位追踪与生成式对话。",
+    "keywords": [
+      "户外",
+      "装备",
+      "徒步",
+      "路线",
+      "克重",
+      "鸿蒙"
+    ],
+    "privacySummary": {
+      "collect": [
+        "可选账号信息",
+        "装备与自建路线",
+        "动态与评论"
+      ],
+      "purpose": "同步装备账本、路线收藏与动态",
+      "thirdParties": []
+    },
+    "demoAccount": {
+      "username": "auditor@wenbo.local",
+      "passwordNote": "仅写入 store/demo-account.md"
+    },
+    "screenshotPlan": [
+      {
+        "page": "home",
+        "caption": "克重账本与装备网格"
+      },
+      {
+        "page": "gear",
+        "caption": "装备详情与成色"
+      },
+      {
+        "page": "trail",
+        "caption": "路线详情与就绪度"
+      },
+      {
+        "page": "note",
+        "caption": "山野手记"
+      },
+      {
+        "page": "inspect",
+        "caption": "出装检视报告"
+      }
+    ],
+    "incentiveHooks": [
+      "FormExtensionAbility"
+    ]
+  },
+  "access": {
+    "mode": "open_optional",
+    "features": {
+      "register": true,
+      "guestBrowse": true,
+      "guestWrite": false
+    },
+    "gateActions": [
+      "manage_gear",
+      "create_route",
+      "favorite_trail",
+      "publish_post",
+      "comment_post",
+      "save_inspect"
+    ],
+    "onPrivacyRefuse": "browse_basic",
+    "loginProviders": [
+      "password"
+    ]
+  },
+  "admin": {
+    "featureModules": [
+      "overview",
+      "appUsers",
+      "ogCategories",
+      "ogCatalog",
+      "ogTrails",
+      "ogNotes",
+      "ogGear",
+      "ogRoutes",
+      "ogPosts",
+      "messages",
+      "kpis",
+      "ai"
+    ]
+  },
+  "brand": {
+    "primary": "#2C2C2C",
+    "primaryDeep": "#1A1A1A",
+    "deep": "#121212",
+    "accent": "#D4A017",
+    "tone": "outdoor-locker",
+    "stylePack": "custom",
+    "workbenchId": "catalog-tool",
+    "layoutVariant": "B",
+    "productVisualType": "content-commerce",
+    "visualDirection": {
+      "archetype": "charcoal-gold-locker",
+      "density": "structured",
+      "material": "canvas-granite",
+      "imagery": "ridge-pack-metal-fabric",
+      "accent": "sunset-gold",
+      "primaryJob": "3 秒内看到装备总重与缺类，并对照一条山野路线",
+      "notes": "炭灰+落日金；账本工作台而非露营杂志"
+    },
+    "logo": {
+      "brandAnchor": "户",
+      "glyphStrategy": "semantic-fusion",
+      "customLock": true,
+      "generator": "agent-svg",
+      "renderScript": "store/logo/render_logo.mjs",
+      "concept": "炭灰底落日金山峰，对勾负形表示装备就绪",
+      "foregroundFile": "store/logo/foreground.png",
+      "backgroundFile": "store/logo/background.png",
+      "previewFile": "store/logo/preview-1024.png",
+      "agcFile": "store/logo/agc-216.png",
+      "symbolFile": "store/logo/symbol.svg",
+      "horizontalFile": "store/logo/logo-horizontal.svg"
+    },
+    "visualAssets": {
+      "hero": ["hero_ridge"],
+      "banners": ["banner_ledger", "banner_ready"],
+      "categories": ["cat_camp", "cat_hike", "cat_climb", "cat_water"],
+      "catalog": ["gear_tent", "gear_sleepbag", "gear_pack", "gear_pole", "gear_lamp", "gear_harness", "gear_helm", "gear_pfd"],
+      "trails": ["trail_wugong", "trail_siguniang", "trail_huangshan", "trail_nanling", "trail_taibai", "trail_yangshuo"],
+      "notes": ["note_weight", "note_ready", "note_condition", "note_ridge", "note_water", "note_lamp"]
+    }
+  }
+}

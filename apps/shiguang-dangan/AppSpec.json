@@ -1,0 +1,185 @@
+{
+  "specVersion": "1.0.0",
+  "generatedAt": "2026-09-01T07:40:00.000Z",
+  "requestId": "req_time_archive_example",
+  "industryPack": "time-archive",
+  "identity": {
+    "company": "时光印记",
+    "companyPinyin": "shiguangyinji",
+    "appName": "时光档案",
+    "appPinyin": "dangan",
+    "bundleId": "com.shiguangyinji.dangan",
+    "version": "1.0.0"
+  },
+  "positioning": {
+    "tagline": "把重要时刻，整理成一生的档案——长期整理人生重要事件、成长节点、家庭记忆与阶段经历的结构化个人档案工具",
+    "coreUsers": [
+      {
+        "role": "注重人生记录的用户",
+        "ageRange": "22-55",
+        "scenario": "毕业、换工作、家庭纪念、旅行归来",
+        "need": "按阶段整理经历，而非零散记日记"
+      }
+    ],
+    "painPoints": [
+      "普通记事本只能堆文字，缺少阶段感",
+      "重要经历散落各处难以回顾",
+      "缺少时间轴与统计视角"
+    ],
+    "differentiation": "档案+时间节点+分类标签+时间轴+阶段回顾+统计；非换皮日记/记事本；纯本地无支付无会员"
+  },
+  "modules": {
+    "pages": [
+      {
+        "id": "overview",
+        "title": "时光总览",
+        "route": "pages/OverviewPage",
+        "features": ["档案统计", "最近档案", "最近节点", "时光轨迹", "创建档案"],
+        "tab": true
+      },
+      {
+        "id": "library",
+        "title": "档案库",
+        "route": "pages/ArchiveLibraryPage",
+        "features": ["分类筛选", "搜索", "档案卡片", "待整理提示"],
+        "tab": true
+      },
+      {
+        "id": "timeline",
+        "title": "时间轴",
+        "route": "pages/TimelinePage",
+        "features": ["年份筛选", "分类筛选", "标签筛选", "纵向时间线"],
+        "tab": true
+      },
+      {
+        "id": "mine",
+        "title": "我的",
+        "route": "pages/MinePage",
+        "features": ["时光统计", "时光回顾", "分类管理", "标签管理", "数据管理", "设置与隐私"],
+        "tab": true
+      }
+    ],
+    "coreFlows": [
+      {
+        "name": "档案闭环",
+        "steps": ["创建档案", "添加节点", "分类标签", "时间轴浏览", "阶段回顾", "统计沉淀"]
+      }
+    ]
+  },
+  "entities": [
+    {
+      "name": "Archive",
+      "table": "archives",
+      "fields": [
+        { "name": "id", "type": "string", "required": true },
+        { "name": "title", "type": "string", "required": true },
+        { "name": "categoryKey", "type": "string", "required": true },
+        { "name": "startDate", "type": "string", "required": true },
+        { "name": "endDate", "type": "string" },
+        { "name": "summary", "type": "string" },
+        { "name": "tags", "type": "array" },
+        { "name": "status", "type": "string" },
+        { "name": "createdAt", "type": "number" },
+        { "name": "updatedAt", "type": "number" }
+      ]
+    },
+    {
+      "name": "TimelineNode",
+      "table": "timeline_nodes",
+      "fields": [
+        { "name": "id", "type": "string", "required": true },
+        { "name": "archiveId", "type": "string", "required": true },
+        { "name": "dateKey", "type": "string", "required": true },
+        { "name": "title", "type": "string", "required": true },
+        { "name": "whatHappened", "type": "string" },
+        { "name": "whyImportant", "type": "string" },
+        { "name": "feeling", "type": "string" },
+        { "name": "afterChange", "type": "string" },
+        { "name": "tags", "type": "array" },
+        { "name": "createdAt", "type": "number" }
+      ]
+    }
+  ],
+  "apis": [],
+  "admin": {
+    "featureModules": []
+  },
+  "ai": {
+    "capabilities": [],
+    "quickCommands": [],
+    "systemPrompt": "你是「时光印记」旗下应用「时光档案」的整理助手。产品定位：结构化个人经历档案。主职责：帮助用户理解档案、节点与时间轴整理。禁止生成式对话。",
+    "mode": "none",
+    "llmEnabled": false
+  },
+  "permissions": [],
+  "harmonyos": { "features": [] },
+  "store": {
+    "category": "生活",
+    "legalOperator": "魏文波",
+    "oneLiner": "把重要时刻，整理成一生的档案",
+    "fullDescription": "时光档案帮助你长期整理人生重要事件、成长节点、家庭记忆与阶段经历。创建档案、添加关键时间节点、分类与标签管理，在纵向时间轴上浏览人生轨迹，并通过阶段回顾与统计看见自己的沉淀。数据默认保存在本机，无需注册，无广告、无内购、无会员。",
+    "keywords": ["档案", "人生节点", "时间轴", "成长", "家庭记忆", "鸿蒙"],
+    "privacySummary": {
+      "collect": ["昵称（本机）", "档案与节点内容（本机）", "分类与标签（本机）", "主题偏好（本机）"],
+      "purpose": "提供本地档案整理、时间轴、回顾与统计",
+      "thirdParties": []
+    },
+    "demoAccount": {
+      "username": "auditor@shiguangyinji.local",
+      "passwordNote": "本地工具无需登录，仅审核占位"
+    },
+    "screenshotPlan": [
+      { "page": "overview", "caption": "时光总览与数据卡" },
+      { "page": "library", "caption": "档案库卡片" },
+      { "page": "detail", "caption": "档案详情与时光轴" },
+      { "page": "timeline", "caption": "全局时间轴" },
+      { "page": "mine", "caption": "统计与回顾" }
+    ],
+    "incentiveHooks": []
+  },
+  "access": {
+    "mode": "open_optional",
+    "features": { "register": false, "guestBrowse": true, "guestWrite": true },
+    "gateActions": [],
+    "onPrivacyRefuse": "exit",
+    "loginProviders": []
+  },
+  "brand": {
+    "primary": "#182333",
+    "primaryDeep": "#0F1824",
+    "deep": "#0F1824",
+    "accent": "#C99855",
+    "tone": "premium-business",
+    "stylePack": "premium-business",
+    "workbenchId": "timeline-board",
+    "layoutVariant": "B",
+    "productVisualType": "ops-tool",
+    "visualDirection": {
+      "archetype": "archive-calm",
+      "density": "airy",
+      "material": "warm-paper",
+      "imagery": "archive-ambient",
+      "accent": "amber-on-ink",
+      "primaryJob": "3 秒内创建或打开一份人生档案",
+      "notes": "墨蓝#182333+琥珀#C99855+云雾白#F7F6F2；四 Tab；禁止日记换皮"
+    },
+    "logo": {
+      "brandAnchor": "档",
+      "glyphStrategy": "semantic-fusion",
+      "customLock": true,
+      "generator": "agent-svg",
+      "renderScript": "store/logo/render_logo.mjs",
+      "symbolFile": "store/logo/symbol.svg",
+      "previewFile": "store/logo/preview-1024.png",
+      "concept": "时间环 + 档案页折角融合"
+    },
+    "visualAssets": [
+      { "id": "hero", "file": "hero_ambient.png", "usage": "时光总览与档案详情 Hero" },
+      { "id": "empty", "file": "empty_archive.png", "usage": "空态档案馆插图" }
+    ],
+    "visualAssets": [
+      { "id": "hero_ambient", "file": "hero_ambient.png", "usage": "OverviewPage Hero / ArchiveDetailPane Hero" },
+      { "id": "empty_archive", "file": "empty_archive.png", "usage": "OverviewPage empty nodes state" }
+    ]
+  }
+}

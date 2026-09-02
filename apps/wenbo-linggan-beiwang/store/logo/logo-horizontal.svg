@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 360" role="img" aria-label="u�">
+  <title>u�</title>
+  <rect width="1280" height="360" fill="#F5F6FA"/>
+  <svg x="40" y="36" width="288" height="288" viewBox="0 0 1024 1024">
+    <rect width="1024" height="1024" fill="#2B1748"/>
+    <path fill="#F5F6FA" d="M300 236h340l148 148v396c0 44-36 80-80 80H344c-44 0-80-36-80-80V316c0-44 36-80 80-80z"/>
+    <path fill="#2B1748" d="M640 236l148 148H692c-29 0-52-23-52-52V236z"/>
+    <path fill="#2B1748" d="M512 456l36 88 88 36-88 36-36 88-36-88-88-36 88-36z"/>
+  </svg>
+  <text x="360" y="168" fill="#2B1748" font-family="HarmonyOS Sans SC, Microsoft YaHei, Noto Sans SC, sans-serif" font-size="72" font-weight="600">u�</text>
+  <text x="360" y="230" fill="#64748B" font-family="Inter, HarmonyOS Sans, sans-serif" font-size="26">Linggan Beiwang</text>
+</svg>

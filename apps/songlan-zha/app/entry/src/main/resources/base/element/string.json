@@ -1,0 +1,8 @@
+{
+  "string": [
+    { "name": "module_desc", "value": "松岚札主模块" },
+    { "name": "EntryAbility_desc", "value": "智慧生活记录与轻量笔记" },
+    { "name": "EntryAbility_label", "value": "松岚札" },
+    { "name": "internet_reason", "value": "用于连接业务服务与AI分析接口" }
+  ]
+}

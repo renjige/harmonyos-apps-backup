@@ -1,0 +1,14 @@
+[
+  {
+    "input": "分析本周高风险隐患",
+    "expectContains": ["高风险", "建议"]
+  },
+  {
+    "input": "生成今日业务日报",
+    "expectContains": ["日报", "摘要"]
+  },
+  {
+    "input": "给出优先处理项",
+    "expectContains": ["优先", "复核"]
+  }
+]

@@ -1,0 +1,8 @@
+{
+  "string": [
+    { "name": "module_desc", "value": "球场拾光：场地预约与个人球迷赛事记忆" },
+    { "name": "EntryAbility_desc", "value": "球场拾光主入口，浏览场馆、提交预约、管理观赛记录" },
+    { "name": "EntryAbility_label", "value": "球场拾光" },
+    { "name": "internet_reason", "value": "用于同步场馆目录、提交预约与拉取消息通知" }
+  ]
+}

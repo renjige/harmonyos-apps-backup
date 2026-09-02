@@ -1,0 +1,10 @@
+{
+  "app": {
+    "bundleName": "dszy.wxy.huawei",
+    "vendor": "ruihong",
+    "versionCode": 1000020,
+    "versionName": "1.2.0",
+    "icon": "$media:app_icon",
+    "label": "$string:app_name"
+  }
+}

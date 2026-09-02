@@ -1,0 +1,376 @@
+{
+  "specVersion": "1.0.0",
+  "generatedAt": "2026-08-20T02:00:00.000Z",
+  "requestId": "req_family_memo_example",
+  "industryPack": "family-memo",
+  "identity": {
+    "company": "魏文波",
+    "companyPinyin": "wenbo",
+    "appName": "家庭备忘",
+    "appPinyin": "jiating-beiwang",
+    "bundleId": "com.wenbo.jiatingbeiwang",
+    "version": "1.0.0"
+  },
+  "positioning": {
+    "tagline": "家庭生活事务管理工具，帮你记录家庭事项、管理日常任务、设置温和提醒并整理家庭计划",
+    "coreUsers": [
+      {
+        "role": "家庭管理者",
+        "ageRange": "28-50",
+        "scenario": "协调家务、采购、节日与健康提醒",
+        "need": "一处记录全家事项，进度可见，提醒不打扰"
+      },
+      {
+        "role": "年轻家庭",
+        "ageRange": "22-38",
+        "scenario": "周末清洁、搬家与亲子活动安排",
+        "need": "模板快速创建 + 智慧分类 + 周期提醒"
+      }
+    ],
+    "painPoints": [
+      "家庭事项散落在聊天记录里容易遗漏",
+      "家务分工不清晰、完成进度难追踪",
+      "提醒要么没有要么过于吵闹"
+    ],
+    "differentiation": "以今日家庭事项进度为主工作台，结合智慧整理分类、模板中心与温和提醒，明确不是商城、社交或聊天工具"
+  },
+  "modules": {
+    "pages": [
+      {
+        "id": "home",
+        "title": "首页",
+        "route": "pages/HomePage",
+        "features": [
+          "今日事项卡片",
+          "完成进度",
+          "添加入口",
+          "快捷模板"
+        ],
+        "tab": true
+      },
+      {
+        "id": "tasks",
+        "title": "事项",
+        "route": "pages/TasksPage",
+        "features": [
+          "创建",
+          "编辑",
+          "完成",
+          "删除",
+          "分类筛选"
+        ],
+        "tab": true
+      },
+      {
+        "id": "reminders",
+        "title": "提醒",
+        "route": "pages/RemindersPage",
+        "features": [
+          "日期提醒",
+          "时间提醒",
+          "周期提醒"
+        ],
+        "tab": true
+      },
+      {
+        "id": "mine",
+        "title": "我的",
+        "route": "pages/MinePage",
+        "features": [
+          "模板中心",
+          "智慧提醒",
+          "通知设置",
+          "设置与隐私"
+        ],
+        "tab": true
+      }
+    ],
+    "coreFlows": [
+      {
+        "name": "记录事项",
+        "steps": [
+          "打开首页",
+          "添加事项",
+          "智慧整理建议分类",
+          "勾选完成"
+        ]
+      },
+      {
+        "name": "复用模板",
+        "steps": [
+          "打开模板",
+          "一键创建清单",
+          "按需增删事项",
+          "逐项完成"
+        ]
+      },
+      {
+        "name": "设置提醒",
+        "steps": [
+          "选择事项",
+          "设置智慧提醒",
+          "到期通知",
+          "完成归档"
+        ]
+      }
+    ]
+  },
+  "entities": [
+    {
+      "name": "FamilyList",
+      "table": "family-memo-lists",
+      "fields": [
+        "id",
+        "title",
+        "status",
+        "dueDate",
+        "coverKey",
+        "userId"
+      ]
+    },
+    {
+      "name": "FamilyTask",
+      "table": "family-memo-tasks",
+      "fields": [
+        "id",
+        "listId",
+        "title",
+        "category",
+        "remark",
+        "dueDate",
+        "completed",
+        "userId"
+      ]
+    },
+    {
+      "name": "FamilyReminder",
+      "table": "family-memo-reminders",
+      "fields": [
+        "id",
+        "listId",
+        "title",
+        "remindAt",
+        "status",
+        "userId"
+      ]
+    },
+    {
+      "name": "FamilyTemplate",
+      "table": "family-memo-templates",
+      "fields": [
+        "id",
+        "title",
+        "summary",
+        "body",
+        "coverKey",
+        "itemsJson"
+      ]
+    }
+  ],
+  "apis": [
+    {
+      "method": "POST",
+      "path": "/api/v1/auth/login",
+      "summary": "登录",
+      "auth": false,
+      "module": "auth"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/auth/register",
+      "summary": "注册",
+      "auth": false,
+      "module": "auth"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/family-memo/templates",
+      "summary": "事项模板",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/family-memo/categories",
+      "summary": "分类预设",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/family-memo/lists",
+      "summary": "家庭清单",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/biz/family-memo/lists",
+      "summary": "创建清单",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/family-memo/tasks",
+      "summary": "家庭事项",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/biz/family-memo/tasks",
+      "summary": "添加事项",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/family-memo/reminders",
+      "summary": "智慧提醒",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/privacy/account",
+      "summary": "注销账号",
+      "auth": true,
+      "module": "privacy"
+    }
+  ],
+  "permissions": [
+    {
+      "name": "ohos.permission.INTERNET",
+      "reason": "用于同步用户主动创建的家庭事项与提醒",
+      "when": "inuse",
+      "scene": "登录后同步家庭备忘数据"
+    }
+  ],
+  "harmonyos": {
+    "features": [
+      {
+        "type": "systemNotification",
+        "scene": "用户设置的家庭事项提醒"
+      },
+      {
+        "type": "formCard",
+        "scene": "今日家庭事项桌面卡片"
+      }
+    ]
+  },
+  "store": {
+    "category": "实用工具",
+    "oneLiner": "家庭备忘 — 记录家庭事项，整理计划，温和提醒",
+    "fullDescription": "家庭备忘是一款面向个人与家庭的生活事务管理工具。用户可记录家庭事项、管理日常任务、按家庭生活/采购/家务/节日/健康提醒等分类整理，并通过模板中心快速创建家庭清洁、节日准备、搬家准备与周末计划。支持日期、时间与周期提醒，通知简洁温和。本应用不是购物商城、社交平台或聊天工具，不提供支付、订单或会员功能。游客可在本机使用；登录后可同步个人数据。",
+    "keywords": [
+      "家庭备忘",
+      "事项管理",
+      "家庭计划",
+      "智慧提醒",
+      "模板"
+    ],
+    "privacySummary": {
+      "collect": [
+        "注册账号、姓名和联系电话",
+        "用户主动创建的家庭事项与提醒",
+        "登录会话状态"
+      ],
+      "purpose": "提供账号登录、跨设备同步和个人家庭事务管理",
+      "thirdParties": []
+    },
+    "demoAccount": {
+      "username": "auditor@wenbo.local",
+      "passwordNote": "仅写入 store/demo-account.md，禁止打进客户端"
+    },
+    "screenshotPlan": [
+      {
+        "page": "home",
+        "caption": "今日家庭事项与进度"
+      },
+      {
+        "page": "tasks",
+        "caption": "分类事项列表"
+      },
+      {
+        "page": "task-detail",
+        "caption": "事项详情与完成"
+      },
+      {
+        "page": "reminders",
+        "caption": "智慧提醒设置"
+      },
+      {
+        "page": "mine",
+        "caption": "模板与隐私入口"
+      }
+    ],
+    "incentiveHooks": [
+      "桌面卡片展示今日事项",
+      "系统通知提醒",
+      "事项分享卡片"
+    ],
+    "legalOperator": "魏文波"
+  },
+  "access": {
+    "mode": "open_optional",
+    "features": {
+      "register": true,
+      "guestBrowse": true,
+      "guestWrite": true
+    },
+    "gateActions": [
+      "sync_records"
+    ],
+    "onPrivacyRefuse": "browse_basic",
+    "loginProviders": [
+      "password"
+    ]
+  },
+  "admin": {
+    "featureModules": [
+      "overview",
+      "appUsers",
+      "fmTemplates",
+      "fmCategories",
+      "fmLists",
+      "fmTasks",
+      "fmReminders",
+      "messages",
+      "kpis"
+    ]
+  },
+  "ai": {
+    "capabilities": [],
+    "quickCommands": [],
+    "systemPrompt": "你是「魏文波」旗下应用「家庭备忘」的家庭事务整理助手。主职责：按事项名称建议家庭生活/采购/家务/节日/健康提醒等分类、整理家庭计划、生成克制提醒文案。禁止扮演商城、社交或聊天工具。不提供生成式对话作为 C 端功能。"
+  },
+  "brand": {
+    "primary": "#1677FF",
+    "accent": "#FFB547",
+    "background": "#F6F8FC",
+    "text": "#111827",
+    "primaryDeep": "#082A5A",
+    "tone": "premium-minimal",
+    "stylePack": "harmonyos-official",
+    "workbenchId": "family-hub",
+    "layoutVariant": "A",
+    "visualDirection": "温暖家居静物摄影、大圆角卡片、#1677FF 主色与 #FFB547 辅助、大留白",
+    "productVisualType": "ops-tool",
+    "visualAssets": [],
+    "logo": {
+      "concept": "家庭屋檐 + 备忘卡片 + 勾选符号，极简高级",
+      "style": "flat-premium",
+      "generator": "premium_logo.py",
+      "glyphStrategy": "bootstrap",
+      "brandAnchor": "家",
+      "customLock": false,
+      "foregroundFile": "store/logo/foreground.png",
+      "backgroundFile": "store/logo/background.png",
+      "previewFile": "store/logo/preview-1024.png",
+      "agcFile": "store/logo/agc-216.png",
+      "symbolFile": "store/logo/symbol.svg",
+      "horizontalFile": "store/logo/logo-horizontal.svg"
+    }
+  }
+}

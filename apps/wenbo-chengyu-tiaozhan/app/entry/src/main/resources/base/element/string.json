@@ -1,0 +1,8 @@
+{
+  "string": [
+    { "name": "module_desc", "value": "成语挑战主模块" },
+    { "name": "EntryAbility_desc", "value": "成语知识竞技入口" },
+    { "name": "EntryAbility_label", "value": "成语挑战" },
+    { "name": "internet_reason", "value": "用于拉取公开成语题库，并在您选择登录时连接账号服务" }
+  ]
+}

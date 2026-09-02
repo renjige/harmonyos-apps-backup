@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 360" role="img" aria-label="����">
+  <rect width="360" height="360" rx="72" fill="#0B1F4A"/>
+  <g transform="translate(28 28) scale(0.297)">
+    <path d="M292 236 H668 L780 348 V788 A44 44 0 0 1 736 832 H292 A44 44 0 0 1 248 788 V280 A44 44 0 0 1 292 236 Z" fill="#F8FAFC"/>
+    <path d="M668 236 V348 H780 Z" fill="#D7E3F4"/>
+    <path d="M292 236 H668 L780 348 V400 H248 V280 A44 44 0 0 1 292 236 Z" fill="#EEF4FB"/>
+    <path d="M404 612 L476 684 L652 508" fill="none" stroke="#FF6B35" stroke-width="56" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <text x="420" y="228" font-family="Microsoft YaHei, PingFang SC, Noto Sans SC, sans-serif" font-size="96" font-weight="600" fill="#0B1F4A">����</text>
+</svg>

@@ -1,0 +1,278 @@
+{
+  "specVersion": "1.0.0",
+  "generatedAt": "2026-08-26T06:05:28.499Z",
+  "requestId": "req_1787724328461",
+  "industryPack": "common-sense",
+  "coreFlows": [
+    {
+      "name": "今日常识",
+      "steps": ["打开今日卡片", "阅读正文", "收藏或笔记", "打卡回看"]
+    },
+    {
+      "name": "生活知识管理",
+      "steps": ["搜索或场景筛选", "问答测试", "清单勾选", "学习提醒"]
+    }
+  ],
+  "identity": {
+    "company": "魏文波",
+    "companyPinyin": "wenbo",
+    "appName": "常识集",
+    "appPinyin": "changshi-ji",
+    "bundleId": "com.wenbo.changshiji",
+    "version": "1.0.0"
+  },
+  "positioning": {
+    "tagline": "每日一条精选常识，按日历积累、分类检索、收藏笔记，让生活智慧触手可及。",
+    "coreUsers": [
+      {
+        "role": "都市学习者",
+        "ageRange": "18-45",
+        "scenario": "通勤、午休、睡前碎片时间",
+        "need": "每天一条可验证的常识，能收藏、笔记、打卡积累"
+      }
+    ],
+    "painPoints": [
+      "信息碎片化却难以形成积累",
+      "收藏夹只囤不读",
+      "缺乏按分类检索与日历回看"
+    ],
+    "differentiation": "今日常识 + 场景知识库 + 搜索分类 + 收藏分组 + 问答测试 + 清单提醒，个人生活知识管理工具"
+  },
+  "modules": {
+    "pages": [
+      {
+        "id": "home",
+        "title": "今日常识",
+        "route": "pages/HomePage",
+        "features": [
+          "今日推荐",
+          "随机一条",
+          "常识日历",
+          "生活工具入口",
+          "收藏朗读分享"
+        ],
+        "tab": true
+      },
+      {
+        "id": "browse",
+        "title": "分类浏览",
+        "route": "pages/BrowsePage",
+        "features": [
+          "分类筛选",
+          "搜索",
+          "列表卡片视图"
+        ],
+        "tab": true
+      },
+      {
+        "id": "favorites",
+        "title": "我的收藏",
+        "route": "pages/FavoritesPage",
+        "features": [
+          "收藏列表",
+          "分组整理",
+          "笔记",
+          "导出"
+        ],
+        "tab": true
+      },
+      {
+        "id": "mine",
+        "title": "我的",
+        "route": "pages/MinePage",
+        "features": [
+          "打卡",
+          "学习统计",
+          "字体深色模式",
+          "设置与隐私"
+        ],
+        "tab": true
+      }
+    ],
+    "coreFlows": [
+      {
+        "name": "今日常识",
+        "steps": [
+          "打开今日卡片",
+          "阅读正文",
+          "收藏或笔记",
+          "日历回看"
+        ]
+      },
+      {
+        "name": "分类检索",
+        "steps": [
+          "选分类或搜索",
+          "进详情",
+          "收藏",
+          "导出收藏"
+        ]
+      }
+    ]
+  },
+  "entities": [
+    {
+      "name": "CsFact",
+      "table": "csFacts",
+      "fields": [
+        { "name": "id", "type": "string", "required": true },
+        { "name": "title", "type": "string", "required": true },
+        { "name": "category", "type": "string" },
+        { "name": "coverKey", "type": "string" },
+        { "name": "dateKey", "type": "string" }
+      ]
+    }
+  ],
+  "apis": [
+    {
+      "method": "POST",
+      "path": "/api/v1/auth/login",
+      "summary": "登录",
+      "auth": false,
+      "module": "auth"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/auth/register",
+      "summary": "注册",
+      "auth": false,
+      "module": "auth"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/common-sense/facts",
+      "summary": "常识列表",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/common-sense/facts/:id",
+      "summary": "常识详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/common-sense/kpis",
+      "summary": "KPI",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/messages",
+      "summary": "消息",
+      "auth": false,
+      "module": "biz"
+    }
+  ],
+  "ai": {
+    "capabilities": [],
+    "quickCommands": [],
+    "systemPrompt": "你是「魏文波」旗下应用「常识集」的阅读助手。产品定位：每日一条精选常识，按日历积累、分类检索、收藏笔记。主职责：按生活技巧、科学原理、人文历史、健康养生、自然百科、职场智慧、饮食文化、心理常识八类整理常识摘要。禁止自称大模型。C 端默认不提供自由对话。",
+    "mode": "diagnose",
+    "llmEnabled": false
+  },
+  "permissions": [
+    {
+      "name": "ohos.permission.INTERNET",
+      "reason": "拉取常识栏目与登录同步",
+      "when": "inuse",
+      "scene": "首页、分类浏览、登录"
+    },
+    {
+      "name": "ohos.permission.PUBLISH_AGENT_REMINDER",
+      "reason": "用于每日学习提醒，到点通知查看今日常识",
+      "when": "inuse",
+      "scene": "我的 → 学习提醒"
+    }
+  ],
+  "harmonyos": {
+    "features": []
+  },
+  "store": {
+    "category": "教育",
+    "oneLiner": "常识集 — 每日一条常识，让智慧触手可及",
+    "fullDescription": "常识集是个人生活知识管理工具。今日常识大卡片展示当日精选，支持随机换一条、常识日历回看、连续阅读与打卡。可按关键词搜索、按生活技巧/健康/安全/家庭/科普/节日等分类筛选，并按居家清洁、食材保存、出行安全、家庭应急等场景取用。收藏夹可分组，可自建常识清单并标记已学、添加备注。常识问答根据栏目生成选择题，支持错题回顾与已掌握记录。知识卡片可复制或保存到本机。可设置每日学习提醒。另含日期计算、单位换算、节气查询、年龄计算等轻量工具。游客可使用本机能力，登录注册为可选。无支付、无生成式对话。支持浅色与深色模式。",
+    "keywords": [
+      "常识集",
+      "科普",
+      "每日阅读",
+      "知识积累",
+      "鸿蒙"
+    ],
+    "privacySummary": {
+      "collect": [
+        "可选账号信息",
+        "本机收藏分组、笔记、打卡、清单、问答记录、提醒时间"
+      ],
+      "purpose": "提供常识阅读、学习管理与可选账号",
+      "thirdParties": []
+    },
+    "demoAccount": {
+      "username": "auditor@wenbo.local",
+      "passwordNote": "仅写入 store/demo-account.md，禁止打进客户端"
+    },
+    "screenshotPlan": [
+      { "page": "home", "caption": "今日常识大卡片" },
+      { "page": "browse", "caption": "分类浏览与搜索" },
+      { "page": "favorites", "caption": "收藏与笔记" },
+      { "page": "mine", "caption": "打卡与设置" }
+    ],
+    "incentiveHooks": [],
+    "legalOperator": "魏文波"
+  },
+  "access": {
+    "mode": "open_optional",
+    "features": {
+      "register": true,
+      "guestBrowse": true,
+      "guestWrite": false
+    },
+    "gateActions": [
+      "favorite",
+      "note",
+      "checkin"
+    ],
+    "onPrivacyRefuse": "exit",
+    "loginProviders": [
+      "password"
+    ]
+  },
+  "brand": {
+    "primary": "#007AFF",
+    "primaryDeep": "#005BB5",
+    "accent": "#F5A623",
+    "tone": "editorial",
+    "productVisualType": "content-commerce",
+    "stylePack": "harmonyos-official",
+    "visualAssets": [
+      { "id": "hero_today", "file": "hero_today.png", "usage": "首页 Hero" },
+      { "id": "banner_calendar", "file": "banner_calendar.png", "usage": "日历 Banner" },
+      { "id": "banner_explore", "file": "banner_explore.png", "usage": "探索 Banner" },
+      { "id": "cover_life", "file": "cover_life.png", "usage": "生活技巧封面" },
+      { "id": "cover_science", "file": "cover_science.png", "usage": "科学原理封面" },
+      { "id": "cover_history", "file": "cover_history.png", "usage": "人文历史封面" },
+      { "id": "cover_health", "file": "cover_health.png", "usage": "健康养生封面" },
+      { "id": "cover_nature", "file": "cover_nature.png", "usage": "自然百科封面" },
+      { "id": "cover_career", "file": "cover_career.png", "usage": "职场智慧封面" },
+      { "id": "cover_food", "file": "cover_food.png", "usage": "饮食文化封面" },
+      { "id": "cover_mind", "file": "cover_mind.png", "usage": "心理常识封面" }
+    ],
+    "logo": {
+      "concept": "三层卡片叠放 + 金杠 +「常」字，象征常识积累",
+      "style": "flat-premium",
+      "generator": "render_logo.mjs",
+      "glyphStrategy": "brandAnchor",
+      "brandAnchor": "常",
+      "customLock": true,
+      "foregroundFile": "store/logo/foreground.png",
+      "backgroundFile": "store/logo/background.png",
+      "previewFile": "store/logo/preview-1024.png",
+      "agcFile": "store/logo/agc-216.png",
+      "symbolFile": "store/logo/symbol.svg",
+      "horizontalFile": "store/logo/logo-horizontal.svg"
+    }
+  }
+}

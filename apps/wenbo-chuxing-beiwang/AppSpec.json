@@ -1,0 +1,225 @@
+{
+  "specVersion": "1.0.0",
+  "generatedAt": "2026-08-20T02:06:59.391Z",
+  "requestId": "req_1787191619169",
+  "industryPack": "task-efficiency",
+  "identity": {
+    "company": "魏文波",
+    "companyPinyin": "wenbo",
+    "appName": "出行备忘",
+    "appPinyin": "chuxing-beiwang",
+    "bundleId": "cxbw.wxy.huawei",
+    "version": "1.1.0"
+  },
+  "positioning": {
+    "tagline": "管理旅行计划、每日安排、出行清单与重要提醒的智慧出行工具",
+    "coreUsers": [
+      {
+        "role": "自由行用户",
+        "ageRange": "18-40",
+        "scenario": "出发前整理计划与物品，旅途中查看每日安排",
+        "need": "用一个轻量工具完成计划、清单和提醒"
+      },
+      {
+        "role": "家庭出行组织者",
+        "ageRange": "25-50",
+        "scenario": "统筹家庭旅行日期、住宿和共同准备事项",
+        "need": "降低遗漏重要证件和用品的风险"
+      }
+    ],
+    "painPoints": [
+      "旅行信息分散在多个工具中",
+      "临近出发容易遗漏证件与设备",
+      "每日安排和重要时间不便快速查看"
+    ],
+    "differentiation": "以行程时间轴为中心，将旅行计划、四类出行清单、备忘记录和智慧提醒整合为轻量闭环"
+  },
+  "modules": {
+    "pages": [
+      {
+        "id": "home",
+        "title": "首页",
+        "route": "pages/HomePage",
+        "features": ["最近行程", "准备进度", "创建行程", "出行清单", "备忘记录"],
+        "tab": true
+      },
+      {
+        "id": "trips",
+        "title": "行程",
+        "route": "pages/TripsPage",
+        "features": ["行程列表", "行程详情", "每日时间轴", "创建与编辑"],
+        "tab": true
+      },
+      {
+        "id": "checklist",
+        "title": "清单",
+        "route": "pages/ChecklistPage",
+        "features": ["证件", "衣物", "设备", "用品", "自定义事项", "完成状态"],
+        "tab": true
+      },
+      {
+        "id": "reminders",
+        "title": "提醒",
+        "route": "pages/RemindersPage",
+        "features": ["出发提醒", "入住提醒", "自定义提醒", "系统通知"],
+        "tab": true
+      },
+      {
+        "id": "mine",
+        "title": "我的",
+        "route": "pages/MinePage",
+        "features": ["我的行程", "我的模板", "设置与隐私", "关于应用"],
+        "tab": true
+      }
+    ],
+    "coreFlows": [
+      {
+        "name": "规划行程",
+        "steps": ["创建行程", "填写目的地与日期", "添加每日安排", "查看时间轴", "完成出行"]
+      },
+      {
+        "name": "准备出行",
+        "steps": ["选择行程", "导入清单模板", "添加自定义事项", "逐项完成", "查看准备进度"]
+      },
+      {
+        "name": "重要提醒",
+        "steps": ["选择提醒类型", "关联行程", "设置时间", "保存", "在提醒页查看状态"]
+      }
+    ]
+  },
+  "entities": [
+    {
+      "name": "Trip",
+      "table": "task-efficiency-trips",
+      "fields": ["id", "title", "destination", "startDate", "endDate", "summary", "status", "coverKey", "userId"]
+    },
+    {
+      "name": "ItineraryItem",
+      "table": "task-efficiency-itinerary",
+      "fields": ["id", "tripId", "itemDate", "startTime", "endTime", "title", "location", "note", "userId"]
+    },
+    {
+      "name": "ChecklistItem",
+      "table": "task-efficiency-checklist-items",
+      "fields": ["id", "tripId", "title", "category", "completed", "note", "userId"]
+    },
+    {
+      "name": "TravelReminder",
+      "table": "task-efficiency-reminders",
+      "fields": ["id", "tripId", "title", "reminderType", "remindAt", "status", "userId"]
+    },
+    {
+      "name": "TravelNote",
+      "table": "task-efficiency-notes",
+      "fields": ["id", "tripId", "title", "body", "updatedAt", "userId"]
+    }
+  ],
+  "apis": [
+    { "method": "POST", "path": "/api/v1/auth/login", "summary": "登录", "auth": false, "module": "auth" },
+    { "method": "POST", "path": "/api/v1/auth/register", "summary": "注册", "auth": false, "module": "auth" },
+    { "method": "GET", "path": "/api/v1/biz/task-efficiency/templates", "summary": "行程模板", "auth": false, "module": "biz" },
+    { "method": "GET", "path": "/api/v1/biz/task-efficiency/checklist-presets", "summary": "清单预设", "auth": false, "module": "biz" },
+    { "method": "GET", "path": "/api/v1/biz/task-efficiency/trips", "summary": "我的行程", "auth": true, "module": "biz" },
+    { "method": "POST", "path": "/api/v1/biz/task-efficiency/trips", "summary": "创建行程", "auth": true, "module": "biz" },
+    { "method": "GET", "path": "/api/v1/biz/task-efficiency/itinerary", "summary": "每日安排", "auth": true, "module": "biz" },
+    { "method": "GET", "path": "/api/v1/biz/task-efficiency/checklist-items", "summary": "出行清单", "auth": true, "module": "biz" },
+    { "method": "GET", "path": "/api/v1/biz/task-efficiency/reminders", "summary": "智慧提醒", "auth": true, "module": "biz" },
+    { "method": "GET", "path": "/api/v1/biz/task-efficiency/notes", "summary": "备忘记录", "auth": true, "module": "biz" },
+    { "method": "DELETE", "path": "/api/v1/privacy/account", "summary": "注销账号", "auth": true, "module": "privacy" }
+  ],
+  "permissions": [
+    {
+      "name": "ohos.permission.INTERNET",
+      "reason": "用于同步用户主动创建的行程、清单、提醒和备忘记录",
+      "when": "inuse",
+      "scene": "登录后同步出行数据"
+    }
+  ],
+  "harmonyos": {
+    "features": [
+      {
+        "type": "systemNotification",
+        "scene": "用户创建的出发、入住和自定义提醒"
+      }
+    ]
+  },
+  "store": {
+    "category": "实用工具",
+    "oneLiner": "出行备忘帮你从规划到出发一站完成：创建行程与每日时间轴、打包清单核对、出发入住提醒、旅途备忘，并可用模板与攻略快速起步",
+    "fullDescription": "出行备忘面向个人与家庭，覆盖规划、准备、出发与记录完整场景。支持创建旅行计划、每日时间轴、分类打包清单、出发/入住/自定义提醒与旅途备忘；首页展示行程倒计时、今日安排与临近提醒；准备中心整合清单、提醒与备忘；攻略页提供多套行程模板与出行贴士，一键生成行程、安排、清单与提醒；行程详情可生成出行概览。采用 HarmonyOS NEXT 原生界面，不提供票务预订、支付或社交。游客可浏览模板与贴士，登录后可同步个人数据。",
+    "keywords": ["旅行计划", "出行清单", "行程管理", "智慧提醒", "备忘记录", "出行攻略"],
+    "privacySummary": {
+      "collect": ["注册账号、姓名和联系电话", "用户主动创建的行程、清单、提醒与备忘内容", "登录会话状态"],
+      "purpose": "提供账号登录、跨次使用的数据保存和出行事项管理",
+      "thirdParties": []
+    },
+    "demoAccount": {
+      "username": "auditor@wenbo.local",
+      "passwordNote": "仅写入 store/demo-account.md，禁止打进客户端"
+    },
+    "screenshotPlan": [
+      { "page": "home", "caption": "大尺寸最近行程与准备进度" },
+      { "page": "trip-detail", "caption": "按日期组织的行程时间轴" },
+      { "page": "checklist", "caption": "四类出行准备清单" },
+      { "page": "reminders", "caption": "出发与入住提醒卡片" },
+      { "page": "mine", "caption": "模板、设置与隐私入口" }
+    ],
+    "incentiveHooks": ["原生时间轴体验", "系统通知提醒", "跨次使用同步"],
+    "legalOperator": "魏文波"
+  },
+  "access": {
+    "mode": "open_optional",
+    "features": {
+      "register": true,
+      "guestBrowse": true,
+      "guestWrite": false
+    },
+    "gateActions": ["create_trip", "edit_trip", "manage_checklist", "create_reminder", "write_note", "sync_records"],
+    "onPrivacyRefuse": "browse_basic",
+    "loginProviders": ["password"]
+  },
+  "admin": {
+    "featureModules": [
+      "overview",
+      "appUsers",
+      "teTripTemplates",
+      "teChecklistPresets",
+      "teTrips",
+      "teItinerary",
+      "teChecklistItems",
+      "teReminders",
+      "teNotes",
+      "messages",
+      "kpis"
+    ]
+  },
+  "brand": {
+    "primary": "#1677FF",
+    "primaryDeep": "#082A5A",
+    "tone": "premium-youthful-technology",
+    "stylePack": "harmonyos-official",
+    "workbenchId": "timeline-board",
+    "layoutVariant": "A",
+    "visualDirection": "蓝色时刻旅行摄影、雪域灰背景、轻沉浸光感与克制蓝色渐变",
+    "productVisualType": "ops-tool",
+    "visualAssets": [
+      { "key": "travel_hero", "file": "app/entry/src/main/resources/base/media/travel_hero.png", "role": "homeHero" },
+      { "key": "travel_checklist", "file": "app/entry/src/main/resources/base/media/travel_checklist.png", "role": "checklistBanner" },
+      { "key": "travel_route", "file": "app/entry/src/main/resources/base/media/travel_route.png", "role": "tripDetailHero" }
+    ],
+    "logo": {
+      "concept": "路线从备忘卡片边缘延伸为定位点，表达计划、记录与抵达",
+      "style": "flat-premium",
+      "generator": "agent-svg",
+      "glyphStrategy": "semantic-fusion",
+      "brandAnchor": "行",
+      "customLock": true,
+      "foregroundFile": "store/logo/foreground.png",
+      "backgroundFile": "store/logo/background.png",
+      "previewFile": "store/logo/preview-1024.png",
+      "agcFile": "store/logo/agc-216.png",
+      "symbolFile": "store/logo/symbol.svg",
+      "horizontalFile": "store/logo/logo-horizontal.svg"
+    }
+  }
+}

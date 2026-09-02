@@ -1,0 +1,678 @@
+{
+  "items": [
+    {
+      "file": "recipe_lichun_1.png",
+      "kind": "recipe",
+      "title": "春饼卷时蔬",
+      "aspect": "4:3",
+      "prompt": "Commercial mobile app photoreal editorial food photography for Chinese solar-term seasonal cooking app. Warm orange #E8833A and rice paper #F5F0E8 mood, subtle green accent #3A7D44. NOT UI screenshot, NOT cartoon, NOT 3D, no purple AI glow, no text, no watermark. Scene: finished dish \"春饼卷时蔬\" for 立春 solar term, 润燥 nourishment. Ingredients visible: 春饼皮、豆芽、韭菜、胡萝卜. Ceramic bowl or wooden table, soft natural window light, 4:3 food hero shot, appetizing steam optional."
+    },
+    {
+      "file": "recipe_lichun_2.png",
+      "kind": "recipe",
+      "title": "韭菜炒核桃仁",
+      "aspect": "4:3",
+      "prompt": "Commercial mobile app photoreal editorial food photography for Chinese solar-term seasonal cooking app. Warm orange #E8833A and rice paper #F5F0E8 mood, subtle green accent #3A7D44. NOT UI screenshot, NOT cartoon, NOT 3D, no purple AI glow, no text, no watermark. Scene: finished dish \"韭菜炒核桃仁\" for 立春 solar term, 祛湿 nourishment. Ingredients visible: 韭菜、核桃仁、盐、油. Ceramic bowl or wooden table, soft natural window light, 4:3 food hero shot, appetizing steam optional."
+    },
+    {
+      "file": "recipe_yushui_1.png",
+      "kind": "recipe",
+      "title": "山药薏米粥",
+      "aspect": "4:3",
+      "prompt": "Commercial mobile app photoreal editorial food photography for Chinese solar-term seasonal cooking app. Warm orange #E8833A and rice paper #F5F0E8 mood, subtle green accent #3A7D44. NOT UI screenshot, NOT cartoon, NOT 3D, no purple AI glow, no text, no watermark. Scene: finished dish \"山药薏米粥\" for 雨水 solar term, 温补 nourishment. Ingredients visible: 山药、薏米、大米、枸杞. Ceramic bowl or wooden table, soft natural window light, 4:3 food hero shot, appetizing steam optional."
+    },
+    {
+      "file": "recipe_yushui_2.png",
+      "kind": "recipe",
+      "title": "荠菜鲜肉馄饨",
+      "aspect": "4:3",
+      "prompt": "Commercial mobile app photoreal editorial food photography for Chinese solar-term seasonal cooking app. Warm orange #E8833A and rice paper #F5F0E8 mood, subtle green accent #3A7D44. NOT UI screenshot, NOT cartoon, NOT 3D, no purple AI glow, no text, no watermark. Scene: finished dish \"荠菜鲜肉馄饨\" for 雨水 solar term, 清热 nourishment. Ingredients visible: 荠菜、猪肉、馄饨皮、姜. Ceramic bowl or wooden table, soft natural window light, 4:3 food hero shot, appetizing steam optional."
+    },
+    {
+      "file": "recipe_jingzhe_1.png",
+      "kind": "recipe",
+      "title": "冰糖炖雪梨",
+      "aspect": "4:3",
+      "prompt": "Commercial mobile app photoreal editorial food photography for Chinese solar-term seasonal cooking app. Warm orange #E8833A and rice paper #F5F0E8 mood, subtle green accent #3A7D44. NOT UI screenshot, NOT cartoon, NOT 3D, no purple AI glow, no text, no watermark. Scene: finished dish \"冰糖炖雪梨\" for 惊蛰 solar term, 润燥 nourishment. Ingredients visible: 雪梨、冰糖、枸杞、百合. Ceramic bowl or wooden table, soft natural window light, 4:3 food hero shot, appetizing steam optional."
+    },
+    {
+      "file": "recipe_jingzhe_2.png",
+      "kind": "recipe",
+      "title": "菠菜猪肝汤",
+      "aspect": "4:3",
+      "prompt": "Commercial mobile app photoreal editorial food photography for Chinese solar-term seasonal cooking app. Warm orange #E8833A and rice paper #F5F0E8 mood, subtle green accent #3A7D44. NOT UI screenshot, NOT cartoon, NOT 3D, no purple AI glow, no text, no watermark. Scene: finished dish \"菠菜猪肝汤\" for 惊蛰 solar term, 祛湿 nourishment. Ingredients visible: 菠菜、猪肝、姜、料酒. Ceramic bowl or wooden table, soft natural window light, 4:3 food hero shot, appetizing steam optional."
+    },
+    {
+      "file": "recipe_chunfen_1.png",
+      "kind": "recipe",
+      "title": "香椿炒鸡蛋",
+      "aspect": "4:3",
+      "prompt": "Commercial mobile app photoreal editorial food photography for Chinese solar-term seasonal cooking app. Warm orange #E8833A and rice paper #F5F0E8 mood, subtle green accent #3A7D44. NOT UI screenshot, NOT cartoon, NOT 3D, no purple AI glow, no text, no watermark. Scene: finished dish \"香椿炒鸡蛋\" for 春分 solar term, 温补 nourishment. Ingredients visible: 香椿、鸡蛋、盐、油. Ceramic bowl or wooden table, soft natural window light, 4:3 food hero shot, appetizing steam optional."
+    },
+    {
+      "file": "recipe_chunfen_2.png",
+      "kind": "recipe",
+      "title": "鲫鱼豆腐汤",
+      "aspect": "4:3",
+      "prompt": "Commercial mobile app photoreal editorial food photography for Chinese solar-term seasonal cooking app. Warm orange #E8833A and rice paper #F5F0E8 mood, subtle green accent #3A7D44. NOT UI screenshot, NOT cartoon, NOT 3D, no purple AI glow, no text, no watermark. Scene: finished dish \"鲫鱼豆腐汤\" for 春分 solar term, 清热 nourishment. Ingredients visible: 鲫鱼、豆腐、姜、葱. Ceramic bowl or wooden table, soft natural window light, 4:3 food hero shot, appetizing steam optional."
+    },
+    {
+      "file": "recipe_qingming_1.png",
+      "kind": "recipe",
+      "title": "艾草青团",
+      "aspect": "4:3",
+      "prompt": "Commercial mobile app photoreal editorial food photography for Chinese solar-term seasonal cooking app. Warm orange #E8833A and rice paper #F5F0E8 mood, subtle green accent #3A7D44. NOT UI screenshot, NOT cartoon, NOT 3D, no purple AI glow, no text, no watermark. Scene: finished dish \"艾草青团\" for 清明 solar term, 润燥 nourishment. Ingredients visible: 艾草、糯米粉、豆沙、糖. Ceramic bowl or wooden table, soft natural window light, 4:3 food hero shot, appetizing steam optional."
+    },
+    {
+      "file": "recipe_qingming_2.png",
+      "kind": "recipe",
+      "title": "螺蛳粉（家常版）",
+      "aspect": "4:3",
+      "prompt": "Commercial mobile app photoreal editorial food photography for Chinese solar-term seasonal cooking app. Warm orange #E8833A and rice paper #F5F0E8 mood, subtle green accent #3A7D44. NOT UI screenshot, NOT cartoon, NOT 3D, no purple AI glow, no text, no watermark. Scene: finished dish \"螺蛳粉（家常版）\" for 清明 solar term, 祛湿 nourishment. Ingredients visible: 螺蛳、米粉、酸笋、青菜. Ceramic bowl or wooden table, soft natural window light, 4:3 food hero shot, appetizing steam optional."
+    },
+    {
+      "file": "recipe_guyu_1.png",
+      "kind": "recipe",
+      "title": "谷雨茶蒸鳜鱼",
+      "aspect": "4:3",
+      "prompt": "Commercial mobile app photoreal editorial food photography for Chinese solar-term seasonal cooking app. Warm orange #E8833A and rice paper #F5F0E8 mood, subtle green accent #3A7D44. NOT UI screenshot, NOT cartoon, NOT 3D, no purple AI glow, no text, no watermark. Scene: finished dish \"谷雨茶蒸鳜鱼\" for 谷雨 solar term, 温补 nourishment. Ingredients visible: 鳜鱼、春茶、姜、蒸鱼豉油. Ceramic bowl or wooden table, soft natural window light, 4:3 food hero shot, appetizing steam optional."
+    },
+    {
+      "file": "recipe_guyu_2.png",
+      "kind": "recipe",
+      "title": "香椿拌豆腐",
+      "aspect": "4:3",
+      "prompt": "Commercial mobile app photoreal editorial food photography for Chinese solar-term seasonal cooking app. Warm orange #E8833A and rice paper #F5F0E8 mood, subtle green accent #3A7D44. NOT UI screenshot, NOT cartoon, NOT 3D, no purple AI glow, no text, no watermark. Scene: finished dish \"香椿拌豆腐\" for 谷雨 solar term, 清热 nourishment. Ingredients visible: 香椿、豆腐、香油、盐. Ceramic bowl or wooden table, soft natural window light, 4:3 food hero shot, appetizing steam optional."
+    },
+    {
+      "file": "recipe_lixia_1.png",
+      "kind": "recipe",
+      "title": "立夏蚕豆饭",
+      "aspect": "4:3",
+      "prompt": "Commercial mobile app photoreal editorial food photography for Chinese solar-term seasonal cooking app. Warm orange #E8833A and rice paper #F5F0E8 mood, subtle green accent #3A7D44. NOT UI screenshot, NOT cartoon, NOT 3D, no purple AI glow, no text, no watermark. Scene: finished dish \"立夏蚕豆饭\" for 立夏 solar term, 润燥 nourishment. Ingredients visible: 蚕豆、大米、咸肉、笋. Ceramic bowl or wooden table, soft natural window light, 4:3 food hero shot, appetizing steam optional."
+    },
+    {
+      "file": "recipe_lixia_2.png",
+      "kind": "recipe",
+      "title": "樱桃银耳羹",
+      "aspect": "4:3",
+      "prompt": "Commercial mobile app photoreal editorial food photography for Chinese solar-term seasonal cooking app. Warm orange #E8833A and rice paper #F5F0E8 mood, subtle green accent #3A7D44. NOT UI screenshot, NOT cartoon, NOT 3D, no purple AI glow, no text, no watermark. Scene: finished dish \"樱桃银耳羹\" for 立夏 solar term, 祛湿 nourishment. Ingredients visible: 樱桃、银耳、冰糖、枸杞. Ceramic bowl or wooden table, soft natural window light, 4:3 food hero shot, appetizing steam optional."
+    },
+    {
+      "file": "recipe_xiaoman_1.png",
+      "kind": "recipe",
+      "title": "苦瓜酿肉",
+      "aspect": "4:3",
+      "prompt": "Commercial mobile app photoreal editorial food photography for Chinese solar-term seasonal cooking app. Warm orange #E8833A and rice paper #F5F0E8 mood, subtle green accent #3A7D44. NOT UI screenshot, NOT cartoon, NOT 3D, no purple AI glow, no text, no watermark. Scene: finished dish \"苦瓜酿肉\" for 小满 solar term, 温补 nourishment. Ingredients visible: 苦瓜、猪肉、香菇、姜. Ceramic bowl or wooden table, soft natural window light, 4:3 food hero shot, appetizing steam optional."
+    },
+    {
+      "file": "recipe_xiaoman_2.png",
+      "kind": "recipe",
+      "title": "冬瓜薏米汤",
+      "aspect": "4:3",
+      "prompt": "Commercial mobile app photoreal editorial food photography for Chinese solar-term seasonal cooking app. Warm orange #E8833A and rice paper #F5F0E8 mood, subtle green accent #3A7D44. NOT UI screenshot, NOT cartoon, NOT 3D, no purple AI glow, no text, no watermark. Scene: finished dish \"冬瓜薏米汤\" for 小满 solar term, 清热 nourishment. Ingredients visible: 冬瓜、薏米、排骨、姜. Ceramic bowl or wooden table, soft natural window light, 4:3 food hero shot, appetizing steam optional."
+    },
+    {
+      "file": "recipe_mangzhong_1.png",
+      "kind": "recipe",
+      "title": "青梅煮酒",
+      "aspect": "4:3",
+      "prompt": "Commercial mobile app photoreal editorial food photography for Chinese solar-term seasonal cooking app. Warm orange #E8833A and rice paper #F5F0E8 mood, subtle green accent #3A7D44. NOT UI screenshot, NOT cartoon, NOT 3D, no purple AI glow, no text, no watermark. Scene: finished dish \"青梅煮酒\" for 芒种 solar term, 润燥 nourishment. Ingredients visible: 青梅、冰糖、米酒. Ceramic bowl or wooden table, soft natural window light, 4:3 food hero shot, appetizing steam optional."
+    },
+    {
+      "file": "recipe_mangzhong_2.png",
+      "kind": "recipe",
+      "title": "杨梅红烧肉",
+      "aspect": "4:3",
+      "prompt": "Commercial mobile app photoreal editorial food photography for Chinese solar-term seasonal cooking app. Warm orange #E8833A and rice paper #F5F0E8 mood, subtle green accent #3A7D44. NOT UI screenshot, NOT cartoon, NOT 3D, no purple AI glow, no text, no watermark. Scene: finished dish \"杨梅红烧肉\" for 芒种 solar term, 祛湿 nourishment. Ingredients visible: 杨梅、五花肉、姜、酱油. Ceramic bowl or wooden table, soft natural window light, 4:3 food hero shot, appetizing steam optional."
+    },
+    {
+      "file": "recipe_xiazhi_1.png",
+      "kind": "recipe",
+      "title": "夏至面",
+      "aspect": "4:3",
+      "prompt": "Commercial mobile app photoreal editorial food photography for Chinese solar-term seasonal cooking app. Warm orange #E8833A and rice paper #F5F0E8 mood, subtle green accent #3A7D44. NOT UI screenshot, NOT cartoon, NOT 3D, no purple AI glow, no text, no watermark. Scene: finished dish \"夏至面\" for 夏至 solar term, 温补 nourishment. Ingredients visible: 面条、黄瓜、鸡蛋、芝麻酱. Ceramic bowl or wooden table, soft natural window light, 4:3 food hero shot, appetizing steam optional."
+    },
+    {
+      "file": "recipe_xiazhi_2.png",
+      "kind": "recipe",
+      "title": "莲藕排骨汤",
+      "aspect": "4:3",
+      "prompt": "Commercial mobile app photoreal editorial food photography for Chinese solar-term seasonal cooking app. Warm orange #E8833A and rice paper #F5F0E8 mood, subtle green accent #3A7D44. NOT UI screenshot, NOT cartoon, NOT 3D, no purple AI glow, no text, no watermark. Scene: finished dish \"莲藕排骨汤\" for 夏至 solar term, 清热 nourishment. Ingredients visible: 莲藕、排骨、姜、盐. Ceramic bowl or wooden table, soft natural window light, 4:3 food hero shot, appetizing steam optional."
+    },
+    {
+      "file": "recipe_xiaoshu_1.png",
+      "kind": "recipe",
+      "title": "黄鳝煲",
+      "aspect": "4:3",
+      "prompt": "Commercial mobile app photoreal editorial food photography for Chinese solar-term seasonal cooking app. Warm orange #E8833A and rice paper #F5F0E8 mood, subtle green accent #3A7D44. NOT UI screenshot, NOT cartoon, NOT 3D, no purple AI glow, no text, no watermark. Scene: finished dish \"黄鳝煲\" for 小暑 solar term, 润燥 nourishment. Ingredients visible: 黄鳝、姜、蒜、料酒. Ceramic bowl or wooden table, soft natural window light, 4:3 food hero shot, appetizing steam optional."
+    },
+    {
+      "file": "recipe_xiaoshu_2.png",
+      "kind": "recipe",
+      "title": "绿豆百合汤",
+      "aspect": "4:3",
+      "prompt": "Commercial mobile app photoreal editorial food photography for Chinese solar-term seasonal cooking app. Warm orange #E8833A and rice paper #F5F0E8 mood, subtle green accent #3A7D44. NOT UI screenshot, NOT cartoon, NOT 3D, no purple AI glow, no text, no watermark. Scene: finished dish \"绿豆百合汤\" for 小暑 solar term, 祛湿 nourishment. Ingredients visible: 绿豆、百合、冰糖. Ceramic bowl or wooden table, soft natural window light, 4:3 food hero shot, appetizing steam optional."
+    },
+    {
+      "file": "recipe_dashu_1.png",
+      "kind": "recipe",
+      "title": "老鸭冬瓜汤",
+      "aspect": "4:3",
+      "prompt": "Commercial mobile app photoreal editorial food photography for Chinese solar-term seasonal cooking app. Warm orange #E8833A and rice paper #F5F0E8 mood, subtle green accent #3A7D44. NOT UI screenshot, NOT cartoon, NOT 3D, no purple AI glow, no text, no watermark. Scene: finished dish \"老鸭冬瓜汤\" for 大暑 solar term, 温补 nourishment. Ingredients visible: 老鸭、冬瓜、姜、薏米. Ceramic bowl or wooden table, soft natural window light, 4:3 food hero shot, appetizing steam optional."
+    },
+    {
+      "file": "recipe_dashu_2.png",
+      "kind": "recipe",
+      "title": "仙草冻",
+      "aspect": "4:3",
+      "prompt": "Commercial mobile app photoreal editorial food photography for Chinese solar-term seasonal cooking app. Warm orange #E8833A and rice paper #F5F0E8 mood, subtle green accent #3A7D44. NOT UI screenshot, NOT cartoon, NOT 3D, no purple AI glow, no text, no watermark. Scene: finished dish \"仙草冻\" for 大暑 solar term, 清热 nourishment. Ingredients visible: 仙草粉、蜂蜜、水果. Ceramic bowl or wooden table, soft natural window light, 4:3 food hero shot, appetizing steam optional."
+    },
+    {
+      "file": "recipe_liqiu_1.png",
+      "kind": "recipe",
+      "title": "立秋贴秋膘·炖梨",
+      "aspect": "4:3",
+      "prompt": "Commercial mobile app photoreal editorial food photography for Chinese solar-term seasonal cooking app. Warm orange #E8833A and rice paper #F5F0E8 mood, subtle green accent #3A7D44. NOT UI screenshot, NOT cartoon, NOT 3D, no purple AI glow, no text, no watermark. Scene: finished dish \"立秋贴秋膘·炖梨\" for 立秋 solar term, 润燥 nourishment. Ingredients visible: 梨、冰糖、百合、枸杞. Ceramic bowl or wooden table, soft natural window light, 4:3 food hero shot, appetizing steam optional."
+    },
+    {
+      "file": "recipe_liqiu_2.png",
+      "kind": "recipe",
+      "title": "南瓜百合羹",
+      "aspect": "4:3",
+      "prompt": "Commercial mobile app photoreal editorial food photography for Chinese solar-term seasonal cooking app. Warm orange #E8833A and rice paper #F5F0E8 mood, subtle green accent #3A7D44. NOT UI screenshot, NOT cartoon, NOT 3D, no purple AI glow, no text, no watermark. Scene: finished dish \"南瓜百合羹\" for 立秋 solar term, 祛湿 nourishment. Ingredients visible: 南瓜、百合、大米、冰糖. Ceramic bowl or wooden table, soft natural window light, 4:3 food hero shot, appetizing steam optional."
+    },
+    {
+      "file": "recipe_chushu_1.png",
+      "kind": "recipe",
+      "title": "处暑老鸭汤",
+      "aspect": "4:3",
+      "prompt": "Commercial mobile app photoreal editorial food photography for Chinese solar-term seasonal cooking app. Warm orange #E8833A and rice paper #F5F0E8 mood, subtle green accent #3A7D44. NOT UI screenshot, NOT cartoon, NOT 3D, no purple AI glow, no text, no watermark. Scene: finished dish \"处暑老鸭汤\" for 处暑 solar term, 温补 nourishment. Ingredients visible: 老鸭、姜、薏米、冬瓜. Ceramic bowl or wooden table, soft natural window light, 4:3 food hero shot, appetizing steam optional."
+    },
+    {
+      "file": "recipe_chushu_2.png",
+      "kind": "recipe",
+      "title": "银耳红枣汤",
+      "aspect": "4:3",
+      "prompt": "Commercial mobile app photoreal editorial food photography for Chinese solar-term seasonal cooking app. Warm orange #E8833A and rice paper #F5F0E8 mood, subtle green accent #3A7D44. NOT UI screenshot, NOT cartoon, NOT 3D, no purple AI glow, no text, no watermark. Scene: finished dish \"银耳红枣汤\" for 处暑 solar term, 清热 nourishment. Ingredients visible: 银耳、红枣、冰糖、枸杞. Ceramic bowl or wooden table, soft natural window light, 4:3 food hero shot, appetizing steam optional."
+    },
+    {
+      "file": "recipe_bailu_1.png",
+      "kind": "recipe",
+      "title": "白露龙眼粥",
+      "aspect": "4:3",
+      "prompt": "Commercial mobile app photoreal editorial food photography for Chinese solar-term seasonal cooking app. Warm orange #E8833A and rice paper #F5F0E8 mood, subtle green accent #3A7D44. NOT UI screenshot, NOT cartoon, NOT 3D, no purple AI glow, no text, no watermark. Scene: finished dish \"白露龙眼粥\" for 白露 solar term, 润燥 nourishment. Ingredients visible: 龙眼、大米、红枣、冰糖. Ceramic bowl or wooden table, soft natural window light, 4:3 food hero shot, appetizing steam optional."
+    },
+    {
+      "file": "recipe_bailu_2.png",
+      "kind": "recipe",
+      "title": "芋头蒸排骨",
+      "aspect": "4:3",
+      "prompt": "Commercial mobile app photoreal editorial food photography for Chinese solar-term seasonal cooking app. Warm orange #E8833A and rice paper #F5F0E8 mood, subtle green accent #3A7D44. NOT UI screenshot, NOT cartoon, NOT 3D, no purple AI glow, no text, no watermark. Scene: finished dish \"芋头蒸排骨\" for 白露 solar term, 祛湿 nourishment. Ingredients visible: 芋头、排骨、豆豉、姜. Ceramic bowl or wooden table, soft natural window light, 4:3 food hero shot, appetizing steam optional."
+    },
+    {
+      "file": "recipe_qiufen_1.png",
+      "kind": "recipe",
+      "title": "秋分蟹黄豆腐",
+      "aspect": "4:3",
+      "prompt": "Commercial mobile app photoreal editorial food photography for Chinese solar-term seasonal cooking app. Warm orange #E8833A and rice paper #F5F0E8 mood, subtle green accent #3A7D44. NOT UI screenshot, NOT cartoon, NOT 3D, no purple AI glow, no text, no watermark. Scene: finished dish \"秋分蟹黄豆腐\" for 秋分 solar term, 温补 nourishment. Ingredients visible: 螃蟹、豆腐、姜、葱. Ceramic bowl or wooden table, soft natural window light, 4:3 food hero shot, appetizing steam optional."
+    },
+    {
+      "file": "recipe_qiufen_2.png",
+      "kind": "recipe",
+      "title": "石榴银耳羹",
+      "aspect": "4:3",
+      "prompt": "Commercial mobile app photoreal editorial food photography for Chinese solar-term seasonal cooking app. Warm orange #E8833A and rice paper #F5F0E8 mood, subtle green accent #3A7D44. NOT UI screenshot, NOT cartoon, NOT 3D, no purple AI glow, no text, no watermark. Scene: finished dish \"石榴银耳羹\" for 秋分 solar term, 清热 nourishment. Ingredients visible: 石榴、银耳、冰糖. Ceramic bowl or wooden table, soft natural window light, 4:3 food hero shot, appetizing steam optional."
+    },
+    {
+      "file": "recipe_hanlu_1.png",
+      "kind": "recipe",
+      "title": "寒露山楂糕",
+      "aspect": "4:3",
+      "prompt": "Commercial mobile app photoreal editorial food photography for Chinese solar-term seasonal cooking app. Warm orange #E8833A and rice paper #F5F0E8 mood, subtle green accent #3A7D44. NOT UI screenshot, NOT cartoon, NOT 3D, no purple AI glow, no text, no watermark. Scene: finished dish \"寒露山楂糕\" for 寒露 solar term, 润燥 nourishment. Ingredients visible: 山楂、白糖、琼脂. Ceramic bowl or wooden table, soft natural window light, 4:3 food hero shot, appetizing steam optional."
+    },
+    {
+      "file": "recipe_hanlu_2.png",
+      "kind": "recipe",
+      "title": "芝麻核桃糊",
+      "aspect": "4:3",
+      "prompt": "Commercial mobile app photoreal editorial food photography for Chinese solar-term seasonal cooking app. Warm orange #E8833A and rice paper #F5F0E8 mood, subtle green accent #3A7D44. NOT UI screenshot, NOT cartoon, NOT 3D, no purple AI glow, no text, no watermark. Scene: finished dish \"芝麻核桃糊\" for 寒露 solar term, 祛湿 nourishment. Ingredients visible: 黑芝麻、核桃、糯米、糖. Ceramic bowl or wooden table, soft natural window light, 4:3 food hero shot, appetizing steam optional."
+    },
+    {
+      "file": "recipe_shuangjiang_1.png",
+      "kind": "recipe",
+      "title": "霜降萝卜炖牛肉",
+      "aspect": "4:3",
+      "prompt": "Commercial mobile app photoreal editorial food photography for Chinese solar-term seasonal cooking app. Warm orange #E8833A and rice paper #F5F0E8 mood, subtle green accent #3A7D44. NOT UI screenshot, NOT cartoon, NOT 3D, no purple AI glow, no text, no watermark. Scene: finished dish \"霜降萝卜炖牛肉\" for 霜降 solar term, 温补 nourishment. Ingredients visible: 牛肉、萝卜、姜、八角. Ceramic bowl or wooden table, soft natural window light, 4:3 food hero shot, appetizing steam optional."
+    },
+    {
+      "file": "recipe_shuangjiang_2.png",
+      "kind": "recipe",
+      "title": "糖炒栗子",
+      "aspect": "4:3",
+      "prompt": "Commercial mobile app photoreal editorial food photography for Chinese solar-term seasonal cooking app. Warm orange #E8833A and rice paper #F5F0E8 mood, subtle green accent #3A7D44. NOT UI screenshot, NOT cartoon, NOT 3D, no purple AI glow, no text, no watermark. Scene: finished dish \"糖炒栗子\" for 霜降 solar term, 清热 nourishment. Ingredients visible: 栗子、糖、油、水. Ceramic bowl or wooden table, soft natural window light, 4:3 food hero shot, appetizing steam optional."
+    },
+    {
+      "file": "recipe_lidong_1.png",
+      "kind": "recipe",
+      "title": "立冬饺子",
+      "aspect": "4:3",
+      "prompt": "Commercial mobile app photoreal editorial food photography for Chinese solar-term seasonal cooking app. Warm orange #E8833A and rice paper #F5F0E8 mood, subtle green accent #3A7D44. NOT UI screenshot, NOT cartoon, NOT 3D, no purple AI glow, no text, no watermark. Scene: finished dish \"立冬饺子\" for 立冬 solar term, 润燥 nourishment. Ingredients visible: 面粉、猪肉、白菜、姜. Ceramic bowl or wooden table, soft natural window light, 4:3 food hero shot, appetizing steam optional."
+    },
+    {
+      "file": "recipe_lidong_2.png",
+      "kind": "recipe",
+      "title": "羊肉萝卜汤",
+      "aspect": "4:3",
+      "prompt": "Commercial mobile app photoreal editorial food photography for Chinese solar-term seasonal cooking app. Warm orange #E8833A and rice paper #F5F0E8 mood, subtle green accent #3A7D44. NOT UI screenshot, NOT cartoon, NOT 3D, no purple AI glow, no text, no watermark. Scene: finished dish \"羊肉萝卜汤\" for 立冬 solar term, 祛湿 nourishment. Ingredients visible: 羊肉、萝卜、姜、枸杞. Ceramic bowl or wooden table, soft natural window light, 4:3 food hero shot, appetizing steam optional."
+    },
+    {
+      "file": "recipe_xiaoxue_1.png",
+      "kind": "recipe",
+      "title": "小雪糍粑",
+      "aspect": "4:3",
+      "prompt": "Commercial mobile app photoreal editorial food photography for Chinese solar-term seasonal cooking app. Warm orange #E8833A and rice paper #F5F0E8 mood, subtle green accent #3A7D44. NOT UI screenshot, NOT cartoon, NOT 3D, no purple AI glow, no text, no watermark. Scene: finished dish \"小雪糍粑\" for 小雪 solar term, 温补 nourishment. Ingredients visible: 糯米、芝麻、红糖、花生. Ceramic bowl or wooden table, soft natural window light, 4:3 food hero shot, appetizing steam optional."
+    },
+    {
+      "file": "recipe_xiaoxue_2.png",
+      "kind": "recipe",
+      "title": "腊肉炒蒜苗",
+      "aspect": "4:3",
+      "prompt": "Commercial mobile app photoreal editorial food photography for Chinese solar-term seasonal cooking app. Warm orange #E8833A and rice paper #F5F0E8 mood, subtle green accent #3A7D44. NOT UI screenshot, NOT cartoon, NOT 3D, no purple AI glow, no text, no watermark. Scene: finished dish \"腊肉炒蒜苗\" for 小雪 solar term, 清热 nourishment. Ingredients visible: 腊肉、蒜苗、辣椒、油. Ceramic bowl or wooden table, soft natural window light, 4:3 food hero shot, appetizing steam optional."
+    },
+    {
+      "file": "recipe_daxue_1.png",
+      "kind": "recipe",
+      "title": "大雪羊肉煲",
+      "aspect": "4:3",
+      "prompt": "Commercial mobile app photoreal editorial food photography for Chinese solar-term seasonal cooking app. Warm orange #E8833A and rice paper #F5F0E8 mood, subtle green accent #3A7D44. NOT UI screenshot, NOT cartoon, NOT 3D, no purple AI glow, no text, no watermark. Scene: finished dish \"大雪羊肉煲\" for 大雪 solar term, 润燥 nourishment. Ingredients visible: 羊肉、当归、姜、萝卜. Ceramic bowl or wooden table, soft natural window light, 4:3 food hero shot, appetizing steam optional."
+    },
+    {
+      "file": "recipe_daxue_2.png",
+      "kind": "recipe",
+      "title": "红薯大枣粥",
+      "aspect": "4:3",
+      "prompt": "Commercial mobile app photoreal editorial food photography for Chinese solar-term seasonal cooking app. Warm orange #E8833A and rice paper #F5F0E8 mood, subtle green accent #3A7D44. NOT UI screenshot, NOT cartoon, NOT 3D, no purple AI glow, no text, no watermark. Scene: finished dish \"红薯大枣粥\" for 大雪 solar term, 祛湿 nourishment. Ingredients visible: 红薯、大枣、大米、冰糖. Ceramic bowl or wooden table, soft natural window light, 4:3 food hero shot, appetizing steam optional."
+    },
+    {
+      "file": "recipe_dongzhi_1.png",
+      "kind": "recipe",
+      "title": "冬至汤圆",
+      "aspect": "4:3",
+      "prompt": "Commercial mobile app photoreal editorial food photography for Chinese solar-term seasonal cooking app. Warm orange #E8833A and rice paper #F5F0E8 mood, subtle green accent #3A7D44. NOT UI screenshot, NOT cartoon, NOT 3D, no purple AI glow, no text, no watermark. Scene: finished dish \"冬至汤圆\" for 冬至 solar term, 温补 nourishment. Ingredients visible: 糯米粉、黑芝麻、糖、姜. Ceramic bowl or wooden table, soft natural window light, 4:3 food hero shot, appetizing steam optional."
+    },
+    {
+      "file": "recipe_dongzhi_2.png",
+      "kind": "recipe",
+      "title": "姜母鸭",
+      "aspect": "4:3",
+      "prompt": "Commercial mobile app photoreal editorial food photography for Chinese solar-term seasonal cooking app. Warm orange #E8833A and rice paper #F5F0E8 mood, subtle green accent #3A7D44. NOT UI screenshot, NOT cartoon, NOT 3D, no purple AI glow, no text, no watermark. Scene: finished dish \"姜母鸭\" for 冬至 solar term, 清热 nourishment. Ingredients visible: 鸭、老姜、米酒、当归. Ceramic bowl or wooden table, soft natural window light, 4:3 food hero shot, appetizing steam optional."
+    },
+    {
+      "file": "recipe_xiaohan_1.png",
+      "kind": "recipe",
+      "title": "小寒腊八粥",
+      "aspect": "4:3",
+      "prompt": "Commercial mobile app photoreal editorial food photography for Chinese solar-term seasonal cooking app. Warm orange #E8833A and rice paper #F5F0E8 mood, subtle green accent #3A7D44. NOT UI screenshot, NOT cartoon, NOT 3D, no purple AI glow, no text, no watermark. Scene: finished dish \"小寒腊八粥\" for 小寒 solar term, 润燥 nourishment. Ingredients visible: 八种谷物、豆类、红枣、桂圆. Ceramic bowl or wooden table, soft natural window light, 4:3 food hero shot, appetizing steam optional."
+    },
+    {
+      "file": "recipe_xiaohan_2.png",
+      "kind": "recipe",
+      "title": "糯米饭",
+      "aspect": "4:3",
+      "prompt": "Commercial mobile app photoreal editorial food photography for Chinese solar-term seasonal cooking app. Warm orange #E8833A and rice paper #F5F0E8 mood, subtle green accent #3A7D44. NOT UI screenshot, NOT cartoon, NOT 3D, no purple AI glow, no text, no watermark. Scene: finished dish \"糯米饭\" for 小寒 solar term, 祛湿 nourishment. Ingredients visible: 糯米、腊肠、豌豆、香菇. Ceramic bowl or wooden table, soft natural window light, 4:3 food hero shot, appetizing steam optional."
+    },
+    {
+      "file": "recipe_dahan_1.png",
+      "kind": "recipe",
+      "title": "大寒消寒糕",
+      "aspect": "4:3",
+      "prompt": "Commercial mobile app photoreal editorial food photography for Chinese solar-term seasonal cooking app. Warm orange #E8833A and rice paper #F5F0E8 mood, subtle green accent #3A7D44. NOT UI screenshot, NOT cartoon, NOT 3D, no purple AI glow, no text, no watermark. Scene: finished dish \"大寒消寒糕\" for 大寒 solar term, 温补 nourishment. Ingredients visible: 糯米粉、红枣、核桃、糖. Ceramic bowl or wooden table, soft natural window light, 4:3 food hero shot, appetizing steam optional."
+    },
+    {
+      "file": "recipe_dahan_2.png",
+      "kind": "recipe",
+      "title": "八宝饭",
+      "aspect": "4:3",
+      "prompt": "Commercial mobile app photoreal editorial food photography for Chinese solar-term seasonal cooking app. Warm orange #E8833A and rice paper #F5F0E8 mood, subtle green accent #3A7D44. NOT UI screenshot, NOT cartoon, NOT 3D, no purple AI glow, no text, no watermark. Scene: finished dish \"八宝饭\" for 大寒 solar term, 清热 nourishment. Ingredients visible: 糯米、八种果料、猪油、糖. Ceramic bowl or wooden table, soft natural window light, 4:3 food hero shot, appetizing steam optional."
+    },
+    {
+      "file": "term_lichun.png",
+      "kind": "term",
+      "title": "立春",
+      "aspect": "1:1",
+      "prompt": "Commercial mobile app photoreal editorial food photography for Chinese solar-term seasonal cooking app. Warm orange #E8833A and rice paper #F5F0E8 mood, subtle green accent #3A7D44. NOT UI screenshot, NOT cartoon, NOT 3D, no purple AI glow, no text, no watermark. Scene: 立春 solar term editorial still life — seasonal ingredients 韭菜、豆芽、萝卜、春饼 on rustic table, spring/summer/autumn/winter atmosphere matching term, 1:1 square crop, negative space at top."
+    },
+    {
+      "file": "term_yushui.png",
+      "kind": "term",
+      "title": "雨水",
+      "aspect": "1:1",
+      "prompt": "Commercial mobile app photoreal editorial food photography for Chinese solar-term seasonal cooking app. Warm orange #E8833A and rice paper #F5F0E8 mood, subtle green accent #3A7D44. NOT UI screenshot, NOT cartoon, NOT 3D, no purple AI glow, no text, no watermark. Scene: 雨水 solar term editorial still life — seasonal ingredients 山药、薏米、豌豆苗、荠菜 on rustic table, spring/summer/autumn/winter atmosphere matching term, 1:1 square crop, negative space at top."
+    },
+    {
+      "file": "term_jingzhe.png",
+      "kind": "term",
+      "title": "惊蛰",
+      "aspect": "1:1",
+      "prompt": "Commercial mobile app photoreal editorial food photography for Chinese solar-term seasonal cooking app. Warm orange #E8833A and rice paper #F5F0E8 mood, subtle green accent #3A7D44. NOT UI screenshot, NOT cartoon, NOT 3D, no purple AI glow, no text, no watermark. Scene: 惊蛰 solar term editorial still life — seasonal ingredients 梨、蜂蜜、枸杞、菠菜 on rustic table, spring/summer/autumn/winter atmosphere matching term, 1:1 square crop, negative space at top."
+    },
+    {
+      "file": "term_chunfen.png",
+      "kind": "term",
+      "title": "春分",
+      "aspect": "1:1",
+      "prompt": "Commercial mobile app photoreal editorial food photography for Chinese solar-term seasonal cooking app. Warm orange #E8833A and rice paper #F5F0E8 mood, subtle green accent #3A7D44. NOT UI screenshot, NOT cartoon, NOT 3D, no purple AI glow, no text, no watermark. Scene: 春分 solar term editorial still life — seasonal ingredients 香椿、马兰头、鲫鱼、汤圆 on rustic table, spring/summer/autumn/winter atmosphere matching term, 1:1 square crop, negative space at top."
+    },
+    {
+      "file": "term_qingming.png",
+      "kind": "term",
+      "title": "清明",
+      "aspect": "1:1",
+      "prompt": "Commercial mobile app photoreal editorial food photography for Chinese solar-term seasonal cooking app. Warm orange #E8833A and rice paper #F5F0E8 mood, subtle green accent #3A7D44. NOT UI screenshot, NOT cartoon, NOT 3D, no purple AI glow, no text, no watermark. Scene: 清明 solar term editorial still life — seasonal ingredients 青团、艾草、螺蛳、明前茶 on rustic table, spring/summer/autumn/winter atmosphere matching term, 1:1 square crop, negative space at top."
+    },
+    {
+      "file": "term_guyu.png",
+      "kind": "term",
+      "title": "谷雨",
+      "aspect": "1:1",
+      "prompt": "Commercial mobile app photoreal editorial food photography for Chinese solar-term seasonal cooking app. Warm orange #E8833A and rice paper #F5F0E8 mood, subtle green accent #3A7D44. NOT UI screenshot, NOT cartoon, NOT 3D, no purple AI glow, no text, no watermark. Scene: 谷雨 solar term editorial still life — seasonal ingredients 春茶、蚕豆、香椿、鳜鱼 on rustic table, spring/summer/autumn/winter atmosphere matching term, 1:1 square crop, negative space at top."
+    },
+    {
+      "file": "term_lixia.png",
+      "kind": "term",
+      "title": "立夏",
+      "aspect": "1:1",
+      "prompt": "Commercial mobile app photoreal editorial food photography for Chinese solar-term seasonal cooking app. Warm orange #E8833A and rice paper #F5F0E8 mood, subtle green accent #3A7D44. NOT UI screenshot, NOT cartoon, NOT 3D, no purple AI glow, no text, no watermark. Scene: 立夏 solar term editorial still life — seasonal ingredients 立夏蛋、蚕豆、樱桃、黄瓜 on rustic table, spring/summer/autumn/winter atmosphere matching term, 1:1 square crop, negative space at top."
+    },
+    {
+      "file": "term_xiaoman.png",
+      "kind": "term",
+      "title": "小满",
+      "aspect": "1:1",
+      "prompt": "Commercial mobile app photoreal editorial food photography for Chinese solar-term seasonal cooking app. Warm orange #E8833A and rice paper #F5F0E8 mood, subtle green accent #3A7D44. NOT UI screenshot, NOT cartoon, NOT 3D, no purple AI glow, no text, no watermark. Scene: 小满 solar term editorial still life — seasonal ingredients 苦瓜、冬瓜、丝瓜、绿豆 on rustic table, spring/summer/autumn/winter atmosphere matching term, 1:1 square crop, negative space at top."
+    },
+    {
+      "file": "term_mangzhong.png",
+      "kind": "term",
+      "title": "芒种",
+      "aspect": "1:1",
+      "prompt": "Commercial mobile app photoreal editorial food photography for Chinese solar-term seasonal cooking app. Warm orange #E8833A and rice paper #F5F0E8 mood, subtle green accent #3A7D44. NOT UI screenshot, NOT cartoon, NOT 3D, no purple AI glow, no text, no watermark. Scene: 芒种 solar term editorial still life — seasonal ingredients 青梅、杨梅、番茄、茄子 on rustic table, spring/summer/autumn/winter atmosphere matching term, 1:1 square crop, negative space at top."
+    },
+    {
+      "file": "term_xiazhi.png",
+      "kind": "term",
+      "title": "夏至",
+      "aspect": "1:1",
+      "prompt": "Commercial mobile app photoreal editorial food photography for Chinese solar-term seasonal cooking app. Warm orange #E8833A and rice paper #F5F0E8 mood, subtle green accent #3A7D44. NOT UI screenshot, NOT cartoon, NOT 3D, no purple AI glow, no text, no watermark. Scene: 夏至 solar term editorial still life — seasonal ingredients 面条、凉面、莲藕、绿豆 on rustic table, spring/summer/autumn/winter atmosphere matching term, 1:1 square crop, negative space at top."
+    },
+    {
+      "file": "term_xiaoshu.png",
+      "kind": "term",
+      "title": "小暑",
+      "aspect": "1:1",
+      "prompt": "Commercial mobile app photoreal editorial food photography for Chinese solar-term seasonal cooking app. Warm orange #E8833A and rice paper #F5F0E8 mood, subtle green accent #3A7D44. NOT UI screenshot, NOT cartoon, NOT 3D, no purple AI glow, no text, no watermark. Scene: 小暑 solar term editorial still life — seasonal ingredients 黄鳝、藕、绿豆、西瓜 on rustic table, spring/summer/autumn/winter atmosphere matching term, 1:1 square crop, negative space at top."
+    },
+    {
+      "file": "term_dashu.png",
+      "kind": "term",
+      "title": "大暑",
+      "aspect": "1:1",
+      "prompt": "Commercial mobile app photoreal editorial food photography for Chinese solar-term seasonal cooking app. Warm orange #E8833A and rice paper #F5F0E8 mood, subtle green accent #3A7D44. NOT UI screenshot, NOT cartoon, NOT 3D, no purple AI glow, no text, no watermark. Scene: 大暑 solar term editorial still life — seasonal ingredients 仙草、老鸭、姜、莲子 on rustic table, spring/summer/autumn/winter atmosphere matching term, 1:1 square crop, negative space at top."
+    },
+    {
+      "file": "term_liqiu.png",
+      "kind": "term",
+      "title": "立秋",
+      "aspect": "1:1",
+      "prompt": "Commercial mobile app photoreal editorial food photography for Chinese solar-term seasonal cooking app. Warm orange #E8833A and rice paper #F5F0E8 mood, subtle green accent #3A7D44. NOT UI screenshot, NOT cartoon, NOT 3D, no purple AI glow, no text, no watermark. Scene: 立秋 solar term editorial still life — seasonal ingredients 梨、百合、莲藕、南瓜 on rustic table, spring/summer/autumn/winter atmosphere matching term, 1:1 square crop, negative space at top."
+    },
+    {
+      "file": "term_chushu.png",
+      "kind": "term",
+      "title": "处暑",
+      "aspect": "1:1",
+      "prompt": "Commercial mobile app photoreal editorial food photography for Chinese solar-term seasonal cooking app. Warm orange #E8833A and rice paper #F5F0E8 mood, subtle green accent #3A7D44. NOT UI screenshot, NOT cartoon, NOT 3D, no purple AI glow, no text, no watermark. Scene: 处暑 solar term editorial still life — seasonal ingredients 老鸭、银耳、山药、红枣 on rustic table, spring/summer/autumn/winter atmosphere matching term, 1:1 square crop, negative space at top."
+    },
+    {
+      "file": "term_bailu.png",
+      "kind": "term",
+      "title": "白露",
+      "aspect": "1:1",
+      "prompt": "Commercial mobile app photoreal editorial food photography for Chinese solar-term seasonal cooking app. Warm orange #E8833A and rice paper #F5F0E8 mood, subtle green accent #3A7D44. NOT UI screenshot, NOT cartoon, NOT 3D, no purple AI glow, no text, no watermark. Scene: 白露 solar term editorial still life — seasonal ingredients 龙眼、番薯、芋头、核桃 on rustic table, spring/summer/autumn/winter atmosphere matching term, 1:1 square crop, negative space at top."
+    },
+    {
+      "file": "term_qiufen.png",
+      "kind": "term",
+      "title": "秋分",
+      "aspect": "1:1",
+      "prompt": "Commercial mobile app photoreal editorial food photography for Chinese solar-term seasonal cooking app. Warm orange #E8833A and rice paper #F5F0E8 mood, subtle green accent #3A7D44. NOT UI screenshot, NOT cartoon, NOT 3D, no purple AI glow, no text, no watermark. Scene: 秋分 solar term editorial still life — seasonal ingredients 螃蟹、柿子、石榴、银耳 on rustic table, spring/summer/autumn/winter atmosphere matching term, 1:1 square crop, negative space at top."
+    },
+    {
+      "file": "term_hanlu.png",
+      "kind": "term",
+      "title": "寒露",
+      "aspect": "1:1",
+      "prompt": "Commercial mobile app photoreal editorial food photography for Chinese solar-term seasonal cooking app. Warm orange #E8833A and rice paper #F5F0E8 mood, subtle green accent #3A7D44. NOT UI screenshot, NOT cartoon, NOT 3D, no purple AI glow, no text, no watermark. Scene: 寒露 solar term editorial still life — seasonal ingredients 山楂、石榴、芝麻、花生 on rustic table, spring/summer/autumn/winter atmosphere matching term, 1:1 square crop, negative space at top."
+    },
+    {
+      "file": "term_shuangjiang.png",
+      "kind": "term",
+      "title": "霜降",
+      "aspect": "1:1",
+      "prompt": "Commercial mobile app photoreal editorial food photography for Chinese solar-term seasonal cooking app. Warm orange #E8833A and rice paper #F5F0E8 mood, subtle green accent #3A7D44. NOT UI screenshot, NOT cartoon, NOT 3D, no purple AI glow, no text, no watermark. Scene: 霜降 solar term editorial still life — seasonal ingredients 柿子、萝卜、牛肉、栗子 on rustic table, spring/summer/autumn/winter atmosphere matching term, 1:1 square crop, negative space at top."
+    },
+    {
+      "file": "term_lidong.png",
+      "kind": "term",
+      "title": "立冬",
+      "aspect": "1:1",
+      "prompt": "Commercial mobile app photoreal editorial food photography for Chinese solar-term seasonal cooking app. Warm orange #E8833A and rice paper #F5F0E8 mood, subtle green accent #3A7D44. NOT UI screenshot, NOT cartoon, NOT 3D, no purple AI glow, no text, no watermark. Scene: 立冬 solar term editorial still life — seasonal ingredients 饺子、羊肉、白菜、萝卜 on rustic table, spring/summer/autumn/winter atmosphere matching term, 1:1 square crop, negative space at top."
+    },
+    {
+      "file": "term_xiaoxue.png",
+      "kind": "term",
+      "title": "小雪",
+      "aspect": "1:1",
+      "prompt": "Commercial mobile app photoreal editorial food photography for Chinese solar-term seasonal cooking app. Warm orange #E8833A and rice paper #F5F0E8 mood, subtle green accent #3A7D44. NOT UI screenshot, NOT cartoon, NOT 3D, no purple AI glow, no text, no watermark. Scene: 小雪 solar term editorial still life — seasonal ingredients 糍粑、腊肉、羊肉、枸杞 on rustic table, spring/summer/autumn/winter atmosphere matching term, 1:1 square crop, negative space at top."
+    },
+    {
+      "file": "term_daxue.png",
+      "kind": "term",
+      "title": "大雪",
+      "aspect": "1:1",
+      "prompt": "Commercial mobile app photoreal editorial food photography for Chinese solar-term seasonal cooking app. Warm orange #E8833A and rice paper #F5F0E8 mood, subtle green accent #3A7D44. NOT UI screenshot, NOT cartoon, NOT 3D, no purple AI glow, no text, no watermark. Scene: 大雪 solar term editorial still life — seasonal ingredients 羊肉、红薯、大枣、桂圆 on rustic table, spring/summer/autumn/winter atmosphere matching term, 1:1 square crop, negative space at top."
+    },
+    {
+      "file": "term_dongzhi.png",
+      "kind": "term",
+      "title": "冬至",
+      "aspect": "1:1",
+      "prompt": "Commercial mobile app photoreal editorial food photography for Chinese solar-term seasonal cooking app. Warm orange #E8833A and rice paper #F5F0E8 mood, subtle green accent #3A7D44. NOT UI screenshot, NOT cartoon, NOT 3D, no purple AI glow, no text, no watermark. Scene: 冬至 solar term editorial still life — seasonal ingredients 汤圆、饺子、羊肉、姜 on rustic table, spring/summer/autumn/winter atmosphere matching term, 1:1 square crop, negative space at top."
+    },
+    {
+      "file": "term_xiaohan.png",
+      "kind": "term",
+      "title": "小寒",
+      "aspect": "1:1",
+      "prompt": "Commercial mobile app photoreal editorial food photography for Chinese solar-term seasonal cooking app. Warm orange #E8833A and rice paper #F5F0E8 mood, subtle green accent #3A7D44. NOT UI screenshot, NOT cartoon, NOT 3D, no purple AI glow, no text, no watermark. Scene: 小寒 solar term editorial still life — seasonal ingredients 腊八粥、羊肉、糯米饭、菜饭 on rustic table, spring/summer/autumn/winter atmosphere matching term, 1:1 square crop, negative space at top."
+    },
+    {
+      "file": "term_dahan.png",
+      "kind": "term",
+      "title": "大寒",
+      "aspect": "1:1",
+      "prompt": "Commercial mobile app photoreal editorial food photography for Chinese solar-term seasonal cooking app. Warm orange #E8833A and rice paper #F5F0E8 mood, subtle green accent #3A7D44. NOT UI screenshot, NOT cartoon, NOT 3D, no purple AI glow, no text, no watermark. Scene: 大寒 solar term editorial still life — seasonal ingredients 消寒糕、鸡汤、八宝饭、糯米饭 on rustic table, spring/summer/autumn/winter atmosphere matching term, 1:1 square crop, negative space at top."
+    },
+    {
+      "file": "tip_lichun.png",
+      "kind": "tip",
+      "title": "立春食养贴士",
+      "aspect": "16:9",
+      "prompt": "Commercial mobile app photoreal editorial food photography for Chinese solar-term seasonal cooking app. Warm orange #E8833A and rice paper #F5F0E8 mood, subtle green accent #3A7D44. NOT UI screenshot, NOT cartoon, NOT 3D, no purple AI glow, no text, no watermark. Scene: gentle wellness food lifestyle for 立春 — light tea, herbs, seasonal produce arrangement, calm editorial 16:9 banner, soft bokeh, health nourishment mood."
+    },
+    {
+      "file": "tip_yushui.png",
+      "kind": "tip",
+      "title": "雨水食养贴士",
+      "aspect": "16:9",
+      "prompt": "Commercial mobile app photoreal editorial food photography for Chinese solar-term seasonal cooking app. Warm orange #E8833A and rice paper #F5F0E8 mood, subtle green accent #3A7D44. NOT UI screenshot, NOT cartoon, NOT 3D, no purple AI glow, no text, no watermark. Scene: gentle wellness food lifestyle for 雨水 — light tea, herbs, seasonal produce arrangement, calm editorial 16:9 banner, soft bokeh, health nourishment mood."
+    },
+    {
+      "file": "tip_jingzhe.png",
+      "kind": "tip",
+      "title": "惊蛰食养贴士",
+      "aspect": "16:9",
+      "prompt": "Commercial mobile app photoreal editorial food photography for Chinese solar-term seasonal cooking app. Warm orange #E8833A and rice paper #F5F0E8 mood, subtle green accent #3A7D44. NOT UI screenshot, NOT cartoon, NOT 3D, no purple AI glow, no text, no watermark. Scene: gentle wellness food lifestyle for 惊蛰 — light tea, herbs, seasonal produce arrangement, calm editorial 16:9 banner, soft bokeh, health nourishment mood."
+    },
+    {
+      "file": "tip_chunfen.png",
+      "kind": "tip",
+      "title": "春分食养贴士",
+      "aspect": "16:9",
+      "prompt": "Commercial mobile app photoreal editorial food photography for Chinese solar-term seasonal cooking app. Warm orange #E8833A and rice paper #F5F0E8 mood, subtle green accent #3A7D44. NOT UI screenshot, NOT cartoon, NOT 3D, no purple AI glow, no text, no watermark. Scene: gentle wellness food lifestyle for 春分 — light tea, herbs, seasonal produce arrangement, calm editorial 16:9 banner, soft bokeh, health nourishment mood."
+    },
+    {
+      "file": "tip_qingming.png",
+      "kind": "tip",
+      "title": "清明食养贴士",
+      "aspect": "16:9",
+      "prompt": "Commercial mobile app photoreal editorial food photography for Chinese solar-term seasonal cooking app. Warm orange #E8833A and rice paper #F5F0E8 mood, subtle green accent #3A7D44. NOT UI screenshot, NOT cartoon, NOT 3D, no purple AI glow, no text, no watermark. Scene: gentle wellness food lifestyle for 清明 — light tea, herbs, seasonal produce arrangement, calm editorial 16:9 banner, soft bokeh, health nourishment mood."
+    },
+    {
+      "file": "tip_guyu.png",
+      "kind": "tip",
+      "title": "谷雨食养贴士",
+      "aspect": "16:9",
+      "prompt": "Commercial mobile app photoreal editorial food photography for Chinese solar-term seasonal cooking app. Warm orange #E8833A and rice paper #F5F0E8 mood, subtle green accent #3A7D44. NOT UI screenshot, NOT cartoon, NOT 3D, no purple AI glow, no text, no watermark. Scene: gentle wellness food lifestyle for 谷雨 — light tea, herbs, seasonal produce arrangement, calm editorial 16:9 banner, soft bokeh, health nourishment mood."
+    },
+    {
+      "file": "tip_lixia.png",
+      "kind": "tip",
+      "title": "立夏食养贴士",
+      "aspect": "16:9",
+      "prompt": "Commercial mobile app photoreal editorial food photography for Chinese solar-term seasonal cooking app. Warm orange #E8833A and rice paper #F5F0E8 mood, subtle green accent #3A7D44. NOT UI screenshot, NOT cartoon, NOT 3D, no purple AI glow, no text, no watermark. Scene: gentle wellness food lifestyle for 立夏 — light tea, herbs, seasonal produce arrangement, calm editorial 16:9 banner, soft bokeh, health nourishment mood."
+    },
+    {
+      "file": "tip_xiaoman.png",
+      "kind": "tip",
+      "title": "小满食养贴士",
+      "aspect": "16:9",
+      "prompt": "Commercial mobile app photoreal editorial food photography for Chinese solar-term seasonal cooking app. Warm orange #E8833A and rice paper #F5F0E8 mood, subtle green accent #3A7D44. NOT UI screenshot, NOT cartoon, NOT 3D, no purple AI glow, no text, no watermark. Scene: gentle wellness food lifestyle for 小满 — light tea, herbs, seasonal produce arrangement, calm editorial 16:9 banner, soft bokeh, health nourishment mood."
+    },
+    {
+      "file": "tip_mangzhong.png",
+      "kind": "tip",
+      "title": "芒种食养贴士",
+      "aspect": "16:9",
+      "prompt": "Commercial mobile app photoreal editorial food photography for Chinese solar-term seasonal cooking app. Warm orange #E8833A and rice paper #F5F0E8 mood, subtle green accent #3A7D44. NOT UI screenshot, NOT cartoon, NOT 3D, no purple AI glow, no text, no watermark. Scene: gentle wellness food lifestyle for 芒种 — light tea, herbs, seasonal produce arrangement, calm editorial 16:9 banner, soft bokeh, health nourishment mood."
+    },
+    {
+      "file": "tip_xiazhi.png",
+      "kind": "tip",
+      "title": "夏至食养贴士",
+      "aspect": "16:9",
+      "prompt": "Commercial mobile app photoreal editorial food photography for Chinese solar-term seasonal cooking app. Warm orange #E8833A and rice paper #F5F0E8 mood, subtle green accent #3A7D44. NOT UI screenshot, NOT cartoon, NOT 3D, no purple AI glow, no text, no watermark. Scene: gentle wellness food lifestyle for 夏至 — light tea, herbs, seasonal produce arrangement, calm editorial 16:9 banner, soft bokeh, health nourishment mood."
+    },
+    {
+      "file": "tip_xiaoshu.png",
+      "kind": "tip",
+      "title": "小暑食养贴士",
+      "aspect": "16:9",
+      "prompt": "Commercial mobile app photoreal editorial food photography for Chinese solar-term seasonal cooking app. Warm orange #E8833A and rice paper #F5F0E8 mood, subtle green accent #3A7D44. NOT UI screenshot, NOT cartoon, NOT 3D, no purple AI glow, no text, no watermark. Scene: gentle wellness food lifestyle for 小暑 — light tea, herbs, seasonal produce arrangement, calm editorial 16:9 banner, soft bokeh, health nourishment mood."
+    },
+    {
+      "file": "tip_dashu.png",
+      "kind": "tip",
+      "title": "大暑食养贴士",
+      "aspect": "16:9",
+      "prompt": "Commercial mobile app photoreal editorial food photography for Chinese solar-term seasonal cooking app. Warm orange #E8833A and rice paper #F5F0E8 mood, subtle green accent #3A7D44. NOT UI screenshot, NOT cartoon, NOT 3D, no purple AI glow, no text, no watermark. Scene: gentle wellness food lifestyle for 大暑 — light tea, herbs, seasonal produce arrangement, calm editorial 16:9 banner, soft bokeh, health nourishment mood."
+    },
+    {
+      "file": "tip_liqiu.png",
+      "kind": "tip",
+      "title": "立秋食养贴士",
+      "aspect": "16:9",
+      "prompt": "Commercial mobile app photoreal editorial food photography for Chinese solar-term seasonal cooking app. Warm orange #E8833A and rice paper #F5F0E8 mood, subtle green accent #3A7D44. NOT UI screenshot, NOT cartoon, NOT 3D, no purple AI glow, no text, no watermark. Scene: gentle wellness food lifestyle for 立秋 — light tea, herbs, seasonal produce arrangement, calm editorial 16:9 banner, soft bokeh, health nourishment mood."
+    },
+    {
+      "file": "tip_chushu.png",
+      "kind": "tip",
+      "title": "处暑食养贴士",
+      "aspect": "16:9",
+      "prompt": "Commercial mobile app photoreal editorial food photography for Chinese solar-term seasonal cooking app. Warm orange #E8833A and rice paper #F5F0E8 mood, subtle green accent #3A7D44. NOT UI screenshot, NOT cartoon, NOT 3D, no purple AI glow, no text, no watermark. Scene: gentle wellness food lifestyle for 处暑 — light tea, herbs, seasonal produce arrangement, calm editorial 16:9 banner, soft bokeh, health nourishment mood."
+    },
+    {
+      "file": "tip_bailu.png",
+      "kind": "tip",
+      "title": "白露食养贴士",
+      "aspect": "16:9",
+      "prompt": "Commercial mobile app photoreal editorial food photography for Chinese solar-term seasonal cooking app. Warm orange #E8833A and rice paper #F5F0E8 mood, subtle green accent #3A7D44. NOT UI screenshot, NOT cartoon, NOT 3D, no purple AI glow, no text, no watermark. Scene: gentle wellness food lifestyle for 白露 — light tea, herbs, seasonal produce arrangement, calm editorial 16:9 banner, soft bokeh, health nourishment mood."
+    },
+    {
+      "file": "tip_qiufen.png",
+      "kind": "tip",
+      "title": "秋分食养贴士",
+      "aspect": "16:9",
+      "prompt": "Commercial mobile app photoreal editorial food photography for Chinese solar-term seasonal cooking app. Warm orange #E8833A and rice paper #F5F0E8 mood, subtle green accent #3A7D44. NOT UI screenshot, NOT cartoon, NOT 3D, no purple AI glow, no text, no watermark. Scene: gentle wellness food lifestyle for 秋分 — light tea, herbs, seasonal produce arrangement, calm editorial 16:9 banner, soft bokeh, health nourishment mood."
+    },
+    {
+      "file": "tip_hanlu.png",
+      "kind": "tip",
+      "title": "寒露食养贴士",
+      "aspect": "16:9",
+      "prompt": "Commercial mobile app photoreal editorial food photography for Chinese solar-term seasonal cooking app. Warm orange #E8833A and rice paper #F5F0E8 mood, subtle green accent #3A7D44. NOT UI screenshot, NOT cartoon, NOT 3D, no purple AI glow, no text, no watermark. Scene: gentle wellness food lifestyle for 寒露 — light tea, herbs, seasonal produce arrangement, calm editorial 16:9 banner, soft bokeh, health nourishment mood."
+    },
+    {
+      "file": "tip_shuangjiang.png",
+      "kind": "tip",
+      "title": "霜降食养贴士",
+      "aspect": "16:9",
+      "prompt": "Commercial mobile app photoreal editorial food photography for Chinese solar-term seasonal cooking app. Warm orange #E8833A and rice paper #F5F0E8 mood, subtle green accent #3A7D44. NOT UI screenshot, NOT cartoon, NOT 3D, no purple AI glow, no text, no watermark. Scene: gentle wellness food lifestyle for 霜降 — light tea, herbs, seasonal produce arrangement, calm editorial 16:9 banner, soft bokeh, health nourishment mood."
+    },
+    {
+      "file": "tip_lidong.png",
+      "kind": "tip",
+      "title": "立冬食养贴士",
+      "aspect": "16:9",
+      "prompt": "Commercial mobile app photoreal editorial food photography for Chinese solar-term seasonal cooking app. Warm orange #E8833A and rice paper #F5F0E8 mood, subtle green accent #3A7D44. NOT UI screenshot, NOT cartoon, NOT 3D, no purple AI glow, no text, no watermark. Scene: gentle wellness food lifestyle for 立冬 — light tea, herbs, seasonal produce arrangement, calm editorial 16:9 banner, soft bokeh, health nourishment mood."
+    },
+    {
+      "file": "tip_xiaoxue.png",
+      "kind": "tip",
+      "title": "小雪食养贴士",
+      "aspect": "16:9",
+      "prompt": "Commercial mobile app photoreal editorial food photography for Chinese solar-term seasonal cooking app. Warm orange #E8833A and rice paper #F5F0E8 mood, subtle green accent #3A7D44. NOT UI screenshot, NOT cartoon, NOT 3D, no purple AI glow, no text, no watermark. Scene: gentle wellness food lifestyle for 小雪 — light tea, herbs, seasonal produce arrangement, calm editorial 16:9 banner, soft bokeh, health nourishment mood."
+    },
+    {
+      "file": "tip_daxue.png",
+      "kind": "tip",
+      "title": "大雪食养贴士",
+      "aspect": "16:9",
+      "prompt": "Commercial mobile app photoreal editorial food photography for Chinese solar-term seasonal cooking app. Warm orange #E8833A and rice paper #F5F0E8 mood, subtle green accent #3A7D44. NOT UI screenshot, NOT cartoon, NOT 3D, no purple AI glow, no text, no watermark. Scene: gentle wellness food lifestyle for 大雪 — light tea, herbs, seasonal produce arrangement, calm editorial 16:9 banner, soft bokeh, health nourishment mood."
+    },
+    {
+      "file": "tip_dongzhi.png",
+      "kind": "tip",
+      "title": "冬至食养贴士",
+      "aspect": "16:9",
+      "prompt": "Commercial mobile app photoreal editorial food photography for Chinese solar-term seasonal cooking app. Warm orange #E8833A and rice paper #F5F0E8 mood, subtle green accent #3A7D44. NOT UI screenshot, NOT cartoon, NOT 3D, no purple AI glow, no text, no watermark. Scene: gentle wellness food lifestyle for 冬至 — light tea, herbs, seasonal produce arrangement, calm editorial 16:9 banner, soft bokeh, health nourishment mood."
+    },
+    {
+      "file": "tip_xiaohan.png",
+      "kind": "tip",
+      "title": "小寒食养贴士",
+      "aspect": "16:9",
+      "prompt": "Commercial mobile app photoreal editorial food photography for Chinese solar-term seasonal cooking app. Warm orange #E8833A and rice paper #F5F0E8 mood, subtle green accent #3A7D44. NOT UI screenshot, NOT cartoon, NOT 3D, no purple AI glow, no text, no watermark. Scene: gentle wellness food lifestyle for 小寒 — light tea, herbs, seasonal produce arrangement, calm editorial 16:9 banner, soft bokeh, health nourishment mood."
+    },
+    {
+      "file": "tip_dahan.png",
+      "kind": "tip",
+      "title": "大寒食养贴士",
+      "aspect": "16:9",
+      "prompt": "Commercial mobile app photoreal editorial food photography for Chinese solar-term seasonal cooking app. Warm orange #E8833A and rice paper #F5F0E8 mood, subtle green accent #3A7D44. NOT UI screenshot, NOT cartoon, NOT 3D, no purple AI glow, no text, no watermark. Scene: gentle wellness food lifestyle for 大寒 — light tea, herbs, seasonal produce arrangement, calm editorial 16:9 banner, soft bokeh, health nourishment mood."
+    }
+  ],
+  "staging": "E:\\huawei001-master\\apps\\wenbo-jieqi-shipu\\store\\visual\\generated",
+  "media": "E:\\huawei001-master\\apps\\wenbo-jieqi-shipu\\app\\entry\\src\\main\\resources\\base\\media"
+}

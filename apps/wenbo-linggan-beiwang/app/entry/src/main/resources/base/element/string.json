@@ -1,0 +1,8 @@
+{
+  "string": [
+    { "name": "module_desc", "value": "转化工作台主模块" },
+    { "name": "EntryAbility_desc", "value": "创意转化：捕捉后钉板对照，再拆成计划与专题回顾" },
+    { "name": "EntryAbility_label", "value": "转化工作台" },
+    { "name": "internet_reason", "value": "用于同步灵感、画板与创意计划数据" }
+  ]
+}

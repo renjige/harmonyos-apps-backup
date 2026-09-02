@@ -1,0 +1,11 @@
+{
+  "company": "魏文波",
+  "industry": "shopping-memo",
+  "appName": "厨房妙想",
+  "positioning": "发现简单好吃的厨房灵感，让每天做饭变得更轻松",
+  "primaryEntity": "Recipe",
+  "coreLoop": "浏览菜谱 → 查看详情 → 收藏 / 标记完成 / 加入厨房清单 → 勾选食材",
+  "primaryJob": "打开 App 3 秒内找到今天可以做的一道菜",
+  "accessMode": "open_optional",
+  "requestedAt": "2026-08-20T08:00:00.000Z"
+}

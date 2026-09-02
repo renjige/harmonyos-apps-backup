@@ -1,0 +1,7 @@
+{
+  "string": [
+    { "name": "module_desc", "value": "厨房妙想主模块" },
+    { "name": "EntryAbility_desc", "value": "厨房生活灵感入口" },
+    { "name": "EntryAbility_label", "value": "厨房妙想" }
+  ]
+}

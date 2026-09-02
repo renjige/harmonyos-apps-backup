@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 360" role="img" aria-labelledby="title">
+  <title id="title">�</title>
+  <rect width="1280" height="360" fill="#1A1A1A"/>
+  <g transform="translate(40,20) scale(0.3125)">
+    <rect x="196" y="196" width="632" height="632" fill="none" stroke="#E84A4A" stroke-width="48"/>
+    <rect x="248" y="248" width="528" height="528" fill="none" stroke="#E84A4A" stroke-width="8"/>
+    <path fill="#E84A4A" d="M300 430 H724 V478 H300 Z"/>
+    <path fill="#E84A4A" d="M468 330 H516 V700 H468 Z"/>
+    <path fill="#E84A4A" d="M540 340 L760 690 L708 718 L488 368 Z"/>
+  </g>
+  <text x="400" y="220" fill="#F5F0E8" font-size="96" font-family="Source Han Sans, Noto Sans SC, sans-serif" font-weight="600">�</text>
+</svg>

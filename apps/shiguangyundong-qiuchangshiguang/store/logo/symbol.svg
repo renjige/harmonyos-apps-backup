@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" fill="none">
+  <rect width="1024" height="1024" fill="#1A2A3A"/>
+  <!-- Court half-line abstract -->
+  <path d="M200 720 L824 720" stroke="#FF6B35" stroke-width="28" stroke-linecap="round"/>
+  <path d="M512 720 L512 320" stroke="#FF6B35" stroke-width="28" stroke-linecap="round"/>
+  <path d="M320 520 Q512 420 704 520" stroke="#FFFFFF" stroke-width="20" stroke-linecap="round" fill="none" opacity="0.9"/>
+  <!-- Light ray / �I -->
+  <circle cx="760" cy="264" r="48" fill="#FFB800"/>
+  <path d="M760 160 L760 120 M820 264 L860 264 M760 368 L760 408 M700 264 L660 264" stroke="#FFB800" stroke-width="16" stroke-linecap="round"/>
+  <!--  anchor -->
+  <circle cx="360" cy="440" r="72" stroke="#FFFFFF" stroke-width="22" fill="none"/>
+</svg>

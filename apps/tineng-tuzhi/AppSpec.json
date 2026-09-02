@@ -1,0 +1,326 @@
+{
+  "specVersion": "1.0.0",
+  "generatedAt": "2026-08-27T09:20:26.166Z",
+  "requestId": "req_1787822426128",
+  "industryPack": "morning-habit",
+  "identity": {
+    "company": "体能图志科技",
+    "companyPinyin": "tineng-tuzhi",
+    "appName": "体能图志",
+    "appPinyin": "tineng-tuzhi",
+    "bundleId": "com.tinengtuzhi.tinengtuzhi",
+    "version": "1.0.0"
+  },
+  "positioning": {
+    "tagline": "用图表看见你的体能成长，智慧运动记录与可视化分析工具",
+    "coreUsers": [
+      {
+        "role": "都市白领",
+        "ageRange": "22-40",
+        "scenario": "工作日清晨",
+        "need": "自律早起、可视化成长"
+      }
+    ],
+    "painPoints": [
+      "难以坚持早起",
+      "缺乏正向反馈",
+      "习惯数据分散"
+    ],
+    "differentiation": "用图表看见你的体能成长，智慧运动记录与可视化分析工具"
+  },
+  "modules": {
+    "pages": [
+      {
+        "id": "home",
+        "title": "首页",
+        "route": "pages/HomePage",
+        "features": [
+          "早安问候",
+          "今日早起时间",
+          "连续打卡",
+          "成长趋势"
+        ],
+        "tab": true
+      },
+      {
+        "id": "checkin",
+        "title": "打卡",
+        "route": "pages/CheckInPage",
+        "features": [
+          "一键打卡",
+          "日出动效"
+        ],
+        "tab": true
+      },
+      {
+        "id": "habits",
+        "title": "习惯",
+        "route": "pages/HabitsPage",
+        "features": [
+          "习惯目标"
+        ],
+        "tab": true
+      },
+      {
+        "id": "growth",
+        "title": "成长",
+        "route": "pages/GrowthPage",
+        "features": [
+          "数据洞察",
+          "成就中心"
+        ],
+        "tab": true
+      },
+      {
+        "id": "mine",
+        "title": "我的",
+        "route": "pages/MinePage",
+        "features": [
+          "打卡记录",
+          "设置隐私"
+        ],
+        "tab": true
+      },
+      {
+        "id": "messages",
+        "title": "消息",
+        "route": "pages/MessagesPage",
+        "features": [
+          "智慧提醒"
+        ],
+        "tab": false
+      }
+    ],
+    "coreFlows": [
+      {
+        "name": "每日打卡闭环",
+        "steps": [
+          "查看目标",
+          "完成打卡",
+          "获得成长反馈"
+        ]
+      }
+    ]
+  },
+  "entities": [
+    {
+      "name": "HabitGoal",
+      "table": "habit_goals",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "targetTime",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "CheckIn",
+      "table": "check_ins",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "wakeTime",
+          "type": "string"
+        },
+        {
+          "name": "checkInDate",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "Achievement",
+      "table": "achievements",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "thresholdDays",
+          "type": "number"
+        }
+      ]
+    }
+  ],
+  "apis": [
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/morning-habit/goals",
+      "summary": "习惯目标",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/morning-habit/achievements",
+      "summary": "成就",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/morning-habit/insights",
+      "summary": "成长洞察",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/biz/morning-habit/check-ins",
+      "summary": "早起打卡",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/morning-habit/stats",
+      "summary": "统计数据",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/messages",
+      "summary": "消息",
+      "auth": true,
+      "module": "messages"
+    }
+  ],
+  "ai": {
+    "capabilities": [],
+    "quickCommands": [],
+    "systemPrompt": "你是「晨启生活科技有限公司」旗下应用「早起打卡」的生活方式助手。产品定位：帮助用户建立早起习惯、记录成长轨迹。主职责：解读打卡数据、推荐习惯目标与成长洞察；不做医疗诊断。",
+    "mode": "none",
+    "llmEnabled": false
+  },
+  "permissions": [
+    {
+      "name": "ohos.permission.INTERNET",
+      "reason": "同步习惯目标、打卡与成长数据",
+      "when": "inuse",
+      "scene": "打卡与数据同步"
+    }
+  ],
+  "harmonyos": {
+    "features": []
+  },
+  "store": {
+    "category": "生活",
+    "oneLiner": "体能图志 — 用图表看见你的体能成长，智慧运动记录与可视化分析工具",
+    "fullDescription": "体能图志帮助你先编排一周训练底图（每天的运动类型和目标分钟），再记录实际训练，用折线、热力图、配比条和本周对照上看清变化。支持编辑删除、热力图补记、周图志报告与寄语。数据默认仅存本机，无支付、无生成式对话。",
+    "keywords": [
+      "早起",
+      "打卡",
+      "习惯",
+      "自律",
+      "鸿蒙"
+    ],
+    "privacySummary": {
+      "collect": [
+        "昵称（可选）",
+        "手动训练记录",
+        "周训图志与体能档案"
+      ],
+      "purpose": "在本机提供训练规划、图志对照与成长记录",
+      "thirdParties": []
+    },
+    "demoAccount": {
+      "username": "auditor@tineng-tuzhi.local",
+      "passwordNote": "仅写入 store/demo-account.md"
+    },
+    "screenshotPlan": [
+      {
+        "page": "home",
+        "caption": "早安与大数字早起时间"
+      },
+      {
+        "page": "checkin",
+        "caption": "一键打卡"
+      },
+      {
+        "page": "growth",
+        "caption": "成长趋势与成就"
+      }
+    ],
+    "incentiveHooks": [],
+    "legalOperator": "魏文波"
+  },
+  "access": {
+    "mode": "open_optional",
+    "features": {
+      "register": true,
+      "guestBrowse": true,
+      "guestWrite": false
+    },
+    "gateActions": [
+      "check_in",
+      "sync_records"
+    ],
+    "onPrivacyRefuse": "browse_basic",
+    "loginProviders": [
+      "password"
+    ]
+  },
+  "brand": {
+    "primary": "#FF6B35",
+    "primaryDeep": "#1A2332",
+    "deep": "#1A2332",
+    "accent": "#FF9F76",
+    "tone": "premium-lifestyle",
+    "stylePack": "premium-business",
+    "workbenchId": "catalog-tool",
+    "layoutVariant": "B",
+    "productVisualType": "ops-tool",
+    "visualAssets": [
+      { "id": "hero_workout", "file": "hero_workout.png", "usage": "首页 Hero 运动氛围" },
+      { "id": "ambient_chart", "file": "ambient_chart.png", "usage": "首页计划条带 / 成长页材质" },
+      { "id": "atlas_warm", "file": "atlas_warm.png", "usage": "图鉴热身封面" },
+      { "id": "atlas_stretch", "file": "atlas_stretch.png", "usage": "图鉴拉伸封面" },
+      { "id": "atlas_strength", "file": "atlas_strength.png", "usage": "图鉴力量封面" },
+      { "id": "atlas_balance", "file": "atlas_balance.png", "usage": "图鉴平衡封面" },
+      { "id": "atlas_relax", "file": "atlas_relax.png", "usage": "图鉴放松封面" }
+    ],
+    "visualDirection": {
+      "archetype": "fitness-data-viz",
+      "density": "airy",
+      "material": "soft-elevation",
+      "imagery": "workout-hero-chart",
+      "accent": "energy-orange",
+      "primaryJob": "3 秒内记录今日运动并查看趋势",
+      "notes": "活力橙+深空蓝；折线热力图为核心差异化"
+    },
+    "logo": {
+      "brandAnchor": "体",
+      "glyphStrategy": "semantic-fusion",
+      "customLock": true,
+      "generator": "agent-svg",
+      "renderScript": "store/logo/render_logo.mjs",
+      "concept": "上升数据曲线 + 跑者轮廓，体能可视化",
+      "foregroundFile": "store/logo/foreground.png",
+      "backgroundFile": "store/logo/background.png",
+      "previewFile": "store/logo/preview-1024.png",
+      "agcFile": "store/logo/agc-216.png",
+      "symbolFile": "store/logo/symbol.svg"
+    }
+  }
+}

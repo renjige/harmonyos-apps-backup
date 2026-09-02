@@ -1,0 +1,8 @@
+{
+  "string": [
+    { "name": "module_desc", "value": "儿童绘坊 — 创意绘画启蒙" },
+    { "name": "EntryAbility_desc", "value": "3到8岁儿童涂鸦填色与创意工坊" },
+    { "name": "EntryAbility_label", "value": "儿童绘坊" },
+    { "name": "internet_reason", "value": "用于连接业务服务与AI分析接口" }
+  ]
+}

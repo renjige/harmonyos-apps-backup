@@ -1,0 +1,8 @@
+{
+  "string": [
+    { "name": "module_desc", "value": "生活札 — 本地生活管理与经验沉淀" },
+    { "name": "EntryAbility_desc", "value": "生活札记、经验锦囊、习惯目标与时光相册" },
+    { "name": "EntryAbility_label", "value": "生活札" },
+    { "name": "reminder_reason", "value": "用于待办与纪念日到期提醒" }
+  ]
+}
