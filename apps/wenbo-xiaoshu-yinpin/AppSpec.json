@@ -1,0 +1,389 @@
+{
+  "specVersion": "1.0.0",
+  "generatedAt": "2026-08-24T01:42:59.783Z",
+  "requestId": "req_1787535779742",
+  "industryPack": "summer-drinks",
+  "identity": {
+    "company": "魏文波",
+    "companyPinyin": "wenbo",
+    "appName": "消暑饮品",
+    "appPinyin": "xiaoshu-yinpin",
+    "bundleId": "com.wenbo.xiaoshuyinpin",
+    "version": "1.0.0"
+  },
+  "positioning": {
+    "tagline": "按体感温度与时段智慧推荐自制消暑饮，看配方、收藏、记下试做",
+    "coreUsers": [
+      {
+        "role": "夏天想在家自制清凉饮的普通人",
+        "ageRange": "18-45",
+        "scenario": "午后燥热、晚饭后油腻、早晨想喝一杯淡茶",
+        "need": "马上知道此刻该喝哪一杯，并能按步骤做出来"
+      }
+    ],
+    "painPoints": [
+      "热的时候只会点外卖甜饮，家里其实有材料",
+      "菜谱 App 以饭菜为主，找不到按天气和时段分的饮品",
+      "收藏夹和试做过的杯子散落在备忘录里"
+    ],
+    "differentiation": "按体感温度与时段智慧推荐自制消暑饮，看配方、收藏、记下试做"
+  },
+  "modules": {
+    "pages": [
+      {
+        "id": "home",
+        "title": "首页",
+        "route": "pages/HomePage",
+        "features": [
+          "体感温度",
+          "智慧推荐",
+          "今日消暑",
+          "分类入口"
+        ],
+        "tab": true
+      },
+      {
+        "id": "library",
+        "title": "饮品库",
+        "route": "pages/LibraryPage",
+        "features": [
+          "搜索",
+          "筛选",
+          "双列卡片"
+        ],
+        "tab": true
+      },
+      {
+        "id": "match",
+        "title": "配饮",
+        "route": "pages/AIAssistantPage",
+        "features": [
+          "问卷",
+          "模板报告"
+        ],
+        "tab": true
+      },
+      {
+        "id": "mine",
+        "title": "我的",
+        "route": "pages/MinePage",
+        "features": [
+          "收藏",
+          "试做",
+          "历史",
+          "设置"
+        ],
+        "tab": true
+      }
+    ],
+    "coreFlows": [
+      {
+        "name": "智慧配饮闭环",
+        "steps": [
+          "调体感温度",
+          "看推荐",
+          "打开详情",
+          "收藏或记下试做"
+        ]
+      },
+      {
+        "name": "饮品库闭环",
+        "steps": [
+          "搜索或分类",
+          "打开详情",
+          "按步骤制作"
+        ]
+      }
+    ]
+  },
+  "entities": [
+    {
+      "name": "Drink",
+      "table": "sd_drinks",
+      "fields": [
+        "id",
+        "title",
+        "category",
+        "tempMin",
+        "tempMax",
+        "slot",
+        "coverKey"
+      ]
+    },
+    {
+      "name": "DrinkTip",
+      "table": "sd_tips",
+      "fields": [
+        "id",
+        "title",
+        "kind",
+        "body",
+        "coverKey"
+      ]
+    },
+    {
+      "name": "DrinkTry",
+      "table": "sd_tries",
+      "fields": [
+        "id",
+        "userId",
+        "drinkId",
+        "tryDate"
+      ]
+    },
+    {
+      "name": "DrinkFavorite",
+      "table": "sd_favorites",
+      "fields": [
+        "id",
+        "userId",
+        "targetId"
+      ]
+    }
+  ],
+  "apis": [
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/summer-drinks/drinks",
+      "summary": "饮品列表",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/summer-drinks/drinks/:id",
+      "summary": "饮品详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/summer-drinks/tips",
+      "summary": "贴士列表",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/summer-drinks/tips/:id",
+      "summary": "贴士详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/summer-drinks/tries",
+      "summary": "我的试做",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/biz/summer-drinks/tries",
+      "summary": "记下试做",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/biz/summer-drinks/tries/:id",
+      "summary": "删除试做",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/summer-drinks/favorites",
+      "summary": "我的收藏",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/biz/summer-drinks/favorites",
+      "summary": "收藏",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/biz/summer-drinks/favorites/:id",
+      "summary": "取消收藏",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/summer-drinks/kpis",
+      "summary": "KPI",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/messages",
+      "summary": "消息",
+      "auth": false,
+      "module": "messages"
+    }
+  ],
+  "ai": {
+    "capabilities": [],
+    "quickCommands": [],
+    "systemPrompt": "你是「魏文波」旗下应用「消暑饮品」的助手。产品定位：按体感温度与时段智慧推荐自制消暑饮，看配方、收藏、记下试做。主职责：按体感、时段、忌口匹配冰饮/果茶/奶昔/冰沙/凉茶，说明食材、步骤、冰量与甜度。不宣称治疗疾病；不确定时建议以自身耐受为准。禁止扮演外卖、支付或生成式闲聊产品。",
+    "mode": "none",
+    "llmEnabled": false
+  },
+  "permissions": [
+    {
+      "name": "ohos.permission.INTERNET",
+      "reason": "拉取消暑饮品栏目与同步本人收藏、试做记录",
+      "when": "inuse",
+      "scene": "浏览饮品库与保存记录"
+    }
+  ],
+  "harmonyos": {
+    "features": []
+  },
+  "store": {
+    "category": "生活",
+    "legalOperator": "魏文波",
+    "oneLiner": "消暑饮品 — 按体感温度与时段智慧推荐自制消暑饮，看配方、收藏、记下试做",
+    "fullDescription": "消暑饮品是一款夏日自制清凉饮推荐工具。按体感温度与一天中的时段，智慧推荐冰饮、果茶、奶昔、冰沙或凉茶；每款饮品含摄影封面、食材、步骤、功效、冰量与甜度。游客可浏览与搜索；登录后可收藏、记下试做。不申请定位，不提供支付与外卖。不含生成式对话。",
+    "keywords": [
+      "消暑",
+      "冰饮",
+      "果茶",
+      "自制饮品",
+      "凉茶",
+      "鸿蒙"
+    ],
+    "privacySummary": {
+      "collect": [
+        "可选账号信息",
+        "用户主动收藏与试做记录",
+        "本地浏览历史"
+      ],
+      "purpose": "提供饮品浏览、收藏与试做记录同步",
+      "thirdParties": []
+    },
+    "demoAccount": {
+      "username": "auditor@wenbo.local",
+      "passwordNote": "仅写入 store/demo-account.md"
+    },
+    "screenshotPlan": [
+      {
+        "page": "home",
+        "caption": "体感温度与智慧推荐"
+      },
+      {
+        "page": "detail",
+        "caption": "饮品详情、食材与步骤"
+      },
+      {
+        "page": "library",
+        "caption": "饮品库双列卡片"
+      },
+      {
+        "page": "match",
+        "caption": "配饮问卷与匹配报告"
+      },
+      {
+        "page": "mine",
+        "caption": "收藏与设置隐私"
+      }
+    ],
+    "incentiveHooks": [
+      "体感配饮",
+      "今日消暑",
+      "试做记录"
+    ]
+  },
+  "access": {
+    "mode": "open_optional",
+    "features": {
+      "register": true,
+      "guestBrowse": true,
+      "guestWrite": false
+    },
+    "gateActions": [
+      "add_favorite",
+      "log_try",
+      "sync_records"
+    ],
+    "onPrivacyRefuse": "browse_basic",
+    "loginProviders": [
+      "password"
+    ]
+  },
+  "admin": {
+    "featureModules": [
+      "overview",
+      "appUsers",
+      "sdDrinks",
+      "sdTips",
+      "sdTries",
+      "sdFavorites",
+      "messages",
+      "kpis",
+      "ai"
+    ]
+  },
+  "brand": {
+    "primary": "#4A9EFF",
+    "primaryDeep": "#0B3A48",
+    "deep": "#0B3A48",
+    "accent": "#FF8A65",
+    "tone": "warm-minimal",
+    "stylePack": "custom",
+    "workbenchId": "catalog-tool",
+    "layoutVariant": "B",
+    "productVisualType": "content-commerce",
+    "visualDirection": "冰蓝#4A9EFF + 薄荷#7BC8A4 + 珊瑚强调；浅灰蓝底；饮品摄影大图；温暖极简，非玻璃科技风",
+    "logo": {
+      "brandAnchor": "消",
+      "glyphStrategy": "semantic-fusion",
+      "customLock": true,
+      "generator": "custom",
+      "renderScript": "store/logo/render_logo.mjs",
+      "concept": "深海青底近白玻璃杯与薄荷叶，表达消暑",
+      "style": "flat-premium",
+      "foregroundFile": "store/logo/foreground.png",
+      "backgroundFile": "store/logo/background.png",
+      "previewFile": "store/logo/preview-1024.png",
+      "agcFile": "store/logo/agc-216.png",
+      "symbolFile": "store/logo/symbol.svg",
+      "horizontalFile": "store/logo/logo-horizontal.svg"
+    },
+    "visualAssets": [
+      { "key": "drink_suanmei", "file": "app/entry/src/main/resources/base/media/drink_suanmei.png", "role": "drinkCover" },
+      { "key": "drink_lemon_tea", "file": "app/entry/src/main/resources/base/media/drink_lemon_tea.png", "role": "drinkCover" },
+      { "key": "drink_lime_soda", "file": "app/entry/src/main/resources/base/media/drink_lime_soda.png", "role": "drinkCover" },
+      { "key": "drink_yangmei", "file": "app/entry/src/main/resources/base/media/drink_yangmei.png", "role": "drinkCover" },
+      { "key": "drink_lvdou", "file": "app/entry/src/main/resources/base/media/drink_lvdou.png", "role": "drinkCover" },
+      { "key": "drink_passion", "file": "app/entry/src/main/resources/base/media/drink_passion.png", "role": "drinkCover" },
+      { "key": "drink_peach_oolong", "file": "app/entry/src/main/resources/base/media/drink_peach_oolong.png", "role": "drinkCover" },
+      { "key": "drink_watermelon_mint", "file": "app/entry/src/main/resources/base/media/drink_watermelon_mint.png", "role": "drinkCover" },
+      { "key": "drink_lemon_honey", "file": "app/entry/src/main/resources/base/media/drink_lemon_honey.png", "role": "drinkCover" },
+      { "key": "drink_grape_tea", "file": "app/entry/src/main/resources/base/media/drink_grape_tea.png", "role": "drinkCover" },
+      { "key": "drink_banana_shake", "file": "app/entry/src/main/resources/base/media/drink_banana_shake.png", "role": "drinkCover" },
+      { "key": "drink_mango_coco", "file": "app/entry/src/main/resources/base/media/drink_mango_coco.png", "role": "drinkCover" },
+      { "key": "drink_strawberry", "file": "app/entry/src/main/resources/base/media/drink_strawberry.png", "role": "drinkCover" },
+      { "key": "drink_taro", "file": "app/entry/src/main/resources/base/media/drink_taro.png", "role": "drinkCover" },
+      { "key": "drink_wm_slush", "file": "app/entry/src/main/resources/base/media/drink_wm_slush.png", "role": "drinkCover" },
+      { "key": "drink_mango_slush", "file": "app/entry/src/main/resources/base/media/drink_mango_slush.png", "role": "drinkCover" },
+      { "key": "drink_blueberry_ice", "file": "app/entry/src/main/resources/base/media/drink_blueberry_ice.png", "role": "drinkCover" },
+      { "key": "drink_mint_slush", "file": "app/entry/src/main/resources/base/media/drink_mint_slush.png", "role": "drinkCover" },
+      { "key": "drink_chrysanthemum", "file": "app/entry/src/main/resources/base/media/drink_chrysanthemum.png", "role": "drinkCover" },
+      { "key": "drink_mint_herbal", "file": "app/entry/src/main/resources/base/media/drink_mint_herbal.png", "role": "drinkCover" },
+      { "key": "drink_lotus", "file": "app/entry/src/main/resources/base/media/drink_lotus.png", "role": "drinkCover" },
+      { "key": "drink_chenpi", "file": "app/entry/src/main/resources/base/media/drink_chenpi.png", "role": "drinkCover" },
+      { "key": "tip_hot_water", "file": "app/entry/src/main/resources/base/media/tip_hot_water.png", "role": "tipCover" },
+      { "key": "tip_afternoon", "file": "app/entry/src/main/resources/base/media/tip_afternoon.png", "role": "tipCover" },
+      { "key": "tip_evening", "file": "app/entry/src/main/resources/base/media/tip_evening.png", "role": "tipCover" },
+      { "key": "tip_humid", "file": "app/entry/src/main/resources/base/media/tip_humid.png", "role": "tipCover" },
+      { "key": "tip_dry", "file": "app/entry/src/main/resources/base/media/tip_dry.png", "role": "tipCover" },
+      { "key": "tip_tools", "file": "app/entry/src/main/resources/base/media/tip_tools.png", "role": "tipCover" }
+    ]
+  }
+}

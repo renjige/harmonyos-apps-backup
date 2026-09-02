@@ -1,0 +1,8 @@
+{
+  "string": [
+    { "name": "module_desc", "value": "生活备笺主模块" },
+    { "name": "EntryAbility_desc", "value": "把生活琐事轻轻记下来" },
+    { "name": "EntryAbility_label", "value": "生活备笺" },
+    { "name": "internet_reason", "value": "用于拉取分类说明、今日问候与机构通知，以及可选同步备笺" }
+  ]
+}

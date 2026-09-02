@@ -1,0 +1,305 @@
+{
+  "specVersion": "1.0.0",
+  "generatedAt": "2026-08-25T02:59:21.769Z",
+  "requestId": "req_1787626761733",
+  "industryPack": "book-roam",
+  "identity": {
+    "company": "魏文波",
+    "companyPinyin": "wenbo",
+    "appName": "书页漫游",
+    "appPinyin": "shuyemanyou",
+    "bundleId": "com.wenbo.shuyemanyou",
+    "version": "1.0.0"
+  },
+  "positioning": {
+    "tagline": "在书页间漫游，发现属于你的阅读风景。",
+    "coreUsers": [
+      {
+        "role": "城市白领与知识工作者",
+        "ageRange": "25-45",
+        "scenario": "通勤、睡前、周末午后想读一段高质量文字",
+        "need": "个性化阅读节奏与品味，不被信息茧房束缚"
+      }
+    ],
+    "painPoints": [
+      "资讯流太杂，难以沉淀",
+      "书单很多，却缺少每日打开的理由",
+      "读过的内容散落各处，看不见自己的阅读轨迹"
+    ],
+    "differentiation": "在书页间漫游，发现属于你的阅读风景。"
+  },
+  "modules": {
+    "pages": [
+      {
+        "id": "home",
+        "title": "首页",
+        "route": "pages/HomePage",
+        "features": [
+          "每日一书",
+          "收藏",
+          "稍后读",
+          "标记读完"
+        ],
+        "tab": true
+      },
+      {
+        "id": "trail",
+        "title": "轨迹",
+        "route": "pages/TrailPage",
+        "features": [
+          "时间线",
+          "关键词云",
+          "阅读统计",
+          "足迹分享"
+        ],
+        "tab": true
+      },
+      {
+        "id": "lists",
+        "title": "书单",
+        "route": "pages/ListsPage",
+        "features": [
+          "主题书单",
+          "书籍详情",
+          "推荐理由"
+        ],
+        "tab": true
+      },
+      {
+        "id": "notes",
+        "title": "笔记",
+        "route": "pages/NotesPage",
+        "features": [
+          "私人笔记",
+          "节选关联",
+          "设置与隐私"
+        ],
+        "tab": true
+      }
+    ],
+    "coreFlows": [
+      {
+        "name": "每日阅读闭环",
+        "steps": [
+          "打开今日节选",
+          "收藏或标记读完",
+          "轨迹更新",
+          "添加私人笔记"
+        ]
+      }
+    ]
+  },
+  "entities": [
+    {
+      "name": "Excerpt",
+      "table": "excerpts",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "bookTitle",
+          "type": "string"
+        },
+        {
+          "name": "author",
+          "type": "string"
+        },
+        {
+          "name": "body",
+          "type": "string"
+        },
+        {
+          "name": "theme",
+          "type": "string"
+        },
+        {
+          "name": "coverKey",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "BookList",
+      "table": "lists",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "month",
+          "type": "string"
+        },
+        {
+          "name": "booksJson",
+          "type": "string"
+        }
+      ]
+    }
+  ],
+  "apis": [
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/book-roam/excerpts",
+      "summary": "每日节选",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/book-roam/excerpts/:id",
+      "summary": "节选详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/book-roam/lists",
+      "summary": "主题书单",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/book-roam/lists/:id",
+      "summary": "书单详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/book-roam/covers",
+      "summary": "封面摄影",
+      "auth": false,
+      "module": "biz"
+    }
+  ],
+  "ai": {
+    "capabilities": [],
+    "quickCommands": [],
+    "systemPrompt": "你是「魏文波」旗下应用「书页漫游」的内容助手。产品定位：在书页间漫游，发现属于你的阅读风景。主职责：解读节选主题、书单推荐理由与阅读轨迹统计口径。禁止自称人工智能，禁止生成式对话。",
+    "mode": "none",
+    "llmEnabled": false
+  },
+  "permissions": [
+    {
+      "name": "ohos.permission.INTERNET",
+      "reason": "拉取每日节选与主题书单内容",
+      "when": "inuse",
+      "scene": "打开应用浏览栏目时"
+    }
+  ],
+  "harmonyos": {
+    "features": []
+  },
+  "store": {
+    "category": "实用工具",
+    "legalOperator": "魏文波",
+    "oneLiner": "书页漫游 — 在书页间漫游，发现属于你的阅读风景。",
+    "fullDescription": "书页漫游是一款个性化阅读推荐与阅读轨迹记录应用。每日精选一段优质书籍节选，提供收藏、稍后读与标记读完；用时间线与关键词云可视化你的阅读足迹；编辑策划的主题书单带你深度探索文学、历史与哲思；私人笔记仅保存在本机。完全免费，无支付，无社交，无 AI 对话。",
+    "keywords": [
+      "阅读",
+      "书单",
+      "节选",
+      "笔记",
+      "轨迹",
+      "鸿蒙"
+    ],
+    "privacySummary": {
+      "collect": [
+        "本机收藏/读完/稍后读/笔记与阅读轨迹"
+      ],
+      "purpose": "提供每日阅读、轨迹统计与本机笔记",
+      "thirdParties": []
+    },
+    "demoAccount": {
+      "username": "auditor@appth51.local",
+      "passwordNote": "本应用无需登录即可使用全部功能，审核直接进入首页"
+    },
+    "screenshotPlan": [
+      {
+        "page": "home",
+        "caption": "每日一书"
+      },
+      {
+        "page": "trail",
+        "caption": "阅读轨迹"
+      },
+      {
+        "page": "lists",
+        "caption": "主题书单"
+      },
+      {
+        "page": "notes",
+        "caption": "阅读笔记"
+      }
+    ],
+    "incentiveHooks": []
+  },
+  "access": {
+    "mode": "open_optional",
+    "features": {
+      "register": true,
+      "guestBrowse": true,
+      "guestWrite": true
+    },
+    "gateActions": [],
+    "onPrivacyRefuse": "browse_basic",
+    "loginProviders": [
+      "password"
+    ]
+  },
+  "admin": {
+    "featureModules": [
+      "overview",
+      "appUsers",
+      "brExcerpts",
+      "brLists",
+      "brCovers",
+      "messages",
+      "kpis"
+    ]
+  },
+  "brand": {
+    "primary": "#8B6B4D",
+    "primaryDeep": "#2D4A3E",
+    "deep": "#2D4A3E",
+    "accent": "#C0392B",
+    "tone": "soft-editorial",
+    "stylePack": "soft-editorial",
+    "workbenchId": "catalog-tool",
+    "layoutVariant": "A",
+    "productVisualType": "content-commerce",
+    "visualDirection": {
+      "archetype": "literary-reading-journey",
+      "density": "airy",
+      "material": "warm-paper-wood",
+      "imagery": "open-pages-window-reading",
+      "accent": "brick-red-warm-brown",
+      "primaryJob": "3 秒内读到今天的一段节选",
+      "notes": "暖棕 #8B6B4D + 米白 #D4C5A9 + 砖红强调；禁止 AI 字样"
+    },
+    "visualAssets": [
+      { "id": "hero_home", "file": "hero_home.png", "usage": "首页 Hero 氛围" },
+      { "id": "banner_city", "file": "banner_city.png", "usage": "城市漫游书单 Banner" },
+      { "id": "banner_winter", "file": "banner_winter.png", "usage": "冬日书单 Banner" },
+      { "id": "cover_literature", "file": "cover_literature.png", "usage": "文学节选/书籍封面" },
+      { "id": "cover_philosophy", "file": "cover_philosophy.png", "usage": "哲思节选/书籍封面" },
+      { "id": "cover_history", "file": "cover_history.png", "usage": "历史节选/书籍封面" }
+    ],
+    "logo": {
+      "brandAnchor": "书",
+      "glyphStrategy": "semantic-fusion",
+      "customLock": true,
+      "concept": "抽象书页 + 流动轨迹曲线"
+    }
+  }
+}

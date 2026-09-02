@@ -1,0 +1,22 @@
+{
+  "forms": [
+    {
+      "name": "followTeamCard",
+      "displayName": "关注球队状态",
+      "description": "关注球队后显示队名与近期状态；未关注时提示尚未关注",
+      "src": "./ets/widget/pages/FollowTeamCard.ets",
+      "uiSyntax": "arkts",
+      "window": {
+        "designWidth": 720,
+        "autoDesignWidth": true
+      },
+      "colorMode": "auto",
+      "isDefault": true,
+      "updateEnabled": true,
+      "scheduledUpdateTime": "08:00",
+      "updateDuration": 1,
+      "defaultDimension": "2*2",
+      "supportDimensions": ["2*2", "2*4"]
+    }
+  ]
+}

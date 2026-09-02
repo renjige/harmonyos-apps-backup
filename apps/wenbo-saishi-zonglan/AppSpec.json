@@ -1,0 +1,378 @@
+{
+  "specVersion": "1.0.0",
+  "generatedAt": "2026-08-20T04:01:28.887Z",
+  "requestId": "req_1787198488854",
+  "industryPack": "sports-events",
+  "identity": {
+    "company": "魏文波",
+    "companyPinyin": "wenbo",
+    "appName": "赛事纵览",
+    "appPinyin": "saishi-zonglan",
+    "bundleId": "com.wenbo.saishizonglan",
+    "version": "1.0.0"
+  },
+  "positioning": {
+    "tagline": "专业体育赛事信息管理工具，帮助用户查看比赛安排、关注赛事、设置智慧提醒、查阅比赛结果",
+    "coreUsers": [
+      {
+        "role": "巡检员",
+        "ageRange": "25-45",
+        "scenario": "工地现场移动巡查",
+        "need": "快速上报与拍照取证"
+      },
+      {
+        "role": "项目经理",
+        "scenario": "办公室与现场协同",
+        "need": "隐患跟踪与数据看板"
+      }
+    ],
+    "painPoints": [
+      "纸质记录难追溯",
+      "整改闭环慢",
+      "周报汇总耗时"
+    ],
+    "differentiation": "专业体育赛事信息管理工具，帮助用户查看比赛安排、关注赛事、设置智慧提醒、查阅比赛结果"
+  },
+  "modules": {
+    "pages": [
+      {
+        "id": "home",
+        "title": "首页",
+        "route": "pages/Home",
+        "features": [
+          "Brand Hero",
+          "KPI",
+          "快捷入口",
+          "AI入口"
+        ],
+        "tab": true
+      },
+      {
+        "id": "core",
+        "title": "巡检",
+        "route": "pages/InspectionList",
+        "features": [
+          "巡检列表",
+          "新建",
+          "隐患整改"
+        ],
+        "tab": true
+      },
+      {
+        "id": "ai",
+        "title": "AI助手",
+        "route": "pages/AIAssistant",
+        "features": [
+          "问答",
+          "分析",
+          "日报生成"
+        ],
+        "tab": true
+      },
+      {
+        "id": "dashboard",
+        "title": "看板",
+        "route": "pages/Dashboard",
+        "features": [
+          "完成率",
+          "风险分布",
+          "逾期预警"
+        ],
+        "tab": true
+      },
+      {
+        "id": "messages",
+        "title": "消息",
+        "route": "pages/Messages",
+        "features": [
+          "整改提醒",
+          "已读"
+        ],
+        "tab": true
+      },
+      {
+        "id": "mine",
+        "title": "我的",
+        "route": "pages/Mine",
+        "features": [
+          "资料",
+          "设置",
+          "退出"
+        ],
+        "tab": true
+      }
+    ],
+    "coreFlows": [
+      {
+        "name": "巡检上报",
+        "steps": [
+          "登录",
+          "新建巡检",
+          "填写发现",
+          "提交",
+          "列表可见"
+        ]
+      },
+      {
+        "name": "隐患整改",
+        "steps": [
+          "打开巡检详情",
+          "创建隐患",
+          "更新状态",
+          "看板变化"
+        ]
+      }
+    ]
+  },
+  "entities": [
+    {
+      "name": "Project",
+      "table": "projects",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true,
+          "unique": true
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "code",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "status",
+          "type": "enum",
+          "enumValues": [
+            "active",
+            "archived"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Inspection",
+      "table": "inspections",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true,
+          "unique": true
+        },
+        {
+          "name": "projectId",
+          "type": "uuid",
+          "required": true,
+          "ref": "Project"
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "status",
+          "type": "enum",
+          "enumValues": [
+            "draft",
+            "submitted",
+            "reviewing",
+            "rectifying",
+            "closed"
+          ]
+        },
+        {
+          "name": "severity",
+          "type": "enum",
+          "enumValues": [
+            "low",
+            "medium",
+            "high",
+            "critical"
+          ]
+        }
+      ]
+    }
+  ],
+  "apis": [
+    {
+      "method": "POST",
+      "path": "/api/v1/auth/login",
+      "summary": "登录",
+      "auth": false,
+      "module": "auth"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/inspections",
+      "summary": "巡检列表",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/biz/inspections",
+      "summary": "新建巡检",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/ai/chat",
+      "summary": "AI问答",
+      "auth": true,
+      "module": "ai"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/ai/analyze",
+      "summary": "AI分析",
+      "auth": true,
+      "module": "ai"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/ai/generate",
+      "summary": "AI生成",
+      "auth": true,
+      "module": "ai"
+    }
+  ],
+  "ai": {
+    "capabilities": [
+      {
+        "id": "chat",
+        "scene": "巡检规范问答",
+        "closedLoop": true
+      },
+      {
+        "id": "analyze",
+        "scene": "隐患分布分析",
+        "closedLoop": true
+      },
+      {
+        "id": "generate",
+        "scene": "巡检日报生成",
+        "closedLoop": true
+      }
+    ],
+    "quickCommands": [
+      "分析本周隐患分布",
+      "生成今日巡检日报",
+      "高风险项整改建议"
+    ],
+    "systemPrompt": "你是建筑工程安全与质量巡检助手。"
+  },
+  "permissions": [
+    {
+      "name": "ohos.permission.CAMERA",
+      "reason": "用于现场巡检拍照取证与隐患识别",
+      "when": "inuse",
+      "scene": "新建巡检记录时拍摄现场照片"
+    }
+  ],
+  "harmonyos": {
+    "features": [
+      {
+        "type": "huaweiAccount",
+        "scene": "一键登录"
+      },
+      {
+        "type": "formCard",
+        "scene": "待整改隐患桌面卡片"
+      }
+    ]
+  },
+  "store": {
+    "category": "商务",
+    "oneLiner": "赛事纵览 — 专业体育赛事信息管理工具，帮助用户查看比赛安排、关注赛事、设置智慧",
+    "fullDescription": "元象巡检面向建筑施工企业，提供现场巡检上报、拍照取证、隐患整改跟踪与数据看板。内置 AI 助手，可分析隐患分布并自动生成巡检日报，帮助项目团队缩短闭环周期。应用采用 HarmonyOS NEXT 原生体验，遵循最小权限与隐私合规要求，适合工程管理人员在现场与办公室高效协同。支持消息提醒与整改临期通知，让安全质量问题可追溯、可复盘、可闭环，持续提升项目管理效率与现场执行力。数据看板直观呈现完成率与风险分布，助力管理者快速决策。",
+    "keywords": [
+      "工程巡检",
+      "建筑安全",
+      "隐患整改",
+      "AI助手",
+      "鸿蒙"
+    ],
+    "privacySummary": {
+      "collect": [
+        "账号信息",
+        "巡检业务数据",
+        "可选位置与现场照片"
+      ],
+      "purpose": "完成巡检业务与安全保障",
+      "thirdParties": [
+        "云端大模型服务（经自有网关）"
+      ]
+    },
+    "demoAccount": {
+      "username": "auditor@wenbo.local",
+      "passwordNote": "仅写入 store/demo-account.md，禁止打进客户端"
+    },
+    "screenshotPlan": [
+      {
+        "page": "home",
+        "caption": "首页指标与入口"
+      },
+      {
+        "page": "core",
+        "caption": "巡检列表与详情"
+      },
+      {
+        "page": "ai",
+        "caption": "AI 日报生成"
+      },
+      {
+        "page": "dashboard",
+        "caption": "隐患看板"
+      },
+      {
+        "page": "mine",
+        "caption": "设置与隐私入口"
+      }
+    ],
+    "incentiveHooks": [
+      "华为账号登录",
+      "服务卡片展示待整改",
+      "AI 效率提升话术"
+    ],
+    "legalOperator": "魏文波"
+  },
+  "access": {
+    "mode": "login_required",
+    "features": {
+      "register": true,
+      "guestBrowse": false,
+      "guestWrite": false
+    },
+    "gateActions": [
+      "create",
+      "submit",
+      "ai_chat"
+    ],
+    "onPrivacyRefuse": "exit",
+    "loginProviders": [
+      "password"
+    ]
+  },
+  "brand": {
+    "primary": "#1677FF",
+    "primaryDeep": "#0F172A",
+    "accent": "#7C3AED",
+    "tone": "industrial",
+    "stylePack": "industrial-dark",
+    "logo": {
+      "brandAnchor": "赛",
+      "glyphStrategy": "abstract",
+      "customLock": true,
+      "generator": "agent-svg",
+      "renderScript": "store/logo/render_logo.mjs"
+    }
+  }
+}

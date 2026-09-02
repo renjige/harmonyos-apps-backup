@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 360" role="img" aria-labelledby="title">
+  <title id="title">��</title>
+  <rect width="360" height="360" fill="#16110D"/>
+  <g transform="translate(24 24) scale(0.305)">
+    <path id="star-anchor" d="M512 244 L581.3 442.7 L780 512 L581.3 581.3 L512 780 L442.7 581.3 L244 512 L442.7 442.7 Z" fill="#F4E6C3"/>
+    <path id="aura" d="M757 286 A 320 320 0 0 1 738 748" fill="none" stroke="#F4E6C3" stroke-width="36" stroke-linecap="round"/>
+  </g>
+  <text x="400" y="230" font-family="Microsoft YaHei, PingFang SC, Noto Sans SC, sans-serif" font-size="112" font-weight="600" fill="#16110D">��</text>
+</svg>

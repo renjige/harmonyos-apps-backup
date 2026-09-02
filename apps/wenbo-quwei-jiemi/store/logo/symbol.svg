@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" role="img" aria-labelledby="title">
+  <title id="title">�s�</title>
+  <rect width="1024" height="1024" fill="#007AFF"/>
+  <path fill="none" stroke="#FFFFFF" stroke-width="52" stroke-linecap="round"
+    d="M512 200 A220 220 0 1 1 512 640"/>
+  <circle cx="600" cy="620" r="36" fill="#FFFFFF"/>
+  <rect x="494" y="620" width="36" height="90" rx="18" fill="#FFFFFF"/>
+  <circle cx="722" cy="360" r="78" fill="#FF6B35"/>
+  <rect x="710" y="430" width="24" height="38" rx="8" fill="#FF6B35"/>
+</svg>

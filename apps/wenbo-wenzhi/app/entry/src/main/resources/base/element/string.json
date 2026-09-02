@@ -1,0 +1,8 @@
+{
+  "string": [
+    { "name": "module_desc", "value": "问知主模块：智慧问答、知识库与每日新知" },
+    { "name": "EntryAbility_desc", "value": "问知：提问求知与知识整理入口" },
+    { "name": "EntryAbility_label", "value": "问知" },
+    { "name": "internet_reason", "value": "用于拉取解答库、每日新知、消息，以及可选的账号登录与收藏同步" }
+  ]
+}

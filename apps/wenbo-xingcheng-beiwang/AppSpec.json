@@ -1,0 +1,375 @@
+{
+  "specVersion": "1.0.0",
+  "generatedAt": "2026-08-21T01:09:05.102Z",
+  "requestId": "req_1787274545058",
+  "industryPack": "trip-memo",
+  "identity": {
+    "company": "魏文波",
+    "companyPinyin": "wenbo",
+    "appName": "行程备忘",
+    "appPinyin": "xingcheng-beiwang",
+    "bundleId": "com.wenbo.xingchengbeiwang",
+    "version": "1.0.0"
+  },
+  "positioning": {
+    "tagline": "用清晰时间线记录旅行、出行与日常安排，一眼看见什么时候做什么",
+    "coreUsers": [
+      {
+        "role": "需要记录安排的个人用户",
+        "ageRange": "18-50",
+        "scenario": "出差、短途、会议、约会、考试或预约前快速记下时间与地点",
+        "need": "打开就看见今天要做什么，两步内记下新安排"
+      }
+    ],
+    "painPoints": [
+      "安排散落在备忘录和聊天记录里",
+      "打开应用看不到今天真正要做的事",
+      "旅游 App 太重，记事本又没有时间线"
+    ],
+    "differentiation": "用清晰时间线记录旅行、出行与日常安排，一眼看见什么时候做什么"
+  },
+  "modules": {
+    "pages": [
+      {
+        "id": "home",
+        "title": "首页",
+        "route": "pages/HomePage",
+        "features": [
+          "今日日期",
+          "安排计数",
+          "今日时间线",
+          "日历入口",
+          "新建行程"
+        ],
+        "tab": true
+      },
+      {
+        "id": "trips",
+        "title": "行程",
+        "route": "pages/TripsPage",
+        "features": [
+          "即将开始",
+          "进行中",
+          "已完成",
+          "搜索",
+          "模板"
+        ],
+        "tab": true
+      },
+      {
+        "id": "mine",
+        "title": "我的",
+        "route": "pages/MinePage",
+        "features": [
+          "提醒设置",
+          "主题",
+          "字体",
+          "协议",
+          "关于"
+        ],
+        "tab": true
+      }
+    ],
+    "coreFlows": [
+      {
+        "name": "记录行程",
+        "steps": [
+          "打开首页",
+          "点击＋",
+          "填写名称与日期",
+          "创建",
+          "在详情添加事项"
+        ]
+      },
+      {
+        "name": "完成事项",
+        "steps": [
+          "打开今日时间线或行程详情",
+          "将事项标为完成",
+          "视觉降权"
+        ]
+      }
+    ]
+  },
+  "entities": [
+    {
+      "name": "Trip",
+      "table": "trips",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "startDate",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "endDate",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "location",
+          "type": "string"
+        },
+        {
+          "name": "remark",
+          "type": "string"
+        },
+        {
+          "name": "reminderOffset",
+          "type": "number"
+        },
+        {
+          "name": "status",
+          "type": "enum",
+          "enumValues": [
+            "upcoming",
+            "active",
+            "done",
+            "cancelled"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "TripItem",
+      "table": "trip-items",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "tripId",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "itemDate",
+          "type": "string"
+        },
+        {
+          "name": "time",
+          "type": "string"
+        },
+        {
+          "name": "location",
+          "type": "string"
+        },
+        {
+          "name": "remark",
+          "type": "string"
+        },
+        {
+          "name": "status",
+          "type": "enum",
+          "enumValues": [
+            "pending",
+            "ongoing",
+            "done",
+            "cancelled"
+          ]
+        }
+      ]
+    }
+  ],
+  "apis": [
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/trip-memo/templates",
+      "summary": "行程模板",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/trip-memo/templates/:id",
+      "summary": "模板详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/trip-memo/kpis",
+      "summary": "KPI",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/messages",
+      "summary": "机构通知",
+      "auth": false,
+      "module": "messages"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/auth/login",
+      "summary": "可选登录",
+      "auth": false,
+      "module": "auth"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/auth/register",
+      "summary": "可选注册",
+      "auth": false,
+      "module": "auth"
+    }
+  ],
+  "ai": {
+    "capabilities": [],
+    "quickCommands": [],
+    "systemPrompt": "你是「魏文波」旗下应用「行程备忘」的行程整理助手。产品定位：用清晰时间线记录旅行、出行与日常安排。主职责：理解行程与事项、提醒偏移与三个模板。禁止导航、订票、攻略与生成式闲聊。C 端不提供自由对话。",
+    "mode": "none",
+    "llmEnabled": false
+  },
+  "permissions": [
+    {
+      "name": "ohos.permission.INTERNET",
+      "reason": "用于拉取行程模板与机构通知",
+      "when": "inuse",
+      "scene": "打开模板页或刷新栏目时"
+    }
+  ],
+  "harmonyos": {
+    "features": []
+  },
+  "store": {
+    "category": "实用工具",
+    "legalOperator": "魏文波",
+    "oneLiner": "行程备忘 — 用清晰时间线记录旅行、出行与日常安排，一眼看见什么时候做什么",
+    "fullDescription": "行程备忘是一款轻量个人行程管理工具。用时间线记录旅行、出行、会议、约会、预约与考试等安排，打开就能看见今天要做什么。支持新建行程、添加事项、三个简单模板和智慧提醒。不提供地图导航、订票、社交、支付与生成式对话。数据默认保存在本机。",
+    "keywords": [
+      "行程",
+      "备忘",
+      "时间线",
+      "提醒",
+      "日程",
+      "鸿蒙"
+    ],
+    "privacySummary": {
+      "collect": [
+        "本机行程与事项内容",
+        "提醒与主题偏好",
+        "可选账号信息"
+      ],
+      "purpose": "提供行程记录、时间线展示与智慧提醒",
+      "thirdParties": []
+    },
+    "demoAccount": {
+      "username": "auditor@wenbo.local",
+      "passwordNote": "仅写入 store/demo-account.md"
+    },
+    "screenshotPlan": [
+      {
+        "page": "home",
+        "caption": "今日大日期与时间线"
+      },
+      {
+        "page": "empty",
+        "caption": "精致空状态"
+      },
+      {
+        "page": "trip-detail",
+        "caption": "行程详情时间线"
+      },
+      {
+        "page": "create",
+        "caption": "干净的创建表单"
+      },
+      {
+        "page": "trips",
+        "caption": "全部行程分组"
+      }
+    ],
+    "incentiveHooks": [
+      "原生时间线",
+      "本机记录",
+      "三个简单模板"
+    ]
+  },
+  "access": {
+    "mode": "open_optional",
+    "features": {
+      "register": true,
+      "guestBrowse": true,
+      "guestWrite": true
+    },
+    "gateActions": [
+      "sync_trips"
+    ],
+    "onPrivacyRefuse": "browse_basic",
+    "loginProviders": [
+      "password"
+    ]
+  },
+  "admin": {
+    "featureModules": [
+      "overview",
+      "appUsers",
+      "tmTemplates",
+      "tmTrips",
+      "tmItems",
+      "messages",
+      "kpis"
+    ]
+  },
+  "brand": {
+    "primary": "#4C7ED4",
+    "primaryDeep": "#1B2744",
+    "deep": "#1B2744",
+    "accent": "#4C7ED4",
+    "tone": "premium-business",
+    "stylePack": "premium-business",
+    "workbenchId": "timeline-board",
+    "layoutVariant": "B",
+    "productVisualType": "ops-tool",
+    "visualDirection": {
+      "archetype": "quiet-ink-timeline",
+      "density": "airy",
+      "material": "warm-paper",
+      "imagery": "linear-nodes-not-travel-photo",
+      "accent": "ink-navy-clear-blue",
+      "primaryJob": "3 秒内看见今天要做什么",
+      "notes": "深墨蓝文字+清透蓝品牌+大面积暖白；禁止旅行风景与飞机图形"
+    },
+    "logo": {
+      "concept": "竖直时间路径上的节点与圆角备忘卡片，呼应「行」的停顿与记录",
+      "style": "flat-premium",
+      "generator": "render_logo.py",
+      "glyphStrategy": "semantic-fusion",
+      "brandAnchor": "行",
+      "customLock": true,
+      "renderScript": "store/logo/render_logo.mjs",
+      "foregroundFile": "store/logo/foreground.png",
+      "backgroundFile": "store/logo/background.png",
+      "previewFile": "store/logo/preview-1024.png",
+      "agcFile": "store/logo/agc-216.png",
+      "symbolFile": "store/logo/symbol.svg",
+      "horizontalFile": "store/logo/logo-horizontal.svg"
+    },
+    "visualAssets": [
+      { "key": "empty_timeline", "file": "app/entry/src/main/resources/base/media/empty_timeline.png", "role": "emptyState" },
+      { "key": "paper_desk", "file": "app/entry/src/main/resources/base/media/paper_desk.png", "role": "atmosphere" },
+      { "key": "tpl_business", "file": "app/entry/src/main/resources/base/media/tpl_business.png", "role": "templateCover" },
+      { "key": "tpl_weekend", "file": "app/entry/src/main/resources/base/media/tpl_weekend.png", "role": "templateCover" },
+      { "key": "tpl_appointment", "file": "app/entry/src/main/resources/base/media/tpl_appointment.png", "role": "templateCover" }
+    ]
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "string": [
+    { "name": "module_desc", "value": "微观志 — 五感观察练习本" },
+    { "name": "EntryAbility_desc", "value": "五感观察卡 · 对照观察 · 观察专题 · 观察专辑" },
+    { "name": "EntryAbility_label", "value": "微观志" },
+    { "name": "internet_reason", "value": "用于可选的账号登录与注册" }
+  ]
+}

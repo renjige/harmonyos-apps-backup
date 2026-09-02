@@ -1,0 +1,406 @@
+{
+  "specVersion": "1.0.0",
+  "generatedAt": "2026-08-22T01:47:05.563Z",
+  "requestId": "req_1787363225524",
+  "industryPack": "kids-jigsaw",
+  "identity": {
+    "company": "魏文波",
+    "companyPinyin": "wenbo",
+    "appName": "亲子乐拼",
+    "appPinyin": "qinzi-lepin",
+    "bundleId": "com.wenbo.qinzilepin",
+    "version": "1.0.0"
+  },
+  "positioning": {
+    "tagline": "面向3到8岁儿童与家长的智慧拼图陪伴，拖一块、拼一幅，一起观察一起完成",
+    "coreUsers": [
+      {
+        "role": "学龄前与低龄儿童",
+        "ageRange": "3-8",
+        "scenario": "在家把一幅图慢慢拼完",
+        "need": "块大、反馈温和、立刻知道从哪开始"
+      },
+      {
+        "role": "家长",
+        "ageRange": "28-40",
+        "scenario": "同一部手机轮流拖一块",
+        "need": "无广告无付费，能看见完成记录而不是测评"
+      }
+    ],
+    "painPoints": [
+      "益智 App 广告多、关卡锁",
+      "拼图块太碎，低龄儿童够不到",
+      "缺少家长和孩子轮流动手的轻互动"
+    ],
+    "differentiation": "面向3到8岁儿童与家长的智慧拼图陪伴，拖一块、拼一幅，一起观察一起完成"
+  },
+  "modules": {
+    "pages": [
+      {
+        "id": "home",
+        "title": "乐园",
+        "route": "pages/HomePage",
+        "features": [
+          "四大主题卡",
+          "进入主题",
+          "拼图列表"
+        ],
+        "tab": true
+      },
+      {
+        "id": "family",
+        "title": "亲子",
+        "route": "pages/FamilyPage",
+        "features": [
+          "双人协作",
+          "智慧提示说明",
+          "邀请一起拼"
+        ],
+        "tab": true
+      },
+      {
+        "id": "growth",
+        "title": "成长",
+        "route": "pages/GrowthPage",
+        "features": [
+          "完成数",
+          "星星",
+          "能力条",
+          "近期完成"
+        ],
+        "tab": true
+      },
+      {
+        "id": "mine",
+        "title": "我的",
+        "route": "pages/MinePage",
+        "features": [
+          "徽章",
+          "设置",
+          "协议"
+        ],
+        "tab": true
+      }
+    ],
+    "coreFlows": [
+      {
+        "name": "主题拼图",
+        "steps": [
+          "打开乐园",
+          "点主题",
+          "点封面进详情",
+          "选块数",
+          "拖拽入格",
+          "完成记星"
+        ]
+      },
+      {
+        "name": "亲子协作",
+        "steps": [
+          "进入亲子",
+          "邀请一起拼",
+          "轮流拖拽",
+          "完成庆祝"
+        ]
+      },
+      {
+        "name": "成长记录",
+        "steps": [
+          "完成本机拼图",
+          "成长页看数量与能力条",
+          "点亮徽章"
+        ]
+      }
+    ]
+  },
+  "entities": [
+    {
+      "name": "Theme",
+      "table": "themes",
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "summary",
+          "type": "string"
+        },
+        {
+          "name": "coverKey",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "Jigsaw",
+      "table": "jigsaws",
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "theme",
+          "type": "string"
+        },
+        {
+          "name": "summary",
+          "type": "string"
+        },
+        {
+          "name": "description",
+          "type": "string"
+        },
+        {
+          "name": "coverKey",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "MedalDef",
+      "table": "medals",
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "rule",
+          "type": "string"
+        },
+        {
+          "name": "summary",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "Guide",
+      "table": "guides",
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "body",
+          "type": "string"
+        }
+      ]
+    }
+  ],
+  "apis": [
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/kids-jigsaw/themes",
+      "summary": "主题列表",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/kids-jigsaw/themes/:id",
+      "summary": "主题详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/kids-jigsaw/jigsaws",
+      "summary": "拼图图库",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/kids-jigsaw/jigsaws/:id",
+      "summary": "拼图详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/kids-jigsaw/medals",
+      "summary": "勋章定义",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/kids-jigsaw/medals/:id",
+      "summary": "勋章详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/kids-jigsaw/guides",
+      "summary": "玩法说明",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/kids-jigsaw/guides/:id",
+      "summary": "说明详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/kids-jigsaw/kpis",
+      "summary": "机构指标",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/messages",
+      "summary": "系统消息",
+      "auth": false,
+      "module": "messages"
+    }
+  ],
+  "ai": {
+    "capabilities": [],
+    "quickCommands": [],
+    "systemPrompt": "你是「魏文波」旗下应用「亲子乐拼」的内容助手。产品定位：面向3到8岁儿童与家长的智慧拼图陪伴。主职责：说明主题拼图、块数选择与同机轮流协作。不提供生成式对话，不出现 AI 字样，不做智力测评。",
+    "mode": "none",
+    "llmEnabled": false
+  },
+  "permissions": [
+    {
+      "name": "ohos.permission.INTERNET",
+      "reason": "在您选择登录或刷新图库目录时连接服务，拼图进度默认保存在本机",
+      "when": "inuse",
+      "scene": "可选登录与拉取图库"
+    }
+  ],
+  "harmonyos": {
+    "features": []
+  },
+  "store": {
+    "category": "教育",
+    "legalOperator": "魏文波",
+    "oneLiner": "亲子乐拼 — 面向3到8岁儿童与家长的智慧拼图陪伴，拖一块、拼一幅，一起观察一起",
+    "fullDescription": "亲子乐拼是一款面向 3 到 8 岁儿童及家长的拼图陪伴应用。提供动物、自然、生活、童话四类摄影拼图，支持 4、9、16 块难度，可在同一设备上轮流拖拽完成。进度与星星保存在本机。无广告、无支付、无商城。不进行智力测评，也不承诺提高考试成绩。",
+    "keywords": [
+      "亲子",
+      "拼图",
+      "益智",
+      "观察力",
+      "家庭互动",
+      "鸿蒙"
+    ],
+    "privacySummary": {
+      "collect": [
+        "可选账号信息",
+        "本机拼图完成记录",
+        "本机徽章与设置"
+      ],
+      "purpose": "提供拼图浏览、拖拽练习、亲子协作与本地成长记录",
+      "thirdParties": []
+    },
+    "demoAccount": {
+      "username": "auditor@wenbo.local",
+      "passwordNote": "仅写入 store/demo-account.md"
+    },
+    "screenshotPlan": [
+      {
+        "page": "home",
+        "caption": "四大主题摄影卡"
+      },
+      {
+        "page": "detail",
+        "caption": "拼图详情与开始"
+      },
+      {
+        "page": "play",
+        "caption": "拖拽拼图与棋盘"
+      },
+      {
+        "page": "family",
+        "caption": "亲子轮流协作"
+      },
+      {
+        "page": "growth",
+        "caption": "成长记录与能力条"
+      }
+    ],
+    "incentiveHooks": [
+      "FormExtensionAbility"
+    ]
+  },
+  "access": {
+    "mode": "open_optional",
+    "features": {
+      "register": true,
+      "guestBrowse": true,
+      "guestWrite": false
+    },
+    "gateActions": [],
+    "onPrivacyRefuse": "browse_basic",
+    "loginProviders": [
+      "password"
+    ]
+  },
+  "admin": {
+    "featureModules": [
+      "overview",
+      "appUsers",
+      "kjThemes",
+      "kjJigsaws",
+      "kjMedals",
+      "kjGuides",
+      "messages",
+      "kpis"
+    ]
+  },
+  "brand": {
+    "primary": "#FF8C42",
+    "primaryDeep": "#C45A18",
+    "deep": "#5C2E12",
+    "accent": "#4A90D9",
+    "tone": "custom",
+    "stylePack": "custom",
+    "workbenchId": "catalog-tool",
+    "layoutVariant": "E",
+    "productVisualType": "content-commerce",
+    "visualDirection": {
+      "archetype": "warm-family-jigsaw",
+      "density": "airy",
+      "material": "wood-table-soft-card",
+      "imagery": "animal-nature-still-life-cottage",
+      "accent": "warm-orange-calm-blue",
+      "primaryJob": "3 秒内点进一幅主题拼图",
+      "notes": "温暖亲子拼图；禁止答题四选项、口算键盘与游戏大厅"
+    },
+    "logo": {
+      "brandAnchor": "乐",
+      "glyphStrategy": "semantic-fusion",
+      "customLock": true
+    }
+  }
+}

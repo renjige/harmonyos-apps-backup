@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 360" role="img" aria-label="ƣ">
+  <rect width="1280" height="360" fill="#F7F4F0"/>
+  <svg x="40" y="36" width="288" height="288" viewBox="0 0 1024 1024">
+    <rect width="1024" height="1024" fill="#3D342C"/>
+    <polygon fill="#C4A882" points="160,500 512,250 864,500 792,528 512,318 232,528"/>
+    <rect x="488" y="236" width="48" height="86" rx="8" fill="#F7F4F0"/>
+    <polygon fill="#F7F4F0" points="360,560 512,530 512,820 392,848"/>
+    <polygon fill="#C4A882" points="664,560 512,530 512,820 632,848"/>
+  </svg>
+  <text x="360" y="200" font-family="serif" font-size="72" fill="#3D342C">ƣ</text>
+  <text x="360" y="260" font-family="sans-serif" font-size="28" fill="#8B7A6B">Ѱ;-	����zg</text>
+</svg>

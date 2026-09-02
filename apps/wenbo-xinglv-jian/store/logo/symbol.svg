@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" fill="none">
+  <rect width="1024" height="1024" fill="none"/>
+  <!-- Folded letter / : -->
+  <path fill="#C49B6C" d="M256 320h512v448H256V320zm0 0l256-96 256 96"/>
+  <path fill="#C49B6C" opacity="0.85" d="M512 224v96l256 96V320L512 224z"/>
+  <!-- Journey path -->
+  <path stroke="#F8F5F0" stroke-width="28" stroke-linecap="round" stroke-linejoin="round" d="M320 640c80-120 160-40 240-80s160-40 240 80"/>
+  <circle cx="320" cy="640" r="18" fill="#F8F5F0"/>
+  <circle cx="800" cy="640" r="18" fill="#F8F5F0"/>
+</svg>

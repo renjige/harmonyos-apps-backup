@@ -1,0 +1,478 @@
+{
+  "specVersion": "1.0.0",
+  "generatedAt": "2026-08-22T01:47:35.315Z",
+  "requestId": "req_1787363255278",
+  "industryPack": "kids-art-gallery",
+  "identity": {
+    "company": "魏文波",
+    "companyPinyin": "wenbo",
+    "appName": "少儿画苑",
+    "appPinyin": "shaoer-huayuan",
+    "bundleId": "com.wenbo.shaoerhuayuan",
+    "version": "1.0.0"
+  },
+  "positioning": {
+    "tagline": "把孩子的画作收进时间线与主题画册，办一场只属于你们的数字画展",
+    "coreUsers": [
+      {
+        "role": "3-12 岁儿童的家长",
+        "ageRange": "28-45",
+        "scenario": "孩子画完一张画，想立刻拍下来珍藏",
+        "need": "少步骤上传、按时间回看、能分享给亲友"
+      },
+      {
+        "role": "多孩家庭家长",
+        "ageRange": "30-48",
+        "scenario": "两个孩子的画作容易混在一起",
+        "need": "独立孩子空间，互不串档"
+      }
+    ],
+    "painPoints": [
+      "纸质画作堆积、褪色、搬家易丢",
+      "相册里儿童画与生活照混杂，难以按成长回看",
+      "想给亲友看却只有零散照片，缺少画展仪式感"
+    ],
+    "differentiation": "把孩子的画作收进时间线与主题画册，办一场只属于你们的数字画展"
+  },
+  "modules": {
+    "pages": [
+      {
+        "id": "home",
+        "title": "时间线",
+        "route": "pages/HomePage",
+        "features": [
+          "孩子切换",
+          "作品时间轴",
+          "珍藏一幅"
+        ],
+        "tab": true
+      },
+      {
+        "id": "albums",
+        "title": "画册",
+        "route": "pages/AlbumListPage",
+        "features": [
+          "主题画册",
+          "新建画册",
+          "加入作品"
+        ],
+        "tab": true
+      },
+      {
+        "id": "gallery",
+        "title": "画廊",
+        "route": "pages/GalleryPage",
+        "features": [
+          "展厅陈列",
+          "智慧策展",
+          "分享海报"
+        ],
+        "tab": true
+      },
+      {
+        "id": "mine",
+        "title": "我的",
+        "route": "pages/MinePage",
+        "features": [
+          "成长统计",
+          "孩子档案",
+          "消息",
+          "设置"
+        ],
+        "tab": true
+      }
+    ],
+    "coreFlows": [
+      {
+        "name": "珍藏作品",
+        "steps": [
+          "选图或拍照",
+          "填写名称日期年龄故事",
+          "保存",
+          "出现在时间线",
+          "点进详情"
+        ]
+      },
+      {
+        "name": "主题画册",
+        "steps": [
+          "新建画册",
+          "从时间线加入作品",
+          "画册封面更新",
+          "进入画廊陈列"
+        ]
+      },
+      {
+        "name": "数字画展",
+        "steps": [
+          "选择展厅风格",
+          "左右滑动看墙",
+          "点作品放大",
+          "生成分享海报"
+        ]
+      }
+    ]
+  },
+  "entities": [
+    {
+      "name": "Artwork",
+      "table": "artworks",
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "createdOn",
+          "type": "string"
+        },
+        {
+          "name": "ageLabel",
+          "type": "string"
+        },
+        {
+          "name": "story",
+          "type": "string"
+        },
+        {
+          "name": "coverKey",
+          "type": "string"
+        },
+        {
+          "name": "imageFile",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "Album",
+      "table": "albums",
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "summary",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "Theme",
+      "table": "themes",
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "coverKey",
+          "type": "string"
+        },
+        {
+          "name": "body",
+          "type": "string"
+        }
+      ]
+    }
+  ],
+  "apis": [
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/kids-art-gallery/themes",
+      "summary": "策展主题",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/kids-art-gallery/themes/:id",
+      "summary": "主题详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/kids-art-gallery/halls",
+      "summary": "展厅风格",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/kids-art-gallery/halls/:id",
+      "summary": "展厅详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/kids-art-gallery/milestones",
+      "summary": "里程碑模板",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/kids-art-gallery/milestones/:id",
+      "summary": "里程碑详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/kids-art-gallery/guides",
+      "summary": "珍藏指南",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/kids-art-gallery/guides/:id",
+      "summary": "指南详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/kids-art-gallery/works",
+      "summary": "我的作品",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/biz/kids-art-gallery/works",
+      "summary": "上传作品",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/kids-art-gallery/albums",
+      "summary": "我的画册",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/biz/kids-art-gallery/albums",
+      "summary": "新建画册",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/kids-art-gallery/children",
+      "summary": "孩子档案",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/biz/kids-art-gallery/children",
+      "summary": "新建孩子",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/kids-art-gallery/kpis",
+      "summary": "机构指标",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/messages",
+      "summary": "系统消息",
+      "auth": false,
+      "module": "messages"
+    }
+  ],
+  "ai": {
+    "capabilities": [],
+    "quickCommands": [],
+    "systemPrompt": "你是「魏文波」旗下应用「少儿画苑」的内容助手。产品定位：帮助家长把儿童画作收进时间线与主题画册，并生成数字画展。主职责：说明如何拍照录入、整理画册、选择展厅风格与分享海报。不提供生成式评画，不出现 AI 字样，不做学历或天赋承诺。",
+    "mode": "none",
+    "llmEnabled": false
+  },
+  "permissions": [
+    {
+      "name": "ohos.permission.INTERNET",
+      "reason": "登录后同步作品信息，并浏览策展主题与展厅风格",
+      "when": "inuse",
+      "scene": "可选登录与栏目浏览"
+    }
+  ],
+  "harmonyos": {
+    "features": []
+  },
+  "store": {
+    "category": "生活",
+    "legalOperator": "魏文波",
+    "oneLiner": "少儿画苑 — 把孩子的画作收进时间线与主题画册，办一场只属于你们的数字画展",
+    "fullDescription": "少儿画苑帮助 3 到 12 岁儿童的家长拍摄并珍藏孩子的绘画作品。支持时间线回看、主题画册、多孩独立空间、数字展厅陈列与分享海报。策展主题与展厅风格来自平台栏目。无广告、无支付、无公开社区。不进行美术测评，也不承诺提高考试成绩。",
+    "keywords": [
+      "儿童画",
+      "画册",
+      "成长记录",
+      "亲子",
+      "数字画廊",
+      "鸿蒙"
+    ],
+    "privacySummary": {
+      "collect": [
+        "可选账号信息",
+        "孩子昵称与出生年（自愿）",
+        "作品名称日期故事与本地图片"
+      ],
+      "purpose": "提供作品珍藏、画册整理、数字画廊展示与登录同步",
+      "thirdParties": []
+    },
+    "demoAccount": {
+      "username": "auditor@wenbo.local",
+      "passwordNote": "仅写入 store/demo-account.md"
+    },
+    "screenshotPlan": [
+      {
+        "page": "home",
+        "caption": "作品时间线与珍藏一幅"
+      },
+      {
+        "page": "detail",
+        "caption": "作品大图与创作故事"
+      },
+      {
+        "page": "albums",
+        "caption": "主题画册网格"
+      },
+      {
+        "page": "gallery",
+        "caption": "数字展厅墙面陈列"
+      },
+      {
+        "page": "mine",
+        "caption": "成长统计与设置"
+      }
+    ],
+    "incentiveHooks": [
+      "FormExtensionAbility"
+    ]
+  },
+  "access": {
+    "mode": "open_optional",
+    "features": {
+      "register": true,
+      "guestBrowse": true,
+      "guestWrite": false
+    },
+    "gateActions": [
+      "upload_artwork",
+      "create_album",
+      "create_child",
+      "share_exhibition",
+      "mark_milestone"
+    ],
+    "onPrivacyRefuse": "browse_basic",
+    "loginProviders": [
+      "password"
+    ]
+  },
+  "admin": {
+    "featureModules": [
+      "overview",
+      "appUsers",
+      "kagThemes",
+      "kagHalls",
+      "kagMilestones",
+      "kagGuides",
+      "kagWorks",
+      "kagAlbums",
+      "kagChildren",
+      "messages",
+      "kpis",
+      "ai"
+    ]
+  },
+  "brand": {
+    "primary": "#FF8A65",
+    "primaryDeep": "#C94E2A",
+    "deep": "#4A2A1C",
+    "accent": "#C9A227",
+    "tone": "soft-editorial",
+    "stylePack": "soft-editorial",
+    "workbenchId": "timeline-board",
+    "layoutVariant": "B",
+    "productVisualType": "content-commerce",
+    "visualDirection": {
+      "archetype": "warm-editorial-gallery",
+      "density": "airy",
+      "material": "paper-wood-soft-card",
+      "imagery": "kids-artwork-and-gallery-wall",
+      "accent": "coral-paper-mint",
+      "primaryJob": "3 秒内点珍藏一幅",
+      "notes": "温暖极简；画作是视觉焦点；禁止卡通吉祥物与工厂六件套"
+    },
+    "logo": {
+      "brandAnchor": "画",
+      "glyphStrategy": "semantic-fusion",
+      "customLock": true,
+      "generator": "render_logo.mjs",
+      "renderScript": "store/logo/render_logo.mjs",
+      "concept": "斜向画笔 + 笔尖负空间抽出的两叶幼苗",
+      "style": "flat-premium",
+      "foregroundFile": "store/logo/foreground.png",
+      "backgroundFile": "store/logo/background.png",
+      "previewFile": "store/logo/preview-1024.png",
+      "agcFile": "store/logo/agc-216.png",
+      "symbolFile": "store/logo/symbol.svg",
+      "horizontalFile": "store/logo/logo-horizontal.svg"
+    },
+    "visualAssets": {
+      "productVisualType": "content-commerce",
+      "hero": "hero_gallery",
+      "banners": ["banner_timeline", "banner_share"],
+      "covers": [
+        "theme_watercolor",
+        "theme_doodle",
+        "theme_family",
+        "theme_portrait",
+        "theme_season",
+        "theme_animals",
+        "hall_warm",
+        "hall_white",
+        "hall_window",
+        "hall_night",
+        "ms_grip",
+        "ms_circle",
+        "ms_person",
+        "ms_watercolor",
+        "ms_sign",
+        "ms_story",
+        "guide_photo",
+        "guide_story",
+        "guide_album",
+        "guide_exhibit",
+        "guide_siblings",
+        "empty_easel"
+      ]
+    }
+  }
+}

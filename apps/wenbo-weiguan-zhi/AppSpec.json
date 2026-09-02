@@ -1,0 +1,250 @@
+{
+  "specVersion": "1.0.0",
+  "generatedAt": "2026-08-26T06:02:43.925Z",
+  "requestId": "req_1787724163888",
+  "industryPack": "micro-essay",
+  "identity": {
+    "company": "魏文波",
+    "companyPinyin": "wenbo",
+    "appName": "微观志",
+    "appPinyin": "weiguan-zhi",
+    "bundleId": "com.wenbo.weiguanzhi",
+    "version": "1.0.5"
+  },
+  "positioning": {
+    "tagline": "五感观察练习本：结构化观察、对照差异、专题练习与成长档案",
+    "coreUsers": [
+      {
+        "role": "喜欢写作与观察的普通用户",
+        "ageRange": "18-45",
+        "scenario": "碎片时间记录一条观察",
+        "need": "安静写下所见所感，用标签找回"
+      }
+    ],
+    "painPoints": [
+      "灵感碎片散落各处难找回",
+      "系统备忘录缺少观察叙事与标签云",
+      "云笔记上传让人不愿写私密观察"
+    ],
+    "differentiation": "五感观察练习本：五感填空卡、对照观察、观察专题与专辑，不是空白日记本"
+  },
+  "modules": {
+    "pages": [
+      {
+        "id": "home",
+        "title": "时间线",
+        "route": "pages/HomePage",
+        "features": [
+          "时间线卡片",
+          "下拉刷新",
+          "空态引导"
+        ],
+        "tab": true
+      },
+      {
+        "id": "tags",
+        "title": "标签",
+        "route": "pages/TagsPage",
+        "features": [
+          "标签云",
+          "点击筛选"
+        ],
+        "tab": true
+      },
+      {
+        "id": "mine",
+        "title": "我的",
+        "route": "pages/MinePage",
+        "features": [
+          "统计",
+          "字体",
+          "深色模式",
+          "导出"
+        ],
+        "tab": true
+      }
+    ],
+    "coreFlows": [
+      {
+        "name": "观察记录闭环",
+        "steps": [
+          "新建随笔",
+          "图文与智慧标签",
+          "时间线详情",
+          "编辑或删除"
+        ]
+      }
+    ]
+  },
+  "entities": [
+    {
+      "name": "MicroEssay",
+      "table": "essays",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "body",
+          "type": "string"
+        },
+        {
+          "name": "tagsCsv",
+          "type": "string"
+        },
+        {
+          "name": "imagePath",
+          "type": "string"
+        }
+      ]
+    }
+  ],
+  "apis": [
+    {
+      "method": "POST",
+      "path": "/api/v1/auth/login",
+      "summary": "登录",
+      "auth": false,
+      "module": "auth"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/auth/register",
+      "summary": "注册",
+      "auth": false,
+      "module": "auth"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/messages",
+      "summary": "消息",
+      "auth": true,
+      "module": "messages"
+    }
+  ],
+  "ai": {
+    "capabilities": [],
+    "quickCommands": [],
+    "systemPrompt": "你是「魏文波」旗下应用「微观志」的观察记录助手。产品定位：随时记下日常观察、灵感碎片与生活点滴，珍藏微观瞬间。主职责：帮助用户理解本机随笔、智慧标签与导出；禁止自称人工智能，禁止生成式长文。C 端不提供自由对话。",
+    "mode": "none",
+    "llmEnabled": false
+  },
+  "permissions": [
+    {
+      "name": "ohos.permission.INTERNET",
+      "reason": "用于可选的账号登录与注册",
+      "when": "inuse",
+      "scene": "登录注册"
+    }
+  ],
+  "harmonyos": {
+    "features": []
+  },
+  "store": {
+    "category": "教育",
+    "legalOperator": "魏文波",
+    "oneLiner": "微观志 — 五感观察练习本，不是普通日记",
+    "fullDescription": "微观志是带着方法的五感观察练习本。核心能力：① 五感观察卡（看见/听见/气味/触感/一句判断）；② 对照观察（并排两篇旧观察，写下「这次不同在哪」）；③ 观察专题（为单一感官设定目标篇数）；④ 观察专辑与成长图表（五感分布、徽章、日历足迹、年度回顾）。数据默认保存在本机，可选登录。无广告、无生成式对话。",
+    "keywords": [
+      "五感观察",
+      "观察练习",
+      "对照写作",
+      "观察专题",
+      "鸿蒙"
+    ],
+    "privacySummary": {
+      "collect": [
+        "可选账号信息",
+        "本机观察正文与配图",
+        "应用偏好设置"
+      ],
+      "purpose": "提供本机观察练习、专题进度与导出",
+      "thirdParties": []
+    },
+    "demoAccount": {
+      "username": "auditor@wenbo.local",
+      "passwordNote": "仅写入 store/demo-account.md"
+    },
+    "screenshotPlan": [
+      {
+        "page": "today",
+        "caption": "今日练习路径与观察方法"
+      },
+      {
+        "page": "sense-card",
+        "caption": "五感观察卡填空"
+      },
+      {
+        "page": "contrast",
+        "caption": "对照观察并排写作"
+      },
+      {
+        "page": "practice",
+        "caption": "练习 Tab 方法入口"
+      },
+      {
+        "page": "theme",
+        "caption": "观察专题进度"
+      }
+    ],
+    "incentiveHooks": [
+      "FormExtensionAbility"
+    ]
+  },
+  "access": {
+    "mode": "open_optional",
+    "features": {
+      "register": true,
+      "guestBrowse": true,
+      "guestWrite": true
+    },
+    "gateActions": [
+      "sync_account"
+    ],
+    "onPrivacyRefuse": "browse_basic",
+    "loginProviders": [
+      "password"
+    ]
+  },
+  "brand": {
+    "primary": "#1A2A3A",
+    "primaryDeep": "#121C28",
+    "deep": "#1A2A3A",
+    "accent": "#C9A96E",
+    "tone": "soft-editorial",
+    "stylePack": "soft-editorial",
+    "workbenchId": "timeline-board",
+    "layoutVariant": "B",
+    "productVisualType": "ops-tool",
+    "visualDirection": {
+      "archetype": "quiet-ivory-journal",
+      "density": "airy",
+      "material": "ivory-paper",
+      "imagery": "micro-observation",
+      "accent": "amber-gold",
+      "primaryJob": "3 秒内点 + 写下一条观察",
+      "notes": "象牙白+#1A2A3A墨蓝+#C9A96E琥珀金；安静文字空间"
+    },
+    "logo": {
+      "brandAnchor": "微",
+      "glyphStrategy": "semantic-fusion",
+      "customLock": true,
+      "generator": "agent-svg",
+      "renderScript": "store/logo/render_logo.mjs",
+      "previewFile": "store/logo/preview-1024.png"
+    },
+    "visualAssets": [
+      { "id": "hero", "file": "hero_ivory_desk.png", "usage": "时间线 Hero" },
+      { "id": "banner_micro", "file": "banner_micro.png", "usage": "微距氛围" },
+      { "id": "banner_ink", "file": "banner_ink.png", "usage": "标签/卡片氛围" },
+      { "id": "empty_quiet", "file": "empty_quiet.png", "usage": "空态" },
+      { "id": "cover_tag", "file": "cover_tag.png", "usage": "标签页头图" }
+    ]
+  }
+}

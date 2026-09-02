@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2D8C70" />
+      <stop offset="100%" stop-color="#1E6B54" />
+    </linearGradient>
+    <linearGradient id="breezeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#EAF7F3" stop-opacity="0.95" />
+      <stop offset="100%" stop-color="#BFE8DC" stop-opacity="0.85" />
+    </linearGradient>
+  </defs>
+  <!-- Background -->
+  <rect width="512" height="512" rx="112" fill="url(#bgGrad)" />
+  
+  <!-- Wardrobe Minimal Outline -->
+  <rect x="116" y="104" width="280" height="304" rx="36" fill="none" stroke="#FFFFFF" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" opacity="0.95"/>
+  <line x1="256" y1="104" x2="256" y2="408" stroke="#FFFFFF" stroke-width="12" stroke-linecap="round" opacity="0.6"/>
+  
+  <!-- Top Hanger bar and Hook -->
+  <path d="M256 168 C242 168 238 152 248 144 C256 138 264 146 264 156" fill="none" stroke="#BFE8DC" stroke-width="10" stroke-linecap="round"/>
+  
+  <!-- Breeze & Flowing Garment Curve -->
+  <path d="M96 296 C160 216 240 344 320 248 C360 200 400 240 424 224" fill="none" stroke="url(#breezeGrad)" stroke-width="22" stroke-linecap="round"/>
+  
+  <!-- Minimal Hanging Garment Silhouette -->
+  <path d="M220 208 L256 186 L292 208 L284 316 C270 332 242 332 228 316 Z" fill="#EAF7F3" opacity="0.88"/>
+  
+  <!-- Secondary Gentle Breeze Accent -->
+  <path d="M144 348 C200 320 280 376 368 336" fill="none" stroke="#BFE8DC" stroke-width="10" stroke-linecap="round" opacity="0.75"/>
+</svg>

@@ -1,0 +1,377 @@
+{
+  "specVersion": "1.0.0",
+  "generatedAt": "2026-08-26T09:46:11.266Z",
+  "requestId": "req_1787737571198",
+  "industryPack": "trip-memo",
+  "identity": {
+    "company": "魏文波",
+    "companyPinyin": "wenbo",
+    "appName": "行旅笺",
+    "appPinyin": "xinglv-jian",
+    "bundleId": "com.wenbo.xinglvjian",
+    "version": "1.0.0"
+  },
+  "positioning": {
+    "tagline": "融合行程规划与旅行手记的智慧出行伴侣，帮助用户优雅地规划旅行、记录旅途灵感与回忆",
+    "coreUsers": [
+      {
+        "role": "需要记录安排的个人用户",
+        "ageRange": "18-50",
+        "scenario": "出差、短途、会议、约会、考试或预约前快速记下时间与地点",
+        "need": "打开就看见今天要做什么，两步内记下新安排"
+      }
+    ],
+    "painPoints": [
+      "安排散落在备忘录和聊天记录里",
+      "打开应用看不到今天真正要做的事",
+      "旅游 App 太重，记事本又没有时间线"
+    ],
+    "differentiation": "融合行程规划与旅行手记的智慧出行伴侣，帮助用户优雅地规划旅行、记录旅途灵感与回忆"
+  },
+  "modules": {
+    "pages": [
+      {
+        "id": "home",
+        "title": "首页",
+        "route": "pages/HomePage",
+        "features": [
+          "今日日期",
+          "安排计数",
+          "今日时间线",
+          "日历入口",
+          "新建行程"
+        ],
+        "tab": true
+      },
+      {
+        "id": "trips",
+        "title": "行程",
+        "route": "pages/TripsPage",
+        "features": [
+          "即将开始",
+          "进行中",
+          "已完成",
+          "搜索",
+          "模板"
+        ],
+        "tab": true
+      },
+      {
+        "id": "mine",
+        "title": "我的",
+        "route": "pages/MinePage",
+        "features": [
+          "提醒设置",
+          "主题",
+          "字体",
+          "协议",
+          "关于"
+        ],
+        "tab": true
+      }
+    ],
+    "coreFlows": [
+      {
+        "name": "记录行程",
+        "steps": [
+          "打开首页",
+          "点击＋",
+          "填写名称与日期",
+          "创建",
+          "在详情添加事项"
+        ]
+      },
+      {
+        "name": "记录旅迹",
+        "steps": [
+          "打开旅迹 Tab",
+          "写标题与正文",
+          "选择标签",
+          "保存",
+          "在详情查看 Hero 与正文"
+        ]
+      },
+      {
+        "name": "收藏灵感",
+        "steps": [
+          "打开灵感匣",
+          "添加目的地或攻略",
+          "查看详情",
+          "转为行程规划"
+        ]
+      }
+    ]
+  },
+  "entities": [
+    {
+      "name": "Trip",
+      "table": "trips",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "startDate",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "endDate",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "location",
+          "type": "string"
+        },
+        {
+          "name": "remark",
+          "type": "string"
+        },
+        {
+          "name": "reminderOffset",
+          "type": "number"
+        },
+        {
+          "name": "status",
+          "type": "enum",
+          "enumValues": [
+            "upcoming",
+            "active",
+            "done",
+            "cancelled"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "TripItem",
+      "table": "trip-items",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "tripId",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "itemDate",
+          "type": "string"
+        },
+        {
+          "name": "time",
+          "type": "string"
+        },
+        {
+          "name": "location",
+          "type": "string"
+        },
+        {
+          "name": "remark",
+          "type": "string"
+        },
+        {
+          "name": "status",
+          "type": "enum",
+          "enumValues": [
+            "pending",
+            "ongoing",
+            "done",
+            "cancelled"
+          ]
+        }
+      ]
+    }
+  ],
+  "apis": [
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/trip-memo/templates",
+      "summary": "行程模板",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/trip-memo/templates/:id",
+      "summary": "模板详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/trip-memo/kpis",
+      "summary": "KPI",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/messages",
+      "summary": "机构通知",
+      "auth": false,
+      "module": "messages"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/auth/login",
+      "summary": "可选登录",
+      "auth": false,
+      "module": "auth"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/auth/register",
+      "summary": "可选注册",
+      "auth": false,
+      "module": "auth"
+    }
+  ],
+  "ai": {
+    "capabilities": [],
+    "quickCommands": [],
+    "systemPrompt": "你是「魏文波」旗下应用「行程备忘」的行程整理助手。产品定位：用清晰时间线记录旅行、出行与日常安排。主职责：理解行程与事项、提醒偏移与三个模板。禁止导航、订票、攻略与生成式闲聊。C 端不提供自由对话。",
+    "mode": "none",
+    "llmEnabled": false
+  },
+  "permissions": [
+    {
+      "name": "ohos.permission.INTERNET",
+      "reason": "用于拉取行程模板与机构通知",
+      "when": "inuse",
+      "scene": "打开模板页或刷新栏目时"
+    }
+  ],
+  "harmonyos": {
+    "features": []
+  },
+  "store": {
+    "category": "实用工具",
+    "legalOperator": "魏文波",
+    "oneLiner": "行旅笺 — 融合行程规划与旅行手记的智慧出行伴侣，帮助用户优雅地规划旅行、记录旅",
+    "fullDescription": "行程备忘是一款轻量个人行程管理工具。用时间线记录旅行、出行、会议、约会、预约与考试等安排，打开就能看见今天要做什么。支持新建行程、添加事项、三个简单模板和智慧提醒。不提供地图导航、订票、社交、支付与生成式对话。数据默认保存在本机。",
+    "keywords": [
+      "行程",
+      "备忘",
+      "时间线",
+      "提醒",
+      "日程",
+      "鸿蒙"
+    ],
+    "privacySummary": {
+      "collect": [
+        "本机行程与事项内容",
+        "提醒与主题偏好",
+        "可选账号信息"
+      ],
+      "purpose": "提供行程记录、时间线展示与智慧提醒",
+      "thirdParties": []
+    },
+    "demoAccount": {
+      "username": "auditor@wenbo.local",
+      "passwordNote": "仅写入 store/demo-account.md"
+    },
+    "screenshotPlan": [
+      {
+        "page": "home",
+        "caption": "今日大日期与时间线"
+      },
+      {
+        "page": "empty",
+        "caption": "精致空状态"
+      },
+      {
+        "page": "trip-detail",
+        "caption": "行程详情时间线"
+      },
+      {
+        "page": "create",
+        "caption": "干净的创建表单"
+      },
+      {
+        "page": "trips",
+        "caption": "全部行程分组"
+      }
+    ],
+    "incentiveHooks": [
+      "原生时间线",
+      "本机记录",
+      "三个简单模板"
+    ]
+  },
+  "access": {
+    "mode": "open_optional",
+    "features": {
+      "register": true,
+      "guestBrowse": true,
+      "guestWrite": true
+    },
+    "gateActions": [
+      "sync_trips"
+    ],
+    "onPrivacyRefuse": "browse_basic",
+    "loginProviders": [
+      "password"
+    ]
+  },
+  "admin": {
+    "featureModules": [
+      "overview",
+      "appUsers",
+      "tmTemplates",
+      "tmTrips",
+      "tmItems",
+      "messages",
+      "kpis"
+    ]
+  },
+  "brand": {
+    "primary": "#B8A088",
+    "primaryDeep": "#2C2C2C",
+    "deep": "#2C2C2C",
+    "accent": "#C49B6C",
+    "tone": "soft-editorial",
+    "stylePack": "soft-editorial",
+    "workbenchId": "timeline-board",
+    "layoutVariant": "A",
+    "productVisualType": "ops-tool",
+    "visualDirection": {
+      "archetype": "paper-travel-journal",
+      "density": "airy",
+      "material": "warm-parchment",
+      "imagery": "travel-editorial-photography",
+      "accent": "amber-gold-apricot-gray",
+      "primaryJob": "3 秒内看见行程或开始记录旅迹",
+      "notes": "暖杏灰+琥珀金+米白；折纸信笺品牌；四 Tab 行程/旅迹/灵感/我的"
+    },
+    "visualAssets": [
+      { "id": "hero_bg", "file": "hero_bg.png", "usage": "行程 Hero" },
+      { "id": "empty_state", "file": "empty_state.png", "usage": "空态" },
+      { "id": "banner_01", "file": "banner_01.png", "usage": "灵感 Banner" },
+      { "id": "journal_scenery", "file": "journal_scenery.png", "usage": "旅迹封面·风景" },
+      { "id": "journal_food", "file": "journal_food.png", "usage": "旅迹封面·美食" }
+    ],
+    "logo": {
+      "brandAnchor": "笺",
+      "glyphStrategy": "semantic-fusion",
+      "customLock": true,
+      "generator": "agent-svg"
+    }
+  }
+}

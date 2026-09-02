@@ -1,0 +1,436 @@
+{
+  "specVersion": "1.0.0",
+  "generatedAt": "2026-08-26T02:47:33.454Z",
+  "requestId": "req_1787712453418",
+  "industryPack": "wisdom-ask",
+  "identity": {
+    "company": "魏文波",
+    "companyPinyin": "wenbo",
+    "appName": "问知",
+    "appPinyin": "wenzhi",
+    "bundleId": "com.wenbo.wenzhi",
+    "version": "1.0.0"
+  },
+  "positioning": {
+    "tagline": "提问求知、结构化解答与个人知识库，把答案真正留下来。",
+    "coreUsers": [
+      {
+        "role": "学生与职场学习者",
+        "ageRange": "16-45",
+        "scenario": "遇到问题想快速得到要点、背景和延伸，并收藏进自己的分类",
+        "need": "智慧问答 + 知识库整理 + 每日新知，而不是自由对话或闯关游戏"
+      }
+    ],
+    "painPoints": [
+      "搜索结果太碎，缺少结构化要点",
+      "收藏夹只有链接，找不到当时为什么收藏",
+      "没有轻量习惯把每天一条新知看完"
+    ],
+    "differentiation": "提问求知、结构化解答与个人知识库，把答案真正留下来。",
+    "coreFlows": [
+      {
+        "name": "提问与收藏",
+        "steps": ["输入问题", "匹配解答", "阅读要点", "收藏到知识库"]
+      },
+      {
+        "name": "每日新知与学习管理",
+        "steps": ["阅读每日新知", "打卡答题", "查看时间轴与成就", "调整学习计划"]
+      }
+    ]
+  },
+  "modules": {
+    "pages": [
+      {
+        "id": "home",
+        "title": "问答",
+        "route": "pages/HomePage",
+        "features": [
+          "提问框",
+          "热门问题",
+          "结构化解答",
+          "收藏",
+          "追问"
+        ],
+        "tab": true
+      },
+      {
+        "id": "vault",
+        "title": "知识库",
+        "route": "pages/VaultPage",
+        "features": [
+          "分类筛选",
+          "搜索",
+          "收藏卡片",
+          "备注",
+          "删除"
+        ],
+        "tab": true
+      },
+      {
+        "id": "daily",
+        "title": "新知",
+        "route": "pages/DailyPage",
+        "features": [
+          "每日精选",
+          "已阅",
+          "收藏",
+          "连续天数"
+        ],
+        "tab": true
+      },
+      {
+        "id": "mine",
+        "title": "我的",
+        "route": "pages/MinePage",
+        "features": [
+          "学习统计",
+          "学习记录",
+          "求知偏好",
+          "设置与隐私"
+        ],
+        "tab": true
+      }
+    ],
+    "coreFlows": [
+      {
+        "name": "提问与收藏",
+        "steps": [
+          "输入问题",
+          "匹配解答",
+          "阅读要点背景延伸",
+          "收藏到知识库"
+        ]
+      },
+      {
+        "name": "每日新知",
+        "steps": [
+          "打开新知",
+          "阅读当日卡片",
+          "已阅打卡",
+          "可选收藏"
+        ]
+      }
+    ]
+  },
+  "entities": [
+    {
+      "name": "Insight",
+      "table": "insights",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "summary",
+          "type": "string"
+        },
+        {
+          "name": "body",
+          "type": "string"
+        },
+        {
+          "name": "description",
+          "type": "string"
+        },
+        {
+          "name": "further",
+          "type": "string"
+        },
+        {
+          "name": "keywords",
+          "type": "string"
+        },
+        {
+          "name": "category",
+          "type": "string"
+        },
+        {
+          "name": "coverMedia",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "Topic",
+      "table": "topics",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "category",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "DailyInsight",
+      "table": "daily",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "summary",
+          "type": "string"
+        },
+        {
+          "name": "body",
+          "type": "string"
+        },
+        {
+          "name": "coverMedia",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "Collection",
+      "table": "collections",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "insightId",
+          "type": "string"
+        },
+        {
+          "name": "question",
+          "type": "string"
+        },
+        {
+          "name": "note",
+          "type": "string"
+        },
+        {
+          "name": "folder",
+          "type": "string"
+        },
+        {
+          "name": "userId",
+          "type": "string"
+        }
+      ]
+    }
+  ],
+  "apis": [
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/wisdom-ask/topics",
+      "summary": "热门问题",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/wisdom-ask/insights",
+      "summary": "解答库",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/wisdom-ask/insights/:id",
+      "summary": "解答详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/wisdom-ask/search",
+      "summary": "按问题匹配解答",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/wisdom-ask/daily",
+      "summary": "每日新知",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/wisdom-ask/daily/:id",
+      "summary": "新知详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/wisdom-ask/collections",
+      "summary": "云端收藏（登录后）",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/biz/wisdom-ask/collections",
+      "summary": "同步收藏",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/messages",
+      "summary": "消息",
+      "auth": false,
+      "module": "messages"
+    }
+  ],
+  "ai": {
+    "capabilities": [],
+    "quickCommands": [],
+    "systemPrompt": "你是「魏文波」旗下应用「问知」的求知助手。产品定位：智慧知识问答与信息洞察，帮助用户提问、获得结构化解答并收藏整理。主职责：把问题拆成要点、背景与延伸阅读。禁止扮演医疗、金融、法律专业服务。C 端不提供生成式对话。",
+    "mode": "none",
+    "llmEnabled": false
+  },
+  "permissions": [
+    {
+      "name": "ohos.permission.INTERNET",
+      "reason": "拉取热门问题、解答库与每日新知，可选同步收藏",
+      "when": "inuse",
+      "scene": "打开应用或登录同步时"
+    }
+  ],
+  "harmonyos": {
+    "features": []
+  },
+  "store": {
+    "category": "实用工具",
+    "legalOperator": "魏文波",
+    "oneLiner": "问知 — 提问求知、结构化解答与个人知识库，把答案真正留下来。",
+    "fullDescription": "问知帮助你提出问题、获得结构化解答（要点归纳、相关背景、延伸阅读），并把有价值的问答收藏进个人知识库。每天一条精选新知，轻轻打卡。不提供社交、支付、会员与生成式对话。",
+    "keywords": [
+      "问答",
+      "知识",
+      "收藏",
+      "学习",
+      "洞察",
+      "鸿蒙"
+    ],
+    "privacySummary": {
+      "collect": [
+        "可选账号信息",
+        "提问与收藏备注",
+        "已阅与连续天数（本机）"
+      ],
+      "purpose": "提供智慧问答、知识库整理与每日新知",
+      "thirdParties": []
+    },
+    "demoAccount": {
+      "username": "auditor@wenbo.local",
+      "passwordNote": "仅写入 store/demo-account.md"
+    },
+    "screenshotPlan": [
+      {
+        "page": "home",
+        "caption": "智慧问答"
+      },
+      {
+        "page": "answer",
+        "caption": "结构化解答"
+      },
+      {
+        "page": "vault",
+        "caption": "我的知识库"
+      },
+      {
+        "page": "daily",
+        "caption": "每日新知"
+      },
+      {
+        "page": "mine",
+        "caption": "我的"
+      }
+    ],
+    "incentiveHooks": [
+      "FormExtensionAbility",
+      "元服务快捷入口"
+    ]
+  },
+  "access": {
+    "mode": "open_optional",
+    "features": {
+      "register": true,
+      "guestBrowse": true,
+      "guestWrite": true
+    },
+    "gateActions": [
+      "sync_vault"
+    ],
+    "onPrivacyRefuse": "browse_basic",
+    "loginProviders": [
+      "password"
+    ]
+  },
+  "brand": {
+    "primary": "#007DFF",
+    "primaryDeep": "#003A8C",
+    "deep": "#0B1F3A",
+    "accent": "#FF8C00",
+    "tone": "tech",
+    "stylePack": "harmonyos-official",
+    "workbenchId": "catalog-tool",
+    "layoutVariant": "E",
+    "productVisualType": "content-commerce",
+    "visualAssets": [
+      { "id": "hero_ask", "file": "hero_ask.png", "usage": "首页提问台 Hero" },
+      { "id": "banner_insight", "file": "banner_insight.png", "usage": "解答/求知偏好氛围 Banner" },
+      { "id": "banner_daily", "file": "banner_daily.png", "usage": "每日新知栏目 Banner" },
+      { "id": "cover_work", "file": "cover_work.png", "usage": "工作类解答封面" },
+      { "id": "cover_study", "file": "cover_study.png", "usage": "学习类解答封面" },
+      { "id": "cover_life", "file": "cover_life.png", "usage": "生活类解答封面" },
+      { "id": "cover_tech", "file": "cover_tech.png", "usage": "方法/思维类封面" },
+      { "id": "cover_history", "file": "cover_history.png", "usage": "判断/溯源类封面" },
+      { "id": "daily_hero", "file": "daily_hero.png", "usage": "每日新知主卡片摄影" }
+    ],
+    "visualDirection": {
+      "archetype": "ask-insight-desk",
+      "density": "airy",
+      "material": "clean-paper",
+      "imagery": "question-desk-library-morning-read",
+      "accent": "huawei-blue-warm-orange",
+      "primaryJob": "3 秒内开始提问并看到热门问题",
+      "notes": "华为蓝提问台 + 暖橙光点；禁止 AI 字样、禁止三 KPI 宫格、禁止复习闯关首页"
+    },
+    "logo": {
+      "concept": "几何问号曲线 + 暖橙光点",
+      "style": "flat-premium",
+      "generator": "premium_logo.py",
+      "glyphStrategy": "bootstrap",
+      "brandAnchor": "问",
+      "customLock": true,
+      "foregroundFile": "store/logo/foreground.png",
+      "backgroundFile": "store/logo/background.png",
+      "previewFile": "store/logo/preview-1024.png",
+      "agcFile": "store/logo/agc-216.png",
+      "symbolFile": "store/logo/symbol.svg",
+      "horizontalFile": "store/logo/logo-horizontal.svg"
+    }
+  }
+}

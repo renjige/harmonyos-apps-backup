@@ -1,0 +1,8 @@
+{
+  "string": [
+    { "name": "module_desc", "value": "轻知阁主模块" },
+    { "name": "EntryAbility_desc", "value": "轻知阁入口" },
+    { "name": "EntryAbility_label", "value": "轻知阁" },
+    { "name": "internet_reason", "value": "用于拉取精选轻知、分类封面与可选同步" }
+  ]
+}

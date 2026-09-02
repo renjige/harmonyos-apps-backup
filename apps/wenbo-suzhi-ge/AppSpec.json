@@ -1,0 +1,438 @@
+{
+  "specVersion": "1.0.0",
+  "generatedAt": "2026-08-24T03:07:12.197Z",
+  "requestId": "req_1787540832163",
+  "industryPack": "wisdom-hall",
+  "identity": {
+    "company": "魏文波",
+    "companyPinyin": "wenbo",
+    "appName": "素知阁",
+    "appPinyin": "suzhi-ge",
+    "bundleId": "com.wenbo.suzhige",
+    "version": "1.0.0"
+  },
+  "positioning": {
+    "tagline": "以质朴之心探寻智慧之境，口袋里的东方智慧阅读书房，每日精选语录与文萃分类浏览",
+    "coreUsers": [
+      {
+        "role": "热爱阅读与思考的用户",
+        "ageRange": "22-50",
+        "scenario": "通勤或睡前想读一句经典、写几行感悟",
+        "need": "轻量慧语、荐读、思录与思友圈，而非复杂笔记或资讯流"
+      }
+    ],
+    "painPoints": [
+      "经典读过却难留下",
+      "想法散落各处无法回看",
+      "缺少有温度的每日智慧提醒"
+    ],
+    "differentiation": "以质朴之心探寻智慧之境，口袋里的东方智慧阅读书房，每日精选语录与文萃分类浏览"
+  },
+  "modules": {
+    "pages": [
+      {
+        "id": "home",
+        "title": "今日堂",
+        "route": "pages/HomePage",
+        "features": [
+          "今日慧语",
+          "今日议题",
+          "荐读精选",
+          "思友圈一瞥",
+          "搜索"
+        ],
+        "tab": true
+      },
+      {
+        "id": "thoughts",
+        "title": "思录",
+        "route": "pages/ThoughtsPage",
+        "features": [
+          "标签筛选",
+          "思录列表",
+          "写思录",
+          "搜索"
+        ],
+        "tab": true
+      },
+      {
+        "id": "circle",
+        "title": "思友圈",
+        "route": "pages/CirclePage",
+        "features": [
+          "精选思考",
+          "点赞",
+          "推荐思友"
+        ],
+        "tab": true
+      },
+      {
+        "id": "mine",
+        "title": "我的",
+        "route": "pages/MinePage",
+        "features": [
+          "思录统计",
+          "收藏与历史",
+          "设置与隐私"
+        ],
+        "tab": true
+      }
+    ],
+    "coreFlows": [
+      {
+        "name": "每日智慧",
+        "steps": [
+          "打开今日堂",
+          "读今日慧语",
+          "进入荐读详情",
+          "收藏或写思录"
+        ]
+      },
+      {
+        "name": "思友共鸣",
+        "steps": [
+          "浏览思友圈精选",
+          "点赞",
+          "写一行自己的思录"
+        ]
+      }
+    ]
+  },
+  "entities": [
+    {
+      "name": "Quote",
+      "table": "quotes",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "authorName",
+          "type": "string"
+        },
+        {
+          "name": "summary",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "Read",
+      "table": "reads",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "body",
+          "type": "string"
+        },
+        {
+          "name": "readMinutes",
+          "type": "number"
+        }
+      ]
+    },
+    {
+      "name": "Thought",
+      "table": "thoughts",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "body",
+          "type": "string"
+        },
+        {
+          "name": "tags",
+          "type": "string"
+        },
+        {
+          "name": "userId",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "Featured",
+      "table": "featured",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "authorName",
+          "type": "string"
+        },
+        {
+          "name": "likeCount",
+          "type": "number"
+        }
+      ]
+    }
+  ],
+  "apis": [
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/wisdom-hall/quotes",
+      "summary": "每日慧语",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/wisdom-hall/reads",
+      "summary": "荐读文章",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/wisdom-hall/reads/:id",
+      "summary": "荐读详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/wisdom-hall/topics",
+      "summary": "今日议题",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/wisdom-hall/featured",
+      "summary": "思友圈精选",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/wisdom-hall/featured/:id",
+      "summary": "精选详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/biz/wisdom-hall/featured/:id/like",
+      "summary": "点赞精选",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/wisdom-hall/tags",
+      "summary": "思录标签",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/wisdom-hall/friends",
+      "summary": "推荐思友",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/wisdom-hall/thoughts",
+      "summary": "用户思录",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/biz/wisdom-hall/thoughts",
+      "summary": "写思录",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/wisdom-hall/favorites",
+      "summary": "收藏",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/biz/wisdom-hall/favorites",
+      "summary": "添加收藏",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/wisdom-hall/history",
+      "summary": "浏览历史",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/biz/wisdom-hall/history",
+      "summary": "记录浏览",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/messages",
+      "summary": "消息",
+      "auth": false,
+      "module": "messages"
+    }
+  ],
+  "ai": {
+    "capabilities": [],
+    "quickCommands": [],
+    "systemPrompt": "你是「魏文波」旗下应用「思见堂」的智慧整理助手。产品定位：每日慧语与思录，东方美学下的内心成长。主职责：按标题建议标签、整理思录分类口吻。禁止扮演医疗、金融、法律专业服务。C 端不提供生成式对话。",
+    "mode": "none",
+    "llmEnabled": false
+  },
+  "permissions": [
+    {
+      "name": "ohos.permission.INTERNET",
+      "reason": "拉取慧语、荐读、议题与思友圈精选，可选同步思录",
+      "when": "inuse",
+      "scene": "打开应用或登录同步时"
+    }
+  ],
+  "harmonyos": {
+    "features": []
+  },
+  "store": {
+    "category": "生活",
+    "legalOperator": "魏文波",
+    "oneLiner": "素知阁 — 以质朴之心探寻智慧之境，口袋里的东方智慧阅读书房，每日精选语录与文萃",
+    "fullDescription": "思见堂是一款东方美学风格的智慧日常 App。每日打开今日堂，读一句经典慧语；进入荐读与议题，引导深度思考；在思录里写下真实感悟；在思友圈浏览精选思考并点赞。不提供社交灌水、支付、会员与生成式对话。",
+    "keywords": [
+      "智慧",
+      "经典",
+      "思录",
+      "阅读",
+      "东方",
+      "鸿蒙"
+    ],
+    "privacySummary": {
+      "collect": [
+        "可选账号信息",
+        "思录标题与正文",
+        "标签与分类",
+        "收藏与浏览历史"
+      ],
+      "purpose": "提供慧语阅读、思录、收藏与思友圈浏览",
+      "thirdParties": []
+    },
+    "demoAccount": {
+      "username": "auditor@wenbo.local",
+      "passwordNote": "仅写入 store/demo-account.md"
+    },
+    "screenshotPlan": [
+      {
+        "page": "home",
+        "caption": "今日堂"
+      },
+      {
+        "page": "thoughts",
+        "caption": "思录"
+      },
+      {
+        "page": "detail",
+        "caption": "荐读详情"
+      },
+      {
+        "page": "circle",
+        "caption": "思友圈"
+      },
+      {
+        "page": "mine",
+        "caption": "我的"
+      }
+    ],
+    "incentiveHooks": [
+      "FormExtensionAbility",
+      "元服务快捷入口"
+    ]
+  },
+  "access": {
+    "mode": "open_optional",
+    "features": {
+      "register": true,
+      "guestBrowse": true,
+      "guestWrite": false
+    },
+    "gateActions": [
+      "sync_thoughts"
+    ],
+    "onPrivacyRefuse": "browse_basic",
+    "loginProviders": [
+      "password"
+    ]
+  },
+  "brand": {
+    "primary": "#2C3E50",
+    "primaryDeep": "#1A2832",
+    "deep": "#1A2832",
+    "accent": "#C9A96E",
+    "secondary": "#5D7A8C",
+    "surface": "#F5F2ED",
+    "tone": "soft-editorial",
+    "stylePack": "soft-editorial",
+    "workbenchId": "wisdom-daily",
+    "layoutVariant": "A",
+    "productVisualType": "content-commerce",
+    "visualDirection": {
+      "archetype": "oriental-wisdom",
+      "density": "airy",
+      "material": "warm-paper-ink",
+      "imagery": "ink-wash-scroll-tea-light",
+      "accent": "ink-gold-jade",
+      "primaryJob": "3 秒内读到今天的一句智慧语录",
+      "notes": "黛蓝 #2C3E50 + 琥珀金 #C9A96E + 米白 #F5F2ED；三 Tab 智慧阁/文萃/我的"
+    },
+    "logo": {
+      "brandAnchor": "素",
+      "glyphStrategy": "semantic-fusion",
+      "customLock": false,
+      "concept": "阁檐简笔 + 书卷窗棂 + 一点慧光",
+      "foregroundFile": "store/logo/foreground.png",
+      "backgroundFile": "store/logo/background.png",
+      "previewFile": "store/logo/preview-1024.png",
+      "agcFile": "store/logo/agc-216.png",
+      "symbolFile": "store/logo/symbol.svg",
+      "horizontalFile": "store/logo/logo-horizontal.svg"
+    }
+  }
+}

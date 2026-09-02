@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 360" role="img" aria-label="�Pz">
+  <rect width="360" height="360" rx="72" fill="#1E3A6E"/>
+  <g transform="translate(28 28) scale(0.297)">
+    <path d="M250 390 C 320 250 704 250 774 390" fill="none" stroke="#FFFFFF" stroke-width="28" stroke-linecap="round"/>
+    <circle cx="268" cy="392" r="26" fill="#FFFFFF"/>
+    <circle cx="756" cy="392" r="20" fill="#FFFFFF"/>
+    <circle cx="512" cy="560" r="236" fill="#FFFFFF"/>
+    <rect x="428" y="488" width="168" height="168" rx="32" fill="#1E3A6E"/>
+    <path d="M428 544 H596" fill="none" stroke="#FFFFFF" stroke-width="18" stroke-linecap="round"/>
+    <circle cx="512" cy="604" r="22" fill="#FFFFFF"/>
+  </g>
+  <text x="420" y="230" font-family="Microsoft YaHei, PingFang SC, Noto Sans SC, sans-serif" font-size="120" font-weight="600" fill="#1E3A6E">�Pz</text>
+</svg>

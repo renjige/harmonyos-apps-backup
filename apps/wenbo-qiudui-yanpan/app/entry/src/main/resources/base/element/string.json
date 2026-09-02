@@ -1,0 +1,10 @@
+{
+  "string": [
+    { "name": "module_desc", "value": "球队信息分析工具主模块" },
+    { "name": "EntryAbility_desc", "value": "球队研判应用入口" },
+    { "name": "EntryAbility_label", "value": "球队研判" },
+    { "name": "internet_reason", "value": "用于同步球队资料、关注与比赛提醒数据" },
+    { "name": "widget_label", "value": "关注球队卡片" },
+    { "name": "widget_desc", "value": "桌面显示关注球队近期状态" }
+  ]
+}

@@ -1,0 +1,397 @@
+{
+  "specVersion": "1.0.0",
+  "generatedAt": "2026-08-20T06:34:44.842Z",
+  "requestId": "req_1787207684808",
+  "industryPack": "parent-child-quiz",
+  "identity": {
+    "company": "魏文波",
+    "companyPinyin": "wenbo",
+    "appName": "亲子智谜",
+    "appPinyin": "qinzi-zhimi",
+    "bundleId": "com.wenbo.qinzizhimi",
+    "version": "1.0.3"
+  },
+  "positioning": {
+    "tagline": "面向6到12岁儿童及家长的轻量亲子益智互动，碎片时间一起玩谜题，一起动脑一起开心",
+    "coreUsers": [
+      {
+        "role": "小学阶段儿童",
+        "ageRange": "6-12",
+        "scenario": "放学后几分钟和家长玩一题",
+        "need": "题目清晰、反馈温和、立刻知道点哪里开始"
+      },
+      {
+        "role": "家长",
+        "ageRange": "28-45",
+        "scenario": "碎片时间和孩子一起动脑",
+        "need": "无广告无付费，亲子对答轻松有趣"
+      }
+    ],
+    "painPoints": [
+      "益智 App 功能过重、广告多",
+      "反馈太严厉，孩子容易焦虑",
+      "缺少家长和孩子一起玩的轻互动"
+    ],
+    "differentiation": "面向6到12岁儿童及家长的轻量亲子益智互动，碎片时间一起玩谜题，一起动脑一起开心"
+  },
+  "modules": {
+    "pages": [
+      {
+        "id": "home",
+        "title": "今日",
+        "route": "pages/HomePage",
+        "features": [
+          "今日挑战",
+          "开始挑战",
+          "今日进度",
+          "今日推荐"
+        ],
+        "tab": true
+      },
+      {
+        "id": "puzzles",
+        "title": "谜题",
+        "route": "pages/PuzzleListPage",
+        "features": [
+          "分类标签",
+          "谜题卡片",
+          "难度",
+          "开始"
+        ],
+        "tab": true
+      },
+      {
+        "id": "family",
+        "title": "亲子",
+        "route": "pages/FamilyPage",
+        "features": [
+          "家庭对答",
+          "今日默契"
+        ],
+        "tab": true
+      },
+      {
+        "id": "mine",
+        "title": "我的",
+        "route": "pages/MinePage",
+        "features": [
+          "小小探索家",
+          "收藏",
+          "挑战记录",
+          "勋章",
+          "说明",
+          "协议"
+        ],
+        "tab": true
+      }
+    ],
+    "coreFlows": [
+      {
+        "name": "今日挑战",
+        "steps": [
+          "打开今日",
+          "开始挑战",
+          "选择答案",
+          "提交",
+          "查看解析",
+          "下一题"
+        ]
+      },
+      {
+        "name": "家庭对答",
+        "steps": [
+          "进入亲子",
+          "家长作答",
+          "孩子作答",
+          "揭晓",
+          "查看默契"
+        ]
+      },
+      {
+        "name": "收藏与勋章",
+        "steps": [
+          "答题后收藏",
+          "完成挑战记录",
+          "点亮勋章"
+        ]
+      }
+    ]
+  },
+  "entities": [
+    {
+      "name": "Puzzle",
+      "table": "puzzles",
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "category",
+          "type": "string"
+        },
+        {
+          "name": "question",
+          "type": "string"
+        },
+        {
+          "name": "difficulty",
+          "type": "string"
+        },
+        {
+          "name": "coverKey",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "MedalDef",
+      "table": "medals",
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "summary",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "Guide",
+      "table": "guides",
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "body",
+          "type": "string"
+        }
+      ]
+    }
+  ],
+  "apis": [
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/parent-child-quiz/puzzles",
+      "summary": "谜题列表",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/parent-child-quiz/puzzles/:id",
+      "summary": "谜题详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/parent-child-quiz/categories",
+      "summary": "分类",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/parent-child-quiz/categories/:id",
+      "summary": "分类详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/parent-child-quiz/medals",
+      "summary": "勋章定义",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/parent-child-quiz/medals/:id",
+      "summary": "勋章详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/parent-child-quiz/guides",
+      "summary": "使用说明",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/parent-child-quiz/guides/:id",
+      "summary": "说明详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/parent-child-quiz/kpis",
+      "summary": "机构指标",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/messages",
+      "summary": "系统消息",
+      "auth": false,
+      "module": "messages"
+    }
+  ],
+  "ai": {
+    "capabilities": [],
+    "quickCommands": [],
+    "systemPrompt": "你是「魏文波」旗下应用「亲子智谜」的内容助手。产品定位：面向6到12岁儿童及家长的轻量亲子益智互动。主职责：说明今日挑战、分类谜题与家庭对答规则。不提供生成式对话，不做智力测评，不出现 AI 字样。",
+    "mode": "none",
+    "llmEnabled": false
+  },
+  "permissions": [
+    {
+      "name": "ohos.permission.INTERNET",
+      "reason": "在您选择登录时连接服务，答题进度默认保存在本机",
+      "when": "inuse",
+      "scene": "可选登录"
+    }
+  ],
+  "harmonyos": {
+    "features": []
+  },
+  "store": {
+    "category": "教育",
+    "legalOperator": "魏文波",
+    "oneLiner": "亲子智谜 — 一起动脑，一起开心",
+    "fullDescription": "亲子智谜是一款面向 6 到 12 岁儿童及家长的轻量益智互动应用。支持今日挑战、分类谜题、家庭对答、收藏、挑战记录和轻量勋章。题目来自平台题库，进度保存在本机。无广告、无支付、无商城。不进行智力测评，也不承诺提高考试成绩。",
+    "keywords": [
+      "亲子",
+      "谜题",
+      "脑筋急转弯",
+      "益智",
+      "家庭互动",
+      "鸿蒙"
+    ],
+    "privacySummary": {
+      "collect": [
+        "可选账号信息",
+        "本机答题进度",
+        "本机收藏与勋章"
+      ],
+      "purpose": "提供谜题浏览、答题反馈、家庭对答与本地成长记录",
+      "thirdParties": []
+    },
+    "demoAccount": {
+      "username": "auditor@wenbo.local",
+      "passwordNote": "仅写入 store/demo-account.md"
+    },
+    "screenshotPlan": [
+      {
+        "page": "home",
+        "caption": "今日挑战与开始挑战"
+      },
+      {
+        "page": "quiz",
+        "caption": "大字号题目与四选项"
+      },
+      {
+        "page": "correct",
+        "caption": "温和正确反馈与解析"
+      },
+      {
+        "page": "family",
+        "caption": "家庭对答与默契"
+      },
+      {
+        "page": "mine",
+        "caption": "小小探索家与勋章"
+      }
+    ],
+    "incentiveHooks": [
+      "FormExtensionAbility"
+    ]
+  },
+  "access": {
+    "mode": "open_optional",
+    "features": {
+      "register": true,
+      "guestBrowse": true,
+      "guestWrite": true
+    },
+    "gateActions": [],
+    "onPrivacyRefuse": "browse_basic",
+    "loginProviders": [
+      "password"
+    ]
+  },
+  "admin": {
+    "featureModules": [
+      "overview",
+      "appUsers",
+      "pcqPuzzles",
+      "pcqCategories",
+      "pcqMedals",
+      "pcqGuides",
+      "messages",
+      "kpis"
+    ]
+  },
+  "brand": {
+    "primary": "#4A78FF",
+    "primaryDeep": "#1E3A6E",
+    "deep": "#1E2A3A",
+    "accent": "#FFCC4A",
+    "tone": "soft-editorial",
+    "stylePack": "soft-editorial",
+    "workbenchId": "catalog-tool",
+    "layoutVariant": "A",
+    "productVisualType": "ops-tool",
+    "visualDirection": {
+      "archetype": "premium-family-play",
+      "density": "airy",
+      "material": "soft-card-starlight",
+      "imagery": "parent-child-reading-desk",
+      "accent": "star-blue-sun-gold-mint",
+      "primaryJob": "3 秒内点击开始挑战",
+      "notes": "高级亲子益智；禁止卡通堆砌、游戏大厅与电商化"
+    },
+    "visualAssets": {
+      "hero": ["hero_desk", "hero_space"],
+      "covers": ["cat_riddle", "cat_math", "cat_visual", "cat_life", "cat_logic", "cat_animal"]
+    },
+    "logo": {
+      "concept": "星球谜盒：圆润星球与谜盒缺口，两点星轨暗示一起探索",
+      "style": "flat-premium",
+      "generator": "render_logo.py",
+      "glyphStrategy": "semantic-fusion",
+      "brandAnchor": "谜",
+      "customLock": true,
+      "renderScript": "store/logo/render_logo.py",
+      "foregroundFile": "store/logo/foreground.png",
+      "backgroundFile": "store/logo/background.png",
+      "previewFile": "store/logo/preview-1024.png",
+      "agcFile": "store/logo/agc-216.png",
+      "symbolFile": "store/logo/symbol.svg",
+      "horizontalFile": "store/logo/logo-horizontal.svg"
+    }
+  }
+}

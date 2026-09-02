@@ -1,0 +1,383 @@
+{
+  "specVersion": "1.0.0",
+  "generatedAt": "2026-08-24T06:12:07.320Z",
+  "requestId": "req_1787551927281",
+  "industryPack": "kids-math",
+  "identity": {
+    "company": "魏文波",
+    "companyPinyin": "wenbo",
+    "appName": "趣味算学",
+    "appPinyin": "quwei-suanxue",
+    "bundleId": "com.wenbo.quweisuanxue",
+    "version": "1.0.0"
+  },
+  "positioning": {
+    "tagline": "面向6-12岁小学生的游戏化口算闯关应用，智慧挑战、趣味训练与成长徽章激励，让算术学习更有趣",
+    "coreUsers": [
+      {
+        "role": "小学阶段儿童",
+        "ageRange": "6-12",
+        "scenario": "课后几分钟口算练习",
+        "need": "题目清晰、反馈温和、立刻知道点哪里开始"
+      },
+      {
+        "role": "家长",
+        "ageRange": "28-45",
+        "scenario": "陪伴孩子完成每日十题",
+        "need": "无广告无付费，成长数据一眼看懂"
+      }
+    ],
+    "painPoints": [
+      "练习 App 功能过重、广告多",
+      "错题没有简单地方复习",
+      "反馈太严厉，孩子容易焦虑"
+    ],
+    "differentiation": "面向6-12岁小学生的游戏化口算闯关应用，智慧挑战、趣味训练与成长徽章激励，让算术学习更有趣"
+  },
+  "modules": {
+    "pages": [
+      {
+        "id": "home",
+        "title": "首页",
+        "route": "pages/HomePage",
+        "features": [
+          "今日挑战",
+          "开始计算",
+          "今日表现",
+          "快速练习"
+        ],
+        "tab": true
+      },
+      {
+        "id": "practice",
+        "title": "练习",
+        "route": "pages/PracticePage",
+        "features": [
+          "加法",
+          "减法",
+          "乘法",
+          "除法",
+          "混合",
+          "闯关",
+          "错题"
+        ],
+        "tab": true
+      },
+      {
+        "id": "growth",
+        "title": "成长",
+        "route": "pages/GrowthPage",
+        "features": [
+          "累计星星",
+          "正确率",
+          "连续天数",
+          "本周练习",
+          "勋章"
+        ],
+        "tab": true
+      },
+      {
+        "id": "mine",
+        "title": "我的",
+        "route": "pages/MinePage",
+        "features": [
+          "成长卡片",
+          "设置",
+          "隐私政策",
+          "用户协议",
+          "关于"
+        ],
+        "tab": true
+      }
+    ],
+    "coreFlows": [
+      {
+        "name": "每日计算",
+        "steps": [
+          "打开首页",
+          "开始计算",
+          "完成十题",
+          "查看星星",
+          "错题入小本"
+        ]
+      },
+      {
+        "name": "闯关挑战",
+        "steps": [
+          "进入练习",
+          "开始闯关",
+          "完成十题",
+          "查看结算",
+          "再来一关"
+        ]
+      },
+      {
+        "name": "错题复习",
+        "steps": [
+          "打开错题小本",
+          "再算一次",
+          "答对后继续"
+        ]
+      }
+    ]
+  },
+  "entities": [
+    {
+      "name": "PracticeMode",
+      "table": "modes",
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "summary",
+          "type": "string"
+        },
+        {
+          "name": "coverKey",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "MedalDef",
+      "table": "medals",
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "summary",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "PracticeTip",
+      "table": "tips",
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "body",
+          "type": "string"
+        }
+      ]
+    }
+  ],
+  "apis": [
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/kids-math/modes",
+      "summary": "练习模式",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/kids-math/modes/:id",
+      "summary": "练习模式详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/kids-math/challenges",
+      "summary": "闯关说明",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/kids-math/challenges/:id",
+      "summary": "闯关详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/kids-math/medals",
+      "summary": "勋章定义",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/kids-math/medals/:id",
+      "summary": "勋章详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/kids-math/tips",
+      "summary": "练习贴士",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/kids-math/tips/:id",
+      "summary": "贴士详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/kids-math/kpis",
+      "summary": "机构指标",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/messages",
+      "summary": "系统消息",
+      "auth": false,
+      "module": "messages"
+    }
+  ],
+  "ai": {
+    "capabilities": [],
+    "quickCommands": [],
+    "systemPrompt": "你是「魏文波」旗下应用「趣味算学」的练习助手。产品定位：面向6-12岁小学生的游戏化口算闯关。主职责：说明智慧闯关、四选一答题、趣味训练与成长徽章规则。不提供生成式对话，不承诺提高成绩。",
+    "mode": "none",
+    "llmEnabled": false
+  },
+  "permissions": [
+    {
+      "name": "ohos.permission.INTERNET",
+      "reason": "在您选择登录时连接服务，练习数据默认保存在本机",
+      "when": "inuse",
+      "scene": "可选登录"
+    }
+  ],
+  "harmonyos": {
+    "features": []
+  },
+  "store": {
+    "category": "教育",
+    "legalOperator": "魏文波",
+    "oneLiner": "趣味算学 — 面向6-12岁小学生的游戏化口算闯关应用，智慧挑战、趣味训练与成长",
+    "fullDescription": "童趣算坊是一款面向儿童的轻量数学计算练习应用。支持每日计算、加减乘除与混合练习、闯关挑战、错题小本和成长记录。题目在本机生成，练习记录保存在本机。无广告、无支付、无商城。不承诺提高考试成绩，只提供清晰温和的计算练习。",
+    "keywords": [
+      "口算",
+      "计算练习",
+      "儿童学习",
+      "加减乘除",
+      "错题本",
+      "鸿蒙"
+    ],
+    "privacySummary": {
+      "collect": [
+        "可选账号信息",
+        "本机练习记录",
+        "本机错题与星星"
+      ],
+      "purpose": "提供计算练习、错题复习与成长统计",
+      "thirdParties": []
+    },
+    "demoAccount": {
+      "username": "auditor@wenbo.local",
+      "passwordNote": "仅写入 store/demo-account.md"
+    },
+    "screenshotPlan": [
+      {
+        "page": "home",
+        "caption": "今日挑战与开始计算"
+      },
+      {
+        "page": "quiz",
+        "caption": "大号算式与数字键盘"
+      },
+      {
+        "page": "result",
+        "caption": "闯关完成与星星"
+      },
+      {
+        "page": "wrong",
+        "caption": "错题小本"
+      },
+      {
+        "page": "growth",
+        "caption": "成长数据与勋章"
+      }
+    ],
+    "incentiveHooks": [
+      "FormExtensionAbility"
+    ]
+  },
+  "access": {
+    "mode": "open_optional",
+    "features": {
+      "register": true,
+      "guestBrowse": true,
+      "guestWrite": false
+    },
+    "gateActions": [],
+    "onPrivacyRefuse": "browse_basic",
+    "loginProviders": [
+      "password"
+    ]
+  },
+  "admin": {
+    "featureModules": [
+      "overview",
+      "appUsers",
+      "kmModes",
+      "kmChallenges",
+      "kmMedals",
+      "kmTips",
+      "messages",
+      "kpis"
+    ]
+  },
+  "brand": {
+    "primary": "#4A90D9",
+    "primaryDeep": "#2C5282",
+    "deep": "#2C5282",
+    "accent": "#F5A623",
+    "tone": "soft-editorial",
+    "stylePack": "soft-editorial",
+    "workbenchId": "catalog-tool",
+    "layoutVariant": "A",
+    "productVisualType": "ops-tool",
+    "visualDirection": {
+      "archetype": "premium-kids-learning",
+      "density": "airy",
+      "material": "paper-wood-soft-card",
+      "imagery": "desk-pencil-abacus",
+      "accent": "blue-gold-mint",
+      "primaryJob": "3 秒内点击开始智慧挑战",
+      "notes": "四选一答题 + 智慧蓝活力橙；与童趣算坊数字键盘区分"
+    },
+    "logo": {
+      "brandAnchor": "算学",
+      "glyphStrategy": "semantic-fusion",
+      "customLock": true,
+      "concept": "智慧蓝底上数字1与橙色加号融合，微笑弧线点缀",
+      "previewFile": "store/logo/preview-1024.png",
+      "foregroundFile": "store/logo/foreground.png",
+      "backgroundFile": "store/logo/background.png"
+    }
+  }
+}

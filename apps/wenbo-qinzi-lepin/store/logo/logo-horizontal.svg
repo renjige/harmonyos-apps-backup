@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 160">
+  <rect x="8" y="16" width="128" height="128" rx="28" fill="#5C2E12"/>
+  <rect x="28" y="40" width="36" height="80" rx="10" fill="#FFFCF6"/>
+  <circle cx="64" cy="80" r="12" fill="#FFFCF6"/>
+  <rect x="64" y="40" width="36" height="80" rx="10" fill="#FFFCF6"/>
+  <circle cx="64" cy="80" r="12" fill="#5C2E12"/>
+  <text x="160" y="104" font-family="HarmonyOS Sans, Noto Sans SC, sans-serif" font-size="64" font-weight="600" fill="#5C2E12">�PP�</text>
+</svg>

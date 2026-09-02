@@ -1,0 +1,11 @@
+{
+  "company": "魏文波",
+  "industry": "light-knowledge",
+  "appName": "轻知阁",
+  "positioning": "每天积累一点轻知识，让知识真正留下来。",
+  "primaryEntity": "KnowledgeItem",
+  "coreLoop": "发现知识 → 阅读 → 收藏 → 整理 → 记录 → 复习",
+  "primaryJob": "打开 App 就能读到今天的一条轻知，并随手收藏、整理、复习",
+  "accessMode": "open_optional",
+  "requestedAt": "2026-08-21T01:05:36.431Z"
+}

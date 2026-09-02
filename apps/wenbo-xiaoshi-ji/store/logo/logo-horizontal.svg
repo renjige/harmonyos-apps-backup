@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 512" fill="none">
+  <rect x="0" y="0" width="512" height="512" rx="0" fill="#C44A22"/>
+  <circle cx="215" cy="235" r="39" fill="#FFFFFF"/>
+  <path d="M269 274 C319 314 369 306 401 259" stroke="#FFFFFF" stroke-width="26" stroke-linecap="round" fill="none"/>
+  <text x="580" y="310" fill="#C44A22" font-size="168" font-family="HarmonyOS Sans, Source Han Sans SC, Noto Sans SC, sans-serif" font-weight="600">��</text>
+</svg>

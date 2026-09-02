@@ -1,0 +1,8 @@
+{
+  "string": [
+    { "name": "module_desc", "value": "研语：24类创作场景、24类成稿、润色摘要与个人研究整理" },
+    { "name": "EntryAbility_desc", "value": "研语应用入口" },
+    { "name": "EntryAbility_label", "value": "研语" },
+    { "name": "internet_reason", "value": "用于拉取表达灵感范例与可选账号登录" }
+  ]
+}

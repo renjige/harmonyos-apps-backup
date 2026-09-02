@@ -1,0 +1,288 @@
+{
+  "specVersion": "1.0.0",
+  "generatedAt": "2026-08-26T07:46:10.748Z",
+  "requestId": "req_1787730370713",
+  "industryPack": "micro-moment",
+  "identity": {
+    "company": "魏文波",
+    "companyPinyin": "wenbo",
+    "appName": "小事记",
+    "appPinyin": "xiaoshi-ji",
+    "bundleId": "com.wenbo.xiaoshiji",
+    "version": "1.1.1"
+  },
+  "positioning": {
+    "tagline": "30秒捕捉生活里的小确幸、灵感碎片与待办点滴，让记录简单而美好",
+    "coreUsers": [
+      {
+        "role": "想随手记下小事的都市用户",
+        "ageRange": "18-40",
+        "scenario": "通勤、睡前、灵感刚冒出来的30秒",
+        "need": "立刻写下来或说出来，事后能按日回看"
+      }
+    ],
+    "painPoints": [
+      "日记太重写不下去",
+      "灵感和待办混在备忘录里找不到",
+      "想回看一个月却只有冷冰冰的列表"
+    ],
+    "differentiation": "30秒捕捉生活里的小确幸、灵感碎片与待办点滴，让记录简单而美好"
+  },
+  "modules": {
+    "pages": [
+      {
+        "id": "notes",
+        "title": "灵感随记",
+        "route": "pages/NotesPage",
+        "features": [
+          "时间线",
+          "标签",
+          "键盘输入引导",
+          "编辑删除"
+        ],
+        "tab": true
+      },
+      {
+        "id": "todos",
+        "title": "待办清单",
+        "route": "pages/TodoPage",
+        "features": [
+          "今日本周以后",
+          "优先级",
+          "完成进度",
+          "清除已完成"
+        ],
+        "tab": true
+      },
+      {
+        "id": "timeline",
+        "title": "时光轴",
+        "route": "pages/TimelinePage",
+        "features": [
+          "月历圆点",
+          "当日列表",
+          "连续天数",
+          "分享本月卡片"
+        ],
+        "tab": true
+      },
+      {
+        "id": "mine",
+        "title": "我的",
+        "route": "pages/MinePage",
+        "features": [
+          "昵称",
+          "统计",
+          "标签管理",
+          "导出",
+          "深色模式",
+          "隐私"
+        ],
+        "tab": true
+      }
+    ],
+    "coreFlows": [
+      {
+        "name": "记下小事",
+        "steps": [
+          "点FAB",
+          "写文字",
+          "选1-3标签",
+          "保存出现在时间线",
+          "详情可编辑删除"
+        ]
+      },
+      {
+        "name": "待办有序",
+        "steps": [
+          "快加待办",
+          "分桶与优先级",
+          "勾选完成",
+          "清除已完成"
+        ]
+      },
+      {
+        "name": "时光回看",
+        "steps": [
+          "打开月历",
+          "点有记录的日子",
+          "看当日小事",
+          "分享本月卡片"
+        ]
+      }
+    ]
+  },
+  "entities": [
+    {
+      "name": "MomentNote",
+      "table": "moment_notes",
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "content",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "tags",
+          "type": "array"
+        },
+        {
+          "name": "createdAt",
+          "type": "number"
+        }
+      ]
+    },
+    {
+      "name": "MomentTodo",
+      "table": "moment_todos",
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "content",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "priority",
+          "type": "string"
+        },
+        {
+          "name": "bucket",
+          "type": "string"
+        },
+        {
+          "name": "isCompleted",
+          "type": "boolean"
+        }
+      ]
+    }
+  ],
+  "apis": [],
+  "ai": {
+    "capabilities": [],
+    "quickCommands": [],
+    "systemPrompt": "你是「魏文波」旗下应用「小事记」的本机助手。产品定位：30秒捕捉生活小事、灵感与待办。主职责：帮助理解标签、待办分组与时光轴。禁止自称人工智能。C端不提供生成式对话。",
+    "mode": "none",
+    "llmEnabled": false
+  },
+  "permissions": [],
+  "harmonyos": {
+    "features": []
+  },
+  "store": {
+    "category": "生活",
+    "legalOperator": "魏文波",
+    "oneLiner": "小事记 — 30秒捕捉生活里的小确幸、灵感碎片与待办点滴，让记录简单而美好",
+    "fullDescription": "小事记是一款轻量生活记录工具。用文字在30秒内记下小确幸、灵感碎片和待办，按标签色条浏览时间线，在月历里回看，生成本月记录卡片分享。数据默认只保存在本机，无社交、无支付、无生成式对话。",
+    "keywords": [
+      "小事",
+      "随记",
+      "待办",
+      "灵感",
+      "时光轴",
+      "生活记录",
+      "鸿蒙"
+    ],
+    "privacySummary": {
+      "collect": [
+        "本机记录正文",
+        "标签",
+        "待办状态",
+        "昵称与主题偏好"
+      ],
+      "purpose": "提供本机记录、待办与时光轴回顾",
+      "thirdParties": []
+    },
+    "demoAccount": {
+      "username": "auditor@wenbo.local",
+      "passwordNote": "仅写入 store/demo-account.md"
+    },
+    "screenshotPlan": [
+      {
+        "page": "notes",
+        "caption": "灵感时间线与记下小事"
+      },
+      {
+        "page": "todos",
+        "caption": "待办三桶与今日进度"
+      },
+      {
+        "page": "timeline",
+        "caption": "月历圆点与当日小事"
+      },
+      {
+        "page": "mine",
+        "caption": "统计、导出与隐私"
+      }
+    ],
+    "incentiveHooks": []
+  },
+  "access": {
+    "mode": "open_optional",
+    "features": {
+      "register": false,
+      "guestBrowse": true,
+      "guestWrite": true
+    },
+    "gateActions": [],
+    "onPrivacyRefuse": "exit",
+    "loginProviders": []
+  },
+  "admin": {
+    "featureModules": [
+      "overview",
+      "appUsers",
+      "messages",
+      "kpis"
+    ]
+  },
+  "brand": {
+    "primary": "#FF6B35",
+    "primaryDeep": "#C44A22",
+    "deep": "#C44A22",
+    "accent": "#4ECDC4",
+    "tone": "soft-editorial",
+    "stylePack": "soft-editorial",
+    "workbenchId": "catalog-tool",
+    "layoutVariant": "E",
+    "productVisualType": "ops-tool",
+    "visualDirection": {
+      "archetype": "warm-stationery-dot",
+      "density": "airy",
+      "material": "warm-paper",
+      "imagery": "desk-note-window-light",
+      "accent": "coral-mint",
+      "primaryJob": "3秒内点FAB记下此刻一件小事",
+      "notes": "暖橙#FF6B35+薄荷#4ECDC4+米白；标签色竖条；禁止心情六宫格与工厂六件套"
+    },
+    "logo": {
+      "brandAnchor": "小",
+      "glyphStrategy": "semantic-fusion",
+      "customLock": true,
+      "generator": "agent-svg",
+      "renderScript": "store/logo/render_logo.mjs",
+      "concept": "一点一弧：记下小事，连成轨迹",
+      "previewFile": "store/logo/preview-1024.png",
+      "agcFile": "store/logo/agc-216.png",
+      "symbolFile": "store/logo/symbol.svg",
+      "horizontalFile": "store/logo/logo-horizontal.svg",
+      "foregroundFile": "store/logo/foreground.png",
+      "backgroundFile": "store/logo/background.png"
+    },
+    "visualAssets": [
+      { "id": "hero", "file": "hero_warm_desk.png", "usage": "灵感详情 Hero" },
+      { "id": "empty", "file": "empty_first_note.png", "usage": "灵感空态" },
+      { "id": "todo", "file": "banner_todo_calm.png", "usage": "待办氛围与详情" },
+      { "id": "calendar", "file": "calendar_window.png", "usage": "时光轴月历氛围" }
+    ]
+  }
+}

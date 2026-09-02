@@ -1,0 +1,8 @@
+{
+  "string": [
+    { "name": "module_desc", "value": "脑力探秘主模块" },
+    { "name": "EntryAbility_desc", "value": "脑力探秘入口" },
+    { "name": "EntryAbility_label", "value": "脑力探秘" },
+    { "name": "internet_reason", "value": "用于拉取训练目录、知识库与可选账号同步" }
+  ]
+}

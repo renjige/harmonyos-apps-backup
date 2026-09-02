@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 160" role="img" aria-label=";-�">
+  <rect width="640" height="160" rx="24" fill="#FAF7F2"/>
+  <g transform="translate(24,24) scale(0.22)">
+    <rect width="512" height="512" rx="112" fill="#F3EBE3"/>
+    <path d="M108 156h296c8.8 0 16 7.2 16 16v248c0 8.8-7.2 16-16 16H108c-8.8 0-16-7.2-16-16V172c0-8.8 7.2-16 16-16z" fill="#FFFFFF" stroke="#8FA8B8" stroke-width="6"/>
+    <circle cx="380" cy="132" r="36" fill="#E8A87C"/>
+  </g>
+  <text x="140" y="98" font-family="HarmonyOS Sans, sans-serif" font-size="52" font-weight="600" fill="#5C6B73">;-�</text>
+  <text x="142" y="128" font-family="HarmonyOS Sans, sans-serif" font-size="20" fill="#8FA8B8">�U; � �X��</text>
+</svg>

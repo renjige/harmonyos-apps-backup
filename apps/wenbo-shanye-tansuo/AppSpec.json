@@ -1,0 +1,420 @@
+{
+  "specVersion": "1.0.0",
+  "generatedAt": "2026-08-22T06:33:01.952Z",
+  "requestId": "req_1787380381917",
+  "industryPack": "mountain-explore",
+  "identity": {
+    "company": "魏文波",
+    "companyPinyin": "wenbo",
+    "appName": "山野探索",
+    "appPinyin": "shanye-tansuo",
+    "bundleId": "com.wenbo.shanyetansuo",
+    "version": "1.0.0"
+  },
+  "positioning": {
+    "tagline": "为徒步与骑行爱好者匹配山野路线，并用自然百科读懂沿途的植物、地质与星空",
+    "coreUsers": [
+      {
+        "role": "周末徒步者",
+        "ageRange": "22-45",
+        "scenario": "周五晚上选一条匹配体能的山路",
+        "need": "看难度、距离、看点，决定走不走"
+      },
+      {
+        "role": "自然观察初学者",
+        "ageRange": "18-40",
+        "scenario": "走在路上想认出一棵松、一层岩、一颗星",
+        "need": "图文百科能对上眼前的东西"
+      }
+    ],
+    "painPoints": [
+      "旅游攻略只写网红打卡，不写难度与海拔",
+      "导航给最短路，不管季节窗口与装备",
+      "看见植物岩石星空却对不上名字"
+    ],
+    "differentiation": "为徒步与骑行爱好者匹配山野路线，并用自然百科读懂沿途的植物、地质与星空"
+  },
+  "modules": {
+    "pages": [
+      {
+        "id": "home",
+        "title": "探索",
+        "route": "pages/HomePage",
+        "features": [
+          "今日灵感",
+          "智慧匹配",
+          "搜索"
+        ],
+        "tab": true
+      },
+      {
+        "id": "trails",
+        "title": "路线",
+        "route": "pages/TrailsPage",
+        "features": [
+          "难度筛选",
+          "路线卡片",
+          "详情"
+        ],
+        "tab": true
+      },
+      {
+        "id": "wiki",
+        "title": "百科",
+        "route": "pages/WikiPage",
+        "features": [
+          "分类",
+          "知识卡片",
+          "详情"
+        ],
+        "tab": true
+      },
+      {
+        "id": "mine",
+        "title": "我的",
+        "route": "pages/MinePage",
+        "features": [
+          "足迹",
+          "收藏",
+          "偏好",
+          "设置与隐私"
+        ],
+        "tab": true
+      }
+    ],
+    "coreFlows": [
+      {
+        "name": "山野探索闭环",
+        "steps": [
+          "读今日灵感",
+          "打开匹配路线",
+          "看沿途看点与装备",
+          "对照百科",
+          "收藏或标记足迹"
+        ]
+      }
+    ]
+  },
+  "entities": [
+    {
+      "name": "Trail",
+      "table": "mx_trails",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "difficulty",
+          "type": "string"
+        },
+        {
+          "name": "distanceKm",
+          "type": "number"
+        }
+      ]
+    },
+    {
+      "name": "NatureTip",
+      "table": "mx_tips",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "category",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "WikiArticle",
+      "table": "mx_articles",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "category",
+          "type": "string"
+        }
+      ]
+    }
+  ],
+  "apis": [
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/mountain-explore/trails",
+      "summary": "路线列表",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/mountain-explore/trails/:id",
+      "summary": "路线详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/mountain-explore/tips",
+      "summary": "今日灵感",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/mountain-explore/tips/:id",
+      "summary": "灵感详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/mountain-explore/articles",
+      "summary": "自然百科",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/mountain-explore/articles/:id",
+      "summary": "百科详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/mountain-explore/favorites",
+      "summary": "我的收藏",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/biz/mountain-explore/favorites",
+      "summary": "收藏",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/biz/mountain-explore/favorites/:id",
+      "summary": "取消收藏",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/mountain-explore/footprints",
+      "summary": "探索足迹",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/biz/mountain-explore/footprints",
+      "summary": "标记足迹",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/mountain-explore/kpis",
+      "summary": "KPI",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/messages",
+      "summary": "消息",
+      "auth": false,
+      "module": "messages"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/auth/login",
+      "summary": "登录",
+      "auth": false,
+      "module": "auth"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/auth/register",
+      "summary": "注册",
+      "auth": false,
+      "module": "auth"
+    }
+  ],
+  "ai": {
+    "capabilities": [
+      {
+        "id": "trail_prep_quiz",
+        "name": "山野准备自检",
+        "closedLoop": true,
+        "outputType": "template_report"
+      }
+    ],
+    "quickCommands": [],
+    "systemPrompt": "你是「魏文波」旗下应用「山野探索」的山野准备助手。产品定位：为徒步与骑行爱好者匹配山野路线，并用自然百科读懂沿途的植物、地质与星空。主职责：解释难度与海拔、提示季节窗口与装备、把百科条目对应到路线看点。禁止使用「AI」字样。C 端不提供自由对话。",
+    "mode": "none",
+    "llmEnabled": false
+  },
+  "permissions": [
+    {
+      "name": "ohos.permission.INTERNET",
+      "reason": "拉取探索路线、今日灵感与自然百科栏目",
+      "when": "inuse",
+      "scene": "打开首页或刷新栏目时"
+    }
+  ],
+  "harmonyos": {
+    "features": []
+  },
+  "store": {
+    "category": "出行导航",
+    "legalOperator": "魏文波",
+    "oneLiner": "山野探索 — 为徒步与骑行爱好者匹配山野路线，并用自然百科读懂沿途的植物、地质与",
+    "fullDescription": "山野探索面向徒步与骑行爱好者。按难度、时长与地区匹配山野路线，展示沿途看点、季节窗口与装备提示；并提供植物、动物、地质、天文百科，帮助把路上看见的东西对上名字。支持收藏与手动标记足迹。不含支付、不含订票、不含生成式对话。路线为探索参考，不替代景区管制与气象预警。",
+    "keywords": [
+      "山野",
+      "徒步",
+      "骑行",
+      "路线",
+      "百科",
+      "自然",
+      "鸿蒙"
+    ],
+    "privacySummary": {
+      "collect": [
+        "可选账号信息",
+        "收藏的路线与百科",
+        "手动标记的足迹",
+        "难度与兴趣偏好"
+      ],
+      "purpose": "提供路线浏览、百科对照与收藏同步",
+      "thirdParties": []
+    },
+    "demoAccount": {
+      "username": "auditor@wenbo.local",
+      "passwordNote": "仅写入 store/demo-account.md"
+    },
+    "screenshotPlan": [
+      {
+        "page": "home",
+        "caption": "山脊 Hero 与今日灵感"
+      },
+      {
+        "page": "trails",
+        "caption": "难度筛选路线卡"
+      },
+      {
+        "page": "detail",
+        "caption": "看点时间线与收藏"
+      },
+      {
+        "page": "wiki",
+        "caption": "自然百科分类"
+      },
+      {
+        "page": "mine",
+        "caption": "足迹与设置"
+      }
+    ],
+    "incentiveHooks": [
+      "原生路线图鉴",
+      "百科对照"
+    ]
+  },
+  "access": {
+    "mode": "open_optional",
+    "features": {
+      "register": true,
+      "guestBrowse": true,
+      "guestWrite": false
+    },
+    "gateActions": [
+      "favorite_trail",
+      "mark_footprint"
+    ],
+    "onPrivacyRefuse": "browse_basic",
+    "loginProviders": [
+      "password"
+    ]
+  },
+  "admin": {
+    "featureModules": [
+      "overview",
+      "appUsers",
+      "mxTrails",
+      "mxTips",
+      "mxArticles",
+      "messages",
+      "kpis",
+      "ai"
+    ]
+  },
+  "brand": {
+    "primary": "#2D8F6F",
+    "primaryDeep": "#1F6B53",
+    "deep": "#1A1D1F",
+    "accent": "#D4A84B",
+    "tone": "nature-calm",
+    "stylePack": "soft-editorial",
+    "workbenchId": "catalog-tool",
+    "layoutVariant": "C",
+    "productVisualType": "content-commerce",
+    "visualDirection": {
+      "archetype": "mountain-field-guide",
+      "density": "balanced",
+      "material": "soft-surface",
+      "imagery": "ridge-creek-rock-night-sky",
+      "accent": "amber-gold",
+      "primaryJob": "3 秒内看见今日灵感与一条匹配路线",
+      "notes": "米白底+松石绿+琥珀金；山脊摄影 Hero；禁止清凉蓝仪表与夏日暖橙杂志流"
+    },
+    "visualAssets": {
+      "hero": ["hero_ridge_compass"],
+      "trails": ["trail_ridge_dawn", "trail_highland_meadow", "trail_stone_steps", "trail_bamboo_gorge", "trail_ridge_loop", "trail_coastal_ridge", "trail_valley_bike", "trail_forest_creek"],
+      "tips": ["tip_layer_clothing", "tip_leave_no_trace", "tip_water_filter", "tip_weather_window", "tip_night_sky"],
+      "wiki": ["wiki_pine_needle", "wiki_moss_bamboo", "wiki_alpine_flower", "wiki_red_fox", "wiki_woodpecker", "wiki_macaque", "wiki_granite_fold", "wiki_quartz_sandstone", "wiki_danxia_bed", "wiki_glacial_erratic", "wiki_orographic_cloud", "wiki_polaris", "wiki_orion", "wiki_milky_way"]
+    },
+    "logo": {
+      "concept": "指南针指针从山脊鞍部指向远方，负空间同时是「山」",
+      "style": "flat-premium",
+      "generator": "render_logo.mjs",
+      "renderScript": "store/logo/render_logo.mjs",
+      "glyphStrategy": "semantic-fusion",
+      "brandAnchor": "山",
+      "customLock": true,
+      "foregroundFile": "store/logo/foreground.png",
+      "backgroundFile": "store/logo/background.png",
+      "previewFile": "store/logo/preview-1024.png",
+      "agcFile": "store/logo/agc-216.png",
+      "symbolFile": "store/logo/symbol.svg",
+      "horizontalFile": "store/logo/logo-horizontal.svg"
+    }
+  }
+}

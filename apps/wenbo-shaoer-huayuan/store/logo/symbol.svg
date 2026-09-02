@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" fill="none">
+  <!-- Paintbrush + seedling. Flat, 2 colors. Safe margin ~25%. -->
+  <rect width="1024" height="1024" fill="none"/>
+  <!-- handle -->
+  <rect x="470" y="548" width="84" height="276" rx="42" fill="#FFF5EE"/>
+  <!-- ferrule -->
+  <rect x="462" y="500" width="100" height="56" rx="10" fill="#FFF5EE"/>
+  <!-- brush head -->
+  <path d="M512 236 L628 508 H396 Z" fill="#FFF5EE"/>
+  <!-- seedling leaves from the tip -->
+  <ellipse cx="404" cy="300" rx="78" ry="34" transform="rotate(-32 404 300)" fill="#FFF5EE"/>
+  <ellipse cx="620" cy="292" rx="78" ry="34" transform="rotate(32 620 292)" fill="#FFF5EE"/>
+  <!-- stem notch (growth) -->
+  <rect x="500" y="268" width="24" height="72" rx="12" fill="#4A2A1C"/>
+</svg>

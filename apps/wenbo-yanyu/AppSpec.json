@@ -1,0 +1,416 @@
+{
+  "specVersion": "1.0.0",
+  "generatedAt": "2026-08-26T06:05:10.034Z",
+  "requestId": "req_1787724309999",
+  "industryPack": "language-craft",
+  "identity": {
+    "company": "魏文波",
+    "companyPinyin": "wenbo",
+    "appName": "研语",
+    "appPinyin": "yanyu",
+    "bundleId": "com.wenbo.yanyu",
+    "version": "1.2.0"
+  },
+  "positioning": {
+    "tagline": "润色表达，也把学习与思考沉淀成自己的研究资料。",
+    "coreUsers": [
+      {
+        "role": "学生与职场写作者",
+        "ageRange": "16-45",
+        "scenario": "邮件、纪要、作业与日常表达写不顺，需要立刻改一版",
+        "need": "本机规则润色 + 摘要 + 研究笔记与专题整理 + 场景句式参考，而不是生成式对话"
+      }
+    ],
+    "painPoints": [
+      "写完不敢发，缺少对照改法",
+      "长文抓不住主线",
+      "想换一种语气却没有范例",
+      "学习心得和阅读材料散落各处，缺少可回顾的研究整理"
+    ],
+    "differentiation": "润色表达，也把学习与思考沉淀成自己的研究资料。"
+  },
+  "modules": {
+    "pages": [
+      {
+        "id": "home",
+        "title": "润色",
+        "route": "pages/HomePage",
+        "features": [
+          "多行输入",
+          "风格选择",
+          "智慧润色",
+          "对比高亮",
+          "复制保存"
+        ],
+        "tab": true
+      },
+      {
+        "id": "summary",
+        "title": "摘要",
+        "route": "pages/SummaryPage",
+        "features": [
+          "长文输入",
+          "精简/详细",
+          "智能摘要",
+          "复制"
+        ],
+        "tab": true
+      },
+      {
+        "id": "research",
+        "title": "研究",
+        "route": "pages/ResearchPage",
+        "features": [
+          "研究笔记",
+          "专题资料库",
+          "知识标签",
+          "灵感收集",
+          "时间线",
+          "观点卡片",
+          "阅读记录",
+          "研究计划",
+          "收藏管理",
+          "每日思考",
+          "内容搜索",
+          "知识统计"
+        ],
+        "tab": true
+      },
+      {
+        "id": "inspire",
+        "title": "灵感",
+        "route": "pages/InspirePage",
+        "features": [
+          "场景分类",
+          "范例卡片",
+          "收藏",
+          "详情"
+        ],
+        "tab": true
+      },
+      {
+        "id": "mine",
+        "title": "我的",
+        "route": "pages/MinePage",
+        "features": [
+          "历史",
+          "收藏夹",
+          "表达诊断",
+          "设置与隐私"
+        ],
+        "tab": true
+      }
+    ],
+    "coreFlows": [
+      {
+        "name": "智慧润色",
+        "steps": [
+          "输入原文",
+          "选择风格",
+          "规则润色",
+          "对比高亮",
+          "复制或保存历史"
+        ]
+      },
+      {
+        "name": "智能摘要",
+        "steps": [
+          "粘贴长文",
+          "选择长度",
+          "抽取摘要",
+          "复制"
+        ]
+      },
+      {
+        "name": "灵感收藏",
+        "steps": [
+          "浏览分类",
+          "打开详情",
+          "复制句式",
+          "收藏"
+        ]
+      },
+      {
+        "name": "研究笔记闭环",
+        "steps": [
+          "创建主题笔记",
+          "添加文字与图片",
+          "记录个人观点",
+          "归入专题与标签",
+          "详情中编辑、生成观点卡或删除"
+        ]
+      }
+    ]
+  },
+  "entities": [
+    {
+      "name": "Inspiration",
+      "table": "inspirations",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "category",
+          "type": "string"
+        },
+        {
+          "name": "summary",
+          "type": "string"
+        },
+        {
+          "name": "body",
+          "type": "string"
+        },
+        {
+          "name": "example",
+          "type": "string"
+        },
+        {
+          "name": "coverMedia",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "StyleGuide",
+      "table": "styles",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "styleKey",
+          "type": "string"
+        },
+        {
+          "name": "summary",
+          "type": "string"
+        },
+        {
+          "name": "body",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "Favorite",
+      "table": "favorites",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "inspirationId",
+          "type": "string"
+        },
+        {
+          "name": "userId",
+          "type": "string"
+        }
+      ]
+    }
+  ],
+  "apis": [
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/language-craft/inspirations",
+      "summary": "灵感范例",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/language-craft/inspirations/:id",
+      "summary": "灵感详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/language-craft/styles",
+      "summary": "风格说明",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/language-craft/favorites",
+      "summary": "云端收藏（登录后）",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/biz/language-craft/favorites",
+      "summary": "同步收藏",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/messages",
+      "summary": "消息",
+      "auth": false,
+      "module": "messages"
+    }
+  ],
+  "ai": {
+    "capabilities": [],
+    "quickCommands": [],
+    "systemPrompt": "你是「魏文波」旗下应用「研语」的表达助手。产品定位：智慧语言表达助手，帮助用户润色文字、提炼摘要、参考表达范例。主职责：按风格规则优化语句、抽取摘要、匹配灵感句式。禁止扮演学历教育或生成式自由对话。C 端不提供大模型对话。",
+    "mode": "none",
+    "llmEnabled": false
+  },
+  "permissions": [
+    {
+      "name": "ohos.permission.INTERNET",
+      "reason": "拉取表达灵感范例栏目；登录注册",
+      "when": "inuse",
+      "scene": "打开灵感页或登录时"
+    }
+  ],
+  "harmonyos": {
+    "features": []
+  },
+  "store": {
+    "category": "实用工具",
+    "legalOperator": "魏文波",
+    "oneLiner": "研语 — 智慧语言表达助手，帮你润色文字、提炼摘要、找到更从容的说法。",
+    "fullDescription": "研语帮助你把一段话写得更清楚：智慧润色提供正式、亲切、简洁、详尽四种风格对照；智能摘要把长文收成精简或详细要点；表达灵感按职场、学术、日常与创意给出可复制句式。润色与摘要记录默认保存在本机。不提供支付、社交与生成式对话。",
+    "keywords": [
+      "润色",
+      "摘要",
+      "表达",
+      "写作",
+      "语言",
+      "鸿蒙"
+    ],
+    "privacySummary": {
+      "collect": [
+        "可选账号信息",
+        "本机润色与摘要记录",
+        "本机研究笔记与专题资料",
+        "本机收藏"
+      ],
+      "purpose": "提供智慧润色、智能摘要、个人研究整理与灵感浏览",
+      "thirdParties": []
+    },
+    "demoAccount": {
+      "username": "auditor@wenbo.local",
+      "passwordNote": "仅写入 store/demo-account.md"
+    },
+    "screenshotPlan": [
+      {
+        "page": "home",
+        "caption": "智慧润色"
+      },
+      {
+        "page": "result",
+        "caption": "对比结果"
+      },
+      {
+        "page": "summary",
+        "caption": "智能摘要"
+      },
+      {
+        "page": "inspire",
+        "caption": "表达灵感"
+      },
+      {
+        "page": "mine",
+        "caption": "我的"
+      }
+    ],
+    "incentiveHooks": [
+      "FormExtensionAbility",
+      "元服务快捷入口"
+    ]
+  },
+  "access": {
+    "mode": "open_optional",
+    "features": {
+      "register": true,
+      "guestBrowse": true,
+      "guestWrite": true
+    },
+    "gateActions": [
+      "sync_history"
+    ],
+    "onPrivacyRefuse": "browse_basic",
+    "loginProviders": [
+      "password"
+    ]
+  },
+  "admin": {
+    "featureModules": [
+      "overview",
+      "appUsers",
+      "lcInspirations",
+      "lcStyles",
+      "lcFavorites",
+      "messages",
+      "kpis",
+      "ai"
+    ]
+  },
+  "brand": {
+    "primary": "#1A3A5C",
+    "primaryDeep": "#12263D",
+    "deep": "#1A3A5C",
+    "accent": "#D4AF37",
+    "tone": "editorial",
+    "stylePack": "soft-editorial",
+    "workbenchId": "catalog-tool",
+    "layoutVariant": "E",
+    "productVisualType": "content-commerce",
+    "visualDirection": {
+      "archetype": "editorial-desk",
+      "density": "airy",
+      "material": "paper-and-ink",
+      "imagery": "desk-paper-pen-morning-window",
+      "accent": "navy-champagne",
+      "primaryJob": "3 秒内开始润色一段文字",
+      "notes": "深蓝书桌编辑风；禁止 AI 字样、禁止三 KPI 宫格、禁止提问台换皮"
+    },
+    "logo": {
+      "brandAnchor": "研",
+      "glyphStrategy": "semantic-fusion",
+      "customLock": true,
+      "concept": "双气泡交错切出负空间 Y 形通道"
+    },
+    "visualAssets": [
+      { "id": "hero_desk", "file": "hero_desk.png", "usage": "润色页 Hero" },
+      { "id": "banner_polish", "file": "banner_polish.png", "usage": "润色氛围" },
+      { "id": "banner_summary", "file": "banner_summary.png", "usage": "摘要 Banner" },
+      { "id": "cover_meeting", "file": "cover_meeting.png", "usage": "灵感·职场·会议" },
+      { "id": "cover_email", "file": "cover_email.png", "usage": "灵感·职场·邮件" },
+      { "id": "cover_workplace", "file": "cover_workplace.png", "usage": "灵感·职场·汇报" },
+      { "id": "cover_academic", "file": "cover_academic.png", "usage": "灵感·学术" },
+      { "id": "cover_essay", "file": "cover_essay.png", "usage": "灵感·文献" },
+      { "id": "cover_library", "file": "cover_library.png", "usage": "灵感·论证" },
+      { "id": "cover_daily", "file": "cover_daily.png", "usage": "灵感·日常" },
+      { "id": "cover_cafe", "file": "cover_cafe.png", "usage": "灵感·日常·协作" },
+      { "id": "cover_letter", "file": "cover_letter.png", "usage": "灵感·日常·安慰" },
+      { "id": "cover_creative", "file": "cover_creative.png", "usage": "灵感·创意·卖点" },
+      { "id": "cover_copy", "file": "cover_copy.png", "usage": "灵感·创意·预热" },
+      { "id": "cover_story", "file": "cover_story.png", "usage": "灵感·创意·故事" }
+    ]
+  }
+}

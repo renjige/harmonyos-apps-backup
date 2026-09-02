@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 360" role="img" aria-label="????">
+  <rect width="360" height="360" rx="72" fill="#0F172A"/>
+  <g transform="translate(28 28) scale(0.297)">
+    <circle cx="512" cy="512" r="306" fill="none" stroke="#FFFFFF" stroke-width="72"/>
+    <path d="M208 600 C248 792 468 888 692 836" fill="none" stroke="#7C3AED" stroke-width="56" stroke-linecap="round"/>
+  </g>
+  <text x="420" y="230" font-family="Microsoft YaHei, PingFang SC, Noto Sans SC, sans-serif" font-size="120" font-weight="600" fill="#0F172A">????</text>
+</svg>

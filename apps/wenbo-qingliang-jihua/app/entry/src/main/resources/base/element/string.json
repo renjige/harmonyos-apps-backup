@@ -1,0 +1,8 @@
+{
+  "string": [
+    { "name": "module_desc", "value": "清凉计划主模块" },
+    { "name": "EntryAbility_desc", "value": "智慧呼吸引导与心境记录" },
+    { "name": "EntryAbility_label", "value": "清凉计划" },
+    { "name": "internet_reason", "value": "用于拉取智慧语录、呼吸模式与可选账号同步" }
+  ]
+}

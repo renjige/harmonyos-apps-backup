@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 360" role="img" aria-label="�� WenZhi">
+  <rect width="1440" height="360" fill="#0B1F3A"/>
+  <g transform="translate(80,28) scale(0.3)">
+    <path fill="none" stroke="#FFFFFF" stroke-width="92" stroke-linecap="round" stroke-linejoin="round"
+      d="M318 390c0-118 96-198 194-198 102 0 192 74 192 186 0 88-48 132-112 168-52 30-82 62-82 128"/>
+    <circle cx="512" cy="812" r="52" fill="#FF8C00"/>
+  </g>
+  <text x="460" y="230" fill="#FFFFFF" font-family="HarmonyOS Sans, Noto Sans SC, sans-serif" font-size="148" font-weight="600">��</text>
+  <text x="860" y="230" fill="#FF8C00" font-family="HarmonyOS Sans, sans-serif" font-size="56" letter-spacing="6">WENZHI</text>
+</svg>

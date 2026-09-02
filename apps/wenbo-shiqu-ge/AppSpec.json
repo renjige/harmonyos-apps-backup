@@ -1,0 +1,436 @@
+{
+  "specVersion": "1.0.0",
+  "generatedAt": "2026-08-26T10:50:00.000Z",
+  "requestId": "req_wenbo_shiqu_ge",
+  "industryPack": "curious-pavilion",
+  "identity": {
+    "company": "魏文波",
+    "companyPinyin": "wenbo",
+    "appName": "识趣阁",
+    "appPinyin": "shiquge",
+    "bundleId": "com.wenbo.shiquge",
+    "version": "1.0.0"
+  },
+  "positioning": {
+    "tagline": "发现生活中有趣的知识与智慧，用轻松阅读增长见识、陶冶情操。",
+    "coreUsers": [
+      {
+        "role": "好奇读者",
+        "ageRange": "18-45",
+        "scenario": "通勤或睡前想读一点有趣的知识",
+        "need": "短而完整的趣知，而不是资讯流或笔记软件"
+      }
+    ],
+    "painPoints": [
+      "碎片信息看完即忘",
+      "百科太重、段子太轻",
+      "收藏夹杂乱无法回看"
+    ],
+    "differentiation": "四类编辑精选 + 每日一趣 + 本机收藏夹，无支付无生成式对话，雅致书房气质。"
+  },
+  "modules": {
+    "pages": [
+      {
+        "id": "home",
+        "title": "首页",
+        "route": "pages/HomePage",
+        "features": [
+          "Hero",
+          "分类筛选",
+          "内容流",
+          "搜索"
+        ],
+        "tab": true
+      },
+      {
+        "id": "daily",
+        "title": "每日一趣",
+        "route": "pages/DailyPage",
+        "features": [
+          "当日卡片",
+          "往期"
+        ],
+        "tab": true
+      },
+      {
+        "id": "favorites",
+        "title": "收藏",
+        "route": "pages/FavoritesPage",
+        "features": [
+          "本机收藏"
+        ],
+        "tab": true
+      },
+      {
+        "id": "mine",
+        "title": "我的",
+        "route": "pages/MinePage",
+        "features": [
+          "统计",
+          "阅读记录",
+          "识趣偏好",
+          "设置与隐私"
+        ],
+        "tab": true
+      }
+    ],
+    "coreFlows": [
+      {
+        "name": "阅读闭环",
+        "steps": [
+          "浏览精选",
+          "进详情",
+          "收藏",
+          "收藏夹回看"
+        ]
+      },
+      {
+        "name": "每日一趣",
+        "steps": [
+          "打开当日",
+          "阅读",
+          "收藏"
+        ]
+      }
+    ]
+  },
+  "entities": [
+    {
+      "name": "QgArticle",
+      "table": "articles",
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "category",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "QgDaily",
+      "table": "daily",
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "dateKey",
+          "type": "string"
+        }
+      ]
+    }
+  ],
+  "apis": [
+    {
+      "method": "POST",
+      "path": "/api/v1/auth/login",
+      "summary": "登录",
+      "auth": false,
+      "module": "auth"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/auth/register",
+      "summary": "注册",
+      "auth": false,
+      "module": "auth"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/curious-pavilion/articles",
+      "summary": "趣知列表",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/curious-pavilion/articles/:id",
+      "summary": "趣知详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/curious-pavilion/daily",
+      "summary": "每日一趣列表",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/curious-pavilion/daily/:id",
+      "summary": "每日一趣详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/curious-pavilion/messages",
+      "summary": "消息",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/curious-pavilion/kpis",
+      "summary": "KPI",
+      "auth": false,
+      "module": "biz"
+    }
+  ],
+  "ai": {
+    "capabilities": [],
+    "quickCommands": [],
+    "systemPrompt": "你是「魏文波」旗下应用「识趣阁」的阅读助手。产品定位：发现生活中有趣的知识与智慧。主职责：按文史、科学、生活、职场四类整理趣味知识摘要。禁止自称大模型。C 端默认不提供自由对话。",
+    "mode": "none",
+    "llmEnabled": false
+  },
+  "permissions": [
+    {
+      "name": "ohos.permission.INTERNET",
+      "reason": "拉取趣知栏目与登录同步",
+      "when": "inuse",
+      "scene": "首页、每日一趣、登录"
+    }
+  ],
+  "harmonyos": {
+    "features": []
+  },
+  "store": {
+    "category": "实用工具",
+    "oneLiner": "识趣阁 — 发现生活中有趣的知识与智慧",
+    "fullDescription": "识趣阁是一款趣味知识阅读应用。首页以书房摄影 Hero 开场，按文史趣谈、科学冷知、生活智慧、职场识趣筛选精选图文；每日一趣提供短读语录；详情页可收藏，收藏夹与阅读记录保存在本机。游客可浏览全部栏目，登录注册为可选。无支付、无生成式对话。支持浅色与深色模式。",
+    "keywords": [
+      "识趣阁",
+      "趣味知识",
+      "每日一趣",
+      "阅读",
+      "鸿蒙"
+    ],
+    "privacySummary": {
+      "collect": [
+        "可选账号信息",
+        "本机收藏与阅读记录"
+      ],
+      "purpose": "提供趣味知识阅读与可选账号",
+      "thirdParties": []
+    },
+    "demoAccount": {
+      "username": "auditor@wenbo.local",
+      "passwordNote": "仅写入 store/demo-account.md，禁止打进客户端"
+    },
+    "screenshotPlan": [
+      {
+        "page": "home",
+        "caption": "首页精选与分类"
+      },
+      {
+        "page": "daily",
+        "caption": "每日一趣"
+      },
+      {
+        "page": "detail",
+        "caption": "趣知详情与收藏"
+      },
+      {
+        "page": "favorites",
+        "caption": "收藏夹"
+      },
+      {
+        "page": "mine",
+        "caption": "我的与设置"
+      }
+    ],
+    "incentiveHooks": [],
+    "legalOperator": "魏文波"
+  },
+  "access": {
+    "mode": "open_optional",
+    "features": {
+      "register": true,
+      "guestBrowse": true,
+      "guestWrite": true
+    },
+    "gateActions": [
+      "sync_favorites"
+    ],
+    "onPrivacyRefuse": "browse_basic",
+    "loginProviders": [
+      "password"
+    ]
+  },
+  "brand": {
+    "primary": "#8B7A6B",
+    "primaryDeep": "#3D342C",
+    "accent": "#C4A882",
+    "tone": "soft-editorial",
+    "stylePack": "soft-editorial",
+    "productVisualType": "content-commerce",
+    "workbenchId": "catalog-tool",
+    "layoutVariant": "A",
+    "visualDirection": "editorial",
+    "logo": {
+      "concept": "飞檐勾勒的阁 + 檐下书卷，深褐底香槟金标",
+      "style": "flat-premium",
+      "generator": "render_logo.mjs",
+      "renderScript": "store/logo/render_logo.mjs",
+      "glyphStrategy": "semantic-fusion",
+      "brandAnchor": "识",
+      "customLock": true,
+      "foregroundFile": "store/logo/foreground.png",
+      "backgroundFile": "store/logo/background.png",
+      "previewFile": "store/logo/preview-1024.png",
+      "agcFile": "store/logo/agc-216.png",
+      "symbolFile": "store/logo/symbol.svg",
+      "horizontalFile": "store/logo/logo-horizontal.svg"
+    },
+    "visualAssets": [
+      {
+        "id": "hero",
+        "file": "hero_bg.png",
+        "usage": "首页 Hero"
+      },
+      {
+        "id": "banner1",
+        "file": "banner_01.png",
+        "usage": "文史 Banner"
+      },
+      {
+        "id": "banner2",
+        "file": "banner_02.png",
+        "usage": "科学 Banner"
+      },
+      {
+        "id": "hist1",
+        "file": "cover_hist_01.png",
+        "usage": "文史封面1"
+      },
+      {
+        "id": "hist2",
+        "file": "cover_hist_02.png",
+        "usage": "文史封面2"
+      },
+      {
+        "id": "sci1",
+        "file": "cover_sci_01.png",
+        "usage": "科学封面1"
+      },
+      {
+        "id": "sci2",
+        "file": "cover_sci_02.png",
+        "usage": "科学封面2"
+      },
+      {
+        "id": "life1",
+        "file": "cover_life_01.png",
+        "usage": "生活封面1"
+      },
+      {
+        "id": "life2",
+        "file": "cover_life_02.png",
+        "usage": "生活封面2"
+      },
+      {
+        "id": "career1",
+        "file": "cover_career_01.png",
+        "usage": "职场封面1"
+      },
+      {
+        "id": "career2",
+        "file": "cover_career_02.png",
+        "usage": "职场封面2"
+      },
+      {
+        "id": "d1",
+        "file": "cover_daily_01.png",
+        "usage": "每日封面1"
+      },
+      {
+        "id": "d2",
+        "file": "cover_daily_02.png",
+        "usage": "每日封面2"
+      },
+      {
+        "id": "d3",
+        "file": "cover_daily_03.png",
+        "usage": "每日封面3"
+      },
+      {
+        "id": "d4",
+        "file": "cover_daily_04.png",
+        "usage": "每日封面4"
+      },
+      {
+        "id": "fun1",
+        "file": "cover_fun_01.png",
+        "usage": "趣味知识封面1"
+      },
+      {
+        "id": "fun2",
+        "file": "cover_fun_02.png",
+        "usage": "趣味知识封面2"
+      },
+      {
+        "id": "nat1",
+        "file": "cover_nature_01.png",
+        "usage": "自然探索封面1"
+      },
+      {
+        "id": "nat2",
+        "file": "cover_nature_02.png",
+        "usage": "自然探索封面2"
+      },
+      {
+        "id": "art1",
+        "file": "cover_art_01.png",
+        "usage": "艺术欣赏封面1"
+      },
+      {
+        "id": "art2",
+        "file": "cover_art_02.png",
+        "usage": "艺术欣赏封面2"
+      },
+      {
+        "id": "col1",
+        "file": "cover_col_01.png",
+        "usage": "专题·奇妙自然"
+      },
+      {
+        "id": "col2",
+        "file": "cover_col_02.png",
+        "usage": "专题·历史故事"
+      },
+      {
+        "id": "col3",
+        "file": "cover_col_03.png",
+        "usage": "专题·生活妙招"
+      },
+      {
+        "id": "col4",
+        "file": "cover_col_04.png",
+        "usage": "专题·科学发现"
+      },
+      {
+        "id": "col5",
+        "file": "cover_col_05.png",
+        "usage": "专题·文化趣闻"
+      }
+    ]
+  }
+}

@@ -1,0 +1,366 @@
+{
+  "specVersion": "1.0.0",
+  "generatedAt": "2026-08-19T04:08:33.788Z",
+  "requestId": "req_1787112513759",
+  "industryPack": "life-journal",
+  "identity": {
+    "company": "魏文波",
+    "companyPinyin": "wenbo",
+    "appName": "旅行札记",
+    "appPinyin": "lvxing-zhaji",
+    "bundleId": "com.wenbo.lvxingzhaji",
+    "version": "1.0.0"
+  },
+  "positioning": {
+    "tagline": "出行计划、旅行日记、本机相册策展与成长回顾一体化的智慧旅行工作台",
+    "coreUsers": [
+      {
+        "role": "都市青年",
+        "ageRange": "20-45",
+        "scenario": "日常碎片时间",
+        "need": "记录生活、整理回忆、年度回顾"
+      }
+    ],
+    "painPoints": [
+      "生活瞬间分散难整理",
+      "照片与文字缺乏叙事",
+      "缺乏温暖的回顾仪式感"
+    ],
+    "differentiation": "一款记录旅行经历、整理旅行照片、保存旅途回忆的智慧旅行应用，旅行杂志美学与自然沉浸体验"
+  },
+  "modules": {
+    "pages": [
+      {
+        "id": "home",
+        "title": "首页",
+        "route": "pages/HomePage",
+        "features": [
+          "今日记录",
+          "最近动态",
+          "精选回忆"
+        ],
+        "tab": true
+      },
+      {
+        "id": "journal",
+        "title": "记录",
+        "route": "pages/JournalPage",
+        "features": [
+          "创建日记",
+          "标签",
+          "图片"
+        ],
+        "tab": true
+      },
+      {
+        "id": "album",
+        "title": "相册",
+        "route": "pages/AlbumPage",
+        "features": [
+          "创建相册",
+          "图片展示"
+        ],
+        "tab": true
+      },
+      {
+        "id": "review",
+        "title": "回顾",
+        "route": "pages/ReviewPage",
+        "features": [
+          "年度统计",
+          "搜索",
+          "标签分类"
+        ],
+        "tab": true
+      },
+      {
+        "id": "mine",
+        "title": "我的",
+        "route": "pages/MinePage",
+        "features": [
+          "用户信息",
+          "我的记录",
+          "设置"
+        ],
+        "tab": true
+      },
+      {
+        "id": "organize",
+        "title": "智慧整理",
+        "route": "pages/OrganizePage",
+        "features": [
+          "日期整理",
+          "标签分类",
+          "搜索"
+        ],
+        "tab": false
+      },
+      {
+        "id": "favorites",
+        "title": "美好收藏",
+        "route": "pages/FavoritesPage",
+        "features": [
+          "收藏文字",
+          "收藏图片"
+        ],
+        "tab": false
+      }
+    ],
+    "coreFlows": [
+      {
+        "name": "出行计划闭环",
+        "steps": [
+          "创建目的地计划",
+          "勾选任务清单",
+          "每日旅途打卡",
+          "查看连续天数与进度"
+        ]
+      },
+      {
+        "name": "相册策展闭环",
+        "steps": [
+          "从手机相册多选照片",
+          "创建旅行相册",
+          "设封面与追加",
+          "全屏预览与管理"
+        ]
+      },
+      {
+        "name": "成稿回顾闭环",
+        "steps": [
+          "写旅行日记并导入相册封面",
+          "探索筛选与收藏",
+          "成长统计与成就",
+          "时间轴与足迹"
+        ]
+      }
+    ]
+  },
+  "entities": [
+    {
+      "name": "DiaryEntry",
+      "table": "diaries",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "body",
+          "type": "string"
+        },
+        {
+          "name": "tags",
+          "type": "array"
+        }
+      ]
+    },
+    {
+      "name": "Album",
+      "table": "albums",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "description",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "Favorite",
+      "table": "favorites",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "kind",
+          "type": "string"
+        },
+        {
+          "name": "content",
+          "type": "string"
+        }
+      ]
+    }
+  ],
+  "apis": [
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/life-journal/featured",
+      "summary": "精选回忆",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/life-journal/diaries",
+      "summary": "日记列表",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/biz/life-journal/diaries",
+      "summary": "创建日记",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/life-journal/albums",
+      "summary": "相册",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/biz/life-journal/albums",
+      "summary": "创建相册",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/life-journal/favorites",
+      "summary": "收藏",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/life-journal/annual-stats",
+      "summary": "年度回顾",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/messages",
+      "summary": "消息",
+      "auth": true,
+      "module": "messages"
+    }
+  ],
+  "ai": {
+    "capabilities": [],
+    "quickCommands": [],
+    "systemPrompt": "你是「生活札记」的生活方式整理助手。产品定位：记录生活、收藏美好瞬间。主职责：帮助用户理解日记整理与年度回顾；不提供生成式 AI 对话。",
+    "mode": "none",
+    "llmEnabled": false
+  },
+  "permissions": [
+    {
+      "name": "ohos.permission.INTERNET",
+      "reason": "同步日记、相册与收藏数据",
+      "when": "inuse",
+      "scene": "记录与云端同步"
+    }
+  ],
+  "harmonyos": {
+    "features": []
+  },
+  "store": {
+    "category": "生活",
+    "legalOperator": "魏文波",
+    "oneLiner": "旅行札记 — 一款记录旅行经历、整理旅行照片、保存旅途回忆的智慧旅行应用，旅行杂",
+    "fullDescription": "生活札记是一款记录生活、收藏美好瞬间的智慧生活应用。支持写日记、创建相册、美好收藏与年度回顾，日系手账美学，温暖治愈。",
+    "keywords": [
+      "日记",
+      "手账",
+      "生活记录",
+      "相册",
+      "回忆",
+      "鸿蒙"
+    ],
+    "privacySummary": {
+      "collect": [
+        "账号信息",
+        "日记内容",
+        "相册与收藏"
+      ],
+      "purpose": "提供生活记录与云端同步",
+      "thirdParties": []
+    },
+    "demoAccount": {
+      "username": "auditor@wenbo.local",
+      "passwordNote": "仅写入 store/demo-account.md"
+    },
+    "screenshotPlan": [
+      {
+        "page": "home",
+        "caption": "今日记录与精选回忆"
+      },
+      {
+        "page": "journal",
+        "caption": "写日记与标签"
+      },
+      {
+        "page": "review",
+        "caption": "年度回顾统计"
+      }
+    ],
+    "incentiveHooks": [
+      "FormExtensionAbility",
+      "元服务快捷入口"
+    ]
+  },
+  "access": {
+    "mode": "open_optional",
+    "features": {
+      "register": true,
+      "guestBrowse": true,
+      "guestWrite": false
+    },
+    "gateActions": [
+      "create_diary",
+      "create_album",
+      "add_favorite",
+      "sync_records"
+    ],
+    "onPrivacyRefuse": "browse_basic",
+    "loginProviders": [
+      "password"
+    ]
+  },
+  "brand": {
+    "primary": "#E8A87C",
+    "primaryDeep": "#5C6B73",
+    "deep": "#5C6B73",
+    "accent": "#8FA8B8",
+    "tone": "soft-editorial",
+    "stylePack": "soft-editorial",
+    "workbenchId": "timeline-board",
+    "layoutVariant": "A",
+    "productVisualType": "lifestyle-journal",
+    "visualDirection": {
+      "archetype": "japanese-life-aesthetic",
+      "density": "airy",
+      "material": "cream-card",
+      "imagery": "warm-daily-life",
+      "accent": "morandi-orange",
+      "primaryJob": "3 秒内写今日札记",
+      "notes": "奶油白+莫兰迪橙+雾霾蓝+自然绿；大圆角手账卡片"
+    },
+    "logo": {
+      "brandAnchor": "札",
+      "glyphStrategy": "notebook-sun-time",
+      "customLock": false
+    }
+  }
+}

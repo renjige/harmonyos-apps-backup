@@ -1,0 +1,8 @@
+{
+  "string": [
+    { "name": "module_desc", "value": "童趣算坊主模块" },
+    { "name": "EntryAbility_desc", "value": "儿童计算练习入口" },
+    { "name": "EntryAbility_label", "value": "童趣算坊" },
+    { "name": "internet_reason", "value": "仅在您选择登录时连接服务；练习数据默认保存在本机" }
+  ]
+}

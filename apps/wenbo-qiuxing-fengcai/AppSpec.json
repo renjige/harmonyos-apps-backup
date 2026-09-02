@@ -1,0 +1,329 @@
+{
+  "specVersion": "1.0.0",
+  "generatedAt": "2026-08-20T04:03:03.263Z",
+  "requestId": "req_1787198583229",
+  "industryPack": "sports-profiles",
+  "identity": {
+    "company": "魏文波",
+    "companyPinyin": "wenbo",
+    "appName": "球星风采",
+    "appPinyin": "qiuxing-fengcai",
+    "bundleId": "qxfc.wxy.huawei",
+    "version": "1.0.0"
+  },
+  "positioning": {
+    "tagline": "体育人物百科：球星资料、双星对比、项目专区、赛程日历、关注整理与赛事提醒",
+    "coreUsers": [
+      {
+        "role": "体育爱好者",
+        "ageRange": "16-45",
+        "scenario": "碎片时间浏览",
+        "need": "了解球星资料、关注喜爱运动员、不错过重要比赛"
+      }
+    ],
+    "painPoints": [
+      "球星信息分散难查找",
+      "关注列表缺乏赛事关联",
+      "容易错过关注球员的重要比赛"
+    ],
+    "differentiation": "体育人物百科工具，发现球星、查看资料、收藏关注、接收赛事智慧提醒"
+  },
+  "modules": {
+    "pages": [
+      {
+        "id": "home",
+        "title": "首页",
+        "route": "pages/HomePage",
+        "features": [
+          "热门球星",
+          "发现中心"
+        ],
+        "tab": true
+      },
+      {
+        "id": "athletes",
+        "title": "球星",
+        "route": "pages/AthletesPage",
+        "features": [
+          "分类浏览",
+          "球星列表"
+        ],
+        "tab": true
+      },
+      {
+        "id": "follow",
+        "title": "关注",
+        "route": "pages/FollowPage",
+        "features": [
+          "收藏球星",
+          "近期赛事"
+        ],
+        "tab": true
+      },
+      {
+        "id": "mine",
+        "title": "我的",
+        "route": "pages/MinePage",
+        "features": [
+          "用户信息",
+          "消息",
+          "设置"
+        ],
+        "tab": true
+      },
+      {
+        "id": "messages",
+        "title": "消息",
+        "route": "pages/MessagesPage",
+        "features": [
+          "系统通知"
+        ],
+        "tab": false
+      }
+    ],
+    "coreFlows": [
+      {
+        "name": "球星发现闭环",
+        "steps": [
+          "首页/球星搜索",
+          "球星详情",
+          "双星对比",
+          "关注收藏"
+        ]
+      },
+      {
+        "name": "赛事提醒闭环",
+        "steps": [
+          "赛事日历",
+          "赛事详情",
+          "设置提醒",
+          "首页到期提示"
+        ]
+      }
+    ]
+  },
+  "entities": [
+    {
+      "name": "Athlete",
+      "table": "athletes",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "name": "sport",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "Event",
+      "table": "events",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "athleteId",
+          "type": "string"
+        },
+        {
+          "name": "startAt",
+          "type": "datetime"
+        }
+      ]
+    },
+    {
+      "name": "Favorite",
+      "table": "favorites",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "targetId",
+          "type": "string"
+        }
+      ]
+    }
+  ],
+  "apis": [
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/sports-profiles/athletes",
+      "summary": "球星列表",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/sports-profiles/athletes/:id",
+      "summary": "球星详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/sports-profiles/events",
+      "summary": "相关赛事",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/sports-profiles/favorites",
+      "summary": "关注列表",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/biz/sports-profiles/favorites",
+      "summary": "关注球星",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/biz/sports-profiles/reminders",
+      "summary": "赛事提醒",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/messages",
+      "summary": "消息",
+      "auth": true,
+      "module": "messages"
+    }
+  ],
+  "ai": {
+    "capabilities": [],
+    "quickCommands": [],
+    "systemPrompt": "你是「球星风采」的体育人物整理助手。主职责：智能分类球星、整理资料、生成提醒文案。不提供 C 端生成式对话。",
+    "mode": "none",
+    "llmEnabled": false
+  },
+  "permissions": [
+    {
+      "name": "ohos.permission.INTERNET",
+      "reason": "同步球星资料、关注与提醒数据",
+      "when": "inuse",
+      "scene": "浏览与云端同步"
+    }
+  ],
+  "harmonyos": {
+    "features": [
+      "FormExtensionAbility"
+    ]
+  },
+  "store": {
+    "category": "体育",
+    "legalOperator": "魏文波",
+    "oneLiner": "球星风采 — 体育人物百科工具，发现球星、查看资料、收藏关注、接收赛事智慧提醒",
+    "fullDescription": "球星风采是一款体育人物信息展示工具。帮助用户发现球星、查看资料、收藏关注、接收赛事智慧提醒。非直播、非社区、非交易平台。",
+    "keywords": [
+      "球星",
+      "体育",
+      "运动员",
+      "资料",
+      "关注",
+      "提醒",
+      "鸿蒙"
+    ],
+    "privacySummary": {
+      "collect": [
+        "账号信息",
+        "关注与提醒设置"
+      ],
+      "purpose": "提供球星浏览、关注同步与赛事提醒",
+      "thirdParties": []
+    },
+    "demoAccount": {
+      "username": "auditor@wenbo.local",
+      "passwordNote": "仅写入 store/demo-account.md"
+    },
+    "screenshotPlan": [
+      {
+        "page": "home",
+        "caption": "热门球星发现中心"
+      },
+      {
+        "page": "athletes",
+        "caption": "分类浏览球星"
+      },
+      {
+        "page": "follow",
+        "caption": "关注与赛事提醒"
+      }
+    ],
+    "incentiveHooks": [
+      "FormExtensionAbility",
+      "应用内赛事提醒"
+    ]
+  },
+  "access": {
+    "mode": "open_optional",
+    "features": {
+      "register": true,
+      "guestBrowse": true,
+      "guestWrite": false
+    },
+    "gateActions": [
+      "follow_athlete",
+      "set_reminder",
+      "sync_favorites",
+      "share_card"
+    ],
+    "onPrivacyRefuse": "browse_basic",
+    "loginProviders": [
+      "password"
+    ]
+  },
+  "brand": {
+    "primary": "#0EA5E9",
+    "primaryDeep": "#0F172A",
+    "deep": "#0F172A",
+    "accent": "#22D3EE",
+    "tone": "sport-tech",
+    "stylePack": "premium-business",
+    "workbenchId": "discovery-grid",
+    "layoutVariant": "B",
+    "productVisualType": "sports-profiles",
+    "visualDirection": {
+      "archetype": "international-sports-tech",
+      "density": "airy",
+      "material": "glass-card",
+      "imagery": "abstract-athlete-motion",
+      "accent": "electric-cyan",
+      "primaryJob": "3 秒内发现热门球星",
+      "notes": "深色模式友好 · 大图卡片 · 运动轨迹元素 · 高级留白"
+    },
+    "logo": {
+      "brandAnchor": "星",
+      "glyphStrategy": "semantic-fusion",
+      "customLock": true,
+      "generator": "render_logo.mjs",
+      "renderScript": "store/logo/render_logo.mjs",
+      "concept": "四芒星 + 风采弧光，暖黑底象牙标",
+      "style": "flat-premium",
+      "foregroundFile": "store/logo/foreground.png",
+      "backgroundFile": "store/logo/background.png",
+      "previewFile": "store/logo/preview-1024.png",
+      "agcFile": "store/logo/agc-216.png",
+      "symbolFile": "store/logo/symbol.svg",
+      "horizontalFile": "store/logo/logo-horizontal.svg"
+    }
+  }
+}

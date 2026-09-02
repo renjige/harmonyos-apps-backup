@@ -1,0 +1,444 @@
+{
+  "specVersion": "1.0.0",
+  "generatedAt": "2026-08-22T02:46:43.495Z",
+  "requestId": "req_1787366803457",
+  "industryPack": "brain-explore",
+  "identity": {
+    "company": "魏文波",
+    "companyPinyin": "wenbo",
+    "appName": "脑力探秘",
+    "appPinyin": "naoli-tanmi",
+    "bundleId": "com.wenbo.naolitanmi",
+    "version": "1.0.0"
+  },
+  "positioning": {
+    "tagline": "通过游戏化每日训练探索记忆、专注、反应与逻辑潜能，生成脑力图谱并追踪成长轨迹",
+    "coreUsers": [
+      {
+        "role": "认知探索者",
+        "ageRange": "18-45",
+        "scenario": "通勤或睡前三分钟",
+        "need": "立刻开始今日训练，看见图谱变化，不必先注册"
+      },
+      {
+        "role": "习惯养成者",
+        "ageRange": "22-40",
+        "scenario": "想连续七天留下探索痕迹",
+        "need": "成就可点亮，记录可回看"
+      }
+    ],
+    "painPoints": [
+      "脑力 App 要么医疗腔，要么儿童卡通",
+      "只有刷题没有可玩训练",
+      "没有长期轨迹，练完即忘"
+    ],
+    "differentiation": "通过游戏化每日训练探索记忆、专注、反应与逻辑潜能，生成脑力图谱并追踪成长轨迹"
+  },
+  "modules": {
+    "pages": [
+      {
+        "id": "home",
+        "title": "训练",
+        "route": "pages/HomePage",
+        "features": [
+          "今日五项",
+          "智慧指数",
+          "测评引导"
+        ],
+        "tab": true
+      },
+      {
+        "id": "trail",
+        "title": "轨迹",
+        "route": "pages/TrailPage",
+        "features": [
+          "脑力图谱",
+          "周月趋势",
+          "成就墙"
+        ],
+        "tab": true
+      },
+      {
+        "id": "knowledge",
+        "title": "知识",
+        "route": "pages/KnowledgePage",
+        "features": [
+          "分类浏览",
+          "图文详情"
+        ],
+        "tab": true
+      },
+      {
+        "id": "mine",
+        "title": "我的",
+        "route": "pages/MinePage",
+        "features": [
+          "本机统计",
+          "训练记录",
+          "设置与隐私"
+        ],
+        "tab": true
+      }
+    ],
+    "coreFlows": [
+      {
+        "name": "每日训练",
+        "steps": [
+          "打开训练",
+          "点训练卡",
+          "看详情",
+          "开始训练",
+          "成绩卡"
+        ]
+      },
+      {
+        "name": "脑力测评",
+        "steps": [
+          "开始测评",
+          "十二题问卷",
+          "规则计分",
+          "脑力图谱"
+        ]
+      },
+      {
+        "name": "知识精读",
+        "steps": [
+          "知识列表",
+          "打开详情",
+          "读完全文"
+        ]
+      }
+    ]
+  },
+  "entities": [
+    {
+      "name": "Drill",
+      "table": "drills",
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "gameType",
+          "type": "string"
+        },
+        {
+          "name": "dimension",
+          "type": "string"
+        },
+        {
+          "name": "coverKey",
+          "type": "string"
+        },
+        {
+          "name": "description",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "Article",
+      "table": "articles",
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "body",
+          "type": "string"
+        },
+        {
+          "name": "coverKey",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "Achievement",
+      "table": "achievements",
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "rule",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "Probe",
+      "table": "probes",
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "dimension",
+          "type": "string"
+        },
+        {
+          "name": "question",
+          "type": "string"
+        }
+      ]
+    }
+  ],
+  "apis": [
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/brain-explore/drills",
+      "summary": "训练目录",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/brain-explore/drills/:id",
+      "summary": "训练详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/brain-explore/articles",
+      "summary": "知识列表",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/brain-explore/articles/:id",
+      "summary": "知识详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/brain-explore/achievements",
+      "summary": "成就定义",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/brain-explore/probes",
+      "summary": "测评题库",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/brain-explore/sessions",
+      "summary": "本人训练会话",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/biz/brain-explore/sessions",
+      "summary": "提交训练会话",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/brain-explore/kpis",
+      "summary": "机构指标",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/messages",
+      "summary": "系统消息",
+      "auth": false,
+      "module": "messages"
+    }
+  ],
+  "ai": {
+    "capabilities": [],
+    "quickCommands": [],
+    "systemPrompt": "你是「魏文波」旗下应用「脑力探秘」的内容助手。产品定位：星空沉浸式认知训练。主职责：说明训练玩法、测评维度与本机进度。不提供生成式对话，不做医疗诊断，不出现 AI 字样。",
+    "mode": "none",
+    "llmEnabled": false
+  },
+  "permissions": [
+    {
+      "name": "ohos.permission.INTERNET",
+      "reason": "拉取公开训练目录与知识库，并在您选择登录时连接账号服务；训练进度默认保存在本机",
+      "when": "inuse",
+      "scene": "浏览训练、知识与可选登录"
+    }
+  ],
+  "harmonyos": {
+    "features": [
+      "FormExtensionAbility"
+    ]
+  },
+  "store": {
+    "category": "教育",
+    "legalOperator": "魏文波",
+    "oneLiner": "脑力探秘 — 游戏化每日训练，探索记忆、专注、反应与逻辑，生成脑力图谱",
+    "fullDescription": "脑力探秘是一款面向18-45岁用户的认知训练应用。提供记忆宫殿、数独挑战、色彩干扰、速算冲刺、图形推理五款可玩训练，以及规则问卷生成的脑力图谱与成长轨迹。知识库为预设图文。无广告、无支付。不进行医疗诊断，也不承诺提高智商。不提供生成式对话。",
+    "keywords": [
+      "脑力",
+      "记忆",
+      "专注",
+      "训练",
+      "益智",
+      "鸿蒙"
+    ],
+    "privacySummary": {
+      "collect": [
+        "可选账号信息",
+        "本机训练进度",
+        "本机测评得分"
+      ],
+      "purpose": "提供训练目录浏览、本机测评与成长记录",
+      "thirdParties": []
+    },
+    "demoAccount": {
+      "username": "auditor@wenbo.local",
+      "passwordNote": "仅写入 store/demo-account.md"
+    },
+    "screenshotPlan": [
+      {
+        "page": "home",
+        "caption": "星空 Hero 与今日五项训练"
+      },
+      {
+        "page": "play",
+        "caption": "记忆宫殿对对碰"
+      },
+      {
+        "page": "assess",
+        "caption": "脑力测评与图谱"
+      },
+      {
+        "page": "trail",
+        "caption": "轨迹与成就墙"
+      },
+      {
+        "page": "knowledge",
+        "caption": "知识图文详情"
+      }
+    ],
+    "incentiveHooks": [
+      "FormExtensionAbility"
+    ]
+  },
+  "access": {
+    "mode": "open_optional",
+    "features": {
+      "register": true,
+      "guestBrowse": true,
+      "guestWrite": false
+    },
+    "gateActions": [
+      "sync_progress"
+    ],
+    "onPrivacyRefuse": "browse_basic",
+    "loginProviders": [
+      "password"
+    ]
+  },
+  "admin": {
+    "featureModules": [
+      "overview",
+      "appUsers",
+      "beDrills",
+      "beArticles",
+      "beAchievements",
+      "beProbes",
+      "beSessions",
+      "messages",
+      "kpis"
+    ]
+  },
+  "brand": {
+    "primary": "#6C3CE1",
+    "primaryDeep": "#0A1628",
+    "deep": "#0A1628",
+    "accent": "#F5A623",
+    "tone": "cosmic-insight",
+    "stylePack": "industrial-dark",
+    "workbenchId": "catalog-tool",
+    "layoutVariant": "A",
+    "productVisualType": "content-commerce",
+    "visualDirection": {
+      "archetype": "cosmic-insight",
+      "density": "immersive",
+      "material": "starfield-glass",
+      "imagery": "aurora-night-study-desk",
+      "accent": "aurora-gold",
+      "primaryJob": "3 秒内点开今日第一项训练",
+      "notes": "星空沉浸；禁止医疗大脑、儿童卡通、水墨成语换皮"
+    },
+    "visualAssets": {
+      "hero": "hero_aurora",
+      "covers": [
+        "cover_memory",
+        "cover_sudoku",
+        "cover_stroop",
+        "cover_math",
+        "cover_pattern"
+      ],
+      "knowledge": [
+        "cover_know_palace",
+        "cover_know_stroop",
+        "cover_know_sleep",
+        "cover_know_sudoku",
+        "cover_know_focus",
+        "cover_know_pattern",
+        "cover_know_streak",
+        "cover_know_myth"
+      ],
+      "achievements": [
+        "cover_ach_first",
+        "cover_ach_star",
+        "cover_ach_streak",
+        "cover_ach_memory",
+        "cover_ach_map",
+        "cover_ach_read",
+        "cover_ach_sudoku",
+        "cover_ach_focus"
+      ],
+      "trail": "trail_nebula"
+    },
+    "logo": {
+      "brandAnchor": "探",
+      "glyphStrategy": "semantic-fusion",
+      "customLock": true,
+      "generator": "render_logo.mjs",
+      "renderScript": "store/logo/render_logo.mjs",
+      "concept": "深底金色菱形罗盘与北向探点，表达「探」而不使用解剖大脑",
+      "foregroundFile": "store/logo/foreground.png",
+      "backgroundFile": "store/logo/background.png",
+      "previewFile": "store/logo/preview-1024.png",
+      "agcFile": "store/logo/agc-216.png",
+      "symbolFile": "store/logo/symbol.svg",
+      "horizontalFile": "store/logo/logo-horizontal.svg"
+    }
+  }
+}

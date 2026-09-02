@@ -1,0 +1,8 @@
+{
+  "string": [
+    { "name": "module_desc", "value": "球星风采 — 体育人物百科与赛事提醒" },
+    { "name": "EntryAbility_desc", "value": "发现球星、查看资料、收藏关注" },
+    { "name": "EntryAbility_label", "value": "球星风采" },
+    { "name": "internet_reason", "value": "用于同步球星资料、关注与提醒数据" }
+  ]
+}

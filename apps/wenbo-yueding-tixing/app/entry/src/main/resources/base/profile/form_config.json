@@ -1,0 +1,22 @@
+{
+  "forms": [
+    {
+      "name": "todayAppointmentsCard",
+      "displayName": "今日约定",
+      "description": "显示今日约定数量与摘要",
+      "src": "./ets/widget/pages/TodayAppointmentsCard.ets",
+      "uiSyntax": "arkts",
+      "window": {
+        "designWidth": 720,
+        "autoDesignWidth": true
+      },
+      "colorMode": "auto",
+      "isDefault": true,
+      "updateEnabled": true,
+      "scheduledUpdateTime": "08:00",
+      "updateDuration": 1,
+      "defaultDimension": "2*2",
+      "supportDimensions": ["2*2", "2*4"]
+    }
+  ]
+}

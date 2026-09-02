@@ -1,0 +1,452 @@
+{
+  "specVersion": "1.0.0",
+  "generatedAt": "2026-08-22T03:19:31.939Z",
+  "requestId": "req_1787368771901",
+  "industryPack": "cool-outing",
+  "identity": {
+    "company": "魏文波",
+    "companyPinyin": "wenbo",
+    "appName": "清凉出行",
+    "appPinyin": "qingliang-chuxing",
+    "bundleId": "com.wenbo.qingliangchuxing",
+    "version": "1.0.0"
+  },
+  "positioning": {
+    "tagline": "用清凉指数与树荫路线，帮通勤族在炎热天气里选更舒适的出行方式",
+    "coreUsers": [
+      {
+        "role": "城市通勤族",
+        "ageRange": "22-45",
+        "scenario": "高温工作日出门前 3 分钟",
+        "need": "一眼看出现在出不出门、走哪条更凉快"
+      },
+      {
+        "role": "周末短途出行者",
+        "ageRange": "20-40",
+        "scenario": "规划步行或骑行时避开暴晒路段",
+        "need": "对比树荫率、室内通道与休息点"
+      }
+    ],
+    "painPoints": [
+      "只看气温不知道体感有多闷",
+      "导航只给最短路，不管树荫和室内连廊",
+      "紫外线与空气质量提醒和路线脱节"
+    ],
+    "differentiation": "用清凉指数与树荫路线，帮通勤族在炎热天气里选更舒适的出行方式"
+  },
+  "modules": {
+    "pages": [
+      {
+        "id": "home",
+        "title": "首页",
+        "route": "pages/HomePage",
+        "features": [
+          "清凉指数",
+          "出行建议",
+          "适宜时段"
+        ],
+        "tab": true
+      },
+      {
+        "id": "routes",
+        "title": "路线",
+        "route": "pages/RoutesPage",
+        "features": [
+          "起终点",
+          "多模式对比",
+          "清凉路线"
+        ],
+        "tab": true
+      },
+      {
+        "id": "weather",
+        "title": "天气",
+        "route": "pages/WeatherPage",
+        "features": [
+          "24小时温感",
+          "穿衣建议",
+          "紫外线提醒"
+        ],
+        "tab": true
+      },
+      {
+        "id": "mine",
+        "title": "我的",
+        "route": "pages/MinePage",
+        "features": [
+          "收藏",
+          "偏好",
+          "设置与隐私"
+        ],
+        "tab": true
+      }
+    ],
+    "coreFlows": [
+      {
+        "name": "清凉出行闭环",
+        "steps": [
+          "看清凉指数",
+          "读出行建议",
+          "对比三种出行方式",
+          "打开路线详情",
+          "查看休息点",
+          "收藏或保存规划"
+        ]
+      }
+    ]
+  },
+  "entities": [
+    {
+      "name": "CoolCity",
+      "table": "co_cities",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "temp",
+          "type": "number"
+        },
+        {
+          "name": "coolIndex",
+          "type": "number"
+        }
+      ]
+    },
+    {
+      "name": "CoolRoute",
+      "table": "co_routes",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "mode",
+          "type": "string"
+        },
+        {
+          "name": "shadeRate",
+          "type": "number"
+        }
+      ]
+    },
+    {
+      "name": "RestStop",
+      "table": "co_stops",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "stopType",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "TravelAdvice",
+      "table": "co_advices",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "category",
+          "type": "string"
+        }
+      ]
+    }
+  ],
+  "apis": [
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/cool-outing/cities",
+      "summary": "城市天气快照",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/cool-outing/cities/:id",
+      "summary": "城市详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/cool-outing/routes",
+      "summary": "清凉路线",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/cool-outing/routes/:id",
+      "summary": "路线详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/cool-outing/stops",
+      "summary": "休息点",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/cool-outing/stops/:id",
+      "summary": "休息点详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/cool-outing/advices",
+      "summary": "出行建议",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/cool-outing/advices/:id",
+      "summary": "建议详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/cool-outing/favorites",
+      "summary": "我的收藏",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/biz/cool-outing/favorites",
+      "summary": "收藏地点或路线",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/biz/cool-outing/favorites/:id",
+      "summary": "取消收藏",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/cool-outing/plans",
+      "summary": "我的规划",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/biz/cool-outing/plans",
+      "summary": "保存规划",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/cool-outing/kpis",
+      "summary": "KPI",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/messages",
+      "summary": "消息",
+      "auth": false,
+      "module": "messages"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/auth/login",
+      "summary": "登录",
+      "auth": false,
+      "module": "auth"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/auth/register",
+      "summary": "注册",
+      "auth": false,
+      "module": "auth"
+    }
+  ],
+  "ai": {
+    "capabilities": [
+      {
+        "id": "comfort_quiz",
+        "name": "出行舒适自检",
+        "closedLoop": true,
+        "outputType": "template_report"
+      }
+    ],
+    "quickCommands": [],
+    "systemPrompt": "你是「魏文波」旗下应用「清凉出行」的出行舒适助手。产品定位：用清凉指数与树荫路线，帮通勤族在炎热天气里选更舒适的出行方式。主职责：解释清凉指数、对比步行/骑行/公共交通、提示紫外线与空气质量。禁止使用「AI」字样。C 端不提供自由对话。",
+    "mode": "none",
+    "llmEnabled": false
+  },
+  "permissions": [
+    {
+      "name": "ohos.permission.INTERNET",
+      "reason": "拉取城市天气快照、清凉路线与休息点栏目",
+      "when": "inuse",
+      "scene": "打开首页或刷新栏目时"
+    }
+  ],
+  "harmonyos": {
+    "features": []
+  },
+  "store": {
+    "category": "出行导航",
+    "legalOperator": "魏文波",
+    "oneLiner": "清凉出行 — 用清凉指数与树荫路线，帮通勤族在炎热天气里选更舒适的出行方式",
+    "fullDescription": "清凉出行是面向城市通勤族的智能出行助手。根据温度、湿度、紫外线和风力计算清凉指数，推荐树荫覆盖率高、室内通道多的步行、骑行与公共交通路线，并标出沿途商场、咖啡与公园休息点。提供 24 小时体感变化、穿衣建议与紫外线提醒。不含支付、不含订票、不含生成式对话。天气与路线为出行参考，不替代气象台预警。",
+    "keywords": [
+      "清凉",
+      "出行",
+      "通勤",
+      "树荫",
+      "路线",
+      "天气",
+      "鸿蒙"
+    ],
+    "privacySummary": {
+      "collect": [
+        "可选账号信息",
+        "收藏的路线与休息点",
+        "出行偏好"
+      ],
+      "purpose": "提供清凉指数、路线对比与收藏同步",
+      "thirdParties": []
+    },
+    "demoAccount": {
+      "username": "auditor@wenbo.local",
+      "passwordNote": "仅写入 store/demo-account.md"
+    },
+    "screenshotPlan": [
+      {
+        "page": "home",
+        "caption": "清凉指数环形仪表"
+      },
+      {
+        "page": "routes",
+        "caption": "三种出行方式对比"
+      },
+      {
+        "page": "detail",
+        "caption": "路线详情与休息点"
+      },
+      {
+        "page": "weather",
+        "caption": "24 小时温感"
+      },
+      {
+        "page": "mine",
+        "caption": "收藏与偏好"
+      }
+    ],
+    "incentiveHooks": [
+      "原生清凉指数仪表",
+      "多模式路线对比"
+    ]
+  },
+  "access": {
+    "mode": "open_optional",
+    "features": {
+      "register": true,
+      "guestBrowse": true,
+      "guestWrite": false
+    },
+    "gateActions": [
+      "favorite_place",
+      "save_plan"
+    ],
+    "onPrivacyRefuse": "browse_basic",
+    "loginProviders": [
+      "password"
+    ]
+  },
+  "admin": {
+    "featureModules": [
+      "overview",
+      "appUsers",
+      "coCities",
+      "coRoutes",
+      "coStops",
+      "coAdvices",
+      "messages",
+      "kpis",
+      "ai"
+    ]
+  },
+  "brand": {
+    "primary": "#00B4D8",
+    "primaryDeep": "#0891B2",
+    "deep": "#0B2A36",
+    "accent": "#4ECDC4",
+    "tone": "cool-glass",
+    "stylePack": "glass-saas",
+    "workbenchId": "catalog-tool",
+    "layoutVariant": "D",
+    "productVisualType": "content-commerce",
+    "visualDirection": {
+      "archetype": "cool-commute-glass",
+      "density": "balanced",
+      "material": "light-glass",
+      "imagery": "shade-street-indoor-corridor",
+      "accent": "cyan-mint",
+      "primaryJob": "3 秒内看见清凉指数并决定出不出门",
+      "notes": "极淡蓝白底+清凉蓝主色+薄荷绿正向；环形仪表首屏；禁止杂志暖纸与衣橱网格"
+    },
+    "logo": {
+      "concept": "开口降温光环包住出行落点，呼应「清」的水部弧线",
+      "style": "flat-premium",
+      "generator": "render_logo.mjs",
+      "renderScript": "store/logo/render_logo.mjs",
+      "glyphStrategy": "semantic-fusion",
+      "brandAnchor": "清",
+      "customLock": true,
+      "foregroundFile": "store/logo/foreground.png",
+      "backgroundFile": "store/logo/background.png",
+      "previewFile": "store/logo/preview-1024.png",
+      "agcFile": "store/logo/agc-216.png",
+      "symbolFile": "store/logo/symbol.svg",
+      "horizontalFile": "store/logo/logo-horizontal.svg"
+    }
+  }
+}

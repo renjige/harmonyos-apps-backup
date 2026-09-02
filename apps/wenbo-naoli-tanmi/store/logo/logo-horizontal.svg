@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 220">
+  <rect width="720" height="220" fill="#0A1628"/>
+  <g transform="translate(28,22) scale(0.172)">
+    <polygon points="512,236 772,512 512,788 252,512" fill="none" stroke="#F5A623" stroke-width="44"/>
+    <polygon points="512,340 668,512 512,684 356,512" fill="#F5A623"/>
+    <circle cx="512" cy="200" r="42" fill="#F5A623"/>
+  </g>
+  <text x="230" y="128" fill="#F5A623" font-family="HarmonyOS Sans, Source Han Sans, sans-serif" font-size="64" font-weight="600">????</text>
+</svg>

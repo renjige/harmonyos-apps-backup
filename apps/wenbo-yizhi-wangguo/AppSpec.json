@@ -1,0 +1,416 @@
+{
+  "specVersion": "1.0.0",
+  "generatedAt": "2026-08-22T01:47:28.502Z",
+  "requestId": "req_1787363248465",
+  "industryPack": "kids-kingdom",
+  "identity": {
+    "company": "魏文波",
+    "companyPinyin": "wenbo",
+    "appName": "益智王国",
+    "appPinyin": "yizhi-wangguo",
+    "bundleId": "com.wenbo.yizhiwangguo",
+    "version": "1.0.0"
+  },
+  "positioning": {
+    "tagline": "面向3到12岁儿童的分级益智闯关，用形状色彩序列与推理培养观察力与逻辑，本机记录成长",
+    "coreUsers": [
+      {
+        "role": "学龄前与小学儿童",
+        "ageRange": "3-12",
+        "scenario": "课后几分钟走一关或做每日益智",
+        "need": "题目大、反馈温和、立刻知道点哪里开始"
+      },
+      {
+        "role": "家长",
+        "ageRange": "28-45",
+        "scenario": "查看成长报告并防止误改设置",
+        "need": "无广告无支付，数据一眼看懂，不做智力测评承诺"
+      }
+    ],
+    "painPoints": [
+      "益智应用广告多、像游戏厅",
+      "只有口算或只有文字谜，缺少图形色彩路径",
+      "家长看不懂进度，儿童误触设置"
+    ],
+    "differentiation": "面向3到12岁儿童的分级益智闯关，用形状色彩序列与推理培养观察力与逻辑，本机记录成长"
+  },
+  "modules": {
+    "pages": [
+      {
+        "id": "home",
+        "title": "大厅",
+        "route": "pages/HomePage",
+        "features": [
+          "王国欢迎",
+          "下一关石阶",
+          "四座圆形入口"
+        ],
+        "tab": true
+      },
+      {
+        "id": "challenge",
+        "title": "闯关",
+        "route": "pages/ChallengeMapPage",
+        "features": [
+          "路径地图",
+          "关卡状态",
+          "星星"
+        ],
+        "tab": true
+      },
+      {
+        "id": "report",
+        "title": "报告",
+        "route": "pages/ReportPage",
+        "features": [
+          "家长门禁",
+          "能力条",
+          "七日日历",
+          "能力小测"
+        ],
+        "tab": true
+      },
+      {
+        "id": "mine",
+        "title": "我的",
+        "route": "pages/MinePage",
+        "features": [
+          "探索者",
+          "收藏馆",
+          "设置与隐私"
+        ],
+        "tab": true
+      }
+    ],
+    "coreFlows": [
+      {
+        "name": "智慧闯关",
+        "steps": [
+          "打开大厅",
+          "踏上石阶",
+          "选关",
+          "作答",
+          "结算星星",
+          "解锁下一关"
+        ]
+      },
+      {
+        "name": "每日益智",
+        "steps": [
+          "进入每日",
+          "完成一题",
+          "记录本机",
+          "次日刷新"
+        ]
+      },
+      {
+        "name": "成长报告",
+        "steps": [
+          "家长验证",
+          "查看星星与能力",
+          "能力小测模板报告"
+        ]
+      }
+    ]
+  },
+  "entities": [
+    {
+      "name": "KingdomLevel",
+      "table": "levels",
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "kind",
+          "type": "string"
+        },
+        {
+          "name": "coverKey",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "KingdomQuestion",
+      "table": "questions",
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "levelId",
+          "type": "string"
+        },
+        {
+          "name": "prompt",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "DailyPuzzle",
+      "table": "dailies",
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "prompt",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "RelicDef",
+      "table": "relics",
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "rule",
+          "type": "string"
+        }
+      ]
+    }
+  ],
+  "apis": [
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/kids-kingdom/levels",
+      "summary": "关卡列表",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/kids-kingdom/levels/:id",
+      "summary": "关卡详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/kids-kingdom/questions",
+      "summary": "题目列表",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/kids-kingdom/questions/:id",
+      "summary": "题目详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/kids-kingdom/dailies",
+      "summary": "每日题库",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/kids-kingdom/dailies/:id",
+      "summary": "每日题详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/kids-kingdom/relics",
+      "summary": "藏品定义",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/kids-kingdom/relics/:id",
+      "summary": "藏品详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/kids-kingdom/guides",
+      "summary": "王国手札",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/kids-kingdom/guides/:id",
+      "summary": "手札详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/kids-kingdom/kpis",
+      "summary": "机构指标",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/messages",
+      "summary": "系统消息",
+      "auth": false,
+      "module": "messages"
+    }
+  ],
+  "ai": {
+    "capabilities": [],
+    "quickCommands": [],
+    "systemPrompt": "你是「魏文波」旗下应用「益智王国」的内容助手。产品定位：面向3到12岁儿童的分级益智闯关。主职责：说明王国路径、关卡类型与家长报告。不提供生成式对话，不做智力测评，不出现 AI 字样。",
+    "mode": "none",
+    "llmEnabled": false
+  },
+  "permissions": [
+    {
+      "name": "ohos.permission.INTERNET",
+      "reason": "在您选择登录时连接服务，闯关进度默认保存在本机",
+      "when": "inuse",
+      "scene": "可选登录"
+    }
+  ],
+  "harmonyos": {
+    "features": []
+  },
+  "store": {
+    "category": "教育",
+    "legalOperator": "魏文波",
+    "oneLiner": "益智王国 — 面向3到12岁儿童的分级益智闯关，用形状色彩序列与推理培养观察力与",
+    "fullDescription": "益智王国是一款面向 3 到 12 岁儿童的轻量益智教育应用。支持王国路径闯关、图形与色彩识别、数字序列、简单推理、每日益智、成长报告和收藏馆。题目来自平台题库，进度保存在本机。无广告、无支付、无商城。不进行智力测评，也不承诺提高考试成绩。",
+    "keywords": [
+      "益智",
+      "闯关",
+      "观察力",
+      "推理",
+      "儿童学习",
+      "鸿蒙"
+    ],
+    "privacySummary": {
+      "collect": [
+        "可选账号信息",
+        "本机闯关进度",
+        "本机星星与藏品"
+      ],
+      "purpose": "提供闯关练习、每日题与成长统计",
+      "thirdParties": []
+    },
+    "demoAccount": {
+      "username": "auditor@wenbo.local",
+      "passwordNote": "仅写入 store/demo-account.md"
+    },
+    "screenshotPlan": [
+      {
+        "page": "home",
+        "caption": "王国大厅与踏上石阶"
+      },
+      {
+        "page": "map",
+        "caption": "关卡路径地图"
+      },
+      {
+        "page": "quiz",
+        "caption": "图形选择题与反馈"
+      },
+      {
+        "page": "report",
+        "caption": "成长报告与能力条"
+      },
+      {
+        "page": "collection",
+        "caption": "王国收藏馆"
+      }
+    ],
+    "incentiveHooks": [
+      "FormExtensionAbility"
+    ]
+  },
+  "access": {
+    "mode": "open_optional",
+    "features": {
+      "register": true,
+      "guestBrowse": true,
+      "guestWrite": true
+    },
+    "gateActions": [],
+    "onPrivacyRefuse": "browse_basic",
+    "loginProviders": [
+      "password"
+    ]
+  },
+  "admin": {
+    "featureModules": [
+      "overview",
+      "appUsers",
+      "kkLevels",
+      "kkQuestions",
+      "kkDailies",
+      "kkRelics",
+      "kkGuides",
+      "messages",
+      "kpis"
+    ]
+  },
+  "brand": {
+    "primary": "#5B6ABF",
+    "primaryDeep": "#3D4A9A",
+    "deep": "#1A1A2E",
+    "accent": "#F5C842",
+    "tone": "soft-editorial",
+    "stylePack": "custom",
+    "workbenchId": "catalog-tool",
+    "layoutVariant": "D",
+    "productVisualType": "content-commerce",
+    "visualDirection": {
+      "archetype": "premium-knowledge-kingdom",
+      "density": "airy",
+      "material": "wood-stone-soft-card",
+      "imagery": "castle-hall-garden-path",
+      "accent": "violet-gold-mint",
+      "primaryJob": "3 秒内点击踏上石阶",
+      "notes": "高端儿童知识王国；禁止游戏厅霓虹、口算键盘与亲子对答卡"
+    },
+    "logo": {
+      "brandAnchor": "王",
+      "glyphStrategy": "semantic-fusion",
+      "customLock": true,
+      "generator": "render_logo.mjs",
+      "renderScript": "store/logo/render_logo.mjs",
+      "concept": "几何「王」字顶横拉成城堡雉堞，左上拼图凸榫，深底金标",
+      "style": "flat-premium",
+      "foregroundFile": "store/logo/foreground.png",
+      "backgroundFile": "store/logo/background.png",
+      "previewFile": "store/logo/preview-1024.png",
+      "agcFile": "store/logo/agc-216.png",
+      "symbolFile": "store/logo/symbol.svg",
+      "horizontalFile": "store/logo/logo-horizontal.svg"
+    },
+    "visualAssets": {
+      "hero": ["hero_hall", "hero_path"],
+      "covers": ["cover_shape", "cover_color", "cover_maze", "cover_reason", "cover_daily"],
+      "relics": ["relic_star", "relic_leaf", "relic_sun", "relic_box", "relic_map", "relic_crown", "relic_lamp", "relic_key"]
+    }
+  }
+}

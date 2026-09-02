@@ -1,0 +1,347 @@
+{
+  "specVersion": "1.0.0",
+  "generatedAt": "2026-08-20T04:06:00.177Z",
+  "requestId": "req_1787198760126",
+  "industryPack": "sports-events",
+  "identity": {
+    "company": "魏文波",
+    "companyPinyin": "wenbo",
+    "appName": "球队研判",
+    "appPinyin": "qiudui-yanpan",
+    "bundleId": "qdyp.wxy.huawei",
+    "version": "1.0.5"
+  },
+  "positioning": {
+    "tagline": "球队数据研究与球迷分析工具：状态分析、两队对比、历史交锋、数据图表与关注跟踪",
+    "coreUsers": [
+      {
+        "role": "球迷观察者",
+        "ageRange": "18-45",
+        "scenario": "赛前快速了解球队近况",
+        "need": "公开档案、关注与对比"
+      },
+      {
+        "role": "业余数据分析爱好者",
+        "scenario": "对比两队积分与交锋",
+        "need": "积分榜与交锋记录"
+      }
+    ],
+    "painPoints": [
+      "公开资料散落难对照",
+      "关注球队后桌面看不到状态",
+      "两队对比缺少积分与交锋"
+    ],
+    "differentiation": "专业球队信息分析工具，查看球队资料、近期表现、对比球队、关注喜欢的球队并接收智慧提醒"
+  },
+  "modules": {
+    "pages": [
+      {
+        "id": "home",
+        "title": "首页",
+        "route": "pages/Home",
+        "features": [
+          "Brand Hero",
+          "KPI",
+          "快捷入口",
+          "AI入口"
+        ],
+        "tab": true
+      },
+      {
+        "id": "teams",
+        "title": "球队",
+        "route": "pages/Teams",
+        "features": [
+          "分类浏览",
+          "搜索",
+          "详情"
+        ],
+        "tab": true
+      },
+      {
+        "id": "compare",
+        "title": "对比",
+        "route": "pages/Compare",
+        "features": [
+          "选两队",
+          "积分对比",
+          "交锋记录"
+        ],
+        "tab": true
+      },
+      {
+        "id": "messages",
+        "title": "消息",
+        "route": "pages/Messages",
+        "features": [
+          "机构通知",
+          "已读"
+        ],
+        "tab": false
+      },
+      {
+        "id": "mine",
+        "title": "我的",
+        "route": "pages/Mine",
+        "features": [
+          "资料",
+          "设置",
+          "退出"
+        ],
+        "tab": true
+      }
+    ],
+    "coreFlows": [
+      {
+        "name": "浏览档案并关注",
+        "steps": [
+          "首页公开档案",
+          "打开球队详情",
+          "登录后关注",
+          "首页关注区与桌面卡片可见"
+        ]
+      },
+      {
+        "name": "两队对比",
+        "steps": [
+          "对比页选择两队",
+          "查看积分、攻防指数与近期状态",
+          "查看历史交锋统计与图表"
+        ]
+      }
+    ]
+  },
+  "entities": [
+    {
+      "name": "Project",
+      "table": "projects",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true,
+          "unique": true
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "code",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "status",
+          "type": "enum",
+          "enumValues": [
+            "active",
+            "archived"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Inspection",
+      "table": "inspections",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true,
+          "unique": true
+        },
+        {
+          "name": "projectId",
+          "type": "uuid",
+          "required": true,
+          "ref": "Project"
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "status",
+          "type": "enum",
+          "enumValues": [
+            "draft",
+            "submitted",
+            "reviewing",
+            "rectifying",
+            "closed"
+          ]
+        },
+        {
+          "name": "severity",
+          "type": "enum",
+          "enumValues": [
+            "low",
+            "medium",
+            "high",
+            "critical"
+          ]
+        }
+      ]
+    }
+  ],
+  "apis": [
+    {
+      "method": "POST",
+      "path": "/api/v1/auth/login",
+      "summary": "登录",
+      "auth": false,
+      "module": "auth"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/sports-events/teams",
+      "summary": "公开球队档案",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/sports-events/standings",
+      "summary": "联赛积分榜",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/biz/sports-events/favorites",
+      "summary": "关注球队",
+      "auth": true,
+      "module": "biz"
+    }
+  ],
+  "ai": {
+    "capabilities": [],
+    "quickCommands": [],
+    "systemPrompt": "你是「魏文波」旗下应用「球队研判」的助手。产品定位：公开球队档案、关注、对比与积分榜。不编造赛果与赔率，不提供博彩建议。"
+  },
+  "permissions": [
+    {
+      "name": "ohos.permission.INTERNET",
+      "reason": "用于拉取公开球队档案、积分榜与同步关注",
+      "when": "inuse",
+      "scene": "浏览球队与登录后关注"
+    }
+  ],
+  "harmonyos": {
+    "features": [
+      {
+        "type": "huaweiAccount",
+        "scene": "一键登录"
+      },
+      {
+        "type": "formCard",
+        "scene": "关注球队桌面卡片：未关注显示空态，关注后显示队名与近期状态"
+      }
+    ]
+  },
+  "store": {
+    "category": "体育",
+    "oneLiner": "球队研判 — 浏览球队档案、关注状态、对比两队并查看联赛积分榜",
+    "fullDescription": "球队研判面向球迷与球队观察者，提供公开球队资料库、状态分析、两队对比（积分、攻防、交锋）、历史交锋、数据图表、关注列表、观察笔记、比赛前瞻、球员档案、资讯整理、积分榜、每日观察与研判收藏夹。桌面卡片在关注后展示已选球队的近期状态；未关注时显示空态引导。应用为 HarmonyOS 原生体验，不提供博彩或赔率，不提供生成式 AI 对话。游客可浏览公开档案与分析工具；关注、提醒等写操作需登录并勾选协议。",
+    "keywords": [
+      "球队资料",
+      "球队对比",
+      "积分榜",
+      "关注球队",
+      "鸿蒙"
+    ],
+    "privacySummary": {
+      "collect": [
+        "账号与登录信息",
+        "用户主动关注与提醒",
+        "本机研判笔记与收藏夹"
+      ],
+      "purpose": "完成关注同步、账号服务与本机研究记录",
+      "thirdParties": []
+    },
+    "demoAccount": {
+      "username": "auditor@wenbo.local",
+      "passwordNote": "仅写入 store/demo-account.md，禁止打进客户端"
+    },
+    "screenshotPlan": [
+      {
+        "page": "home",
+        "caption": "首页公开档案与我的关注空态"
+      },
+      {
+        "page": "teams",
+        "caption": "球队列表与搜索"
+      },
+      {
+        "page": "compare",
+        "caption": "两队对比与交锋"
+      },
+      {
+        "page": "standings",
+        "caption": "联赛积分榜"
+      },
+      {
+        "page": "mine",
+        "caption": "设置与隐私入口"
+      }
+    ],
+    "incentiveHooks": [
+      "服务卡片展示已关注球队状态",
+      "关注后桌面卡片刷新"
+    ],
+    "legalOperator": "魏文波"
+  },
+  "access": {
+    "mode": "open_optional",
+    "features": {
+      "register": true,
+      "guestBrowse": true,
+      "guestWrite": false
+    },
+    "gateActions": [
+      "follow_team",
+      "follow_match",
+      "set_reminder",
+      "share_card",
+      "sync_favorites"
+    ],
+    "onPrivacyRefuse": "browse_basic",
+    "loginProviders": [
+      "password"
+    ]
+  },
+  "brand": {
+    "primary": "#1677FF",
+    "primaryDeep": "#0F172A",
+    "tone": "sport-tech",
+    "stylePack": "industrial-dark",
+    "productVisualType": "content-commerce",
+    "visualAssets": [
+      { "id": "hero_bg", "file": "hero_bg.png", "usage": "home-hero" },
+      { "id": "banner_01", "file": "banner_01.png", "usage": "home-banner" },
+      { "id": "banner_02", "file": "banner_02.png", "usage": "standings-banner" },
+      { "id": "cover_football", "file": "cover_football.png", "usage": "team-football" },
+      { "id": "cover_basketball", "file": "cover_basketball.png", "usage": "team-basketball" },
+      { "id": "cover_tennis", "file": "cover_tennis.png", "usage": "team-tennis" },
+      { "id": "cover_esports", "file": "cover_esports.png", "usage": "team-esports" }
+    ],
+    "logo": {
+      "concept": "盾牌轮廓 + 数据雷达十字线，深海军底 + 青色竞技线",
+      "style": "flat-premium",
+      "generator": "custom",
+      "glyphStrategy": "shield-radar",
+      "brandAnchor": "盾",
+      "customLock": true,
+      "renderScript": "store/logo/render_logo.py",
+      "foregroundFile": "store/logo/foreground.png",
+      "backgroundFile": "store/logo/background.png",
+      "previewFile": "store/logo/preview-1024.png",
+      "agcFile": "store/logo/agc-216.png",
+      "symbolFile": "store/logo/symbol.svg",
+      "horizontalFile": "store/logo/logo-horizontal.svg"
+    }
+  }
+}

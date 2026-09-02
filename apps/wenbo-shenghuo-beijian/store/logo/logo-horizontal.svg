@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 360" role="img" aria-label=";:">
+  <rect width="1280" height="360" fill="#F7F5EF"/>
+  <svg x="48" y="36" width="288" height="288" viewBox="0 0 1024 1024">
+    <rect width="1024" height="1024" rx="220" fill="#3D8277"/>
+    <path fill="#F7F5EF" d="M268 248h392L796 384v392c0 44-36 80-80 80H348c-44 0-80-36-80-80V328c0-44 36-80 80-80z"/>
+    <path fill="#3D8277" d="M660 248h0L796 384H708c-26 0-48-22-48-48V248z"/>
+    <rect x="348" y="488" width="248" height="28" rx="14" fill="#3D8277"/>
+    <circle cx="732" cy="332" r="42" fill="#F7F5EF"/>
+  </svg>
+  <text x="372" y="168" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="92" font-weight="600" fill="#25312F">;:</text>
+  <text x="372" y="248" font-family="Georgia, Times New Roman, serif" font-size="32" fill="#7B8582">Life Slip</text>
+</svg>

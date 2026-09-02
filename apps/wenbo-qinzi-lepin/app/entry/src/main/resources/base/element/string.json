@@ -1,0 +1,8 @@
+{
+  "string": [
+    { "name": "module_desc", "value": "亲子乐拼主模块" },
+    { "name": "EntryAbility_desc", "value": "亲子乐拼入口" },
+    { "name": "EntryAbility_label", "value": "亲子乐拼" },
+    { "name": "internet_reason", "value": "在您选择登录或刷新图库目录时连接服务，拼图进度默认保存在本机" }
+  ]
+}

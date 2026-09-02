@@ -1,0 +1,8 @@
+{
+  "string": [
+    { "name": "module_desc", "value": "小事记 — 个人生活记录与回忆管理" },
+    { "name": "EntryAbility_desc", "value": "生活事件、待办、时光轴与纪念日" },
+    { "name": "EntryAbility_label", "value": "小事记" },
+    { "name": "reminder_reason", "value": "用于在您设置的纪念日到达时发出系统提醒，仅在您开启纪念日提醒时使用" }
+  ]
+}

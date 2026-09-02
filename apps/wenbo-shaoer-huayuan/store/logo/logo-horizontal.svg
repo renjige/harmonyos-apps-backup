@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 360" fill="none">
+  <rect width="360" height="360" rx="48" fill="#4A2A1C"/>
+  <g transform="translate(24,24) scale(0.305)">
+    <rect x="470" y="548" width="84" height="276" rx="42" fill="#FFF5EE"/>
+    <rect x="462" y="500" width="100" height="56" rx="10" fill="#FFF5EE"/>
+    <path d="M512 236 L628 508 H396 Z" fill="#FFF5EE"/>
+    <ellipse cx="404" cy="300" rx="78" ry="34" transform="rotate(-32 404 300)" fill="#FFF5EE"/>
+    <ellipse cx="620" cy="292" rx="78" ry="34" transform="rotate(32 620 292)" fill="#FFF5EE"/>
+    <rect x="500" y="268" width="24" height="72" rx="12" fill="#4A2A1C"/>
+  </g>
+  <text x="420" y="220" font-family="HarmonyOS Sans, Source Han Sans, sans-serif" font-size="92" font-weight="600" fill="#4A2A1C">?;�</text>
+</svg>

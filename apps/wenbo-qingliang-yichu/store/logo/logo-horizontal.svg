@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 360" width="1200" height="360">
+  <defs>
+    <linearGradient id="bgHGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2D8C70" />
+      <stop offset="100%" stop-color="#1E6B54" />
+    </linearGradient>
+    <linearGradient id="breezeHGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#EAF7F3" stop-opacity="0.95" />
+      <stop offset="100%" stop-color="#BFE8DC" stop-opacity="0.85" />
+    </linearGradient>
+  </defs>
+
+  <!-- Left Icon Mark (x: 40, y: 40, size: 280) -->
+  <rect x="40" y="40" width="280" height="280" rx="60" fill="url(#bgHGrad)" />
+  <rect x="100" y="94" width="160" height="172" rx="20" fill="none" stroke="#FFFFFF" stroke-width="10" stroke-linecap="round" opacity="0.95"/>
+  <line x1="180" y1="94" x2="180" y2="266" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round" opacity="0.6"/>
+  <path d="M180 130 C172 130 170 120 176 115 C180 112 185 116 185 122" fill="none" stroke="#BFE8DC" stroke-width="6" stroke-linecap="round"/>
+  <path d="M88 204 C124 160 170 230 216 176 C238 150 262 172 276 164" fill="none" stroke="url(#breezeHGrad)" stroke-width="12" stroke-linecap="round"/>
+  <path d="M160 154 L180 142 L200 154 L196 214 C188 224 172 224 164 214 Z" fill="#EAF7F3" opacity="0.88"/>
+
+  <!-- Brand Typography -->
+  <text x="360" y="180" font-family="-apple-system, BlinkMacSystemFont, 'HarmonyOS Sans SC', 'PingFang SC', sans-serif" font-size="82" font-weight="700" fill="#1F2927" letter-spacing="4">Écq</text>
+  <text x="364" y="248" font-family="-apple-system, BlinkMacSystemFont, 'HarmonyOS Sans SC', 'PingFang SC', sans-serif" font-size="28" font-weight="400" fill="#5A8F82" letter-spacing="2">©Ï)ÀHØ—€UÈ	a</text>
+</svg>

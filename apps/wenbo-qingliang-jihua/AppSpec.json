@@ -1,0 +1,326 @@
+{
+  "specVersion": "1.0.0",
+  "generatedAt": "2026-08-24T07:54:03.660Z",
+  "requestId": "req_1787558043623",
+  "industryPack": "cool-plan",
+  "identity": {
+    "company": "魏文波",
+    "companyPinyin": "wenbo",
+    "appName": "清凉计划",
+    "appPinyin": "qingliang-jihua",
+    "bundleId": "com.wenbo.qingliangjihua",
+    "version": "1.0.0"
+  },
+  "positioning": {
+    "tagline": "在喧嚣中找回内心的清凉——你的智慧心灵休憩站",
+    "coreUsers": [
+      {
+        "role": "都市白领与高压人群",
+        "ageRange": "22-45",
+        "scenario": "通勤前、午休、睡前需要片刻宁静",
+        "need": "用呼吸、心情与轻量心语建立每日清凉习惯"
+      }
+    ],
+    "painPoints": [
+      "纯计时器无法引导呼吸节奏",
+      "日记 App 太重，缺少即时减压闭环",
+      "信息类 App 只看不练，缺少可执行动作"
+    ],
+    "differentiation": "在喧嚣中找回内心的清凉——你的智慧心灵休憩站"
+  },
+  "modules": {
+    "pages": [
+      {
+        "id": "home",
+        "title": "首页",
+        "route": "pages/HomePage",
+        "features": [
+          "早安智慧",
+          "清凉指数",
+          "今日心情",
+          "智慧呼吸入口",
+          "今日心语"
+        ],
+        "tab": true
+      },
+      {
+        "id": "breath",
+        "title": "呼吸",
+        "route": "pages/BreathPage",
+        "features": [
+          "三种模式",
+          "圆环引导",
+          "练习统计"
+        ],
+        "tab": true
+      },
+      {
+        "id": "record",
+        "title": "记录",
+        "route": "pages/RecordPage",
+        "features": [
+          "心境日历",
+          "本月统计",
+          "日期心语"
+        ],
+        "tab": true
+      },
+      {
+        "id": "mine",
+        "title": "我的",
+        "route": "pages/MinePage",
+        "features": [
+          "呼吸提醒",
+          "数据统计",
+          "设置与隐私"
+        ],
+        "tab": true
+      }
+    ],
+    "coreFlows": [
+      {
+        "name": "清凉计划闭环",
+        "steps": [
+          "选择今日心情",
+          "查看清凉指数",
+          "完成智慧呼吸",
+          "记录今日心语",
+          "日历回顾"
+        ]
+      }
+    ]
+  },
+  "entities": [
+    {
+      "name": "WisdomQuote",
+      "table": "clp_quotes",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid"
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "body",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "BreathMode",
+      "table": "clp_breath_modes",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid"
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "inhaleSec",
+          "type": "number"
+        }
+      ]
+    },
+    {
+      "name": "MoodRecord",
+      "table": "clp_mood_records",
+      "fields": [
+        {
+          "name": "mood",
+          "type": "string"
+        },
+        {
+          "name": "noteDate",
+          "type": "string"
+        }
+      ]
+    }
+  ],
+  "apis": [
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/cool-plan/daily",
+      "summary": "今日语录",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/cool-plan/quotes",
+      "summary": "智慧语录",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/cool-plan/breath-modes",
+      "summary": "呼吸模式",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/biz/cool-plan/moods",
+      "summary": "记录心情",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/biz/cool-plan/breath-sessions",
+      "summary": "记录呼吸",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/biz/cool-plan/journals",
+      "summary": "记录心语",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/messages",
+      "summary": "消息",
+      "auth": false,
+      "module": "messages"
+    }
+  ],
+  "ai": {
+    "capabilities": [],
+    "quickCommands": [],
+    "systemPrompt": "你是「魏文波」旗下应用「清凉计划」的助手。产品定位：在喧嚣中找回内心的清凉。主职责：解释呼吸节奏、清凉指数与心境记录。禁止自称生成式产品。C 端不提供自由对话。",
+    "mode": "none",
+    "llmEnabled": false
+  },
+  "permissions": [
+    {
+      "name": "ohos.permission.INTERNET",
+      "reason": "拉取智慧语录、呼吸模式与同步练习记录",
+      "when": "inuse",
+      "scene": "首页、呼吸与记录页"
+    }
+  ],
+  "harmonyos": {
+    "features": []
+  },
+  "store": {
+    "category": "生活",
+    "legalOperator": "魏文波",
+    "oneLiner": "清凉计划 — 在喧嚣中找回内心的清凉——你的智慧心灵休憩站",
+    "fullDescription": "清凉计划是一款轻量级心灵休憩工具。每日智慧语录、今日心情与清凉指数、三种智慧呼吸引导（4-7-8/4-4-4/4-8-4）、轻量心语与心境日历，帮助你在快节奏生活中建立每日清凉习惯。完全免费，无广告，无支付，不含生成式对话。",
+    "keywords": [
+      "清凉",
+      "呼吸",
+      "正念",
+      "心情",
+      "休憩",
+      "减压",
+      "鸿蒙"
+    ],
+    "privacySummary": {
+      "collect": [
+        "账号信息",
+        "心情标签",
+        "呼吸练习时长",
+        "心语内容"
+      ],
+      "purpose": "提供呼吸引导、心境记录与统计回顾",
+      "thirdParties": []
+    },
+    "demoAccount": {
+      "username": "auditor@wenbo.local",
+      "passwordNote": "仅写入 store/demo-account.md"
+    },
+    "screenshotPlan": [
+      {
+        "page": "home",
+        "caption": "今日清凉一刻"
+      },
+      {
+        "page": "breath",
+        "caption": "智慧呼吸引导"
+      },
+      {
+        "page": "record",
+        "caption": "心境日历回顾"
+      },
+      {
+        "page": "mine",
+        "caption": "设置与数据统计"
+      }
+    ],
+    "incentiveHooks": [
+      "鸿蒙激励计划2026"
+    ]
+  },
+  "access": {
+    "mode": "open_optional",
+    "features": {
+      "register": true,
+      "guestBrowse": true,
+      "guestWrite": false
+    },
+    "gateActions": [
+      "sync_records"
+    ],
+    "onPrivacyRefuse": "browse_basic",
+    "loginProviders": [
+      "password"
+    ]
+  },
+  "admin": {
+    "featureModules": [
+      "overview",
+      "appUsers",
+      "clpQuotes",
+      "clpBreathModes",
+      "clpMoodRecords",
+      "clpBreathSessions",
+      "clpJournalEntries",
+      "messages",
+      "kpis"
+    ]
+  },
+  "brand": {
+    "primary": "#2D8B7A",
+    "primaryDeep": "#1F6B5E",
+    "deep": "#1A2A2A",
+    "accent": "#7EC8B0",
+    "tone": "soft-editorial",
+    "stylePack": "harmonyos-official",
+    "workbenchId": "wellness-ring",
+    "layoutVariant": "C",
+    "productVisualType": "wellness-calm",
+    "visualDirection": {
+      "archetype": "cool-mist-wellness",
+      "density": "airy",
+      "material": "mist-glass",
+      "imagery": "lake-leaf-breath",
+      "accent": "ice-spring-green",
+      "primaryJob": "3 秒内看见今日语录、选心情并开始呼吸",
+      "notes": "冰泉青 #2D8B7A + 云雾白 #F5FAF8；圆环清凉指数；禁止出行/衣橱换皮"
+    },
+    "logo": {
+      "concept": "水滴与嫩叶负空间融合，冰泉青主色",
+      "style": "flat-premium",
+      "generator": "premium_logo.py",
+      "glyphStrategy": "bootstrap",
+      "brandAnchor": "清",
+      "customLock": false,
+      "foregroundFile": "store/logo/foreground.png",
+      "backgroundFile": "store/logo/background.png",
+      "previewFile": "store/logo/preview-1024.png",
+      "agcFile": "store/logo/agc-216.png",
+      "symbolFile": "store/logo/symbol.svg",
+      "horizontalFile": "store/logo/logo-horizontal.svg"
+    }
+  }
+}

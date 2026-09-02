@@ -1,0 +1,9 @@
+{
+  "string": [
+    { "name": "module_desc", "value": "约定提醒 — 记录约定与智慧提醒" },
+    { "name": "EntryAbility_desc", "value": "约定提醒应用入口" },
+    { "name": "EntryAbility_label", "value": "约定提醒" },
+    { "name": "internet_reason", "value": "用于同步约定数据与模板内容" },
+    { "name": "reminder_reason", "value": "用于在约定时间前发送本地提醒通知" }
+  ]
+}

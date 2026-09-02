@@ -1,0 +1,8 @@
+{
+  "string": [
+    { "name": "module_desc", "value": "山野探索主模块" },
+    { "name": "EntryAbility_desc", "value": "山野探索入口" },
+    { "name": "EntryAbility_label", "value": "山野探索" },
+    { "name": "internet_reason", "value": "拉取探索路线、今日灵感与自然百科栏目" }
+  ]
+}

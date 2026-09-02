@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" role="img" aria-label="ƣ">
+  <rect width="1024" height="1024" fill="#3D342C"/>
+  <g id="glyph">
+    <polygon id="eave" fill="#C4A882" points="160,500 512,250 864,500 792,528 512,318 232,528"/>
+    <rect id="ridge" x="488" y="236" width="48" height="86" rx="8" fill="#F7F4F0"/>
+    <polygon id="page-left" fill="#F7F4F0" points="360,560 512,530 512,820 392,848"/>
+    <polygon id="page-right" fill="#C4A882" points="664,560 512,530 512,820 632,848"/>
+  </g>
+</svg>

@@ -1,0 +1,8 @@
+{
+  "string": [
+    { "name": "module_desc", "value": "识趣阁趣味知识阅读" },
+    { "name": "EntryAbility_desc", "value": "识趣阁入口" },
+    { "name": "EntryAbility_label", "value": "识趣阁" },
+    { "name": "internet_reason", "value": "用于拉取趣知栏目、每日一趣与登录同步" }
+  ]
+}

@@ -1,0 +1,373 @@
+{
+  "specVersion": "1.0.0",
+  "generatedAt": "2026-08-20T06:47:29.971Z",
+  "requestId": "req_1787208449933",
+  "industryPack": "cool-wardrobe",
+  "identity": {
+    "company": "魏文波",
+    "companyPinyin": "wenbo",
+    "appName": "清凉衣橱",
+    "appPinyin": "qingliang-yichu",
+    "bundleId": "com.wenbo.qingliangyichu",
+    "version": "1.0.0"
+  },
+  "positioning": {
+    "tagline": "让每天穿什么变得简单又有条理，轻量管理个人衣橱与智慧穿搭",
+    "coreUsers": [
+      {
+        "role": "都市年轻人群与白领",
+        "ageRange": "18-40",
+        "scenario": "早晨出门前快速搭配与换季衣橱整理",
+        "need": "不想纠结穿搭、希望衣物井井有条、享受极简清爽生活方式"
+      },
+      {
+        "role": "极简生活与穿搭爱好者",
+        "ageRange": "20-35",
+        "scenario": "胶囊衣橱记录与每日穿搭日历打卡",
+        "need": "界面清爽高质感、无广告无付费、本地离线随时可用"
+      }
+    ],
+    "painPoints": [
+      "衣服很多但每天出门仍然纠结穿什么",
+      "传统工具过于复杂臃肿，充斥大量电商与广告",
+      "换季衣橱混乱，找不到常穿与闲置单品"
+    ],
+    "differentiation": "让每天穿什么变得简单又有条理，轻量管理个人衣橱与智慧穿搭"
+  },
+  "modules": {
+    "pages": [
+      {
+        "id": "home",
+        "title": "衣橱",
+        "route": "pages/HomePage",
+        "features": [
+          "数据概览",
+          "分类筛选",
+          "衣物网格",
+          "添加衣物",
+          "衣物详情"
+        ],
+        "tab": true
+      },
+      {
+        "id": "outfit",
+        "title": "穿搭",
+        "route": "pages/OutfitPage",
+        "features": [
+          "今日穿搭",
+          "智慧穿搭灵感",
+          "换一套",
+          "保存搭配",
+          "穿搭详情"
+        ],
+        "tab": true
+      },
+      {
+        "id": "calendar",
+        "title": "日历",
+        "route": "pages/CalendarPage",
+        "features": [
+          "穿搭日历",
+          "每日打卡",
+          "记录穿搭",
+          "轻量数据统计"
+        ],
+        "tab": true
+      },
+      {
+        "id": "mine",
+        "title": "我的",
+        "route": "pages/MinePage",
+        "features": [
+          "衣橱管理",
+          "智慧整理",
+          "偏好设置",
+          "深色模式",
+          "隐私与合规"
+        ],
+        "tab": true
+      }
+    ],
+    "coreFlows": [
+      {
+        "name": "衣橱与穿搭核心闭环",
+        "steps": [
+          "在衣橱添加与分类衣物",
+          "在穿搭页按天气场景生成智慧搭配",
+          "查看穿搭详情并保存到日历",
+          "在日历与统计中回顾风格记录"
+        ]
+      }
+    ]
+  },
+  "entities": [
+    {
+      "name": "WardrobeItem",
+      "table": "cw_items",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "category",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "color",
+          "type": "string"
+        },
+        {
+          "name": "season",
+          "type": "string"
+        },
+        {
+          "name": "scene",
+          "type": "string"
+        },
+        {
+          "name": "remark",
+          "type": "string"
+        },
+        {
+          "name": "coverKey",
+          "type": "string"
+        },
+        {
+          "name": "wearCount",
+          "type": "integer"
+        }
+      ]
+    },
+    {
+      "name": "WardrobeOutfit",
+      "table": "cw_outfits",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "style",
+          "type": "string"
+        },
+        {
+          "name": "scene",
+          "type": "string"
+        },
+        {
+          "name": "weather",
+          "type": "string"
+        },
+        {
+          "name": "tips",
+          "type": "string"
+        },
+        {
+          "name": "isSaved",
+          "type": "boolean"
+        }
+      ]
+    },
+    {
+      "name": "WardrobeTip",
+      "table": "cw_tips",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "category",
+          "type": "string"
+        },
+        {
+          "name": "summary",
+          "type": "string"
+        },
+        {
+          "name": "content",
+          "type": "string"
+        }
+      ]
+    }
+  ],
+  "apis": [
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/cool-wardrobe/items",
+      "summary": "衣物单品列表",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/cool-wardrobe/items/:id",
+      "summary": "衣物单品详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/cool-wardrobe/outfits",
+      "summary": "穿搭灵感列表",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/cool-wardrobe/outfits/:id",
+      "summary": "穿搭详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/cool-wardrobe/tips",
+      "summary": "搭配美学小贴士",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/cool-wardrobe/kpis",
+      "summary": "衣橱概览指标",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/messages",
+      "summary": "消息中心",
+      "auth": false,
+      "module": "messages"
+    }
+  ],
+  "ai": {
+    "capabilities": [
+      {
+        "id": "smart_outfit",
+        "name": "智慧穿搭建议",
+        "closedLoop": true,
+        "outputType": "structured_outfit"
+      }
+    ],
+    "quickCommands": [],
+    "systemPrompt": "你是「清凉衣橱」的智慧生活与穿搭助手。产品定位：让每天穿什么变得简单又有条理。主职责：根据用户衣橱已有单品、天气状况（晴/多云/阴/雨）、活动场景（日常/通勤/约会/休闲/运动）以及穿搭风格（清爽/简约/休闲/优雅），提供贴合夏日清凉美学的穿搭参考与衣橱整理建议。禁止使用任何“AI”、“人工智能”等生硬词汇，统一使用“智慧穿搭”“智能搭配”“搭配建议”。",
+    "mode": "none",
+    "llmEnabled": false
+  },
+  "permissions": [
+    {
+      "name": "ohos.permission.INTERNET",
+      "reason": "同步衣橱栏目数据与穿搭灵感指南",
+      "when": "inuse",
+      "scene": "浏览衣橱栏目与穿搭灵感"
+    }
+  ],
+  "access": {
+    "mode": "open_optional",
+    "features": {
+      "register": true,
+      "guestBrowse": true,
+      "guestWrite": false
+    },
+    "gateActions": [
+      "sync",
+      "account_backup"
+    ],
+    "onPrivacyRefuse": "browse_basic",
+    "loginProviders": [
+      "password"
+    ]
+  },
+  "harmonyos": {
+    "features": []
+  },
+  "brand": {
+    "logo": {
+      "concept": "衣橱轮廓与轻风线条的生活美学融合",
+      "style": "flat-premium",
+      "generator": "render_logo.mjs",
+      "renderScript": "store/logo/render_logo.mjs",
+      "glyphStrategy": "semantic-fusion",
+      "brandAnchor": "清",
+      "customLock": true,
+      "foregroundFile": "store/logo/foreground.png",
+      "backgroundFile": "store/logo/background.png",
+      "previewFile": "store/logo/preview-1024.png",
+      "agcFile": "store/logo/agc-216.png",
+      "symbolFile": "store/logo/symbol.svg",
+      "horizontalFile": "store/logo/logo-horizontal.svg"
+    }
+  },
+  "store": {
+    "category": "生活",
+    "legalOperator": "魏文波",
+    "oneLiner": "清凉衣橱 — 让每天穿什么变得简单又有条理，轻量管理个人衣橱与智慧穿搭",
+    "fullDescription": "清凉衣橱是一款面向年轻用户与都市生活人群的轻量级个人衣橱与智慧穿搭管理助手。应用秉持高级极简生活方式美学，让您能够轻松记录自己的衣物单品，按照季节、类别、颜色和场景进行井井有条的归类整理；并通过智慧穿搭组合引擎，根据不同天气状况、出行场景与个人风格偏好，从已有衣橱中生成清爽实用的穿搭灵感。同时支持穿搭日历记录、每日 Outfit 留存与轻量数据统计，离线即开即用，无任何广告、无电商商城、无多余权限，为您带来纯净、优雅、条理分明的现代衣橱管理体验。",
+    "keywords": [
+      "衣橱",
+      "穿搭",
+      "整理",
+      "搭配",
+      "生活方式",
+      "极简",
+      "清爽",
+      "鸿蒙"
+    ],
+    "privacySummary": {
+      "collect": [
+        "可选账号信息",
+        "本地衣橱与穿搭记录"
+      ],
+      "purpose": "提供衣橱管理与穿搭灵感",
+      "thirdParties": []
+    },
+    "demoAccount": {
+      "username": "auditor@wenbo.local",
+      "passwordNote": "仅写入 store/demo-account.md"
+    },
+    "screenshotPlan": [
+      {
+        "page": "home",
+        "caption": "你的衣橱，从此井然有序"
+      },
+      {
+        "page": "category",
+        "caption": "把喜欢的衣物，整理成自己的风格"
+      },
+      {
+        "page": "outfit",
+        "caption": "今天穿什么，让智慧搭配帮你做选择"
+      },
+      {
+        "page": "calendar",
+        "caption": "记录每一天的喜欢"
+      },
+      {
+        "page": "stats",
+        "caption": "你的风格，藏在每一件衣服里"
+      }
+    ]
+  }
+}

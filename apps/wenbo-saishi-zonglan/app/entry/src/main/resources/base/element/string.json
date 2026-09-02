@@ -1,0 +1,9 @@
+{
+  "string": [
+    { "name": "module_desc", "value": "体育赛事信息浏览、关注与智慧提醒" },
+    { "name": "EntryAbility_desc", "value": "赛事纵览主入口" },
+    { "name": "EntryAbility_label", "value": "赛事纵览" },
+    { "name": "internet_reason", "value": "用于获取赛程、关注与提醒等业务数据" },
+    { "name": "reminder_reason", "value": "用于在您关注的比赛开始前发送提醒通知" }
+  ]
+}

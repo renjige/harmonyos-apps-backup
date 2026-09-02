@@ -1,0 +1,397 @@
+{
+  "specVersion": "1.0.0",
+  "generatedAt": "2026-08-21T01:05:36.431Z",
+  "requestId": "req_1787274336396",
+  "industryPack": "light-knowledge",
+  "identity": {
+    "company": "魏文波",
+    "companyPinyin": "wenbo",
+    "appName": "轻知阁",
+    "appPinyin": "qingzhige",
+    "bundleId": "com.wenbo.qingzhige",
+    "version": "1.0.0"
+  },
+  "positioning": {
+    "tagline": "每天积累一点轻知识，让知识真正留下来。",
+    "coreUsers": [
+      {
+        "role": "普通手机用户",
+        "ageRange": "18-45",
+        "scenario": "读到一句有意思的解释、想随手记下并隔天再看",
+        "need": "轻量收藏、整理与复习，而不是复杂笔记或资讯流"
+      }
+    ],
+    "painPoints": [
+      "看到的知识转眼就忘",
+      "笔记软件太重，不知道从哪记起",
+      "收藏夹很多，却很少再看一遍"
+    ],
+    "differentiation": "每天积累一点轻知识，让知识真正留下来。"
+  },
+  "modules": {
+    "pages": [
+      {
+        "id": "home",
+        "title": "轻知",
+        "route": "pages/HomePage",
+        "features": [
+          "今日轻知",
+          "最近收藏",
+          "最近记录",
+          "今日复习摘要",
+          "搜索"
+        ],
+        "tab": true
+      },
+      {
+        "id": "library",
+        "title": "知识库",
+        "route": "pages/LibraryPage",
+        "features": [
+          "分类筛选",
+          "知识卡片",
+          "新增知识",
+          "灵感记录",
+          "搜索"
+        ],
+        "tab": true
+      },
+      {
+        "id": "review",
+        "title": "复习",
+        "route": "pages/ReviewPage",
+        "features": [
+          "逐条复习",
+          "记住了",
+          "稍后再看",
+          "连续天数"
+        ],
+        "tab": true
+      },
+      {
+        "id": "mine",
+        "title": "我的",
+        "route": "pages/MinePage",
+        "features": [
+          "轻知空间统计",
+          "内容管理",
+          "分类管理",
+          "设置与隐私"
+        ],
+        "tab": true
+      }
+    ],
+    "coreFlows": [
+      {
+        "name": "发现与收藏",
+        "steps": [
+          "打开轻知",
+          "阅读今日轻知",
+          "收藏",
+          "进入详情继续阅读"
+        ]
+      },
+      {
+        "name": "记录与复习",
+        "steps": [
+          "记录一条知识",
+          "智能分类建议",
+          "加入复习",
+          "记住了或稍后再看"
+        ]
+      }
+    ]
+  },
+  "entities": [
+    {
+      "name": "Knowledge",
+      "table": "knowledge",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "body",
+          "type": "string"
+        },
+        {
+          "name": "category",
+          "type": "string"
+        },
+        {
+          "name": "tags",
+          "type": "string"
+        },
+        {
+          "name": "coverKey",
+          "type": "string"
+        },
+        {
+          "name": "favorited",
+          "type": "boolean"
+        },
+        {
+          "name": "inReview",
+          "type": "boolean"
+        }
+      ]
+    },
+    {
+      "name": "Spark",
+      "table": "sparks",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "body",
+          "type": "string"
+        },
+        {
+          "name": "tags",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "Category",
+      "table": "categories",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "coverKey",
+          "type": "string"
+        }
+      ]
+    }
+  ],
+  "apis": [
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/light-knowledge/categories",
+      "summary": "分类预设",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/light-knowledge/featured",
+      "summary": "精选轻知",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/light-knowledge/featured/:id",
+      "summary": "精选详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/light-knowledge/covers",
+      "summary": "分类封面",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/light-knowledge/covers/:id",
+      "summary": "封面详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/light-knowledge/entries",
+      "summary": "云端知识（登录后）",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/biz/light-knowledge/entries",
+      "summary": "同步知识",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/light-knowledge/sparks",
+      "summary": "云端灵感（登录后）",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/biz/light-knowledge/sparks",
+      "summary": "同步灵感",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/messages",
+      "summary": "消息",
+      "auth": false,
+      "module": "messages"
+    }
+  ],
+  "ai": {
+    "capabilities": [],
+    "quickCommands": [],
+    "systemPrompt": "你是「魏文波」旗下应用「轻知阁」的知识整理助手。产品定位：每天积累一点轻知识，让知识真正留下来。主职责：按标题建议分类、整理标签与复习队列口吻。禁止扮演医疗、金融、法律专业服务。C 端不提供生成式对话。",
+    "mode": "none",
+    "llmEnabled": false
+  },
+  "permissions": [
+    {
+      "name": "ohos.permission.INTERNET",
+      "reason": "拉取精选轻知、分类与封面，可选同步知识",
+      "when": "inuse",
+      "scene": "打开应用或登录同步时"
+    }
+  ],
+  "harmonyos": {
+    "features": []
+  },
+  "store": {
+    "category": "教育",
+    "legalOperator": "魏文波",
+    "oneLiner": "轻知阁 — 每天积累一点轻知识，让知识真正留下来。",
+    "fullDescription": "轻知阁是一款轻量个人知识整理工具。每天打开，读一条今日轻知；把值得记住的轻轻收好，按生活、科普、阅读、工作与兴趣分类；用逐条复习把知识留下来。不提供社交、支付、会员与生成式对话。",
+    "keywords": [
+      "知识",
+      "收藏",
+      "笔记",
+      "复习",
+      "整理",
+      "鸿蒙"
+    ],
+    "privacySummary": {
+      "collect": [
+        "可选账号信息",
+        "本机知识标题与正文",
+        "分类与标签",
+        "收藏与复习状态"
+      ],
+      "purpose": "提供轻知阅读、收藏、整理、记录与复习",
+      "thirdParties": []
+    },
+    "demoAccount": {
+      "username": "auditor@wenbo.local",
+      "passwordNote": "仅写入 store/demo-account.md"
+    },
+    "screenshotPlan": [
+      {
+        "page": "home",
+        "caption": "今日轻知"
+      },
+      {
+        "page": "library",
+        "caption": "知识库"
+      },
+      {
+        "page": "detail",
+        "caption": "知识详情"
+      },
+      {
+        "page": "review",
+        "caption": "今日复习"
+      },
+      {
+        "page": "mine",
+        "caption": "我的轻知空间"
+      }
+    ],
+    "incentiveHooks": [
+      "FormExtensionAbility",
+      "元服务快捷入口"
+    ]
+  },
+  "access": {
+    "mode": "open_optional",
+    "features": {
+      "register": true,
+      "guestBrowse": true,
+      "guestWrite": true
+    },
+    "gateActions": [
+      "sync_knowledge"
+    ],
+    "onPrivacyRefuse": "browse_basic",
+    "loginProviders": [
+      "password"
+    ]
+  },
+  "brand": {
+    "primary": "#1B4A5C",
+    "primaryDeep": "#122A36",
+    "deep": "#122A36",
+    "accent": "#D4A574",
+    "tone": "soft-editorial",
+    "stylePack": "soft-editorial",
+    "workbenchId": "catalog-tool",
+    "layoutVariant": "A",
+    "productVisualType": "content-commerce",
+    "visualDirection": {
+      "archetype": "oriental-knowledge",
+      "density": "airy",
+      "material": "warm-paper",
+      "imagery": "open-page-pavilion-window-light",
+      "accent": "ink-teal-apricot",
+      "primaryJob": "3 秒内读到今天的一条轻知",
+      "notes": "暖米白+深青蓝+#D4A574；今日轻知摄影主卡片；禁止 AI 字样、禁止三 KPI 宫格"
+    },
+    "logo": {
+      "brandAnchor": "轻",
+      "glyphStrategy": "semantic-fusion",
+      "customLock": true,
+      "renderScript": "store/logo/render_logo.mjs",
+      "generator": "render_logo.mjs",
+      "concept": "轻启一页：展开书页 + 简化阁檐 + 知识光点",
+      "style": "flat-premium",
+      "foregroundFile": "store/logo/foreground.png",
+      "backgroundFile": "store/logo/background.png",
+      "previewFile": "store/logo/preview-1024.png",
+      "agcFile": "store/logo/agc-216.png",
+      "symbolFile": "store/logo/symbol.svg",
+      "horizontalFile": "store/logo/logo-horizontal.svg"
+    },
+    "visualAssets": {
+      "hero": "hero_today_page.png",
+      "banners": ["hero_today_page.png", "hero_review.png"],
+      "covers": [
+        "cover_life.png",
+        "cover_science.png",
+        "cover_reading.png",
+        "cover_work.png",
+        "cover_interest.png",
+        "cover_other.png"
+      ]
+    }
+  }
+}

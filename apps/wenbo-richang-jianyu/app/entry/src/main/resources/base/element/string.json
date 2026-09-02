@@ -1,0 +1,9 @@
+{
+  "string": [
+    { "name": "module_desc", "value": "日常笺语：生活计划、灵感创作、习惯打卡与成长回顾一体的数字笺台" },
+    { "name": "EntryAbility_desc", "value": "生活笺台入口" },
+    { "name": "EntryAbility_label", "value": "日常笺语" },
+    { "name": "internet_reason", "value": "用于同步创作内容、计划数据与账号信息" },
+    { "name": "reminder_reason", "value": "用于在您设定的时间发送生活提醒通知" }
+  ]
+}

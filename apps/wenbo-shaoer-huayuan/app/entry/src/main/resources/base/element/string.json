@@ -1,0 +1,8 @@
+{
+  "string": [
+    { "name": "module_desc", "value": "少儿画苑主模块" },
+    { "name": "EntryAbility_desc", "value": "儿童画作珍藏与数字画廊入口" },
+    { "name": "EntryAbility_label", "value": "少儿画苑" },
+    { "name": "internet_reason", "value": "用于登录后同步作品信息，并浏览策展主题与展厅风格" }
+  ]
+}

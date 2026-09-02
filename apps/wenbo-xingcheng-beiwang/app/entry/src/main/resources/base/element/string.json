@@ -1,0 +1,8 @@
+{
+  "string": [
+    { "name": "module_desc", "value": "行程备忘主模块" },
+    { "name": "EntryAbility_desc", "value": "轻量个人行程管理入口" },
+    { "name": "EntryAbility_label", "value": "行程备忘" },
+    { "name": "internet_reason", "value": "用于拉取行程模板与机构通知" }
+  ]
+}

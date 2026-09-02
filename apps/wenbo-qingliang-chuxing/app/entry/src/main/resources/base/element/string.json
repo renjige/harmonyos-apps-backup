@@ -1,0 +1,8 @@
+{
+  "string": [
+    { "name": "module_desc", "value": "清凉出行主模块" },
+    { "name": "EntryAbility_desc", "value": "清凉指数与树荫路线" },
+    { "name": "EntryAbility_label", "value": "清凉出行" },
+    { "name": "internet_reason", "value": "用于拉取城市天气快照、清凉路线、休息点与账号服务" }
+  ]
+}

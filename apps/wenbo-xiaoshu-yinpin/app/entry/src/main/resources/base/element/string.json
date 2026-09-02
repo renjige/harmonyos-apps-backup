@@ -1,0 +1,8 @@
+{
+  "string": [
+    { "name": "module_desc", "value": "消暑饮品主模块" },
+    { "name": "EntryAbility_desc", "value": "消暑饮品入口" },
+    { "name": "EntryAbility_label", "value": "消暑饮品" },
+    { "name": "internet_reason", "value": "用于拉取消暑饮品栏目、同步收藏与试做记录" }
+  ]
+}

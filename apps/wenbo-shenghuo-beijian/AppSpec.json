@@ -1,0 +1,353 @@
+{
+  "specVersion": "1.0.0",
+  "generatedAt": "2026-08-20T09:22:29.076Z",
+  "requestId": "req_1787217749039",
+  "industryPack": "life-memo",
+  "identity": {
+    "company": "魏文波",
+    "companyPinyin": "wenbo",
+    "appName": "生活备笺",
+    "appPinyin": "shenghuo-beijian",
+    "bundleId": "com.wenbo.shenghuobeijian",
+    "version": "1.0.0"
+  },
+  "positioning": {
+    "tagline": "把生活琐事轻轻记下来，分类提醒并完成回顾的轻量生活备笺",
+    "coreUsers": [
+      {
+        "role": "普通手机用户",
+        "ageRange": "18-45",
+        "scenario": "突然想到买东西、缴费、家人的事或临时计划",
+        "need": "打开就写下来，分类提醒，做完能看见痕迹"
+      }
+    ],
+    "painPoints": [
+      "突然想到的事情容易忘",
+      "日常待办零散不容易整理",
+      "做完的事情缺少被认真记录过的感觉"
+    ],
+    "differentiation": "把生活琐事轻轻记下来，分类提醒并完成回顾的轻量生活备笺"
+  },
+  "modules": {
+    "pages": [
+      {
+        "id": "home",
+        "title": "今日",
+        "route": "pages/HomePage",
+        "features": [
+          "日期问候",
+          "今日生活卡",
+          "完成度",
+          "待办与已完成",
+          "快速新增"
+        ],
+        "tab": true
+      },
+      {
+        "id": "notes",
+        "title": "笺记",
+        "route": "pages/NotesPage",
+        "features": [
+          "搜索",
+          "分类筛选",
+          "新建编辑删除完成"
+        ],
+        "tab": true
+      },
+      {
+        "id": "calendar",
+        "title": "日历",
+        "route": "pages/CalendarPage",
+        "features": [
+          "月视图",
+          "事项圆点",
+          "当日列表"
+        ],
+        "tab": true
+      },
+      {
+        "id": "mine",
+        "title": "我的",
+        "route": "pages/MinePage",
+        "features": [
+          "生活统计",
+          "生活回顾",
+          "数据管理",
+          "设置与隐私"
+        ],
+        "tab": true
+      }
+    ],
+    "coreFlows": [
+      {
+        "name": "记录备笺",
+        "steps": [
+          "打开今日",
+          "点击＋",
+          "写下事情",
+          "智慧整理建议分类",
+          "保存"
+        ]
+      },
+      {
+        "name": "完成与回顾",
+        "steps": [
+          "勾选完成",
+          "日历回看",
+          "生活统计与本周小结"
+        ]
+      }
+    ]
+  },
+  "entities": [
+    {
+      "name": "Slip",
+      "table": "slips",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "content",
+          "type": "string"
+        },
+        {
+          "name": "category",
+          "type": "string"
+        },
+        {
+          "name": "date",
+          "type": "string"
+        },
+        {
+          "name": "reminderTime",
+          "type": "string"
+        },
+        {
+          "name": "isReminderEnabled",
+          "type": "boolean"
+        },
+        {
+          "name": "isImportant",
+          "type": "boolean"
+        },
+        {
+          "name": "isCompleted",
+          "type": "boolean"
+        }
+      ]
+    },
+    {
+      "name": "Category",
+      "table": "categories",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "coverKey",
+          "type": "string"
+        }
+      ]
+    }
+  ],
+  "apis": [
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/life-memo/categories",
+      "summary": "分类预设",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/life-memo/greetings",
+      "summary": "问候文案",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/life-memo/scenes",
+      "summary": "场景封面",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/life-memo/scenes/:id",
+      "summary": "场景详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/life-memo/notes",
+      "summary": "云端备笺（登录后）",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/biz/life-memo/notes",
+      "summary": "同步备笺",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/messages",
+      "summary": "消息",
+      "auth": false,
+      "module": "messages"
+    }
+  ],
+  "ai": {
+    "capabilities": [],
+    "quickCommands": [],
+    "systemPrompt": "你是「魏文波」旗下应用「生活备笺」的生活整理助手。产品定位：把生活琐事轻轻记下来。主职责：按标题建议分类、整理提醒、生成本周生活小结口吻。禁止扮演心理咨询或金融决策。C 端不提供生成式对话。",
+    "mode": "none",
+    "llmEnabled": false
+  },
+  "permissions": [
+    {
+      "name": "ohos.permission.INTERNET",
+      "reason": "拉取分类与问候文案，可选同步备笺",
+      "when": "inuse",
+      "scene": "打开应用或登录同步时"
+    }
+  ],
+  "harmonyos": {
+    "features": []
+  },
+  "store": {
+    "category": "生活",
+    "legalOperator": "魏文波",
+    "oneLiner": "生活备笺 — 把生活琐事轻轻记下来，分类提醒并完成回顾的轻量生活备笺",
+    "fullDescription": "生活备笺是一款简洁、温润、好用的生活记录与提醒工具。随手记下要买的东西、要办的小事、想提醒自己的约定，按生活场景分类，在日历里按日回看，完成后留下生活痕迹。不提供社交、支付与生成式对话。",
+    "keywords": [
+      "备忘",
+      "待办",
+      "提醒",
+      "生活记录",
+      "日历",
+      "鸿蒙"
+    ],
+    "privacySummary": {
+      "collect": [
+        "可选账号信息",
+        "本机备笺内容",
+        "分类与提醒时间"
+      ],
+      "purpose": "提供生活备笺记录、分类、提醒与回顾",
+      "thirdParties": []
+    },
+    "demoAccount": {
+      "username": "auditor@wenbo.local",
+      "passwordNote": "仅写入 store/demo-account.md"
+    },
+    "screenshotPlan": [
+      {
+        "page": "home",
+        "caption": "今日生活卡与完成度"
+      },
+      {
+        "page": "notes",
+        "caption": "笺记分类与卡片"
+      },
+      {
+        "page": "calendar",
+        "caption": "生活日历"
+      },
+      {
+        "page": "write",
+        "caption": "新建备笺"
+      },
+      {
+        "page": "mine",
+        "caption": "生活统计与回顾"
+      }
+    ],
+    "incentiveHooks": [
+      "FormExtensionAbility",
+      "元服务快捷入口"
+    ]
+  },
+  "access": {
+    "mode": "open_optional",
+    "features": {
+      "register": true,
+      "guestBrowse": true,
+      "guestWrite": true
+    },
+    "gateActions": [
+      "sync_slips"
+    ],
+    "onPrivacyRefuse": "browse_basic",
+    "loginProviders": [
+      "password"
+    ]
+  },
+  "brand": {
+    "primary": "#3D8277",
+    "primaryDeep": "#24312F",
+    "deep": "#24312F",
+    "accent": "#D6A86E",
+    "tone": "soft-editorial",
+    "stylePack": "soft-editorial",
+    "workbenchId": "catalog-tool",
+    "layoutVariant": "B",
+    "productVisualType": "ops-tool",
+    "visualDirection": {
+      "archetype": "oriental-stationery",
+      "density": "airy",
+      "material": "warm-paper",
+      "imagery": "paper-tea-window-light",
+      "accent": "teal-gold",
+      "primaryJob": "3 秒内记下今天要做的一件小事",
+      "notes": "暖米白+青绿+#D6A86E 克制强调；今日生活卡摄影+完成度条；禁止心情选择器与四宫格"
+    },
+    "logo": {
+      "brandAnchor": "笺",
+      "glyphStrategy": "semantic-fusion",
+      "customLock": true,
+      "renderScript": "store/logo/render_logo.mjs",
+      "generator": "render_logo.mjs",
+      "concept": "圆角笺纸折角 + 生活光点",
+      "style": "flat-premium",
+      "foregroundFile": "store/logo/foreground.png",
+      "backgroundFile": "store/logo/background.png",
+      "previewFile": "store/logo/preview-1024.png",
+      "agcFile": "store/logo/agc-216.png",
+      "symbolFile": "store/logo/symbol.svg",
+      "horizontalFile": "store/logo/logo-horizontal.svg"
+    },
+    "visualAssets": {
+      "hero": "hero_today_paper.png",
+      "banners": ["hero_today_paper.png"],
+      "covers": [
+        "scene_life.png",
+        "scene_work.png",
+        "scene_family.png",
+        "scene_shop.png",
+        "scene_trip.png",
+        "scene_study.png",
+        "scene_other.png"
+      ]
+    }
+  }
+}

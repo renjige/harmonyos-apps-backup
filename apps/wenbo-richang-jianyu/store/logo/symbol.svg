@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" role="img" aria-label="日常笺语">
+  <!-- 直角方图；主体约占 68%；无圆角蒙版、无外圈光环 -->
+  <rect width="1024" height="1024" fill="#FAF7F2"/>
+  <rect x="168" y="208" width="688" height="520" rx="28" fill="#FFFFFF" stroke="#8FA8B8" stroke-width="14"/>
+  <path d="M168 248 L512 468 L856 248" fill="none" stroke="#A67B5B" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M248 540 H456 M248 604 H680 M248 668 H560" stroke="#CFC4BA" stroke-width="14" stroke-linecap="round"/>
+  <path d="M620 640 L860 400 L792 332 L552 572 Z" fill="#A67B5B"/>
+  <path d="M792 332 L860 400" stroke="#8FA8B8" stroke-width="10" stroke-linecap="round"/>
+</svg>

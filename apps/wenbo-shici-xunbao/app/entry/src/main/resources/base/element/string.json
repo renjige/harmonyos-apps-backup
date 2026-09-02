@@ -1,0 +1,8 @@
+{
+  "string": [
+    { "name": "module_desc", "value": "诗词寻宝主模块" },
+    { "name": "EntryAbility_desc", "value": "诗词寻宝：闯关寻宝与诗地点亮" },
+    { "name": "EntryAbility_label", "value": "诗词寻宝" },
+    { "name": "internet_reason", "value": "用于拉取诗库、关卡、诗地与可选登录" }
+  ]
+}

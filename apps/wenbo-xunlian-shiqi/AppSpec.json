@@ -1,0 +1,292 @@
+{
+  "specVersion": "1.0.0",
+  "generatedAt": "2026-08-27T09:20:08.055Z",
+  "requestId": "req_1787822407981",
+  "industryPack": "morning-habit",
+  "identity": {
+    "company": "魏文波",
+    "companyPinyin": "wenbo",
+    "appName": "训练拾趣",
+    "appPinyin": "xunlian-shiqi",
+    "bundleId": "com.wenbo.xunlianshiqi",
+    "version": "1.0.7"
+  },
+  "positioning": {
+    "tagline": "轻量级智慧训练辅助工具，记录日常训练进度、趣味成就与成长数据，让训练不枯燥成长有趣味",
+    "coreUsers": [
+      {
+        "role": "都市白领",
+        "ageRange": "22-40",
+        "scenario": "工作日清晨",
+        "need": "自律早起、可视化成长"
+      }
+    ],
+    "painPoints": [
+      "难以坚持早起",
+      "缺乏正向反馈",
+      "习惯数据分散"
+    ],
+    "differentiation": "轻量级智慧训练辅助工具，记录日常训练进度、趣味成就与成长数据，让训练不枯燥成长有趣味"
+  },
+  "modules": {
+    "pages": [
+      {
+        "id": "home",
+        "title": "首页",
+        "route": "pages/HomePage",
+        "features": [
+          "早安问候",
+          "今日早起时间",
+          "连续打卡",
+          "成长趋势"
+        ],
+        "tab": true
+      },
+      {
+        "id": "checkin",
+        "title": "打卡",
+        "route": "pages/CheckInPage",
+        "features": [
+          "一键打卡",
+          "日出动效"
+        ],
+        "tab": true
+      },
+      {
+        "id": "habits",
+        "title": "习惯",
+        "route": "pages/HabitsPage",
+        "features": [
+          "习惯目标"
+        ],
+        "tab": true
+      },
+      {
+        "id": "growth",
+        "title": "成长",
+        "route": "pages/GrowthPage",
+        "features": [
+          "数据洞察",
+          "成就中心"
+        ],
+        "tab": true
+      },
+      {
+        "id": "mine",
+        "title": "我的",
+        "route": "pages/MinePage",
+        "features": [
+          "打卡记录",
+          "设置隐私"
+        ],
+        "tab": true
+      },
+      {
+        "id": "messages",
+        "title": "消息",
+        "route": "pages/MessagesPage",
+        "features": [
+          "智慧提醒"
+        ],
+        "tab": false
+      }
+    ],
+    "coreFlows": [
+      {
+        "name": "训练记录闭环",
+        "steps": [
+          "开始训练",
+          "填写类型时长体感",
+          "保存见趣味反馈",
+          "详情可编辑删除"
+        ]
+      },
+      {
+        "name": "拾趣挑战闭环",
+        "steps": [
+          "新建本周挑战",
+          "训练自动计入进度",
+          "详情领取完成",
+          "可编辑或删除"
+        ]
+      },
+      {
+        "name": "本周复盘闭环",
+        "steps": [
+          "打开拾趣复盘",
+          "完成8题问卷",
+          "查看模板建议",
+          "去完成挑战或记录"
+        ]
+      }
+    ]
+  },
+  "entities": [
+    {
+      "name": "HabitGoal",
+      "table": "habit_goals",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "targetTime",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "CheckIn",
+      "table": "check_ins",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "wakeTime",
+          "type": "string"
+        },
+        {
+          "name": "checkInDate",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "Achievement",
+      "table": "achievements",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "thresholdDays",
+          "type": "number"
+        }
+      ]
+    }
+  ],
+  "apis": [],
+  "ai": {
+    "capabilities": [],
+    "quickCommands": [],
+    "systemPrompt": "你是「魏文波」旗下应用「训练拾趣」的本机助手。产品定位：轻量级训练记录与趣味成就。主职责：帮助理解训练统计与徽章规则。禁止自称人工智能。C端不提供生成式对话。",
+    "mode": "none",
+    "llmEnabled": false
+  },
+  "permissions": [],
+  "harmonyos": {
+    "features": []
+  },
+  "store": {
+    "category": "生活",
+    "oneLiner": "训练拾趣 — 运动兴趣探索与训练陪伴，计划、图鉴、挑战与成长报告",
+    "fullDescription": "训练拾趣是运动生活工具：用活力主页看今日任务，用训练日志记下难度与收获，从计划模板勾选每日安排，在动作图鉴收藏热身到放松的组合，参加 7/21/30 天挑战，并在成长页查看报告与徽章。数据默认只保存在本机，无社交、无支付、无生成式对话，不读取健康或定位。",
+    "keywords": [
+      "训练计划",
+      "动作图鉴",
+      "训练挑战",
+      "活力日历",
+      "成就徽章",
+      "鸿蒙"
+    ],
+    "privacySummary": {
+      "collect": [
+        "本机训练记录",
+        "昵称",
+        "主题偏好"
+      ],
+      "purpose": "提供本机训练统计与成就展示",
+      "thirdParties": []
+    },
+    "demoAccount": {
+      "username": "auditor@wenbo.local",
+      "passwordNote": "仅写入 store/demo-account.md"
+    },
+    "screenshotPlan": [
+      {
+        "page": "home",
+        "caption": "今日活力指数与训练任务"
+      },
+      {
+        "page": "plan",
+        "caption": "趣味训练计划模板"
+      },
+      {
+        "page": "discover",
+        "caption": "动作图鉴与挑战馆"
+      },
+      {
+        "page": "growth",
+        "caption": "月度报告与活力日历"
+      }
+    ],
+    "incentiveHooks": [],
+    "legalOperator": "魏文波"
+  },
+  "access": {
+    "mode": "open_optional",
+    "features": {
+      "register": false,
+      "guestBrowse": true,
+      "guestWrite": true
+    },
+    "gateActions": [],
+    "onPrivacyRefuse": "exit",
+    "loginProviders": []
+  },
+  "brand": {
+    "primary": "#007AFF",
+    "primaryDeep": "#0056CC",
+    "deep": "#0A2540",
+    "accent": "#FF6B35",
+    "tone": "premium-business",
+    "stylePack": "premium-business",
+    "workbenchId": "catalog-tool",
+    "layoutVariant": "B",
+    "productVisualType": "ops-tool",
+    "visualDirection": {
+      "archetype": "training-fun-light",
+      "density": "airy",
+      "material": "soft-elevation",
+      "imagery": "gym-editorial",
+      "accent": "huawei-blue-orange",
+      "primaryJob": "3 秒内开始一次训练记录",
+      "notes": "大按钮开始训练 + 今日双指标 + 热力图"
+    },
+    "visualAssets": [
+      { "id": "hero", "file": "hero_training_bg.png", "usage": "首页 Hero / 详情封面" },
+      { "id": "ambient", "file": "ambient_empty_bg.png", "usage": "记录空态氛围" },
+      { "id": "quest", "file": "fun_quest_bg.png", "usage": "拾趣挑战 Hero" }
+    ],
+    "logo": {
+      "brandAnchor": "拾",
+      "glyphStrategy": "semantic-fusion",
+      "customLock": true,
+      "generator": "agent-svg",
+      "renderScript": "store/logo/render_logo.mjs",
+      "concept": "勋章对勾 + 趣味橙点",
+      "foregroundFile": "store/logo/foreground.png",
+      "backgroundFile": "store/logo/background.png",
+      "previewFile": "store/logo/preview-1024.png",
+      "agcFile": "store/logo/agc-216.png",
+      "symbolFile": "store/logo/symbol.svg",
+      "horizontalFile": "store/logo/logo-horizontal.svg"
+    }
+  }
+}
