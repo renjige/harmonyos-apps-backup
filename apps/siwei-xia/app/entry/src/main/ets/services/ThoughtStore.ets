@@ -2,6 +2,8 @@ import { preferences } from '@kit.ArkData'
 import { common } from '@kit.AbilityKit'
 import { ThoughtCard, TagStat } from '../models/ThoughtModels'
 import { AppContextService } from './AppContextService'
+import { ImagePathUtil } from './ImagePathUtil'
+import { ClassifyService } from './ClassifyService'
 
 const STORE = 'siwei_xia_v1'
 const KEY_CARDS = 'cards'
@@ -62,6 +64,29 @@ export class ThoughtStore {
     ThoughtStore.bump()
   }
 
+  private static async setExtraTags(list: string[]): Promise<void> {
+    const cleaned: string[] = []
+    for (const it of list) {
+      ClassifyService.pushUnique(cleaned, it)
+    }
+    await ThoughtStore.putString(KEY_EXTRA, cleaned.join(','))
+  }
+
+  /** 灵感页点选：默认标签 + 用户新增 + 已用于卡片的标签 */
+  static async pickableTagNames(): Promise<string[]> {
+    const names: string[] = ['工作', '生活', '灵感', '项目', '阅读']
+    for (const e of await ThoughtStore.extraTags()) {
+      ClassifyService.pushUnique(names, e)
+    }
+    const stats = await ThoughtStore.tagStats()
+    for (const s of stats) {
+      if (s.name !== '未分类') {
+        ClassifyService.pushUnique(names, s.name)
+      }
+    }
+    return names
+  }
+
   static async loadActive(): Promise<ThoughtCard[]> {
     const all = await ThoughtStore.loadAll()
     const out: ThoughtCard[] = []
@@ -105,6 +130,7 @@ export class ThoughtStore {
 
   static async save(card: ThoughtCard): Promise<void> {
     card.updatedAt = Date.now()
+    card.imagePath = ImagePathUtil.normalizeStored(card.imagePath)
     const list = await ThoughtStore.loadAll()
     const next: ThoughtCard[] = []
     let found = false
@@ -243,7 +269,7 @@ export class ThoughtStore {
 
   static async renameTag(from: string, to: string): Promise<void> {
     const nextName = to.trim()
-    if (from.length === 0 || nextName.length === 0) {
+    if (from.length === 0 || nextName.length === 0 || from === nextName) {
       return
     }
     const list = await ThoughtStore.loadAll()
@@ -257,6 +283,22 @@ export class ThoughtStore {
       it.updatedAt = Date.now()
     }
     await ThoughtStore.persist(list)
+
+    const extras = await ThoughtStore.extraTags()
+    const nextExtras: string[] = []
+    let replaced = false
+    for (const t of extras) {
+      if (t === from) {
+        ClassifyService.pushUnique(nextExtras, nextName)
+        replaced = true
+      } else {
+        ClassifyService.pushUnique(nextExtras, t)
+      }
+    }
+    if (!replaced) {
+      ClassifyService.pushUnique(nextExtras, nextName)
+    }
+    await ThoughtStore.setExtraTags(nextExtras)
     ThoughtStore.bump()
   }
 
@@ -274,6 +316,15 @@ export class ThoughtStore {
       it.updatedAt = Date.now()
     }
     await ThoughtStore.persist(list)
+
+    const extras = await ThoughtStore.extraTags()
+    const nextExtras: string[] = []
+    for (const t of extras) {
+      if (t !== name) {
+        nextExtras.push(t)
+      }
+    }
+    await ThoughtStore.setExtraTags(nextExtras)
     ThoughtStore.bump()
   }
 
@@ -370,7 +421,7 @@ export class ThoughtStore {
       c.mapX = parseInt(p[5], 10)
       c.mapY = parseInt(p[6], 10)
       c.tagsCsv = ThoughtStore.dec(p[7])
-      c.imagePath = ThoughtStore.dec(p[8])
+      c.imagePath = ImagePathUtil.normalizeStored(ThoughtStore.dec(p[8]))
       if (p.length >= 11) {
         c.shelf = ThoughtStore.dec(p[9])
         c.body = ThoughtStore.dec(p.slice(10).join('|'))

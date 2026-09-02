@@ -1,5 +1,4 @@
 import { Theme } from '../components/design-system/Theme'
-import { AppHeader } from '../components/design-system/AppHeader'
 import { AppButton } from '../components/design-system/AppButton'
 import { AppError } from '../components/design-system/AppError'
 import { AppIcon } from '../components/design-system/AppIcon'
@@ -181,10 +180,36 @@ export struct LoginPage {
     Stack() {
       Scroll() {
         Column({ space: Theme.space.s4 }) {
-          AppHeader({
-            title: this.isRegisterMode ? '注册' : '登录',
-            subtitle: '思维匣'
-          })
+          Stack({ alignContent: Alignment.BottomStart }) {
+            Image($r('app.media.hero_open_box'))
+              .width('100%')
+              .height(168)
+              .objectFit(ImageFit.Cover)
+            Column()
+              .width('100%')
+              .height(168)
+              .linearGradient({
+                angle: 180,
+                colors: [
+                  ['rgba(15,23,42,0.08)', 0.0],
+                  ['rgba(26,35,50,0.88)', 1.0]
+                ]
+              })
+            Column({ space: 4 }) {
+              Text('思维匣')
+                .fontSize(Theme.type.titleL)
+                .fontWeight(FontWeight.Bold)
+                .fontColor(Theme.colors().textOnInverse)
+              Text(this.isRegisterMode ? '注册后卡片仍只保存在本机' : '登录仅用于账号，正文不上传')
+                .fontSize(Theme.type.caption)
+                .fontColor(Theme.colors().textOnInverse)
+            }
+            .padding({ left: Theme.space.s5, right: Theme.space.s5, bottom: Theme.space.s5 })
+          }
+          .width('100%')
+          .height(168)
+          .borderRadius(Theme.radius.xl)
+          .clip(true)
           TextInput({ text: this.username, placeholder: this.isRegisterMode ? '账号（至少 3 位）' : '账号' })
             .height(48)
             .padding({ left: 12, right: 12 })

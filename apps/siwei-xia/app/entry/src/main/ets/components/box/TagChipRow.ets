@@ -5,6 +5,7 @@ export struct TagChipRow {
   @StorageLink('themeEpoch') themeEpoch: number = 0
   @Prop namesCsv: string = ''
   @Prop selectedCsv: string = ''
+  @Prop chipEpoch: number = 0
   onToggle: (name: string) => void = (_name: string) => {}
 
   private names(): string[] {
@@ -34,13 +35,17 @@ export struct TagChipRow {
       ForEach(this.names(), (name: string) => {
         Text(name)
           .fontSize(Theme.type.caption)
-          .fontColor(this.isOn(name) ? Theme.colors().brandOnPrimary : Theme.colors().textPrimary)
-          .padding({ left: 10, right: 10, top: 6, bottom: 6 })
+          .fontColor(this.isOn(name) ? Theme.colors().brandOnPrimary : Theme.colors().labelOnContainer)
+          .padding({ left: 12, right: 12, top: 7, bottom: 7 })
           .margin({ right: 8, bottom: 8 })
-          .backgroundColor(this.isOn(name) ? Theme.colors().brandPrimary : Theme.colors().surfaceSubtle)
-          .borderRadius(Theme.radius.pill)
+          .backgroundColor(this.isOn(name) ? Theme.colors().brandPrimary : Theme.colors().surfaceCard)
+          .borderRadius(Theme.radius.sm)
+          .border({
+            width: 1,
+            color: this.isOn(name) ? Theme.colors().brandPrimary : Theme.colors().strokeStrong
+          })
           .onClick((): void => { this.onToggle(name) })
-      }, (name: string) => name)
+      }, (name: string) => `${this.chipEpoch}|${name}`)
     }
     .width('100%')
   }

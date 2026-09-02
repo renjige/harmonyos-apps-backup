@@ -44,6 +44,7 @@ export struct RecyclePane {
                   tagsLabel: c.tagLine(),
                   shelfLabel: c.shelf,
                   timeLabel: DateHelper.formatShort(c.createdAt),
+                  imagePath: c.imagePath,
                   onOpen: (): void => { this.onOpenCard(c.id) }
                 })
                 Row({ space: Theme.space.s2 }) {

@@ -9,7 +9,10 @@ import { ThoughtStore } from '../services/ThoughtStore'
 import { ThinkStore } from '../services/ThinkStore'
 import { ThoughtCard } from '../models/ThoughtModels'
 import { GrowthStat } from '../models/ThinkModels'
-import { BoxMedia } from '../services/BoxMedia'
+import { TimelineInsightService } from '../services/TimelineInsightService'
+import { TimelinePane } from '../components/box/TimelinePane'
+import { MetricChipRow } from '../components/box/MetricChipRow'
+import { SectionHeader } from '../components/design-system/SectionHeader'
 import { LegalDocKind, LegalDocOverlay } from '../components/legal/LegalDocOverlay'
 import { pasteboard } from '@kit.BasicServicesKit'
 
@@ -32,6 +35,11 @@ export struct MinePage {
   @State noteCount: number = 0
   @State streak: number = 0
   @State trash: ThoughtCard[] = []
+  @State weekSummary: string = ''
+  @State weekTopTag: string = ''
+  @State linkedPipeline: number = 0
+  @State showTimeline: boolean = false
+  @State statCsv: string = ''
   onOpenLogin: () => void = () => {}
   onLogout: () => void = () => {}
   onOpenCard: (id: string) => void = (_id: string) => {}
@@ -57,6 +65,11 @@ export struct MinePage {
     this.noteCount = g.notes + g.breakdowns + g.opinions + g.goals + g.reviews
     this.streak = g.streak
     this.trash = await ThoughtStore.loadTrash()
+    const insight = await TimelineInsightService.weekInsight()
+    this.weekSummary = insight.summary
+    this.weekTopTag = insight.topTag
+    this.linkedPipeline = insight.linked
+    this.statCsv = `卡片|${this.cardCount}|0;标签|${this.tagCount}|0;思考|${this.noteCount}|0;连续天|${this.streak}|1`
   }
 
   private showToast(message: string): void {
@@ -116,6 +129,11 @@ export struct MinePage {
     AppStorage.setOrCreate('tabBarHidden', true)
   }
 
+  private openTimeline(): void {
+    this.showTimeline = true
+    AppStorage.setOrCreate('tabBarHidden', true)
+  }
+
   build() {
     Stack() {
       Column() {
@@ -131,84 +149,102 @@ export struct MinePage {
             onOpenCard: (id: string): void => { this.onOpenCard(id) },
             onChanged: (): void => { void this.reload() }
           })
+        } else if (this.showTimeline) {
+          TimelinePane({
+            reloadToken: this.reloadToken + this.tbReload,
+            onClose: (): void => {
+              this.showTimeline = false
+              AppStorage.setOrCreate('tabBarHidden', false)
+            },
+            onOpenCard: (id: string): void => {
+              this.showTimeline = false
+              AppStorage.setOrCreate('tabBarHidden', false)
+              this.onOpenCard(id)
+            }
+          })
         } else {
           AppHeader({ title: '我的', subtitle: this.appName })
           Scroll() {
-            Column({ space: Theme.space.s4 }) {
-              Image(BoxMedia.resource('texture_paper'))
+            Column({ space: Theme.space.section }) {
+              Stack({ alignContent: Alignment.BottomStart }) {
+                Image($r('app.media.texture_paper'))
+                  .width('100%')
+                  .height(120)
+                  .objectFit(ImageFit.Cover)
+                Column()
+                  .width('100%')
+                  .height(120)
+                  .linearGradient({
+                    angle: 180,
+                    colors: [
+                      ['rgba(15,23,42,0.04)', 0.0],
+                      ['rgba(26,35,50,0.72)', 1.0]
+                    ]
+                  })
+                Column({ space: 6 }) {
+                  Text(this.isLoggedIn() ? this.currentUsername : '游客')
+                    .fontSize(Theme.type.title2)
+                    .fontWeight(FontWeight.Bold)
+                    .fontColor(Theme.colors().textOnInverse)
+                    .width('100%')
+                  Text(this.isLoggedIn()
+                    ? '账号已登录 · 卡片仍只保存在本机'
+                    : '游客可速记；登录仅用于账号，正文不上传')
+                    .fontSize(Theme.type.caption)
+                    .fontColor(Theme.colors().textOnInverse)
+                    .width('100%')
+                }
+                .padding({ left: Theme.space.s5, right: Theme.space.s5, bottom: Theme.space.s5 })
+              }
+              .width('100%')
+              .height(120)
+              .borderRadius(Theme.radius.xl)
+              .clip(true)
+
+              Column({ space: Theme.space.s3 }) {
+                SectionHeader({
+                  title: '本机概览',
+                  subtitle: '横向滑动查看各项统计'
+                })
+                MetricChipRow({ chipsCsv: this.statCsv })
+              }
+
+              Column({ space: Theme.space.s3 }) {
+                SectionHeader({
+                  title: '本周思考洞察',
+                  subtitle: '看见灵感与加工的推进节奏'
+                })
+                Column({ space: Theme.space.s2 }) {
+                  Text(this.weekSummary.length > 0 ? this.weekSummary : '开始记录后，这里会汇总本周灵感与加工进度')
+                    .fontSize(Theme.type.caption)
+                    .fontColor(Theme.colors().textSecondary)
+                    .width('100%')
+                  Text(`匣格链路 ${this.linkedPipeline} 条 · 高频标签 ${this.weekTopTag}`)
+                    .fontSize(Theme.type.caption)
+                    .fontColor(Theme.colors().textSecondary)
+                    .width('100%')
+                  AppButton({
+                    label: '打开思考时间线',
+                    variant: 'secondary',
+                    onTap: (): void => { this.openTimeline() }
+                  })
+                }
                 .width('100%')
-                .height(96)
-                .objectFit(ImageFit.Cover)
-                .borderRadius(Theme.radius.md)
-              Column({ space: 8 }) {
-                Text(this.isLoggedIn() ? this.currentUsername : '游客')
-                  .fontSize(Theme.type.title3)
-                  .fontWeight(FontWeight.Bold)
-                  .fontColor(Theme.colors().textPrimary)
-                  .width('100%')
-                Text(this.isLoggedIn()
-                  ? '账号已登录 · 卡片仍只保存在本机'
-                  : '游客可速记；登录仅用于账号，正文不上传')
-                  .fontSize(Theme.type.footnote)
-                  .fontColor(Theme.colors().textSecondary)
-                  .width('100%')
+                .padding(Theme.space.s5)
+                .backgroundColor(Theme.colors().surfaceCard)
+                .borderRadius(Theme.radius.xl)
+                .border({ width: 1, color: Theme.colors().strokeHairline })
               }
-              .width('100%')
-              .padding(Theme.space.s5)
-              .alignItems(HorizontalAlign.Start)
-              .backgroundColor(this.themeEpoch >= 0 ? Theme.colors().surfaceCard : Theme.colors().surfaceCard)
-              .borderRadius(Theme.radius.card)
 
-              Row({ space: Theme.space.s3 }) {
-                Column({ space: 4 }) {
-                  Text(`${this.cardCount}`)
-                    .fontSize(Theme.type.title2)
-                    .fontWeight(FontWeight.Bold)
-                    .fontColor(Theme.colors().textPrimary)
-                  Text('卡片')
-                    .fontSize(Theme.type.caption)
-                    .fontColor(Theme.colors().textSecondary)
-                }
-                .layoutWeight(1)
-                Column({ space: 4 }) {
-                  Text(`${this.tagCount}`)
-                    .fontSize(Theme.type.title2)
-                    .fontWeight(FontWeight.Bold)
-                    .fontColor(Theme.colors().textPrimary)
-                  Text('标签')
-                    .fontSize(Theme.type.caption)
-                    .fontColor(Theme.colors().textSecondary)
-                }
-                .layoutWeight(1)
-                Column({ space: 4 }) {
-                  Text(`${this.noteCount}`)
-                    .fontSize(Theme.type.title2)
-                    .fontWeight(FontWeight.Bold)
-                    .fontColor(Theme.colors().textPrimary)
-                  Text('思考')
-                    .fontSize(Theme.type.caption)
-                    .fontColor(Theme.colors().textSecondary)
-                }
-                .layoutWeight(1)
-                Column({ space: 4 }) {
-                  Text(`${this.streak}`)
-                    .fontSize(Theme.type.title2)
-                    .fontWeight(FontWeight.Bold)
-                    .fontColor(Theme.colors().textPrimary)
-                  Text('连续天')
-                    .fontSize(Theme.type.caption)
-                    .fontColor(Theme.colors().textSecondary)
-                }
-                .layoutWeight(1)
+              Column({ space: Theme.space.s3 }) {
+                SectionHeader({
+                  title: '数据与设置',
+                  subtitle: '导出、回收站与隐私合规'
+                })
+                AppButton({ label: '导出为 TXT', variant: 'secondary', onTap: (): void => { void this.exportNow(false) } })
+                AppButton({ label: '导出为 Markdown', variant: 'secondary', onTap: (): void => { void this.exportNow(true) } })
+                AppButton({ label: '回收站', variant: 'secondary', onTap: (): void => { void this.openTrash() } })
               }
-              .width('100%')
-              .padding(Theme.space.s4)
-              .backgroundColor(this.themeEpoch >= 0 ? Theme.colors().surfaceCard : Theme.colors().surfaceCard)
-              .borderRadius(Theme.radius.card)
-
-              AppButton({ label: '导出为 TXT', variant: 'secondary', onTap: (): void => { void this.exportNow(false) } })
-              AppButton({ label: '导出为 Markdown', variant: 'secondary', onTap: (): void => { void this.exportNow(true) } })
-              AppButton({ label: '回收站', variant: 'secondary', onTap: (): void => { void this.openTrash() } })
 
               Row({ space: Theme.space.s3 }) {
                 Column({ space: 2 }) {
@@ -254,7 +290,7 @@ export struct MinePage {
                 .fontColor(Theme.colors().textSecondary)
                 .width('100%')
             }
-            .padding({ left: Theme.space.pageX, right: Theme.space.pageX, bottom: Theme.space.s10 })
+            .padding({ left: Theme.space.pageX, right: Theme.space.pageX, bottom: 88 })
             .width('100%')
           }
           .layoutWeight(1)

@@ -7,6 +7,7 @@ import { ThinkStore } from '../../services/ThinkStore'
 @Component
 export struct ThemeMapPane {
   @StorageLink('themeEpoch') themeEpoch: number = 0
+  @Prop @Watch('onPaneReload') reloadToken: number = 0
   @State maps: ThemeMapItem[] = []
   @State editing: ThemeMapItem = new ThemeMapItem()
   @State branchView: string[] = []
@@ -16,6 +17,10 @@ export struct ThemeMapPane {
   @State confirmDelete: boolean = false
 
   aboutToAppear(): void {
+    void this.reload()
+  }
+
+  onPaneReload(): void {
     void this.reload()
   }
 

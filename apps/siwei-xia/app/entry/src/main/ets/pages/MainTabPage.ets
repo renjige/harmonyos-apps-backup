@@ -69,13 +69,34 @@ export struct MainTabPage {
     this.bump()
   }
 
+  private openThinkTab(tool: string = ''): void {
+    if (tool.length > 0) {
+      AppStorage.setOrCreate('thinkToolAutoOpen', tool)
+    }
+    this.showDetail = false
+    AppStorage.setOrCreate('tabBarHidden', false)
+    this.current = 1
+    this.bump()
+    void ThinkStore.syncGrowthToAppStorage()
+  }
+
+  private openMapTab(): void {
+    this.showDetail = false
+    AppStorage.setOrCreate('tabBarHidden', false)
+    this.current = 2
+    this.bump()
+  }
+
   build() {
-    Stack() {
+    Stack({ alignContent: Alignment.Bottom }) {
       Column() {
         Stack() {
           HomePage({
             reloadToken: this.reloadToken + this.tbReload,
-            onOpenCard: (id: string): void => { void this.openCard(id) }
+            tabVisible: this.current === 0,
+            onOpenCard: (id: string): void => { void this.openCard(id) },
+            onOpenThink: (): void => { this.openThinkTab('') },
+            onOpenMap: (): void => { this.openMapTab() }
           })
             .width('100%')
             .height('100%')
@@ -96,6 +117,7 @@ export struct MainTabPage {
 
           MindMapPage({
             reloadToken: this.reloadToken + this.tbReload,
+            tabVisible: this.current === 2,
             onOpenCard: (id: string): void => { void this.openCard(id) }
           })
             .width('100%')
@@ -104,6 +126,7 @@ export struct MainTabPage {
 
           TagsPage({
             reloadToken: this.reloadToken + this.tbReload,
+            tabVisible: this.current === 3,
             onOpenCard: (id: string): void => { void this.openCard(id) }
           })
             .width('100%')
@@ -123,29 +146,32 @@ export struct MainTabPage {
         }
         .layoutWeight(1)
         .width('100%')
-
-        if (!this.tabBarHidden) {
-          Row() {
-            ForEach(this.tabs, (t: TabItem) => {
-              this.TabBarItem(t)
-            }, (t: TabItem) => `${t.index}`)
-          }
-          .width('100%')
-          .height(Theme.nav.tabHeight)
-          .padding({ bottom: 4 })
-          .backgroundColor(this.themeEpoch >= 0 ? Theme.colors().surfaceCard : Theme.colors().surfaceCard)
-          .border({ width: { top: 1 }, color: Theme.colors().strokeHairline })
-        }
       }
       .width('100%')
       .height('100%')
+
+      if (!this.tabBarHidden) {
+        Row() {
+          ForEach(this.tabs, (t: TabItem) => {
+            this.TabBarItem(t)
+          }, (t: TabItem) => `${t.index}`)
+        }
+        .width('100%')
+        .height(Theme.nav.tabHeight)
+        .margin({ left: Theme.space.pageX, right: Theme.space.pageX, bottom: 12 })
+        .padding({ left: 8, right: 8, top: 6, bottom: 6 })
+        .borderRadius(Theme.radius.sheet)
+        .backgroundColor(Theme.colors().surfaceGlass)
+        .backgroundBlurStyle(BlurStyle.Thin)
+      }
 
       if (this.showDetail) {
         ThoughtDetailPane({
           card: this.detail,
           cardId: this.detail.id,
           onClose: (): void => { this.closeDetail() },
-          onChanged: (): void => { this.bump() }
+          onChanged: (): void => { this.bump() },
+          onOpenThinkTool: (tool: string): void => { this.openThinkTab(tool) }
         })
           .width('100%')
           .height('100%')
@@ -181,7 +207,7 @@ export struct MainTabPage {
     .layoutWeight(1)
     .height('100%')
     .justifyContent(FlexAlign.Center)
-    .padding({ top: 4, bottom: 4 })
+    .padding({ top: 2, bottom: 2 })
     .onClick((): void => {
       AppStorage.setOrCreate('tabBarHidden', false)
       this.current = t.index

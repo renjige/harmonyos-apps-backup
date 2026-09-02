@@ -5,6 +5,7 @@ import { AccessConfig } from '../config/AccessConfig';
 import { SessionStore } from '../services/SessionStore';
 import { ThoughtStore } from '../services/ThoughtStore';
 import { ThinkStore } from '../services/ThinkStore';
+import { SparkBridge } from '../services/SparkBridge';
 import { AppContextService } from '../services/AppContextService';
 import { ThemeAppearance } from '../services/ThemeAppearance';
 import { GrowthStatHub } from '../services/GrowthStatHub';
@@ -23,6 +24,7 @@ export default class EntryAbility extends UIAbility {
     AppStorage.setOrCreate('appTagline', '把碎片想法收进匣子，用标签层级展开成思维导图');
     AppStorage.setOrCreate('tabBarHidden', false);
     AppStorage.setOrCreate('tbReload', 0);
+    AppStorage.setOrCreate('thinkToolAutoOpen', '');
     GrowthStatHub.initDefaults();
     AccessConfig.applyDefaults('open_optional');
     AppStorage.setOrCreate('accessGuestWrite', true);
@@ -39,6 +41,7 @@ export default class EntryAbility extends UIAbility {
       }
       await ThoughtStore.init(this.context);
       await ThinkStore.init(this.context);
+      await SparkBridge.init(this.context);
       await ThinkStore.syncGrowthToAppStorage();
       windowStage.loadContent('pages/Index', (err) => {
         if (err.code) {

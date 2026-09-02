@@ -1,5 +1,7 @@
 import { Theme } from '../components/design-system/Theme'
 import { AppIcon } from '../components/design-system/AppIcon'
+import { SectionHeader } from '../components/design-system/SectionHeader'
+import { MetricChipRow } from '../components/box/MetricChipRow'
 import { BreakdownPane } from '../components/think/BreakdownPane'
 import { NotePane } from '../components/think/NotePane'
 import { OpinionPane } from '../components/think/OpinionPane'
@@ -7,7 +9,6 @@ import { DailyPane } from '../components/think/DailyPane'
 import { GoalPane } from '../components/think/GoalPane'
 import { ReviewPane } from '../components/think/ReviewPane'
 import { ThinkStore } from '../services/ThinkStore'
-import { BoxMedia } from '../services/BoxMedia'
 
 class ThinkEntry {
   key: string = ''
@@ -28,18 +29,44 @@ export struct ThinkPage {
   @StorageLink('tbReviewCount') reviewCount: number = 0
   @StorageLink('tbOpinionCount') opinionCount: number = 0
   @Prop @Watch('onReloadChange') reloadToken: number = 0
-  @Prop tabVisible: boolean = true
+  @Prop @Watch('onTabVisibleChange') tabVisible: boolean = true
   @State tool: string = ''
   @State paneEpoch: number = 0
   @State activeStat: string = 'hub'
+  @State metricCsv: string = ''
+  @StorageLink('thinkToolAutoOpen') @Watch('onAutoToolChange') thinkToolAutoOpen: string = ''
   onSwitchHome: () => void = () => {}
 
   aboutToAppear(): void {
     void ThinkStore.syncGrowthToAppStorage()
+    this.metricCsv =
+      `灵感|${this.sparkCount}|0;笔记|${this.noteCount}|0;拆解|${this.breakCount}|0;连续天|${this.streakDays}|1`
+    this.tryAutoOpenTool()
+  }
+
+  onAutoToolChange(): void {
+    this.tryAutoOpenTool()
+  }
+
+  onTabVisibleChange(): void {
+    if (this.tabVisible) {
+      this.tryAutoOpenTool()
+    }
+  }
+
+  private tryAutoOpenTool(): void {
+    const key = this.thinkToolAutoOpen.trim()
+    if (key.length === 0 || !this.tabVisible) {
+      return
+    }
+    AppStorage.setOrCreate('thinkToolAutoOpen', '')
+    this.openTool(key)
   }
 
   onReloadChange(): void {
     void ThinkStore.syncGrowthToAppStorage()
+    this.metricCsv =
+      `灵感|${this.sparkCount}|0;笔记|${this.noteCount}|0;拆解|${this.breakCount}|0;连续天|${this.streakDays}|1`
     if (this.tool.length > 0) {
       this.paneEpoch = this.paneEpoch + 1
     }
@@ -112,126 +139,94 @@ export struct ThinkPage {
           ReviewPane({ paneToken: this.paneEpoch }).layoutWeight(1)
         }
       } else {
-        Text('思考工坊')
-          .fontSize(Theme.type.title3)
-          .fontWeight(FontWeight.Bold)
-          .fontColor(this.themeEpoch >= 0 ? Theme.colors().textPrimary : Theme.colors().textPrimary)
-          .width('100%')
-          .padding({ left: Theme.space.pageX, right: Theme.space.pageX, top: Theme.space.s4 })
-        Scroll() {
-          Column({ space: Theme.space.s4 }) {
-            Image(BoxMedia.resource('cover_cards'))
-              .width('100%')
-              .height(120)
-              .objectFit(ImageFit.Cover)
-              .borderRadius(Theme.radius.lg)
-            Text('点选统计卡片进入对应工具；保存后会自动刷新本机统计。')
-              .fontSize(Theme.type.caption)
-              .fontColor(Theme.colors().textSecondary)
-              .width('100%')
-            Row({ space: Theme.space.s2 }) {
-              Column({ space: 4 }) {
-                Text(`${this.sparkCount}`)
-                  .fontSize(Theme.type.title3)
-                  .fontWeight(FontWeight.Bold)
-                  .fontColor(this.activeStat === 'spark' ? Theme.colors().brandPrimary : Theme.colors().textPrimary)
-                Text('灵感')
-                  .fontSize(Theme.type.caption)
-                  .fontColor(this.activeStat === 'spark' ? Theme.colors().brandPrimary : Theme.colors().textSecondary)
-              }
-              .layoutWeight(1)
-              .padding({ top: 4, bottom: 4 })
-              .backgroundColor(this.activeStat === 'spark' ? Theme.colors().brandPrimaryContainer : 'transparent')
-              .borderRadius(Theme.radius.md)
-              .onClick((): void => { this.openSparkHome() })
-
-              Column({ space: 4 }) {
-                Text(`${this.noteCount}`)
-                  .fontSize(Theme.type.title3)
-                  .fontWeight(FontWeight.Bold)
-                  .fontColor(this.activeStat === 'note' ? Theme.colors().brandPrimary : Theme.colors().textPrimary)
-                Text('笔记')
-                  .fontSize(Theme.type.caption)
-                  .fontColor(this.activeStat === 'note' ? Theme.colors().brandPrimary : Theme.colors().textSecondary)
-              }
-              .layoutWeight(1)
-              .padding({ top: 4, bottom: 4 })
-              .backgroundColor(this.activeStat === 'note' ? Theme.colors().brandPrimaryContainer : 'transparent')
-              .borderRadius(Theme.radius.md)
-              .onClick((): void => { this.openTool('note') })
-
-              Column({ space: 4 }) {
-                Text(`${this.breakCount}`)
-                  .fontSize(Theme.type.title3)
-                  .fontWeight(FontWeight.Bold)
-                  .fontColor(this.activeStat === 'break' ? Theme.colors().brandPrimary : Theme.colors().textPrimary)
-                Text('拆解')
-                  .fontSize(Theme.type.caption)
-                  .fontColor(this.activeStat === 'break' ? Theme.colors().brandPrimary : Theme.colors().textSecondary)
-              }
-              .layoutWeight(1)
-              .padding({ top: 4, bottom: 4 })
-              .backgroundColor(this.activeStat === 'break' ? Theme.colors().brandPrimaryContainer : 'transparent')
-              .borderRadius(Theme.radius.md)
-              .onClick((): void => { this.openTool('break') })
-
-              Column({ space: 4 }) {
-                Text(`${this.streakDays}`)
-                  .fontSize(Theme.type.title3)
-                  .fontWeight(FontWeight.Bold)
-                  .fontColor(this.activeStat === 'daily' ? Theme.colors().brandPrimary : Theme.colors().textPrimary)
-                Text('连续天')
-                  .fontSize(Theme.type.caption)
-                  .fontColor(this.activeStat === 'daily' ? Theme.colors().brandPrimary : Theme.colors().textSecondary)
-              }
-              .layoutWeight(1)
-              .padding({ top: 4, bottom: 4 })
-              .backgroundColor(this.activeStat === 'daily' ? Theme.colors().brandPrimaryContainer : 'transparent')
-              .borderRadius(Theme.radius.md)
-              .onClick((): void => { this.openTool('daily') })
-            }
-            .width('100%')
-            .padding(Theme.space.s4)
-            .backgroundColor(this.themeEpoch >= 0 ? Theme.colors().surfaceCard : Theme.colors().surfaceCard)
-            .borderRadius(Theme.radius.lg)
-
-            ForEach(this.entries(), (e: ThinkEntry) => {
-              Row({ space: Theme.space.s3 }) {
+          Scroll() {
+            Column({ space: Theme.space.section }) {
+              Stack({ alignContent: Alignment.BottomStart }) {
+                Image($r('app.media.cover_cards'))
+                  .width('100%')
+                  .height(220)
+                  .objectFit(ImageFit.Cover)
+                Column()
+                  .width('100%')
+                  .height(220)
+                  .linearGradient({
+                    angle: 180,
+                    colors: [
+                      ['rgba(15,23,42,0.06)', 0.0],
+                      ['rgba(15,23,42,0.55)', 0.5],
+                      ['rgba(26,35,50,0.90)', 1.0]
+                    ]
+                  })
                 Column({ space: 4 }) {
-                  Text(e.title)
-                    .fontSize(Theme.type.subhead)
-                    .fontWeight(FontWeight.Medium)
-                    .fontColor(Theme.colors().textPrimary)
-                    .width('100%')
-                  Text(e.hint)
+                  Text('思考工坊')
                     .fontSize(Theme.type.caption)
-                    .fontColor(Theme.colors().textSecondary)
-                    .width('100%')
+                    .fontColor(Theme.colors().textOnInverse)
+                  Text(`${this.streakDays}`)
+                    .fontSize(Theme.type.display)
+                    .fontWeight(FontWeight.Bold)
+                    .fontColor(Theme.colors().textOnInverse)
+                  Text('连续思考天数')
+                    .fontSize(Theme.type.caption)
+                    .fontColor(Theme.colors().textOnInverse)
                 }
-                .layoutWeight(1)
-                .alignItems(HorizontalAlign.Start)
-                Text(`${e.count}`)
-                  .fontSize(Theme.type.caption)
-                  .fontColor(Theme.colors().brandPrimary)
-                AppIcon({ name: 'chevron', iconSize: Theme.icon.sm })
+                .padding({ left: Theme.space.pageX, right: Theme.space.pageX, bottom: Theme.space.s6 })
               }
               .width('100%')
-              .padding(Theme.space.s4)
-              .backgroundColor(this.themeEpoch >= 0 ? Theme.colors().surfaceCard : Theme.colors().surfaceCard)
-              .borderRadius(Theme.radius.lg)
-              .onClick((): void => { this.openTool(e.key) })
-            }, (e: ThinkEntry) => `${e.key}|${e.count}|${this.tbReload}`)
+              .height(220)
+
+              Column({ space: Theme.space.s3 }) {
+                SectionHeader({
+                  title: '成长概览',
+                  subtitle: '点选指标或下方工具进入对应模块'
+                })
+                MetricChipRow({ chipsCsv: this.metricCsv })
+              }
+
+              Column({ space: Theme.space.s3 }) {
+                SectionHeader({
+                  title: '结构化工具',
+                  subtitle: '把灵感推进为可执行的思考档案'
+                })
+                ForEach(this.entries(), (e: ThinkEntry) => {
+                  Row({ space: Theme.space.s3 }) {
+                    Column({ space: 4 }) {
+                      Text(e.title)
+                        .fontSize(Theme.type.subhead)
+                        .fontWeight(FontWeight.Medium)
+                        .fontColor(Theme.colors().textPrimary)
+                        .width('100%')
+                      Text(e.hint)
+                        .fontSize(Theme.type.caption)
+                        .fontColor(Theme.colors().textSecondary)
+                        .width('100%')
+                    }
+                    .layoutWeight(1)
+                    .alignItems(HorizontalAlign.Start)
+                    Text(`${e.count}`)
+                      .fontSize(Theme.type.caption)
+                      .fontColor(Theme.colors().brandPrimary)
+                    AppIcon({ name: 'chevron', iconSize: Theme.icon.sm, color: Theme.colors().textSecondary })
+                  }
+                  .width('100%')
+                  .padding(Theme.space.s5)
+                  .backgroundColor(Theme.colors().surfaceCard)
+                  .borderRadius(Theme.radius.xl)
+                  .border({ width: 1, color: Theme.colors().strokeHairline })
+                  .onClick((): void => { this.openTool(e.key) })
+                }, (e: ThinkEntry) => `${e.key}|${e.count}|${this.tbReload}`)
+              }
+              .padding({ left: Theme.space.pageX, right: Theme.space.pageX })
+            }
+            .padding({ bottom: 88 })
           }
-          .padding({ left: Theme.space.pageX, right: Theme.space.pageX, bottom: Theme.space.s10 })
-        }
-        .layoutWeight(1)
-        .scrollBar(BarState.On)
-        .edgeEffect(EdgeEffect.Spring)
-        .onVisibleAreaChange([0.0, 1.0], (isVisible: boolean, currentRatio: number): void => {
-          if (isVisible && currentRatio > 0 && this.tabVisible) {
-            void ThinkStore.syncGrowthToAppStorage()
-          }
-        })
+          .layoutWeight(1)
+          .scrollBar(BarState.Off)
+          .edgeEffect(EdgeEffect.Spring)
+          .onVisibleAreaChange([0.0, 1.0], (isVisible: boolean, currentRatio: number): void => {
+            if (isVisible && currentRatio > 0 && this.tabVisible) {
+              void ThinkStore.syncGrowthToAppStorage()
+            }
+          })
       }
     }
     .width('100%')
