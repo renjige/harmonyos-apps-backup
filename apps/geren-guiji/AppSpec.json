@@ -1,0 +1,312 @@
+{
+  "specVersion": "1.0.0",
+  "generatedAt": "2026-08-25T01:50:32.062Z",
+  "requestId": "req_1787622632027",
+  "industryPack": "morning-habit",
+  "identity": {
+    "company": "轨迹工坊",
+    "companyPinyin": "guijigongfang",
+    "appName": "个人轨迹",
+    "appPinyin": "geren-guiji",
+    "bundleId": "com.guijigongfang.gerenguiji",
+    "version": "1.0.0"
+  },
+  "positioning": {
+    "tagline": "手动记录每一段人生足迹，写下地点与回忆，智慧统计常去之处，数据默认仅存本地",
+    "coreUsers": [
+      {
+        "role": "都市白领",
+        "ageRange": "22-40",
+        "scenario": "工作日清晨",
+        "need": "自律早起、可视化成长"
+      }
+    ],
+    "painPoints": [
+      "难以坚持早起",
+      "缺乏正向反馈",
+      "习惯数据分散"
+    ],
+    "differentiation": "记录与回顾每一段人生足迹，一键开启轨迹采集，智慧统计里程与常去地点，数据默认仅存本地设备"
+  },
+  "modules": {
+    "pages": [
+      {
+        "id": "home",
+        "title": "首页",
+        "route": "pages/HomePage",
+        "features": [
+          "早安问候",
+          "今日早起时间",
+          "连续打卡",
+          "成长趋势"
+        ],
+        "tab": true
+      },
+      {
+        "id": "checkin",
+        "title": "打卡",
+        "route": "pages/CheckInPage",
+        "features": [
+          "一键打卡",
+          "日出动效"
+        ],
+        "tab": true
+      },
+      {
+        "id": "habits",
+        "title": "习惯",
+        "route": "pages/HabitsPage",
+        "features": [
+          "习惯目标"
+        ],
+        "tab": true
+      },
+      {
+        "id": "growth",
+        "title": "成长",
+        "route": "pages/GrowthPage",
+        "features": [
+          "数据洞察",
+          "成就中心"
+        ],
+        "tab": true
+      },
+      {
+        "id": "mine",
+        "title": "我的",
+        "route": "pages/MinePage",
+        "features": [
+          "打卡记录",
+          "设置隐私"
+        ],
+        "tab": true
+      },
+      {
+        "id": "messages",
+        "title": "消息",
+        "route": "pages/MessagesPage",
+        "features": [
+          "智慧提醒"
+        ],
+        "tab": false
+      }
+    ],
+    "coreFlows": [
+      {
+        "name": "每日打卡闭环",
+        "steps": [
+          "查看目标",
+          "完成打卡",
+          "获得成长反馈"
+        ]
+      }
+    ]
+  },
+  "entities": [
+    {
+      "name": "HabitGoal",
+      "table": "habit_goals",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "targetTime",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "CheckIn",
+      "table": "check_ins",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "wakeTime",
+          "type": "string"
+        },
+        {
+          "name": "checkInDate",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "Achievement",
+      "table": "achievements",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "thresholdDays",
+          "type": "number"
+        }
+      ]
+    }
+  ],
+  "apis": [
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/morning-habit/goals",
+      "summary": "习惯目标",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/morning-habit/achievements",
+      "summary": "成就",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/morning-habit/insights",
+      "summary": "成长洞察",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/biz/morning-habit/check-ins",
+      "summary": "早起打卡",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/morning-habit/stats",
+      "summary": "统计数据",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/messages",
+      "summary": "消息",
+      "auth": true,
+      "module": "messages"
+    }
+  ],
+  "ai": {
+    "capabilities": [],
+    "quickCommands": [],
+    "systemPrompt": "你是「轨迹工坊」旗下应用「个人轨迹」的出行记录助手。产品定位：GPS轨迹本地记录与回顾。主职责：解读里程与时长统计、提醒安全记录；不做导航与救援承诺。",
+    "mode": "none",
+    "llmEnabled": false
+  },
+  "permissions": [
+    {
+      "name": "ohos.permission.INTERNET",
+      "reason": "同步习惯目标、打卡与成长数据",
+      "when": "inuse",
+      "scene": "打卡与数据同步"
+    }
+  ],
+  "harmonyos": {
+    "features": []
+  },
+  "store": {
+    "category": "生活",
+    "oneLiner": "个人轨迹 — 手动记录足迹与回忆，本地统计常去之处",
+    "fullDescription": "个人轨迹帮助您记录与回顾出行足迹，支持本地轨迹回放、GPX 导出与智慧里程统计，数据默认仅存本机。",
+    "keywords": [
+      "轨迹",
+      "GPS",
+      "记录",
+      "足迹",
+      "鸿蒙"
+    ],
+    "privacySummary": {
+      "collect": [
+        "账号信息",
+        "GPS轨迹（本地）"
+      ],
+      "purpose": "轨迹记录与本地统计",
+      "thirdParties": []
+    },
+    "demoAccount": {
+      "username": "auditor@guijigongfang.local",
+      "passwordNote": "仅写入 store/demo-account.md"
+    },
+    "screenshotPlan": [
+      {
+        "page": "home",
+        "caption": "早安与大数字早起时间"
+      },
+      {
+        "page": "checkin",
+        "caption": "一键打卡"
+      },
+      {
+        "page": "growth",
+        "caption": "成长趋势与成就"
+      }
+    ],
+    "incentiveHooks": [],
+    "legalOperator": "魏文波"
+  },
+  "access": {
+    "mode": "open_optional",
+    "features": {
+      "register": true,
+      "guestBrowse": true,
+      "guestWrite": false
+    },
+    "gateActions": [
+      "export_gpx",
+      "sync_account"
+    ],
+    "onPrivacyRefuse": "browse_basic",
+    "loginProviders": [
+      "password"
+    ]
+  },
+  "brand": {
+    "primary": "#FF8A4C",
+    "primaryDeep": "#1B2838",
+    "deep": "#1B2838",
+    "accent": "#FF8A4C",
+    "tone": "premium-lifestyle",
+    "stylePack": "premium-business",
+    "workbenchId": "timeline-board",
+    "layoutVariant": "B",
+    "productVisualType": "ops-tool",
+    "visualDirection": {
+      "archetype": "premium-lifestyle",
+      "density": "airy",
+      "material": "soft-elevation",
+      "imagery": "dawn-sunrise",
+      "accent": "dawn-orange",
+      "primaryJob": "5 秒内查看目标并完成打卡",
+      "notes": "大数字 Hero + 连续天数 + 趋势；禁止宫格模板"
+    },
+    "logo": {
+      "brandAnchor": "迹",
+      "glyphStrategy": "semantic-fusion",
+      "customLock": true
+    },
+    "visualAssets": [
+      { "id": "hero_map_trail", "file": "hero_map_trail.png", "usage": "地图首页 Hero" },
+      { "id": "ambient_empty", "file": "ambient_empty.png", "usage": "空态氛围" }
+    ]
+  }
+}

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" role="img" aria-label="居家章">
+  <rect width="1024" height="1024" fill="#1A3A5C"/>
+  <circle cx="512" cy="512" r="340" fill="none" stroke="#FF6B35" stroke-width="36"/>
+  <circle cx="512" cy="512" r="300" fill="none" stroke="#FF6B35" stroke-width="12" opacity="0.85"/>
+  <path d="M320 560 L512 340 L704 560" fill="none" stroke="#FF6B35" stroke-width="48" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M380 560 L380 720 L644 720 L644 560" fill="none" stroke="#FF6B35" stroke-width="44" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="448" y="600" width="128" height="128" rx="8" fill="none" stroke="#FF6B35" stroke-width="28"/>
+  <path d="M472 640 H576 M512 600 V680" fill="none" stroke="#FF6B35" stroke-width="22" stroke-linecap="round"/>
+</svg>

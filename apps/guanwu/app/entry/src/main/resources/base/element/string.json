@@ -1,0 +1,9 @@
+{
+  "string": [
+    { "name": "module_desc", "value": "观物主模块" },
+    { "name": "EntryAbility_desc", "value": "智慧生活观察入口" },
+    { "name": "EntryAbility_label", "value": "观物" },
+    { "name": "internet_reason", "value": "用于可选的账号登录与注册" },
+    { "name": "reminder_reason", "value": "用于在您开启智慧提醒后调度每日观察提示" }
+  ]
+}

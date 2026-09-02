@@ -1,0 +1,384 @@
+{
+  "specVersion": "1.0.0",
+  "generatedAt": "2026-09-02T02:34:02.603Z",
+  "requestId": "req_1788316442507",
+  "industryPack": "roam-checklist",
+  "identity": {
+    "company": "漫游序",
+    "companyPinyin": "manyou",
+    "appName": "漫游清单",
+    "appPinyin": "qingdan",
+    "bundleId": "com.manyou.qingdan",
+    "version": "1.0.0"
+  },
+  "positioning": {
+    "tagline": "把想做的事慢慢变成经历——个人生活体验规划、目标清单管理与完成档案系统",
+    "coreUsers": [
+      {
+        "role": "想规划生活体验的都市用户",
+        "ageRange": "20-45",
+        "scenario": "周末想尝试新事物、读完一本书、完成一个小挑战",
+        "need": "不是普通待办，而是把体验愿望整理成清单、记录完成过程、沉淀成长档案"
+      }
+    ],
+    "painPoints": [
+      "备忘录只能列事项，完成就删，没有经历沉淀",
+      "想体验的事散落各处，缺少主题整理",
+      "缺少时间轴与年度报告视角"
+    ],
+    "differentiation": "把想做的事慢慢变成经历——个人生活体验规划、目标清单管理与完成档案系统"
+  },
+  "modules": {
+    "pages": [
+      {
+        "id": "home",
+        "title": "漫游",
+        "route": "pages/HomePage",
+        "features": [
+          "今日漫游",
+          "档案数字",
+          "快捷入口",
+          "最近完成",
+          "智慧回望"
+        ],
+        "tab": true
+      },
+      {
+        "id": "checklists",
+        "title": "清单",
+        "route": "pages/ChecklistPage",
+        "features": [
+          "创建清单",
+          "清单项",
+          "完成记录",
+          "分类筛选",
+          "搜索"
+        ],
+        "tab": true
+      },
+      {
+        "id": "themes",
+        "title": "主题",
+        "route": "pages/ThemeSpacePage",
+        "features": [
+          "主题空间",
+          "关联清单",
+          "预设模板"
+        ],
+        "tab": true
+      },
+      {
+        "id": "lookback",
+        "title": "回顾",
+        "route": "pages/LookbackPage",
+        "features": [
+          "时间轴",
+          "年度报告",
+          "数据中心",
+          "智慧整理"
+        ],
+        "tab": true
+      },
+      {
+        "id": "mine",
+        "title": "我的",
+        "route": "pages/MinePage",
+        "features": [
+          "成就墙",
+          "设置与隐私",
+          "导出"
+        ],
+        "tab": true
+      }
+    ],
+    "coreFlows": [
+      {
+        "name": "漫游档案闭环",
+        "steps": [
+          "创建清单或愿望",
+          "添加清单项",
+          "完成并写体验记录",
+          "归入主题",
+          "时间轴回望",
+          "年度报告"
+        ]
+      }
+    ]
+  },
+  "entities": [
+    {
+      "name": "RmChecklist",
+      "table": "checklists",
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "description",
+          "type": "string"
+        },
+        {
+          "name": "categoryKey",
+          "type": "string"
+        },
+        {
+          "name": "themeId",
+          "type": "string"
+        },
+        {
+          "name": "status",
+          "type": "string"
+        },
+        {
+          "name": "summary",
+          "type": "string"
+        },
+        {
+          "name": "createdAt",
+          "type": "number"
+        },
+        {
+          "name": "updatedAt",
+          "type": "number"
+        }
+      ]
+    },
+    {
+      "name": "RmCheckItem",
+      "table": "items",
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "checklistId",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "status",
+          "type": "string"
+        },
+        {
+          "name": "feeling",
+          "type": "string"
+        },
+        {
+          "name": "harvest",
+          "type": "string"
+        },
+        {
+          "name": "note",
+          "type": "string"
+        },
+        {
+          "name": "starred",
+          "type": "boolean"
+        },
+        {
+          "name": "completedAt",
+          "type": "number"
+        }
+      ]
+    },
+    {
+      "name": "RmTheme",
+      "table": "themes",
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "summary",
+          "type": "string"
+        },
+        {
+          "name": "coverKey",
+          "type": "string"
+        },
+        {
+          "name": "presetKind",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "RmWish",
+      "table": "wishes",
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "categoryKey",
+          "type": "string"
+        },
+        {
+          "name": "note",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "RmPlan",
+      "table": "plans",
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "planKind",
+          "type": "string"
+        },
+        {
+          "name": "startDate",
+          "type": "string"
+        },
+        {
+          "name": "endDate",
+          "type": "string"
+        }
+      ]
+    }
+  ],
+  "apis": [],
+  "admin": {
+    "featureModules": []
+  },
+  "ai": {
+    "capabilities": [],
+    "quickCommands": [],
+    "systemPrompt": "你是「漫游序」旗下应用「漫游清单」的档案整理助手。产品定位：个人生活体验规划与完成档案。禁止生成式对话。",
+    "mode": "none",
+    "llmEnabled": false
+  },
+  "permissions": [],
+  "harmonyos": {
+    "features": []
+  },
+  "store": {
+    "category": "生活",
+    "legalOperator": "魏文波",
+    "oneLiner": "漫游清单 — 把想做的事慢慢变成经历——个人生活体验规划、目标清单管理与完成档案",
+    "fullDescription": "漫游清单帮助你规划生活体验、管理个人目标清单、记录完成过程、收藏美好经历。支持主题空间、愿望清单、阶段计划、时间轴回望与年度漫游报告。数据保存在本机，无需注册，不申请相机、定位等敏感权限，无广告、无内购。",
+    "keywords": [
+      "生活体验",
+      "目标清单",
+      "体验记录",
+      "主题空间",
+      "成长回顾",
+      "鸿蒙"
+    ],
+    "privacySummary": {
+      "collect": [
+        "昵称（本机）",
+        "清单与体验记录（本机）",
+        "主题与分类（本机）",
+        "主题外观偏好（本机）"
+      ],
+      "purpose": "提供本地体验规划、清单管理、完成记录与时间回望",
+      "thirdParties": []
+    },
+    "demoAccount": {
+      "username": "auditor@manyou.local",
+      "passwordNote": "本地工具无需登录，仅审核占位"
+    },
+    "screenshotPlan": [
+      {
+        "page": "home",
+        "caption": "漫游空间与今日目标"
+      },
+      {
+        "page": "checklists",
+        "caption": "体验清单与完成记录"
+      },
+      {
+        "page": "themes",
+        "caption": "主题探索空间"
+      },
+      {
+        "page": "lookback",
+        "caption": "时间轴与年度报告"
+      },
+      {
+        "page": "mine",
+        "caption": "成就墙与设置"
+      }
+    ],
+    "incentiveHooks": []
+  },
+  "access": {
+    "mode": "open_optional",
+    "features": {
+      "register": false,
+      "guestBrowse": true,
+      "guestWrite": true
+    },
+    "gateActions": [],
+    "onPrivacyRefuse": "exit",
+    "loginProviders": []
+  },
+  "brand": {
+    "primary": "#0EA5E9",
+    "primaryDeep": "#0C4A6E",
+    "deep": "#0C4A6E",
+    "accent": "#34D399",
+    "highlight": "#F97316",
+    "tone": "soft-editorial",
+    "stylePack": "soft-editorial",
+    "workbenchId": "timeline-board",
+    "layoutVariant": "B",
+    "productVisualType": "ops-tool",
+    "visualDirection": {
+      "archetype": "explore-journal",
+      "density": "airy",
+      "material": "sky-mist",
+      "imagery": "path-light-editorial",
+      "accent": "sky-blue-mint-orange",
+      "primaryJob": "3 秒内创建一条体验清单并看见档案数字变化",
+      "notes": "天空蓝#0EA5E9+薄荷绿#34D399+雾白#F8FAFC；五 Tab 探索美学；禁止 Todo 换皮"
+    },
+    "logo": {
+      "brandAnchor": "漫",
+      "glyphStrategy": "semantic-fusion",
+      "customLock": false,
+      "concept": "轻盈路线 + 圆点定位，寓意每一次行动成为人生轨迹"
+    },
+    "visualAssets": []
+  }
+}

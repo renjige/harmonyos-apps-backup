@@ -1,0 +1,350 @@
+{
+  "specVersion": "1.0.0",
+  "generatedAt": "2026-09-02T02:24:41.580Z",
+  "requestId": "req_1788315881536",
+  "industryPack": "light-archive",
+  "identity": {
+    "company": "晨雾计划",
+    "companyPinyin": "chenwu",
+    "appName": "晨雾计划",
+    "appPinyin": "jihua",
+    "bundleId": "com.chenwu.jihua",
+    "version": "1.0.0"
+  },
+  "positioning": {
+    "tagline": "从清晨开始规划更好的自己——个人成长规划空间、阶段目标管理、习惯沉淀与复盘档案",
+    "coreUsers": [
+      {
+        "role": "想长期留下生活片段的都市用户",
+        "ageRange": "20-45",
+        "scenario": "散步归来、读完一页、忽然想到一句值得留下的话",
+        "need": "不是记日记，而是把片段整理进主题与时间档案"
+      }
+    ],
+    "painPoints": [
+      "普通日记只有按天堆文字，难以整理和回望",
+      "灵感、瞬间、札记散落在备忘录里找不到",
+      "缺少主题沉淀与年度档案视角"
+    ],
+    "differentiation": "从清晨开始规划更好的自己——个人成长规划空间、阶段目标管理、习惯沉淀与复盘档案"
+  },
+  "modules": {
+    "pages": [
+      {
+        "id": "home",
+        "title": "栖光",
+        "route": "pages/HomePage",
+        "features": [
+          "今日栖光",
+          "档案数字",
+          "快捷记录",
+          "最近片段",
+          "时光回望"
+        ],
+        "tab": true
+      },
+      {
+        "id": "journal",
+        "title": "札记",
+        "route": "pages/JournalPage",
+        "features": [
+          "状态筛选",
+          "分类",
+          "搜索",
+          "模板创建",
+          "详情编辑"
+        ],
+        "tab": true
+      },
+      {
+        "id": "themes",
+        "title": "主题",
+        "route": "pages/ThemeSpacePage",
+        "features": [
+          "主题册",
+          "关联内容",
+          "数量与更新"
+        ],
+        "tab": true
+      },
+      {
+        "id": "lookback",
+        "title": "回望",
+        "route": "pages/LookbackPage",
+        "features": [
+          "时间长廊",
+          "智慧回望",
+          "年度档案",
+          "生活统计"
+        ],
+        "tab": true
+      },
+      {
+        "id": "mine",
+        "title": "我的",
+        "route": "pages/MinePage",
+        "features": [
+          "成就墙",
+          "标签分类",
+          "设置与隐私"
+        ],
+        "tab": true
+      }
+    ],
+    "coreFlows": [
+      {
+        "name": "栖光档案闭环",
+        "steps": [
+          "记录札记或光影",
+          "整理状态",
+          "归入主题",
+          "时间长廊回望",
+          "年度档案沉淀"
+        ]
+      }
+    ]
+  },
+  "entities": [
+    {
+      "name": "QgEntry",
+      "table": "entries",
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "dateKey",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "categoryKey",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "tagIds",
+          "type": "array"
+        },
+        {
+          "name": "status",
+          "type": "string"
+        },
+        {
+          "name": "templateKey",
+          "type": "string"
+        },
+        {
+          "name": "fieldA",
+          "type": "string"
+        },
+        {
+          "name": "fieldB",
+          "type": "string"
+        },
+        {
+          "name": "fieldC",
+          "type": "string"
+        },
+        {
+          "name": "body",
+          "type": "string"
+        },
+        {
+          "name": "createdAt",
+          "type": "number"
+        },
+        {
+          "name": "updatedAt",
+          "type": "number"
+        }
+      ]
+    },
+    {
+      "name": "QgClip",
+      "table": "clips",
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "text",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "clipKind",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "dateKey",
+          "type": "string"
+        },
+        {
+          "name": "treasured",
+          "type": "boolean"
+        },
+        {
+          "name": "createdAt",
+          "type": "number"
+        }
+      ]
+    },
+    {
+      "name": "QgTheme",
+      "table": "themes",
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "summary",
+          "type": "string"
+        },
+        {
+          "name": "coverKey",
+          "type": "string"
+        },
+        {
+          "name": "createdAt",
+          "type": "number"
+        },
+        {
+          "name": "updatedAt",
+          "type": "number"
+        }
+      ]
+    }
+  ],
+  "apis": [],
+  "admin": {
+    "featureModules": []
+  },
+  "ai": {
+    "capabilities": [],
+    "quickCommands": [],
+    "systemPrompt": "你是「栖光生活」旗下应用「栖光札」的档案整理助手。产品定位：个人生活档案与灵感收藏空间。主职责：帮助理解札记、光影收藏、主题空间与时间回望。禁止生成式对话。",
+    "mode": "none",
+    "llmEnabled": false
+  },
+  "permissions": [],
+  "harmonyos": {
+    "features": []
+  },
+  "store": {
+    "category": "生活",
+    "legalOperator": "魏文波",
+    "oneLiner": "晨雾计划 — 从清晨开始规划更好的自己——个人成长规划空间、阶段目标管理、习惯沉",
+    "fullDescription": "晨雾计划帮助你将人生目标拆解为可执行的阶段计划，记录习惯与每日成长，并在阶段结束时复盘沉淀，形成可回溯的个人成长档案。数据保存在本机，无需注册，不申请相机、定位等敏感权限。",
+    "keywords": [
+      "成长规划",
+      "目标管理",
+      "阶段复盘",
+      "习惯记录",
+      "鸿蒙"
+    ],
+    "privacySummary": {
+      "collect": [
+        "昵称（本机）",
+        "札记与光影正文（本机）",
+        "主题、分类与标签（本机）",
+        "主题外观偏好（本机）"
+      ],
+      "purpose": "提供本地生活档案整理、主题收藏、时间回望与统计",
+      "thirdParties": []
+    },
+    "demoAccount": {
+      "username": "auditor@chenwu.local",
+      "passwordNote": "本地工具无需登录，仅审核占位"
+    },
+    "screenshotPlan": [
+      {
+        "page": "home",
+        "caption": "栖光空间与今日提问"
+      },
+      {
+        "page": "journal",
+        "caption": "札记档案与状态整理"
+      },
+      {
+        "page": "themes",
+        "caption": "主题收藏册"
+      },
+      {
+        "page": "lookback",
+        "caption": "时间长廊与年度档案"
+      },
+      {
+        "page": "mine",
+        "caption": "成就墙与设置"
+      }
+    ],
+    "incentiveHooks": []
+  },
+  "access": {
+    "mode": "open_optional",
+    "features": {
+      "register": false,
+      "guestBrowse": true,
+      "guestWrite": true
+    },
+    "gateActions": [],
+    "onPrivacyRefuse": "exit",
+    "loginProviders": []
+  },
+  "brand": {
+    "primary": "#5B8FA8",
+    "primaryDeep": "#3D5A6C",
+    "deep": "#3D5A6C",
+    "accent": "#D4A853",
+    "tone": "soft-editorial",
+    "stylePack": "soft-editorial",
+    "workbenchId": "timeline-board",
+    "layoutVariant": "B",
+    "productVisualType": "ops-tool",
+    "visualDirection": {
+      "archetype": "life-museum",
+      "density": "airy",
+      "material": "warm-paper",
+      "imagery": "window-light-paper",
+      "accent": "soft-gold-on-mist-teal",
+      "primaryJob": "3 秒内留下一条生活片段并看见档案数字变化",
+      "notes": "雾青#5B7C78+柔金#C4A574+米白#F6F1E8；五 Tab 博物馆气质；禁止日记换皮"
+    },
+    "logo": {
+      "brandAnchor": "晨",
+      "glyphStrategy": "semantic-fusion",
+      "customLock": true,
+      "generator": "agent-svg",
+      "concept": "初升太阳弧 + 雾感曲线 + 向上路径"
+    },
+    "visualAssets": [
+      { "id": "hero_mist_dawn", "file": "hero_mist_dawn.png", "usage": "home-hero" },
+      { "id": "banner_plan_path", "file": "banner_plan_path.png", "usage": "plan-banner" },
+      { "id": "ambient_journal", "file": "ambient_journal.png", "usage": "journal-ambient" },
+      { "id": "cover_goal_learn", "file": "cover_goal_learn.png", "usage": "goal-learn" },
+      { "id": "cover_goal_health", "file": "cover_goal_health.png", "usage": "goal-health" },
+      { "id": "cover_goal_hobby", "file": "cover_goal_hobby.png", "usage": "goal-hobby" },
+      { "id": "cover_goal_work", "file": "cover_goal_work.png", "usage": "goal-work" },
+      { "id": "cover_goal_life", "file": "cover_goal_life.png", "usage": "goal-life" },
+      { "id": "cover_review", "file": "cover_review.png", "usage": "review-hero" }
+    ]
+  }
+}

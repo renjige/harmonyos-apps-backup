@@ -1,0 +1,8 @@
+{
+  "string": [
+    { "name": "module_desc", "value": "明序阁：日程、习惯与知识碎片" },
+    { "name": "EntryAbility_desc", "value": "明序阁入口" },
+    { "name": "EntryAbility_label", "value": "明序阁" },
+    { "name": "internet_reason", "value": "用于登录同步日程习惯笔记，以及拉取阁中笺注与消息" }
+  ]
+}

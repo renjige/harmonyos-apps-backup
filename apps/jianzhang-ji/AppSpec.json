@@ -1,0 +1,334 @@
+{
+  "specVersion": "1.0.0",
+  "generatedAt": "2026-08-24T03:11:00.642Z",
+  "requestId": "req_1787541060609",
+  "industryPack": "enrollment-guide",
+  "identity": {
+    "company": "北京简章集科技有限公司",
+    "companyPinyin": "jianzhangji",
+    "appName": "简章集",
+    "appPinyin": "jianzhangji",
+    "bundleId": "com.jianzhangji.jianzhangji",
+    "version": "1.0.0"
+  },
+  "positioning": {
+    "tagline": "高校招生简章智慧检索平台，帮助学生和家长快速找到目标院校的官方招生信息",
+    "coreUsers": [
+      {
+        "role": "高考考生与家长",
+        "ageRange": "16-50",
+        "scenario": "招生季需要快速查阅多校简章并对比计划与分数线",
+        "need": "权威简章汇总、筛选、收藏与并列对比，而非社交或培训推销"
+      }
+    ],
+    "painPoints": [
+      "各校招生网分散，查找效率低",
+      "简章字段多，难以横向对比",
+      "收藏与关注记录容易丢失"
+    ],
+    "differentiation": "高校招生简章智慧检索平台，帮助学生和家长快速找到目标院校的官方招生信息"
+  },
+  "modules": {
+    "pages": [
+      {
+        "id": "home",
+        "title": "首页",
+        "route": "pages/HomePage",
+        "features": [
+          "搜索",
+          "层次筛选",
+          "类型筛选",
+          "省份筛选",
+          "简章列表",
+          "招生资讯"
+        ],
+        "tab": true
+      },
+      {
+        "id": "favorites",
+        "title": "收藏",
+        "route": "pages/FavoritesPage",
+        "features": [
+          "收藏列表",
+          "取消收藏",
+          "进详情"
+        ],
+        "tab": true
+      },
+      {
+        "id": "compare",
+        "title": "对比",
+        "route": "pages/ComparePage",
+        "features": [
+          "对比清单",
+          "并列字段",
+          "移除对比"
+        ],
+        "tab": true
+      },
+      {
+        "id": "mine",
+        "title": "我的",
+        "route": "pages/MinePage",
+        "features": [
+          "统计",
+          "消息",
+          "设置与隐私"
+        ],
+        "tab": true
+      }
+    ],
+    "coreFlows": [
+      {
+        "name": "查简章",
+        "steps": [
+          "筛选院校",
+          "阅读详情",
+          "查看专业与分数线"
+        ]
+      },
+      {
+        "name": "收藏对比",
+        "steps": [
+          "收藏心仪院校",
+          "加入对比",
+          "并列查看关键指标"
+        ]
+      }
+    ]
+  },
+  "entities": [
+    {
+      "name": "Brochure",
+      "table": "brochures",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "level",
+          "type": "string"
+        },
+        {
+          "name": "type",
+          "type": "string"
+        },
+        {
+          "name": "province",
+          "type": "string"
+        },
+        {
+          "name": "enrollmentTotal",
+          "type": "number"
+        },
+        {
+          "name": "majors",
+          "type": "string"
+        },
+        {
+          "name": "scoreLine",
+          "type": "string"
+        },
+        {
+          "name": "coverKey",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "Article",
+      "table": "articles",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "body",
+          "type": "string"
+        },
+        {
+          "name": "coverKey",
+          "type": "string"
+        }
+      ]
+    }
+  ],
+  "apis": [
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/enrollment-guide/brochures",
+      "summary": "简章列表",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/enrollment-guide/brochures/:id",
+      "summary": "简章详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/enrollment-guide/articles",
+      "summary": "招生资讯",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/enrollment-guide/favorites",
+      "summary": "我的收藏",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/biz/enrollment-guide/favorites",
+      "summary": "添加收藏",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/enrollment-guide/watchlist",
+      "summary": "关注院校",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/messages",
+      "summary": "消息",
+      "auth": false,
+      "module": "messages"
+    }
+  ],
+  "ai": {
+    "capabilities": [],
+    "quickCommands": [],
+    "systemPrompt": "你是「北京简章集科技有限公司」旗下应用「简章集」的招生信息整理助手。产品定位：高校招生简章一站式浏览、收藏与对比。禁止提供虚假录取承诺。C 端不提供生成式对话。",
+    "mode": "none",
+    "llmEnabled": false
+  },
+  "permissions": [
+    {
+      "name": "ohos.permission.INTERNET",
+      "reason": "拉取招生简章与资讯，同步收藏与对比",
+      "when": "inuse",
+      "scene": "打开应用或登录同步时"
+    }
+  ],
+  "harmonyos": {
+    "features": []
+  },
+  "store": {
+    "category": "教育",
+    "legalOperator": "魏文波",
+    "oneLiner": "简章集 — 高校招生简章智慧检索平台，帮助学生和家长快速找到目标院校的官方招生信",
+    "fullDescription": "简章集汇总重点高校本科招生简章，支持按层次、类型与省份筛选，可收藏心仪院校、加入对比清单查看计划数、分数线与联系方式，并提供招生政策资讯。不提供志愿代填、保录承诺与生成式对话。",
+    "keywords": [
+      "招生简章",
+      "高考",
+      "志愿",
+      "院校",
+      "对比",
+      "鸿蒙"
+    ],
+    "privacySummary": {
+      "collect": [
+        "可选账号信息",
+        "收藏与对比记录",
+        "关注院校列表"
+      ],
+      "purpose": "提供简章浏览、收藏、对比与关注提醒",
+      "thirdParties": []
+    },
+    "demoAccount": {
+      "username": "auditor@jianzhangji.local",
+      "passwordNote": "仅写入 store/demo-account.md"
+    },
+    "screenshotPlan": [
+      {
+        "page": "home",
+        "caption": "首页筛选"
+      },
+      {
+        "page": "detail",
+        "caption": "简章详情"
+      },
+      {
+        "page": "compare",
+        "caption": "院校对比"
+      },
+      {
+        "page": "favorites",
+        "caption": "我的收藏"
+      },
+      {
+        "page": "mine",
+        "caption": "我的"
+      }
+    ],
+    "incentiveHooks": [
+      "FormExtensionAbility"
+    ]
+  },
+  "access": {
+    "mode": "open_optional",
+    "features": {
+      "register": true,
+      "guestBrowse": true,
+      "guestWrite": false
+    },
+    "gateActions": [
+      "favorite_brochure",
+      "compare_brochure",
+      "watch_school"
+    ],
+    "onPrivacyRefuse": "browse_basic",
+    "loginProviders": [
+      "password"
+    ]
+  },
+  "brand": {
+    "primary": "#007AFF",
+    "primaryDeep": "#0051A8",
+    "deep": "#0051A8",
+    "accent": "#34C759",
+    "tone": "harmonyos-official",
+    "stylePack": "harmonyos-official",
+    "workbenchId": "catalog-tool",
+    "layoutVariant": "A",
+    "productVisualType": "content-commerce",
+    "visualDirection": {
+      "archetype": "education-catalog",
+      "density": "balanced",
+      "material": "clean-card",
+      "imagery": "campus-architecture-photo",
+      "accent": "system-blue",
+      "primaryJob": "3 秒内找到目标院校简章",
+      "notes": "HarmonyOS 蓝 #007AFF；校园摄影 Hero；禁止 AI 字样"
+    },
+    "logo": {
+      "brandAnchor": "简",
+      "glyphStrategy": "semantic-fusion",
+      "customLock": false,
+      "concept": "简章册页 + 院校剪影"
+    }
+  }
+}

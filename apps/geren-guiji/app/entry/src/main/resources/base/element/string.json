@@ -1,0 +1,8 @@
+{
+  "string": [
+    { "name": "module_desc", "value": "个人轨迹主模块" },
+    { "name": "EntryAbility_desc", "value": "手动足迹记录与本地回顾" },
+    { "name": "EntryAbility_label", "value": "个人轨迹" },
+    { "name": "internet_reason", "value": "用于账号登录与机构通知消息" }
+  ]
+}

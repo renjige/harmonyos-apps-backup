@@ -1,0 +1,8 @@
+{
+  "string": [
+    { "name": "module_desc", "value": "赛场拾录 — 运动赛事本地记录" },
+    { "name": "EntryAbility_desc", "value": "记录每一场值得珍藏的比赛" },
+    { "name": "EntryAbility_label", "value": "赛场拾录" },
+    { "name": "internet_reason", "value": "用于连接业务服务与AI分析接口" }
+  ]
+}

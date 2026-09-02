@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 320" fill="none">
+  <circle cx="160" cy="150" r="52" fill="#1A1A2E"/>
+  <polygon points="160,202 138,178 182,178" fill="#1A1A2E"/>
+  <polygon points="200,108 268,164 256,164 200,120 144,164 132,164" fill="#1A1A2E"/>
+  <rect x="192" y="164" width="16" height="60" fill="#1A1A2E"/>
+  <text x="320" y="196" fill="#1A1A2E" font-size="96" font-family="serif" font-weight="600">��Q</text>
+</svg>

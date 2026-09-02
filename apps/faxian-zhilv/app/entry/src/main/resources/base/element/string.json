@@ -1,0 +1,8 @@
+{
+  "string": [
+    { "name": "module_desc", "value": "夏野漫行主模块" },
+    { "name": "EntryAbility_desc", "value": "夏日漫行生活方式入口" },
+    { "name": "EntryAbility_label", "value": "夏野漫行" },
+    { "name": "internet_reason", "value": "用于在浏览路线、灵感与语录时连接业务服务" }
+  ]
+}

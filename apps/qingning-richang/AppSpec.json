@@ -1,0 +1,321 @@
+{
+  "specVersion": "1.0.0",
+  "generatedAt": "2026-08-25T01:16:44.313Z",
+  "requestId": "req_1787620604278",
+  "industryPack": "morning-habit",
+  "identity": {
+    "company": "青柠生活",
+    "companyPinyin": "qingning",
+    "appName": "青柠日常",
+    "appPinyin": "richang",
+    "bundleId": "com.qingning.richang",
+    "version": "1.0.0"
+  },
+  "positioning": {
+    "tagline": "用智慧的方式记录每一天的小确幸，每日一事打卡、心情日记与温暖短句",
+    "coreUsers": [
+      {
+        "role": "都市白领",
+        "ageRange": "22-40",
+        "scenario": "工作日清晨",
+        "need": "自律早起、可视化成长"
+      }
+    ],
+    "painPoints": [
+      "难以坚持早起",
+      "缺乏正向反馈",
+      "习惯数据分散"
+    ],
+    "differentiation": "用智慧的方式记录每一天的小确幸，每日一事打卡、心情日记与温暖短句"
+  },
+  "modules": {
+    "pages": [
+      {
+        "id": "home",
+        "title": "首页",
+        "route": "pages/HomePage",
+        "features": [
+          "早安问候",
+          "今日早起时间",
+          "连续打卡",
+          "成长趋势"
+        ],
+        "tab": true
+      },
+      {
+        "id": "checkin",
+        "title": "打卡",
+        "route": "pages/CheckInPage",
+        "features": [
+          "一键打卡",
+          "日出动效"
+        ],
+        "tab": true
+      },
+      {
+        "id": "habits",
+        "title": "习惯",
+        "route": "pages/HabitsPage",
+        "features": [
+          "习惯目标"
+        ],
+        "tab": true
+      },
+      {
+        "id": "growth",
+        "title": "成长",
+        "route": "pages/GrowthPage",
+        "features": [
+          "数据洞察",
+          "成就中心"
+        ],
+        "tab": true
+      },
+      {
+        "id": "mine",
+        "title": "我的",
+        "route": "pages/MinePage",
+        "features": [
+          "打卡记录",
+          "设置隐私"
+        ],
+        "tab": true
+      },
+      {
+        "id": "messages",
+        "title": "消息",
+        "route": "pages/MessagesPage",
+        "features": [
+          "智慧提醒"
+        ],
+        "tab": false
+      }
+    ],
+    "coreFlows": [
+      {
+        "name": "每日打卡闭环",
+        "steps": [
+          "查看目标",
+          "完成打卡",
+          "获得成长反馈"
+        ]
+      }
+    ]
+  },
+  "entities": [
+    {
+      "name": "HabitGoal",
+      "table": "habit_goals",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "targetTime",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "CheckIn",
+      "table": "check_ins",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "wakeTime",
+          "type": "string"
+        },
+        {
+          "name": "checkInDate",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "Achievement",
+      "table": "achievements",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "thresholdDays",
+          "type": "number"
+        }
+      ]
+    }
+  ],
+  "apis": [
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/morning-habit/goals",
+      "summary": "习惯目标",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/morning-habit/achievements",
+      "summary": "成就",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/morning-habit/insights",
+      "summary": "成长洞察",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/biz/morning-habit/check-ins",
+      "summary": "早起打卡",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/morning-habit/stats",
+      "summary": "统计数据",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/messages",
+      "summary": "消息",
+      "auth": true,
+      "module": "messages"
+    }
+  ],
+  "ai": {
+    "capabilities": [],
+    "quickCommands": [],
+    "systemPrompt": "你是「青柠生活」旗下应用「青柠日常」的内容助手。产品定位：用智慧的方式记录每一天的小确幸。主职责：帮助用户理解每日一事、心情记录与短句收藏。禁止自称人工智能。C 端不提供生成式对话。",
+    "mode": "none",
+    "llmEnabled": false
+  },
+  "permissions": [
+    {
+      "name": "ohos.permission.INTERNET",
+      "reason": "同步习惯目标、打卡与成长数据",
+      "when": "inuse",
+      "scene": "打卡与数据同步"
+    }
+  ],
+  "harmonyos": {
+    "features": []
+  },
+  "store": {
+    "category": "生活",
+    "oneLiner": "青柠日常 — 用智慧的方式记录每一天的小确幸，每日一事打卡、心情日记与温暖短句",
+    "fullDescription": "青柠日常帮助您以轻松的方式记录生活：每天一件小事、一句心情、一条温暖短句。无社交、无广告、无支付，日记默认保存在本机。",
+    "keywords": [
+      "日常",
+      "日记",
+      "心情",
+      "打卡",
+      "生活",
+      "记录",
+      "鸿蒙"
+    ],
+    "privacySummary": {
+      "collect": [
+        "昵称（本机）",
+        "心情与日记（本机）",
+        "可选账号信息"
+      ],
+      "purpose": "提供每日一事、心情日记与本地统计",
+      "thirdParties": []
+    },
+    "demoAccount": {
+      "username": "auditor@qingning.local",
+      "passwordNote": "仅写入 store/demo-account.md"
+    },
+    "screenshotPlan": [
+      {
+        "page": "home",
+        "caption": "早安与大数字早起时间"
+      },
+      {
+        "page": "checkin",
+        "caption": "一键打卡"
+      },
+      {
+        "page": "growth",
+        "caption": "成长趋势与成就"
+      }
+    ],
+    "incentiveHooks": [],
+    "legalOperator": "魏文波"
+  },
+  "access": {
+    "mode": "open_optional",
+    "features": {
+      "register": true,
+      "guestBrowse": true,
+      "guestWrite": true
+    },
+    "gateActions": [],
+    "onPrivacyRefuse": "browse_basic",
+    "loginProviders": [
+      "password"
+    ]
+  },
+  "brand": {
+    "primary": "#7BC043",
+    "primaryDeep": "#2D4A1E",
+    "deep": "#2D4A1E",
+    "accent": "#FFB347",
+    "tone": "soft-editorial",
+    "stylePack": "soft-editorial",
+    "workbenchId": "catalog-tool",
+    "layoutVariant": "A",
+    "productVisualType": "ops-tool",
+    "visualDirection": {
+      "archetype": "lime-daily-wellness",
+      "density": "airy",
+      "material": "soft-green-light",
+      "imagery": "lime-window-light",
+      "accent": "warm-sun",
+      "primaryJob": "3 秒内看见今日一事并完成打卡",
+      "notes": "青柠绿+暖黄；三 Tab；本机存储；禁止工厂六件套"
+    },
+    "logo": {
+      "brandAnchor": "青",
+      "glyphStrategy": "semantic-fusion",
+      "customLock": true,
+      "generator": "agent-svg",
+      "renderScript": "store/logo/render_logo.mjs",
+      "concept": "几何半切青柠 + 日字圆点",
+      "style": "flat-premium",
+      "foregroundFile": "store/logo/foreground.png",
+      "backgroundFile": "store/logo/background.png",
+      "previewFile": "store/logo/preview-1024.png",
+      "agcFile": "store/logo/agc-216.png",
+      "symbolFile": "store/logo/symbol.svg"
+    },
+    "visualAssets": [
+      { "id": "hero", "file": "hero_ambient.png", "usage": "首页 Hero" },
+      { "id": "empty", "file": "empty_calm.png", "usage": "收藏空态" }
+    ]
+  }
+}

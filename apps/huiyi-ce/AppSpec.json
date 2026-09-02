@@ -1,0 +1,295 @@
+{
+  "specVersion": "1.0.0",
+  "generatedAt": "2026-08-25T07:41:17.371Z",
+  "requestId": "req_1787643677339",
+  "industryPack": "wisdom-memory",
+  "identity": {
+    "company": "慧忆智能",
+    "companyPinyin": "huiyi",
+    "appName": "慧忆册",
+    "appPinyin": "ce",
+    "bundleId": "com.huiyi.ce",
+    "version": "1.0.0"
+  },
+  "positioning": {
+    "tagline": "智慧记忆管家，帮助用户极简记录生活信息并通过智能标签归类回顾",
+    "coreUsers": [
+      {
+        "role": "职场人士与知识工作者",
+        "ageRange": "22-45",
+        "scenario": "碎片时间记下灵感、备忘与生活片段",
+        "need": "快速写下、自动理出标签、随时按类找回"
+      }
+    ],
+    "painPoints": [
+      "重要信息散落在聊天与备忘录里找不到",
+      "普通记事本缺少归类与回顾入口",
+      "分类要手动，坚持不下去"
+    ],
+    "differentiation": "智慧记忆管家，帮助用户极简记录生活信息并通过智能标签归类回顾"
+  },
+  "modules": {
+    "pages": [
+      {
+        "id": "home",
+        "title": "智慧记录",
+        "route": "pages/HomePage",
+        "features": [
+          "快速记录",
+          "模板速记",
+          "智慧标签推荐",
+          "收藏置顶归档",
+          "时间倒序列表",
+          "搜索"
+        ],
+        "tab": true
+      },
+      {
+        "id": "classify",
+        "title": "智慧归类",
+        "route": "pages/ClassifyPage",
+        "features": [
+          "记忆册",
+          "标签云",
+          "按标签筛选",
+          "智能归类建议"
+        ],
+        "tab": true
+      },
+      {
+        "id": "review",
+        "title": "记忆回顾",
+        "route": "pages/ReviewPage",
+        "features": [
+          "本周回顾",
+          "随机抽忆",
+          "待温习队列",
+          "按日回看"
+        ],
+        "tab": true
+      },
+      {
+        "id": "mine",
+        "title": "我的",
+        "route": "pages/MinePage",
+        "features": [
+          "记录统计",
+          "导出 txt",
+          "深色模式",
+          "设置与隐私"
+        ],
+        "tab": true
+      }
+    ],
+    "coreFlows": [
+      {
+        "name": "记录与归类闭环",
+        "steps": [
+          "点＋选择模板或直接写下记忆",
+          "确认智慧标签并保存",
+          "详情可收藏、置顶、温习、归档或收入记忆册",
+          "归类页按标签筛选、采纳建议或打开记忆册",
+          "回顾页按日回看、随机抽忆或处理待温习"
+        ]
+      }
+    ]
+  },
+  "entities": [
+    {
+      "name": "MemoryRecord",
+      "table": "memories",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "content",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "tags",
+          "type": "array"
+        },
+        {
+          "name": "createTime",
+          "type": "number"
+        },
+        {
+          "name": "updateTime",
+          "type": "number"
+        }
+      ]
+    }
+  ],
+  "apis": [
+    {
+      "method": "POST",
+      "path": "/api/v1/auth/login",
+      "summary": "登录",
+      "auth": false,
+      "module": "auth"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/auth/register",
+      "summary": "注册",
+      "auth": false,
+      "module": "auth"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/messages",
+      "summary": "机构消息",
+      "auth": false,
+      "module": "messages"
+    }
+  ],
+  "admin": {
+    "featureModules": [
+      "overview",
+      "appUsers",
+      "messages",
+      "kpis",
+      "ai"
+    ]
+  },
+  "ai": {
+    "capabilities": [],
+    "quickCommands": [
+      "建议这条记忆的标签",
+      "说明归类理由",
+      "本月记忆小结口吻"
+    ],
+    "systemPrompt": "你是「慧忆智能」旗下应用「慧忆册」的记忆整理助手。产品定位：智慧记忆管家。主职责：根据正文建议标签与归类，不编造用户未写内容。禁止心理咨询、医疗、金融决策与生成式闲聊。C 端不提供自由对话。",
+    "mode": "none",
+    "llmEnabled": false
+  },
+  "permissions": [
+    {
+      "name": "ohos.permission.INTERNET",
+      "reason": "登录注册与可选账号同步",
+      "when": "inuse",
+      "scene": "登录或注册时"
+    }
+  ],
+  "harmonyos": {
+    "features": []
+  },
+  "store": {
+    "category": "效率",
+    "legalOperator": "魏文波",
+    "oneLiner": "慧忆册 — 智慧记忆管家，帮助用户极简记录生活信息并通过智能标签归类回顾",
+    "fullDescription": "慧忆册是智慧记忆管家。用模板或自由书写记下生活与工作中的重要信息，系统按内容推荐标签；可收入记忆册、按日回顾、随机抽忆与待温习队列。数据默认保存在本机，支持导出纯文本备份。无广告、无内购。",
+    "keywords": [
+      "记录",
+      "备忘",
+      "标签",
+      "整理",
+      "记忆",
+      "鸿蒙"
+    ],
+    "privacySummary": {
+      "collect": [
+        "可选账号信息",
+        "本机记忆正文、标签、收藏与温习记录",
+        "记忆册名称与册内条目",
+        "深色模式等偏好"
+      ],
+      "purpose": "提供本机记录、记忆册、按日回顾、统计与导出",
+      "thirdParties": []
+    },
+    "demoAccount": {
+      "username": "auditor@huiyi.local",
+      "passwordNote": "仅写入 store/demo-account.md"
+    },
+    "screenshotPlan": [
+      {
+        "page": "home",
+        "caption": "智慧记录列表与悬浮新建"
+      },
+      {
+        "page": "write",
+        "caption": "新建记忆与标签推荐"
+      },
+      {
+        "page": "classify",
+        "caption": "记忆册、标签云与归类建议"
+      },
+      {
+        "page": "review",
+        "caption": "按日回顾、随机抽忆与待温习"
+      },
+      {
+        "page": "detail",
+        "caption": "记忆详情与编辑"
+      },
+      {
+        "page": "mine",
+        "caption": "统计、导出与设置"
+      }
+    ],
+    "incentiveHooks": [
+      "FormExtensionAbility",
+      "元服务快捷入口"
+    ]
+  },
+  "access": {
+    "mode": "open_optional",
+    "features": {
+      "register": true,
+      "guestBrowse": true,
+      "guestWrite": true
+    },
+    "gateActions": [
+      "sync_account"
+    ],
+    "onPrivacyRefuse": "browse_basic",
+    "loginProviders": [
+      "password"
+    ]
+  },
+  "brand": {
+    "primary": "#1A6DF5",
+    "primaryDeep": "#0B2A5C",
+    "deep": "#0B2A5C",
+    "accent": "#F5A623",
+    "tone": "premium-business",
+    "stylePack": "premium-business",
+    "workbenchId": "catalog-tool",
+    "layoutVariant": "E",
+    "productVisualType": "ops-tool",
+    "visualDirection": {
+      "archetype": "warm-tech-notebook",
+      "density": "airy",
+      "material": "soft-card-shadow",
+      "imagery": "desk-notebook-lamp",
+      "accent": "amber-on-wisdom-blue",
+      "primaryJob": "3 秒内新建一条记忆并看到标签推荐",
+      "notes": "智慧蓝#1A6DF5+琥珀#F5A623；四 Tab（记录/归类/回顾/我的）；记忆册+温习差异化；首页禁止心情手账"
+    },
+    "logo": {
+      "brandAnchor": "慧",
+      "glyphStrategy": "semantic-fusion",
+      "customLock": true,
+      "generator": "agent-svg",
+      "renderScript": "store/logo/render_logo.mjs",
+      "concept": "重叠书页涟漪 + 琥珀记忆点",
+      "foregroundFile": "store/logo/foreground.png",
+      "backgroundFile": "store/logo/background.png",
+      "previewFile": "store/logo/preview-1024.png",
+      "agcFile": "store/logo/agc-216.png",
+      "symbolFile": "store/logo/symbol.svg",
+      "horizontalFile": "store/logo/logo-horizontal.svg"
+    },
+    "visualAssets": [
+      { "id": "hero", "file": "hero_notebook.png", "usage": "首页 Hero 书桌笔记本" },
+      { "id": "banner", "file": "banner_paper_light.png", "usage": "详情 Hero 暖光纸页" },
+      { "id": "empty", "file": "empty_desk.png", "usage": "记录空态" },
+      { "id": "classify", "file": "classify_tabs.png", "usage": "智慧归类页头" },
+      { "id": "mine", "file": "mine_study.png", "usage": "我的页氛围" }
+    ]
+  }
+}

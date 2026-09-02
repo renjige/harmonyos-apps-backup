@@ -1,0 +1,352 @@
+{
+  "specVersion": "1.0.0",
+  "generatedAt": "2026-08-20T08:24:06.646Z",
+  "requestId": "req_1787214246604",
+  "industryPack": "heart-note",
+  "identity": {
+    "company": "暖笺生活",
+    "companyPinyin": "nuanjian",
+    "appName": "心笺日常",
+    "appPinyin": "xinjianrichang",
+    "bundleId": "com.nuanjian.xinjianrichang",
+    "version": "1.0.0"
+  },
+  "positioning": {
+    "tagline": "把平凡日子写成自己的故事，用安静的私人手账记录心情、小事与月度痕迹",
+    "coreUsers": [
+      {
+        "role": "想轻轻留下一天的都市年轻人",
+        "ageRange": "18-40",
+        "scenario": "睡前、通勤后、想把心情放进纸笺的时刻",
+        "need": "几十秒记下小事、心情和一句话，日后再慢慢回看"
+      }
+    ],
+    "painPoints": [
+      "日记 App 太重，社交与相册把心情挤没了",
+      "工具型记事本冷冰冰，没有手账的仪式感",
+      "想回看一个月，却只有密集列表没有痕迹"
+    ],
+    "differentiation": "把平凡日子写成自己的故事，用安静的私人手账记录心情、小事与月度痕迹"
+  },
+  "modules": {
+    "pages": [
+      {
+        "id": "home",
+        "title": "首页",
+        "route": "pages/HomePage",
+        "features": [
+          "今日日期",
+          "今日心情",
+          "写下今天",
+          "最近心笺"
+        ],
+        "tab": true
+      },
+      {
+        "id": "notes",
+        "title": "心笺",
+        "route": "pages/NotesPage",
+        "features": [
+          "时间流",
+          "搜索",
+          "心情标签筛选"
+        ],
+        "tab": true
+      },
+      {
+        "id": "review",
+        "title": "回顾",
+        "route": "pages/ReviewPage",
+        "features": [
+          "本月统计",
+          "心情分布",
+          "本月精选"
+        ],
+        "tab": true
+      },
+      {
+        "id": "mine",
+        "title": "我的",
+        "route": "pages/MinePage",
+        "features": [
+          "外观",
+          "提醒",
+          "数据管理",
+          "隐私"
+        ],
+        "tab": true
+      }
+    ],
+    "coreFlows": [
+      {
+        "name": "每日心笺闭环",
+        "steps": [
+          "选择今日心情",
+          "写下今天",
+          "保存心笺",
+          "在回顾中看见痕迹"
+        ]
+      }
+    ]
+  },
+  "entities": [
+    {
+      "name": "Note",
+      "table": "hn_notes",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "body",
+          "type": "string"
+        },
+        {
+          "name": "mood",
+          "type": "string"
+        },
+        {
+          "name": "noteDate",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "Prompt",
+      "table": "hn_prompts",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "body",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "TagPreset",
+      "table": "hn_tag_presets",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string"
+        }
+      ]
+    }
+  ],
+  "apis": [
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/heart-note/prompts",
+      "summary": "今日一句",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/heart-note/prompts/:id",
+      "summary": "一句详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/heart-note/tags",
+      "summary": "标签预设",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/heart-note/quotes",
+      "summary": "金句",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/heart-note/quotes/:id",
+      "summary": "金句详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/heart-note/kpis",
+      "summary": "KPI",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/messages",
+      "summary": "消息",
+      "auth": false,
+      "module": "messages"
+    }
+  ],
+  "ai": {
+    "capabilities": [],
+    "quickCommands": [],
+    "systemPrompt": "你是「暖笺生活」旗下应用「心笺日常」的内容助手。产品定位：把平凡日子写成自己的故事。主职责：帮助用户理解心情记录、心笺整理与月度回顾。禁止自称人工智能。禁止心理诊断。C 端不提供生成式对话。",
+    "mode": "none",
+    "llmEnabled": false
+  },
+  "permissions": [
+    {
+      "name": "ohos.permission.INTERNET",
+      "reason": "拉取今日一句与标签预设",
+      "when": "inuse",
+      "scene": "打开首页与心笺页"
+    }
+  ],
+  "harmonyos": {
+    "features": []
+  },
+  "store": {
+    "category": "生活",
+    "legalOperator": "魏文波",
+    "oneLiner": "心笺日常 — 把平凡日子写成自己的故事，用安静的私人手账记录心情、小事与月度痕迹",
+    "fullDescription": "心笺日常是一款轻量私人生活手账。你可以记下今天的心情、小事和一句话，按月份回看生活留下的痕迹。没有社交、没有支付、没有会员。心笺正文默认保存在本机。",
+    "keywords": [
+      "心情",
+      "日记",
+      "手账",
+      "日常",
+      "记录",
+      "回顾",
+      "生活",
+      "鸿蒙"
+    ],
+    "privacySummary": {
+      "collect": [
+        "可选账号信息",
+        "心笺标题与正文（默认仅本机）",
+        "心情与标签",
+        "用户主动选择的照片"
+      ],
+      "purpose": "提供心情记录、心笺保存与月度回顾",
+      "thirdParties": []
+    },
+    "demoAccount": {
+      "username": "auditor@nuanjian.local",
+      "passwordNote": "仅写入 store/demo-account.md"
+    },
+    "screenshotPlan": [
+      {
+        "page": "home",
+        "caption": "每一天，都值得被记住"
+      },
+      {
+        "page": "write",
+        "caption": "写下今天的心情"
+      },
+      {
+        "page": "notes",
+        "caption": "让生活慢慢留下痕迹"
+      },
+      {
+        "page": "review",
+        "caption": "回看属于你的日常"
+      },
+      {
+        "page": "mine",
+        "caption": "简单、私密、只属于你"
+      }
+    ],
+    "incentiveHooks": []
+  },
+  "access": {
+    "mode": "open_optional",
+    "features": {
+      "register": true,
+      "guestBrowse": true,
+      "guestWrite": true
+    },
+    "gateActions": [
+      "sync_notes"
+    ],
+    "onPrivacyRefuse": "browse_basic",
+    "loginProviders": [
+      "password"
+    ]
+  },
+  "admin": {
+    "featureModules": [
+      "overview",
+      "appUsers",
+      "hnPrompts",
+      "hnTagPresets",
+      "hnQuotes",
+      "hnNotes",
+      "messages",
+      "kpis"
+    ]
+  },
+  "brand": {
+    "primary": "#E98D83",
+    "primaryDeep": "#C46F66",
+    "deep": "#272321",
+    "accent": "#F5C9BE",
+    "tone": "soft-editorial",
+    "stylePack": "soft-editorial",
+    "workbenchId": "timeline-board",
+    "layoutVariant": "B",
+    "productVisualType": "content-commerce",
+    "visualDirection": {
+      "archetype": "warm-letter-journal",
+      "density": "airy",
+      "material": "cream-paper",
+      "imagery": "window-light-paper",
+      "accent": "apricot-rose",
+      "primaryJob": "3 秒内看见日期、选择心情并写下今天",
+      "notes": "暖杏红+米白+深灰；大圆角手账卡片；禁止粉俗爱心与工厂六件套"
+    },
+    "logo": {
+      "brandAnchor": "笺",
+      "glyphStrategy": "semantic-fusion",
+      "customLock": true,
+      "generator": "agent-svg",
+      "renderScript": "store/logo/render_logo.mjs",
+      "concept": "折角纸笺负形 + 小心形 + 日轮",
+      "style": "flat-premium",
+      "foregroundFile": "store/logo/foreground.png",
+      "backgroundFile": "store/logo/background.png",
+      "previewFile": "store/logo/preview-1024.png",
+      "agcFile": "store/logo/agc-216.png",
+      "symbolFile": "store/logo/symbol.svg",
+      "horizontalFile": "store/logo/logo-horizontal.svg"
+    },
+    "visualAssets": {
+      "hero": "hero_window_paper.png",
+      "banners": ["banner_review.png", "banner_write.png"],
+      "covers": [
+        "hero_desk_letter.png",
+        "hero_tea_light.png",
+        "hero_folded_note.png",
+        "cover_evening_lamp.png",
+        "cover_morning_table.png",
+        "cover_park_bench.png",
+        "cover_night_paper.png"
+      ]
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "string": [
+    { "name": "module_desc", "value": "墨香小筑：古典书摘、书房书单、墨迹与文友圈" },
+    { "name": "EntryAbility_desc", "value": "墨香小筑阅读入口" },
+    { "name": "EntryAbility_label", "value": "墨香小筑" },
+    { "name": "internet_reason", "value": "用于拉取书摘、书单与文友圈精选内容，以及登录同步墨迹" }
+  ]
+}

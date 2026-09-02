@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 360" role="img" aria-label="居家章">
+  <rect width="360" height="360" rx="72" fill="#1A3A5C"/>
+  <g transform="translate(18 18) scale(0.316)">
+    <circle cx="512" cy="512" r="340" fill="none" stroke="#FF6B35" stroke-width="36"/>
+    <path d="M320 560 L512 340 L704 560" fill="none" stroke="#FF6B35" stroke-width="48" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M380 560 L380 720 L644 720 L644 560" fill="none" stroke="#FF6B35" stroke-width="44" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <text x="420" y="228" font-family="Microsoft YaHei, PingFang SC, Noto Sans SC, sans-serif" font-size="118" font-weight="600" fill="#1A3A5C">居家章</text>
+</svg>

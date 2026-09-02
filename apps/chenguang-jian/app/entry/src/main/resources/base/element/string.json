@@ -1,0 +1,8 @@
+{
+  "string": [
+    { "name": "module_desc", "value": "晨光笺主模块" },
+    { "name": "EntryAbility_desc", "value": "晨光笺入口" },
+    { "name": "EntryAbility_label", "value": "晨光笺" },
+    { "name": "internet_reason", "value": "用于拉取每日晨语、标签预设、天气笺语、机构通知，以及可选的账号登录" }
+  ]
+}

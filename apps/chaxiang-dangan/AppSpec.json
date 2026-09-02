@@ -1,0 +1,363 @@
+{
+  "specVersion": "1.0.0",
+  "generatedAt": "2026-09-02T01:10:03.584Z",
+  "requestId": "req_1788311403552",
+  "industryPack": "tea-archive",
+  "identity": {
+    "company": "茶香印记",
+    "companyPinyin": "chaxiangyinji",
+    "appName": "茶香档案",
+    "appPinyin": "dangan",
+    "bundleId": "com.chaxiangyinji.dangan",
+    "version": "1.0.0"
+  },
+  "positioning": {
+    "tagline": "记下每一款茶的香气与故事——个人茶品档案、品饮记录与茶生活沉淀工具",
+    "coreUsers": [
+      {
+        "role": "日常喝茶并想留下记录的人",
+        "ageRange": "22-55",
+        "scenario": "新收到一款茶、下午品饮、整理家庭茶仓",
+        "need": "为茶建立档案并记下自己的品饮感受，而不是阅读百科"
+      }
+    ],
+    "painPoints": [
+      "茶叶包装信息散落，喝完记不清",
+      "普通笔记无法按茶类、库存状态与品饮次数管理",
+      "缺少个人茶生活时间轴与成长回顾"
+    ],
+    "differentiation": "记下每一款茶的香气与故事——个人茶品档案、品饮记录与茶生活沉淀工具"
+  },
+  "modules": {
+    "pages": [
+      {
+        "id": "home",
+        "title": "茶香空间",
+        "route": "pages/HomePage",
+        "features": [
+          "茶藏数字",
+          "今日品饮",
+          "最近记录",
+          "快捷入口",
+          "往年今日",
+          "数据摘要"
+        ],
+        "tab": true
+      },
+      {
+        "id": "cabinet",
+        "title": "茶库",
+        "route": "pages/CabinetPage",
+        "features": [
+          "六大茶类柜格",
+          "自定义仓",
+          "状态筛选",
+          "搜索",
+          "茶品详情"
+        ],
+        "tab": true
+      },
+      {
+        "id": "records",
+        "title": "记录",
+        "route": "pages/RecordPage",
+        "features": [
+          "品饮体验卡",
+          "按茶筛选",
+          "评分",
+          "新建品饮"
+        ],
+        "tab": true
+      },
+      {
+        "id": "review",
+        "title": "回顾",
+        "route": "pages/ReviewPage",
+        "features": [
+          "时间轴",
+          "数据中心",
+          "成就墙",
+          "月年回顾"
+        ],
+        "tab": true
+      },
+      {
+        "id": "mine",
+        "title": "我的",
+        "route": "pages/MinePage",
+        "features": [
+          "茶单",
+          "主题册",
+          "标签",
+          "计划",
+          "智慧整理",
+          "设置与隐私"
+        ],
+        "tab": true
+      }
+    ],
+    "coreFlows": [
+      {
+        "name": "茶香档案闭环",
+        "steps": [
+          "新增茶品",
+          "完善档案",
+          "品饮记录",
+          "评分",
+          "茶单或主题册",
+          "回顾成长"
+        ]
+      }
+    ]
+  },
+  "entities": [
+    {
+      "name": "TeaItem",
+      "table": "tea_items",
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "typeKey",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "brand",
+          "type": "string"
+        },
+        {
+          "name": "origin",
+          "type": "string"
+        },
+        {
+          "name": "yearText",
+          "type": "string"
+        },
+        {
+          "name": "collectedAt",
+          "type": "string"
+        },
+        {
+          "name": "packageNote",
+          "type": "string"
+        },
+        {
+          "name": "aromaNote",
+          "type": "string"
+        },
+        {
+          "name": "tasteNote",
+          "type": "string"
+        },
+        {
+          "name": "liquorNote",
+          "type": "string"
+        },
+        {
+          "name": "aftertasteNote",
+          "type": "string"
+        },
+        {
+          "name": "review",
+          "type": "string"
+        },
+        {
+          "name": "stockStatus",
+          "type": "string"
+        },
+        {
+          "name": "story",
+          "type": "string"
+        },
+        {
+          "name": "tagIds",
+          "type": "array"
+        }
+      ]
+    },
+    {
+      "name": "TastingRecord",
+      "table": "tasting_records",
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "teaId",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "dateKey",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "period",
+          "type": "string"
+        },
+        {
+          "name": "mood",
+          "type": "string"
+        },
+        {
+          "name": "aromaFeel",
+          "type": "string"
+        },
+        {
+          "name": "tasteFeel",
+          "type": "string"
+        },
+        {
+          "name": "scoreAroma",
+          "type": "number"
+        },
+        {
+          "name": "scoreTaste",
+          "type": "number"
+        },
+        {
+          "name": "scoreLove",
+          "type": "number"
+        },
+        {
+          "name": "scoreKeep",
+          "type": "number"
+        },
+        {
+          "name": "note",
+          "type": "string"
+        }
+      ]
+    }
+  ],
+  "apis": [],
+  "admin": {
+    "featureModules": []
+  },
+  "ai": {
+    "capabilities": [],
+    "quickCommands": [],
+    "systemPrompt": "你是「茶香印记」旗下应用「茶香档案」的整理助手。产品定位：个人茶品档案与品饮记录。主职责：帮助用户理解茶库、品饮与回顾。禁止生成式对话，禁止冒充茶叶鉴定。",
+    "mode": "none",
+    "llmEnabled": false
+  },
+  "permissions": [],
+  "harmonyos": {
+    "features": []
+  },
+  "store": {
+    "category": "生活",
+    "legalOperator": "魏文波",
+    "oneLiner": "记下每一款茶的香气与故事",
+    "fullDescription": "茶香档案是一款纯本地的个人茶生活管理工具。你可以为每一款茶建立独立档案，记录茶名、类型、产地、年份与收藏故事；在品饮时写下香气、口感、回甘与个人评分；用茶单整理日常口粮与珍品，用主题册沉淀春茶、旅行茶遇与家庭茶记。首页茶香空间展示茶藏数量、今日品饮与往年今日回顾；茶库以六大茶类柜格浏览；记录页以体验卡保存每一次品茶；回顾页用时间轴、数据中心与成就墙看见自己的茶生活轨迹。智慧整理基于本地规则提醒补充分类与标签，不含生成式人工智能。数据保存在本机，不申请相机、定位等敏感权限，无需注册登录，无广告、无内购、无商城。",
+    "keywords": [
+      "茶档案",
+      "品饮记录",
+      "茶藏",
+      "茶单",
+      "茶生活",
+      "鸿蒙"
+    ],
+    "privacySummary": {
+      "collect": [
+        "茶品档案与品饮记录（本机）",
+        "茶单、主题册、标签与计划（本机）",
+        "主题偏好（本机）",
+        "隐私同意状态（本机）"
+      ],
+      "purpose": "提供本地茶品档案管理、品饮记录、茶单主题、回顾统计与成就",
+      "thirdParties": []
+    },
+    "demoAccount": {
+      "username": "auditor@chaxiangyinji.local",
+      "passwordNote": "本地工具无需登录，仅审核占位"
+    },
+    "screenshotPlan": [
+      {
+        "page": "home",
+        "caption": "茶香空间仪表盘"
+      },
+      {
+        "page": "cabinet",
+        "caption": "茶库档案柜"
+      },
+      {
+        "page": "detail",
+        "caption": "茶品档案详情"
+      },
+      {
+        "page": "records",
+        "caption": "品饮体验卡"
+      },
+      {
+        "page": "review",
+        "caption": "时间轴与成就墙"
+      }
+    ],
+    "incentiveHooks": []
+  },
+  "access": {
+    "mode": "open_optional",
+    "features": {
+      "register": false,
+      "guestBrowse": true,
+      "guestWrite": true
+    },
+    "gateActions": [],
+    "onPrivacyRefuse": "exit",
+    "loginProviders": []
+  },
+  "brand": {
+    "primary": "#2F4A3C",
+    "primaryDeep": "#1C2E26",
+    "deep": "#1C2E26",
+    "accent": "#C4A574",
+    "tone": "soft-editorial",
+    "stylePack": "custom",
+    "workbenchId": "timeline-board",
+    "layoutVariant": "B",
+    "productVisualType": "ops-tool",
+    "visualDirection": {
+      "archetype": "modern-oriental-archive",
+      "density": "airy",
+      "material": "warm-paper",
+      "imagery": "tea-ambient",
+      "accent": "pale-gold-on-tea-green",
+      "primaryJob": "3 秒内新增茶档案或记下今日品饮",
+      "notes": "茶墨绿#2F4A3C+淡金#C4A574+米白#F6F1E8；五 Tab；禁止百科与珍藏空间换皮"
+    },
+    "logo": {
+      "brandAnchor": "茶",
+      "glyphStrategy": "semantic-fusion",
+      "customLock": true,
+      "generator": "agent-svg",
+      "renderScript": "store/logo/render_logo.mjs",
+      "symbolFile": "store/logo/symbol.svg",
+      "previewFile": "store/logo/preview-1024.png",
+      "foregroundFile": "store/logo/foreground.png",
+      "backgroundFile": "store/logo/background.png",
+      "agcFile": "store/logo/agc-216.png",
+      "horizontalFile": "store/logo/logo-horizontal.svg",
+      "concept": "圆形茶叶档案印记：叶轮廓+年轮细环"
+    },
+    "visualAssets": [
+      { "id": "hero_tea_space", "file": "hero_tea_space.png", "usage": "首页茶香空间 Hero / 茶品详情 Hero" },
+      { "id": "empty_cup", "file": "empty_cup.png", "usage": "空态空杯氛围" },
+      { "id": "cabinet_wood", "file": "cabinet_wood.png", "usage": "茶库档案柜材质" },
+      { "id": "tasting_texture", "file": "tasting_texture.png", "usage": "品饮体验卡 / 品饮详情纹理" },
+      { "id": "review_ambient", "file": "review_ambient.png", "usage": "回顾时间轴氛围" }
+    ]
+  }
+}

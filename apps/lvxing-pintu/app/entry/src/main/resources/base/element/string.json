@@ -1,0 +1,7 @@
+{
+  "string": [
+    { "name": "module_desc", "value": "旅行拼图主模块" },
+    { "name": "EntryAbility_desc", "value": "旅行记忆拼图与管理入口" },
+    { "name": "EntryAbility_label", "value": "旅行拼图" }
+  ]
+}

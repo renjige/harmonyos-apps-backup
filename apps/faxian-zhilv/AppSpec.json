@@ -1,0 +1,327 @@
+{
+  "specVersion": "1.0.0",
+  "generatedAt": "2026-08-25T01:51:50.743Z",
+  "requestId": "req_1787622710710",
+  "industryPack": "summer-wander",
+  "identity": {
+    "company": "发现科技",
+    "companyPinyin": "faxian",
+    "appName": "发现之旅",
+    "appPinyin": "zhilv",
+    "bundleId": "com.faxian.zhilv",
+    "version": "1.0.0"
+  },
+  "positioning": {
+    "tagline": "城市探索与生活发现App，帮助用户发现城市中值得探访的地点、活动与故事，让每一次出行都成为发现之旅",
+    "coreUsers": [
+      {
+        "role": "年轻用户与家庭",
+        "ageRange": "18-45",
+        "scenario": "周末半日与近郊慢行",
+        "need": "不想赶行程，只想吹一阵夏风、走一段轻路线、记下沿途"
+      }
+    ],
+    "painPoints": [
+      "旅游平台太重，行程被排满",
+      "有出门的心情，却不知道附近能慢慢走的路线",
+      "照片散落相册，没有轻量手记与准备清单"
+    ],
+    "differentiation": "城市探索与生活发现App，帮助用户发现城市中值得探访的地点、活动与故事，让每一次出行都成为发现之旅"
+  },
+  "modules": {
+    "pages": [
+      {
+        "id": "home",
+        "title": "发现",
+        "route": "pages/HomePage",
+        "features": [
+          "精选推荐",
+          "今日探索",
+          "分类浏览",
+          "探索灵感"
+        ],
+        "tab": true
+      },
+      {
+        "id": "catalog",
+        "title": "探索目录",
+        "route": "pages/RoutesPage",
+        "features": [
+          "筛选",
+          "探索点卡片",
+          "详情"
+        ],
+        "tab": true
+      },
+      {
+        "id": "journal",
+        "title": "旅记",
+        "route": "pages/JournalListPage",
+        "features": [
+          "新建",
+          "编辑",
+          "删除"
+        ],
+        "tab": true
+      },
+      {
+        "id": "mine",
+        "title": "我的",
+        "route": "pages/MinePage",
+        "features": [
+          "收藏",
+          "清单",
+          "关于",
+          "协议"
+        ],
+        "tab": true
+      }
+    ],
+    "coreFlows": [
+      {
+        "name": "漫行闭环",
+        "steps": [
+          "看见今日漫行",
+          "打开路线详情",
+          "勾选准备清单",
+          "收藏或加入手记"
+        ]
+      }
+    ]
+  },
+  "entities": [
+    {
+      "name": "WanderRoute",
+      "table": "sw_routes",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "duration",
+          "type": "string"
+        },
+        {
+          "name": "difficulty",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "WanderInspiration",
+      "table": "sw_inspirations",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "WanderQuote",
+      "table": "sw_quotes",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string"
+        }
+      ]
+    }
+  ],
+  "apis": [
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/summer-wander/routes",
+      "summary": "漫行路线列表",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/summer-wander/routes/:id",
+      "summary": "路线详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/summer-wander/inspirations",
+      "summary": "夏日灵感",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/summer-wander/inspirations/:id",
+      "summary": "灵感详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/summer-wander/quotes",
+      "summary": "漫行语录",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/summer-wander/kpis",
+      "summary": "KPI",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/messages",
+      "summary": "消息",
+      "auth": false,
+      "module": "messages"
+    }
+  ],
+  "ai": {
+    "capabilities": [],
+    "quickCommands": [],
+    "systemPrompt": "你是「发现科技」旗下应用「发现之旅」的助手。产品定位：城市探索与生活发现，帮助用户发现值得探访的地点、活动与故事。主职责：推荐探索点、匹配轻量路线、整理旅记与收藏。不编造票价与导航；不确定时建议用户实地确认。禁止扮演旅游电商或社交产品。",
+    "mode": "none",
+    "llmEnabled": false
+  },
+  "permissions": [
+    {
+      "name": "ohos.permission.INTERNET",
+      "reason": "拉取漫行路线、灵感与语录栏目",
+      "when": "inuse",
+      "scene": "浏览路线与灵感"
+    }
+  ],
+  "harmonyos": {
+    "features": []
+  },
+  "store": {
+    "category": "生活",
+    "legalOperator": "魏文波",
+    "oneLiner": "发现之旅 — 让每一次出行，都成为发现之旅",
+    "fullDescription": "发现之旅是一款城市探索与生活发现 App。提供精选推荐、探索目录、旅记与收藏等功能，帮助你在熟悉的城市里发现咖啡馆、书店、艺术空间与小众景点。无支付、无商城，专注探索与记录。",
+    "keywords": [
+      "城市探索",
+      "发现",
+      "旅记",
+      "地图",
+      "生活方式",
+      "鸿蒙"
+    ],
+    "privacySummary": {
+      "collect": [
+        "可选账号信息",
+        "本地手记与清单"
+      ],
+      "purpose": "提供路线浏览与本地手记",
+      "thirdParties": []
+    },
+    "demoAccount": {
+      "username": "auditor@faxian.local",
+      "passwordNote": "仅写入 store/demo-account.md"
+    },
+    "screenshotPlan": [
+      {
+        "page": "home",
+        "caption": "去吹一阵夏风"
+      },
+      {
+        "page": "routes",
+        "caption": "轻量路线卡片"
+      },
+      {
+        "page": "detail",
+        "caption": "路线节点时间线"
+      },
+      {
+        "page": "journal",
+        "caption": "旅行手记"
+      },
+      {
+        "page": "checklist",
+        "caption": "出行清单"
+      }
+    ],
+    "incentiveHooks": [
+      "FormExtensionAbility"
+    ]
+  },
+  "access": {
+    "mode": "open_optional",
+    "features": {
+      "register": true,
+      "guestBrowse": true,
+      "guestWrite": true
+    },
+    "gateActions": [
+      "optional_sync"
+    ],
+    "onPrivacyRefuse": "browse_basic",
+    "loginProviders": [
+      "password"
+    ]
+  },
+  "admin": {
+    "featureModules": [
+      "overview",
+      "appUsers",
+      "swRoutes",
+      "swInspirations",
+      "swQuotes",
+      "messages",
+      "kpis",
+      "ai"
+    ]
+  },
+  "brand": {
+    "primary": "#1A2A6C",
+    "primaryDeep": "#121D4A",
+    "deep": "#121D4A",
+    "accent": "#FF6B35",
+    "tone": "premium-business",
+    "stylePack": "harmonyos-official",
+    "workbenchId": "catalog-tool",
+    "layoutVariant": "A",
+    "productVisualType": "content-commerce",
+    "visualAssets": [
+      { "id": "hero", "file": "hero_discovery.png", "usage": "首页 Hero" },
+      { "id": "banner_cafe", "file": "banner_cafe.png", "usage": "美食分类" },
+      { "id": "banner_bookstore", "file": "banner_bookstore.png", "usage": "人文分类" },
+      { "id": "cat_art", "file": "cat_art.png", "usage": "艺术封面" },
+      { "id": "cat_nature", "file": "cat_nature.png", "usage": "自然封面" },
+      { "id": "map_header", "file": "map_header.png", "usage": "未使用（原地图占位）" }
+    ],
+    "visualDirection": {
+      "archetype": "city-discovery",
+      "density": "airy",
+      "material": "editorial-photo",
+      "imagery": "urban-cafe-bookstore-park",
+      "accent": "vibrant-orange",
+      "primaryJob": "3 秒内看见精选推荐并打开一处探索点",
+      "notes": "深邃蓝 #1A2A6C + 活力橙 #FF6B35；城市探索摄影"
+    },
+    "logo": {
+      "brandAnchor": "发",
+      "glyphStrategy": "semantic-fusion",
+      "customLock": true
+    }
+  }
+}

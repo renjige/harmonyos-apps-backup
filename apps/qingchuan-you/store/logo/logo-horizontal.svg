@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 256" role="img" aria-label="t�8">
+  <rect width="1024" height="256" fill="#1B3A5C"/>
+  <g transform="translate(48,16) scale(0.44)">
+    <circle cx="256" cy="168" r="64" fill="#F4FAFF"/>
+    <path d="M48 420 L160 250 L256 340 L360 220 L464 420 Z" fill="#F4FAFF"/>
+  </g>
+  <text x="320" y="168" fill="#F4FAFF" font-size="88" font-family="serif">t�8</text>
+</svg>

@@ -1,0 +1,8 @@
+{
+  "string": [
+    { "name": "module_desc", "value": "青柠日常主模块" },
+    { "name": "EntryAbility_desc", "value": "每日一事与心情日记" },
+    { "name": "EntryAbility_label", "value": "青柠日常" },
+    { "name": "internet_reason", "value": "用于可选账号登录与隐私相关接口" }
+  ]
+}

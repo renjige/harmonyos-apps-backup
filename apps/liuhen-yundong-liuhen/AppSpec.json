@@ -1,0 +1,202 @@
+{
+  "specVersion": "1.0.0",
+  "generatedAt": "2026-08-27T09:20:30.056Z",
+  "requestId": "req_1787822429856",
+  "industryPack": "morning-habit",
+  "identity": {
+    "company": "留痕科技",
+    "companyPinyin": "liuhen",
+    "appName": "运动留痕",
+    "appPinyin": "yundong-liuhen",
+    "bundleId": "com.liuhen.yundongliuhen",
+    "version": "1.0.1"
+  },
+  "positioning": {
+    "tagline": "手动记录运动、管理计划与打卡挑战，把每一次练习变成可坚持的习惯",
+    "coreUsers": [
+      {
+        "role": "轻度运动爱好者",
+        "ageRange": "18-45",
+        "scenario": "日常锻炼后想留下记录",
+        "need": "不装复杂运动手表，也能看见自己的运动频率与记忆"
+      }
+    ],
+    "painPoints": [
+      "系统健康只记数据不记感受",
+      "专业运动 App 功能过重需要 GPS",
+      "事后想补记却没有入口"
+    ],
+    "differentiation": "时间线留痕 + 周报复盘，无需 GPS 与账号，完整创建编辑删除闭环"
+  },
+  "modules": {
+    "pages": [
+      {
+        "id": "home",
+        "title": "首页",
+        "route": "pages/HomePage",
+        "features": ["本月目标", "开始运动", "本周数据", "每日打卡"],
+        "tab": true
+      },
+      {
+        "id": "plan",
+        "title": "计划",
+        "route": "pages/PlanPage",
+        "features": ["打卡", "周期计划", "挑战", "准备清单", "心得收藏"],
+        "tab": true
+      },
+      {
+        "id": "trace",
+        "title": "留痕",
+        "route": "pages/TracePage",
+        "features": ["时间线", "类型分布", "个人纪录", "周报印记", "补记"],
+        "tab": true
+      },
+      {
+        "id": "history",
+        "title": "历史",
+        "route": "pages/HistoryPage",
+        "features": ["月历标记", "周趋势", "当日清单"],
+        "tab": true
+      },
+      {
+        "id": "mine",
+        "title": "我的",
+        "route": "pages/MinePage",
+        "features": ["累计数据", "成就", "目标", "导出", "隐私"],
+        "tab": true
+      }
+    ],
+    "coreFlows": [
+      {
+        "name": "计时留痕闭环",
+        "steps": ["开始运动", "暂停结束", "保存摘要", "时间线可见", "详情编辑或删除"]
+      },
+      {
+        "name": "补记与周报复盘",
+        "steps": ["补记历史运动", "日历圆点更新", "打开周报印记", "写下复盘并置顶"]
+      }
+    ]
+  },
+  "entities": [
+    {
+      "name": "WorkoutRecord",
+      "table": "workouts",
+      "fields": [
+        { "name": "id", "type": "string", "required": true },
+        { "name": "typeKey", "type": "string", "required": true },
+        { "name": "durationSeconds", "type": "number", "required": true },
+        { "name": "dateKey", "type": "string", "required": true },
+        { "name": "note", "type": "string" }
+      ]
+    },
+    {
+      "name": "WeeklySnapshot",
+      "table": "weekly_snapshots",
+      "fields": [
+        { "name": "id", "type": "string", "required": true },
+        { "name": "weekStart", "type": "string" },
+        { "name": "reflection", "type": "string" },
+        { "name": "pinned", "type": "number" }
+      ]
+    }
+  ],
+  "apis": [],
+  "ai": {
+    "capabilities": [],
+    "quickCommands": [],
+    "systemPrompt": "你是「留痕科技」旗下应用「运动留痕」的助手。产品定位：把每次运动串成可视化痕迹。主职责：帮助理解计时、补记、日历与周报复盘；不提供生成式对话。",
+    "mode": "none",
+    "llmEnabled": false
+  },
+  "permissions": [],
+  "harmonyos": {
+    "features": []
+  },
+  "store": {
+    "category": "运动健康",
+    "oneLiner": "运动留痕 — 记录、计划、打卡与挑战，每一次练习都留下痕迹",
+    "fullDescription": "运动留痕是个人运动计划与习惯管理工具，不依赖定位、传感器或系统健康数据。您可记录跑步、徒步、骑行、瑜伽与健身训练，补记近 90 天并添加标签与身体状态；制定每周/每月计划并每日打卡；参加 7 天、21 天或周末户外挑战；勾选装备清单并收藏训练心得。留痕页提供时间线、类型分布与周报复盘（可置顶）；历史页用月历回顾。数据仅保存在本机。首次安装隐私声明由华为应用市场托管，应用内不再重复弹窗。距离与消耗为按时长估算，不替代专业运动手表或医疗建议。",
+    "keywords": [
+      "运动记录",
+      "运动计划",
+      "打卡",
+      "习惯",
+      "跑步",
+      "本地",
+      "鸿蒙"
+    ],
+    "privacySummary": {
+      "collect": [
+        "运动记录",
+        "计划打卡",
+        "周报复盘",
+        "设置偏好"
+      ],
+      "purpose": "在本机展示运动统计、计划进度、时间线与周报复盘",
+      "thirdParties": []
+    },
+    "demoAccount": {
+      "username": "auditor@liuhen.local",
+      "passwordNote": "本应用无需登录，演示账号不使用"
+    },
+    "screenshotPlan": [
+        { "page": "home", "caption": "本月目标、打卡与开始运动" },
+        { "page": "plan", "caption": "计划、挑战与准备清单" },
+        { "page": "session", "caption": "五类型计时记录" },
+        { "page": "trace", "caption": "时间线与周报印记" },
+        { "page": "history", "caption": "月历标记与当日清单" },
+      { "page": "mine", "caption": "成就与设置" }
+    ],
+    "incentiveHooks": [],
+    "legalOperator": "魏文波"
+  },
+  "access": {
+    "mode": "open_optional",
+    "features": {
+      "register": true,
+      "guestBrowse": true,
+      "guestWrite": true
+    },
+    "gateActions": [],
+    "onPrivacyRefuse": "browse_basic",
+    "loginProviders": [
+      "password"
+    ]
+  },
+  "brand": {
+    "primary": "#F97316",
+    "primaryDeep": "#1A1A2E",
+    "deep": "#1A1A2E",
+    "accent": "#06B6D4",
+    "tone": "sport-trace",
+    "stylePack": "premium-business",
+    "workbenchId": "catalog-tool",
+    "layoutVariant": "A",
+    "productVisualType": "ops-tool",
+    "visualDirection": {
+      "archetype": "sport-energy",
+      "density": "airy",
+      "material": "photo-hero",
+      "imagery": "track-motion",
+      "accent": "orange-cyan",
+      "primaryJob": "3 秒内点击开始运动",
+      "notes": "橙青渐变 Hero + 圆形主 CTA + 轨迹品牌"
+    },
+    "logo": {
+      "brandAnchor": "运",
+      "glyphStrategy": "semantic-fusion",
+      "customLock": true,
+      "generator": "agent-svg",
+      "renderScript": "store/logo/render_logo.mjs",
+      "concept": "流动轨迹线 + 青色印记点",
+      "foregroundFile": "store/logo/foreground.png",
+      "backgroundFile": "store/logo/background.png",
+      "previewFile": "store/logo/preview-1024.png",
+      "symbolFile": "store/logo/symbol.svg"
+    },
+    "visualAssets": [
+      { "id": "hero", "file": "hero_trace.png", "usage": "首页 Hero 摄影" },
+      { "id": "empty", "file": "empty_calm.png", "usage": "最近运动/空态" }
+    ]
+  }
+}

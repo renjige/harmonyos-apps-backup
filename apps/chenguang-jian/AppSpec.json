@@ -1,0 +1,365 @@
+{
+  "specVersion": "1.0.0",
+  "generatedAt": "2026-08-25T08:15:04.522Z",
+  "requestId": "req_1787645703841",
+  "industryPack": "dawn-slip",
+  "identity": {
+    "company": "晨光笺",
+    "companyPinyin": "chenguang",
+    "appName": "晨光笺",
+    "appPinyin": "jian",
+    "bundleId": "com.chenguang.jian",
+    "version": "1.0.0"
+  },
+  "positioning": {
+    "tagline": "每日一笺，在晨光里把心情与念头写成信笺，按时间线优雅陈列",
+    "coreUsers": [
+      {
+        "role": "追求仪式感的城市书写者",
+        "ageRange": "22-45",
+        "scenario": "清晨或灵感刚冒出来的片刻",
+        "need": "无压力写下一段话，日后能按笺纸与标签再遇见"
+      }
+    ],
+    "painPoints": [
+      "日记 App 太重、分类太多",
+      "备忘录太冷，没有信笺的仪式感",
+      "灵感散落，找不到当时的天色与标签"
+    ],
+    "differentiation": "每日一笺，在晨光里把心情与念头写成信笺，按时间线优雅陈列"
+  },
+  "modules": {
+    "pages": [
+      {
+        "id": "home",
+        "title": "笺集",
+        "route": "pages/HomePage",
+        "features": [
+          "日期问候",
+          "列表月视图",
+          "信笺时间线",
+          "FAB撰写"
+        ],
+        "tab": true
+      },
+      {
+        "id": "tags",
+        "title": "标签",
+        "route": "pages/TagsPage",
+        "features": [
+          "标签云",
+          "频率字号",
+          "点击筛选"
+        ],
+        "tab": true
+      },
+      {
+        "id": "mine",
+        "title": "我的",
+        "route": "pages/MinePage",
+        "features": [
+          "统计",
+          "收藏晨语",
+          "导出",
+          "设置隐私"
+        ],
+        "tab": true
+      }
+    ],
+    "coreFlows": [
+      {
+        "name": "晨笺书写闭环",
+        "steps": [
+          "看见今日晨语",
+          "撰写新笺自动保存",
+          "智慧标签",
+          "笺集回看与导出"
+        ]
+      }
+    ]
+  },
+  "entities": [
+    {
+      "name": "Essay",
+      "table": "dsl_essays",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "content",
+          "type": "string"
+        },
+        {
+          "name": "weather",
+          "type": "string"
+        },
+        {
+          "name": "isArchived",
+          "type": "boolean"
+        }
+      ]
+    },
+    {
+      "name": "DawnQuote",
+      "table": "dsl_quotes",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "body",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "TagPreset",
+      "table": "dsl_tag_presets",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "WeatherHint",
+      "table": "dsl_weather_hints",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string"
+        }
+      ]
+    }
+  ],
+  "apis": [
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/dawn-slip/quotes",
+      "summary": "每日晨语",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/dawn-slip/quotes/:id",
+      "summary": "晨语详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/dawn-slip/tags",
+      "summary": "标签预设",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/dawn-slip/tags/:id",
+      "summary": "标签详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/dawn-slip/weather-hints",
+      "summary": "天气笺语",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/dawn-slip/weather-hints/:id",
+      "summary": "笺语详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/dawn-slip/daily",
+      "summary": "今日晨语与天色",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/dawn-slip/kpis",
+      "summary": "KPI",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/messages",
+      "summary": "消息",
+      "auth": false,
+      "module": "messages"
+    }
+  ],
+  "ai": {
+    "capabilities": [],
+    "quickCommands": [],
+    "systemPrompt": "你是「晨光笺」旗下应用「晨光笺」的内容助手。产品定位：每日一笺，在晨光里把心情与念头写成信笺。主职责：帮助理解晨语、随笔整理、标签与月视图回看。禁止自称人工智能或大模型。禁止编造用户没写过的随笔。C 端不提供生成式对话。",
+    "mode": "none",
+    "llmEnabled": false
+  },
+  "permissions": [
+    {
+      "name": "ohos.permission.INTERNET",
+      "reason": "拉取每日晨语、标签预设、天气笺语与机构通知",
+      "when": "inuse",
+      "scene": "打开笺集、标签页与机构通知"
+    }
+  ],
+  "harmonyos": {
+    "features": []
+  },
+  "store": {
+    "category": "生活",
+    "legalOperator": "魏文波",
+    "oneLiner": "晨光笺 — 每日一笺，在晨光里把心情与念头写成信笺，按时间线优雅陈列",
+    "fullDescription": "晨光笺是一款智慧随笔应用。你可以在清晨或任何灵感时刻写下心情与念头，像信笺一样按时间线陈列。每日晨语、标签云与月视图帮助回看。完全免费，无支付。随笔正文默认保存在本机。",
+    "keywords": [
+      "随笔",
+      "笺",
+      "晨光",
+      "信笺",
+      "记录",
+      "标签",
+      "生活",
+      "鸿蒙"
+    ],
+    "privacySummary": {
+      "collect": [
+        "可选账号信息",
+        "随笔标题与正文（默认仅本机）",
+        "标签与时辰天色"
+      ],
+      "purpose": "提供随笔记录、标签整理、晨语展示与纯文本导出",
+      "thirdParties": []
+    },
+    "demoAccount": {
+      "username": "auditor@chenguang.local",
+      "passwordNote": "仅写入 store/demo-account.md"
+    },
+    "screenshotPlan": [
+      {
+        "page": "home",
+        "caption": "早安，记录今日"
+      },
+      {
+        "page": "write",
+        "caption": "写下此刻的心情"
+      },
+      {
+        "page": "tags",
+        "caption": "标签云筛选笺集"
+      },
+      {
+        "page": "month",
+        "caption": "月视图回看"
+      },
+      {
+        "page": "mine",
+        "caption": "简单、私密、只属于你"
+      }
+    ],
+    "incentiveHooks": []
+  },
+  "access": {
+    "mode": "open_optional",
+    "features": {
+      "register": true,
+      "guestBrowse": true,
+      "guestWrite": true
+    },
+    "gateActions": [
+      "sync_notes"
+    ],
+    "onPrivacyRefuse": "browse_basic",
+    "loginProviders": [
+      "password"
+    ]
+  },
+  "admin": {
+    "featureModules": [
+      "overview",
+      "appUsers",
+      "dslQuotes",
+      "dslTagPresets",
+      "dslWeatherHints",
+      "dslEssays",
+      "messages",
+      "kpis"
+    ]
+  },
+  "brand": {
+    "primary": "#A67C52",
+    "primaryDeep": "#8B6914",
+    "deep": "#3D3228",
+    "accent": "#D4A574",
+    "tone": "soft-editorial",
+    "stylePack": "soft-editorial",
+    "workbenchId": "timeline-board",
+    "layoutVariant": "E",
+    "productVisualType": "content-commerce",
+    "visualDirection": {
+      "archetype": "dawn-letter-paper",
+      "density": "airy",
+      "material": "rice-paper",
+      "imagery": "morning-window-letter",
+      "accent": "warm-gold-beam",
+      "primaryJob": "3 秒内看见今日晨语并写下一张新笺",
+      "notes": "米白纸张+暖金晨光+深灰正文；三 Tab；禁止心情五态与工厂六件套"
+    },
+    "logo": {
+      "brandAnchor": "晨",
+      "glyphStrategy": "semantic-fusion",
+      "customLock": true,
+      "generator": "agent-svg",
+      "renderScript": "store/logo/render_logo.mjs",
+      "concept": "折角信笺矩形 + 斜向晨光细线",
+      "style": "flat-premium",
+      "foregroundFile": "store/logo/foreground.png",
+      "backgroundFile": "store/logo/background.png",
+      "previewFile": "store/logo/preview-1024.png",
+      "agcFile": "store/logo/agc-216.png",
+      "symbolFile": "store/logo/symbol.svg",
+      "horizontalFile": "store/logo/logo-horizontal.svg"
+    },
+    "visualAssets": [
+      { "id": "hero", "file": "hero_dawn_window.png", "usage": "首页 Hero / 详情默认封面" },
+      { "id": "banner1", "file": "banner_letter_desk.png", "usage": "笺集 Banner" },
+      { "id": "banner2", "file": "banner_gold_beam.png", "usage": "标签页 Banner" },
+      { "id": "cover_fold", "file": "cover_folded_jian.png", "usage": "折笺封面" },
+      { "id": "cover_tea", "file": "cover_tea_dawn.png", "usage": "茶席晨光封面" },
+      { "id": "texture", "file": "texture_rice_paper.png", "usage": "纸张材质" },
+      { "id": "empty", "file": "empty_first_jian.png", "usage": "空态" }
+    ]
+  }
+}

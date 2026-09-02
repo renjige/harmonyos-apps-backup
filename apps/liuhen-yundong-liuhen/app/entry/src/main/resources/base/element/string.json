@@ -1,0 +1,7 @@
+{
+  "string": [
+    { "name": "module_desc", "value": "运动留痕 — 本地运动记录与可视化" },
+    { "name": "EntryAbility_desc", "value": "运动留痕应用入口" },
+    { "name": "EntryAbility_label", "value": "运动留痕" }
+  ]
+}

@@ -1,0 +1,204 @@
+{
+  "specVersion": "1.0.0",
+  "generatedAt": "2026-08-26T01:20:57.816Z",
+  "requestId": "req_1787707257782",
+  "industryPack": "insect-journal",
+  "identity": {
+    "company": "林涧博物",
+    "companyPinyin": "linjian",
+    "appName": "昆虫观察簿",
+    "appPinyin": "kunchong-guanchabu",
+    "bundleId": "com.linjian.kunchongguanchabu",
+    "version": "1.0.0"
+  },
+  "positioning": {
+    "tagline": "帮助自然爱好者随时记录昆虫发现、管理个人图鉴并学习常见昆虫知识的随身观察簿",
+    "coreUsers": [
+      {
+        "role": "自然爱好者",
+        "ageRange": "18-55",
+        "scenario": "公园、田野、阳台发现昆虫",
+        "need": "立刻记下名称、照片、地点与行为"
+      },
+      {
+        "role": "亲子家庭",
+        "ageRange": "28-45",
+        "scenario": "周末带孩子认识身边昆虫",
+        "need": "简单图鉴与可读的知识卡片"
+      }
+    ],
+    "painPoints": [
+      "相册里的昆虫照片没有上下文",
+      "想查常见昆虫却打开百科太重",
+      "观察记录散落备忘录无法统计"
+    ],
+    "differentiation": "本地观察记录 + 个人图鉴网格 + 十二种常见昆虫知识卡，无账号无识别无社交"
+  },
+  "modules": {
+    "pages": [
+      {
+        "id": "home",
+        "title": "发现",
+        "route": "pages/HomePage",
+        "features": ["今日日期", "今日昆虫知识", "开始观察"],
+        "tab": true
+      },
+      {
+        "id": "atlas",
+        "title": "图鉴",
+        "route": "pages/AtlasPage",
+        "features": ["网格卡片", "搜索", "收藏与标签筛选"],
+        "tab": true
+      },
+      {
+        "id": "stats",
+        "title": "统计",
+        "route": "pages/StatsPage",
+        "features": ["次数天数种类", "月度趋势", "发现 Top5"],
+        "tab": true
+      },
+      {
+        "id": "mine",
+        "title": "我的",
+        "route": "pages/MinePage",
+        "features": ["昵称", "导出", "设置与隐私"],
+        "tab": true
+      }
+    ],
+    "coreFlows": [
+      {
+        "name": "观察闭环",
+        "steps": ["看今日知识", "开始观察", "拍照或选图并填写", "保存", "图鉴可见", "详情可编辑删除"]
+      }
+    ]
+  },
+  "entities": [
+    {
+      "name": "Observation",
+      "table": "local_observations",
+      "fields": [
+        { "name": "id", "type": "string", "required": true },
+        { "name": "name", "type": "string", "required": true },
+        { "name": "photoUri", "type": "string" },
+        { "name": "location", "type": "string" },
+        { "name": "date", "type": "string" },
+        { "name": "weather", "type": "string" },
+        { "name": "tags", "type": "array" }
+      ]
+    },
+    {
+      "name": "InsectWikiItem",
+      "table": "local_wiki",
+      "fields": [
+        { "name": "id", "type": "string", "required": true },
+        { "name": "name", "type": "string", "required": true },
+        { "name": "coverKey", "type": "string" }
+      ]
+    }
+  ],
+  "apis": [],
+  "ai": {
+    "capabilities": [],
+    "quickCommands": [],
+    "systemPrompt": "你是「林涧博物」旗下应用「昆虫观察簿」的内容助手。产品定位：帮助自然爱好者记录昆虫发现、管理个人图鉴并学习常见昆虫知识。主职责：解释观察记录字段与百科条目。禁止自称人工智能，禁止物种鉴定结论。C 端不提供生成式对话。",
+    "mode": "none",
+    "llmEnabled": false
+  },
+  "permissions": [
+    {
+      "name": "ohos.permission.APPROXIMATELY_LOCATION",
+      "reason": "在新建观察时获取发现地点，便于写入观察记录",
+      "when": "inuse",
+      "scene": "用户点击获取地点后"
+    },
+    {
+      "name": "ohos.permission.LOCATION",
+      "reason": "在新建观察时获取发现地点，便于写入观察记录",
+      "when": "inuse",
+      "scene": "用户点击获取地点后"
+    }
+  ],
+  "harmonyos": { "features": [] },
+  "store": {
+    "category": "生活",
+    "legalOperator": "魏文波",
+    "oneLiner": "昆虫观察簿 — 记录发现、翻阅图鉴、认识身边的昆虫",
+    "fullDescription": "昆虫观察簿是面向自然爱好者与亲子家庭的本地观察工具。支持为每一次发现拍照或从相册选图，记录名称、地点、天气、行为与标签，并在个人图鉴中筛选回顾。内置十二种常见昆虫知识卡片，按日轮换「今日发现」。观察统计展示次数、天数、种类与月度趋势。数据保存在本机，无需注册登录，不含支付、社交与物种识别。百科内容为科普参考，不替代专业鉴定。",
+    "keywords": ["昆虫", "观察", "图鉴", "自然笔记", "亲子", "鸿蒙"],
+    "privacySummary": {
+      "collect": ["昵称（本机）", "观察记录与本地照片", "可选位置（使用时）"],
+      "purpose": "提供本地观察记录、图鉴与统计",
+      "thirdParties": []
+    },
+    "screenshotPlan": [
+      { "page": "home", "caption": "今日发现与开始观察" },
+      { "page": "editor", "caption": "新建观察表单" },
+      { "page": "atlas", "caption": "图鉴网格" },
+      { "page": "detail", "caption": "观察详情" },
+      { "page": "stats", "caption": "观察统计" }
+    ],
+    "incentiveHooks": []
+  },
+  "access": {
+    "mode": "open_optional",
+    "features": { "register": false, "guestBrowse": true, "guestWrite": true },
+    "gateActions": [],
+    "onPrivacyRefuse": "exit",
+    "loginProviders": []
+  },
+  "admin": {
+    "featureModules": ["overview", "appUsers", "messages", "kpis"]
+  },
+  "brand": {
+    "primary": "#2D5A4A",
+    "primaryDeep": "#1A4A3A",
+    "deep": "#1A4A3A",
+    "accent": "#C49A6C",
+    "tone": "soft-editorial",
+    "stylePack": "soft-editorial",
+    "workbenchId": "catalog-tool",
+    "layoutVariant": "B",
+    "productVisualType": "content-commerce",
+    "visualDirection": {
+      "archetype": "nature-field-journal",
+      "density": "airy",
+      "material": "warm-paper",
+      "imagery": "dew-leaf-insect-macro",
+      "accent": "amber-gold",
+      "primaryJob": "3 秒内看见今日昆虫并开始一条观察",
+      "notes": "森林绿 #2D5A4A + 琥珀金 #C49A6C + 暖米色 #F5F0E8；禁止工厂六件套与路线攻略"
+    },
+    "visualAssets": [
+      { "id": "hero_leaf_dew", "file": "hero_leaf_dew.png", "usage": "首页 Hero" },
+      { "id": "banner_season", "file": "banner_season.png", "usage": "知识库条带" },
+      { "id": "empty_notebook", "file": "empty_notebook.png", "usage": "图鉴空态" },
+      { "id": "wiki_ladybug", "file": "wiki_ladybug.png", "usage": "七星瓢虫封面" },
+      { "id": "wiki_honeybee", "file": "wiki_honeybee.png", "usage": "中华蜜蜂封面" },
+      { "id": "wiki_cabbage_white", "file": "wiki_cabbage_white.png", "usage": "菜粉蝶封面" },
+      { "id": "wiki_dragonfly", "file": "wiki_dragonfly.png", "usage": "黄衣蜻蜓封面" },
+      { "id": "wiki_mantis", "file": "wiki_mantis.png", "usage": "中华大刀螳封面" },
+      { "id": "wiki_cricket", "file": "wiki_cricket.png", "usage": "斗蟋封面" },
+      { "id": "wiki_cicada", "file": "wiki_cicada.png", "usage": "蚱蝉封面" },
+      { "id": "wiki_ant", "file": "wiki_ant.png", "usage": "日本弓背蚁封面" },
+      { "id": "wiki_firefly", "file": "wiki_firefly.png", "usage": "窗萤封面" },
+      { "id": "wiki_longhorn", "file": "wiki_longhorn.png", "usage": "星天牛封面" },
+      { "id": "wiki_locust", "file": "wiki_locust.png", "usage": "东亚飞蝗封面" },
+      { "id": "wiki_scarab", "file": "wiki_scarab.png", "usage": "铜绿丽金龟封面" }
+    ],
+    "logo": {
+      "concept": "放大镜镜头与叶片负空间融合，森林绿底米白标",
+      "style": "flat-premium",
+      "generator": "agent-svg",
+      "renderScript": "store/logo/render_logo.mjs",
+      "glyphStrategy": "semantic-fusion",
+      "brandAnchor": "昆",
+      "customLock": true,
+      "foregroundFile": "store/logo/foreground.png",
+      "backgroundFile": "store/logo/background.png",
+      "previewFile": "store/logo/preview-1024.png",
+      "agcFile": "store/logo/agc-216.png",
+      "symbolFile": "store/logo/symbol.svg",
+      "horizontalFile": "store/logo/logo-horizontal.svg"
+    }
+  }
+}

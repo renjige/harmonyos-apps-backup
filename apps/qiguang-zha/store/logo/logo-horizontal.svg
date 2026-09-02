@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 520">
+  <rect width="1600" height="520" fill="#F6F1E8"/>
+  <svg x="48" y="58" width="404" height="404" viewBox="0 0 1024 1024">
+    <rect width="1024" height="1024" rx="180" fill="#2F4A47"/>
+    <path d="M268 292 L492 328 L492 772 L292 728 Z" fill="#F6F1E8"/>
+    <path d="M532 328 L756 292 L732 728 L532 772 Z" fill="#EDE4D6"/>
+    <rect x="500" y="236" width="24" height="560" rx="12" fill="#C4A574"/>
+    <circle cx="512" cy="248" r="36" fill="#C4A574"/>
+    <circle cx="512" cy="248" r="14" fill="#F6F1E8"/>
+  </svg>
+  <text x="500" y="310" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="168" font-weight="600" fill="#2F4A47">I-</text>
+</svg>

@@ -1,0 +1,294 @@
+import { pasteboard } from '@kit.BasicServicesKit'
+import { Theme } from '../components/design-system/Theme'
+import { ThemeAppearance } from '../services/ThemeAppearance'
+import { common } from '@kit.AbilityKit'
+import { AppButton } from '../components/design-system/AppButton'
+import { ConfirmLeaveSheet } from '../components/note/ConfirmLeaveSheet'
+import { MineSettingsPane, MineExportPane, MinePrefRow } from '../components/mine/MineSheets'
+import { AuthService } from '../services/AuthService'
+import { PrivacyService } from '../services/PrivacyService'
+import { HeartNoteStore } from '../services/HeartNoteStore'
+import { NoteNav } from '../services/NoteNav'
+import { LegalDocKind, LegalDocOverlay } from '../components/legal/LegalDocOverlay'
+
+@Component
+export struct MinePage {
+  @StorageLink('themeEpoch') themeEpoch: number = 0
+  @Prop appName: string = '心笺日常'
+  @StorageLink('accessToken') accessToken: string = ''
+  @StorageLink('currentUsername') currentUsername: string = ''
+  @StorageLink('darkModeOn') darkModeOn: boolean = false
+  @StorageLink('fontLevel') fontLevel: number = 1
+  @StorageLink('dailyRemindOn') dailyRemindOn: boolean = false
+  @State showSettings: boolean = false
+  @State showExport: boolean = false
+  @State showClear: boolean = false
+  @State exportText: string = ''
+  @State legalKind: LegalDocKind = 'privacy'
+  @State showLegal: boolean = false
+  @State toastText: string = ''
+  onOpenLogin: () => void = () => {}
+  onLogout: () => void = () => {}
+
+  aboutToAppear(): void {
+    if (this.showSettings) {
+      AppStorage.setOrCreate('tabBarHidden', true)
+    }
+  }
+
+  private isLoggedIn(): boolean {
+    return this.accessToken.length > 0
+  }
+
+  private showToast(message: string): void {
+    this.toastText = message
+    setTimeout(() => { this.toastText = '' }, 2800)
+  }
+
+  private async handleRevokePrivacy(): Promise<void> {
+    await PrivacyService.revoke()
+    if (this.isLoggedIn()) {
+      await AuthService.logout()
+      this.onLogout()
+    }
+    this.showSettings = false
+    AppStorage.setOrCreate('tabBarHidden', false)
+    this.showToast('已撤回隐私同意，再次登录须重新勾选协议')
+  }
+
+  private async handleDeleteAccount(): Promise<void> {
+    const ok = await PrivacyService.deleteAccount()
+    if (ok) {
+      await AuthService.logout()
+      this.showSettings = false
+      AppStorage.setOrCreate('tabBarHidden', false)
+      this.onLogout()
+      this.showToast('账号已注销')
+      return
+    }
+    this.showToast('注销失败，请稍后重试')
+  }
+
+  private async toggleDark(on: boolean): Promise<void> {
+    ThemeAppearance.apply(on ? 'dark' : 'light', this.getUIContext().getHostContext() as common.UIAbilityContext)
+    await HeartNoteStore.setDark(on)
+  }
+
+  private async setFont(level: number): Promise<void> {
+    Theme.applyFontLevel(level)
+    await HeartNoteStore.setFontLevel(level)
+  }
+
+  private async toggleRemind(on: boolean): Promise<void> {
+    await HeartNoteStore.setRemind(on)
+    this.showToast(on ? '之后打开首页时，若今天还没写下心笺，会轻轻提醒你。' :
+      '已关闭今日心笺提醒')
+  }
+
+  private async copyExport(): Promise<void> {
+    try {
+      const data = pasteboard.createData(pasteboard.MIMETYPE_TEXT_PLAIN, this.exportText)
+      await pasteboard.getSystemPasteboard().setData(data)
+      this.showToast('已复制到剪贴板')
+    } catch {
+      this.showToast('请长按文字自行复制')
+    }
+  }
+
+  build() {
+    Stack() {
+      Column() {
+        if (this.showSettings) {
+          MineSettingsPane({
+            onClose: (): void => {
+              this.showSettings = false
+              AppStorage.setOrCreate('tabBarHidden', false)
+            },
+            onOpenAgreement: (): void => {
+              this.legalKind = 'agreement'
+              this.showLegal = true
+            },
+            onOpenPrivacy: (): void => {
+              this.legalKind = 'privacy'
+              this.showLegal = true
+            },
+            onDeleteAccount: (): void => { void this.handleDeleteAccount() },
+            onRevoke: (): void => { void this.handleRevokePrivacy() }
+          })
+        } else {
+          this.MainPanel()
+        }
+      }
+      .width('100%')
+      .height('100%')
+      .backgroundColor(this.themeEpoch >= 0 ? Theme.colors().surfacePage : Theme.colors().surfacePage)
+
+      if (this.showClear) {
+        ConfirmLeaveSheet({
+          title: '确定要清空本机心笺吗？',
+          subtitle: '清空后无法从应用里找回。',
+          keepLabel: '留下它们',
+          leaveLabel: '清空',
+          onKeep: (): void => { this.showClear = false },
+          onLeave: (): void => { void this.doClear() }
+        })
+      }
+
+      if (this.showExport) {
+        MineExportPane({
+          exportText: this.exportText,
+          onCopy: (): void => { void this.copyExport() },
+          onClose: (): void => { this.showExport = false }
+        })
+      }
+
+      if (this.toastText.length > 0) {
+        Column() {
+          Text(this.toastText)
+            .fontSize(Theme.type.footnote)
+            .fontColor(Theme.colors().brandOnPrimary)
+            .padding({ left: 16, right: 16, top: 10, bottom: 10 })
+            .backgroundColor(Theme.colors().brandPrimary)
+            .borderRadius(Theme.radius.pill)
+            .maxLines(3)
+            .textAlign(TextAlign.Center)
+        }
+        .width('100%')
+        .padding({ top: Theme.space.s6, left: Theme.space.pageX, right: Theme.space.pageX })
+        .alignItems(HorizontalAlign.Center)
+        .zIndex(20)
+      }
+
+      if (this.showLegal) {
+        LegalDocOverlay({
+          kind: this.legalKind,
+          onClose: () => { this.showLegal = false }
+        })
+          .width('100%')
+          .height('100%')
+      }
+    }
+    .width('100%')
+    .height('100%')
+  }
+
+  private async doClear(): Promise<void> {
+    await HeartNoteStore.clearAll()
+    this.showClear = false
+    this.showToast('本机心笺已清空')
+  }
+
+  @Builder
+  MainPanel() {
+    Column() {
+      Column({ space: 6 }) {
+        Text('我的心笺')
+          .fontSize(Theme.type.title1)
+          .fontWeight(FontWeight.Medium)
+          .fontColor(Theme.colors().textPrimary)
+          .width('100%')
+        Text(this.isLoggedIn() ? this.currentUsername : '这是只属于你的私人手账')
+          .fontSize(Theme.type.footnote)
+          .fontColor(Theme.colors().textSecondary)
+          .width('100%')
+      }
+      .padding({ left: Theme.space.pageX, right: Theme.space.pageX, top: Theme.space.pageY })
+      .width('100%')
+
+      Scroll() {
+        Column({ space: Theme.space.s4 }) {
+          Column({ space: 8 }) {
+            Text(this.isLoggedIn() ? '已登录' : '游客')
+              .fontSize(Theme.type.title3)
+              .fontWeight(FontWeight.Medium)
+              .fontColor(Theme.colors().textPrimary)
+              .width('100%')
+            Text(this.isLoggedIn()
+              ? '账号用于注销与机构通知。心笺正文仍保存在本机。'
+              : '写心笺不必登录。可选登录后可注销账号、查看机构通知。')
+              .fontSize(Theme.type.footnote)
+              .fontColor(Theme.colors().textSecondary)
+              .width('100%')
+          }
+          .width('100%')
+          .padding(Theme.space.s5)
+          .alignItems(HorizontalAlign.Start)
+          .backgroundColor(this.themeEpoch >= 0 ? Theme.colors().surfaceCard : Theme.colors().surfaceCard)
+          .borderRadius(Theme.radius.card)
+
+          MinePrefRow({ title: '深色模式', caption: this.darkModeOn ? '已打开' : '米白手账', onTap: (): void => {
+            void this.toggleDark(!this.darkModeOn)
+          } })
+          Row({ space: 8 }) {
+            Text('字体大小').fontSize(Theme.type.subhead).fontColor(Theme.colors().textPrimary).layoutWeight(1)
+            Text('适中')
+              .fontSize(Theme.type.caption)
+              .fontColor(this.fontLevel === 1 ? Theme.colors().brandOnPrimary : Theme.colors().textSecondary)
+              .padding({ left: 12, right: 12, top: 6, bottom: 6 })
+              .backgroundColor(this.fontLevel === 1 ? Theme.colors().brandPrimary : Theme.colors().surfaceSubtle)
+              .borderRadius(Theme.radius.pill)
+              .onClick((): void => { void this.setFont(1) })
+            Text('稍大')
+              .fontSize(Theme.type.caption)
+              .fontColor(this.fontLevel === 2 ? Theme.colors().brandOnPrimary : Theme.colors().textSecondary)
+              .padding({ left: 12, right: 12, top: 6, bottom: 6 })
+              .backgroundColor(this.fontLevel === 2 ? Theme.colors().brandPrimary : Theme.colors().surfaceSubtle)
+              .borderRadius(Theme.radius.pill)
+              .onClick((): void => { void this.setFont(2) })
+          }
+          .width('100%')
+          .padding(Theme.space.s4)
+          .backgroundColor(this.themeEpoch >= 0 ? Theme.colors().surfaceCard : Theme.colors().surfaceCard)
+          .borderRadius(Theme.radius.xl)
+
+          MinePrefRow({ title: '今日心笺提醒', caption: this.dailyRemindOn ? '首页轻声提醒' : '关闭', onTap: (): void => {
+            void this.toggleRemind(!this.dailyRemindOn)
+          } })
+          MinePrefRow({ title: '导出记录', caption: '复制本机心笺文字', onTap: (): void => {
+            this.exportText = HeartNoteStore.exportText()
+            this.showExport = true
+          } })
+          MinePrefRow({ title: '清空数据', caption: '清除本机心笺', onTap: (): void => { this.showClear = true } })
+          MinePrefRow({ title: '机构通知', caption: '轻轻一声', onTap: (): void => { NoteNav.openMessages() } })
+          MinePrefRow({ title: '设置与隐私', caption: '协议 · 撤回 · 注销', onTap: (): void => {
+            this.showSettings = true
+            AppStorage.setOrCreate('tabBarHidden', true)
+          } })
+
+          if (this.isLoggedIn()) {
+            AppButton({
+              label: '退出登录',
+              variant: 'secondary',
+              onTap: (): void => {
+                void AuthService.logout()
+                this.onLogout()
+              }
+            })
+          } else {
+            AppButton({
+              label: '登录 / 注册',
+              onTap: (): void => { this.onOpenLogin() }
+            })
+          }
+
+          Text('心笺日常  1.0.0  ·  HeartNote')
+            .fontSize(Theme.type.caption)
+            .fontColor(Theme.colors().textTertiary)
+            .width('100%')
+            .textAlign(TextAlign.Center)
+            .margin({ top: 8, bottom: 12 })
+        }
+        .padding({
+          left: Theme.space.pageX,
+          right: Theme.space.pageX,
+          bottom: Theme.space.s10
+        })
+        .width('100%')
+      }
+      .layoutWeight(1)
+      .scrollBar(BarState.Off)
+    }
+    .width('100%')
+    .height('100%')
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "string": [
+    { "name": "module_desc", "value": "昆虫观察簿 — 本地观察记录与个人图鉴" },
+    { "name": "EntryAbility_desc", "value": "记录昆虫发现、管理图鉴与知识卡片" },
+    { "name": "EntryAbility_label", "value": "昆虫观察簿" },
+    { "name": "location_reason", "value": "用于在新建观察时填写发现地点，可随时手动修改" },
+    { "name": "camera_reason", "value": "用于拍摄观察照片，仅在您点击拍照时使用" }
+  ]
+}

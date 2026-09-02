@@ -1,0 +1,7 @@
+{
+  "string": [
+    { "name": "module_desc", "value": "漫游清单主模块" },
+    { "name": "EntryAbility_desc", "value": "个人生活体验规划与完成档案" },
+    { "name": "EntryAbility_label", "value": "漫游清单" }
+  ]
+}

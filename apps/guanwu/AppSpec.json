@@ -1,0 +1,301 @@
+{
+  "specVersion": "1.0.0",
+  "generatedAt": "2026-08-26T06:03:20.181Z",
+  "requestId": "req_1787724200142",
+  "industryPack": "object-observe",
+  "identity": {
+    "company": "观物生活",
+    "companyPinyin": "guanwu",
+    "appName": "观物",
+    "appPinyin": "guanwu",
+    "bundleId": "com.guanwu.guanwu",
+    "version": "1.0.0"
+  },
+  "positioning": {
+    "tagline": "以观物取象观察日常瞬间，记录心情、场景、想法与环境，生成本机生活洞察报告",
+    "coreUsers": [
+      {
+        "role": "想认真观察生活的都市年轻人",
+        "ageRange": "22-40",
+        "scenario": "晨间、通勤、睡前想把眼前之物记下来",
+        "need": "用四象分类记下瞬间，并看见自己的生活节奏"
+      }
+    ],
+    "painPoints": [
+      "日记太重写不下去，记事本又太冷",
+      "心情、场景与环境散落各处看不见规律",
+      "想回看一周却只有流水账没有洞察"
+    ],
+    "differentiation": "以观物取象观察日常瞬间，记录心情、场景、想法与环境，生成本机生活洞察报告"
+  },
+  "modules": {
+    "pages": [
+      {
+        "id": "home",
+        "title": "今日观物",
+        "route": "pages/HomePage",
+        "features": [
+          "智慧早安卡",
+          "快速记录",
+          "今日概览",
+          "智慧提醒"
+        ],
+        "tab": true
+      },
+      {
+        "id": "records",
+        "title": "万物集",
+        "route": "pages/RecordsPage",
+        "features": [
+          "时间线",
+          "四象筛选",
+          "搜索",
+          "分类统计"
+        ],
+        "tab": true
+      },
+      {
+        "id": "insight",
+        "title": "智慧分析",
+        "route": "pages/InsightPage",
+        "features": [
+          "周报月报",
+          "心情趋势",
+          "场景热力",
+          "智慧建议",
+          "里程碑"
+        ],
+        "tab": true
+      },
+      {
+        "id": "mine",
+        "title": "我的",
+        "route": "pages/MinePage",
+        "features": [
+          "资料",
+          "使用统计",
+          "导出清除",
+          "主题",
+          "设置与隐私"
+        ],
+        "tab": true
+      }
+    ],
+    "coreFlows": [
+      {
+        "name": "观物闭环",
+        "steps": [
+          "选四象",
+          "写文字选图",
+          "保存",
+          "时间线可见",
+          "详情编辑删除",
+          "洞察同步"
+        ]
+      }
+    ]
+  },
+  "entities": [
+    {
+      "name": "ObserveRecord",
+      "table": "local_observe_records",
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "kind",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "content",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "moodKey",
+          "type": "string"
+        },
+        {
+          "name": "sceneKey",
+          "type": "string"
+        },
+        {
+          "name": "envKey",
+          "type": "string"
+        },
+        {
+          "name": "dateKey",
+          "type": "string",
+          "required": true
+        }
+      ]
+    }
+  ],
+  "apis": [
+    {
+      "method": "POST",
+      "path": "/api/v1/auth/login",
+      "summary": "登录",
+      "auth": false,
+      "module": "auth"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/auth/register",
+      "summary": "注册",
+      "auth": false,
+      "module": "auth"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/messages",
+      "summary": "消息",
+      "auth": false,
+      "module": "messages"
+    }
+  ],
+  "ai": {
+    "capabilities": [],
+    "quickCommands": [],
+    "systemPrompt": "你是「观物生活」旗下应用「观物」的内容助手。产品定位：以观物取象观察日常瞬间。主职责：帮助用户理解四象记录、场景热力与本机生活报告。禁止自称人工智能。C 端不提供生成式对话。",
+    "mode": "none",
+    "llmEnabled": false
+  },
+  "permissions": [
+    {
+      "name": "ohos.permission.INTERNET",
+      "reason": "用于可选的账号登录与注册，观察记录默认保存在本机",
+      "when": "inuse",
+      "scene": "用户主动登录或注册时"
+    },
+    {
+      "name": "ohos.permission.PUBLISH_AGENT_REMINDER",
+      "reason": "用于智慧观察提醒",
+      "when": "inuse",
+      "scene": "用户在设置中开启提醒后调度"
+    }
+  ],
+  "harmonyos": {
+    "features": []
+  },
+  "store": {
+    "category": "生活",
+    "legalOperator": "魏文波",
+    "oneLiner": "观物 — 以观物取象观察日常瞬间，记录心情、场景、想法与环境，生成本机生活洞察报",
+    "fullDescription": "观物帮助你以观物取象的方式观察日常：用心情、场景、想法、环境四象记录瞬间，可附 1–3 张图片。万物集按时间线回看，智慧分析给出周报、心情趋势与场景热力。数据默认保存在本机，无需社交，完全免费。",
+    "keywords": [
+      "观物",
+      "观察",
+      "日记",
+      "心情",
+      "场景",
+      "洞察",
+      "生活记录",
+      "鸿蒙"
+    ],
+    "privacySummary": {
+      "collect": [
+        "可选账号信息",
+        "观察正文（默认仅本机）",
+        "心情场景环境标签",
+        "用户主动选择的照片"
+      ],
+      "purpose": "提供本机观察记录、时间线与智慧分析",
+      "thirdParties": []
+    },
+    "demoAccount": {
+      "username": "auditor@guanwu.local",
+      "passwordNote": "仅写入 store/demo-account.md"
+    },
+    "screenshotPlan": [
+      {
+        "page": "home",
+        "caption": "智慧早安卡与快速记录"
+      },
+      {
+        "page": "records",
+        "caption": "万物集时间线"
+      },
+      {
+        "page": "insight",
+        "caption": "心情趋势与场景热力"
+      },
+      {
+        "page": "mine",
+        "caption": "个人中心与数据管理"
+      }
+    ],
+    "incentiveHooks": []
+  },
+  "access": {
+    "mode": "open_optional",
+    "features": {
+      "register": true,
+      "guestBrowse": true,
+      "guestWrite": true
+    },
+    "gateActions": [
+      "sync_cloud"
+    ],
+    "onPrivacyRefuse": "browse_basic",
+    "loginProviders": [
+      "password"
+    ]
+  },
+  "admin": {
+    "featureModules": [
+      "overview",
+      "appUsers",
+      "messages",
+      "kpis"
+    ]
+  },
+  "brand": {
+    "primary": "#5B6ABF",
+    "primaryDeep": "#3D4A9A",
+    "deep": "#1A1A2E",
+    "accent": "#C9A96E",
+    "tone": "harmonyos-official",
+    "stylePack": "harmonyos-official",
+    "workbenchId": "timeline-board",
+    "layoutVariant": "B",
+    "productVisualType": "content-commerce",
+    "visualDirection": {
+      "archetype": "oriental-observe",
+      "density": "airy",
+      "material": "still-life-light",
+      "imagery": "window-object-amber",
+      "accent": "amber-gold",
+      "primaryJob": "3 秒内看见早安卡并记下一条观察",
+      "notes": "智慧蓝+琥珀金+深空蓝；静物摄影；禁止玻璃拟态与工厂六件套"
+    },
+    "logo": {
+      "brandAnchor": "观",
+      "glyphStrategy": "semantic-fusion",
+      "customLock": true,
+      "generator": "agent-svg",
+      "renderScript": "store/logo/render_logo.mjs",
+      "concept": "几何半睁之眼 + 瞳孔山形",
+      "style": "flat-premium",
+      "foregroundFile": "store/logo/foreground.png",
+      "backgroundFile": "store/logo/background.png",
+      "previewFile": "store/logo/preview-1024.png",
+      "agcFile": "store/logo/agc-216.png",
+      "symbolFile": "store/logo/symbol.svg",
+      "horizontalFile": "store/logo/logo-horizontal.svg"
+    },
+    "visualAssets": [
+      { "id": "hero", "file": "hero_morning.png", "usage": "首页智慧早安卡 Hero" },
+      { "id": "banner", "file": "banner_observe.png", "usage": "洞察页条带" },
+      { "id": "coverMood", "file": "cover_mood.png", "usage": "心情分类封面" },
+      { "id": "coverScene", "file": "cover_scene.png", "usage": "场景分类封面" },
+      { "id": "coverThought", "file": "cover_thought.png", "usage": "想法分类封面" },
+      { "id": "coverEnv", "file": "cover_env.png", "usage": "环境分类封面" },
+      { "id": "empty", "file": "empty_observe.png", "usage": "空态氛围图" }
+    ]
+  }
+}

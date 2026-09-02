@@ -1,0 +1,472 @@
+{
+  "specVersion": "1.0.0",
+  "generatedAt": "2026-08-25T08:17:16.403Z",
+  "requestId": "req_1787645836365",
+  "industryPack": "poetry-courtyard",
+  "identity": {
+    "company": "词韵雅集",
+    "companyPinyin": "ciyun",
+    "appName": "词韵小院",
+    "appPinyin": "xiaoyuan",
+    "bundleId": "com.ciyun.xiaoyuan",
+    "version": "1.0.0"
+  },
+  "positioning": {
+    "tagline": "让每个人都能感受诗词之美、掌握格律之韵",
+    "coreUsers": [
+      {
+        "role": "诗词爱好者",
+        "ageRange": "25-55",
+        "scenario": "睡前读一首并看笺注译文",
+        "need": "便捷查询、了解创作背景"
+      },
+      {
+        "role": "古典文学学习者",
+        "ageRange": "18-30",
+        "scenario": "作业或自学时核对平仄韵脚",
+        "need": "格律检测与韵典对照"
+      },
+      {
+        "role": "文化创作者",
+        "ageRange": "30-50",
+        "scenario": "习作后校验用韵对仗",
+        "need": "词牌规范与创作辅助"
+      }
+    ],
+    "painPoints": [
+      "诗词 App 只罗列名篇，没有格律互动",
+      "平仄韵部查起来分散，难对照正文",
+      "赏析、笺注、评点、译文不能在同一详情页读完"
+    ],
+    "differentiation": "让每个人都能感受诗词之美、掌握格律之韵"
+  },
+  "modules": {
+    "pages": [
+      {
+        "id": "home",
+        "title": "诗库",
+        "route": "pages/HomePage",
+        "features": [
+          "智能检索",
+          "分类浏览",
+          "每日推荐",
+          "收藏夹",
+          "随机拾贝"
+        ],
+        "tab": true
+      },
+      {
+        "id": "meter",
+        "title": "格律",
+        "route": "pages/MeterPage",
+        "features": [
+          "格律检测",
+          "词牌识别",
+          "韵典查询",
+          "创作辅助",
+          "格律图谱"
+        ],
+        "tab": true
+      },
+      {
+        "id": "appreciate",
+        "title": "赏析",
+        "route": "pages/AppreciatePage",
+        "features": [
+          "智慧笺注",
+          "背景解读",
+          "名家评点",
+          "白话译诗",
+          "关联推荐"
+        ],
+        "tab": true
+      },
+      {
+        "id": "mine",
+        "title": "我的",
+        "route": "pages/MinePage",
+        "features": [
+          "个人作品",
+          "学习进度",
+          "收藏管理",
+          "偏好设置",
+          "关于小院"
+        ],
+        "tab": true
+      }
+    ],
+    "coreFlows": [
+      {
+        "name": "每日一诗赏析",
+        "steps": [
+          "打开诗库",
+          "读每日一诗",
+          "进入详情",
+          "读笺注译文评点",
+          "收藏或去做格律检测"
+        ]
+      },
+      {
+        "name": "格律检测",
+        "steps": [
+          "打开格律",
+          "粘贴或输入",
+          "智慧识别平仄韵脚",
+          "看图谱",
+          "可选保存作品"
+        ]
+      },
+      {
+        "name": "词牌韵典",
+        "steps": [
+          "选词牌或韵书",
+          "看规范",
+          "对照习作"
+        ]
+      }
+    ]
+  },
+  "entities": [
+    {
+      "name": "Poem",
+      "table": "cy_poems",
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "author",
+          "type": "string"
+        },
+        {
+          "name": "dynasty",
+          "type": "string"
+        },
+        {
+          "name": "form",
+          "type": "string"
+        },
+        {
+          "name": "theme",
+          "type": "string"
+        },
+        {
+          "name": "body",
+          "type": "string"
+        },
+        {
+          "name": "coverKey",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "Cipai",
+      "table": "cy_cipai",
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "pattern",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "RhymeEntry",
+      "table": "cy_rhymes",
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "book",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "Article",
+      "table": "cy_articles",
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "body",
+          "type": "string"
+        }
+      ]
+    }
+  ],
+  "apis": [
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/poetry-courtyard/poems",
+      "summary": "诗库列表",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/poetry-courtyard/poems/:id",
+      "summary": "诗词详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/poetry-courtyard/daily",
+      "summary": "每日一诗",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/poetry-courtyard/random",
+      "summary": "随机拾贝",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/poetry-courtyard/cipai",
+      "summary": "词牌列表",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/poetry-courtyard/cipai/:id",
+      "summary": "词牌详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/poetry-courtyard/rhymes",
+      "summary": "韵典列表",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/poetry-courtyard/rhymes/:id",
+      "summary": "韵部详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/poetry-courtyard/articles",
+      "summary": "赏析文章",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/poetry-courtyard/articles/:id",
+      "summary": "文章详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/poetry-courtyard/kpis",
+      "summary": "机构指标",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/messages",
+      "summary": "系统消息",
+      "auth": false,
+      "module": "messages"
+    }
+  ],
+  "ai": {
+    "capabilities": [],
+    "quickCommands": [],
+    "systemPrompt": "你是「词韵雅集」旗下应用「词韵小院」的内容助手。产品定位：让每个人都能感受诗词之美、掌握格律之韵。主职责：说明诗库检索、格律检测、词牌韵典与赏析读法。不提供生成式写诗，不出现 AI 字样。",
+    "mode": "none",
+    "llmEnabled": false
+  },
+  "permissions": [
+    {
+      "name": "ohos.permission.INTERNET",
+      "reason": "拉取诗库、词牌、韵典与赏析内容；登录时同步账号",
+      "when": "inuse",
+      "scene": "浏览诗库与可选登录"
+    }
+  ],
+  "harmonyos": {
+    "features": []
+  },
+  "store": {
+    "category": "教育",
+    "legalOperator": "魏文波",
+    "oneLiner": "词韵小院 — 让每个人都能感受诗词之美、掌握格律之韵",
+    "fullDescription": "词韵小院是面向诗词爱好者与古典文学学习者的赏析与格律学习工具。提供诗库检索、每日一诗、格律检测、词牌规范、平水韵/词林正韵/中华新韵查询、笺注译文与名家评点。无广告、无支付、无商城。不提供生成式对话，也不承诺提高考试成绩。",
+    "keywords": [
+      "诗词",
+      "格律",
+      "平仄",
+      "词牌",
+      "赏析",
+      "唐诗",
+      "宋词",
+      "鸿蒙"
+    ],
+    "privacySummary": {
+      "collect": [
+        "可选账号信息",
+        "本机收藏与作品草稿",
+        "本机学习进度"
+      ],
+      "purpose": "提供诗词浏览、格律检测反馈与本地学习记录",
+      "thirdParties": []
+    },
+    "demoAccount": {
+      "username": "auditor@ciyun.local",
+      "passwordNote": "仅写入 store/demo-account.md"
+    },
+    "screenshotPlan": [
+      {
+        "page": "home",
+        "caption": "每日一诗与诗库分类"
+      },
+      {
+        "page": "detail",
+        "caption": "诗词详情笺注译文"
+      },
+      {
+        "page": "meter",
+        "caption": "格律检测与平仄图谱"
+      },
+      {
+        "page": "cipai",
+        "caption": "词牌规范"
+      },
+      {
+        "page": "mine",
+        "caption": "个人作品与设置"
+      }
+    ],
+    "incentiveHooks": [
+      "FormExtensionAbility"
+    ]
+  },
+  "access": {
+    "mode": "open_optional",
+    "features": {
+      "register": true,
+      "guestBrowse": true,
+      "guestWrite": true
+    },
+    "gateActions": [],
+    "onPrivacyRefuse": "browse_basic",
+    "loginProviders": [
+      "password"
+    ]
+  },
+  "admin": {
+    "featureModules": [
+      "overview",
+      "appUsers",
+      "cyPoems",
+      "cyCipai",
+      "cyRhymes",
+      "cyArticles",
+      "messages",
+      "kpis"
+    ]
+  },
+  "brand": {
+    "primary": "#8B1A1A",
+    "deep": "#2C1810",
+    "accent": "#C9A96E",
+    "stylePack": "soft-editorial",
+    "workbenchId": "catalog-tool",
+    "layoutVariant": "A",
+    "productVisualType": "content-commerce",
+    "tone": "xuan-cinnabar",
+    "logo": {
+      "concept": "窗棂方框（院）+ 几何「词」字主笔，墨底朱砂宣纸",
+      "style": "flat-premium",
+      "generator": "render_logo.mjs",
+      "renderScript": "store/logo/render_logo.mjs",
+      "glyphStrategy": "courtyard-ci",
+      "brandAnchor": "词",
+      "customLock": true,
+      "foregroundFile": "store/logo/foreground.png",
+      "backgroundFile": "store/logo/background.png",
+      "previewFile": "store/logo/preview-1024.png",
+      "agcFile": "store/logo/agc-216.png",
+      "symbolFile": "store/logo/symbol.svg",
+      "horizontalFile": "store/logo/logo-horizontal.svg"
+    },
+    "visualAssets": [
+      { "id": "hero_courtyard", "file": "hero_courtyard.png", "usage": "hero" },
+      { "id": "banner_ink", "file": "banner_ink.png", "usage": "banner" },
+      { "id": "banner_window", "file": "banner_window.png", "usage": "banner" },
+      { "id": "cover_jingye", "file": "cover_jingye.png", "usage": "poem-cover" },
+      { "id": "cover_chunxiao", "file": "cover_chunxiao.png", "usage": "poem-cover" },
+      { "id": "cover_jiangxue", "file": "cover_jiangxue.png", "usage": "poem-cover" },
+      { "id": "cover_liangzhou", "file": "cover_liangzhou.png", "usage": "poem-cover" },
+      { "id": "cover_shuidiao", "file": "cover_shuidiao.png", "usage": "poem-cover" },
+      { "id": "cover_denggao", "file": "cover_denggao.png", "usage": "poem-cover" },
+      { "id": "cover_huanghe", "file": "cover_huanghe.png", "usage": "poem-cover" },
+      { "id": "cover_fengqiao", "file": "cover_fengqiao.png", "usage": "poem-cover" },
+      { "id": "cover_wangyue", "file": "cover_wangyue.png", "usage": "poem-cover" },
+      { "id": "cover_chusa", "file": "cover_chusa.png", "usage": "poem-cover" },
+      { "id": "cover_xiangsi", "file": "cover_xiangsi.png", "usage": "poem-cover" },
+      { "id": "cover_caoyuan", "file": "cover_caoyuan.png", "usage": "poem-cover" },
+      { "id": "cover_pusaman", "file": "cover_pusaman.png", "usage": "poem-cover" },
+      { "id": "cover_yumeiren", "file": "cover_yumeiren.png", "usage": "poem-cover" },
+      { "id": "cover_shengsheng", "file": "cover_shengsheng.png", "usage": "poem-cover" },
+      { "id": "cover_yulin", "file": "cover_yulin.png", "usage": "poem-cover" },
+      { "id": "cover_cipai", "file": "cover_cipai.png", "usage": "cipai-cover" },
+      { "id": "cover_cipai2", "file": "cover_cipai2.png", "usage": "cipai-cover" },
+      { "id": "cover_cipai3", "file": "cover_cipai3.png", "usage": "cipai-cover" },
+      { "id": "cover_cipai4", "file": "cover_cipai4.png", "usage": "cipai-cover" },
+      { "id": "cover_cipai5", "file": "cover_cipai5.png", "usage": "cipai-cover" },
+      { "id": "cover_cipai_sd", "file": "cover_cipai_sd.png", "usage": "cipai-cover" },
+      { "id": "cover_cipai_ymr", "file": "cover_cipai_ymr.png", "usage": "cipai-cover" },
+      { "id": "cover_cipai_mjh", "file": "cover_cipai_mjh.png", "usage": "cipai-cover" },
+      { "id": "cover_rhyme_ps", "file": "cover_rhyme_ps.png", "usage": "rhyme-cover" },
+      { "id": "cover_rhyme_cl", "file": "cover_rhyme_cl.png", "usage": "rhyme-cover" },
+      { "id": "cover_rhyme_xh", "file": "cover_rhyme_xh.png", "usage": "rhyme-cover" },
+      { "id": "cover_article_1", "file": "cover_article_1.png", "usage": "article-cover" },
+      { "id": "cover_article_2", "file": "cover_article_2.png", "usage": "article-cover" },
+      { "id": "cover_article_3", "file": "cover_article_3.png", "usage": "article-cover" },
+      { "id": "cover_article_4", "file": "cover_article_4.png", "usage": "article-cover" },
+      { "id": "cover_article_5", "file": "cover_article_5.png", "usage": "article-cover" }
+    ]
+  }
+}

@@ -1,0 +1,446 @@
+{
+  "specVersion": "1.0.0",
+  "generatedAt": "2026-08-24T03:09:00.565Z",
+  "requestId": "req_1787540940527",
+  "industryPack": "reading-journal",
+  "identity": {
+    "company": "魏文波",
+    "companyPinyin": "mingyue",
+    "appName": "明阅坊",
+    "appPinyin": "mingyue-fang",
+    "bundleId": "com.mingyue.mingyuefang",
+    "version": "1.0.0"
+  },
+  "positioning": {
+    "tagline": "智慧阅读·知识管理·心灵栖息——专注优雅的数字阅读与知识整理空间，明心见性阅享智慧",
+    "coreUsers": [
+      {
+        "role": "爱书之人",
+        "ageRange": "18-50",
+        "scenario": "通勤与睡前阅读",
+        "need": "管理书架、记录笔记、收藏札语、阅读报告"
+      }
+    ],
+    "painPoints": [
+      "读过的书缺乏系统整理",
+      "札语摘录分散难检索",
+      "缺乏阅读进度与时长统计"
+    ],
+    "differentiation": "智慧阅读·知识管理·心灵栖息——专注优雅的数字阅读与知识整理空间，明心见性阅享智慧"
+  },
+  "modules": {
+    "pages": [
+      {
+        "id": "home",
+        "title": "阅读空间",
+        "route": "pages/HomePage",
+        "features": [
+          "今日阅读",
+          "最近在读",
+          "精选荐书"
+        ],
+        "tab": true
+      },
+      {
+        "id": "shelf",
+        "title": "书架",
+        "route": "pages/ShelfPage",
+        "features": [
+          "添加书籍",
+          "阅读进度",
+          "示例书目"
+        ],
+        "tab": true
+      },
+      {
+        "id": "notes",
+        "title": "笔记",
+        "route": "pages/NotesPage",
+        "features": [
+          "创建笔记",
+          "关联书籍",
+          "标签"
+        ],
+        "tab": true
+      },
+      {
+        "id": "plans",
+        "title": "计划",
+        "route": "pages/PlansPage",
+        "features": [
+          "阅读计划",
+          "进度追踪",
+          "阅读报告"
+        ],
+        "tab": true
+      },
+      {
+        "id": "mine",
+        "title": "我的",
+        "route": "pages/MinePage",
+        "features": [
+          "用户信息",
+          "札语收藏",
+          "设置"
+        ],
+        "tab": true
+      },
+      {
+        "id": "quotes",
+        "title": "札语收藏",
+        "route": "pages/QuotesPage",
+        "features": [
+          "摘录札语",
+          "来源标注"
+        ],
+        "tab": false
+      },
+      {
+        "id": "organize",
+        "title": "智慧整理",
+        "route": "pages/OrganizePage",
+        "features": [
+          "标签分类",
+          "搜索",
+          "日期整理"
+        ],
+        "tab": false
+      },
+      {
+        "id": "report",
+        "title": "阅读报告",
+        "route": "pages/ReportPage",
+        "features": [
+          "年度统计",
+          "阅读时长",
+          "常用标签"
+        ],
+        "tab": false
+      }
+    ],
+    "coreFlows": [
+      {
+        "name": "智慧阅读闭环",
+        "steps": [
+          "添加书籍",
+          "记录笔记与札语",
+          "制定阅读计划",
+          "阅读报告回顾"
+        ]
+      }
+    ]
+  },
+  "entities": [
+    {
+      "name": "Book",
+      "table": "books",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "author",
+          "type": "string"
+        },
+        {
+          "name": "progress",
+          "type": "number"
+        }
+      ]
+    },
+    {
+      "name": "ReadingNote",
+      "table": "notes",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "body",
+          "type": "string"
+        },
+        {
+          "name": "bookId",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "Quote",
+      "table": "quotes",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "content",
+          "type": "string"
+        },
+        {
+          "name": "source",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "ReadingPlan",
+      "table": "plans",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "goal",
+          "type": "string"
+        },
+        {
+          "name": "progress",
+          "type": "number"
+        }
+      ]
+    },
+    {
+      "name": "ReadingLog",
+      "table": "readingLogs",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "bookId",
+          "type": "string"
+        },
+        {
+          "name": "readingMinutes",
+          "type": "number"
+        }
+      ]
+    }
+  ],
+  "apis": [
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/reading-journal/featured",
+      "summary": "精选荐书",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/reading-journal/books",
+      "summary": "书架",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/biz/reading-journal/books",
+      "summary": "添加书籍",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/reading-journal/notes",
+      "summary": "笔记列表",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/biz/reading-journal/notes",
+      "summary": "创建笔记",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/reading-journal/quotes",
+      "summary": "札语",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/biz/reading-journal/quotes",
+      "summary": "收藏札语",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/reading-journal/plans",
+      "summary": "阅读计划",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/reading-journal/reading-report",
+      "summary": "阅读报告",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/messages",
+      "summary": "消息",
+      "auth": true,
+      "module": "messages"
+    }
+  ],
+  "ai": {
+    "capabilities": [],
+    "quickCommands": [],
+    "systemPrompt": "你是「明阅坊」的智慧阅读整理助手。产品定位：记录阅读过程、管理书籍、收藏明悟。主职责：帮助用户理解阅读整理与阅读报告；不提供生成式 AI 对话。",
+    "mode": "none",
+    "llmEnabled": false
+  },
+  "permissions": [
+    {
+      "name": "ohos.permission.INTERNET",
+      "reason": "同步书架、笔记与札语数据",
+      "when": "inuse",
+      "scene": "阅读记录与云端同步"
+    }
+  ],
+  "harmonyos": {
+    "features": []
+  },
+  "store": {
+    "category": "图书",
+    "legalOperator": "魏文波",
+    "oneLiner": "明阅坊 — 智慧阅读·知识管理·心灵栖息——专注优雅的数字阅读与知识整理空间，明",
+    "fullDescription": "明阅坊是一款记录阅读过程、管理书籍、收藏明悟的智慧阅读应用。支持书架管理、阅读笔记、明悟摘录与阅读报告，墨蓝琥珀美学，安静专注。",
+    "keywords": [
+      "读书",
+      "书架",
+      "笔记",
+      "札语",
+      "阅读报告",
+      "鸿蒙"
+    ],
+    "privacySummary": {
+      "collect": [
+        "账号信息",
+        "书架与笔记",
+        "札语与阅读记录"
+      ],
+      "purpose": "提供阅读记录与云端同步",
+      "thirdParties": []
+    },
+    "demoAccount": {
+      "username": "auditor@mingyue.local",
+      "passwordNote": "仅写入 store/demo-account.md"
+    },
+    "screenshotPlan": [
+      {
+        "page": "home",
+        "caption": "今日阅读与精选荐书"
+      },
+      {
+        "page": "shelf",
+        "caption": "书架与阅读进度"
+      },
+      {
+        "page": "report",
+        "caption": "阅读报告统计"
+      }
+    ],
+    "incentiveHooks": [
+      "FormExtensionAbility",
+      "元服务快捷入口"
+    ]
+  },
+  "access": {
+    "mode": "open_optional",
+    "features": {
+      "register": true,
+      "guestBrowse": true,
+      "guestWrite": false
+    },
+    "gateActions": [
+      "create_book",
+      "create_note",
+      "add_quote",
+      "create_plan",
+      "sync_records"
+    ],
+    "onPrivacyRefuse": "browse_basic",
+    "loginProviders": [
+      "password"
+    ]
+  },
+  "brand": {
+    "primary": "#1A2A3A",
+    "primaryDeep": "#0F1820",
+    "deep": "#0F1820",
+    "accent": "#C9A96E",
+    "background": "#F8F6F2",
+    "tone": "soft-editorial",
+    "stylePack": "soft-editorial",
+    "workbenchId": "library-shelf",
+    "layoutVariant": "A",
+    "productVisualType": "reading-journal",
+    "visualAssets": [
+      "hero_reading_desk",
+      "hero_reading_classics",
+      "hero_borrow_books",
+      "hero_honest_reading",
+      "hero_poetry_grace",
+      "hero_dialogue_books",
+      "hero_ladder_books",
+      "book_classics_1",
+      "book_classics_2",
+      "book_classics_3",
+      "book_classics_4",
+      "book_classics_5",
+      "book_classics_6",
+      "book_default"
+    ],
+    "visualDirection": {
+      "archetype": "library-shelf-aesthetic",
+      "density": "airy",
+      "material": "paper-card",
+      "imagery": "classic-books-reading",
+      "accent": "warm-gold",
+      "primaryJob": "3 秒内继续阅读",
+      "notes": "墨蓝+琥珀金+象牙白；书卷光芒图标；两列书架网格"
+    },
+    "logo": {
+      "brandAnchor": "明",
+      "glyphStrategy": "semantic-fusion",
+      "customLock": true,
+      "generator": "custom",
+      "renderScript": "store/logo/render_logo.mjs",
+      "concept": "翻开书卷 + 中央光芒，墨蓝底象牙页琥珀光",
+      "style": "flat-premium",
+      "foregroundFile": "store/logo/foreground.png",
+      "backgroundFile": "store/logo/background.png",
+      "previewFile": "store/logo/preview-1024.png",
+      "agcFile": "store/logo/agc-216.png"
+    }
+  }
+}

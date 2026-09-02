@@ -1,0 +1,8 @@
+{
+  "string": [
+    { "name": "module_desc", "value": "词韵小院：诗库浏览、格律检测与赏析" },
+    { "name": "EntryAbility_desc", "value": "词韵小院主入口" },
+    { "name": "EntryAbility_label", "value": "词韵小院" },
+    { "name": "internet_reason", "value": "用于拉取诗库、词牌、韵典与赏析内容，以及可选登录同步账号" }
+  ]
+}

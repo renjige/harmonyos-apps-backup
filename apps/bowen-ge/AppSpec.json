@@ -1,0 +1,373 @@
+{
+  "specVersion": "1.0.0",
+  "generatedAt": "2026-09-02T02:15:53.886Z",
+  "requestId": "req_1788315353842",
+  "industryPack": "thought-archive",
+  "identity": {
+    "company": "博闻文化",
+    "companyPinyin": "bowen",
+    "appName": "博闻阁",
+    "appPinyin": "ge",
+    "bundleId": "com.bowen.ge",
+    "version": "1.0.0"
+  },
+  "positioning": {
+    "tagline": "帮助用户收藏知识碎片、整理学习记录、沉淀阅读心得、建立个人知识档案的智慧学习管理应用",
+    "coreUsers": [
+      {
+        "role": "知识工作者与终身学习者",
+        "ageRange": "22-45",
+        "scenario": "读完一篇文章或课程后想留下自己的理解",
+        "need": "把思考、阅读、灵感按主题沉淀成可回顾的档案，而不是散落的备忘"
+      }
+    ],
+    "painPoints": [
+      "备忘录只能堆文字，看不见知识体系",
+      "读过的内容缺少「我的理解」归档",
+      "灵感、观点、主题互相脱节，难以回顾成长"
+    ],
+    "differentiation": "帮助用户收藏知识碎片、整理学习记录、沉淀阅读心得、建立个人知识档案的智慧学习管理应用"
+  },
+  "modules": {
+    "pages": [
+      {
+        "id": "home",
+        "title": "博闻",
+        "route": "pages/HomePage",
+        "features": [
+          "今日学习",
+          "我的档案",
+          "快捷入口",
+          "最近沉淀",
+          "智慧回顾"
+        ],
+        "tab": true
+      },
+      {
+        "id": "knowledge",
+        "title": "知识",
+        "route": "pages/KnowledgePage",
+        "features": [
+          "知识卡片",
+          "学习记录",
+          "阅读沉淀",
+          "收藏分级"
+        ],
+        "tab": true
+      },
+      {
+        "id": "themes",
+        "title": "专题",
+        "route": "pages/ThemePage",
+        "features": [
+          "专题空间",
+          "关联内容",
+          "创建专题"
+        ],
+        "tab": true
+      },
+      {
+        "id": "review",
+        "title": "回顾",
+        "route": "pages/ReviewPage",
+        "features": [
+          "时间轴",
+          "知识统计",
+          "年度报告",
+          "智慧整理"
+        ],
+        "tab": true
+      },
+      {
+        "id": "mine",
+        "title": "我的",
+        "route": "pages/MinePage",
+        "features": [
+          "成就墙",
+          "观点收藏",
+          "搜索",
+          "设置与隐私"
+        ],
+        "tab": true
+      }
+    ],
+    "coreFlows": [
+      {
+        "name": "思考档案闭环",
+        "steps": [
+          "写下思考",
+          "分类标签",
+          "关联主题",
+          "状态沉淀",
+          "回顾统计"
+        ]
+      }
+    ]
+  },
+  "entities": [
+    {
+      "name": "Thought",
+      "table": "thoughts",
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "categoryKey",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "kind",
+          "type": "string"
+        },
+        {
+          "name": "body",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "tags",
+          "type": "array"
+        },
+        {
+          "name": "status",
+          "type": "string"
+        },
+        {
+          "name": "themeIds",
+          "type": "array"
+        },
+        {
+          "name": "favorite",
+          "type": "boolean"
+        }
+      ]
+    },
+    {
+      "name": "ReadingRecord",
+      "table": "readings",
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "sourceType",
+          "type": "string"
+        },
+        {
+          "name": "readAt",
+          "type": "string"
+        },
+        {
+          "name": "corePoints",
+          "type": "string"
+        },
+        {
+          "name": "myUnderstanding",
+          "type": "string"
+        },
+        {
+          "name": "harvest",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "KnowledgeCard",
+      "table": "cards",
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "content",
+          "type": "string"
+        },
+        {
+          "name": "myUnderstanding",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "Spark",
+      "table": "sparks",
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "body",
+          "type": "string"
+        },
+        {
+          "name": "kind",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "ThemeSpace",
+      "table": "themes",
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "summary",
+          "type": "string"
+        }
+      ]
+    }
+  ],
+  "apis": [],
+  "admin": {
+    "featureModules": []
+  },
+  "ai": {
+    "capabilities": [],
+    "quickCommands": [],
+    "systemPrompt": "你是「思览文化」旗下应用「思览叙」的整理助手。产品定位：个人思考档案、阅读沉淀、灵感与主题空间。主职责：帮助理解分类、状态沉淀与回顾。禁止自称人工智能或大模型。C 端不提供生成式对话。",
+    "mode": "none",
+    "llmEnabled": false
+  },
+  "permissions": [],
+  "harmonyos": {
+    "features": []
+  },
+  "store": {
+    "category": "生活",
+    "legalOperator": "魏文波",
+    "oneLiner": "博闻阁 — 帮助用户收藏知识碎片、整理学习记录、沉淀阅读心得、建立个人知识档案的",
+    "fullDescription": "思览叙是个人思考档案与阅读沉淀空间。你可以写下观点、记录阅读理解、蒸馏知识卡片、收纳灵感，并用主题把它们编成自己的知识体系。智慧整理会提醒未分类与长期草稿。数据保存在本机，无需注册，无广告、无内购。",
+    "keywords": [
+      "思考",
+      "阅读",
+      "知识",
+      "灵感",
+      "主题",
+      "成长",
+      "鸿蒙"
+    ],
+    "privacySummary": {
+      "collect": [
+        "昵称（本机）",
+        "思考/阅读/卡片/灵感/主题（本机）",
+        "标签与收藏（本机）"
+      ],
+      "purpose": "提供本地思考档案、阅读沉淀、主题整理与成长回顾",
+      "thirdParties": []
+    },
+    "demoAccount": {
+      "username": "auditor@bowen.local",
+      "passwordNote": "本地工具无需登录，仅审核占位"
+    },
+    "screenshotPlan": [
+      {
+        "page": "home",
+        "caption": "思览空间与今日思考"
+      },
+      {
+        "page": "archive",
+        "caption": "知识档案柜"
+      },
+      {
+        "page": "themes",
+        "caption": "主题空间"
+      },
+      {
+        "page": "review",
+        "caption": "成长时间轴与智慧整理"
+      },
+      {
+        "page": "mine",
+        "caption": "成就墙与设置"
+      }
+    ],
+    "incentiveHooks": []
+  },
+  "access": {
+    "mode": "open_optional",
+    "features": {
+      "register": false,
+      "guestBrowse": true,
+      "guestWrite": true
+    },
+    "gateActions": [],
+    "onPrivacyRefuse": "exit",
+    "loginProviders": []
+  },
+  "brand": {
+    "primary": "#1A3347",
+    "primaryDeep": "#0F2433",
+    "deep": "#0F2433",
+    "accent": "#B8956A",
+    "tone": "soft-editorial",
+    "stylePack": "soft-editorial",
+    "workbenchId": "knowledge-vault",
+    "layoutVariant": "C",
+    "productVisualType": "ops-tool",
+    "visualDirection": {
+      "archetype": "knowledge-pavilion",
+      "density": "airy",
+      "material": "rice-paper-ink",
+      "imagery": "pavilion-desk-archive",
+      "accent": "warm-gold-on-ink",
+      "primaryJob": "3 秒内新建知识卡片并看见连续学习天数",
+      "notes": "墨蓝#1A3347+鎏金#B8956A+米白；五 Tab 知识档案；禁止百科资讯风"
+    },
+    "logo": {
+      "concept": "书阁轮廓 + 展开的书 + 光束",
+      "brandAnchor": "博",
+      "customLock": true,
+      "generator": "agent-svg",
+      "previewFile": "store/logo/preview-1024.png",
+      "symbolFile": "store/logo/symbol.svg"
+    },
+    "visualAssets": [
+      { "id": "hero", "file": "hero_pavilion.png", "usage": "首页 Hero" },
+      { "id": "banner_study", "file": "banner_study.png", "usage": "学习 Banner" },
+      { "id": "banner_review", "file": "banner_review.png", "usage": "智慧回顾" },
+      { "id": "cover_card", "file": "cover_card_archive.png", "usage": "知识卡片" },
+      { "id": "cover_theme", "file": "cover_theme_shelf.png", "usage": "专题 Hero" },
+      { "id": "cover_reading", "file": "cover_reading_note.png", "usage": "阅读 Hero" },
+      { "id": "empty", "file": "empty_desk.png", "usage": "空态" }
+    ]
+  }
+}

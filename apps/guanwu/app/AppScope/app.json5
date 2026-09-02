@@ -1,0 +1,10 @@
+{
+  "app": {
+    "bundleName": "gw.llg.huawei",
+    "vendor": "jingliang",
+    "versionCode": 1000005,
+    "versionName": "1.0.5",
+    "icon": "$media:layered_image",
+    "label": "$string:app_name"
+  }
+}

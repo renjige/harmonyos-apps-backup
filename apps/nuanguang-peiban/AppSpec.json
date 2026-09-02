@@ -1,0 +1,351 @@
+{
+  "specVersion": "1.0.0",
+  "generatedAt": "2026-08-25T01:20:24.669Z",
+  "requestId": "req_1787620824628",
+  "industryPack": "warm-companion",
+  "identity": {
+    "company": "暖光生活",
+    "companyPinyin": "nuanguang",
+    "appName": "暖光陪伴",
+    "appPinyin": "peiban",
+    "bundleId": "com.nuanguang.peiban",
+    "version": "1.0.0"
+  },
+  "positioning": {
+    "tagline": "面向都市青年的轻度情绪陪伴应用，不施压慢节奏记录心情与放松陪伴",
+    "coreUsers": [
+      {
+        "role": "都市青年",
+        "ageRange": "20-35",
+        "scenario": "通勤、午休、睡前需要被温柔回应的时刻",
+        "need": "一屏记录心情、轻量呼吸与白噪音放松、看见连续陪伴痕迹"
+      }
+    ],
+    "painPoints": [
+      "情绪 App 太重或带社交压力",
+      "纯计时器缺少陪伴感与反馈",
+      "日记负担大，难以坚持"
+    ],
+    "differentiation": "面向都市青年的轻度情绪陪伴应用，不施压慢节奏记录心情与放松陪伴"
+  },
+  "modules": {
+    "pages": [
+      {
+        "id": "home",
+        "title": "今日心情",
+        "route": "pages/HomePage",
+        "features": [
+          "问候",
+          "5种心情",
+          "日记",
+          "智慧反馈",
+          "打卡光点"
+        ],
+        "tab": true
+      },
+      {
+        "id": "companion",
+        "title": "陪伴时光",
+        "route": "pages/CompanionPage",
+        "features": [
+          "呼吸引导",
+          "白噪音",
+          "暖心语录",
+          "晚安模式"
+        ],
+        "tab": true
+      },
+      {
+        "id": "mine",
+        "title": "我的空间",
+        "route": "pages/MinePage",
+        "features": [
+          "陪伴日历",
+          "徽章墙",
+          "设置",
+          "深色模式"
+        ],
+        "tab": true
+      }
+    ],
+    "coreFlows": [
+      {
+        "name": "暖光陪伴闭环",
+        "steps": [
+          "记录今日心情",
+          "获得智慧反馈",
+          "呼吸引导或白噪音",
+          "连续打卡",
+          "日历与徽章回顾"
+        ]
+      }
+    ]
+  },
+  "entities": [
+    {
+      "name": "WarmQuote",
+      "table": "wc_quotes",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid"
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "body",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "BreathMode",
+      "table": "wc_breath_modes",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid"
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "durationSec",
+          "type": "number"
+        }
+      ]
+    },
+    {
+      "name": "NoiseTrack",
+      "table": "wc_noise_tracks",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid"
+        },
+        {
+          "name": "title",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "MoodRecord",
+      "table": "wc_mood_records",
+      "fields": [
+        {
+          "name": "mood",
+          "type": "string"
+        },
+        {
+          "name": "noteDate",
+          "type": "string"
+        }
+      ]
+    }
+  ],
+  "apis": [
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/warm-companion/daily",
+      "summary": "今日语录",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/warm-companion/quotes",
+      "summary": "暖心语录",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/warm-companion/breath-modes",
+      "summary": "呼吸模式",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/warm-companion/noise-tracks",
+      "summary": "白噪音",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/warm-companion/mood-feedback",
+      "summary": "心情反馈",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/warm-companion/badges",
+      "summary": "徽章",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/biz/warm-companion/moods",
+      "summary": "记录心情",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/messages",
+      "summary": "消息",
+      "auth": false,
+      "module": "messages"
+    }
+  ],
+  "ai": {
+    "capabilities": [],
+    "quickCommands": [],
+    "systemPrompt": "你是「暖光生活」旗下应用「暖光陪伴」的助手。产品定位：不施压的日常情绪记录与轻量陪伴。主职责：解释心情记录、呼吸引导、白噪音与徽章规则。禁止自称生成式产品；禁止心理诊断。C 端不提供自由对话。",
+    "mode": "none",
+    "llmEnabled": false
+  },
+  "permissions": [
+    {
+      "name": "ohos.permission.INTERNET",
+      "reason": "拉取暖心语录、呼吸与白噪音目录，可选同步练习记录",
+      "when": "inuse",
+      "scene": "陪伴时光与首页"
+    }
+  ],
+  "harmonyos": {
+    "features": []
+  },
+  "store": {
+    "category": "生活",
+    "legalOperator": "魏文波",
+    "oneLiner": "暖光陪伴 — 面向都市青年的轻度情绪陪伴应用，不施压慢节奏记录心情与放松陪伴",
+    "fullDescription": "暖光陪伴是一款面向都市青年的情绪陪伴应用。每日心情记录、智慧治愈反馈、呼吸引导、白噪音与暖心语录，帮助你在快节奏生活中被温柔以待。完全免费，无广告，无支付，不含生成式对话。",
+    "keywords": [
+      "情绪",
+      "陪伴",
+      "呼吸",
+      "白噪音",
+      "心情",
+      "治愈",
+      "鸿蒙"
+    ],
+    "privacySummary": {
+      "collect": [
+        "账号信息（可选）",
+        "心情与日记",
+        "呼吸练习时长",
+        "应用偏好"
+      ],
+      "purpose": "提供心情记录、陪伴场景与统计回顾",
+      "thirdParties": []
+    },
+    "demoAccount": {
+      "username": "auditor@nuanguang.local",
+      "passwordNote": "仅写入 store/demo-account.md"
+    },
+    "screenshotPlan": [
+      {
+        "page": "home",
+        "caption": "今日心情与打卡"
+      },
+      {
+        "page": "companion",
+        "caption": "陪伴时光"
+      },
+      {
+        "page": "mine",
+        "caption": "日历与徽章"
+      }
+    ],
+    "incentiveHooks": [
+      "鸿蒙激励计划2026"
+    ]
+  },
+  "access": {
+    "mode": "open_optional",
+    "features": {
+      "register": true,
+      "guestBrowse": true,
+      "guestWrite": false
+    },
+    "gateActions": [
+      "sync_records"
+    ],
+    "onPrivacyRefuse": "browse_basic",
+    "loginProviders": [
+      "password"
+    ]
+  },
+  "admin": {
+    "featureModules": [
+      "overview",
+      "appUsers",
+      "wcQuotes",
+      "wcBreathModes",
+      "wcNoiseTracks",
+      "wcMoodFeedback",
+      "wcBadges",
+      "wcMoodRecords",
+      "wcBreathSessions",
+      "messages",
+      "kpis"
+    ]
+  },
+  "brand": {
+    "primary": "#F5A623",
+    "primaryDeep": "#D4891A",
+    "deep": "#2C2C2C",
+    "accent": "#FF8A7A",
+    "tone": "soft-editorial",
+    "stylePack": "harmonyos-official",
+    "workbenchId": "warm-glow-daily",
+    "layoutVariant": "A",
+    "productVisualType": "content-commerce",
+    "visualDirection": {
+      "archetype": "warm-glow-companion",
+      "density": "airy",
+      "material": "cream-warm-light",
+      "imagery": "golden-indoor-rain-hearth",
+      "accent": "coral-warm-gold",
+      "primaryJob": "3 秒内选心情并看见智慧反馈",
+      "notes": "暖阳金 #F5A623 + 米白 #FFF8F0；光点打卡；禁止清凉计划换皮"
+    },
+    "logo": {
+      "brandAnchor": "暖",
+      "glyphStrategy": "semantic-fusion",
+      "customLock": true,
+      "generator": "agent-svg",
+      "renderScript": "store/logo/render_logo.mjs",
+      "concept": "柔和光晕包裹抽象人形轮廓，暖阳金主色",
+      "foregroundFile": "store/logo/foreground.png",
+      "backgroundFile": "store/logo/background.png",
+      "previewFile": "store/logo/preview-1024.png",
+      "agcFile": "store/logo/agc-216.png",
+      "symbolFile": "store/logo/symbol.svg"
+    },
+    "visualAssets": [
+      { "id": "hero", "file": "hero_warm_glow.png", "usage": "首页 Hero" },
+      { "id": "banner1", "file": "banner_warm_01.png", "usage": "语录 Banner" },
+      { "id": "banner2", "file": "banner_warm_02.png", "usage": "语录 Banner" },
+      { "id": "quote_cozy", "file": "cover_quote_cozy.png", "usage": "暖心语录封面" },
+      { "id": "quote_rain", "file": "cover_quote_rain.png", "usage": "暖心语录封面" },
+      { "id": "breath_soft", "file": "cover_breath_soft.png", "usage": "呼吸模式封面" },
+      { "id": "breath_glow", "file": "cover_breath_glow.png", "usage": "呼吸模式封面" },
+      { "id": "breath_night", "file": "cover_breath_night.png", "usage": "睡前呼吸封面" },
+      { "id": "noise_rain", "file": "cover_noise_rain.png", "usage": "白噪音雨声" },
+      { "id": "noise_ocean", "file": "cover_noise_ocean.png", "usage": "白噪音海浪" },
+      { "id": "noise_fire", "file": "cover_noise_fire.png", "usage": "白噪音篝火" },
+      { "id": "noise_forest", "file": "cover_noise_forest.png", "usage": "白噪音森林" },
+      { "id": "noise_wind", "file": "cover_noise_wind.png", "usage": "白噪音风铃" },
+      { "id": "badge", "file": "cover_badge_glow.png", "usage": "徽章墙" }
+    ]
+  }
+}

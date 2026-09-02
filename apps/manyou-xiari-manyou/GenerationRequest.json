@@ -1,0 +1,11 @@
+{
+  "company": "漫游生活",
+  "industry": "summer-wander",
+  "appName": "夏日漫游",
+  "positioning": "用智慧的方式，记录每一个夏日漫游时刻，发现城市美好角落，以轻量足迹留住治愈与灵感",
+  "primaryEntity": "RouteItem",
+  "coreLoop": "浏览漫游点 → 收藏/匹配 → 写记录 → 查看灵感",
+  "primaryJob": "打开 App 看周边夏日漫游点，写一条轻记录，收藏灵感与出行清单",
+  "accessMode": "open_optional",
+  "requestedAt": "2026-08-24T07:48:28.263Z"
+}

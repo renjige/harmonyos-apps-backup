@@ -1,0 +1,337 @@
+{
+  "specVersion": "1.0.0",
+  "generatedAt": "2026-08-20T07:50:16.019Z",
+  "requestId": "req_1787212215985",
+  "industryPack": "star-phenology",
+  "identity": {
+    "company": "观时文化",
+    "companyPinyin": "guanshi",
+    "appName": "星座物候",
+    "appPinyin": "xingzuowuhou",
+    "bundleId": "com.guanshi.xingzuowuhou",
+    "version": "1.0.0"
+  },
+  "positioning": {
+    "tagline": "看星星，也看四季。以星座、物候、天象与生活观察，做成一本每日打开的数字天文生活杂志",
+    "coreUsers": [
+      {
+        "role": "喜欢自然与星空的都市观察者",
+        "ageRange": "18-45",
+        "scenario": "夜晚抬头、换季时节、睡前阅读",
+        "need": "安静地认识星空与四季，而不是被运势打断"
+      }
+    ],
+    "painPoints": [
+      "星座应用充满算命与广告",
+      "节气知识散落百科，缺少每日打开的理由",
+      "想记录一次观星，却没有轻量本子"
+    ],
+    "differentiation": "看星星，也看四季。以星座、物候、天象与生活观察，做成一本每日打开的数字天文生活杂志"
+  },
+  "modules": {
+    "pages": [
+      {
+        "id": "home",
+        "title": "今日",
+        "route": "pages/HomePage",
+        "features": [
+          "节气",
+          "今日星空",
+          "今日物候",
+          "今日星座",
+          "今日天象"
+        ],
+        "tab": true
+      },
+      {
+        "id": "constellations",
+        "title": "星座",
+        "route": "pages/ConstellationListPage",
+        "features": [
+          "十二星座",
+          "详情连线"
+        ],
+        "tab": true
+      },
+      {
+        "id": "phenology",
+        "title": "物候",
+        "route": "pages/PhenologyPage",
+        "features": [
+          "四季",
+          "节气卡片",
+          "详情"
+        ],
+        "tab": true
+      },
+      {
+        "id": "sky",
+        "title": "天象",
+        "route": "pages/SkyPage",
+        "features": [
+          "月相",
+          "流星雨",
+          "行星"
+        ],
+        "tab": true
+      },
+      {
+        "id": "mine",
+        "title": "我的",
+        "route": "pages/MinePage",
+        "features": [
+          "我的星座",
+          "收藏",
+          "日记",
+          "阅读记录",
+          "设置"
+        ],
+        "tab": true
+      }
+    ],
+    "coreFlows": [
+      {
+        "name": "每日观察闭环",
+        "steps": [
+          "看见今日节气",
+          "打开星空或星座详情",
+          "可选写下星空日记"
+        ]
+      }
+    ]
+  },
+  "entities": [
+    {
+      "name": "Constellation",
+      "table": "xw_constellations",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "enName",
+          "type": "string"
+        },
+        {
+          "name": "dateRange",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "Phenology",
+      "table": "xw_phenologies",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "season",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "SkyEvent",
+      "table": "xw_sky_events",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "kind",
+          "type": "string"
+        }
+      ]
+    }
+  ],
+  "apis": [
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/star-phenology/constellations",
+      "summary": "星座列表",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/star-phenology/constellations/:id",
+      "summary": "星座详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/star-phenology/phenologies",
+      "summary": "物候列表",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/star-phenology/phenologies/:id",
+      "summary": "物候详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/star-phenology/sky-events",
+      "summary": "天象列表",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/star-phenology/sky-events/:id",
+      "summary": "天象详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/star-phenology/kpis",
+      "summary": "KPI",
+      "auth": false,
+      "module": "biz"
+    }
+  ],
+  "ai": {
+    "capabilities": [],
+    "quickCommands": [],
+    "systemPrompt": "你是「观时文化」旗下应用「星座物候」的内容助手。产品定位：看星星，也看四季。主职责：用天文知识、物候与天象，帮助用户观察自然。禁止算命、运势、财富与感情预测。禁止自称人工智能。C 端不提供生成式对话。",
+    "mode": "none",
+    "llmEnabled": false
+  },
+  "permissions": [],
+  "harmonyos": {
+    "features": []
+  },
+  "store": {
+    "category": "生活",
+    "legalOperator": "魏文波",
+    "oneLiner": "星座物候 — 看星星，也看四季。以星座、物候、天象与生活观察，做成一本每日打开的",
+    "fullDescription": "星座物候是一款天文生活方式应用。以今日节气为入口，认识十二星座、四时物候与近期天象，并可用星空日记轻轻记下一次观察。没有账号、没有支付、没有运势测试，像一本可以每天打开的数字天文生活杂志。",
+    "keywords": [
+      "星座",
+      "物候",
+      "节气",
+      "天象",
+      "星空",
+      "四季",
+      "生活方式",
+      "鸿蒙"
+    ],
+    "privacySummary": {
+      "collect": [
+        "星空日记、收藏与阅读记录仅保存在本机"
+      ],
+      "purpose": "提供星座物候天象阅读与本地观察记录",
+      "thirdParties": []
+    },
+    "demoAccount": {
+      "username": "auditor@guanshi.local",
+      "passwordNote": "本应用无需登录，审核直接进入首页"
+    },
+    "screenshotPlan": [
+      {
+        "page": "home",
+        "caption": "今日星空与节气"
+      },
+      {
+        "page": "constellation",
+        "caption": "十二星座卡片"
+      },
+      {
+        "page": "detail",
+        "caption": "星座连线与档案"
+      },
+      {
+        "page": "phenology",
+        "caption": "四时物候"
+      },
+      {
+        "page": "sky",
+        "caption": "近期天象"
+      },
+      {
+        "page": "journal",
+        "caption": "星空日记"
+      }
+    ],
+    "incentiveHooks": []
+  },
+  "access": {
+    "mode": "open_optional",
+    "features": {
+      "register": true,
+      "guestBrowse": true,
+      "guestWrite": false
+    },
+    "gateActions": [],
+    "onPrivacyRefuse": "browse_basic",
+    "loginProviders": []
+  },
+  "admin": {
+    "featureModules": [
+      "overview",
+      "appUsers",
+      "xwConstellations",
+      "xwPhenologies",
+      "xwSkyEvents",
+      "messages",
+      "kpis"
+    ]
+  },
+  "brand": {
+    "primary": "#43587C",
+    "primaryDeep": "#101827",
+    "deep": "#101827",
+    "accent": "#7FA58F",
+    "tone": "soft-editorial",
+    "stylePack": "soft-editorial",
+    "workbenchId": "catalog-tool",
+    "layoutVariant": "A",
+    "productVisualType": "content-commerce",
+    "visualDirection": {
+      "archetype": "celestial-lifestyle-magazine",
+      "density": "airy",
+      "material": "moonlight-paper",
+      "imagery": "night-sky-and-seasonal-plants",
+      "accent": "sage-green",
+      "primaryJob": "3 秒内看见今天的节气、星空、星座与天象",
+      "notes": "浅灰底+星空蓝+自然绿+月光色；大标题少字；深色星座详情"
+    },
+    "logo": {
+      "brandAnchor": "星",
+      "glyphStrategy": "semantic-fusion",
+      "customLock": true,
+      "generator": "agent-svg",
+      "renderScript": "store/logo/render_logo.mjs",
+      "symbolFile": "store/logo/symbol.svg",
+      "horizontalFile": "store/logo/logo-horizontal.svg",
+      "foregroundFile": "store/logo/foreground.png",
+      "backgroundFile": "store/logo/background.png",
+      "previewFile": "store/logo/preview-1024.png",
+      "agcFile": "store/logo/agc-216.png"
+    }
+  }
+}

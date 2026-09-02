@@ -1,0 +1,346 @@
+{
+  "specVersion": "1.0.0",
+  "generatedAt": "2026-08-27T06:04:52.167Z",
+  "requestId": "req_1787810692111",
+  "industryPack": "life-journal",
+  "identity": {
+    "company": "拾录体育",
+    "companyPinyin": "sportscollector",
+    "appName": "赛场拾录",
+    "appPinyin": "record",
+    "bundleId": "com.sportscollector.record",
+    "version": "1.0.0"
+  },
+  "positioning": {
+    "tagline": "记录每一场值得珍藏的比赛，快速录入赛事数据与赛场瞬间，智慧统计个人运动档案与时光回顾",
+    "coreUsers": [
+      {
+        "role": "都市青年",
+        "ageRange": "20-45",
+        "scenario": "日常碎片时间",
+        "need": "记录生活、整理回忆、年度回顾"
+      }
+    ],
+    "painPoints": [
+      "生活瞬间分散难整理",
+      "照片与文字缺乏叙事",
+      "缺乏温暖的回顾仪式感"
+    ],
+    "differentiation": "记录每一场值得珍藏的比赛，快速录入赛事数据与赛场瞬间，智慧统计个人运动档案与时光回顾"
+  },
+  "modules": {
+    "pages": [
+      {
+        "id": "home",
+        "title": "首页",
+        "route": "pages/HomePage",
+        "features": [
+          "今日记录",
+          "最近动态",
+          "精选回忆"
+        ],
+        "tab": true
+      },
+      {
+        "id": "journal",
+        "title": "记录",
+        "route": "pages/JournalPage",
+        "features": [
+          "创建日记",
+          "标签",
+          "图片"
+        ],
+        "tab": true
+      },
+      {
+        "id": "album",
+        "title": "相册",
+        "route": "pages/AlbumPage",
+        "features": [
+          "创建相册",
+          "图片展示"
+        ],
+        "tab": true
+      },
+      {
+        "id": "review",
+        "title": "回顾",
+        "route": "pages/ReviewPage",
+        "features": [
+          "年度统计",
+          "搜索",
+          "标签分类"
+        ],
+        "tab": true
+      },
+      {
+        "id": "mine",
+        "title": "我的",
+        "route": "pages/MinePage",
+        "features": [
+          "用户信息",
+          "我的记录",
+          "设置"
+        ],
+        "tab": true
+      },
+      {
+        "id": "organize",
+        "title": "智慧整理",
+        "route": "pages/OrganizePage",
+        "features": [
+          "日期整理",
+          "标签分类",
+          "搜索"
+        ],
+        "tab": false
+      },
+      {
+        "id": "favorites",
+        "title": "美好收藏",
+        "route": "pages/FavoritesPage",
+        "features": [
+          "收藏文字",
+          "收藏图片"
+        ],
+        "tab": false
+      }
+    ],
+    "coreFlows": [
+      {
+        "name": "生活记录闭环",
+        "steps": [
+          "写今日札记",
+          "添加标签图片",
+          "智慧整理检索",
+          "年度回顾"
+        ]
+      }
+    ]
+  },
+  "entities": [
+    {
+      "name": "DiaryEntry",
+      "table": "diaries",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "body",
+          "type": "string"
+        },
+        {
+          "name": "tags",
+          "type": "array"
+        }
+      ]
+    },
+    {
+      "name": "Album",
+      "table": "albums",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "description",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "Favorite",
+      "table": "favorites",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "kind",
+          "type": "string"
+        },
+        {
+          "name": "content",
+          "type": "string"
+        }
+      ]
+    }
+  ],
+  "apis": [
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/life-journal/featured",
+      "summary": "精选回忆",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/life-journal/diaries",
+      "summary": "日记列表",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/biz/life-journal/diaries",
+      "summary": "创建日记",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/life-journal/albums",
+      "summary": "相册",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/biz/life-journal/albums",
+      "summary": "创建相册",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/life-journal/favorites",
+      "summary": "收藏",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/life-journal/annual-stats",
+      "summary": "年度回顾",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/messages",
+      "summary": "消息",
+      "auth": true,
+      "module": "messages"
+    }
+  ],
+  "ai": {
+    "capabilities": [],
+    "quickCommands": [],
+    "systemPrompt": "你是「拾录体育」旗下应用「赛场拾录」的助手。产品定位：个人赛事记录、比赛复盘与体育记忆管理。主职责：帮助用户整理赛事档案、观赛清单与复盘结构；不提供生成式 AI 对话。",
+    "mode": "none",
+    "llmEnabled": false
+  },
+  "permissions": [],
+  "harmonyos": {
+    "features": []
+  },
+  "store": {
+    "category": "生活",
+    "legalOperator": "魏文波",
+    "oneLiner": "赛场拾录 — 个人赛事记录、比赛复盘与体育记忆",
+    "fullDescription": "赛场拾录把看过的比赛做成可复盘的个人档案：记录对阵与结果、按待看/已看整理清单、用时间轴复盘关键节点、用文字卡片记下精彩瞬间，并收藏球队、球员与专题。数据仅存本机，不申请相册相机定位，不含支付与生成式 AI。",
+    "keywords": [
+      "赛事记录",
+      "赛后复盘",
+      "运动档案",
+      "赛点时刻",
+      "鸿蒙"
+    ],
+    "privacySummary": {
+      "collect": [
+        "本地赛事档案与清单",
+        "复盘时间轴与瞬间卡片",
+        "球队球员收藏与笔记"
+      ],
+      "purpose": "本机赛事档案、复盘与目标对照",
+      "thirdParties": []
+    },
+    "demoAccount": {
+      "username": "auditor@sportscollector.local",
+      "passwordNote": "仅写入 store/demo-account.md"
+    },
+    "screenshotPlan": [
+      {
+        "page": "home",
+        "caption": "今日记录与精选回忆"
+      },
+      {
+        "page": "journal",
+        "caption": "写日记与标签"
+      },
+      {
+        "page": "review",
+        "caption": "年度回顾统计"
+      }
+    ],
+    "incentiveHooks": [
+      "FormExtensionAbility",
+      "元服务快捷入口"
+    ]
+  },
+  "access": {
+    "mode": "open_optional",
+    "features": {
+      "register": true,
+      "guestBrowse": true,
+      "guestWrite": false
+    },
+    "gateActions": [
+      "create_diary",
+      "create_album",
+      "add_favorite",
+      "sync_records"
+    ],
+    "onPrivacyRefuse": "browse_basic",
+    "loginProviders": [
+      "password"
+    ]
+  },
+  "brand": {
+    "primary": "#007AFF",
+    "primaryDeep": "#1A1A2E",
+    "deep": "#1A1A2E",
+    "accent": "#FF6B35",
+    "tone": "sport-tech",
+    "stylePack": "premium-business",
+    "workbenchId": "timeline-board",
+    "layoutVariant": "B",
+    "productVisualType": "ops-tool",
+    "visualDirection": {
+      "archetype": "sport-record",
+      "density": "balanced",
+      "material": "photo-hero",
+      "imagery": "track-stadium",
+      "accent": "vital-orange",
+      "primaryJob": "5 秒内开始记录一场赛事",
+      "notes": "华为蓝+活力橙；Hero 赛道摄影；大 CTA"
+    },
+    "logo": {
+      "brandAnchor": "赛",
+      "glyphStrategy": "semantic-fusion",
+      "customLock": true,
+      "generator": "agent-svg"
+    },
+    "visualAssets": [
+      { "id": "hero_sport_track", "file": "hero_sport_track.png", "usage": "首页 Hero" },
+      { "id": "ambient_empty", "file": "ambient_empty.png", "usage": "空态氛围" },
+      { "id": "banner_monthly", "file": "banner_monthly.png", "usage": "本月精彩横幅" }
+    ]
+  }
+}

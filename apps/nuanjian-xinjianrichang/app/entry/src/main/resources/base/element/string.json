@@ -1,0 +1,8 @@
+{
+  "string": [
+    { "name": "module_desc", "value": "心笺日常主模块" },
+    { "name": "EntryAbility_desc", "value": "记录日常，收藏心情" },
+    { "name": "EntryAbility_label", "value": "心笺日常" },
+    { "name": "internet_reason", "value": "用于拉取今日一句、标签预设与机构通知" }
+  ]
+}

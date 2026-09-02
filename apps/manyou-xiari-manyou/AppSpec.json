@@ -1,0 +1,335 @@
+{
+  "specVersion": "1.0.0",
+  "generatedAt": "2026-08-24T07:48:28.263Z",
+  "requestId": "req_1787557708203",
+  "industryPack": "summer-wander",
+  "identity": {
+    "company": "漫游生活",
+    "companyPinyin": "manyou",
+    "appName": "夏日漫游",
+    "appPinyin": "xiari-manyou",
+    "bundleId": "com.manyou.xiarimanyou",
+    "version": "1.0.0"
+  },
+  "positioning": {
+    "tagline": "用智慧的方式记录每一个夏日漫游时刻，发现城市美好角落，以轻量足迹留住治愈与灵感",
+    "coreUsers": [
+      {
+        "role": "年轻用户与家庭",
+        "ageRange": "18-45",
+        "scenario": "周末半日与近郊慢行",
+        "need": "不想赶行程，只想吹一阵夏风、走一段轻路线、记下沿途"
+      }
+    ],
+    "painPoints": [
+      "旅游平台太重，行程被排满",
+      "有出门的心情，却不知道附近能慢慢走的路线",
+      "照片散落相册，没有轻量手记与准备清单"
+    ],
+    "differentiation": "用智慧的方式记录每一个夏日漫游时刻，发现城市美好角落，以轻量足迹留住治愈与灵感"
+  },
+  "modules": {
+    "pages": [
+      {
+        "id": "home",
+        "title": "地图",
+        "route": "pages/MapHomePage",
+        "features": [
+          "漫游地图",
+          "智慧推荐",
+          "横向卡片"
+        ],
+        "tab": true
+      },
+      {
+        "id": "journal",
+        "title": "记录",
+        "route": "pages/JournalListPage",
+        "features": [
+          "新建",
+          "编辑",
+          "删除"
+        ],
+        "tab": true
+      },
+      {
+        "id": "inspiration",
+        "title": "灵感",
+        "route": "pages/InspirationPage",
+        "features": [
+          "每日灵感",
+          "收藏"
+        ],
+        "tab": true
+      },
+      {
+        "id": "mine",
+        "title": "我的",
+        "route": "pages/MinePage",
+        "features": [
+          "收藏",
+          "清单",
+          "关于",
+          "协议"
+        ],
+        "tab": true
+      }
+    ],
+    "coreFlows": [
+      {
+        "name": "漫行闭环",
+        "steps": [
+          "看见今日漫行",
+          "打开路线详情",
+          "勾选准备清单",
+          "收藏或加入手记"
+        ]
+      }
+    ]
+  },
+  "entities": [
+    {
+      "name": "WanderRoute",
+      "table": "sw_routes",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "duration",
+          "type": "string"
+        },
+        {
+          "name": "difficulty",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "WanderInspiration",
+      "table": "sw_inspirations",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "WanderQuote",
+      "table": "sw_quotes",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string"
+        }
+      ]
+    }
+  ],
+  "apis": [
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/summer-wander/routes",
+      "summary": "漫行路线列表",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/summer-wander/routes/:id",
+      "summary": "路线详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/summer-wander/inspirations",
+      "summary": "夏日灵感",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/summer-wander/inspirations/:id",
+      "summary": "灵感详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/summer-wander/quotes",
+      "summary": "漫行语录",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/summer-wander/kpis",
+      "summary": "KPI",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/messages",
+      "summary": "消息",
+      "auth": false,
+      "module": "messages"
+    }
+  ],
+  "ai": {
+    "capabilities": [
+      {
+        "id": "wisdom_match",
+        "label": "智慧匹配",
+        "closedLoop": true
+      }
+    ],
+    "quickCommands": [],
+    "systemPrompt": "你是「漫游生活」旗下应用「夏日漫游」的智慧助手。产品定位：用智慧的方式记录夏日漫游时刻，发现城市美好角落。主职责：推荐周边漫游点、每日灵感、漫游记录与心情标签整理。不编造票价与实时导航；不确定时建议就地慢走、记录当下。禁止扮演旅游电商或社交产品。",
+    "mode": "none",
+    "llmEnabled": false
+  },
+  "permissions": [
+    {
+      "name": "ohos.permission.INTERNET",
+      "reason": "拉取漫游点、灵感与账号服务",
+      "when": "inuse",
+      "scene": "浏览漫游点与灵感"
+    }
+  ],
+  "harmonyos": {
+    "features": []
+  },
+  "store": {
+    "category": "生活",
+    "legalOperator": "魏文波",
+    "oneLiner": "夏日漫游 — 用智慧的方式记录每一个夏日漫游时刻，发现城市美好角落，以轻量足迹留",
+    "fullDescription": "夏日漫游是一款陪伴 18–35 岁城市青年探索夏日、记录美好瞬间的智慧生活应用。提供漫游地图、记录时间线、每日灵感与个人统计。无支付、无商城，用轻量足迹留住治愈与灵感。",
+    "keywords": [
+      "夏日",
+      "漫游",
+      "城市探索",
+      "记录",
+      "灵感",
+      "生活方式",
+      "鸿蒙"
+    ],
+    "privacySummary": {
+      "collect": [
+        "可选账号信息",
+        "本地漫游记录与收藏"
+      ],
+      "purpose": "提供漫游点浏览、记录与可选账号同步",
+      "thirdParties": [
+        "saas16.qianqi.online 业务平台"
+      ]
+    },
+    "demoAccount": {
+      "username": "auditor@manyou.local",
+      "passwordNote": "仅写入 store/demo-account.md"
+    },
+    "screenshotPlan": [
+      {
+        "page": "home",
+        "caption": "去吹一阵夏风"
+      },
+      {
+        "page": "routes",
+        "caption": "轻量路线卡片"
+      },
+      {
+        "page": "detail",
+        "caption": "路线节点时间线"
+      },
+      {
+        "page": "journal",
+        "caption": "旅行手记"
+      },
+      {
+        "page": "checklist",
+        "caption": "出行清单"
+      }
+    ],
+    "incentiveHooks": [
+      "FormExtensionAbility"
+    ]
+  },
+  "access": {
+    "mode": "open_optional",
+    "features": {
+      "register": true,
+      "guestBrowse": true,
+      "guestWrite": true
+    },
+    "gateActions": [
+      "optional_sync"
+    ],
+    "onPrivacyRefuse": "browse_basic",
+    "loginProviders": [
+      "password"
+    ]
+  },
+  "admin": {
+    "featureModules": [
+      "overview",
+      "appUsers",
+      "swRoutes",
+      "swInspirations",
+      "swQuotes",
+      "messages",
+      "kpis",
+      "ai"
+    ]
+  },
+  "brand": {
+    "primary": "#4ECDC4",
+    "primaryDeep": "#2D3436",
+    "deep": "#45B7D1",
+    "accent": "#FFB347",
+    "tone": "soft-editorial",
+    "stylePack": "soft-editorial",
+    "workbenchId": "catalog-tool",
+    "layoutVariant": "B",
+    "productVisualType": "content-commerce",
+    "visualDirection": {
+      "archetype": "summer-city-map",
+      "density": "airy",
+      "material": "glass-mint",
+      "imagery": "summer-cafe-park-city",
+      "accent": "sun-orange",
+      "primaryJob": "3 秒内看见周边漫游点并记录一次漫游",
+      "notes": "薄荷绿+天空蓝+阳光橙；地图卡片+时间线记录+每日灵感"
+    },
+    "logo": {
+      "concept": "薄荷渐变徽章 + 阳光橙圆日 + 双轨漫游路径",
+      "brandAnchor": "夏",
+      "glyphStrategy": "semantic-fusion",
+      "customLock": true,
+      "generator": "render_logo.mjs",
+      "renderScript": "store/logo/render_logo.mjs",
+      "foregroundFile": "store/logo/foreground.png",
+      "backgroundFile": "store/logo/background.png",
+      "previewFile": "store/logo/preview-1024.png",
+      "agcFile": "store/logo/agc-216.png",
+      "symbolFile": "store/logo/symbol.svg",
+      "horizontalFile": "store/logo/logo-horizontal.svg"
+    }
+  }
+}

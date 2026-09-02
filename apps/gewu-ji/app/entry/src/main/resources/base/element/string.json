@@ -1,0 +1,7 @@
+{
+  "string": [
+    { "name": "module_desc", "value": "格物集 — 图鉴格物学习，非通用记事" },
+    { "name": "EntryAbility_desc", "value": "格物集本地知识阅读入口" },
+    { "name": "EntryAbility_label", "value": "格物集" }
+  ]
+}

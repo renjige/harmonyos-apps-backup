@@ -1,0 +1,8 @@
+{
+  "string": [
+    { "name": "module_desc", "value": "活力纪行 — 每日活力记录与回顾" },
+    { "name": "EntryAbility_desc", "value": "活力纪行应用入口" },
+    { "name": "EntryAbility_label", "value": "活力纪行" },
+    { "name": "reminder_reason", "value": "用于在您设定的时间提醒每日活力打卡" }
+  ]
+}

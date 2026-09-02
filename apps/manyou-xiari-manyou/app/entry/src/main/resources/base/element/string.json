@@ -1,0 +1,8 @@
+{
+  "string": [
+    { "name": "module_desc", "value": "夏日漫游主模块" },
+    { "name": "EntryAbility_desc", "value": "夏日漫游应用入口" },
+    { "name": "EntryAbility_label", "value": "夏日漫游" },
+    { "name": "internet_reason", "value": "用于拉取漫游点、灵感与账号服务" }
+  ]
+}

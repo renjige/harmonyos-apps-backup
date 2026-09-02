@@ -1,0 +1,7 @@
+{
+  "string": [
+    { "name": "module_desc", "value": "晨雾计划主模块" },
+    { "name": "EntryAbility_desc", "value": "个人成长规划与阶段复盘" },
+    { "name": "EntryAbility_label", "value": "晨雾计划" }
+  ]
+}

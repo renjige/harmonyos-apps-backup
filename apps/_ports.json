@@ -1,0 +1,19 @@
+{
+  "note": "本地联调端口登记：每个 slug 独占一对端口，禁止全员默认 3000/5174",
+  "scheme": {
+    "apiRange": "3001-3099",
+    "adminRange": "5201-5299",
+    "rule": "新 App scaffold 时在此表分配未占用端口；admin vite proxy 必须指向同 slug 的 apiPort"
+  },
+  "apps": {
+    "jingliang-zhiqiguanjia": { "api": 3000, "admin": 5174 },
+    "yuanxiang-xunjian": { "api": 3001, "admin": 5201 },
+    "yuanxiang-jinchang": { "api": 3002, "admin": 5202 },
+    "qihhao-shucang": { "api": 3003, "admin": 5203 },
+    "yuanxiang-gongdi": { "api": 3004, "admin": 5204 },
+    "jingliang-aiketang": { "api": 3010, "admin": 5210 },
+    "yuanxiang-jianzhu": { "api": 3012, "admin": 5212 },
+    "taige-wujin": { "api": 3015, "admin": 5215 },
+    "platform": { "api": 3090, "admin": 5290, "note": "多租户 SaaS 共用 Admin + API" }
+  }
+}

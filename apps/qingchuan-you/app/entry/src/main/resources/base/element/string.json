@@ -1,0 +1,8 @@
+{
+  "string": [
+    { "name": "module_desc", "value": "晴川游主模块" },
+    { "name": "EntryAbility_desc", "value": "晴川游入口" },
+    { "name": "EntryAbility_label", "value": "晴川游" },
+    { "name": "internet_reason", "value": "拉取目的地、灵感、社区笔记并同步本人行程与收藏" }
+  ]
+}

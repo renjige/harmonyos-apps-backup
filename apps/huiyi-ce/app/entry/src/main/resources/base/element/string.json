@@ -1,0 +1,8 @@
+{
+  "string": [
+    { "name": "module_desc", "value": "慧忆册主模块" },
+    { "name": "EntryAbility_desc", "value": "慧忆册入口" },
+    { "name": "EntryAbility_label", "value": "慧忆册" },
+    { "name": "internet_reason", "value": "用于登录注册与账号同步" }
+  ]
+}

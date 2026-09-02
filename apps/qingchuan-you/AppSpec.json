@@ -1,0 +1,446 @@
+{
+  "specVersion": "1.0.0",
+  "generatedAt": "2026-08-25T09:06:21.319Z",
+  "requestId": "req_1787648781285",
+  "industryPack": "scenic-travel",
+  "identity": {
+    "company": "晴川旅行文化",
+    "companyPinyin": "qingchuan",
+    "appName": "晴川游",
+    "appPinyin": "you",
+    "bundleId": "com.qingchuan.you",
+    "version": "1.0.0"
+  },
+  "positioning": {
+    "tagline": "轻量智慧旅行伴侣，行前发现目的地灵感，行中用智能规划生成每日行程",
+    "coreUsers": [
+      {
+        "role": "轻出行爱好者",
+        "ageRange": "22-45",
+        "scenario": "周末或短假前找灵感、行中按天安排上午下午晚上",
+        "need": "不想订票支付，只要靠谱的目的地说明和可保存的行程建议"
+      }
+    ],
+    "painPoints": [
+      "旅游平台太重，充满预订和广告",
+      "攻略很长，却给不出按天数拆好的上午下午晚上",
+      "想慢慢逛社区笔记，却被强制登录"
+    ],
+    "differentiation": "轻量智慧旅行伴侣，行前发现目的地灵感，行中用智能规划生成每日行程"
+  },
+  "modules": {
+    "pages": [
+      {
+        "id": "home",
+        "title": "首页",
+        "route": "pages/HomePage",
+        "features": [
+          "Banner",
+          "智慧推荐",
+          "灵感流"
+        ],
+        "tab": true
+      },
+      {
+        "id": "explore",
+        "title": "探索",
+        "route": "pages/ExplorePage",
+        "features": [
+          "搜索",
+          "分类",
+          "目的地网格"
+        ],
+        "tab": true
+      },
+      {
+        "id": "trip",
+        "title": "行程",
+        "route": "pages/TripListPage",
+        "features": [
+          "列表",
+          "新建规划",
+          "保存"
+        ],
+        "tab": true
+      },
+      {
+        "id": "community",
+        "title": "社区",
+        "route": "pages/CommunityPage",
+        "features": [
+          "笔记",
+          "点赞",
+          "发布"
+        ],
+        "tab": true
+      },
+      {
+        "id": "mine",
+        "title": "我的",
+        "route": "pages/MinePage",
+        "features": [
+          "收藏",
+          "行程",
+          "设置"
+        ],
+        "tab": true
+      }
+    ],
+    "coreFlows": [
+      {
+        "name": "灵感到行程",
+        "steps": [
+          "看见智慧推荐",
+          "打开目的地详情",
+          "按天数与偏好生成行程",
+          "登录后保存"
+        ]
+      }
+    ]
+  },
+  "entities": [
+    {
+      "name": "ScenicDestination",
+      "table": "qy_destinations",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "category",
+          "type": "string"
+        },
+        {
+          "name": "bestSeason",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "ScenicInspiration",
+      "table": "qy_inspirations",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "ScenicNote",
+      "table": "qy_notes",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "userId",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "ScenicTrip",
+      "table": "qy_trips",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "userId",
+          "type": "string"
+        },
+        {
+          "name": "days",
+          "type": "number"
+        }
+      ]
+    },
+    {
+      "name": "ScenicFavorite",
+      "table": "qy_favorites",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "userId",
+          "type": "string"
+        }
+      ]
+    }
+  ],
+  "apis": [
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/scenic-travel/destinations",
+      "summary": "目的地列表",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/scenic-travel/destinations/:id",
+      "summary": "目的地详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/scenic-travel/inspirations",
+      "summary": "灵感列表",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/scenic-travel/inspirations/:id",
+      "summary": "灵感详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/scenic-travel/notes",
+      "summary": "社区笔记",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/biz/scenic-travel/notes",
+      "summary": "发布笔记",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/scenic-travel/trips",
+      "summary": "我的行程",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/biz/scenic-travel/trips",
+      "summary": "保存行程",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/biz/scenic-travel/trips/:id",
+      "summary": "删除行程",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/scenic-travel/favorites",
+      "summary": "我的收藏",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/biz/scenic-travel/favorites",
+      "summary": "添加收藏",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/biz/scenic-travel/favorites/:id",
+      "summary": "取消收藏",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/scenic-travel/kpis",
+      "summary": "KPI",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/messages",
+      "summary": "消息",
+      "auth": false,
+      "module": "messages"
+    }
+  ],
+  "ai": {
+    "capabilities": [],
+    "quickCommands": [],
+    "systemPrompt": "你是「晴川旅行文化」旗下应用「晴川游」的助手。产品定位：轻量智慧旅行伴侣，行前发现目的地灵感，行中用智能规划生成每日行程。主职责：按自然/人文/美食/城市筛选目的地，阅读最佳季节与游玩贴士，用规则模板生成分日行程。不编造票价与开放时间。禁止扮演订票电商或生成式对话产品。禁止输出「AI」作为卖点。",
+    "mode": "none",
+    "llmEnabled": false
+  },
+  "permissions": [
+    {
+      "name": "ohos.permission.INTERNET",
+      "reason": "拉取目的地、灵感、社区笔记并同步本人行程与收藏",
+      "when": "inuse",
+      "scene": "浏览目的地与保存行程"
+    }
+  ],
+  "harmonyos": {
+    "features": []
+  },
+  "store": {
+    "category": "旅行",
+    "legalOperator": "魏文波",
+    "oneLiner": "晴川游 — 轻量智慧旅行伴侣，行前发现目的地灵感，行中用智能规划生成每日行程",
+    "fullDescription": "晴川游是一款轻量智慧旅行助手。按自然风光、人文历史、美食之旅、城市漫步浏览目的地，查看最佳季节与游玩贴士；按天数与偏好生成每日上午、下午、晚上的行程建议并保存。社区精选笔记可自由浏览，发布与收藏需登录。不含支付，不含生成式对话。",
+    "keywords": [
+      "旅行",
+      "目的地",
+      "行程",
+      "笔记",
+      "风景",
+      "鸿蒙"
+    ],
+    "privacySummary": {
+      "collect": [
+        "可选账号信息",
+        "用户主动填写的行程与笔记、收藏"
+      ],
+      "purpose": "提供目的地浏览、智能规划行程与本人记录同步",
+      "thirdParties": []
+    },
+    "demoAccount": {
+      "username": "auditor@qingchuan.local",
+      "passwordNote": "仅写入 store/demo-account.md"
+    },
+    "screenshotPlan": [
+      {
+        "page": "home",
+        "caption": "智慧推荐与灵感流"
+      },
+      {
+        "page": "explore",
+        "caption": "目的地分类探索"
+      },
+      {
+        "page": "detail",
+        "caption": "目的地详情与贴士"
+      },
+      {
+        "page": "trip",
+        "caption": "智能规划行程"
+      },
+      {
+        "page": "community",
+        "caption": "旅行笔记社区"
+      }
+    ],
+    "incentiveHooks": [
+      "FormExtensionAbility"
+    ]
+  },
+  "access": {
+    "mode": "open_optional",
+    "features": {
+      "register": true,
+      "guestBrowse": true,
+      "guestWrite": false
+    },
+    "gateActions": [
+      "save_trip",
+      "publish_note",
+      "add_favorite",
+      "sync_records"
+    ],
+    "onPrivacyRefuse": "browse_basic",
+    "loginProviders": [
+      "password"
+    ]
+  },
+  "admin": {
+    "featureModules": [
+      "overview",
+      "appUsers",
+      "qyDestinations",
+      "qyInspirations",
+      "qyNotes",
+      "qyTrips",
+      "qyFavorites",
+      "messages",
+      "kpis",
+      "ai"
+    ]
+  },
+  "brand": {
+    "primary": "#4A90D9",
+    "primaryDeep": "#1B4F72",
+    "deep": "#1B3A5C",
+    "accent": "#F5A623",
+    "tone": "soft-editorial",
+    "stylePack": "soft-editorial",
+    "workbenchId": "catalog-tool",
+    "layoutVariant": "A",
+    "productVisualType": "content-commerce",
+    "visualDirection": {
+      "archetype": "editorial-landscape",
+      "density": "spacious",
+      "material": "soft-surface",
+      "imagery": "scenic-photography",
+      "accent": "warm-sun",
+      "primaryJob": "3 秒内看见本季智慧推荐并打开目的地详情",
+      "notes": "晴空蓝#4A90D9 + 暖阳橙#F5A623；摄影 Hero 必须渐变遮罩；禁止色块冒充封面"
+    },
+    "logo": {
+      "brandAnchor": "晴",
+      "glyphStrategy": "semantic-fusion",
+      "customLock": true,
+      "generator": "custom"
+    },
+    "visualAssets": [
+      { "id": "hero_bg", "file": "hero_bg.png", "usage": "hero" },
+      { "id": "banner_01", "file": "banner_01.png", "usage": "banner" },
+      { "id": "banner_02", "file": "banner_02.png", "usage": "banner" },
+      { "id": "dest_westlake", "file": "dest_westlake.png", "usage": "destination" },
+      { "id": "dest_zhangjiajie", "file": "dest_zhangjiajie.png", "usage": "destination" },
+      { "id": "dest_chengdu", "file": "dest_chengdu.png", "usage": "destination" },
+      { "id": "dest_dunhuang", "file": "dest_dunhuang.png", "usage": "destination" },
+      { "id": "dest_huangshan", "file": "dest_huangshan.png", "usage": "destination" },
+      { "id": "dest_xian", "file": "dest_xian.png", "usage": "destination" },
+      { "id": "dest_dali", "file": "dest_dali.png", "usage": "destination" },
+      { "id": "dest_qingdao", "file": "dest_qingdao.png", "usage": "destination" },
+      { "id": "insp_lake", "file": "insp_lake.png", "usage": "inspiration" },
+      { "id": "insp_peaks", "file": "insp_peaks.png", "usage": "inspiration" },
+      { "id": "insp_chengdu", "file": "insp_chengdu.png", "usage": "inspiration" },
+      { "id": "insp_desert", "file": "insp_desert.png", "usage": "inspiration" },
+      { "id": "insp_wall", "file": "insp_wall.png", "usage": "inspiration" },
+      { "id": "insp_sea", "file": "insp_sea.png", "usage": "inspiration" },
+      { "id": "note_westlake", "file": "note_westlake.png", "usage": "note" },
+      { "id": "note_valley", "file": "note_valley.png", "usage": "note" },
+      { "id": "note_tea", "file": "note_tea.png", "usage": "note" },
+      { "id": "note_spring", "file": "note_spring.png", "usage": "note" },
+      { "id": "note_xian", "file": "note_xian.png", "usage": "note" },
+      { "id": "note_qingdao", "file": "note_qingdao.png", "usage": "note" }
+    ]
+  }
+}

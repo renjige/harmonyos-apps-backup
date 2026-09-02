@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 360" role="img" aria-label="�:�8 HeartNote">
+  <rect width="1280" height="360" fill="#FFF9F6"/>
+  <svg x="40" y="36" width="288" height="288" viewBox="0 0 1024 1024">
+    <rect width="1024" height="1024" rx="228" fill="#E98D83"/>
+    <path
+      fill="#FFF9F6"
+      fill-rule="evenodd"
+      d="M236 252h430L818 404v372c0 42-34 76-76 76H312c-42 0-76-34-76-76V328c0-42 34-76 76-76z
+         M512 456c-78-72-196-16-196 86 0 108 126 192 196 240 70-48 196-132 196-240 0-102-118-158-196-86z"/>
+    <circle cx="768" cy="328" r="46" fill="#FFF9F6"/>
+    <circle cx="768" cy="328" r="18" fill="#E98D83"/>
+  </svg>
+  <text x="360" y="168" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="92" font-weight="600" fill="#272321">�:�8</text>
+  <text x="360" y="248" font-family="Georgia, Times New Roman, serif" font-size="36" fill="#8E8884">HeartNote � �U�86���</text>
+</svg>

@@ -1,0 +1,356 @@
+{
+  "specVersion": "1.0.0",
+  "generatedAt": "2026-09-02T01:13:45.645Z",
+  "requestId": "req_1788311625607",
+  "industryPack": "light-archive",
+  "identity": {
+    "company": "栖光生活",
+    "companyPinyin": "qiguang",
+    "appName": "栖光札",
+    "appPinyin": "zha",
+    "bundleId": "com.qiguang.zha",
+    "version": "1.0.0"
+  },
+  "positioning": {
+    "tagline": "收藏生活中的微小光亮，整理成可回望的个人生活档案",
+    "coreUsers": [
+      {
+        "role": "想长期留下生活片段的都市用户",
+        "ageRange": "20-45",
+        "scenario": "散步归来、读完一页、忽然想到一句值得留下的话",
+        "need": "不是记日记，而是把片段整理进主题与时间档案"
+      }
+    ],
+    "painPoints": [
+      "普通日记只有按天堆文字，难以整理和回望",
+      "灵感、瞬间、札记散落在备忘录里找不到",
+      "缺少主题沉淀与年度档案视角"
+    ],
+    "differentiation": "收藏生活中的微小光亮，整理成可回望的个人生活档案"
+  },
+  "modules": {
+    "pages": [
+      {
+        "id": "home",
+        "title": "栖光",
+        "route": "pages/HomePage",
+        "features": [
+          "今日栖光",
+          "档案数字",
+          "快捷记录",
+          "最近片段",
+          "时光回望"
+        ],
+        "tab": true
+      },
+      {
+        "id": "journal",
+        "title": "札记",
+        "route": "pages/JournalPage",
+        "features": [
+          "状态筛选",
+          "分类",
+          "搜索",
+          "模板创建",
+          "详情编辑"
+        ],
+        "tab": true
+      },
+      {
+        "id": "themes",
+        "title": "主题",
+        "route": "pages/ThemeSpacePage",
+        "features": [
+          "主题册",
+          "关联内容",
+          "数量与更新"
+        ],
+        "tab": true
+      },
+      {
+        "id": "lookback",
+        "title": "回望",
+        "route": "pages/LookbackPage",
+        "features": [
+          "时间长廊",
+          "智慧回望",
+          "年度档案",
+          "生活统计"
+        ],
+        "tab": true
+      },
+      {
+        "id": "mine",
+        "title": "我的",
+        "route": "pages/MinePage",
+        "features": [
+          "成就墙",
+          "标签分类",
+          "设置与隐私"
+        ],
+        "tab": true
+      }
+    ],
+    "coreFlows": [
+      {
+        "name": "栖光档案闭环",
+        "steps": [
+          "记录札记或光影",
+          "整理状态",
+          "归入主题",
+          "时间长廊回望",
+          "年度档案沉淀"
+        ]
+      }
+    ]
+  },
+  "entities": [
+    {
+      "name": "QgEntry",
+      "table": "entries",
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "dateKey",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "categoryKey",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "tagIds",
+          "type": "array"
+        },
+        {
+          "name": "status",
+          "type": "string"
+        },
+        {
+          "name": "templateKey",
+          "type": "string"
+        },
+        {
+          "name": "fieldA",
+          "type": "string"
+        },
+        {
+          "name": "fieldB",
+          "type": "string"
+        },
+        {
+          "name": "fieldC",
+          "type": "string"
+        },
+        {
+          "name": "body",
+          "type": "string"
+        },
+        {
+          "name": "createdAt",
+          "type": "number"
+        },
+        {
+          "name": "updatedAt",
+          "type": "number"
+        }
+      ]
+    },
+    {
+      "name": "QgClip",
+      "table": "clips",
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "text",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "clipKind",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "dateKey",
+          "type": "string"
+        },
+        {
+          "name": "treasured",
+          "type": "boolean"
+        },
+        {
+          "name": "createdAt",
+          "type": "number"
+        }
+      ]
+    },
+    {
+      "name": "QgTheme",
+      "table": "themes",
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "summary",
+          "type": "string"
+        },
+        {
+          "name": "coverKey",
+          "type": "string"
+        },
+        {
+          "name": "createdAt",
+          "type": "number"
+        },
+        {
+          "name": "updatedAt",
+          "type": "number"
+        }
+      ]
+    }
+  ],
+  "apis": [],
+  "admin": {
+    "featureModules": []
+  },
+  "ai": {
+    "capabilities": [],
+    "quickCommands": [],
+    "systemPrompt": "你是「栖光生活」旗下应用「栖光札」的档案整理助手。产品定位：个人生活档案与灵感收藏空间。主职责：帮助理解札记、光影收藏、主题空间与时间回望。禁止生成式对话。",
+    "mode": "none",
+    "llmEnabled": false
+  },
+  "permissions": [],
+  "harmonyos": {
+    "features": []
+  },
+  "store": {
+    "category": "生活",
+    "legalOperator": "魏文波",
+    "oneLiner": "栖光札 — 收藏生活中的微小光亮，整理成可回望的个人生活档案",
+    "fullDescription": "栖光札帮助你记录生活片段、收藏灵感瞬间、用主题空间整理个人档案，并在时间长廊与年度档案中回望成长。数据保存在本机，无需注册，不申请相机、定位等敏感权限，无广告、无内购。",
+    "keywords": [
+      "生活档案",
+      "灵感收藏",
+      "主题空间",
+      "时间回顾",
+      "札记",
+      "鸿蒙"
+    ],
+    "privacySummary": {
+      "collect": [
+        "昵称（本机）",
+        "札记与光影正文（本机）",
+        "主题、分类与标签（本机）",
+        "主题外观偏好（本机）"
+      ],
+      "purpose": "提供本地生活档案整理、主题收藏、时间回望与统计",
+      "thirdParties": []
+    },
+    "demoAccount": {
+      "username": "auditor@qiguang.local",
+      "passwordNote": "本地工具无需登录，仅审核占位"
+    },
+    "screenshotPlan": [
+      {
+        "page": "home",
+        "caption": "栖光空间与今日提问"
+      },
+      {
+        "page": "journal",
+        "caption": "札记档案与状态整理"
+      },
+      {
+        "page": "themes",
+        "caption": "主题收藏册"
+      },
+      {
+        "page": "lookback",
+        "caption": "时间长廊与年度档案"
+      },
+      {
+        "page": "mine",
+        "caption": "成就墙与设置"
+      }
+    ],
+    "incentiveHooks": []
+  },
+  "access": {
+    "mode": "open_optional",
+    "features": {
+      "register": false,
+      "guestBrowse": true,
+      "guestWrite": true
+    },
+    "gateActions": [],
+    "onPrivacyRefuse": "exit",
+    "loginProviders": []
+  },
+  "brand": {
+    "primary": "#5B7C78",
+    "primaryDeep": "#2F4A47",
+    "deep": "#2F4A47",
+    "accent": "#C4A574",
+    "tone": "soft-editorial",
+    "stylePack": "soft-editorial",
+    "workbenchId": "timeline-board",
+    "layoutVariant": "B",
+    "productVisualType": "content-commerce",
+    "visualDirection": {
+      "archetype": "life-museum",
+      "density": "airy",
+      "material": "warm-paper",
+      "imagery": "window-light-paper",
+      "accent": "soft-gold-on-mist-teal",
+      "primaryJob": "3 秒内留下一条生活片段并看见档案数字变化",
+      "notes": "雾青#5B7C78+柔金#C4A574+米白#F6F1E8；五 Tab 博物馆气质；禁止日记换皮"
+    },
+    "logo": {
+      "brandAnchor": "栖",
+      "glyphStrategy": "semantic-fusion",
+      "customLock": true,
+      "generator": "agent-svg",
+      "renderScript": "store/logo/render_logo.mjs",
+      "concept": "打开的薄札册 + 一道光缝，寓意栖息于光中",
+      "style": "flat-premium",
+      "foregroundFile": "store/logo/foreground.png",
+      "backgroundFile": "store/logo/background.png",
+      "previewFile": "store/logo/preview-1024.png",
+      "agcFile": "store/logo/agc-216.png",
+      "symbolFile": "store/logo/symbol.svg",
+      "horizontalFile": "store/logo/logo-horizontal.svg"
+    },
+    "visualAssets": [
+      { "id": "hero", "file": "hero_window_light.png", "usage": "首页栖光空间 Hero" },
+      { "id": "banner_paper", "file": "banner_paper_archive.png", "usage": "札记详情纸页 Banner" },
+      { "id": "banner_tea", "file": "banner_tea_still.png", "usage": "光影详情茶席 Banner" },
+      { "id": "hero_corridor", "file": "hero_corridor_light.png", "usage": "回望时间长廊 Hero" },
+      { "id": "cover_reading", "file": "cover_reading_nook.png", "usage": "阅读主题封面" },
+      { "id": "empty_light", "file": "empty_first_light.png", "usage": "空态窗边留白" }
+    ]
+  }
+}

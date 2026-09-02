@@ -1,0 +1,7 @@
+{
+  "string": [
+    { "name": "module_desc", "value": "家用册 — 家庭私密智能相册" },
+    { "name": "EntryAbility_desc", "value": "家用册家庭相册入口" },
+    { "name": "EntryAbility_label", "value": "家用册" }
+  ]
+}

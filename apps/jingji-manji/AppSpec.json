@@ -1,0 +1,314 @@
+{
+  "specVersion": "1.0.0",
+  "generatedAt": "2026-08-27T06:06:37.071Z",
+  "requestId": "req_1787810793234",
+  "industryPack": "sports-training",
+  "identity": {
+    "company": "漫记竞技",
+    "companyPinyin": "manjijingji",
+    "appName": "竞技漫记",
+    "appPinyin": "jingjimanji",
+    "bundleId": "com.manjijingji.jingjimanji",
+    "version": "1.0.0"
+  },
+  "positioning": {
+    "tagline": "个人竞技数据记录与成长轨迹可视化，快速录入运动表现、智慧统计趋势与成就激励，数据默认仅存本地设备",
+    "coreUsers": [
+      {
+        "role": "都市白领",
+        "ageRange": "22-40",
+        "scenario": "工作日清晨",
+        "need": "自律早起、可视化成长"
+      }
+    ],
+    "painPoints": [
+      "难以坚持早起",
+      "缺乏正向反馈",
+      "习惯数据分散"
+    ],
+    "differentiation": "个人竞技数据记录与成长轨迹可视化，快速录入运动表现、智慧统计趋势与成就激励，数据默认仅存本地设备"
+  },
+  "modules": {
+    "pages": [
+      {
+        "id": "home",
+        "title": "首页",
+        "route": "pages/HomePage",
+        "features": [
+          "早安问候",
+          "今日早起时间",
+          "连续打卡",
+          "成长趋势"
+        ],
+        "tab": true
+      },
+      {
+        "id": "checkin",
+        "title": "打卡",
+        "route": "pages/CheckInPage",
+        "features": [
+          "一键打卡",
+          "日出动效"
+        ],
+        "tab": true
+      },
+      {
+        "id": "habits",
+        "title": "习惯",
+        "route": "pages/HabitsPage",
+        "features": [
+          "习惯目标"
+        ],
+        "tab": true
+      },
+      {
+        "id": "growth",
+        "title": "成长",
+        "route": "pages/GrowthPage",
+        "features": [
+          "数据洞察",
+          "成就中心"
+        ],
+        "tab": true
+      },
+      {
+        "id": "mine",
+        "title": "我的",
+        "route": "pages/MinePage",
+        "features": [
+          "打卡记录",
+          "设置隐私"
+        ],
+        "tab": true
+      },
+      {
+        "id": "messages",
+        "title": "消息",
+        "route": "pages/MessagesPage",
+        "features": [
+          "智慧提醒"
+        ],
+        "tab": false
+      }
+    ],
+    "coreFlows": [
+      {
+        "name": "每日打卡闭环",
+        "steps": [
+          "查看目标",
+          "完成打卡",
+          "获得成长反馈"
+        ]
+      }
+    ]
+  },
+  "entities": [
+    {
+      "name": "HabitGoal",
+      "table": "habit_goals",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "targetTime",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "CheckIn",
+      "table": "check_ins",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "wakeTime",
+          "type": "string"
+        },
+        {
+          "name": "checkInDate",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "Achievement",
+      "table": "achievements",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "thresholdDays",
+          "type": "number"
+        }
+      ]
+    }
+  ],
+  "apis": [
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/morning-habit/goals",
+      "summary": "习惯目标",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/morning-habit/achievements",
+      "summary": "成就",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/morning-habit/insights",
+      "summary": "成长洞察",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/biz/morning-habit/check-ins",
+      "summary": "早起打卡",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/morning-habit/stats",
+      "summary": "统计数据",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/messages",
+      "summary": "消息",
+      "auth": true,
+      "module": "messages"
+    }
+  ],
+  "ai": {
+    "capabilities": [],
+    "quickCommands": [],
+    "systemPrompt": "你是「晨启生活科技有限公司」旗下应用「早起打卡」的生活方式助手。产品定位：帮助用户建立早起习惯、记录成长轨迹。主职责：解读打卡数据、推荐习惯目标与成长洞察；不做医疗诊断。",
+    "mode": "none",
+    "llmEnabled": false
+  },
+  "permissions": [
+    {
+      "name": "ohos.permission.INTERNET",
+      "reason": "同步习惯目标、打卡与成长数据",
+      "when": "inuse",
+      "scene": "打卡与数据同步"
+    }
+  ],
+  "harmonyos": {
+    "features": []
+  },
+  "store": {
+    "category": "运动健康",
+    "oneLiner": "竞技漫记 — 记录训练、写复盘、自建赛季挑战",
+    "fullDescription": "竞技漫记帮助运动爱好者记录每次训练并写下复盘，对照个人最佳，用自建赛季挑战把次数自动计入进度。首页展示项目配比与月度目标，规则问卷给出下一笔训练建议。数据默认仅存本机，可复制成长轨迹。非系统运动健康或日历复刻。",
+    "keywords": [
+      "运动",
+      "竞技",
+      "记录",
+      "健身",
+      "鸿蒙"
+    ],
+    "privacySummary": {
+      "collect": [
+        "账号信息",
+        "竞技记录",
+        "个人档案"
+      ],
+      "purpose": "提供竞技记录、看板统计与账号服务",
+      "thirdParties": []
+    },
+    "demoAccount": {
+      "username": "auditor@manjijingji.local",
+      "passwordNote": "仅写入 store/demo-account.md"
+    },
+    "screenshotPlan": [
+      {
+        "page": "home",
+        "caption": "早安与大数字早起时间"
+      },
+      {
+        "page": "checkin",
+        "caption": "一键打卡"
+      },
+      {
+        "page": "growth",
+        "caption": "成长趋势与成就"
+      }
+    ],
+    "incentiveHooks": [],
+    "legalOperator": "魏文波"
+  },
+  "access": {
+    "mode": "open_optional",
+    "features": {
+      "register": true,
+      "guestBrowse": true,
+      "guestWrite": false
+    },
+    "gateActions": [
+      "create",
+      "submit",
+      "sync"
+    ],
+    "onPrivacyRefuse": "browse_basic",
+    "loginProviders": [
+      "password"
+    ]
+  },
+  "brand": {
+    "primary": "#1A5CFF",
+    "primaryDeep": "#0A0E1A",
+    "deep": "#0A0E1A",
+    "accent": "#FF6B35",
+    "tone": "sport-tech",
+    "stylePack": "premium-business",
+    "workbenchId": "data-dashboard",
+    "layoutVariant": "B",
+    "productVisualType": "ops-tool",
+    "visualAssets": [
+      { "id": "hero_sport", "file": "hero_sport_bg.png", "usage": "home-hero" },
+      { "id": "ambient_data", "file": "ambient_data_bg.png", "usage": "ambient-bg" }
+    ],
+    "visualDirection": {
+      "archetype": "sport-tech",
+      "density": "airy",
+      "material": "liquid-glass",
+      "imagery": "night-track",
+      "accent": "vitality-orange",
+      "primaryJob": "5 秒内查看本月数据并开始记录",
+      "notes": "竞技蓝+活力橙；深色默认；玻璃卡片+趋势图"
+    },
+    "logo": {
+      "brandAnchor": "竞",
+      "glyphStrategy": "track-arc",
+      "customLock": false
+    }
+  }
+}

@@ -1,0 +1,141 @@
+{
+  "specVersion": "1.0.0",
+  "generatedAt": "2026-08-26T06:36:40.548Z",
+  "requestId": "req_gewu_ji",
+  "industryPack": "gewu-folio",
+  "identity": {
+    "company": "格物文化",
+    "companyPinyin": "gewu",
+    "appName": "格物集",
+    "appPinyin": "ji",
+    "bundleId": "com.gewu.ji",
+    "version": "1.1.1"
+  },
+  "positioning": {
+    "tagline": "每日一物，格物致知——在碎片化时间完成有深度、有体系的知识探索与集册沉淀",
+    "coreUsers": [
+      {
+        "role": "终身学习者",
+        "ageRange": "25-45",
+        "scenario": "通勤或睡前阅读今日知识物",
+        "need": "有体系、有深度的短阅读，而非信息罗列"
+      }
+    ],
+    "painPoints": [
+      "碎片信息多但难沉淀",
+      "百科类应用缺乏个人集册与轨迹",
+      "学习工具常含广告或强推支付"
+    ],
+    "differentiation": "新中式极简每日一格 + 本机集册 + 智慧足迹，零权限零账号，无社交无生成式对话"
+  },
+  "modules": {
+    "pages": [
+      { "id": "daily", "title": "今日", "route": "pages/DailyPage", "features": ["工作台", "今日功课", "今日知识物", "小测", "已读", "收藏"], "tab": true },
+      { "id": "folio", "title": "图鉴", "route": "pages/FolioPage", "features": ["图鉴分类", "最近浏览", "收藏夹", "搜索", "详情"], "tab": true },
+      { "id": "practice", "title": "功课", "route": "pages/PracticePage", "features": ["物候打卡", "格物功课", "专题册"], "tab": true },
+      { "id": "records", "title": "记录", "route": "pages/RecordPage", "features": ["观察记录", "探索任务", "标签", "成长时间轴"], "tab": true },
+      { "id": "trace", "title": "足迹", "route": "pages/TracePage", "features": ["统计", "成就印记", "年谱", "周月回顾", "设置与隐私"], "tab": true }
+    ],
+    "coreFlows": [
+      { "name": "每日阅读", "steps": ["打开今日知识物", "标记已读", "按今日方向写观察"] },
+      { "name": "图鉴与收藏夹", "steps": ["按植物/动物等图鉴筛选", "放入收藏夹", "进详情写观察"] },
+      { "name": "格物记录", "steps": ["用模板创建记录", "追加观察形成时间轴", "复制图文卡片"] },
+      { "name": "足迹回顾", "steps": ["查看观察与任务统计", "切换主题", "管理隐私"] }
+    ]
+  },
+  "entities": [
+    {
+      "name": "KnowledgeObject",
+      "table": "local_pool",
+      "fields": [
+        { "name": "id", "type": "string", "required": true },
+        { "name": "title", "type": "string", "required": true },
+        { "name": "category", "type": "string", "required": true },
+        { "name": "coverKey", "type": "string", "required": true },
+        { "name": "summary", "type": "string", "required": true },
+        { "name": "body", "type": "string", "required": true }
+      ]
+    }
+  ],
+  "apis": [],
+  "ai": {
+    "capabilities": [],
+    "quickCommands": [],
+    "systemPrompt": "你是「格物文化」旗下应用「格物集」的内容助手。产品定位：每日一物，格物致知。主职责：帮助理解知识物的时代背景、关键数据与时间轴。禁止自称人工智能。C 端不提供生成式对话。",
+    "mode": "none",
+    "llmEnabled": false
+  },
+  "permissions": [],
+  "harmonyos": { "features": [] },
+  "store": {
+    "category": "生活",
+    "legalOperator": "魏文波",
+    "oneLiner": "每日一物，格物致知——观察记录、图鉴与本机集册",
+    "fullDescription": "格物集是一款纯本地、免费的个人探索工具。今日工作台展示功课进度与个人统计；可浏览五类图鉴并查看最近看过；用模板写下观察；立格物功课（期内观察自动计入进度）；物候打卡与自建专题册；足迹含成就印记、年谱与周月回顾。无账号、无广告、无内购、无社交、不申请敏感权限，数据默认保存在本机。",
+    "keywords": ["格物集", "观察记录", "图鉴", "知识", "集册", "鸿蒙", "每日一格"],
+    "privacySummary": {
+      "collect": ["阅读/收藏/收藏夹/观察记录（本机）", "格物三问与札记（本机）", "功课/打卡/专题/成就/年谱（本机）", "主题偏好（本机）", "隐私同意状态（本机）"],
+      "purpose": "提供每日探索、图鉴浏览、观察记录、功课进度、打卡连续、收藏整理与足迹回顾",
+      "thirdParties": []
+    },
+    "screenshotPlan": [
+      { "page": "daily", "caption": "每日一格主卡片与已读收藏" },
+      { "page": "folio", "caption": "格物集册标签筛选" },
+      { "page": "trace", "caption": "智慧足迹环图与统计" },
+      { "page": "detail", "caption": "知识物详情 Hero 与时间轴" }
+    ],
+    "incentiveHooks": []
+  },
+  "access": {
+    "mode": "open_optional",
+    "features": { "register": false, "guestBrowse": true, "guestWrite": true },
+    "gateActions": [],
+    "onPrivacyRefuse": "browse_basic",
+    "loginProviders": []
+  },
+  "brand": {
+    "primary": "#1A3A5C",
+    "primaryDeep": "#0F2438",
+    "deep": "#0F2438",
+    "accent": "#C9A96E",
+    "tone": "soft-editorial",
+    "stylePack": "soft-editorial",
+    "workbenchId": "catalog-tool",
+    "layoutVariant": "A",
+    "productVisualType": "content-commerce",
+    "visualDirection": {
+      "archetype": "oriental-editorial",
+      "density": "spacious",
+      "material": "warm-paper",
+      "imagery": "scholar-desk-lattice",
+      "accent": "warm-gold",
+      "primaryJob": "3 秒内阅读今日知识物并标记已读",
+      "notes": "深邃蓝+雅金+米白；禁止工厂六件套与 AI 字样"
+    },
+    "logo": {
+      "brandAnchor": "格",
+      "glyphStrategy": "semantic-fusion",
+      "customLock": true,
+      "generator": "agent-svg",
+      "renderScript": "store/logo/render_logo.mjs",
+      "symbolFile": "store/logo/symbol.svg",
+      "previewFile": "store/logo/preview-1024.png"
+    },
+    "visualAssets": [
+      { "id": "hero", "file": "hero_gewu.jpg", "usage": "首页氛围 Hero" },
+      { "id": "banner_lattice", "file": "banner_lattice.jpg", "usage": "首页底部 Editorial 条带" },
+      { "id": "banner_scroll", "file": "banner_scroll.jpg", "usage": "集册空态氛围" },
+      { "id": "obj_compass", "file": "obj_compass.jpg", "usage": "知识物封面" },
+      { "id": "atlas_lotus", "file": "atlas_lotus.jpg", "usage": "植物图鉴·荷花" },
+      { "id": "atlas_pine", "file": "atlas_pine.jpg", "usage": "植物图鉴·苍松" },
+      { "id": "atlas_sparrow", "file": "atlas_sparrow.jpg", "usage": "动物图鉴·麻雀" },
+      { "id": "atlas_koi", "file": "atlas_koi.jpg", "usage": "动物图鉴·锦鲤" },
+      { "id": "atlas_cicada", "file": "atlas_cicada.jpg", "usage": "昆虫图鉴·蝉" },
+      { "id": "atlas_firefly", "file": "atlas_firefly.jpg", "usage": "昆虫图鉴·萤火虫" },
+      { "id": "atlas_quartz", "file": "atlas_quartz.jpg", "usage": "矿物图鉴·石英" },
+      { "id": "atlas_amber", "file": "atlas_amber.jpg", "usage": "矿物图鉴·琥珀" },
+      { "id": "atlas_teapot", "file": "atlas_teapot.jpg", "usage": "日常物品·紫砂壶" },
+      { "id": "atlas_lantern", "file": "atlas_lantern.jpg", "usage": "日常物品·灯笼" }
+    ]
+  }
+}

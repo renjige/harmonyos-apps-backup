@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 360" fill="none">
+  <rect width="1280" height="360" fill="#12262F"/>
+  <g transform="translate(48, -80) scale(0.42)">
+    <path d="M250 318 L500 372 L500 742 L250 688 Z" fill="#F6F1E8"/>
+    <path d="M774 318 L524 372 L524 742 L774 688 Z" fill="#DCCFBB"/>
+    <rect x="500" y="348" width="24" height="410" rx="12" fill="#C4A574"/>
+  </g>
+  <text x="520" y="210" fill="#F6F1E8" font-size="92" font-family="HarmonyOS Sans, Source Han Sans, sans-serif" font-weight="600">»Ÿ</text>
+</svg>

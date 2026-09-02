@@ -1,0 +1,128 @@
+{
+  "specVersion": "1.0.0",
+  "generatedAt": "2026-08-26T01:30:00.000Z",
+  "requestId": "req_mingxu_ge",
+  "industryPack": "task-efficiency",
+  "identity": {
+    "company": "明序阁",
+    "companyPinyin": "mingxu",
+    "appName": "明序阁",
+    "appPinyin": "ge",
+    "bundleId": "com.mingxu.ge",
+    "version": "1.0.0"
+  },
+  "positioning": {
+    "tagline": "明以洞察，序以行远。个人智慧生活管理工具，用日程规划、习惯养成与知识碎片整理，让生活更清晰、更有条理。",
+    "coreUsers": [
+      {
+        "role": "知识工作者",
+        "ageRange": "25-45",
+        "scenario": "工作日清晨与晚间复盘",
+        "need": "把待办、习惯与灵感放进同一套秩序"
+      }
+    ],
+    "painPoints": [
+      "日程与习惯分散在多个工具",
+      "灵感稍纵即逝",
+      "缺少当日完成度的清晰反馈"
+    ],
+    "differentiation": "东方极简双环首页 + 月历日程 + 习惯网格打卡 + 知识碎片，无支付无生成式能力"
+  },
+  "modules": {
+    "pages": [
+      { "id": "home", "title": "首页", "route": "pages/HomePage", "features": ["今日进度环", "心情", "智慧提醒"], "tab": true },
+      { "id": "schedule", "title": "日程", "route": "pages/SchedulePage", "features": ["月历", "待办"], "tab": true },
+      { "id": "habits", "title": "习惯", "route": "pages/HabitPage", "features": ["打卡", "连续天数"], "tab": true },
+      { "id": "notes", "title": "知识", "route": "pages/NotesPage", "features": ["碎片记录"], "tab": true },
+      { "id": "mine", "title": "我的", "route": "pages/MinePage", "features": ["统计", "设置与隐私"], "tab": true },
+      { "id": "messages", "title": "消息", "route": "pages/MessagesPage", "features": ["机构通知"], "tab": false }
+    ],
+    "coreFlows": [
+      { "name": "日程闭环", "steps": ["创建", "按日查看", "完成或删除"] },
+      { "name": "习惯闭环", "steps": ["添加", "每日打卡", "连续统计"] },
+      { "name": "知识闭环", "steps": ["写下碎片", "详情", "编辑删除"] }
+    ]
+  },
+  "entities": [
+    { "name": "XuAgendaItem", "table": "agenda", "fields": [{ "name": "id", "type": "string", "required": true }, { "name": "title", "type": "string", "required": true }, { "name": "dateKey", "type": "string" }] },
+    { "name": "XuHabitItem", "table": "habits", "fields": [{ "name": "id", "type": "string", "required": true }, { "name": "title", "type": "string", "required": true }] },
+    { "name": "XuNoteItem", "table": "notes", "fields": [{ "name": "id", "type": "string", "required": true }, { "name": "title", "type": "string", "required": true }] }
+  ],
+  "apis": [
+    { "method": "POST", "path": "/api/v1/auth/login", "summary": "登录", "auth": false, "module": "auth" },
+    { "method": "POST", "path": "/api/v1/auth/register", "summary": "注册", "auth": false, "module": "auth" },
+    { "method": "GET", "path": "/api/v1/biz/task-efficiency/tips", "summary": "阁中笺注", "auth": false, "module": "biz" },
+    { "method": "GET", "path": "/api/v1/biz/task-efficiency/messages", "summary": "消息", "auth": false, "module": "biz" },
+    { "method": "POST", "path": "/api/v1/biz/task-efficiency/tasks", "summary": "同步事项", "auth": true, "module": "biz" },
+    { "method": "POST", "path": "/api/v1/biz/task-efficiency/habits", "summary": "同步习惯", "auth": true, "module": "biz" },
+    { "method": "POST", "path": "/api/v1/biz/task-efficiency/notes", "summary": "同步笔记", "auth": true, "module": "biz" }
+  ],
+  "ai": {
+    "capabilities": [],
+    "quickCommands": [],
+    "systemPrompt": "你是「明序阁」的节律助手。产品定位：明以洞察，序以行远。主职责：把描述整理成今日待办、习惯打卡建议或知识碎片提纲。禁止自称大模型。",
+    "mode": "none",
+    "llmEnabled": false
+  },
+  "permissions": [
+    { "name": "ohos.permission.INTERNET", "reason": "登录同步与拉取笺注消息", "when": "inuse", "scene": "登录、同步、消息" }
+  ],
+  "harmonyos": { "features": [] },
+  "store": {
+    "category": "生活",
+    "oneLiner": "明序阁 — 日程、习惯与知识碎片",
+    "fullDescription": "明序阁帮助你用东方极简的方式管理一日秩序：看清今日日程与习惯完成度，用月历安排待办，坚持打卡，把灵感写成知识碎片。无支付、无生成式对话。支持浅色与深色模式。",
+    "keywords": ["明序阁", "日程", "习惯", "笔记", "鸿蒙"],
+    "privacySummary": {
+      "collect": ["可选账号信息", "日程习惯笔记（登录后同步）", "本机心情记录"],
+      "purpose": "提供生活秩序管理与可选云端同步",
+      "thirdParties": []
+    },
+    "demoAccount": { "username": "auditor@mingxu.local", "passwordNote": "仅写入 store/demo-account.md" },
+    "screenshotPlan": [
+      { "page": "home", "caption": "今日双环进度与智慧提醒" },
+      { "page": "schedule", "caption": "月历与当日待办" },
+      { "page": "habits", "caption": "习惯网格打卡" },
+      { "page": "notes", "caption": "知识碎片列表" },
+      { "page": "mine", "caption": "统计与设置" }
+    ],
+    "incentiveHooks": [],
+    "legalOperator": "魏文波"
+  },
+  "access": {
+    "mode": "open_optional",
+    "features": { "register": true, "guestBrowse": true, "guestWrite": true },
+    "gateActions": ["sync_records"],
+    "onPrivacyRefuse": "browse_basic",
+    "loginProviders": ["password"]
+  },
+  "admin": {
+    "featureModules": ["overview", "appUsers", "teCategories", "teTagPresets", "teTips", "teTasks", "teHabits", "teHabitLogs", "teNotes", "messages", "kpis", "ai"]
+  },
+  "brand": {
+    "primary": "#1A2A3A",
+    "primaryDeep": "#121C28",
+    "accent": "#C9A96E",
+    "tone": "editorial",
+    "stylePack": "soft-editorial",
+    "workbenchId": "timeline-board",
+    "layoutVariant": "D",
+    "productVisualType": "ops-tool",
+    "visualDirection": "ink-navy lattice window with gold light on rice-paper surfaces",
+    "visualAssets": [
+      { "id": "hero", "file": "hero_study.png", "usage": "home-hero" },
+      { "id": "banner", "file": "banner_ink.png", "usage": "editorial-banner" },
+      { "id": "habit", "file": "cover_habit.png", "usage": "habit-cover" },
+      { "id": "note", "file": "cover_note.png", "usage": "note-cover" },
+      { "id": "calendar", "file": "cover_calendar.png", "usage": "schedule-cover" },
+      { "id": "empty", "file": "empty_paper.png", "usage": "empty-atmosphere" }
+    ],
+    "logo": {
+      "brandAnchor": "明",
+      "glyphStrategy": "semantic-fusion",
+      "customLock": true,
+      "generator": "agent-svg",
+      "renderScript": "store/logo/render_logo.mjs"
+    }
+  }
+}

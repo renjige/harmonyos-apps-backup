@@ -1,0 +1,261 @@
+{
+  "specVersion": "1.0.0",
+  "generatedAt": "2026-08-25T02:57:51.650Z",
+  "requestId": "req_1787626671607",
+  "industryPack": "shiyi-journal",
+  "identity": {
+    "company": "拼图记忆",
+    "companyPinyin": "pintu",
+    "appName": "旅行拼图",
+    "appPinyin": "lvxing-pintu",
+    "bundleId": "com.pintu.lvxingpintu",
+    "version": "1.0.0"
+  },
+  "positioning": {
+    "tagline": "将碎片化的旅行记忆拼合成完整的旅行故事，轻量本机保存",
+    "coreUsers": [
+      {
+        "role": "想安静记下一天的都市年轻人",
+        "ageRange": "18-40",
+        "scenario": "睡前、通勤后、想把一件小事留下来的片刻",
+        "need": "30 秒写完一篇轻手账，以后还能温柔地翻看"
+      }
+    ],
+    "painPoints": [
+      "日记 App 太重，相册和社交把记录挤没了",
+      "复杂编辑器让人迟迟不想动手",
+      "想要仪式感，却找不到克制、高级的生活手账"
+    ],
+    "differentiation": "将碎片化的旅行记忆拼合成完整的旅行故事，轻量本机保存"
+  },
+  "modules": {
+    "pages": [
+      {
+        "id": "home",
+        "title": "拾意",
+        "route": "pages/HomePage",
+        "features": [
+          "问候",
+          "今日心情",
+          "快速记录",
+          "今日三问"
+        ],
+        "tab": true
+      },
+      {
+        "id": "journal",
+        "title": "手账",
+        "route": "pages/JournalPage",
+        "features": [
+          "列表",
+          "搜索",
+          "心情与标签"
+        ],
+        "tab": true
+      },
+      {
+        "id": "review",
+        "title": "回顾",
+        "route": "pages/ReviewPage",
+        "features": [
+          "月历",
+          "智慧回顾"
+        ],
+        "tab": true
+      },
+      {
+        "id": "mine",
+        "title": "我的",
+        "route": "pages/MinePage",
+        "features": [
+          "资料",
+          "收藏",
+          "设置与隐私"
+        ],
+        "tab": true
+      }
+    ],
+    "coreFlows": [
+      {
+        "name": "每日拾意闭环",
+        "steps": [
+          "选心情",
+          "写下今天",
+          "保存本机",
+          "在手账与回顾中翻看"
+        ]
+      }
+    ]
+  },
+  "entities": [
+    {
+      "name": "JournalEntry",
+      "table": "shiyi_journals",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "body",
+          "type": "string"
+        },
+        {
+          "name": "mood",
+          "type": "string"
+        },
+        {
+          "name": "oneLiner",
+          "type": "string"
+        },
+        {
+          "name": "keyword",
+          "type": "string"
+        },
+        {
+          "name": "entryDate",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "PickupItem",
+      "table": "shiyi_pickups",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "kind",
+          "type": "string"
+        },
+        {
+          "name": "text",
+          "type": "string"
+        }
+      ]
+    }
+  ],
+  "apis": [],
+  "ai": {
+    "capabilities": [],
+    "quickCommands": [],
+    "systemPrompt": "你是「拾意生活」旗下应用「手账拾意」的内容助手。产品定位：拾起生活里的小事，记录值得留下的心意。主职责：帮助用户用克制的语言写下当天的手账。禁止自称人工智能，禁止心理诊断。C 端不提供生成式对话。",
+    "mode": "none",
+    "llmEnabled": false
+  },
+  "permissions": [],
+  "harmonyos": {
+    "features": []
+  },
+  "store": {
+    "category": "生活",
+    "legalOperator": "魏文波",
+    "oneLiner": "旅行拼图 — 将碎片化的旅行记忆拼合成完整的旅行故事，轻量本机保存",
+    "fullDescription": "手账拾意是一款轻量生活记录应用。你可以记下今日心情、写下当天最值得记住的一件事，并把喜欢的句子收进「我的拾意」。没有支付、没有会员、没有社交。第一版把内容保存在本机，不主动上传手账。",
+    "keywords": [
+      "手账",
+      "日记",
+      "心情",
+      "生活记录",
+      "拾意",
+      "鸿蒙"
+    ],
+    "privacySummary": {
+      "collect": [
+        "手账标题与正文（仅本机）",
+        "心情与标签（仅本机）",
+        "可选昵称（仅本机）"
+      ],
+      "purpose": "在本机保存与回顾个人生活记录",
+      "thirdParties": []
+    },
+    "demoAccount": {
+      "username": "auditor@pintu.local",
+      "passwordNote": "第一版无登录；审核请直接体验本机记录"
+    },
+    "screenshotPlan": [
+      {
+        "page": "home",
+        "caption": "问候、心情与当场记录"
+      },
+      {
+        "page": "compose",
+        "caption": "写下今天"
+      },
+      {
+        "page": "journal",
+        "caption": "我的手账"
+      },
+      {
+        "page": "review",
+        "caption": "月历与智慧回顾"
+      },
+      {
+        "page": "pickup",
+        "caption": "我的拾意画廊"
+      }
+    ],
+    "incentiveHooks": []
+  },
+  "access": {
+    "mode": "open_optional",
+    "features": {
+      "register": false,
+      "guestBrowse": true,
+      "guestWrite": true
+    },
+    "gateActions": [],
+    "onPrivacyRefuse": "browse_basic",
+    "loginProviders": []
+  },
+  "admin": {
+    "featureModules": [
+      "overview",
+      "appUsers",
+      "messages",
+      "kpis"
+    ]
+  },
+  "brand": {
+    "primary": "#E8843A",
+    "primaryDeep": "#2D3A4A",
+    "deep": "#2D3A4A",
+    "accent": "#F5F0E8",
+    "tone": "warm-travel-editorial",
+    "stylePack": "harmonyos-official",
+    "workbenchId": "puzzle-collage",
+    "layoutVariant": "A",
+    "productVisualType": "content-commerce",
+    "visualDirection": {
+      "archetype": "travel-puzzle-collage",
+      "density": "airy",
+      "material": "warm-cream-paper",
+      "imagery": "travel-editorial-photography",
+      "accent": "warm-orange",
+      "primaryJob": "3 秒理解拼图旅行记忆，10 秒开始选图拼合",
+      "notes": "暖橙 #E8843A + 米白 #F5F0E8 + 深蓝灰 #2D3A4A；圆角卡片；禁止 AI 紫发光"
+    },
+    "visualAssets": [
+      { "id": "hero", "file": "hero_bg.png", "usage": "足迹页 Hero" },
+      { "id": "banner1", "file": "banner_01.png", "usage": "拼图页 Banner" },
+      { "id": "banner2", "file": "banner_02.png", "usage": "收藏页 Banner" },
+      { "id": "map", "file": "map_bg.png", "usage": "地图足迹底图" },
+      { "id": "cat_coast", "file": "cat_coast.png", "usage": "栏目封面" }
+    ],
+    "logo": {
+      "brandAnchor": "拼图",
+      "glyphStrategy": "semantic-fusion",
+      "customLock": true,
+      "generator": "agent-svg",
+      "concept": "四格拼图块 + 旅行弧线"
+    }
+  }
+}

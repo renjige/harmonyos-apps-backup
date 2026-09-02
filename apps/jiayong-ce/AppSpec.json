@@ -1,0 +1,233 @@
+{
+  "specVersion": "1.0.0",
+  "generatedAt": "2026-08-26T07:44:46.988Z",
+  "requestId": "req_1787730286954",
+  "industryPack": "home-album",
+  "identity": {
+    "company": "温馨家记",
+    "companyPinyin": "jiayong",
+    "appName": "家用册",
+    "appPinyin": "ce",
+    "bundleId": "com.jiayong.ce",
+    "version": "1.0.0"
+  },
+  "positioning": {
+    "tagline": "一家人的记忆，一本就够了——面向家庭的私密智能相册与生活记录",
+    "coreUsers": [
+      {
+        "role": "有孩子的年轻家庭",
+        "ageRange": "25-45",
+        "scenario": "日常拍照后想与家人一起整理、回顾",
+        "need": "私密保存家庭照片，按时间线翻看，不必依赖公域社交"
+      },
+      {
+        "role": "多代同堂家庭",
+        "ageRange": "30-60",
+        "scenario": "记录孩子成长、节日聚会与家庭旅行",
+        "need": "家庭成员都能参与上传，动态可见"
+      }
+    ],
+    "painPoints": [
+      "手机相册太杂，家庭照片散落各处",
+      "公域社交不适合私密家庭影像",
+      "缺少按家庭维度整理与回忆入口"
+    ],
+    "differentiation": "家庭时光轴 + 智慧分类 + 家庭圈 + 本机私密存储；暖橙家庭相册体验"
+  },
+  "modules": {
+    "pages": [
+      {
+        "id": "timeline",
+        "title": "首页",
+        "route": "pages/TimelinePage",
+        "features": ["时光轴", "成员头像", "智慧回忆", "上传入口"],
+        "tab": true
+      },
+      {
+        "id": "album",
+        "title": "相册",
+        "route": "pages/AlbumPage",
+        "features": ["人物/时间/地点/视频分类", "网格", "长按多选", "批量删除"],
+        "tab": true
+      },
+      {
+        "id": "family",
+        "title": "家庭圈",
+        "route": "pages/FamilyCirclePage",
+        "features": ["成员列表", "家庭动态", "邀请加入"],
+        "tab": true
+      },
+      {
+        "id": "mine",
+        "title": "我的",
+        "route": "pages/MinePage",
+        "features": ["资料", "存储空间", "设置与隐私", "深色模式"],
+        "tab": true
+      }
+    ],
+    "coreFlows": [
+      {
+        "name": "家庭相册闭环",
+        "steps": ["同意隐私", "上传照片", "时光轴/相册浏览", "详情查看或删除", "家庭圈查看动态"]
+      }
+    ]
+  },
+  "entities": [
+    {
+      "name": "JournalEntry",
+      "table": "shiyi_journals",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "body",
+          "type": "string"
+        },
+        {
+          "name": "mood",
+          "type": "string"
+        },
+        {
+          "name": "oneLiner",
+          "type": "string"
+        },
+        {
+          "name": "keyword",
+          "type": "string"
+        },
+        {
+          "name": "entryDate",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "PickupItem",
+      "table": "shiyi_pickups",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "kind",
+          "type": "string"
+        },
+        {
+          "name": "text",
+          "type": "string"
+        }
+      ]
+    }
+  ],
+  "apis": [],
+  "ai": {
+    "capabilities": [],
+    "quickCommands": [],
+    "systemPrompt": "你是「温馨家记」旗下应用「家用册」的说明助手。产品定位：家庭私密智能相册。主职责：帮助用户理解时光轴、智慧分类、家庭圈与本机存储。禁止自称人工智能，禁止生成式对话。C 端不提供大模型能力。",
+    "mode": "none",
+    "llmEnabled": false
+  },
+  "permissions": [],
+  "harmonyos": {
+    "features": []
+  },
+  "store": {
+    "category": "生活",
+    "legalOperator": "魏文波",
+    "oneLiner": "一家人的记忆，一本就够了——家庭私密智能相册",
+    "fullDescription": "家用册是一款面向家庭的私密智能相册应用。支持时光轴浏览、按人物/时间/地点/视频智慧分类、家庭圈成员与动态、智慧回忆（往年的今天）。照片默认保存在本机，无支付、无广告、无公域社交。",
+    "keywords": [
+      "家庭相册",
+      "私密相册",
+      "时光轴",
+      "家庭圈",
+      "照片整理",
+      "生活记录",
+      "鸿蒙"
+    ],
+    "privacySummary": {
+      "collect": [
+        "昵称与家庭名称（仅本机）",
+        "照片文件与描述（仅本机）",
+        "家庭成员姓名与关系（仅本机）"
+      ],
+      "purpose": "在本机保存、整理与回顾家庭照片",
+      "thirdParties": []
+    },
+    "demoAccount": {
+      "username": "",
+      "passwordNote": "无登录功能；审核同意隐私后直接体验上传与浏览"
+    },
+    "screenshotPlan": [
+      { "page": "timeline", "caption": "首页时光轴与成员头像" },
+      { "page": "album", "caption": "智慧分类与照片网格" },
+      { "page": "upload", "caption": "从相册上传照片" },
+      { "page": "family", "caption": "家庭圈成员与动态" },
+      { "page": "mine", "caption": "存储空间与设置隐私" }
+    ],
+    "incentiveHooks": []
+  },
+  "access": {
+    "mode": "open_optional",
+    "features": {
+      "register": false,
+      "guestBrowse": true,
+      "guestWrite": true
+    },
+    "gateActions": [],
+    "onPrivacyRefuse": "browse_basic",
+    "loginProviders": []
+  },
+  "admin": {
+    "featureModules": [
+      "overview",
+      "appUsers",
+      "messages",
+      "kpis"
+    ]
+  },
+  "brand": {
+    "primary": "#E8862E",
+    "primaryDeep": "#2D3A4A",
+    "deep": "#2D3A4A",
+    "accent": "#F5F0E8",
+    "tone": "warm-family-album",
+    "stylePack": "harmonyos-official",
+    "workbenchId": "timeline-board",
+    "layoutVariant": "A",
+    "productVisualType": "content-commerce",
+    "visualDirection": {
+      "archetype": "warm-family-album",
+      "density": "airy",
+      "material": "warm-home-photography",
+      "imagery": "family-living-room-editorial",
+      "accent": "warm-orange",
+      "primaryJob": "3秒看到家庭时光轴，10秒上传一张照片",
+      "notes": "暖橙#E8862E+深灰蓝#2D3A4A；真图Hero/Banner/分类封面"
+    },
+    "visualAssets": [
+      { "id": "hero_bg", "file": "hero_bg.png", "usage": "首页时光轴 Hero" },
+      { "id": "banner_01", "file": "banner_01.png", "usage": "家庭圈 Banner" },
+      { "id": "banner_02", "file": "banner_02.png", "usage": "智慧回忆卡片" },
+      { "id": "cat_people", "file": "cat_people.png", "usage": "相册人物分类" },
+      { "id": "cat_place", "file": "cat_place.png", "usage": "相册地点分类" },
+      { "id": "cat_time", "file": "cat_time.png", "usage": "相册时间分类" }
+    ],
+    "logo": {
+      "brandAnchor": "家",
+      "glyphStrategy": "semantic-fusion",
+      "customLock": true,
+      "generator": "agent-svg",
+      "concept": "屋檐+相框：家的记忆"
+    }
+  }
+}

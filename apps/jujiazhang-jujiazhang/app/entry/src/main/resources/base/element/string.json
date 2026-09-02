@@ -1,0 +1,9 @@
+{
+  "string": [
+    { "name": "module_desc", "value": "居家章家庭事务协同管理" },
+    { "name": "EntryAbility_desc", "value": "居家章 — 家庭看板、物品、计划与备忘" },
+    { "name": "EntryAbility_label", "value": "居家章" },
+    { "name": "internet_reason", "value": "用于登录后同步家庭计划与账号数据" },
+    { "name": "reminder_reason", "value": "用于在物品到期或计划到达提醒时间时发布系统通知" }
+  ]
+}

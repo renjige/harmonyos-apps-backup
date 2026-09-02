@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 360" role="img" aria-label="hI: ChenGuang Jian">
+  <rect width="1280" height="360" fill="#F5F0E8"/>
+  <svg x="40" y="36" width="288" height="288" viewBox="0 0 1024 1024">
+    <rect width="1024" height="1024" rx="228" fill="#3D3228"/>
+    <path fill="#F5F0E8" d="M292 250h332L772 398v376c0 36-30 66-66 66H358c-36 0-66-30-66-66V316c0-36 30-66 66-66z"/>
+    <path fill="#E4D8C8" d="M624 250l148 148H690c-36 0-66-30-66-66V250z"/>
+    <path stroke="#D4A574" stroke-width="28" stroke-linecap="round" d="M196 176L428 620"/>
+    <path stroke="#D4A574" stroke-width="16" stroke-linecap="round" opacity="0.85" d="M148 248L360 668"/>
+  </svg>
+  <text x="360" y="168" font-family="Songti SC, Noto Serif SC, Georgia, serif" font-size="92" font-weight="600" fill="#3D3D3D">hI:</text>
+  <text x="360" y="248" font-family="Georgia, Times New Roman, serif" font-size="32" fill="#A67C52">ChenGuang Jian</text>
+</svg>

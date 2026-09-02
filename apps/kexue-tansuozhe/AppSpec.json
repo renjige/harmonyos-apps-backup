@@ -1,0 +1,277 @@
+{
+  "specVersion": "1.0.0",
+  "generatedAt": "2026-09-01T07:45:27.062Z",
+  "requestId": "req_1788248727027",
+  "industryPack": "element-explorer",
+  "identity": {
+    "company": "科学探索",
+    "companyPinyin": "kexue",
+    "appName": "元素探索者",
+    "appPinyin": "tansuozhe",
+    "bundleId": "com.kexue.tansuozhe",
+    "version": "1.0.0"
+  },
+  "positioning": {
+    "tagline": "可探索、可练习、可收集、可形成学习反馈的互动式元素知识探索应用，从背周期表转变为玩着理解元素",
+    "coreUsers": [
+      {
+        "role": "学生",
+        "ageRange": "12-18",
+        "scenario": "课后复习元素性质与周期规律",
+        "need": "互动探索而非百科罗列"
+      },
+      {
+        "role": "科学兴趣用户",
+        "ageRange": "18-45",
+        "scenario": "碎片时间探索元素关系与生活应用",
+        "need": "精致 UI、安全推演、成长反馈"
+      }
+    ],
+    "painPoints": [
+      "周期表 App 只有查询没有探索闭环",
+      "百科类信息堆砌缺乏互动",
+      "同质化元素资料工具过多"
+    ],
+    "differentiation": "可探索、可练习、可收集、可形成学习反馈的互动式元素知识探索应用，从背周期表转变为玩着理解元素"
+  },
+  "modules": {
+    "pages": [
+      {
+        "id": "explore",
+        "title": "探索",
+        "route": "pages/ExplorePage",
+        "features": [
+          "今日探索",
+          "元素旅程",
+          "探索专题",
+          "继续探索",
+          "搜索"
+        ],
+        "tab": true
+      },
+      {
+        "id": "table",
+        "title": "周期表",
+        "route": "pages/PeriodicTablePage",
+        "features": [
+          "互动周期表",
+          "筛选",
+          "元素详情"
+        ],
+        "tab": true
+      },
+      {
+        "id": "challenge",
+        "title": "挑战",
+        "route": "pages/ChallengePage",
+        "features": [
+          "元素识别",
+          "属性判断",
+          "家族匹配",
+          "生活关联",
+          "关系推理"
+        ],
+        "tab": true
+      },
+      {
+        "id": "favorite",
+        "title": "收藏",
+        "route": "pages/FavoritePage",
+        "features": [
+          "元素收藏",
+          "专题收藏",
+          "待探索"
+        ],
+        "tab": true
+      },
+      {
+        "id": "mine",
+        "title": "我的",
+        "route": "pages/MinePage",
+        "features": [
+          "探索等级",
+          "探索记录",
+          "成就徽章",
+          "显示设置",
+          "协议"
+        ],
+        "tab": true
+      }
+    ],
+    "coreFlows": [
+      {
+        "name": "元素探索",
+        "steps": [
+          "今日探索或周期表选元素",
+          "阅读档案",
+          "关系探索",
+          "科学推演",
+          "收藏"
+        ]
+      },
+      {
+        "name": "探索挑战",
+        "steps": [
+          "选择挑战类型",
+          "答题",
+          "查看解析",
+          "更新等级与徽章"
+        ]
+      },
+      {
+        "name": "成长反馈",
+        "steps": [
+          "探索元素计数",
+          "挑战完成",
+          "解锁徽章",
+          "旅程进度刷新"
+        ]
+      }
+    ]
+  },
+  "entities": [
+    {
+      "name": "Element",
+      "table": "local_elements",
+      "fields": [
+        {
+          "name": "atomicNumber",
+          "type": "number",
+          "required": true
+        },
+        {
+          "name": "symbol",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "nameCn",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "category",
+          "type": "string",
+          "required": true
+        }
+      ]
+    }
+  ],
+  "apis": [],
+  "ai": {
+    "capabilities": [],
+    "quickCommands": [],
+    "systemPrompt": "你是「科学探索」旗下应用「元素探索者」的内容助手。产品定位：互动式元素知识探索。主职责：说明元素性质、关系与推演。禁止自称人工智能。C 端不提供生成式对话。",
+    "mode": "none",
+    "llmEnabled": false
+  },
+  "permissions": [],
+  "harmonyos": {
+    "features": []
+  },
+  "store": {
+    "category": "教育",
+    "legalOperator": "魏文波",
+    "oneLiner": "元素探索者 — 可探索、可练习、可收集、可形成学习反馈的互动式元素知识探索应用，",
+    "fullDescription": "元素探索者是一款面向学生与科学兴趣用户的互动式元素知识探索应用。提供 118 种元素档案、互动周期表、元素关系探索、安全科学推演、探索挑战与徽章成长。数据保存在本机，无需注册，无广告无内购，不申请敏感权限。",
+    "keywords": [
+      "元素",
+      "周期表",
+      "化学",
+      "探索",
+      "挑战",
+      "科学",
+      "鸿蒙"
+    ],
+    "privacySummary": {
+      "collect": [
+        "探索进度（本机）",
+        "挑战记录（本机）",
+        "收藏（本机）",
+        "显示偏好（本机）",
+        "隐私同意状态（本机）"
+      ],
+      "purpose": "提供元素探索、挑战、收藏与成长记录",
+      "thirdParties": []
+    },
+    "demoAccount": {
+      "username": "auditor@kexue.local",
+      "passwordNote": "单机 App 无登录，仅 store/demo-account.md 说明"
+    },
+    "screenshotPlan": [
+      {
+        "page": "explore",
+        "caption": "探索首页与今日探索"
+      },
+      {
+        "page": "table",
+        "caption": "互动周期表"
+      },
+      {
+        "page": "detail",
+        "caption": "元素档案与关系"
+      },
+      {
+        "page": "challenge",
+        "caption": "探索挑战"
+      },
+      {
+        "page": "mine",
+        "caption": "探索等级与成就"
+      }
+    ],
+    "incentiveHooks": []
+  },
+  "access": {
+    "mode": "open_optional",
+    "features": {
+      "register": false,
+      "guestBrowse": true,
+      "guestWrite": true
+    },
+    "gateActions": [],
+    "onPrivacyRefuse": "browse_basic",
+    "loginProviders": []
+  },
+  "brand": {
+    "primary": "#173B63",
+    "primaryDeep": "#0F2438",
+    "deep": "#0F2438",
+    "accent": "#35B9B0",
+    "tone": "premium-business",
+    "stylePack": "premium-business",
+    "workbenchId": "catalog-tool",
+    "layoutVariant": "A",
+    "productVisualType": "ops-tool",
+    "visualDirection": {
+      "archetype": "science-museum",
+      "density": "airy",
+      "material": "mineral-glass",
+      "imagery": "element-orbit-lab",
+      "accent": "teal-gold",
+      "primaryJob": "3 秒内开始今日元素探索",
+      "notes": "深海蓝+元素青+矿物金；禁止百科罗列感"
+    },
+    "logo": {
+      "brandAnchor": "元",
+      "glyphStrategy": "semantic-fusion",
+      "customLock": true,
+      "generator": "agent-svg",
+      "renderScript": "store/logo/render_logo.mjs",
+      "symbolFile": "store/logo/symbol.svg",
+      "previewFile": "store/logo/preview-1024.png"
+    },
+    "visualAssets": [
+      {
+        "id": "hero",
+        "file": "hero_explore.png",
+        "usage": "探索首页 Hero"
+      },
+      {
+        "id": "ambient",
+        "file": "ambient_lab.png",
+        "usage": "周期表/空态氛围"
+      }
+    ]
+  }
+}

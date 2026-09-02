@@ -1,0 +1,467 @@
+{
+  "specVersion": "1.0.0",
+  "generatedAt": "2026-08-26T01:25:34.710Z",
+  "requestId": "req_1787707534645",
+  "industryPack": "ink-cottage",
+  "identity": {
+    "company": "墨香雅集",
+    "companyPinyin": "moxiang",
+    "appName": "墨香小筑",
+    "appPinyin": "xiaozhu",
+    "bundleId": "com.moxiang.xiaozhu",
+    "version": "1.0.0"
+  },
+  "positioning": {
+    "tagline": "读今日书摘，写下墨迹，在小筑与文友打卡。",
+    "coreUsers": [
+      {
+        "role": "爱读古典的城市读者",
+        "ageRange": "22-50",
+        "scenario": "通勤、午后茶席、睡前十分钟",
+        "need": "一段合法可抄的原文、可匹配的书单、可沉淀的笔记与打卡"
+      }
+    ],
+    "painPoints": [
+      "资讯流太杂，难以安静读一句",
+      "书单很多，却缺少与自己气质匹配的入口",
+      "读过的感受散落聊天记录，形不成墨迹"
+    ],
+    "differentiation": "读今日书摘，写下墨迹，在小筑与文友打卡。"
+  },
+  "modules": {
+    "pages": [
+      {
+        "id": "home",
+        "title": "首页",
+        "route": "pages/HomePage",
+        "features": [
+          "今日书摘",
+          "经典名句",
+          "进入书房"
+        ],
+        "tab": true
+      },
+      {
+        "id": "study",
+        "title": "书房",
+        "route": "pages/StudyPage",
+        "features": [
+          "主题书单",
+          "匹配问卷"
+        ],
+        "tab": true
+      },
+      {
+        "id": "notes",
+        "title": "笔记",
+        "route": "pages/NotesPage",
+        "features": [
+          "墨迹列表",
+          "新建编辑删除"
+        ],
+        "tab": true
+      },
+      {
+        "id": "circle",
+        "title": "文友圈",
+        "route": "pages/CirclePage",
+        "features": [
+          "精选笺",
+          "书评",
+          "打卡"
+        ],
+        "tab": true
+      },
+      {
+        "id": "mine",
+        "title": "我的",
+        "route": "pages/MinePage",
+        "features": [
+          "阅读统计",
+          "消息",
+          "设置与隐私"
+        ],
+        "tab": true
+      }
+    ],
+    "coreFlows": [
+      {
+        "name": "书摘到墨迹",
+        "steps": [
+          "读今日书摘",
+          "打开详情",
+          "写墨迹或打卡",
+          "列表刷新"
+        ]
+      }
+    ]
+  },
+  "entities": [
+    {
+      "name": "Excerpt",
+      "table": "excerpts",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "source",
+          "type": "string"
+        },
+        {
+          "name": "author",
+          "type": "string"
+        },
+        {
+          "name": "body",
+          "type": "string"
+        },
+        {
+          "name": "coverKey",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "BookList",
+      "table": "lists",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "matchTags",
+          "type": "string"
+        },
+        {
+          "name": "booksJson",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "Essay",
+      "table": "essays",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "body",
+          "type": "string"
+        },
+        {
+          "name": "coverKey",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "InkNote",
+      "table": "notes",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "required": true
+        },
+        {
+          "name": "userId",
+          "type": "string"
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "body",
+          "type": "string"
+        }
+      ]
+    }
+  ],
+  "apis": [
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/ink-cottage/excerpts",
+      "summary": "书摘列表",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/ink-cottage/excerpts/:id",
+      "summary": "书摘详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/ink-cottage/lists",
+      "summary": "书房书单",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/ink-cottage/lists/:id",
+      "summary": "书单详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/ink-cottage/essays",
+      "summary": "精选笺",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/ink-cottage/essays/:id",
+      "summary": "精选笺详情",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/ink-cottage/notes",
+      "summary": "我的墨迹",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/biz/ink-cottage/notes",
+      "summary": "写墨迹",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "PUT",
+      "path": "/api/v1/biz/ink-cottage/notes/:id",
+      "summary": "改墨迹",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/biz/ink-cottage/notes/:id",
+      "summary": "删墨迹",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/ink-cottage/reviews",
+      "summary": "我的书评",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/biz/ink-cottage/reviews",
+      "summary": "写书评",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/ink-cottage/checkins",
+      "summary": "我的打卡",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/biz/ink-cottage/checkins",
+      "summary": "读书打卡",
+      "auth": true,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/biz/ink-cottage/kpis",
+      "summary": "KPI",
+      "auth": false,
+      "module": "biz"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/messages",
+      "summary": "消息",
+      "auth": false,
+      "module": "biz"
+    }
+  ],
+  "ai": {
+    "capabilities": [],
+    "quickCommands": [],
+    "systemPrompt": "你是「墨香雅集」旗下应用「墨香小筑」的内容助手。产品定位：读今日书摘，写下墨迹，在小筑与文友打卡。主职责：解释古典书摘主题、按问卷标签匹配书房书单、提示墨迹与打卡步骤。禁止自称人工智能，禁止生成式对话写全文。",
+    "mode": "none",
+    "llmEnabled": false
+  },
+  "permissions": [
+    {
+      "name": "ohos.permission.INTERNET",
+      "reason": "拉取书摘、书单与文友圈精选内容",
+      "when": "inuse",
+      "scene": "打开应用浏览栏目时"
+    }
+  ],
+  "harmonyos": {
+    "features": []
+  },
+  "store": {
+    "category": "教育",
+    "legalOperator": "魏文波",
+    "oneLiner": "墨香小筑 — 读今日书摘，写下墨迹，在小筑与文友打卡。",
+    "fullDescription": "墨香小筑是一款面向古典阅读的数字小筑：每日精选公域书摘与名句，智慧书房按阅读偏好匹配主题书单，墨迹笔记可记录、编辑与删除，文友圈提供机构精选笺、书评与读书打卡。完全免费，无支付，不上架生成式对话。游客可浏览栏目；写笔记、书评与打卡需登录。",
+    "keywords": [
+      "书摘",
+      "笔记",
+      "阅读",
+      "书房",
+      "打卡",
+      "鸿蒙"
+    ],
+    "privacySummary": {
+      "collect": [
+        "账号注册字段",
+        "墨迹笔记",
+        "书评",
+        "打卡记录"
+      ],
+      "purpose": "提供书摘浏览、书房匹配、笔记与文友圈记录",
+      "thirdParties": []
+    },
+    "demoAccount": {
+      "username": "auditor@moxiang.local",
+      "passwordNote": "密码见本文件，禁止出现在客户端"
+    },
+    "screenshotPlan": [
+      {
+        "page": "home",
+        "caption": "今日书摘"
+      },
+      {
+        "page": "study",
+        "caption": "智慧书房"
+      },
+      {
+        "page": "notes",
+        "caption": "墨迹笔记"
+      },
+      {
+        "page": "circle",
+        "caption": "文友圈"
+      },
+      {
+        "page": "mine",
+        "caption": "我的"
+      }
+    ],
+    "incentiveHooks": []
+  },
+  "access": {
+    "mode": "open_optional",
+    "features": {
+      "register": true,
+      "guestBrowse": true,
+      "guestWrite": false
+    },
+    "gateActions": [
+      "create_note",
+      "create_review",
+      "create_checkin",
+      "sync_records"
+    ],
+    "onPrivacyRefuse": "browse_basic",
+    "loginProviders": [
+      "password"
+    ]
+  },
+  "admin": {
+    "featureModules": [
+      "overview",
+      "appUsers",
+      "moxExcerpts",
+      "moxLists",
+      "moxEssays",
+      "moxNotes",
+      "moxReviews",
+      "moxCheckins",
+      "messages",
+      "kpis",
+      "ai"
+    ]
+  },
+  "brand": {
+    "primary": "#1A1A2E",
+    "primaryDeep": "#12121C",
+    "deep": "#12121C",
+    "accent": "#C9A96E",
+    "tone": "soft-editorial",
+    "stylePack": "soft-editorial",
+    "workbenchId": "catalog-tool",
+    "layoutVariant": "A",
+    "productVisualType": "content-commerce",
+    "visualDirection": {
+      "archetype": "ink-wash-study",
+      "density": "airy",
+      "material": "xuan-paper-ink",
+      "imagery": "inkstone-thread-bound-tea",
+      "accent": "ink-gold",
+      "primaryJob": "3 秒内读到今日书摘",
+      "notes": "墨色 #1A1A2E + 鎏金 #C9A96E；禁止 AI 字样"
+    },
+    "logo": {
+      "brandAnchor": "墨",
+      "glyphStrategy": "semantic-fusion",
+      "customLock": true,
+      "generator": "agent-svg",
+      "renderScript": "store/logo/render_logo.mjs",
+      "concept": "墨晕点滴与抽象小筑屋脊",
+      "foregroundFile": "store/logo/foreground.png",
+      "backgroundFile": "store/logo/background.png",
+      "previewFile": "store/logo/preview-1024.png",
+      "agcFile": "store/logo/agc-216.png",
+      "symbolFile": "store/logo/symbol.svg",
+      "horizontalFile": "store/logo/logo-horizontal.svg"
+    },
+    "visualAssets": [
+      { "id": "hero_ink", "file": "hero_ink.png", "usage": "hero" },
+      { "id": "banner_study", "file": "banner_study.png", "usage": "banner" },
+      { "id": "banner_tea", "file": "banner_tea.png", "usage": "banner" },
+      { "id": "cover_ex_lunyu", "file": "cover_ex_lunyu.png", "usage": "excerpt-cover" },
+      { "id": "cover_ex_mengzi", "file": "cover_ex_mengzi.png", "usage": "excerpt-cover" },
+      { "id": "cover_ex_zhuangzi", "file": "cover_ex_zhuangzi.png", "usage": "excerpt-cover" },
+      { "id": "cover_ex_laozi", "file": "cover_ex_laozi.png", "usage": "excerpt-cover" },
+      { "id": "cover_ex_shijing", "file": "cover_ex_shijing.png", "usage": "excerpt-cover" },
+      { "id": "cover_list_xiushen", "file": "cover_list_xiushen.png", "usage": "list-cover" },
+      { "id": "cover_list_chushi", "file": "cover_list_chushi.png", "usage": "list-cover" },
+      { "id": "cover_list_shanshui", "file": "cover_list_shanshui.png", "usage": "list-cover" },
+      { "id": "cover_essay_01", "file": "cover_essay_01.png", "usage": "essay-cover" },
+      { "id": "cover_essay_02", "file": "cover_essay_02.png", "usage": "essay-cover" },
+      { "id": "cover_essay_03", "file": "cover_essay_03.png", "usage": "essay-cover" }
+    ]
+  }
+}

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 256" role="img" aria-label="�i">
+  <rect width="256" height="256" rx="56" fill="#101827"/>
+  <path d="M52 180 C70 124 118 84 178 74" fill="none" stroke="#DCE3EC" stroke-width="10" stroke-linecap="round"/>
+  <path d="M178 54 L186 74 L206 74 L190 86 L196 106 L178 94 L160 106 L166 86 L150 74 L170 74 Z" fill="#DCE3EC"/>
+  <path d="M122 204 C122 182 112 168 98 160" fill="none" stroke="#DCE3EC" stroke-width="8" stroke-linecap="round"/>
+  <path d="M122 204 C122 180 134 166 150 158" fill="none" stroke="#DCE3EC" stroke-width="8" stroke-linecap="round"/>
+  <circle cx="122" cy="212" r="5" fill="#DCE3EC"/>
+  <text x="300" y="168" font-family="Georgia, serif" font-size="92" fill="#101827">�i</text>
+</svg>
