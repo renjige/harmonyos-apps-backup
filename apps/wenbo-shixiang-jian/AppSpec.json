@@ -361,9 +361,10 @@
     ]
   },
   "brand": {
-    "primary": "#2563EB",
-    "primaryDeep": "#1E40AF",
-    "tone": "productivity",
+    "primary": "#3D5A80",
+    "primaryDeep": "#243447",
+    "tone": "sketch-notebook",
+    "stylePack": "hand-drawn-sketch",
     "productVisualType": "ops-tool",
     "visualAssets": [
       { "id": "hero_productivity", "file": "hero_productivity.png", "usage": "home workstation + task hero" },

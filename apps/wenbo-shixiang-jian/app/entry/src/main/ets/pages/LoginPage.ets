@@ -273,7 +273,7 @@ export struct LoginPage {
       .height('100%')
       .scrollBar(BarState.Off)
       .align(Alignment.Center)
-      .backgroundColor(this.themeEpoch >= 0 ? Theme.colors().surfacePage : Theme.colors().surfacePage)
+      .backgroundColor(Theme.pageClear())
 
       if (this.showLegal) {
         LegalDocOverlay({

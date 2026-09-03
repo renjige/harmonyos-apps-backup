@@ -283,7 +283,7 @@ export struct HabitPage {
       }
       .width('100%')
       .height('100%')
-      .backgroundColor(this.themeEpoch >= 0 ? Theme.colors().surfacePage : Theme.colors().surfacePage)
+      .backgroundColor(Theme.pageClear())
 
       if (this.toastText.length > 0) {
         Column() {

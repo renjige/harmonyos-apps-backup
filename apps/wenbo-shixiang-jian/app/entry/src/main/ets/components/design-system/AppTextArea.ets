@@ -1,6 +1,7 @@
 import { Theme } from './Theme'
+import { SketchStyle } from './SketchStyle'
 
-/** 多行输入：关闭 AutoFill，用于事项说明等 */
+/** 多行输入：便签式手绘边框 */
 @Component
 export struct AppTextArea {
   @StorageLink('themeEpoch') themeEpoch: number = 0
@@ -18,11 +19,11 @@ export struct AppTextArea {
       .width('100%')
       .height(120)
       .padding(12)
-      .backgroundColor(this.themeEpoch >= 0 ? Theme.colors().surfaceCard : Theme.colors().surfaceCard)
-      .borderRadius(Theme.radius.sm)
-      .border({ width: 1, color: Theme.colors().strokeHairline })
+      .backgroundColor(Theme.colors().stickyYellow)
+      .borderRadius(Theme.sketchRadius())
+      .border({ width: 2, color: SketchStyle.borderInk() })
       .fontSize(Theme.type.body)
-      .fontColor(this.themeEpoch >= 0 ? Theme.colors().textPrimary : Theme.colors().textPrimary)
+      .fontColor(Theme.colors().textPrimary)
       .placeholderColor(Theme.colors().textTertiary)
       .enableAutoFill(false)
       .onChange((value: string) => {

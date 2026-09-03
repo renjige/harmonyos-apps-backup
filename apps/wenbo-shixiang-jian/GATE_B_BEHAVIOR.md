@@ -2,10 +2,8 @@
 
 - status: **pass**
 - slug: wenbo-shixiang-jian
-- productVisualType: ops-tool
 - platformBiz: true
-- contentImages: 4
-- checkedAt: 2026-08-28T06:15:51.960Z
+- checkedAt: 2026-09-03T09:26:00.308Z
 
 ## Blockers (0)
 - none
@@ -15,14 +13,12 @@
 2. [huawei] HUAWEI-简单: AppSpec.coreFlows < 2（建议写清主闭环+次闭环，如浏览→详情→预约）
 3. [huawei] HUAWEI-异常: Index 可能未做登录态分支
 
-## Auto-passed (26)
+## Auto-passed (24)
 - B2.7 PrivacyService.revoke is async
 - B2.7 handleRevokePrivacy present
 - LegalDocs.ets scanned for scaffold phrases
 - LoginPage demo-account UI scan
 - B12 2 detail pane(s) with Image+CTA
-- Gate C 4 content images (min 2)
-- Gate C HomePage 2 media Image refs
 - B2.7-revoke-async OK (app/entry/src/main/ets/services/PrivacyService.ets)
 - B2.7-revoke-handler OK (app/entry/src/main/ets/pages/MinePage.ets)
 - B2.7-revoke-direct-tap OK (app/entry/src/main/ets/components/design-system/AppButton.ets)

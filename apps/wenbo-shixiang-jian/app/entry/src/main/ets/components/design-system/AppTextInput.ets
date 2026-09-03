@@ -1,6 +1,7 @@
 import { Theme } from './Theme'
+import { SketchStyle } from './SketchStyle'
 
-/** 统一 TextInput：关闭系统 AutoFill，避免模拟器 libhint2type 报错 */
+/** 统一 TextInput：手绘边框 + 便签底 */
 @Component
 export struct AppTextInput {
   @StorageLink('themeEpoch') themeEpoch: number = 0
@@ -20,8 +21,11 @@ export struct AppTextInput {
       .width('100%')
       .height(48)
       .padding({ left: 12, right: 12 })
-      .backgroundColor(this.themeEpoch >= 0 ? Theme.colors().surfaceCard : Theme.colors().surfaceCard)
-      .borderRadius(Theme.radius.sm)
+      .backgroundColor(Theme.colors().surfaceCard)
+      .borderRadius(Theme.sketchRadius())
+      .border({ width: 2, color: SketchStyle.borderInk() })
+      .fontColor(Theme.colors().textPrimary)
+      .placeholderColor(Theme.colors().textTertiary)
       .enableAutoFill(false)
       .onChange((value: string) => {
         this.onChange(value)

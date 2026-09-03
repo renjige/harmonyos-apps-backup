@@ -1,4 +1,6 @@
 import { Theme } from '../components/design-system/Theme'
+import { SketchStyle } from '../components/design-system/SketchStyle'
+import { SketchNote } from '../components/design-system/SketchNote'
 import { AppIcon } from '../components/design-system/AppIcon'
 import { AppHeader } from '../components/design-system/AppHeader'
 import { AppEmpty } from '../components/design-system/AppEmpty'
@@ -121,90 +123,101 @@ export struct SchedulePage {
     Scroll() {
       Column({ space: Theme.space.s4 }) {
         AppHeader({ title: '日程', subtitle: '月历视图 · 按日查看安排' })
-        Row({ space: Theme.space.s4 }) {
-          Column() {
-            AppIcon({ name: 'chevron', iconSize: Theme.icon.md, color: Theme.colors().brandPrimary })
-          }
-          .width(44)
-          .height(44)
-          .justifyContent(FlexAlign.Center)
-          .rotate({ angle: 180 })
-          .onClick((): void => { this.shiftMonth(-1) })
-          Text(this.monthLabel())
-            .fontSize(Theme.type.subhead)
-            .fontWeight(FontWeight.Medium)
-            .fontColor(this.themeEpoch >= 0 ? Theme.colors().textPrimary : Theme.colors().textPrimary)
-            .layoutWeight(1)
-            .textAlign(TextAlign.Center)
-          Column() {
-            AppIcon({ name: 'chevron', iconSize: Theme.icon.md, color: Theme.colors().brandPrimary })
-          }
-          .width(44)
-          .height(44)
-          .justifyContent(FlexAlign.Center)
-          .onClick((): void => { this.shiftMonth(1) })
-        }
-        .width('100%')
-        .padding({ left: Theme.space.pageX, right: Theme.space.pageX })
-
-        Row() {
-          ForEach(['日', '一', '二', '三', '四', '五', '六'], (w: string) => {
-            Text(w)
-              .fontSize(Theme.type.caption)
-              .fontColor(Theme.colors().textTertiary)
-              .layoutWeight(1)
-              .textAlign(TextAlign.Center)
-          }, (w: string) => w)
-        }
-        .width('100%')
-        .padding({ left: Theme.space.pageX, right: Theme.space.pageX })
-
-        if (this.cells.length > 0) {
-          Flex({ wrap: FlexWrap.Wrap }) {
-            ForEach(this.cells, (cell: DayCell, idx: number) => {
-              Column({ space: 2 }) {
-                if (cell.day > 0) {
-                  Text(`${cell.day}`)
-                    .fontSize(Theme.type.subhead)
-                    .fontColor(cell.dateStr === this.selectedDate ?
-                      Theme.colors().brandOnPrimary : Theme.colors().textPrimary)
-                  if (cell.taskCount > 0) {
-                    Column()
-                      .width(6)
-                      .height(6)
-                      .borderRadius(3)
-                      .backgroundColor(cell.dateStr === this.selectedDate ?
-                        Theme.colors().brandOnPrimary : Theme.colors().brandPrimary)
-                  }
-                } else {
-                  Text(' ')
-                    .fontSize(Theme.type.caption)
-                    .opacity(0)
+        Column() {
+          SketchNote({ noteIndex: 1, interactive: true }) {
+            Column({ space: Theme.space.s3 }) {
+              Row({ space: Theme.space.s4 }) {
+                Column() {
+                  AppIcon({ name: 'chevron', iconSize: Theme.icon.md, color: Theme.colors().brandPrimary })
                 }
+                .width(44)
+                .height(44)
+                .justifyContent(FlexAlign.Center)
+                .rotate({ angle: 180 })
+                .onClick((): void => { this.shiftMonth(-1) })
+                Text(this.monthLabel())
+                  .fontSize(Theme.type.subhead)
+                  .fontWeight(SketchStyle.titleWeight())
+                  .fontStyle(SketchStyle.titleStyle())
+                  .fontColor(SketchStyle.ink())
+                  .layoutWeight(1)
+                  .textAlign(TextAlign.Center)
+                Column() {
+                  AppIcon({ name: 'chevron', iconSize: Theme.icon.md, color: Theme.colors().brandPrimary })
+                }
+                .width(44)
+                .height(44)
+                .justifyContent(FlexAlign.Center)
+                .onClick((): void => { this.shiftMonth(1) })
               }
-              .width('14.28%')
-              .height(44)
-              .justifyContent(FlexAlign.Center)
-              .backgroundColor(cell.dateStr === this.selectedDate ?
-                Theme.colors().brandPrimary :
-                (cell.isToday ? Theme.colors().brandPrimaryContainer : 'transparent'))
-              .borderRadius(Theme.radius.sm)
-              .onClick((): void => {
-                if (cell.day > 0) {
-                  void this.selectDate(cell.dateStr)
+              .width('100%')
+
+              Row() {
+                ForEach(['日', '一', '二', '三', '四', '五', '六'], (w: string) => {
+                  Text(w)
+                    .fontSize(Theme.type.caption)
+                    .fontColor(SketchStyle.inkMuted())
+                    .layoutWeight(1)
+                    .textAlign(TextAlign.Center)
+                }, (w: string) => w)
+              }
+              .width('100%')
+
+              if (this.cells.length > 0) {
+                Flex({ wrap: FlexWrap.Wrap }) {
+                  ForEach(this.cells, (cell: DayCell, idx: number) => {
+                    Column({ space: 2 }) {
+                      if (cell.day > 0) {
+                        Text(`${cell.day}`)
+                          .fontSize(Theme.type.subhead)
+                          .fontColor(cell.dateStr === this.selectedDate ?
+                            Theme.colors().brandOnPrimary : SketchStyle.ink())
+                        if (cell.taskCount > 0) {
+                          Column()
+                            .width(6)
+                            .height(6)
+                            .borderRadius(3)
+                            .backgroundColor(cell.dateStr === this.selectedDate ?
+                              Theme.colors().brandOnPrimary : Theme.colors().brandPrimary)
+                        }
+                      } else {
+                        Text(' ')
+                          .fontSize(Theme.type.caption)
+                          .opacity(0)
+                      }
+                    }
+                    .width('14.28%')
+                    .height(44)
+                    .justifyContent(FlexAlign.Center)
+                    .backgroundColor(cell.dateStr === this.selectedDate ?
+                      Theme.colors().brandPrimary :
+                      (cell.isToday ? Theme.colors().brandPrimaryContainer : Color.Transparent))
+                    .borderRadius(Theme.sketchRadius())
+                    .border({
+                      width: cell.isToday && cell.dateStr !== this.selectedDate ? 1 : 0,
+                      color: SketchStyle.borderInk()
+                    })
+                    .onClick((): void => {
+                      if (cell.day > 0) {
+                        void this.selectDate(cell.dateStr)
+                      }
+                    })
+                  }, (cell: DayCell, idx: number) => `cell-${idx}-${cell.dateStr}`)
                 }
-              })
-            }, (cell: DayCell, idx: number) => `cell-${idx}-${cell.dateStr}`)
+                .width('100%')
+              }
+            }
+            .width('100%')
           }
-          .width('100%')
-          .padding({ left: Theme.space.pageX, right: Theme.space.pageX })
         }
+        .padding({ left: Theme.space.pageX, right: Theme.space.pageX })
 
         Column({ space: Theme.space.s3 }) {
           Text(`${this.selectedDate} 安排`)
             .fontSize(Theme.type.title3)
-            .fontWeight(FontWeight.Medium)
-            .fontColor(this.themeEpoch >= 0 ? Theme.colors().textPrimary : Theme.colors().textPrimary)
+            .fontWeight(SketchStyle.titleWeight())
+            .fontStyle(SketchStyle.titleStyle())
+            .fontColor(SketchStyle.ink())
             .width('100%')
           if (this.loading) {
             AppLoading({ variant: 'skeleton' })
@@ -235,6 +248,6 @@ export struct SchedulePage {
     .height('100%')
     .scrollBar(BarState.Off)
     .edgeEffect(EdgeEffect.Spring)
-    .backgroundColor(this.themeEpoch >= 0 ? Theme.colors().surfacePage : Theme.colors().surfacePage)
+    .backgroundColor(Theme.pageClear())
   }
 }

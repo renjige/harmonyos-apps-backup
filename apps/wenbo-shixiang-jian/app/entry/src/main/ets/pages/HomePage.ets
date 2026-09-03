@@ -1,4 +1,7 @@
 import { Theme } from '../components/design-system/Theme'
+import { SketchStyle } from '../components/design-system/SketchStyle'
+import { SketchTitle } from '../components/design-system/SketchTitle'
+import { SketchNote } from '../components/design-system/SketchNote'
 import { AppButton } from '../components/design-system/AppButton'
 import { AppLoading } from '../components/design-system/AppLoading'
 import { AppIcon } from '../components/design-system/AppIcon'
@@ -134,60 +137,58 @@ export struct HomePage {
     Stack() {
     Scroll() {
       Column({ space: Theme.space.s4 }) {
-        Column({ space: 6 }) {
-          Text('今日承诺工位')
-            .fontSize(Theme.type.title2)
-            .fontWeight(FontWeight.Bold)
-            .fontColor(Theme.colors().textPrimary)
-            .width('100%')
-          Text('每天最多 3 件承诺 · 必须进入上午/午后/晚间时段 · 专注计时后才能收工')
-            .fontSize(Theme.type.footnote)
-            .fontColor(Theme.colors().textSecondary)
-            .width('100%')
-        }
-        .width('100%')
-        .alignItems(HorizontalAlign.Start)
+        SketchTitle({
+          text: '今日承诺工位',
+          subtitle: '每天最多 3 件 · 进上午/午后/晚间席位 · 专注计时后才能收工',
+          large: true
+        })
 
         Row({ space: Theme.space.s3 }) {
           Image($r('app.media.hero_productivity'))
             .layoutWeight(1)
-            .height(88)
+            .height(96)
             .objectFit(ImageFit.Cover)
-            .borderRadius(Theme.radius.xl)
+            .borderRadius(Theme.sketchRadius())
+            .border({ width: 2, color: SketchStyle.borderInk() })
+            .shadow(Theme.sketchShadow(4))
+            .rotate({ angle: -1.2 })
           Image($r('app.media.banner_schedule'))
             .layoutWeight(1)
-            .height(88)
+            .height(96)
             .objectFit(ImageFit.Cover)
-            .borderRadius(Theme.radius.xl)
+            .borderRadius(Theme.sketchRadius())
+            .border({ width: 2, color: SketchStyle.borderInk() })
+            .shadow(Theme.sketchShadow(4))
+            .rotate({ angle: 1.0 })
         }
         .width('100%')
 
-        Row({ space: Theme.space.s4 }) {
-          Column({ space: 2 }) {
-            Text(`${this.doneN()}/3`)
-              .fontSize(Theme.type.title1)
-              .fontWeight(FontWeight.Bold)
-              .fontColor(Theme.colors().brandPrimary)
-            Text('已收工承诺')
-              .fontSize(Theme.type.caption)
-              .fontColor(Theme.colors().textTertiary)
+        SketchNote({ noteIndex: 0, interactive: true }) {
+          Row({ space: Theme.space.s4 }) {
+            Column({ space: 2 }) {
+              Text(`${this.doneN()}/3`)
+                .fontSize(Theme.type.title1)
+                .fontWeight(SketchStyle.titleWeight())
+                .fontStyle(SketchStyle.titleStyle())
+                .fontColor(Theme.colors().brandPrimary)
+              Text('已收工承诺')
+                .fontSize(Theme.type.caption)
+                .fontColor(SketchStyle.inkMuted())
+            }
+            Column({ space: 2 }) {
+              Text(`${CommitmentRules.focusMinutes(this.todayTasks, this.today())}`)
+                .fontSize(Theme.type.title1)
+                .fontWeight(SketchStyle.titleWeight())
+                .fontStyle(SketchStyle.titleStyle())
+                .fontColor(Theme.colors().success)
+              Text('今日专注分钟')
+                .fontSize(Theme.type.caption)
+                .fontColor(SketchStyle.inkMuted())
+            }
+            .layoutWeight(1)
           }
-          Column({ space: 2 }) {
-            Text(`${CommitmentRules.focusMinutes(this.todayTasks, this.today())}`)
-              .fontSize(Theme.type.title1)
-              .fontWeight(FontWeight.Bold)
-              .fontColor(Theme.colors().success)
-            Text('今日专注分钟')
-              .fontSize(Theme.type.caption)
-              .fontColor(Theme.colors().textTertiary)
-          }
-          .layoutWeight(1)
+          .width('100%')
         }
-        .width('100%')
-        .padding(Theme.space.s5)
-        .backgroundColor(Theme.colors().surfaceCard)
-        .borderRadius(Theme.radius.xl)
-        .border({ width: 1, color: Theme.colors().strokeHairline })
 
         AppButton({
           label: '锁定今日承诺',
@@ -204,8 +205,9 @@ export struct HomePage {
           Column({ space: Theme.space.s3 }) {
             Text(`候补池 · ${this.waitlist().length}`)
               .fontSize(Theme.type.title3)
-              .fontWeight(FontWeight.Medium)
-              .fontColor(Theme.colors().textPrimary)
+              .fontWeight(SketchStyle.titleWeight())
+              .fontStyle(SketchStyle.titleStyle())
+              .fontColor(SketchStyle.ink())
               .width('100%')
             if (this.waitlist().length === 0) {
               Text('超额事项会进入候补，不能占用今日承诺席位。')
@@ -259,7 +261,7 @@ export struct HomePage {
     }
     .width('100%')
     .height('100%')
-    .backgroundColor(Theme.colors().surfacePage)
+    .backgroundColor(Theme.pageClear())
     .scrollBar(BarState.Off)
     .edgeEffect(EdgeEffect.Spring)
 
@@ -270,7 +272,9 @@ export struct HomePage {
           .fontColor(Theme.colors().brandOnPrimary)
           .padding({ left: 16, right: 16, top: 10, bottom: 10 })
           .backgroundColor(Theme.colors().brandPrimary)
-          .borderRadius(Theme.radius.pill)
+          .borderRadius(Theme.sketchRadius())
+          .border({ width: 2, color: SketchStyle.borderInk() })
+          .shadow(Theme.sketchShadow(4))
       }
       .width('100%')
       .padding({ top: Theme.space.s6 })
@@ -283,85 +287,90 @@ export struct HomePage {
 
   @Builder
   SlotCard(slot: string) {
-    Column({ space: Theme.space.s3 }) {
-      Row() {
-        Text(CommitmentRules.slotTitle(slot))
-          .fontSize(Theme.type.subhead)
-          .fontWeight(FontWeight.Medium)
-          .fontColor(Theme.colors().textPrimary)
-          .layoutWeight(1)
-        Text(CommitmentRules.slotHint(slot))
-          .fontSize(Theme.type.caption)
-          .fontColor(Theme.colors().textTertiary)
-      }
-      .width('100%')
-      if (this.slotItem(slot) === undefined) {
-        Text('空席 · 可锁定 1 件承诺')
-          .fontSize(Theme.type.footnote)
-          .fontColor(Theme.colors().textTertiary)
-          .width('100%')
-      } else {
-        Text(this.slotTitleText(slot))
-          .fontSize(Theme.type.title3)
-          .fontWeight(FontWeight.Medium)
-          .fontColor(Theme.colors().textPrimary)
-          .width('100%')
-        Text(this.slotStatus(slot))
-          .fontSize(Theme.type.caption)
-          .fontColor(Theme.colors().textSecondary)
-          .width('100%')
-        Row({ space: Theme.space.s3 }) {
-          if (!this.slotClosed(slot)) {
+    SketchNote({
+      noteIndex: SketchStyle.slotIndex(slot),
+      interactive: true
+    }) {
+      Column({ space: Theme.space.s3 }) {
+        Row() {
+          Text(CommitmentRules.slotTitle(slot))
+            .fontSize(Theme.type.subhead)
+            .fontWeight(SketchStyle.titleWeight())
+            .fontStyle(SketchStyle.titleStyle())
+            .fontColor(SketchStyle.ink())
+            .layoutWeight(1)
+          Text(CommitmentRules.slotHint(slot))
+            .fontSize(Theme.type.caption)
+            .fontColor(SketchStyle.inkMuted())
+        }
+        .width('100%')
+        if (this.slotItem(slot) === undefined) {
+          Text('空席 · 可锁定 1 件承诺')
+            .fontSize(Theme.type.footnote)
+            .fontColor(SketchStyle.inkMuted())
+            .width('100%')
+        } else {
+          Text(this.slotTitleText(slot))
+            .fontSize(Theme.type.title3)
+            .fontWeight(FontWeight.Medium)
+            .fontColor(SketchStyle.ink())
+            .width('100%')
+          Text(this.slotStatus(slot))
+            .fontSize(Theme.type.caption)
+            .fontColor(SketchStyle.inkMuted())
+            .width('100%')
+          Row({ space: Theme.space.s3 }) {
+            if (!this.slotClosed(slot)) {
+              AppButton({
+                label: this.slotReady(slot) ? '去收工' : '开始专注',
+                onTap: (): void => {
+                  const it = this.slotItem(slot)
+                  if (it !== undefined) {
+                    if (it.focusReady) {
+                      TaskDetailNav.openTask(it.id, it)
+                    } else {
+                      this.onStartFocus(it)
+                    }
+                  }
+                }
+              })
+                .layoutWeight(1)
+            }
             AppButton({
-              label: this.slotReady(slot) ? '去收工' : '开始专注',
+              label: '详情',
+              variant: 'secondary',
               onTap: (): void => {
                 const it = this.slotItem(slot)
                 if (it !== undefined) {
-                  if (it.focusReady) {
-                    TaskDetailNav.openTask(it.id, it)
-                  } else {
-                    this.onStartFocus(it)
-                  }
+                  TaskDetailNav.openTask(it.id, it)
                 }
               }
             })
               .layoutWeight(1)
           }
-          AppButton({
-            label: '详情',
-            variant: 'secondary',
-            onTap: (): void => {
-              const it = this.slotItem(slot)
-              if (it !== undefined) {
-                TaskDetailNav.openTask(it.id, it)
-              }
-            }
-          })
-            .layoutWeight(1)
+          .width('100%')
         }
-        .width('100%')
       }
+      .width('100%')
     }
-    .width('100%')
-    .padding(Theme.space.s4)
-    .backgroundColor(Theme.colors().surfaceCard)
-    .borderRadius(Theme.radius.xl)
-    .border({ width: 1, color: Theme.colors().strokeHairline })
   }
 
   @Builder
   FeatureChip(label: string, iconName: 'chart' | 'biz' | 'check', onTap: () => void) {
-    Column({ space: 6 }) {
-      AppIcon({ name: iconName, iconSize: Theme.icon.md, color: Theme.colors().brandPrimary })
-      Text(label)
-        .fontSize(Theme.type.caption)
-        .fontColor(Theme.colors().textPrimary)
+    Column() {
+      SketchNote({ noteIndex: 3, interactive: true }) {
+        Column({ space: 6 }) {
+          AppIcon({ name: iconName, iconSize: Theme.icon.md, color: Theme.colors().brandPrimary })
+          Text(label)
+            .fontSize(Theme.type.caption)
+            .fontWeight(FontWeight.Medium)
+            .fontColor(SketchStyle.ink())
+        }
+        .width('100%')
+        .alignItems(HorizontalAlign.Center)
+        .onClick((): void => { onTap() })
+      }
     }
     .layoutWeight(1)
-    .padding(Theme.space.s3)
-    .backgroundColor(Theme.colors().surfaceCard)
-    .borderRadius(Theme.radius.xl)
-    .border({ width: 1, color: Theme.colors().strokeHairline })
-    .onClick((): void => onTap())
   }
 }

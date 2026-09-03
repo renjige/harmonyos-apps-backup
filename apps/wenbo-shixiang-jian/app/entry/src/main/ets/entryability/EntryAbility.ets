@@ -5,6 +5,7 @@ import { AccessConfig } from '../config/AccessConfig';
 import { ApiConfig } from '../config/ApiConfig';
 import { SessionStore } from '../services/SessionStore';
 import { ThemeAppearance } from '../services/ThemeAppearance';
+import { Theme } from '../components/design-system/Theme';
 
 const TAG = 'EntryAbility';
 
@@ -12,6 +13,7 @@ export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     AppStorage.setOrCreate('themeEpoch', 0);
     hilog.info(0x0000, TAG, 'onCreate');
+    Theme.applyBrandPrimary('#3D5A80');
     ApiConfig.applyToAppStorage();
     AppStorage.setOrCreate('companyName', '魏文波');
     AppStorage.setOrCreate('appDisplayName', '事项笺');

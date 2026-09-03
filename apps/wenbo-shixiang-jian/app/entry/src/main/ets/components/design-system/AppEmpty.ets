@@ -1,6 +1,8 @@
 import { Theme } from './Theme'
+import { SketchStyle } from './SketchStyle'
 import { AppButton } from './AppButton'
 import { AppIcon } from './AppIcon'
+import { SketchNote } from './SketchNote'
 
 @Component
 export struct AppEmpty {
@@ -11,26 +13,30 @@ export struct AppEmpty {
   onAction: () => void = () => {}
 
   build() {
-    Column({ space: Theme.space.s3 }) {
-      AppIcon({ name: 'empty', iconSize: Theme.icon.xl, color: Theme.colors().textTertiary })
-      Text(this.title)
-        .fontSize(Theme.type.title3)
-        .fontWeight(FontWeight.Medium)
-        .fontColor(this.themeEpoch >= 0 ? Theme.colors().textPrimary : Theme.colors().textPrimary)
-      Text(this.description)
-        .fontSize(Theme.type.callout)
-        .fontColor(this.themeEpoch >= 0 ? Theme.colors().textSecondary : Theme.colors().textSecondary)
-        .textAlign(TextAlign.Center)
-      if (this.actionLabel.length > 0) {
-        AppButton({
-          label: this.actionLabel,
-          variant: 'primary',
-          onTap: () => this.onAction()
-        })
+    SketchNote({ noteIndex: 4, interactive: true }) {
+      Column({ space: Theme.space.s3 }) {
+        AppIcon({ name: 'empty', iconSize: Theme.icon.xl, color: SketchStyle.inkMuted() })
+        Text(this.title)
+          .fontSize(Theme.type.title3)
+          .fontWeight(SketchStyle.titleWeight())
+          .fontStyle(SketchStyle.titleStyle())
+          .fontColor(SketchStyle.ink())
+        Text(this.description)
+          .fontSize(Theme.type.callout)
+          .fontColor(SketchStyle.inkMuted())
+          .textAlign(TextAlign.Center)
+        if (this.actionLabel.length > 0) {
+          AppButton({
+            label: this.actionLabel,
+            variant: 'primary',
+            onTap: (): void => { this.onAction() }
+          })
+        }
       }
+      .width('100%')
+      .padding(Theme.space.s4)
+      .justifyContent(FlexAlign.Center)
+      .alignItems(HorizontalAlign.Center)
     }
-    .width('100%')
-    .padding(Theme.space.s7)
-    .justifyContent(FlexAlign.Center)
   }
 }

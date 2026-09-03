@@ -1,6 +1,6 @@
-import { Theme } from '../components/design-system/Theme'
 import { AuthService } from '../services/AuthService'
 import { AccessConfig } from '../config/AccessConfig'
+import { SketchPaper } from '../components/design-system/SketchPaper'
 import { LoginPage } from './LoginPage'
 import { MainTabPage } from './MainTabPage'
 
@@ -50,20 +50,28 @@ struct Index {
     Stack() {
       Column() {
         if (this.stage === AppStage.Login) {
-          LoginPage({
-            allowRegister: AccessConfig.allowRegister(),
-            allowSkip: false,
-            onSuccess: () => this.refreshStage()
-          })
+          SketchPaper() {
+            LoginPage({
+              allowRegister: AccessConfig.allowRegister(),
+              allowSkip: false,
+              onSuccess: (): void => { this.refreshStage() }
+            })
+              .width('100%')
+              .height('100%')
+          }
         } else {
-          MainTabPage({
-            company: this.company,
-            appName: this.appName,
-            tagline: this.tagline,
-            onOpenLogin: () => this.openLogin(),
-            onLogout: () => this.refreshStage(),
-            onRequireAuth: () => this.openLogin()
-          })
+          SketchPaper() {
+            MainTabPage({
+              company: this.company,
+              appName: this.appName,
+              tagline: this.tagline,
+              onOpenLogin: (): void => { this.openLogin() },
+              onLogout: (): void => { this.refreshStage() },
+              onRequireAuth: (): void => { this.openLogin() }
+            })
+              .width('100%')
+              .height('100%')
+          }
         }
       }
       .width('100%')
@@ -71,21 +79,24 @@ struct Index {
 
       if (this.showLoginOverlay) {
         Column() {
-          LoginPage({
-            allowRegister: AccessConfig.allowRegister(),
-            allowSkip: AccessConfig.guestBrowse(),
-            onSuccess: () => {
-              this.showLoginOverlay = false
-              this.refreshStage()
-            },
-            onSkip: () => {
-              this.showLoginOverlay = false
-            }
-          })
+          SketchPaper() {
+            LoginPage({
+              allowRegister: AccessConfig.allowRegister(),
+              allowSkip: AccessConfig.guestBrowse(),
+              onSuccess: (): void => {
+                this.showLoginOverlay = false
+                this.refreshStage()
+              },
+              onSkip: (): void => {
+                this.showLoginOverlay = false
+              }
+            })
+              .width('100%')
+              .height('100%')
+          }
         }
         .width('100%')
         .height('100%')
-        .backgroundColor(this.themeEpoch >= 0 ? Theme.colors().surfacePage : Theme.colors().surfacePage)
         .zIndex(100)
       }
     }

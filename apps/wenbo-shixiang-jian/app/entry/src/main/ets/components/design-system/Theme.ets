@@ -1,40 +1,45 @@
 /**
- * HCDS Theme — ArkTS strict-mode compatible token accessors.
- * Source of truth: knowledge/design-system/tokens.json
+ * Hand-Drawn Sketch Theme — 网格纸 · 便签 · 墨线 · 硬阴影
  */
 
 export type ColorMode = 'light' | 'dark' | 'system'
 
 export class ThemeColors {
-  brandPrimary: string = '#2563EB'
-  brandPrimaryPressed: string = '#1D4ED8'
-  brandPrimaryContainer: string = '#DBEAFE'
-  brandOnPrimary: string = '#FFFFFF'
-  brandDeep: string = '#1E3A8A'
-  brandAccent: string = '#3B82F6'
-  surfacePage: string = '#F8FAFC'
-  surfaceSubtle: string = '#E8ECF1'
-  surfaceCard: string = '#FFFFFF'
-  surfaceGlass: string = 'rgba(255,255,255,0.72)'
-  surfaceInverse: string = '#0A2540'
-  textPrimary: string = '#0F172A'
-  textSecondary: string = '#475569'
-  textTertiary: string = '#94A3B8'
-  textOnInverse: string = '#F8FAFC'
-  strokeHairline: string = 'rgba(15,23,42,0.06)'
-  strokeStrong: string = 'rgba(15,23,42,0.12)'
-  success: string = '#22C55E'
-  successContainer: string = '#DCFCE7'
-  warning: string = '#F97316'
-  warningContainer: string = '#FFEDD5'
-  danger: string = '#BE123C'
-  dangerContainer: string = '#FFE4E6'
-  info: string = '#0369A1'
-  overlayScrim: string = 'rgba(10,37,64,0.40)'
-  chart1: string = '#2563EB'
-  chart2: string = '#22C55E'
-  chart3: string = '#F97316'
-  chart4: string = '#6366F1'
+  brandPrimary: string = '#3D5A80'
+  brandPrimaryPressed: string = '#2F4663'
+  brandPrimaryContainer: string = '#E3F2FF'
+  brandOnPrimary: string = '#FFFDF6'
+  brandDeep: string = '#243447'
+  brandAccent: string = '#6B9AC4'
+  textOnBrandContainer: string = '#2C3E50'
+  surfacePage: string = '#F7F3E8'
+  surfaceSubtle: string = '#FFF6C8'
+  surfaceCard: string = '#FFFDF6'
+  surfaceGlass: string = 'rgba(255,253,246,0.88)'
+  surfaceInverse: string = '#2C3E50'
+  textPrimary: string = '#2C3E50'
+  textSecondary: string = '#4A5568'
+  textTertiary: string = '#64748B'
+  textOnInverse: string = '#FFFDF6'
+  strokeHairline: string = 'rgba(44,62,80,0.14)'
+  strokeStrong: string = 'rgba(44,62,80,0.55)'
+  sketchGrid: string = 'rgba(44,62,80,0.07)'
+  stickyYellow: string = '#FFF6C8'
+  stickyPink: string = '#FFE8F0'
+  stickyBlue: string = '#E3F2FF'
+  stickyGreen: string = '#E8F5E9'
+  success: string = '#2F855A'
+  successContainer: string = '#E8F5E9'
+  warning: string = '#B7791F'
+  warningContainer: string = '#FFF6C8'
+  danger: string = '#C53030'
+  dangerContainer: string = '#FFE8F0'
+  info: string = '#3D5A80'
+  overlayScrim: string = 'rgba(44,62,80,0.42)'
+  chart1: string = '#3D5A80'
+  chart2: string = '#2F855A'
+  chart3: string = '#B7791F'
+  chart4: string = '#6B46C1'
   chart5: string = '#64748B'
 }
 
@@ -60,19 +65,16 @@ export class ThemeSpace {
 }
 
 export class ThemeRadius {
-  // Official: https://developer.huawei.com/consumer/cn/doc/design-guides/corner-radius-parameter-0000002556468705
-  xs: number = 4
-  sm: number = 8
-  md: number = 16
-  lg: number = 20
-  xl: number = 24
-  sheet: number = 32
+  xs: number = 3
+  sm: number = 6
+  md: number = 10
+  lg: number = 14
+  xl: number = 18
+  sheet: number = 22
   pill: number = 999
 }
 
 export class ThemeTypeScale {
-  // Official HarmonyOS phone tokens (vp)
-  // https://developer.huawei.com/consumer/cn/doc/design-guides/typography-0000002622688363
   displayL: number = 56
   displayM: number = 48
   displayS: number = 38
@@ -87,8 +89,6 @@ export class ThemeTypeScale {
   bodyS: number = 12
   captionL: number = 12
   captionM: number = 10
-
-  // HCDS aliases → official phone scale
   display: number = 38
   title1: number = 30
   title2: number = 24
@@ -102,12 +102,13 @@ export class ThemeTypeScale {
 }
 
 export class ThemeMotion {
-  instant: number = 80
-  fast: number = 150
-  normal: number = 240
-  slow: number = 320
-  emphasis: number = 420
-  staggerMs: number = 45
+  instant: number = 120
+  fast: number = 220
+  normal: number = 380
+  slow: number = 480
+  emphasis: number = 520
+  sketch: number = 420
+  staggerMs: number = 55
 }
 
 export class ThemeIconSize {
@@ -167,50 +168,102 @@ export class Theme {
     AppStorage.setOrCreate('brandPrimary', hex)
   }
 
+  static pageClear(): string {
+    return 'rgba(0,0,0,0)'
+  }
+
   static lightColors(): ThemeColors {
     return new ThemeColors()
   }
 
   static darkColors(): ThemeColors {
     const c = new ThemeColors()
-    c.brandPrimary = '#5BA3E0'
-    c.brandPrimaryPressed = '#7BB6E8'
-    c.brandPrimaryContainer = '#123552'
-    c.brandOnPrimary = '#041018'
-    c.brandDeep = '#071422'
-    c.brandAccent = '#7BB6E8'
-    c.surfacePage = '#0B1220'
-    c.surfaceSubtle = '#141C2B'
-    c.surfaceCard = '#171F2E'
-    c.surfaceGlass = 'rgba(23,31,46,0.72)'
-    c.surfaceInverse = '#E8EEF7'
-    c.textPrimary = '#F1F5F9'
-    c.textSecondary = '#94A3B8'
-    c.textTertiary = '#64748B'
-    c.textOnInverse = '#0F172A'
-    c.strokeHairline = 'rgba(248,250,252,0.08)'
-    c.strokeStrong = 'rgba(248,250,252,0.16)'
-    c.success = '#2DD4BF'
-    c.successContainer = '#0F3D38'
-    c.warning = '#FBBF24'
-    c.warningContainer = '#3D2A0A'
-    c.danger = '#FB7185'
-    c.dangerContainer = '#3F1520'
-    c.info = '#38BDF8'
-    c.overlayScrim = 'rgba(0,0,0,0.56)'
-    c.chart1 = '#5BA3E0'
-    c.chart2 = '#2DD4BF'
-    c.chart3 = '#FBBF24'
-    c.chart4 = '#A5B4FC'
-    c.chart5 = '#94A3B8'
+    c.brandPrimary = '#8EB4E0'
+    c.brandPrimaryPressed = '#A8C8EB'
+    c.brandPrimaryContainer = '#2A3544'
+    c.brandOnPrimary = '#1E1B16'
+    c.brandDeep = '#14110E'
+    c.brandAccent = '#9FD4FF'
+    c.textOnBrandContainer = '#F7F3E8'
+    c.surfacePage = '#1E1B16'
+    c.surfaceSubtle = '#2A2620'
+    c.surfaceCard = '#2F2A24'
+    c.surfaceGlass = 'rgba(47,42,36,0.92)'
+    c.surfaceInverse = '#F7F3E8'
+    c.textPrimary = '#F7F3E8'
+    c.textSecondary = '#D4CFC4'
+    c.textTertiary = '#A8A093'
+    c.textOnInverse = '#2C3E50'
+    c.strokeHairline = 'rgba(247,243,232,0.12)'
+    c.strokeStrong = 'rgba(247,243,232,0.42)'
+    c.sketchGrid = 'rgba(247,243,232,0.06)'
+    c.stickyYellow = '#3D3520'
+    c.stickyPink = '#3D2830'
+    c.stickyBlue = '#243040'
+    c.stickyGreen = '#243528'
+    c.success = '#68D391'
+    c.successContainer = '#243528'
+    c.warning = '#F6E05E'
+    c.warningContainer = '#3D3520'
+    c.danger = '#FC8181'
+    c.dangerContainer = '#3D2830'
+    c.info = '#8EB4E0'
+    c.overlayScrim = 'rgba(0,0,0,0.58)'
+    c.chart1 = '#8EB4E0'
+    c.chart2 = '#68D391'
+    c.chart3 = '#F6E05E'
+    c.chart4 = '#B794F4'
+    c.chart5 = '#A8A093'
     return c
   }
 
-  static shadowSm(): string {
-    return Theme.isDark() ? '0 1vp 2vp rgba(0,0,0,0.25)' : '0 1vp 2vp rgba(10,37,64,0.04)'
+  static sketchShadow(offsetY: number = 5): ShadowOptions {
+    return {
+      radius: 0,
+      color: Theme.sketchShadowColor(),
+      offsetX: 4,
+      offsetY: offsetY
+    }
   }
 
-  static shadowMd(): string {
-    return Theme.isDark() ? '0 4vp 16vp rgba(0,0,0,0.35)' : '0 4vp 16vp rgba(10,37,64,0.06)'
+  static sketchRadius(): BorderRadiuses {
+    return {
+      topLeft: 14,
+      topRight: 20,
+      bottomLeft: 18,
+      bottomRight: 12
+    }
+  }
+
+  static sketchShadowColor(): string {
+    return Theme.isDark() ? 'rgba(0,0,0,0.48)' : 'rgba(44,62,80,0.24)'
+  }
+
+  static stickyNoteColors(): string[] {
+    const c = Theme.colors()
+    const out: string[] = []
+    out.push(c.stickyYellow)
+    out.push(c.stickyPink)
+    out.push(c.stickyBlue)
+    out.push(c.stickyGreen)
+    return out
+  }
+
+  static shadowSm(): ShadowOptions {
+    return {
+      radius: 0,
+      color: Theme.sketchShadowColor(),
+      offsetX: 2,
+      offsetY: 2
+    }
+  }
+
+  static shadowMd(): ShadowOptions {
+    return {
+      radius: 0,
+      color: Theme.sketchShadowColor(),
+      offsetX: 4,
+      offsetY: 4
+    }
   }
 }

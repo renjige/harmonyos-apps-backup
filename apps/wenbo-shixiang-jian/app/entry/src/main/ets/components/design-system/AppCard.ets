@@ -1,4 +1,5 @@
 import { Theme } from './Theme'
+import { SketchStyle } from './SketchStyle'
 
 export type AppCardVariant = 'plain' | 'glass' | 'stat' | 'inverse' | 'outlined'
 
@@ -7,6 +8,7 @@ export struct AppCard {
   @StorageLink('themeEpoch') themeEpoch: number = 0
   @Prop variant: AppCardVariant = 'plain'
   @Prop title: string = ''
+  @Prop noteIndex: number = 4
   onTap: () => void = () => {}
   @BuilderParam content: () => void
 
@@ -18,6 +20,9 @@ export struct AppCard {
     if (this.variant === 'glass') {
       return c.surfaceGlass
     }
+    if (this.variant === 'stat') {
+      return SketchStyle.noteColor(this.noteIndex)
+    }
     return c.surfaceCard
   }
 
@@ -26,8 +31,9 @@ export struct AppCard {
       if (this.title.length > 0) {
         Text(this.title)
           .fontSize(Theme.type.title3)
-          .fontWeight(FontWeight.Medium)
-          .fontColor(this.variant === 'inverse' ? Theme.colors().textOnInverse : Theme.colors().textPrimary)
+          .fontWeight(SketchStyle.titleWeight())
+          .fontStyle(SketchStyle.titleStyle())
+          .fontColor(this.variant === 'inverse' ? Theme.colors().textOnInverse : SketchStyle.ink())
           .width('100%')
           .margin({ bottom: Theme.space.s3 })
       }
@@ -36,18 +42,10 @@ export struct AppCard {
     .width('100%')
     .padding(Theme.space.cardPadding)
     .backgroundColor(this.bg())
-    .borderRadius(Theme.radius.md)
-    .border({
-      width: this.variant === 'outlined' ? 1 : 0,
-      color: Theme.colors().strokeHairline
-    })
-    .shadow({
-      radius: this.variant === 'stat' || this.variant === 'glass' ? 16 : 8,
-      color: Theme.isDark() ? 'rgba(0,0,0,0.35)' : 'rgba(10,37,64,0.06)',
-      offsetX: 0,
-      offsetY: this.variant === 'stat' ? 4 : 1
-    })
+    .borderRadius(Theme.sketchRadius())
+    .border({ width: 2, color: SketchStyle.borderInk() })
+    .shadow(Theme.sketchShadow(this.variant === 'stat' ? 6 : 4))
+    .rotate({ angle: this.variant === 'stat' ? SketchStyle.tiltForIndex(this.noteIndex) : 0 })
     .onClick(() => this.onTap())
-    .opacity(this.themeEpoch >= 0 ? 1 : 1)
   }
 }

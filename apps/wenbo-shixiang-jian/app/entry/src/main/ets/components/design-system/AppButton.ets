@@ -1,4 +1,5 @@
 import { Theme } from './Theme'
+import { SketchStyle } from './SketchStyle'
 
 export type AppButtonVariant = 'primary' | 'secondary' | 'ghost' | 'danger'
 
@@ -23,7 +24,7 @@ export struct AppButton {
     if (this.variant === 'secondary') {
       return c.brandPrimaryContainer
     }
-    return 'transparent'
+    return c.surfaceCard
   }
 
   private fg(): string {
@@ -32,31 +33,31 @@ export struct AppButton {
       return c.brandOnPrimary
     }
     if (this.variant === 'danger') {
-      return '#FFFFFF'
+      return '#FFFDF6'
     }
     if (this.variant === 'secondary') {
-      return c.brandPrimary
+      return c.textOnBrandContainer
     }
-    return c.brandPrimary
+    return c.textPrimary
   }
 
   build() {
     Text(this.label)
       .fontSize(Theme.type.body)
-      .fontWeight(FontWeight.Medium)
+      .fontWeight(FontWeight.Bold)
+      .fontStyle(FontStyle.Italic)
       .fontColor(this.fg())
       .textAlign(TextAlign.Center)
       .width('100%')
       .padding({ top: 12, bottom: 12, left: 16, right: 16 })
       .backgroundColor(this.bg())
-      .borderRadius(Theme.radius.lg)
-      .border({
-        width: this.variant === 'ghost' ? 1 : 0,
-        color: Theme.colors().strokeStrong
-      })
+      .borderRadius(Theme.sketchRadius())
+      .border({ width: 2, color: SketchStyle.borderInk() })
+      .shadow(this.pressed ? Theme.sketchShadow(2) : Theme.sketchShadow(5))
       .opacity(this.disabled ? 0.45 : 1)
-      .scale({ x: this.pressed ? 0.97 : 1, y: this.pressed ? 0.97 : 1 })
-      .animation({ duration: Theme.motion.instant, curve: Curve.EaseOut })
+      .scale({ x: this.pressed ? 0.96 : 1, y: this.pressed ? 0.96 : 1 })
+      .translate({ y: this.pressed ? 2 : 0 })
+      .animation({ duration: SketchStyle.motionMs, curve: Curve.EaseInOut })
       .onTouch((e: TouchEvent) => {
         if (this.disabled) {
           return
@@ -73,6 +74,5 @@ export struct AppButton {
           this.onTap()
         }
       })
-    .opacity(this.themeEpoch >= 0 ? 1 : 1)
   }
 }

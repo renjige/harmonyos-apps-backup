@@ -1,4 +1,6 @@
 import { Theme } from './Theme'
+import { SketchStyle } from './SketchStyle'
+import { SketchTitle } from './SketchTitle'
 
 @Component
 export struct AppHeader {
@@ -9,17 +11,24 @@ export struct AppHeader {
 
   build() {
     Column({ space: Theme.space.s1 }) {
-      Text(this.title)
-        .fontSize(Theme.type.title2)
-        .fontWeight(FontWeight.Bold)
-        .fontColor(this.inverse ? Theme.colors().textOnInverse : Theme.colors().textPrimary)
-        .width('100%')
-      if (this.subtitle.length > 0) {
-        Text(this.subtitle)
-          .fontSize(Theme.type.footnote)
-          .fontColor(this.inverse ? Theme.colors().textOnInverse : Theme.colors().textSecondary)
+      if (this.inverse) {
+        Text(this.title)
+          .fontSize(Theme.type.title2)
+          .fontWeight(FontWeight.Bold)
+          .fontColor(Theme.colors().textOnInverse)
           .width('100%')
-          .opacity(0.85)
+        if (this.subtitle.length > 0) {
+          Text(this.subtitle)
+            .fontSize(Theme.type.footnote)
+            .fontColor(Theme.colors().textOnInverse)
+            .width('100%')
+        }
+      } else {
+        SketchTitle({
+          text: this.title,
+          subtitle: this.subtitle,
+          large: true
+        })
       }
     }
     .width('100%')
@@ -29,7 +38,6 @@ export struct AppHeader {
       top: Theme.space.pageY,
       bottom: Theme.space.s3
     })
-    .opacity(this.themeEpoch >= 0 ? 1 : 1)
   }
 }
 
@@ -44,22 +52,25 @@ export struct AppBrandHero {
       Text(this.company)
         .fontSize(Theme.type.caption)
         .fontColor(Theme.colors().textOnInverse)
-        .opacity(0.8)
+        .fontStyle(FontStyle.Italic)
       Text(this.appName)
         .fontSize(Theme.type.title1)
-        .fontWeight(FontWeight.Bold)
+        .fontWeight(SketchStyle.titleWeight())
+        .fontStyle(SketchStyle.titleStyle())
         .fontColor(Theme.colors().textOnInverse)
       if (this.tagline.length > 0) {
         Text(this.tagline)
           .fontSize(Theme.type.callout)
           .fontColor(Theme.colors().textOnInverse)
-          .opacity(0.9)
       }
     }
     .width('100%')
     .alignItems(HorizontalAlign.Start)
     .padding(Theme.space.s5)
     .backgroundColor(Theme.colors().brandDeep)
-    .borderRadius(Theme.radius.xl)
+    .borderRadius(Theme.sketchRadius())
+    .border({ width: 2, color: SketchStyle.borderInk() })
+    .shadow(Theme.sketchShadow(6))
+    .rotate({ angle: -0.6 })
   }
 }

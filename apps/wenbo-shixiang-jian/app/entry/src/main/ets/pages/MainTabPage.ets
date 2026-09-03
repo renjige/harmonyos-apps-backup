@@ -1,4 +1,5 @@
 import { Theme } from '../components/design-system/Theme'
+import { SketchStyle } from '../components/design-system/SketchStyle'
 import { AppIcon, AppIconName } from '../components/design-system/AppIcon'
 import { HomePage } from './HomePage'
 import { SchedulePage } from './SchedulePage'
@@ -227,13 +228,22 @@ export struct MainTabPage {
           }
           .width('100%')
           .height(Theme.nav.tabHeight)
+          .padding({ left: Theme.space.s3, right: Theme.space.s3, bottom: Theme.space.s2 })
+          .margin({ left: Theme.space.s4, right: Theme.space.s4, bottom: Theme.space.s2 })
           .backgroundColor(this.themeEpoch >= 0 ? Theme.colors().surfaceCard : Theme.colors().surfaceCard)
-          .border({ width: { top: 1 }, color: Theme.colors().strokeHairline })
-          .shadow({ radius: 16, color: 'rgba(37,99,235,0.06)', offsetY: -4, offsetX: 0 })
+          .borderRadius({
+            topLeft: 22,
+            topRight: 14,
+            bottomLeft: 16,
+            bottomRight: 20
+          })
+          .border({ width: 2, color: SketchStyle.borderInk() })
+          .shadow(Theme.sketchShadow(8))
         }
       }
       .width('100%')
       .height('100%')
+      .backgroundColor(Theme.pageClear())
 
       if (this.showHistory) {
         HistoryPage({
@@ -406,32 +416,36 @@ export struct MainTabPage {
 
   @Builder
   TabBarItem(t: TabItem) {
-    Column({ space: 2 }) {
+    Column({ space: 4 }) {
       Column() {
         AppIcon({
           name: t.name,
           iconSize: Theme.icon.md,
-          color: this.current === t.index ?
-            Theme.colors().brandPrimary : Theme.colors().textSecondary
+          color: this.current === t.index ? SketchStyle.ink() : Theme.colors().textSecondary
         })
       }
-      .width(48)
+      .width(44)
       .height(28)
       .justifyContent(FlexAlign.Center)
       .backgroundColor(this.current === t.index ?
-        Theme.colors().brandPrimaryContainer : 'transparent')
-      .borderRadius(Theme.radius.pill)
+        Theme.colors().brandPrimaryContainer : Color.Transparent)
+      .borderRadius(Theme.sketchRadius())
+      .border({
+        width: this.current === t.index ? 2 : 0,
+        color: SketchStyle.borderInk()
+      })
+      .shadow(this.current === t.index ? Theme.sketchShadow(3) : Theme.sketchShadow(0))
+      .rotate({ angle: this.current === t.index ? SketchStyle.tiltForIndex(t.index) : 0 })
       Text(t.label)
-        .fontSize(Theme.type.overline)
-        .fontWeight(this.current === t.index ? FontWeight.Medium : FontWeight.Normal)
-        .fontColor(this.current === t.index ?
-          Theme.colors().brandPrimary : Theme.colors().textSecondary)
+        .fontSize(Theme.type.caption)
+        .fontColor(Theme.colors().textPrimary)
+        .fontWeight(this.current === t.index ? FontWeight.Bold : FontWeight.Normal)
+        .fontStyle(this.current === t.index ? FontStyle.Italic : FontStyle.Normal)
     }
     .layoutWeight(1)
     .height('100%')
     .justifyContent(FlexAlign.Center)
-    .padding({ top: 4, bottom: 4 })
-    .onClick(() => {
+    .onClick((): void => {
       if (TaskDetailNav.isOpen()) {
         TaskDetailNav.close()
       }
